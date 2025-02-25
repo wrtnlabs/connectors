@@ -447,6 +447,73 @@ importers:
         specifier: ^3.5.1
         version: 3.5.3(typescript@5.7.3)
 
+  packages/csv:
+    dependencies:
+      '@wrtnlabs/connector-aws-s3':
+        specifier: workspace:^
+        version: link:../aws-s3
+      typia:
+        specifier: ^7.6.4
+        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+    devDependencies:
+      '@eslint/js':
+        specifier: ^9.20.0
+        version: 9.20.0
+      '@nestia/e2e':
+        specifier: ^0.7.0
+        version: 0.7.0
+      '@rollup/plugin-terser':
+        specifier: ^0.4.4
+        version: 0.4.4(rollup@4.34.8)
+      '@rollup/plugin-typescript':
+        specifier: ^12.1.1
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+      '@trivago/prettier-plugin-sort-imports':
+        specifier: ^4.3.0
+        version: 4.3.0(prettier@3.5.1)
+      chalk:
+        specifier: ^4.1.2
+        version: 4.1.2
+      dotenv:
+        specifier: ^16.3.1
+        version: 16.4.7
+      dotenv-expand:
+        specifier: ^10.0.0
+        version: 10.0.0
+      eslint:
+        specifier: ^9.20.1
+        version: 9.20.1(jiti@2.4.2)
+      path:
+        specifier: ^0.12.7
+        version: 0.12.7
+      prettier:
+        specifier: ^3.3.2
+        version: 3.5.1
+      rimraf:
+        specifier: ^6.0.1
+        version: 6.0.1
+      rollup:
+        specifier: ^4.34.8
+        version: 4.34.8
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+      ts-patch:
+        specifier: ^3.3.0
+        version: 3.3.0
+      tstl:
+        specifier: ^3.0.0
+        version: 3.0.0
+      typescript:
+        specifier: ~5.7.3
+        version: 5.7.3
+      typescript-eslint:
+        specifier: ^8.24.1
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+      typescript-transform-paths:
+        specifier: ^3.5.1
+        version: 3.5.3(typescript@5.7.3)
+
   packages/dall_e_3:
     dependencies:
       '@wrtnlabs/connector-aws-s3':
@@ -1414,6 +1481,82 @@ importers:
       path:
         specifier: ^0.12.7
         version: 0.12.7
+      prettier:
+        specifier: ^3.3.2
+        version: 3.5.1
+      rimraf:
+        specifier: ^6.0.1
+        version: 6.0.1
+      rollup:
+        specifier: ^4.34.8
+        version: 4.34.8
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+      ts-patch:
+        specifier: ^3.3.0
+        version: 3.3.0
+      tstl:
+        specifier: ^3.0.0
+        version: 3.0.0
+      typescript:
+        specifier: ~5.7.3
+        version: 5.7.3
+      typescript-eslint:
+        specifier: ^8.24.1
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+      typescript-transform-paths:
+        specifier: ^3.5.1
+        version: 3.5.3(typescript@5.7.3)
+
+  packages/marp:
+    dependencies:
+      '@wrtnlabs/connector-aws-s3':
+        specifier: workspace:^
+        version: link:../aws-s3
+      child_process:
+        specifier: ^1.0.2
+        version: 1.0.2
+      crypto:
+        specifier: ^1.0.1
+        version: 1.0.1
+      fs:
+        specifier: 0.0.1-security
+        version: 0.0.1-security
+      path:
+        specifier: ^0.12.7
+        version: 0.12.7
+      typia:
+        specifier: ^7.6.4
+        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+    devDependencies:
+      '@eslint/js':
+        specifier: ^9.20.0
+        version: 9.20.0
+      '@nestia/e2e':
+        specifier: ^0.7.0
+        version: 0.7.0
+      '@rollup/plugin-terser':
+        specifier: ^0.4.4
+        version: 0.4.4(rollup@4.34.8)
+      '@rollup/plugin-typescript':
+        specifier: ^12.1.1
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+      '@trivago/prettier-plugin-sort-imports':
+        specifier: ^4.3.0
+        version: 4.3.0(prettier@3.5.1)
+      chalk:
+        specifier: ^4.1.2
+        version: 4.1.2
+      dotenv:
+        specifier: ^16.3.1
+        version: 16.4.7
+      dotenv-expand:
+        specifier: ^10.0.0
+        version: 10.0.0
+      eslint:
+        specifier: ^9.20.1
+        version: 9.20.1(jiti@2.4.2)
       prettier:
         specifier: ^3.3.2
         version: 3.5.1
@@ -4013,6 +4156,9 @@ packages:
     resolution: {integrity: sha512-quS9HgjQpdaXOvsZz82Oz7uxtXiy6UIsIQcpBj7HRw2M63Skasm9qlDocAM7jNuaxdhpPU7c4kJN+gA5MCu4ww==}
     engines: {node: '>=18.17'}
 
+  child_process@1.0.2:
+    resolution: {integrity: sha512-Wmza/JzL0SiWz7kl6MhIKT5ceIlnFPJX+lwUGj7Clhy5MMldsSoJR0+uvRzOS5Kv45Mq7t1PoE8TsOA9bzvb6g==}
+
   chokidar@2.1.8:
     resolution: {integrity: sha512-ZmZUazfOzf0Nve7duiCKD23PFSCs4JPoYyccjUFF3aQkQadqBhfzhjkwBH2mNOG9cTBwhamM37EIsIkZw3nRgg==}
 
@@ -4877,6 +5023,9 @@ packages:
 
   fs.realpath@1.0.0:
     resolution: {integrity: sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==}
+
+  fs@0.0.1-security:
+    resolution: {integrity: sha512-3XY9e1pP0CVEUCdj5BmfIZxRBTSDycnbqhIOGec9QYtmVH2fbLpj86CFWkrNOkt/Fvty4KZG5lTglL9j/gJ87w==}
 
   fsevents@1.2.13:
     resolution: {integrity: sha512-oWb1Z6mkHIskLzEJ/XWX0srkpkTQ7vaopMQkyaEIoq0fmtFVxOthb8cCxeT+p3ynTdkk/RZwbgG4brR5BeWECw==}
@@ -10567,6 +10716,8 @@ snapshots:
       undici: 6.21.1
       whatwg-mimetype: 4.0.0
 
+  child_process@1.0.2: {}
+
   chokidar@2.1.8:
     dependencies:
       anymatch: 2.0.0
@@ -11592,6 +11743,8 @@ snapshots:
   fs-constants@1.0.0: {}
 
   fs.realpath@1.0.0: {}
+
+  fs@0.0.1-security: {}
 
   fsevents@1.2.13:
     dependencies:
