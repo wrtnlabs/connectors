@@ -21,8 +21,8 @@ const build = ({ version, tag, name }) => {
       cwd: location,
       stdio: "inherit",
     });
-  execute("pnpm install");
-  execute("pnpm run build");
+  execute(`pnpm install --filter .`);
+  execute("pnpm run build:main");
 
   // PACKAGE MAIN INFO
   const load = () => fs.readFileSync(`${location}/package.json`, "utf8");
