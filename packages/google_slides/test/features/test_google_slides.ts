@@ -3,7 +3,7 @@ import { TestGlobal } from "../TestGlobal";
 import {
   GoogleSlidesService,
   IGoogleSlidesService,
-} from "@wrtnlabs/connector-google-slide";
+} from "@wrtnlabs/connector-google-slides";
 
 // const createPresentationName = () => {
 //   // 현재 시간을 나타내는 Date 객체 생성
