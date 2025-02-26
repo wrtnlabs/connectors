@@ -4,7 +4,7 @@
   "description": "Wrtn Connector Server Website",
   "main": "index.js",
   "scripts": {
-    "build": "node build/swagger.js && cd .. && npm run google-sheets",
+    "build": "node build/swagger.js && cd .. && pnpm google-sheets",
     "deploy": "node build/deploy.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
