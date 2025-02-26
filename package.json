@@ -30,6 +30,7 @@
     "------------------------DEPLOYS------------------------": "",
     "package:api": "pnpm run build:api && cd packages/api && npm publish",
     "package:latest": "node deploy/publish --tag latest",
+    "package:next": "node deploy/publish --tag dev",
     "start": "node lib/executable/server",
     "start:swagger": "ts-node src/executable/swagger.ts",
     "translate": "ts-node src/executable/translate.ts",
