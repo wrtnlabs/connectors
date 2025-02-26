@@ -466,6 +466,91 @@ importers:
         specifier: ^3.5.1
         version: 3.5.3(typescript@5.7.3)
 
+  packages/csv:
+    dependencies:
+      '@wrtnlabs/connector-aws-s3':
+        specifier: workspace:^
+        version: link:../aws-s3
+      csv-parse:
+        specifier: ^5.5.5
+        version: 5.6.0
+      exceljs:
+        specifier: ^4.4.0
+        version: 4.4.0
+      fast-csv:
+        specifier: ^5.0.0
+        version: 5.0.2
+      stream:
+        specifier: ^0.0.3
+        version: 0.0.3
+      stream-buffers:
+        specifier: ^3.0.2
+        version: 3.0.3
+      typia:
+        specifier: ^7.6.4
+        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+    devDependencies:
+      '@eslint/js':
+        specifier: ^9.20.0
+        version: 9.20.0
+      '@nestia/e2e':
+        specifier: ^0.7.0
+        version: 0.7.0
+      '@rollup/plugin-terser':
+        specifier: ^0.4.4
+        version: 0.4.4(rollup@4.34.8)
+      '@rollup/plugin-typescript':
+        specifier: ^12.1.1
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+      '@trivago/prettier-plugin-sort-imports':
+        specifier: ^4.3.0
+        version: 4.3.0(prettier@3.5.1)
+      '@types/stream-buffers':
+        specifier: ^3.0.7
+        version: 3.0.7
+      chalk:
+        specifier: ^4.1.2
+        version: 4.1.2
+      dotenv:
+        specifier: ^16.3.1
+        version: 16.4.7
+      dotenv-expand:
+        specifier: ^10.0.0
+        version: 10.0.0
+      eslint:
+        specifier: ^9.20.1
+        version: 9.20.1(jiti@2.4.2)
+      path:
+        specifier: ^0.12.7
+        version: 0.12.7
+      prettier:
+        specifier: ^3.3.2
+        version: 3.5.1
+      rimraf:
+        specifier: ^6.0.1
+        version: 6.0.1
+      rollup:
+        specifier: ^4.34.8
+        version: 4.34.8
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+      ts-patch:
+        specifier: ^3.3.0
+        version: 3.3.0
+      tstl:
+        specifier: ^3.0.0
+        version: 3.0.0
+      typescript:
+        specifier: ~5.7.3
+        version: 5.7.3
+      typescript-eslint:
+        specifier: ^8.24.1
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+      typescript-transform-paths:
+        specifier: ^3.5.1
+        version: 3.5.3(typescript@5.7.3)
+
   packages/dall_e_3:
     dependencies:
       '@wrtnlabs/connector-aws-s3':
@@ -496,6 +581,222 @@ importers:
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
+      chalk:
+        specifier: ^4.1.2
+        version: 4.1.2
+      dotenv:
+        specifier: ^16.3.1
+        version: 16.4.7
+      dotenv-expand:
+        specifier: ^10.0.0
+        version: 10.0.0
+      eslint:
+        specifier: ^9.20.1
+        version: 9.20.1(jiti@2.4.2)
+      path:
+        specifier: ^0.12.7
+        version: 0.12.7
+      prettier:
+        specifier: ^3.3.2
+        version: 3.5.1
+      rimraf:
+        specifier: ^6.0.1
+        version: 6.0.1
+      rollup:
+        specifier: ^4.34.8
+        version: 4.34.8
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+      ts-patch:
+        specifier: ^3.3.0
+        version: 3.3.0
+      tstl:
+        specifier: ^3.0.0
+        version: 3.0.0
+      typescript:
+        specifier: ~5.7.3
+        version: 5.7.3
+      typescript-eslint:
+        specifier: ^8.24.1
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+      typescript-transform-paths:
+        specifier: ^3.5.1
+        version: 3.5.3(typescript@5.7.3)
+
+  packages/daum_blog:
+    dependencies:
+      axios:
+        specifier: ^1.7.9
+        version: 1.7.9
+      typia:
+        specifier: ^7.6.4
+        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+    devDependencies:
+      '@eslint/js':
+        specifier: ^9.20.0
+        version: 9.20.0
+      '@nestia/e2e':
+        specifier: ^0.7.0
+        version: 0.7.0
+      '@rollup/plugin-terser':
+        specifier: ^0.4.4
+        version: 0.4.4(rollup@4.34.8)
+      '@rollup/plugin-typescript':
+        specifier: ^12.1.1
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+      '@trivago/prettier-plugin-sort-imports':
+        specifier: ^4.3.0
+        version: 4.3.0(prettier@3.5.1)
+      '@types/axios':
+        specifier: ^0.14.4
+        version: 0.14.4
+      chalk:
+        specifier: ^4.1.2
+        version: 4.1.2
+      dotenv:
+        specifier: ^16.3.1
+        version: 16.4.7
+      dotenv-expand:
+        specifier: ^10.0.0
+        version: 10.0.0
+      eslint:
+        specifier: ^9.20.1
+        version: 9.20.1(jiti@2.4.2)
+      path:
+        specifier: ^0.12.7
+        version: 0.12.7
+      prettier:
+        specifier: ^3.3.2
+        version: 3.5.1
+      rimraf:
+        specifier: ^6.0.1
+        version: 6.0.1
+      rollup:
+        specifier: ^4.34.8
+        version: 4.34.8
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+      ts-patch:
+        specifier: ^3.3.0
+        version: 3.3.0
+      tstl:
+        specifier: ^3.0.0
+        version: 3.0.0
+      typescript:
+        specifier: ~5.7.3
+        version: 5.7.3
+      typescript-eslint:
+        specifier: ^8.24.1
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+      typescript-transform-paths:
+        specifier: ^3.5.1
+        version: 3.5.3(typescript@5.7.3)
+
+  packages/daum_cafe:
+    dependencies:
+      axios:
+        specifier: ^1.7.9
+        version: 1.7.9
+      typia:
+        specifier: ^7.6.4
+        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+    devDependencies:
+      '@eslint/js':
+        specifier: ^9.20.0
+        version: 9.20.0
+      '@nestia/e2e':
+        specifier: ^0.7.0
+        version: 0.7.0
+      '@rollup/plugin-terser':
+        specifier: ^0.4.4
+        version: 0.4.4(rollup@4.34.8)
+      '@rollup/plugin-typescript':
+        specifier: ^12.1.1
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+      '@trivago/prettier-plugin-sort-imports':
+        specifier: ^4.3.0
+        version: 4.3.0(prettier@3.5.1)
+      '@types/axios':
+        specifier: ^0.14.4
+        version: 0.14.4
+      chalk:
+        specifier: ^4.1.2
+        version: 4.1.2
+      dotenv:
+        specifier: ^16.3.1
+        version: 16.4.7
+      dotenv-expand:
+        specifier: ^10.0.0
+        version: 10.0.0
+      eslint:
+        specifier: ^9.20.1
+        version: 9.20.1(jiti@2.4.2)
+      path:
+        specifier: ^0.12.7
+        version: 0.12.7
+      prettier:
+        specifier: ^3.3.2
+        version: 3.5.1
+      rimraf:
+        specifier: ^6.0.1
+        version: 6.0.1
+      rollup:
+        specifier: ^4.34.8
+        version: 4.34.8
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+      ts-patch:
+        specifier: ^3.3.0
+        version: 3.3.0
+      tstl:
+        specifier: ^3.0.0
+        version: 3.0.0
+      typescript:
+        specifier: ~5.7.3
+        version: 5.7.3
+      typescript-eslint:
+        specifier: ^8.24.1
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+      typescript-transform-paths:
+        specifier: ^3.5.1
+        version: 3.5.3(typescript@5.7.3)
+
+  packages/excel:
+    dependencies:
+      '@wrtnlabs/connector-aws-s3':
+        specifier: workspace:^
+        version: link:../aws-s3
+      '@wrtnlabs/connector-shared':
+        specifier: workspace:^
+        version: link:../shared
+      axios:
+        specifier: ^1.7.9
+        version: 1.7.9
+      typia:
+        specifier: ^7.6.4
+        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+    devDependencies:
+      '@eslint/js':
+        specifier: ^9.20.0
+        version: 9.20.0
+      '@nestia/e2e':
+        specifier: ^0.7.0
+        version: 0.7.0
+      '@rollup/plugin-terser':
+        specifier: ^0.4.4
+        version: 0.4.4(rollup@4.34.8)
+      '@rollup/plugin-typescript':
+        specifier: ^12.1.1
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+      '@trivago/prettier-plugin-sort-imports':
+        specifier: ^4.3.0
+        version: 4.3.0(prettier@3.5.1)
+      assert:
+        specifier: ^2.1.0
+        version: 2.1.0
       chalk:
         specifier: ^4.1.2
         version: 4.1.2
@@ -983,6 +1284,94 @@ importers:
         specifier: ^3.5.1
         version: 3.5.3(typescript@5.7.3)
 
+  packages/google_drive:
+    dependencies:
+      '@wrtnlabs/connector-google':
+        specifier: workspace:^
+        version: link:../google
+      axios:
+        specifier: ^1.7.9
+        version: 1.7.9
+      googleapis:
+        specifier: ^144.0.0
+        version: 144.0.0
+      mime-types:
+        specifier: ^2.1.35
+        version: 2.1.35
+      stream:
+        specifier: ^0.0.3
+        version: 0.0.3
+      typia:
+        specifier: ^7.6.4
+        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+    devDependencies:
+      '@eslint/js':
+        specifier: ^9.20.0
+        version: 9.20.0
+      '@nestia/e2e':
+        specifier: ^0.7.0
+        version: 0.7.0
+      '@rollup/plugin-terser':
+        specifier: ^0.4.4
+        version: 0.4.4(rollup@4.34.8)
+      '@rollup/plugin-typescript':
+        specifier: ^12.1.1
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+      '@trivago/prettier-plugin-sort-imports':
+        specifier: ^4.3.0
+        version: 4.3.0(prettier@3.5.1)
+      '@types/axios':
+        specifier: ^0.14.4
+        version: 0.14.4
+      '@types/mime-types':
+        specifier: ^2.1.4
+        version: 2.1.4
+      assert:
+        specifier: ^2.1.0
+        version: 2.1.0
+      chalk:
+        specifier: ^4.1.2
+        version: 4.1.2
+      dotenv:
+        specifier: ^16.3.1
+        version: 16.4.7
+      dotenv-expand:
+        specifier: ^10.0.0
+        version: 10.0.0
+      eslint:
+        specifier: ^9.20.1
+        version: 9.20.1(jiti@2.4.2)
+      path:
+        specifier: ^0.12.7
+        version: 0.12.7
+      prettier:
+        specifier: ^3.3.2
+        version: 3.5.1
+      rimraf:
+        specifier: ^6.0.1
+        version: 6.0.1
+      rollup:
+        specifier: ^4.34.8
+        version: 4.34.8
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+      ts-patch:
+        specifier: ^3.3.0
+        version: 3.3.0
+      tstl:
+        specifier: ^3.0.0
+        version: 3.0.0
+      typescript:
+        specifier: ~5.7.3
+        version: 5.7.3
+      typescript-eslint:
+        specifier: ^8.24.1
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+      typescript-transform-paths:
+        specifier: ^3.5.1
+        version: 3.5.3(typescript@5.7.3)
+
   packages/google_image:
     dependencies:
       '@wrtnlabs/connector-shared':
@@ -1120,6 +1509,88 @@ importers:
         specifier: ^3.5.1
         version: 3.5.3(typescript@5.7.3)
 
+  packages/google_sheet:
+    dependencies:
+      '@wrtnlabs/connector-google':
+        specifier: workspace:^
+        version: link:../google
+      '@wrtnlabs/connector-shared':
+        specifier: workspace:^
+        version: link:../shared
+      axios:
+        specifier: ^1.7.9
+        version: 1.7.9
+      google-spreadsheet:
+        specifier: ^4.1.1
+        version: 4.1.4(google-auth-library@9.15.1)
+      googleapis:
+        specifier: ^144.0.0
+        version: 144.0.0
+      typia:
+        specifier: ^7.6.4
+        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+    devDependencies:
+      '@eslint/js':
+        specifier: ^9.20.0
+        version: 9.20.0
+      '@nestia/e2e':
+        specifier: ^0.7.0
+        version: 0.7.0
+      '@rollup/plugin-terser':
+        specifier: ^0.4.4
+        version: 0.4.4(rollup@4.34.8)
+      '@rollup/plugin-typescript':
+        specifier: ^12.1.1
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+      '@trivago/prettier-plugin-sort-imports':
+        specifier: ^4.3.0
+        version: 4.3.0(prettier@3.5.1)
+      '@types/axios':
+        specifier: ^0.14.4
+        version: 0.14.4
+      chalk:
+        specifier: ^4.1.2
+        version: 4.1.2
+      dotenv:
+        specifier: ^16.3.1
+        version: 16.4.7
+      dotenv-expand:
+        specifier: ^10.0.0
+        version: 10.0.0
+      eslint:
+        specifier: ^9.20.1
+        version: 9.20.1(jiti@2.4.2)
+      path:
+        specifier: ^0.12.7
+        version: 0.12.7
+      prettier:
+        specifier: ^3.3.2
+        version: 3.5.1
+      rimraf:
+        specifier: ^6.0.1
+        version: 6.0.1
+      rollup:
+        specifier: ^4.34.8
+        version: 4.34.8
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+      ts-patch:
+        specifier: ^3.3.0
+        version: 3.3.0
+      tstl:
+        specifier: ^3.0.0
+        version: 3.0.0
+      typescript:
+        specifier: ~5.7.3
+        version: 5.7.3
+      typescript-eslint:
+        specifier: ^8.24.1
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+      typescript-transform-paths:
+        specifier: ^3.5.1
+        version: 3.5.3(typescript@5.7.3)
+
   packages/google_shopping:
     dependencies:
       serpapi:
@@ -1144,6 +1615,100 @@ importers:
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
+      chalk:
+        specifier: ^4.1.2
+        version: 4.1.2
+      dotenv:
+        specifier: ^16.3.1
+        version: 16.4.7
+      dotenv-expand:
+        specifier: ^10.0.0
+        version: 10.0.0
+      eslint:
+        specifier: ^9.20.1
+        version: 9.20.1(jiti@2.4.2)
+      path:
+        specifier: ^0.12.7
+        version: 0.12.7
+      prettier:
+        specifier: ^3.3.2
+        version: 3.5.1
+      rimraf:
+        specifier: ^6.0.1
+        version: 6.0.1
+      rollup:
+        specifier: ^4.34.8
+        version: 4.34.8
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+      ts-patch:
+        specifier: ^3.3.0
+        version: 3.3.0
+      tstl:
+        specifier: ^3.0.0
+        version: 3.0.0
+      typescript:
+        specifier: ~5.7.3
+        version: 5.7.3
+      typescript-eslint:
+        specifier: ^8.24.1
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+      typescript-transform-paths:
+        specifier: ^3.5.1
+        version: 3.5.3(typescript@5.7.3)
+
+  packages/google_slides:
+    dependencies:
+      '@wrtnlabs/connector-aws-s3':
+        specifier: workspace:^
+        version: link:../aws-s3
+      '@wrtnlabs/connector-google':
+        specifier: workspace:^
+        version: link:../google
+      '@wrtnlabs/connector-google-drive':
+        specifier: workspace:^
+        version: link:../google_drive
+      '@wrtnlabs/connector-shared':
+        specifier: workspace:^
+        version: link:../shared
+      axios:
+        specifier: ^1.7.9
+        version: 1.7.9
+      sharp:
+        specifier: ^0.33.5
+        version: 0.33.5
+      typia:
+        specifier: ^7.6.4
+        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+      uuid:
+        specifier: ^10.0.0
+        version: 10.0.0
+    devDependencies:
+      '@eslint/js':
+        specifier: ^9.20.0
+        version: 9.20.0
+      '@nestia/e2e':
+        specifier: ^0.7.0
+        version: 0.7.0
+      '@rollup/plugin-terser':
+        specifier: ^0.4.4
+        version: 0.4.4(rollup@4.34.8)
+      '@rollup/plugin-typescript':
+        specifier: ^12.1.1
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+      '@trivago/prettier-plugin-sort-imports':
+        specifier: ^4.3.0
+        version: 4.3.0(prettier@3.5.1)
+      '@types/axios':
+        specifier: ^0.14.4
+        version: 0.14.4
+      '@types/sharp':
+        specifier: ^0.32.0
+        version: 0.32.0
+      '@types/uuid':
+        specifier: ^8.3.4
+        version: 8.3.4
       chalk:
         specifier: ^4.1.2
         version: 4.1.2
@@ -1217,6 +1782,161 @@ importers:
       cross-env:
         specifier: ^7.0.3
         version: 7.0.3
+      dotenv:
+        specifier: ^16.3.1
+        version: 16.4.7
+      dotenv-expand:
+        specifier: ^10.0.0
+        version: 10.0.0
+      eslint:
+        specifier: ^9.20.1
+        version: 9.20.1(jiti@2.4.2)
+      path:
+        specifier: ^0.12.7
+        version: 0.12.7
+      prettier:
+        specifier: ^3.3.2
+        version: 3.5.1
+      rimraf:
+        specifier: ^6.0.1
+        version: 6.0.1
+      rollup:
+        specifier: ^4.34.8
+        version: 4.34.8
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+      ts-patch:
+        specifier: ^3.3.0
+        version: 3.3.0
+      tstl:
+        specifier: ^3.0.0
+        version: 3.0.0
+      typescript:
+        specifier: ~5.7.3
+        version: 5.7.3
+      typescript-eslint:
+        specifier: ^8.24.1
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+      typescript-transform-paths:
+        specifier: ^3.5.1
+        version: 3.5.3(typescript@5.7.3)
+
+  packages/hancell:
+    dependencies:
+      '@wrtnlabs/connector-aws-s3':
+        specifier: workspace:^
+        version: link:../aws-s3
+      axios:
+        specifier: ^1.7.9
+        version: 1.7.9
+      typia:
+        specifier: ^7.6.4
+        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+      uuid:
+        specifier: ^10.0.0
+        version: 10.0.0
+      xlsx:
+        specifier: ^0.18.5
+        version: 0.18.5
+    devDependencies:
+      '@eslint/js':
+        specifier: ^9.20.0
+        version: 9.20.0
+      '@nestia/e2e':
+        specifier: ^0.7.0
+        version: 0.7.0
+      '@rollup/plugin-terser':
+        specifier: ^0.4.4
+        version: 0.4.4(rollup@4.34.8)
+      '@rollup/plugin-typescript':
+        specifier: ^12.1.1
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+      '@trivago/prettier-plugin-sort-imports':
+        specifier: ^4.3.0
+        version: 4.3.0(prettier@3.5.1)
+      '@types/axios':
+        specifier: ^0.14.4
+        version: 0.14.4
+      '@types/uuid':
+        specifier: ^8.3.4
+        version: 8.3.4
+      '@types/xlsx':
+        specifier: ^0.0.36
+        version: 0.0.36
+      chalk:
+        specifier: ^4.1.2
+        version: 4.1.2
+      dotenv:
+        specifier: ^16.3.1
+        version: 16.4.7
+      dotenv-expand:
+        specifier: ^10.0.0
+        version: 10.0.0
+      eslint:
+        specifier: ^9.20.1
+        version: 9.20.1(jiti@2.4.2)
+      path:
+        specifier: ^0.12.7
+        version: 0.12.7
+      prettier:
+        specifier: ^3.3.2
+        version: 3.5.1
+      rimraf:
+        specifier: ^6.0.1
+        version: 6.0.1
+      rollup:
+        specifier: ^4.34.8
+        version: 4.34.8
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+      ts-patch:
+        specifier: ^3.3.0
+        version: 3.3.0
+      tstl:
+        specifier: ^3.0.0
+        version: 3.0.0
+      typescript:
+        specifier: ~5.7.3
+        version: 5.7.3
+      typescript-eslint:
+        specifier: ^8.24.1
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+      typescript-transform-paths:
+        specifier: ^3.5.1
+        version: 3.5.3(typescript@5.7.3)
+
+  packages/hwp:
+    dependencies:
+      axios:
+        specifier: ^1.7.9
+        version: 1.7.9
+      typia:
+        specifier: ^7.6.4
+        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+    devDependencies:
+      '@eslint/js':
+        specifier: ^9.20.0
+        version: 9.20.0
+      '@nestia/e2e':
+        specifier: ^0.7.0
+        version: 0.7.0
+      '@rollup/plugin-terser':
+        specifier: ^0.4.4
+        version: 0.4.4(rollup@4.34.8)
+      '@rollup/plugin-typescript':
+        specifier: ^12.1.1
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+      '@trivago/prettier-plugin-sort-imports':
+        specifier: ^4.3.0
+        version: 4.3.0(prettier@3.5.1)
+      '@types/axios':
+        specifier: ^0.14.4
+        version: 0.14.4
+      chalk:
+        specifier: ^4.1.2
+        version: 4.1.2
       dotenv:
         specifier: ^16.3.1
         version: 16.4.7
@@ -1461,6 +2181,222 @@ importers:
         specifier: ^3.5.1
         version: 3.5.3(typescript@5.7.3)
 
+  packages/marp:
+    dependencies:
+      '@wrtnlabs/connector-aws-s3':
+        specifier: workspace:^
+        version: link:../aws-s3
+      child_process:
+        specifier: ^1.0.2
+        version: 1.0.2
+      crypto:
+        specifier: ^1.0.1
+        version: 1.0.1
+      fs:
+        specifier: 0.0.1-security
+        version: 0.0.1-security
+      path:
+        specifier: ^0.12.7
+        version: 0.12.7
+      typia:
+        specifier: ^7.6.4
+        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+    devDependencies:
+      '@eslint/js':
+        specifier: ^9.20.0
+        version: 9.20.0
+      '@nestia/e2e':
+        specifier: ^0.7.0
+        version: 0.7.0
+      '@rollup/plugin-terser':
+        specifier: ^0.4.4
+        version: 0.4.4(rollup@4.34.8)
+      '@rollup/plugin-typescript':
+        specifier: ^12.1.1
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+      '@trivago/prettier-plugin-sort-imports':
+        specifier: ^4.3.0
+        version: 4.3.0(prettier@3.5.1)
+      chalk:
+        specifier: ^4.1.2
+        version: 4.1.2
+      dotenv:
+        specifier: ^16.3.1
+        version: 16.4.7
+      dotenv-expand:
+        specifier: ^10.0.0
+        version: 10.0.0
+      eslint:
+        specifier: ^9.20.1
+        version: 9.20.1(jiti@2.4.2)
+      prettier:
+        specifier: ^3.3.2
+        version: 3.5.1
+      rimraf:
+        specifier: ^6.0.1
+        version: 6.0.1
+      rollup:
+        specifier: ^4.34.8
+        version: 4.34.8
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+      ts-patch:
+        specifier: ^3.3.0
+        version: 3.3.0
+      tstl:
+        specifier: ^3.0.0
+        version: 3.0.0
+      typescript:
+        specifier: ~5.7.3
+        version: 5.7.3
+      typescript-eslint:
+        specifier: ^8.24.1
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+      typescript-transform-paths:
+        specifier: ^3.5.1
+        version: 3.5.3(typescript@5.7.3)
+
+  packages/naver_blog:
+    dependencies:
+      axios:
+        specifier: ^1.7.9
+        version: 1.7.9
+      typia:
+        specifier: ^7.6.4
+        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+    devDependencies:
+      '@eslint/js':
+        specifier: ^9.20.0
+        version: 9.20.0
+      '@nestia/e2e':
+        specifier: ^0.7.0
+        version: 0.7.0
+      '@rollup/plugin-terser':
+        specifier: ^0.4.4
+        version: 0.4.4(rollup@4.34.8)
+      '@rollup/plugin-typescript':
+        specifier: ^12.1.1
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+      '@trivago/prettier-plugin-sort-imports':
+        specifier: ^4.3.0
+        version: 4.3.0(prettier@3.5.1)
+      '@types/axios':
+        specifier: ^0.14.4
+        version: 0.14.4
+      chalk:
+        specifier: ^4.1.2
+        version: 4.1.2
+      dotenv:
+        specifier: ^16.3.1
+        version: 16.4.7
+      dotenv-expand:
+        specifier: ^10.0.0
+        version: 10.0.0
+      eslint:
+        specifier: ^9.20.1
+        version: 9.20.1(jiti@2.4.2)
+      path:
+        specifier: ^0.12.7
+        version: 0.12.7
+      prettier:
+        specifier: ^3.3.2
+        version: 3.5.1
+      rimraf:
+        specifier: ^6.0.1
+        version: 6.0.1
+      rollup:
+        specifier: ^4.34.8
+        version: 4.34.8
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+      ts-patch:
+        specifier: ^3.3.0
+        version: 3.3.0
+      tstl:
+        specifier: ^3.0.0
+        version: 3.0.0
+      typescript:
+        specifier: ~5.7.3
+        version: 5.7.3
+      typescript-eslint:
+        specifier: ^8.24.1
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+      typescript-transform-paths:
+        specifier: ^3.5.1
+        version: 3.5.3(typescript@5.7.3)
+
+  packages/naver_cafe:
+    dependencies:
+      axios:
+        specifier: ^1.7.9
+        version: 1.7.9
+      typia:
+        specifier: ^7.6.4
+        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+    devDependencies:
+      '@eslint/js':
+        specifier: ^9.20.0
+        version: 9.20.0
+      '@nestia/e2e':
+        specifier: ^0.7.0
+        version: 0.7.0
+      '@rollup/plugin-terser':
+        specifier: ^0.4.4
+        version: 0.4.4(rollup@4.34.8)
+      '@rollup/plugin-typescript':
+        specifier: ^12.1.1
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+      '@trivago/prettier-plugin-sort-imports':
+        specifier: ^4.3.0
+        version: 4.3.0(prettier@3.5.1)
+      '@types/axios':
+        specifier: ^0.14.4
+        version: 0.14.4
+      chalk:
+        specifier: ^4.1.2
+        version: 4.1.2
+      dotenv:
+        specifier: ^16.3.1
+        version: 16.4.7
+      dotenv-expand:
+        specifier: ^10.0.0
+        version: 10.0.0
+      eslint:
+        specifier: ^9.20.1
+        version: 9.20.1(jiti@2.4.2)
+      path:
+        specifier: ^0.12.7
+        version: 0.12.7
+      prettier:
+        specifier: ^3.3.2
+        version: 3.5.1
+      rimraf:
+        specifier: ^6.0.1
+        version: 6.0.1
+      rollup:
+        specifier: ^4.34.8
+        version: 4.34.8
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+      ts-patch:
+        specifier: ^3.3.0
+        version: 3.3.0
+      tstl:
+        specifier: ^3.0.0
+        version: 3.0.0
+      typescript:
+        specifier: ~5.7.3
+        version: 5.7.3
+      typescript-eslint:
+        specifier: ^8.24.1
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+      typescript-transform-paths:
+        specifier: ^3.5.1
+        version: 3.5.3(typescript@5.7.3)
+
   packages/naver_news:
     dependencies:
       axios:
@@ -1570,6 +2506,82 @@ importers:
       crypto:
         specifier: ^1.0.1
         version: 1.0.1
+      dotenv:
+        specifier: ^16.3.1
+        version: 16.4.7
+      dotenv-expand:
+        specifier: ^10.0.0
+        version: 10.0.0
+      eslint:
+        specifier: ^9.20.1
+        version: 9.20.1(jiti@2.4.2)
+      path:
+        specifier: ^0.12.7
+        version: 0.12.7
+      prettier:
+        specifier: ^3.3.2
+        version: 3.5.1
+      rimraf:
+        specifier: ^6.0.1
+        version: 6.0.1
+      rollup:
+        specifier: ^4.34.8
+        version: 4.34.8
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+      ts-patch:
+        specifier: ^3.3.0
+        version: 3.3.0
+      tstl:
+        specifier: ^3.0.0
+        version: 3.0.0
+      typescript:
+        specifier: ~5.7.3
+        version: 5.7.3
+      typescript-eslint:
+        specifier: ^8.24.1
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+      typescript-transform-paths:
+        specifier: ^3.5.1
+        version: 3.5.3(typescript@5.7.3)
+
+  packages/reddit:
+    dependencies:
+      '@wrtnlabs/connector-shared':
+        specifier: workspace:^
+        version: link:../shared
+      axios:
+        specifier: ^1.7.9
+        version: 1.7.9
+      typia:
+        specifier: ^7.6.4
+        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+    devDependencies:
+      '@eslint/js':
+        specifier: ^9.20.0
+        version: 9.20.0
+      '@nestia/e2e':
+        specifier: ^0.7.0
+        version: 0.7.0
+      '@rollup/plugin-terser':
+        specifier: ^0.4.4
+        version: 0.4.4(rollup@4.34.8)
+      '@rollup/plugin-typescript':
+        specifier: ^12.1.1
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+      '@trivago/prettier-plugin-sort-imports':
+        specifier: ^4.3.0
+        version: 4.3.0(prettier@3.5.1)
+      '@types/axios':
+        specifier: ^0.14.4
+        version: 0.14.4
+      assert:
+        specifier: ^2.1.0
+        version: 2.1.0
+      chalk:
+        specifier: ^4.1.2
+        version: 4.1.2
       dotenv:
         specifier: ^16.3.1
         version: 16.4.7
@@ -3360,6 +4372,10 @@ packages:
   '@types/atob@2.1.4':
     resolution: {integrity: sha512-FisOhG87cCFqzCgq6FUtSYsTMOHCB/p28zJbSN1QBo4ZGJfg9PEhMjdIV++NDeOnloUUe0Gz6jwBV+L1Ac00Mw==}
 
+  '@types/axios@0.14.4':
+    resolution: {integrity: sha512-9JgOaunvQdsQ/qW2OPmE5+hCeUB52lQSolecrFrthct55QekhmXEwT203s20RL+UHtCQc15y3VXpby9E7Kkh/g==}
+    deprecated: This is a stub types definition. axios provides its own type definitions, so you do not need this installed.
+
   '@types/body-parser@1.19.5':
     resolution: {integrity: sha512-fB3Zu92ucau0iQ0JMCFQE7b/dv8Ot07NI3KaZIkIUNXq82k4eBAqUaneXfleGY9JWskeS9y+u0nXMyspcuQrCg==}
 
@@ -3447,6 +4463,10 @@ packages:
   '@types/serve-static@1.15.7':
     resolution: {integrity: sha512-W8Ym+h8nhuRwaKPaDw34QUkwsGi6Rc4yYqvKFo5rm2FUEhCFbzVWrxXUxuKK8TASjWsysJY0nsmNCGhCOIsrOw==}
 
+  '@types/sharp@0.32.0':
+    resolution: {integrity: sha512-OOi3kL+FZDnPhVzsfD37J88FNeZh6gQsGcLc95NbeURRGvmSjeXiDcyWzF2o3yh/gQAUn2uhh/e+CPCa5nwAxw==}
+    deprecated: This is a stub types definition. sharp provides its own type definitions, so you do not need this installed.
+
   '@types/stream-buffers@3.0.7':
     resolution: {integrity: sha512-azOCy05sXVXrO+qklf0c/B07H/oHaIuDDAiHPVwlk3A9Ek+ksHyTeMajLZl3r76FxpPpxem//4Te61G1iW3Giw==}
 
@@ -3467,6 +4487,10 @@ packages:
 
   '@types/ws@7.4.7':
     resolution: {integrity: sha512-JQbbmxZTZehdc2iszGKs5oC3NFnjeay7mtAWrdt7qNtAVK0g19muApzAy4bm9byz79xa2ZnO/BOBC2R8RC5Lww==}
+
+  '@types/xlsx@0.0.36':
+    resolution: {integrity: sha512-mvfrKiKKMErQzLMF8ElYEH21qxWCZtN59pHhWGmWCWFJStYdMWjkDSAy6mGowFxHXaXZWe5/TW7pBUiWclIVOw==}
+    deprecated: This is a stub types definition for xlsx (https://github.com/sheetjs/js-xlsx). xlsx provides its own type definitions, so you don't need @types/xlsx installed!
 
   '@types/xml2js@0.4.14':
     resolution: {integrity: sha512-4YnrRemBShWRO2QjvUin8ESA41rH+9nQGLUGZV/1IDhi3SL9OhdpNC/MrulTWuptXKwhx/aDxE7toV0f/ypIXQ==}
@@ -4139,6 +5163,9 @@ packages:
   cheerio@1.0.0:
     resolution: {integrity: sha512-quS9HgjQpdaXOvsZz82Oz7uxtXiy6UIsIQcpBj7HRw2M63Skasm9qlDocAM7jNuaxdhpPU7c4kJN+gA5MCu4ww==}
     engines: {node: '>=18.17'}
+
+  child_process@1.0.2:
+    resolution: {integrity: sha512-Wmza/JzL0SiWz7kl6MhIKT5ceIlnFPJX+lwUGj7Clhy5MMldsSoJR0+uvRzOS5Kv45Mq7t1PoE8TsOA9bzvb6g==}
 
   chokidar@2.1.8:
     resolution: {integrity: sha512-ZmZUazfOzf0Nve7duiCKD23PFSCs4JPoYyccjUFF3aQkQadqBhfzhjkwBH2mNOG9cTBwhamM37EIsIkZw3nRgg==}
@@ -5019,6 +6046,9 @@ packages:
 
   fs.realpath@1.0.0:
     resolution: {integrity: sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==}
+
+  fs@0.0.1-security:
+    resolution: {integrity: sha512-3XY9e1pP0CVEUCdj5BmfIZxRBTSDycnbqhIOGec9QYtmVH2fbLpj86CFWkrNOkt/Fvty4KZG5lTglL9j/gJ87w==}
 
   fsevents@1.2.13:
     resolution: {integrity: sha512-oWb1Z6mkHIskLzEJ/XWX0srkpkTQ7vaopMQkyaEIoq0fmtFVxOthb8cCxeT+p3ynTdkk/RZwbgG4brR5BeWECw==}
@@ -9826,6 +10856,12 @@ snapshots:
 
   '@types/atob@2.1.4': {}
 
+  '@types/axios@0.14.4':
+    dependencies:
+      axios: 1.7.9
+    transitivePeerDependencies:
+      - debug
+
   '@types/body-parser@1.19.5':
     dependencies:
       '@types/connect': 3.4.38
@@ -9932,6 +10968,10 @@ snapshots:
       '@types/node': 18.19.76
       '@types/send': 0.17.4
 
+  '@types/sharp@0.32.0':
+    dependencies:
+      sharp: 0.33.5
+
   '@types/stream-buffers@3.0.7':
     dependencies:
       '@types/node': 18.19.76
@@ -9953,6 +10993,10 @@ snapshots:
   '@types/ws@7.4.7':
     dependencies:
       '@types/node': 18.19.76
+
+  '@types/xlsx@0.0.36':
+    dependencies:
+      xlsx: 0.18.5
 
   '@types/xml2js@0.4.14':
     dependencies:
@@ -10799,6 +11843,8 @@ snapshots:
       undici: 6.21.1
       whatwg-mimetype: 4.0.0
 
+  child_process@1.0.2: {}
+
   chokidar@2.1.8:
     dependencies:
       anymatch: 2.0.0
@@ -10891,18 +11937,6 @@ snapshots:
   color-name@1.1.3: {}
 
   color-name@1.1.4: {}
-
-  color-string@1.9.1:
-    dependencies:
-      color-name: 1.1.4
-      simple-swizzle: 0.2.2
-    optional: true
-
-  color@4.2.3:
-    dependencies:
-      color-convert: 2.0.1
-      color-string: 1.9.1
-    optional: true
 
   colorette@2.0.20: {}
 
@@ -11184,6 +12218,8 @@ snapshots:
   dequal@2.0.3: {}
 
   destroy@1.2.0: {}
+
+  detect-libc@2.0.3: {}
 
   detect-libc@2.0.3:
     optional: true
@@ -11842,6 +12878,8 @@ snapshots:
 
   fs.realpath@1.0.0: {}
 
+  fs@0.0.1-security: {}
+
   fsevents@1.2.13:
     dependencies:
       bindings: 1.5.0
@@ -12252,6 +13290,8 @@ snapshots:
       has-tostringtag: 1.0.2
 
   is-arrayish@0.2.1: {}
+
+  is-arrayish@0.3.2: {}
 
   is-arrayish@0.3.2:
     optional: true
@@ -13963,33 +15003,6 @@ snapshots:
     dependencies:
       kind-of: 6.0.3
 
-  sharp@0.33.5:
-    dependencies:
-      color: 4.2.3
-      detect-libc: 2.0.3
-      semver: 7.7.1
-    optionalDependencies:
-      '@img/sharp-darwin-arm64': 0.33.5
-      '@img/sharp-darwin-x64': 0.33.5
-      '@img/sharp-libvips-darwin-arm64': 1.0.4
-      '@img/sharp-libvips-darwin-x64': 1.0.4
-      '@img/sharp-libvips-linux-arm': 1.0.5
-      '@img/sharp-libvips-linux-arm64': 1.0.4
-      '@img/sharp-libvips-linux-s390x': 1.0.4
-      '@img/sharp-libvips-linux-x64': 1.0.4
-      '@img/sharp-libvips-linuxmusl-arm64': 1.0.4
-      '@img/sharp-libvips-linuxmusl-x64': 1.0.4
-      '@img/sharp-linux-arm': 0.33.5
-      '@img/sharp-linux-arm64': 0.33.5
-      '@img/sharp-linux-s390x': 0.33.5
-      '@img/sharp-linux-x64': 0.33.5
-      '@img/sharp-linuxmusl-arm64': 0.33.5
-      '@img/sharp-linuxmusl-x64': 0.33.5
-      '@img/sharp-wasm32': 0.33.5
-      '@img/sharp-win32-ia32': 0.33.5
-      '@img/sharp-win32-x64': 0.33.5
-    optional: true
-
   shebang-command@1.2.0:
     dependencies:
       shebang-regex: 1.0.0
@@ -14037,11 +15050,6 @@ snapshots:
   signal-exit@3.0.7: {}
 
   signal-exit@4.1.0: {}
-
-  simple-swizzle@0.2.2:
-    dependencies:
-      is-arrayish: 0.3.2
-    optional: true
 
   slackify-markdown@4.4.0:
     dependencies:

@@ -37,7 +37,7 @@ jobs:
         run: npm install -g pnpm
 
       - name: Root Install
-        run: pnpm install
+        run: pnpm install && pnpm build:prisma
 
       - name: Build
         working-directory: website
