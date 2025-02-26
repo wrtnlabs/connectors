@@ -33,12 +33,15 @@ jobs:
         env:
           SECRETS_CONTEXT: ${{ toJson(secrets) }}
 
+      - name: Setup pnpm
+        run: npm install -g pnpm
+
       - name: Root Install
-        run: npm install
+        run: pnpm install
 
       - name: Build
         working-directory: website
-        run: npm install && npm run build
+        run: pnpm install && pnpm build
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
