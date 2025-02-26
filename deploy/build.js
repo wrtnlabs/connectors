@@ -18,8 +18,8 @@ const build = (name) => {
       cwd,
       stdio: "inherit",
     });
-  execute("pnpm install");
-  execute("pnpm run build");
+  execute(`pnpm install --filter .`);
+  execute("pnpm run build:main");
 };
 
 const main = () => {
