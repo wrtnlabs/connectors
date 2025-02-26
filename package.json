@@ -10,17 +10,16 @@
     "test": "cross-env NODE_ENV=test node bin/test",
     "test:unit": "vitest run",
     "test:inhouse": "cross-env NODE_ENV=test node bin/test/inhouse.js",
-    "test:webpack": "npm run webpack && cross-env NODE_ENV=test node bin/test/webpack.js",
+    "test:webpack": "pnpm run webpack && cross-env NODE_ENV=test node bin/test/webpack.js",
     "------------------------BUILDS------------------------": "",
-    "postinstall": "ts-node ./src/executable/postinstall.ts",
-    "build": "npm run build:sdk && npm run build:main && npm run build:test",
+    "build": "pnpm run build:prisma && pnpm run build:sdk && pnpm run build:main && pnpm run build:test",
     "build:api": "rimraf packages/api/lib && nestia sdk && tsc -p packages/api/tsconfig.json && ts-node build/validate-api.ts",
     "build:main": "rimraf lib && tsc",
     "build:sdk": "rimraf src/api/functional && nestia sdk",
     "build:swagger": "nestia swagger && ts-node src/executable/indexing_swagger_files.ts && ts-node src/executable/serde.ts",
     "build:test": "rimraf bin && tsc -p test/tsconfig.json",
     "build:prisma": "prisma generate --schema=prisma/schema",
-    "dev": "npm run build:test -- --watch",
+    "dev": "pnpm run build:test --watch",
     "eslint": "eslint src && eslint test",
     "eslint:fix": "eslint --fix src && eslint --fix test",
     "prepare": "ts-patch install && typia patch && git update-index --assume-unchanged .env",
@@ -29,7 +28,7 @@
     "webpack": "rimraf dist && webpack",
     "webpack:start": "cd dist && node dist/server",
     "------------------------DEPLOYS------------------------": "",
-    "package:api": "npm run build:api && cd packages/api && npm publish",
+    "package:api": "pnpm run build:api && cd packages/api && npm publish",
     "package:latest": "node deploy/publish --tag latest",
     "start": "node lib/executable/server",
     "start:swagger": "ts-node src/executable/swagger.ts",
@@ -67,6 +66,7 @@
     "@types/inquirer": "^8.2.5",
     "@types/mime-types": "^2.1.4",
     "@types/node": "^18.11.0",
+    "@types/qs": "^6.9.18",
     "@types/stream-buffers": "^3.0.7",
     "@types/uuid": "^8.3.4",
     "@types/xml2js": "^0.4.14",
@@ -80,6 +80,7 @@
     "nestia": "^6.3.1",
     "prettier": "^3.3.2",
     "prisma-markdown": "^1.0.9",
+    "reflect-metadata": "^0.2.2",
     "rimraf": "^6.0.1",
     "source-map-support": "^0.5.21",
     "swagger-ui-express": "^5.0.0",
@@ -119,6 +120,7 @@
     "aws-sdk": "^2.1691.0",
     "axios": "^1.7.7",
     "cheerio": "^1.0.0",
+    "commander": "^13.1.0",
     "cross-env": "^7.0.3",
     "csv-parse": "^5.5.5",
     "dd-trace": "^5.35.0",
@@ -139,6 +141,8 @@
     "openai": "^4.24.1",
     "pino": "^9.5.0",
     "prisma": "^5.22.0",
+    "qs": "^6.14.0",
+    "rxjs": "^7.8.2",
     "serialize-error": "^4.1.0",
     "serpapi": "^2.0.0",
     "slackify-markdown": "^4.4.0",
@@ -151,7 +155,7 @@
     "xml2js": "^0.6.2",
     "zenrows": "^2.0.1"
   },
-  "optionaldependencies": {
-    "sharp": "^0.33.4"
+  "optionalDependencies": {
+    "sharp": "^0.33.5"
   }
 }
