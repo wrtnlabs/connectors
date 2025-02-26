@@ -1,7 +1,7 @@
 {
   "private": false,
   "name": "@wrtn/connector",
-  "version": "0.1.468",
+  "version": "0.1.469",
   "description": "wrtn-ecosystem connectors and sdk",
   "main": "lib/index.js",
   "scripts": {
@@ -35,7 +35,7 @@
     "translate": "ts-node src/executable/translate.ts",
     "swagger:update": "node lib/UpdateSwaggerJson.js",
     "google-sheets": "ts-node src/executable/swagger-to-google-sheets.ts"
-  }, 
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/wrtnio/connectors"
