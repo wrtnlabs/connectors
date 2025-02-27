@@ -32,5 +32,5 @@ export const test_gmail_send_mail_with_files = async () => {
   typia.assert(res);
 
   // 방금 보낸 메일 삭제
-  await gmailService.hardDelete(res.id);
+  await gmailService.hardDelete({ id: res.id });
 };

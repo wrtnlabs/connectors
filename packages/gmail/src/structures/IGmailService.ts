@@ -96,6 +96,11 @@ export namespace IGmailService {
    */
   export interface IReplyInput {
     /**
+     * The id of the email to reply to.
+     */
+    id: string;
+
+    /**
      * Phrase to reply.
      *
      * @title Phrase to reply
@@ -203,6 +208,13 @@ export namespace IGmailService {
    * @title Information required to assign a label
    */
   export interface IMailLabelOperationInput {
+    /**
+     * The id of the email to assign or remove a label.
+     *
+     * @title The id of the email
+     */
+    id: string;
+
     /**
      * A list of labels to assign or remove.
      *
