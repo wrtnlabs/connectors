@@ -5,7 +5,7 @@ import {
 import { google } from "googleapis";
 import { IGoogleSheetService } from "../structures/IGoogleSheetService";
 import { GoogleService } from "@wrtnlabs/connector-google";
-import { ISpreadsheet, ISpreadsheetCell } from "@wrtnlabs/connector-shared";
+import { ISpreadsheetCell } from "@wrtnlabs/connector-shared";
 import { AxiosError } from "axios";
 
 export class GoogleSheetService {

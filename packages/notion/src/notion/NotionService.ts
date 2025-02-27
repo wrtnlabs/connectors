@@ -1,7 +1,6 @@
 import axios from "axios";
 import { BlockObjectRequest } from "@notionhq/client/build/src/api-endpoints";
 import { markdownToBlocks } from "@tryfabric/martian";
-import { Block } from "@tryfabric/martian/build/src/notion/blocks";
 import { NotionToMarkdown } from "notion-to-md";
 import typia from "typia";
 import { INotionService } from "../structures/INotionService";
@@ -753,140 +752,140 @@ export class NotionService {
     }
   }
 
-  private blocksToMarkdown<T extends Block & { id: string }>(
-    blocks: T[],
-  ): INotionService.AccurateMarkdownBlock[] {
-    return blocks.map((block: T) => {
-      if (block.type === "audio") {
-      } else if (block.type === "bookmark") {
-      } else if (block.type === "breadcrumb") {
-      } else if (block.type === "bulleted_list_item") {
-        const rich_text = block[block["type"]]["rich_text"];
-        if (rich_text instanceof Array) {
-          const text = rich_text
-            .map((el) => (el.type === "text" ? el.text.content : ""))
-            .join("");
+  // private blocksToMarkdown<T extends Block & { id: string }>(
+  //   blocks: T[],
+  // ): INotionService.AccurateMarkdownBlock[] {
+  //   return blocks.map((block: T) => {
+  //     if (block.type === "audio") {
+  //     } else if (block.type === "bookmark") {
+  //     } else if (block.type === "breadcrumb") {
+  //     } else if (block.type === "bulleted_list_item") {
+  //       const rich_text = block[block["type"]]["rich_text"];
+  //       if (rich_text instanceof Array) {
+  //         const text = rich_text
+  //           .map((el) => (el.type === "text" ? el.text.content : ""))
+  //           .join("");
 
-          return { ...block, text };
-        }
-      } else if (block.type === "callout") {
-        const rich_text = block[block["type"]]["rich_text"];
-        if (rich_text instanceof Array) {
-          const text = rich_text
-            .map((el) => (el.type === "text" ? el.text.content : ""))
-            .join("");
+  //         return { ...block, text };
+  //       }
+  //     } else if (block.type === "callout") {
+  //       const rich_text = block[block["type"]]["rich_text"];
+  //       if (rich_text instanceof Array) {
+  //         const text = rich_text
+  //           .map((el) => (el.type === "text" ? el.text.content : ""))
+  //           .join("");
 
-          return { ...block, text };
-        }
-      } else if (block.type === "code") {
-        const rich_text = block[block["type"]]["rich_text"];
-        if (rich_text instanceof Array) {
-          const text = rich_text
-            .map((el) => (el.type === "text" ? el.text.content : ""))
-            .join("");
+  //         return { ...block, text };
+  //       }
+  //     } else if (block.type === "code") {
+  //       const rich_text = block[block["type"]]["rich_text"];
+  //       if (rich_text instanceof Array) {
+  //         const text = rich_text
+  //           .map((el) => (el.type === "text" ? el.text.content : ""))
+  //           .join("");
 
-          return { ...block, text };
-        }
-      } else if (block.type === "column") {
-      } else if (block.type === "column_list") {
-      } else if (block.type === "divider") {
-      } else if (block.type === "embed") {
-      } else if (block.type === "equation") {
-      } else if (block.type === "file") {
-      } else if (block.type === "heading_1") {
-        const rich_text = block[block["type"]]["rich_text"];
-        if (rich_text instanceof Array) {
-          const text = rich_text
-            .map((el) => (el.type === "text" ? el.text.content : ""))
-            .join("");
+  //         return { ...block, text };
+  //       }
+  //     } else if (block.type === "column") {
+  //     } else if (block.type === "column_list") {
+  //     } else if (block.type === "divider") {
+  //     } else if (block.type === "embed") {
+  //     } else if (block.type === "equation") {
+  //     } else if (block.type === "file") {
+  //     } else if (block.type === "heading_1") {
+  //       const rich_text = block[block["type"]]["rich_text"];
+  //       if (rich_text instanceof Array) {
+  //         const text = rich_text
+  //           .map((el) => (el.type === "text" ? el.text.content : ""))
+  //           .join("");
 
-          return { ...block, text };
-        }
-      } else if (block.type === "heading_2") {
-        const rich_text = block[block["type"]]["rich_text"];
-        if (rich_text instanceof Array) {
-          const text = rich_text
-            .map((el) => (el.type === "text" ? el.text.content : ""))
-            .join("");
+  //         return { ...block, text };
+  //       }
+  //     } else if (block.type === "heading_2") {
+  //       const rich_text = block[block["type"]]["rich_text"];
+  //       if (rich_text instanceof Array) {
+  //         const text = rich_text
+  //           .map((el) => (el.type === "text" ? el.text.content : ""))
+  //           .join("");
 
-          return { ...block, text };
-        }
-      } else if (block.type === "heading_3") {
-        const rich_text = block[block["type"]]["rich_text"];
-        if (rich_text instanceof Array) {
-          const text = rich_text
-            .map((el) => (el.type === "text" ? el.text.content : ""))
-            .join("");
+  //         return { ...block, text };
+  //       }
+  //     } else if (block.type === "heading_3") {
+  //       const rich_text = block[block["type"]]["rich_text"];
+  //       if (rich_text instanceof Array) {
+  //         const text = rich_text
+  //           .map((el) => (el.type === "text" ? el.text.content : ""))
+  //           .join("");
 
-          return { ...block, text };
-        }
-      } else if (block.type === "image") {
-      } else if (block.type === "link_to_page") {
-      } else if (block.type === "numbered_list_item") {
-        const rich_text = block[block["type"]]["rich_text"];
-        if (rich_text instanceof Array) {
-          const text = rich_text
-            .map((el) => (el.type === "text" ? el.text.content : ""))
-            .join("");
+  //         return { ...block, text };
+  //       }
+  //     } else if (block.type === "image") {
+  //     } else if (block.type === "link_to_page") {
+  //     } else if (block.type === "numbered_list_item") {
+  //       const rich_text = block[block["type"]]["rich_text"];
+  //       if (rich_text instanceof Array) {
+  //         const text = rich_text
+  //           .map((el) => (el.type === "text" ? el.text.content : ""))
+  //           .join("");
 
-          return { ...block, text };
-        }
-      } else if (block.type === "paragraph") {
-        const rich_text = block[block["type"]]["rich_text"];
-        if (rich_text instanceof Array) {
-          const text = rich_text
-            .map((el) => (el.type === "text" ? el.text.content : ""))
-            .join("");
+  //         return { ...block, text };
+  //       }
+  //     } else if (block.type === "paragraph") {
+  //       const rich_text = block[block["type"]]["rich_text"];
+  //       if (rich_text instanceof Array) {
+  //         const text = rich_text
+  //           .map((el) => (el.type === "text" ? el.text.content : ""))
+  //           .join("");
 
-          return { ...block, text };
-        }
-      } else if (block.type === "pdf") {
-      } else if (block.type === "quote") {
-        const rich_text = block[block["type"]]["rich_text"];
-        if (rich_text instanceof Array) {
-          const text = rich_text
-            .map((el) => (el.type === "text" ? el.text.content : ""))
-            .join("");
+  //         return { ...block, text };
+  //       }
+  //     } else if (block.type === "pdf") {
+  //     } else if (block.type === "quote") {
+  //       const rich_text = block[block["type"]]["rich_text"];
+  //       if (rich_text instanceof Array) {
+  //         const text = rich_text
+  //           .map((el) => (el.type === "text" ? el.text.content : ""))
+  //           .join("");
 
-          return { ...block, text };
-        }
-      } else if (block.type === "synced_block") {
-      } else if (block.type === "table") {
-      } else if (block.type === "table_of_contents") {
-      } else if (block.type === "table_row") {
-      } else if (block.type === "template") {
-        const rich_text = block[block["type"]]["rich_text"];
-        if (rich_text instanceof Array) {
-          const text = rich_text
-            .map((el) => (el.type === "text" ? el.text.content : ""))
-            .join("");
+  //         return { ...block, text };
+  //       }
+  //     } else if (block.type === "synced_block") {
+  //     } else if (block.type === "table") {
+  //     } else if (block.type === "table_of_contents") {
+  //     } else if (block.type === "table_row") {
+  //     } else if (block.type === "template") {
+  //       const rich_text = block[block["type"]]["rich_text"];
+  //       if (rich_text instanceof Array) {
+  //         const text = rich_text
+  //           .map((el) => (el.type === "text" ? el.text.content : ""))
+  //           .join("");
 
-          return { ...block, text };
-        }
-      } else if (block.type === "to_do") {
-        const rich_text = block[block["type"]]["rich_text"];
-        if (rich_text instanceof Array) {
-          const text = rich_text
-            .map((el) => (el.type === "text" ? el.text.content : ""))
-            .join("");
+  //         return { ...block, text };
+  //       }
+  //     } else if (block.type === "to_do") {
+  //       const rich_text = block[block["type"]]["rich_text"];
+  //       if (rich_text instanceof Array) {
+  //         const text = rich_text
+  //           .map((el) => (el.type === "text" ? el.text.content : ""))
+  //           .join("");
 
-          return { ...block, text };
-        }
-      } else if (block.type === "toggle") {
-        const rich_text = block[block["type"]]["rich_text"];
-        if (rich_text instanceof Array) {
-          const text = rich_text
-            .map((el) => (el.type === "text" ? el.text.content : ""))
-            .join("");
+  //         return { ...block, text };
+  //       }
+  //     } else if (block.type === "toggle") {
+  //       const rich_text = block[block["type"]]["rich_text"];
+  //       if (rich_text instanceof Array) {
+  //         const text = rich_text
+  //           .map((el) => (el.type === "text" ? el.text.content : ""))
+  //           .join("");
 
-          return { ...block, text };
-        }
-      } else if (block.type === "video") {
-      }
+  //         return { ...block, text };
+  //       }
+  //     } else if (block.type === "video") {
+  //     }
 
-      return block;
-    });
-  }
+  //     return block;
+  //   });
+  // }
 
   async clear(input: INotionService.ICrear): Promise<boolean> {
     try {
