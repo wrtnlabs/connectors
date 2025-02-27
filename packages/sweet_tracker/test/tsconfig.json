@@ -1,0 +1,16 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "target": "ES2015",
+    "outDir": "../bin",
+    "paths": {
+      "@wrtnlabs/connector-sweet-tracker": ["../src/index.ts"],
+      "@wrtnlabs/connector-sweet-tracker/lib/*": ["../src/*"]
+    },
+    "plugins": [
+      { "transform": "typescript-transform-paths" },
+      { "transform": "typia/lib/transform" }
+    ]
+  },
+  "include": ["../src", "./"]
+}
