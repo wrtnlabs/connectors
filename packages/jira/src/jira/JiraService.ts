@@ -478,7 +478,8 @@ export class JiraService {
 
   async unassign(input: IJiraService.__IUnAssignInput): Promise<void> {
     try {
-      await this.updateIssue(input.issueId, {
+      await this.updateIssue({
+        id: input.issueId,
         email: input.email,
         token: input.token,
         domain: input.domain,
@@ -500,7 +501,8 @@ export class JiraService {
 
   async assign(input: IJiraService.__IAssignInput): Promise<void> {
     try {
-      await this.updateIssue(input.issueId, {
+      await this.updateIssue({
+        id: input.issueId,
         email: input.email,
         token: input.token,
         domain: input.domain,
@@ -613,8 +615,7 @@ export class JiraService {
   }
 
   async updateIssue(
-    id: IJiraService.Issue["id"],
-    input: IJiraService.__IUpdateIssueInput,
+    input: IJiraService.__IUpdateIssueInput & { id: IJiraService.Issue["id"] },
   ): Promise<void> {
     try {
       const copiedInput = JSON.parse(JSON.stringify(input));
@@ -625,7 +626,7 @@ export class JiraService {
 
       const config = await this.getAuthorizationAndDomain(copiedInput);
       await axios.put(
-        `${config.baseUrl}/issue/${id}`,
+        `${config.baseUrl}/issue/${input.id}`,
         {
           fields: copiedInput.fields,
         },

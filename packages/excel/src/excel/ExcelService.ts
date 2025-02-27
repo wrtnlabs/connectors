@@ -86,13 +86,14 @@ export class ExcelService {
   async readHeaders(input: IExcelService.IReadExcelInput): Promise<string[]> {
     const { fileUrl, sheetName } = input;
     const workbook = await this.getExcelFile({ fileUrl });
-    return this.readExcelHeaders(workbook, sheetName);
+    return this.readExcelHeaders({ workbook, sheetName });
   }
 
-  readExcelHeaders(
-    workbook: Excel.Workbook,
-    sheetName?: string | null,
-  ): string[] {
+  readExcelHeaders(input: {
+    workbook: Excel.Workbook;
+    sheetName?: string | null;
+  }): string[] {
+    const { workbook, sheetName } = input;
     const worksheet = workbook.getWorksheet(sheetName ?? 1);
     const headerRow = worksheet?.getRow(1); // 첫 번째 행이 헤더라고 가정
 
@@ -180,7 +181,7 @@ export class ExcelService {
     return { fileId: key, fileUrl };
   }
 
-  columnNumberToLetter(column: number): string {
+  private columnNumberToLetter(column: number): string {
     let letter = "";
     while (column > 0) {
       const remainder = (column - 1) % 26;
@@ -195,7 +196,7 @@ export class ExcelService {
    * @param input 모든 행이 누락된 열이 없다고 가정한, 즉 직사각형 형태의 시트를 의미한다.
    * @returns
    */
-  transform(
+  private transform(
     input: Record<string, string | number>[],
   ): ISpreadsheetCell.ICreate[] {
     if (input.length === 0) {

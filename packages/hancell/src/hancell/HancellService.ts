@@ -30,7 +30,10 @@ export class HancellService {
         );
       }
 
-      const updatedSheet = this.insertCells(sheet, input.cells);
+      const updatedSheet = this.insertCells({
+        sheet,
+        cells: input.cells,
+      });
 
       xlsx.utils.book_append_sheet(workbook, updatedSheet, input.sheetName);
       const buffer = xlsx.write(workbook, { bookType: "xlsx", type: "buffer" });
@@ -39,7 +42,7 @@ export class HancellService {
       const contentType = `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet`;
       await this.s3.uploadObject({ key, data: buffer, contentType });
 
-      const fileUrl = this.s3.addBucketPrefix(key);
+      const fileUrl = this.s3.addBucketPrefix({ key });
       return { fileUrl };
     } catch (error) {
       console.error(JSON.stringify(error));
@@ -98,7 +101,8 @@ export class HancellService {
    * @param cells 시트에 덮어쓰기 할 셀 정보
    * @returns 인자로 받은 `sheet`를 덮어 쓴 결과물
    */
-  insertCells(sheet: xlsx.WorkSheet, cells: IHancellService.Cells) {
+  insertCells(input: { sheet: xlsx.WorkSheet; cells: IHancellService.Cells }) {
+    const { sheet, cells } = input;
     Object.entries(cells).forEach(([key, value]) => {
       sheet[key] = {
         t: typeof value === "number" ? "n" : "s",

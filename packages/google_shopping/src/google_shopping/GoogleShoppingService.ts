@@ -28,8 +28,8 @@ export class GoogleShoppingService {
 
   async getGoogleShoppingResults(
     input: IGoogleShoppingService.IRequestStandAlone,
-    tbs: string,
   ): Promise<IGoogleShoppingService.IResponse[]> {
+    const { tbs } = input;
     try {
       const maxResultPerPage = 60;
       let start = 0;
@@ -88,37 +88,31 @@ export class GoogleShoppingService {
   async musinsa(
     input: IGoogleShoppingService.IRequestStandAlone,
   ): Promise<IGoogleShoppingService.IResponse[]> {
-    return this.getGoogleShoppingResults(
-      input,
-      "mr:1,merchagg:g316277865|m138871704",
-    );
+    return this.getGoogleShoppingResults(input);
   }
 
   async twentyNineCentimeter(
     input: IGoogleShoppingService.IRequestStandAlone,
   ): Promise<IGoogleShoppingService.IResponse[]> {
-    return this.getGoogleShoppingResults(input, "mr:1,merchagg:m114992958");
+    return this.getGoogleShoppingResults(input);
   }
 
   async hansumEQL(
     input: IGoogleShoppingService.IRequestStandAlone,
   ): Promise<IGoogleShoppingService.IResponse[]> {
-    return this.getGoogleShoppingResults(input, "mr:1,merchagg:m764640149");
+    return this.getGoogleShoppingResults(input);
   }
 
   async oco(
     input: IGoogleShoppingService.IRequestStandAlone,
   ): Promise<IGoogleShoppingService.IResponse[]> {
-    return this.getGoogleShoppingResults(input, "mr:1,merchagg:m134397367");
+    return this.getGoogleShoppingResults(input);
   }
 
   async uniqlo(
     input: IGoogleShoppingService.IRequestStandAlone,
   ): Promise<IGoogleShoppingService.IResponse[]> {
-    return this.getGoogleShoppingResults(
-      input,
-      "mr:1,merchagg:g10415709|m228577309",
-    );
+    return this.getGoogleShoppingResults(input);
   }
 
   /**
@@ -136,31 +130,25 @@ export class GoogleShoppingService {
   async coupang(
     input: IGoogleShoppingService.IRequestStandAlone,
   ): Promise<IGoogleShoppingService.IResponse[]> {
-    return this.getGoogleShoppingResults(
-      input,
-      "mr:1,merchagg:g139180266|m139321488",
-    );
+    return this.getGoogleShoppingResults(input);
   }
 
   async kurly(
     input: IGoogleShoppingService.IRequestStandAlone,
   ): Promise<IGoogleShoppingService.IResponse[]> {
-    return this.getGoogleShoppingResults(input, "mr:1,merchagg:m128922144");
+    return this.getGoogleShoppingResults(input);
   }
 
   async iherb(
     input: IGoogleShoppingService.IRequestStandAlone,
   ): Promise<IGoogleShoppingService.IResponse[]> {
-    return this.getGoogleShoppingResults(input, "mr:1,merchagg:m169620201");
+    return this.getGoogleShoppingResults(input);
   }
 
   async aliExpress(
     input: IGoogleShoppingService.IRequestStandAlone,
   ): Promise<IGoogleShoppingService.IResponse[]> {
-    return this.getGoogleShoppingResults(
-      input,
-      "mr:1,merchagg:g6802718|m5356299783|m5348983679|m5345522195|m5349919702",
-    );
+    return this.getGoogleShoppingResults(input);
   }
 
   /**
@@ -169,10 +157,7 @@ export class GoogleShoppingService {
   async oliveYoung(
     input: IGoogleShoppingService.IRequestStandAlone,
   ): Promise<IGoogleShoppingService.IResponse[]> {
-    return this.getGoogleShoppingResults(
-      input,
-      "mr:1,merchagg:g651998268|m117387471",
-    );
+    return this.getGoogleShoppingResults(input);
   }
 
   /**
@@ -181,7 +166,7 @@ export class GoogleShoppingService {
   async todayHouse(
     input: IGoogleShoppingService.IRequestStandAlone,
   ): Promise<IGoogleShoppingService.IResponse[]> {
-    return this.getGoogleShoppingResults(input, "mr:1,merchagg:m133751878");
+    return this.getGoogleShoppingResults(input);
   }
 
   /**
@@ -240,12 +225,12 @@ export class GoogleShoppingService {
     if (isSensitiveKeyword) {
       throw new Error(`Contains sensitive keyword: ${input.keyword}`);
     }
-    return this.getGoogleShoppingResults(input, "mr:1,merchagg:m534059966");
+    return this.getGoogleShoppingResults(input);
   }
 
   async aladine(
     input: IGoogleShoppingService.IRequestStandAlone,
   ): Promise<IGoogleShoppingService.IResponse[]> {
-    return this.getGoogleShoppingResults(input, "mr:1,merchagg:m139753761");
+    return this.getGoogleShoppingResults(input);
   }
 }

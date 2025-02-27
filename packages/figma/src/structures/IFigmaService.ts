@@ -273,7 +273,9 @@ export namespace IFigmaService {
 
   export interface IGetProjectStatisticsInput
     extends MyPick<IFigmaService.IReadCommentInput, "as_md">,
-      IFigmaService.IGetProjectInput {}
+      IFigmaService.IGetProjectInput {
+    team: IFigmaService.IGetProejctOutput;
+  }
 
   export interface IGetProejctOutput {
     /**

@@ -49,9 +49,10 @@ export class CalendlyService {
     return res.data;
   }
 
-  async getOneScheduledEvent(
-    scheduledEventId: ICalendlyService.Event["uuid"],
-  ): Promise<ICalendlyService.IGetOneScheduledEventOutput> {
+  async getOneScheduledEvent(input: {
+    scheduledEventId: ICalendlyService.Event["uuid"];
+  }): Promise<ICalendlyService.IGetOneScheduledEventOutput> {
+    const { scheduledEventId } = input;
     const token = await this.refresh();
 
     const url = `https://api.calendly.com/scheduled_events/${scheduledEventId}`;
@@ -99,20 +100,26 @@ export class CalendlyService {
     }
   }
 
-  async cancel(
-    scheduledEventId: ICalendlyService.Event["uuid"],
-    inviteeId: ICalendlyService.Invitee["uuid"],
-  ): Promise<
+  async cancel(input: {
+    scheduledEventId: ICalendlyService.Event["uuid"];
+    inviteeId: ICalendlyService.Invitee["uuid"];
+  }): Promise<
     ICalendlyService.IGetOneScheduledEventInviteeOutput["resource"]["cancel_url"]
   > {
-    const invitee = await this.getOneInvitee(scheduledEventId, inviteeId);
+    const { scheduledEventId, inviteeId } = input;
+
+    const invitee = await this.getOneInvitee({
+      scheduledEventId,
+      inviteeId,
+    });
     return invitee.resource.cancel_url;
   }
 
-  async getOneInvitee(
-    scheduledEventId: ICalendlyService.Event["uuid"],
-    inviteeId: ICalendlyService.Invitee["uuid"],
-  ): Promise<ICalendlyService.IGetOneScheduledEventInviteeOutput> {
+  async getOneInvitee(input: {
+    scheduledEventId: ICalendlyService.Event["uuid"];
+    inviteeId: ICalendlyService.Invitee["uuid"];
+  }): Promise<ICalendlyService.IGetOneScheduledEventInviteeOutput> {
+    const { scheduledEventId, inviteeId } = input;
     const token = await this.refresh();
     const url = `https://api.calendly.com/scheduled_events/${scheduledEventId}/invitees/${inviteeId}`;
     const res = await axios.get(url, {
@@ -191,10 +198,11 @@ export class CalendlyService {
    * Endpoint: /scheduled_events/{event_uuid}/invitees/{invitee_uuid}/no_show
    * 기능: 초대받은 사람이 참석하지 않았음을 표시할 수 있는 기능입니다. 참석 여부를 관리할 때 유용합니다.
    */
-  async checkNoShow(
-    eventId: ICalendlyService.Event["uuid"],
-    inviteeId: ICalendlyService.Invitee["uuid"],
-  ): Promise<ICalendlyService.ICheckNoShowOutput> {
+  async checkNoShow(input: {
+    eventId: ICalendlyService.Event["uuid"];
+    inviteeId: ICalendlyService.Invitee["uuid"];
+  }): Promise<ICalendlyService.ICheckNoShowOutput> {
+    const { eventId, inviteeId } = input;
     const token = await this.refresh();
     const url = `https://api.calendly.com/invitee_no_shows`;
     const invitee = `https://api.calendly.com/scheduled_events/${eventId}/invitees/${inviteeId}`;
@@ -265,7 +273,7 @@ export class CalendlyService {
     }
   }
 
-  getBasicAuthorization() {
+  private getBasicAuthorization() {
     // client_id:client_secret 형식으로 문자열 생성
     const credentials = this.props.clientId + ":" + this.props.clientSecret;
 

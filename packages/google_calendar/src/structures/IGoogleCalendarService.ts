@@ -64,6 +64,10 @@ export namespace IGoogleCalendarService {
    */
   export interface IReadGoogleCalendarEventInput {
     /**
+     * Calendar ID.
+     */
+    id: string;
+    /**
      * Events after that date will not be fetched.
      *
      * Note that all date/times are in UTC, so make sure that you have converted the date/time to UTC before using it.
@@ -523,6 +527,11 @@ export namespace IGoogleCalendarService {
    */
   export interface ICreateQuickEventInput {
     /**
+     * Calendar ID.
+     */
+    id: string;
+
+    /**
      * This is the text for creating a quick calendar event.
      *
      * @title This is the text for creating a quick calendar event
@@ -534,6 +543,21 @@ export namespace IGoogleCalendarService {
    * @title Information required to create an event
    */
   export interface IEventRequestBodyInput {
+    /**
+     * Calendar ID.
+     */
+    calendarId: string;
+
+    /**
+     * Event ID.
+     */
+    eventId: string;
+
+    /**
+     * Calendar ID.
+     */
+    id: string;
+
     /**
      * The title of the event to be generated.
      *
@@ -721,6 +745,15 @@ export namespace IGoogleCalendarService {
    * @title Information required to add attendees
    */
   export interface IAddAttendeesToEventInput {
+    /**
+     * Calendar ID.
+     */
+    calendarId: string;
+
+    /**
+     * Event ID.
+     */
+    eventId: string;
     /**
      * The email address of the attendee you wish to add.
      *

@@ -57,7 +57,6 @@ export class GoogleSheetService {
   }
 
   async insertCells(input: {
-    secretKey: ISpreadsheet.IExport.ToGoogleSheetsToInput["google_sheets"]["secret"];
     spreadsheetId: string;
     cells: ISpreadsheetCell.ICreate[];
   }) {
@@ -341,7 +340,7 @@ export class GoogleSheetService {
    * @param url Google Sheet Url
    * @private
    */
-  getSpreadSheetId(url: string): string {
+  private getSpreadSheetId(url: string): string {
     const match = url.match(/\/d\/(.+?)\/edit/);
     return match ? match[1]! : "";
   }

@@ -120,6 +120,11 @@ export namespace IGoogleSlidesService {
    */
   export interface AppendSlideInput {
     /**
+     * @title Presentation ID
+     */
+    id: string;
+
+    /**
      * When creating a story or picture book, please use only squares.
      *
      * @title A list of templates to create at once

@@ -309,9 +309,10 @@ export class NotionService {
     }
   }
 
-  async getDatabaseInfo(
-    databaseId: string,
-  ): Promise<INotionService.IDatabaseInfo> {
+  async getDatabaseInfo(input: {
+    databaseId: string;
+  }): Promise<INotionService.IDatabaseInfo> {
+    const { databaseId } = input;
     try {
       /**
        * notion sdk의 database.retrieve method를 사용하여 properties의 정보를 받아올 수 있지만
@@ -348,7 +349,7 @@ export class NotionService {
 
       const databaseListInfo: INotionService.IDatabaseInfo[] = [];
       for (const databaseId of databaseIds) {
-        const databaseInfo = await this.getDatabaseInfo(databaseId);
+        const databaseInfo = await this.getDatabaseInfo({ databaseId });
         databaseListInfo.push(databaseInfo);
       }
       return databaseListInfo;
@@ -516,9 +517,10 @@ export class NotionService {
     return pageOutput;
   }
 
-  async findDatabaseItemList(
-    databaseId: string,
-  ): Promise<INotionService.IDatabaseItemOutput[]> {
+  async findDatabaseItemList(input: {
+    databaseId: string;
+  }): Promise<INotionService.IDatabaseItemOutput[]> {
+    const { databaseId } = input;
     try {
       const headers = await this.getHeaders();
       const res = await axios.post(
@@ -539,10 +541,11 @@ export class NotionService {
 
   async findDatabaseItem(
     input: INotionService.IFindDatabaseItemInput,
-    databaseId: string,
   ): Promise<INotionService.IDatabaseItemOutput> {
     try {
-      const database = await this.getDatabaseInfo(databaseId);
+      const database = await this.getDatabaseInfo({
+        databaseId: input.id,
+      });
 
       const propertiesInfo: Record<string, INotionService.DatabaseProperty> =
         database.properties;
@@ -572,7 +575,7 @@ export class NotionService {
       const headers = await this.getHeaders();
 
       const res = await axios.post(
-        `https://api.notion.com/v1/databases/${databaseId}/query`,
+        `https://api.notion.com/v1/databases/${input.id}/query`,
         {
           filter: {
             /**
@@ -603,9 +606,11 @@ export class NotionService {
    * 데이터베이스 아이템 생성 및 업데이트시 프로퍼티 별 형식에 맞추어 프로퍼티 값 적용
    */
   formattingDatabaseProperties(
-    input: INotionService.ICreateDatabaseItemInput,
-    propertiesInfo: Record<string, INotionService.DatabaseProperty>,
+    input: INotionService.ICreateDatabaseItemInput & {
+      propertiesInfo: Record<string, INotionService.DatabaseProperty>;
+    },
   ): INotionService.IDatabasePropertyInput {
+    const { propertiesInfo } = input;
     const properties: INotionService.IDatabasePropertyInput = {};
 
     for (const [, property] of Object.entries(propertiesInfo)) {
@@ -673,7 +678,7 @@ export class NotionService {
     };
   }
 
-  removeChildren<T extends object | object[]>(target: T): T {
+  private removeChildren<T extends object | object[]>(target: T): T {
     if (target instanceof Array) {
       target.forEach((el) => this.removeChildren(el));
     } else {
@@ -748,7 +753,7 @@ export class NotionService {
     }
   }
 
-  blocksToMarkdown<T extends Block & { id: string }>(
+  private blocksToMarkdown<T extends Block & { id: string }>(
     blocks: T[],
   ): INotionService.AccurateMarkdownBlock[] {
     return blocks.map((block: T) => {

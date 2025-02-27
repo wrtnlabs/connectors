@@ -56,7 +56,7 @@ export class DaumBlogService {
     }
   }
 
-  makeQuery(
+  private makeQuery(
     andKeywords: string[],
     orKeywords: string[],
     notKeywords: string[],
