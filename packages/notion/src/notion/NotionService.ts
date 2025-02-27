@@ -1,7 +1,6 @@
 import axios from "axios";
 import { BlockObjectRequest } from "@notionhq/client/build/src/api-endpoints";
 import { markdownToBlocks } from "@tryfabric/martian";
-import { Block } from "@tryfabric/martian/build/src/notion/blocks";
 import { NotionToMarkdown } from "notion-to-md";
 import typia from "typia";
 import { INotionService } from "../structures/INotionService";
@@ -309,9 +308,10 @@ export class NotionService {
     }
   }
 
-  async getDatabaseInfo(
-    databaseId: string,
-  ): Promise<INotionService.IDatabaseInfo> {
+  async getDatabaseInfo(input: {
+    databaseId: string;
+  }): Promise<INotionService.IDatabaseInfo> {
+    const { databaseId } = input;
     try {
       /**
        * notion sdk의 database.retrieve method를 사용하여 properties의 정보를 받아올 수 있지만
@@ -348,7 +348,7 @@ export class NotionService {
 
       const databaseListInfo: INotionService.IDatabaseInfo[] = [];
       for (const databaseId of databaseIds) {
-        const databaseInfo = await this.getDatabaseInfo(databaseId);
+        const databaseInfo = await this.getDatabaseInfo({ databaseId });
         databaseListInfo.push(databaseInfo);
       }
       return databaseListInfo;
@@ -516,9 +516,10 @@ export class NotionService {
     return pageOutput;
   }
 
-  async findDatabaseItemList(
-    databaseId: string,
-  ): Promise<INotionService.IDatabaseItemOutput[]> {
+  async findDatabaseItemList(input: {
+    databaseId: string;
+  }): Promise<INotionService.IDatabaseItemOutput[]> {
+    const { databaseId } = input;
     try {
       const headers = await this.getHeaders();
       const res = await axios.post(
@@ -539,10 +540,11 @@ export class NotionService {
 
   async findDatabaseItem(
     input: INotionService.IFindDatabaseItemInput,
-    databaseId: string,
   ): Promise<INotionService.IDatabaseItemOutput> {
     try {
-      const database = await this.getDatabaseInfo(databaseId);
+      const database = await this.getDatabaseInfo({
+        databaseId: input.id,
+      });
 
       const propertiesInfo: Record<string, INotionService.DatabaseProperty> =
         database.properties;
@@ -572,7 +574,7 @@ export class NotionService {
       const headers = await this.getHeaders();
 
       const res = await axios.post(
-        `https://api.notion.com/v1/databases/${databaseId}/query`,
+        `https://api.notion.com/v1/databases/${input.id}/query`,
         {
           filter: {
             /**
@@ -603,9 +605,11 @@ export class NotionService {
    * 데이터베이스 아이템 생성 및 업데이트시 프로퍼티 별 형식에 맞추어 프로퍼티 값 적용
    */
   formattingDatabaseProperties(
-    input: INotionService.ICreateDatabaseItemInput,
-    propertiesInfo: Record<string, INotionService.DatabaseProperty>,
+    input: INotionService.ICreateDatabaseItemInput & {
+      propertiesInfo: Record<string, INotionService.DatabaseProperty>;
+    },
   ): INotionService.IDatabasePropertyInput {
+    const { propertiesInfo } = input;
     const properties: INotionService.IDatabasePropertyInput = {};
 
     for (const [, property] of Object.entries(propertiesInfo)) {
@@ -673,7 +677,7 @@ export class NotionService {
     };
   }
 
-  removeChildren<T extends object | object[]>(target: T): T {
+  private removeChildren<T extends object | object[]>(target: T): T {
     if (target instanceof Array) {
       target.forEach((el) => this.removeChildren(el));
     } else {
@@ -748,140 +752,140 @@ export class NotionService {
     }
   }
 
-  blocksToMarkdown<T extends Block & { id: string }>(
-    blocks: T[],
-  ): INotionService.AccurateMarkdownBlock[] {
-    return blocks.map((block: T) => {
-      if (block.type === "audio") {
-      } else if (block.type === "bookmark") {
-      } else if (block.type === "breadcrumb") {
-      } else if (block.type === "bulleted_list_item") {
-        const rich_text = block[block["type"]]["rich_text"];
-        if (rich_text instanceof Array) {
-          const text = rich_text
-            .map((el) => (el.type === "text" ? el.text.content : ""))
-            .join("");
+  // private blocksToMarkdown<T extends Block & { id: string }>(
+  //   blocks: T[],
+  // ): INotionService.AccurateMarkdownBlock[] {
+  //   return blocks.map((block: T) => {
+  //     if (block.type === "audio") {
+  //     } else if (block.type === "bookmark") {
+  //     } else if (block.type === "breadcrumb") {
+  //     } else if (block.type === "bulleted_list_item") {
+  //       const rich_text = block[block["type"]]["rich_text"];
+  //       if (rich_text instanceof Array) {
+  //         const text = rich_text
+  //           .map((el) => (el.type === "text" ? el.text.content : ""))
+  //           .join("");
 
-          return { ...block, text };
-        }
-      } else if (block.type === "callout") {
-        const rich_text = block[block["type"]]["rich_text"];
-        if (rich_text instanceof Array) {
-          const text = rich_text
-            .map((el) => (el.type === "text" ? el.text.content : ""))
-            .join("");
+  //         return { ...block, text };
+  //       }
+  //     } else if (block.type === "callout") {
+  //       const rich_text = block[block["type"]]["rich_text"];
+  //       if (rich_text instanceof Array) {
+  //         const text = rich_text
+  //           .map((el) => (el.type === "text" ? el.text.content : ""))
+  //           .join("");
 
-          return { ...block, text };
-        }
-      } else if (block.type === "code") {
-        const rich_text = block[block["type"]]["rich_text"];
-        if (rich_text instanceof Array) {
-          const text = rich_text
-            .map((el) => (el.type === "text" ? el.text.content : ""))
-            .join("");
+  //         return { ...block, text };
+  //       }
+  //     } else if (block.type === "code") {
+  //       const rich_text = block[block["type"]]["rich_text"];
+  //       if (rich_text instanceof Array) {
+  //         const text = rich_text
+  //           .map((el) => (el.type === "text" ? el.text.content : ""))
+  //           .join("");
 
-          return { ...block, text };
-        }
-      } else if (block.type === "column") {
-      } else if (block.type === "column_list") {
-      } else if (block.type === "divider") {
-      } else if (block.type === "embed") {
-      } else if (block.type === "equation") {
-      } else if (block.type === "file") {
-      } else if (block.type === "heading_1") {
-        const rich_text = block[block["type"]]["rich_text"];
-        if (rich_text instanceof Array) {
-          const text = rich_text
-            .map((el) => (el.type === "text" ? el.text.content : ""))
-            .join("");
+  //         return { ...block, text };
+  //       }
+  //     } else if (block.type === "column") {
+  //     } else if (block.type === "column_list") {
+  //     } else if (block.type === "divider") {
+  //     } else if (block.type === "embed") {
+  //     } else if (block.type === "equation") {
+  //     } else if (block.type === "file") {
+  //     } else if (block.type === "heading_1") {
+  //       const rich_text = block[block["type"]]["rich_text"];
+  //       if (rich_text instanceof Array) {
+  //         const text = rich_text
+  //           .map((el) => (el.type === "text" ? el.text.content : ""))
+  //           .join("");
 
-          return { ...block, text };
-        }
-      } else if (block.type === "heading_2") {
-        const rich_text = block[block["type"]]["rich_text"];
-        if (rich_text instanceof Array) {
-          const text = rich_text
-            .map((el) => (el.type === "text" ? el.text.content : ""))
-            .join("");
+  //         return { ...block, text };
+  //       }
+  //     } else if (block.type === "heading_2") {
+  //       const rich_text = block[block["type"]]["rich_text"];
+  //       if (rich_text instanceof Array) {
+  //         const text = rich_text
+  //           .map((el) => (el.type === "text" ? el.text.content : ""))
+  //           .join("");
 
-          return { ...block, text };
-        }
-      } else if (block.type === "heading_3") {
-        const rich_text = block[block["type"]]["rich_text"];
-        if (rich_text instanceof Array) {
-          const text = rich_text
-            .map((el) => (el.type === "text" ? el.text.content : ""))
-            .join("");
+  //         return { ...block, text };
+  //       }
+  //     } else if (block.type === "heading_3") {
+  //       const rich_text = block[block["type"]]["rich_text"];
+  //       if (rich_text instanceof Array) {
+  //         const text = rich_text
+  //           .map((el) => (el.type === "text" ? el.text.content : ""))
+  //           .join("");
 
-          return { ...block, text };
-        }
-      } else if (block.type === "image") {
-      } else if (block.type === "link_to_page") {
-      } else if (block.type === "numbered_list_item") {
-        const rich_text = block[block["type"]]["rich_text"];
-        if (rich_text instanceof Array) {
-          const text = rich_text
-            .map((el) => (el.type === "text" ? el.text.content : ""))
-            .join("");
+  //         return { ...block, text };
+  //       }
+  //     } else if (block.type === "image") {
+  //     } else if (block.type === "link_to_page") {
+  //     } else if (block.type === "numbered_list_item") {
+  //       const rich_text = block[block["type"]]["rich_text"];
+  //       if (rich_text instanceof Array) {
+  //         const text = rich_text
+  //           .map((el) => (el.type === "text" ? el.text.content : ""))
+  //           .join("");
 
-          return { ...block, text };
-        }
-      } else if (block.type === "paragraph") {
-        const rich_text = block[block["type"]]["rich_text"];
-        if (rich_text instanceof Array) {
-          const text = rich_text
-            .map((el) => (el.type === "text" ? el.text.content : ""))
-            .join("");
+  //         return { ...block, text };
+  //       }
+  //     } else if (block.type === "paragraph") {
+  //       const rich_text = block[block["type"]]["rich_text"];
+  //       if (rich_text instanceof Array) {
+  //         const text = rich_text
+  //           .map((el) => (el.type === "text" ? el.text.content : ""))
+  //           .join("");
 
-          return { ...block, text };
-        }
-      } else if (block.type === "pdf") {
-      } else if (block.type === "quote") {
-        const rich_text = block[block["type"]]["rich_text"];
-        if (rich_text instanceof Array) {
-          const text = rich_text
-            .map((el) => (el.type === "text" ? el.text.content : ""))
-            .join("");
+  //         return { ...block, text };
+  //       }
+  //     } else if (block.type === "pdf") {
+  //     } else if (block.type === "quote") {
+  //       const rich_text = block[block["type"]]["rich_text"];
+  //       if (rich_text instanceof Array) {
+  //         const text = rich_text
+  //           .map((el) => (el.type === "text" ? el.text.content : ""))
+  //           .join("");
 
-          return { ...block, text };
-        }
-      } else if (block.type === "synced_block") {
-      } else if (block.type === "table") {
-      } else if (block.type === "table_of_contents") {
-      } else if (block.type === "table_row") {
-      } else if (block.type === "template") {
-        const rich_text = block[block["type"]]["rich_text"];
-        if (rich_text instanceof Array) {
-          const text = rich_text
-            .map((el) => (el.type === "text" ? el.text.content : ""))
-            .join("");
+  //         return { ...block, text };
+  //       }
+  //     } else if (block.type === "synced_block") {
+  //     } else if (block.type === "table") {
+  //     } else if (block.type === "table_of_contents") {
+  //     } else if (block.type === "table_row") {
+  //     } else if (block.type === "template") {
+  //       const rich_text = block[block["type"]]["rich_text"];
+  //       if (rich_text instanceof Array) {
+  //         const text = rich_text
+  //           .map((el) => (el.type === "text" ? el.text.content : ""))
+  //           .join("");
 
-          return { ...block, text };
-        }
-      } else if (block.type === "to_do") {
-        const rich_text = block[block["type"]]["rich_text"];
-        if (rich_text instanceof Array) {
-          const text = rich_text
-            .map((el) => (el.type === "text" ? el.text.content : ""))
-            .join("");
+  //         return { ...block, text };
+  //       }
+  //     } else if (block.type === "to_do") {
+  //       const rich_text = block[block["type"]]["rich_text"];
+  //       if (rich_text instanceof Array) {
+  //         const text = rich_text
+  //           .map((el) => (el.type === "text" ? el.text.content : ""))
+  //           .join("");
 
-          return { ...block, text };
-        }
-      } else if (block.type === "toggle") {
-        const rich_text = block[block["type"]]["rich_text"];
-        if (rich_text instanceof Array) {
-          const text = rich_text
-            .map((el) => (el.type === "text" ? el.text.content : ""))
-            .join("");
+  //         return { ...block, text };
+  //       }
+  //     } else if (block.type === "toggle") {
+  //       const rich_text = block[block["type"]]["rich_text"];
+  //       if (rich_text instanceof Array) {
+  //         const text = rich_text
+  //           .map((el) => (el.type === "text" ? el.text.content : ""))
+  //           .join("");
 
-          return { ...block, text };
-        }
-      } else if (block.type === "video") {
-      }
+  //         return { ...block, text };
+  //       }
+  //     } else if (block.type === "video") {
+  //     }
 
-      return block;
-    });
-  }
+  //     return block;
+  //   });
+  // }
 
   async clear(input: INotionService.ICrear): Promise<boolean> {
     try {

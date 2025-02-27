@@ -73,8 +73,9 @@ export class GoogleCalendarService {
     }
   }
 
-  async deleteCalendar(calendarId: string): Promise<void> {
+  async deleteCalendar(input: { calendarId: string }): Promise<void> {
     try {
+      const { calendarId } = input;
       const googleService = new GoogleService({
         ...this.props,
       });
@@ -93,10 +94,10 @@ export class GoogleCalendarService {
   }
 
   async eventList(
-    calendarId: string,
     input: IGoogleCalendarService.IReadGoogleCalendarEventInput,
   ): Promise<IGoogleCalendarService.IReadGoogleCalendarEventOutput> {
     try {
+      const { id } = input;
       const googleService = new GoogleService({
         ...this.props,
       });
@@ -108,7 +109,7 @@ export class GoogleCalendarService {
 
       const calendar = google.calendar({ version: "v3", auth: authClient });
       const response = await calendar.events.list({
-        calendarId: calendarId,
+        calendarId: id,
         timeMin: input.time_min ? this.makeDateForUTC(input.time_min) : "",
         timeMax: input.time_max ? this.makeDateForUTC(input.time_max) : "",
         maxResults: input.max_results,
@@ -143,10 +144,10 @@ export class GoogleCalendarService {
   }
 
   async createQuickEvent(
-    calendarId: string,
     input: IGoogleCalendarService.ICreateQuickEventInput,
   ): Promise<void> {
     try {
+      const { id } = input;
       const googleService = new GoogleService({
         ...this.props,
       });
@@ -157,7 +158,7 @@ export class GoogleCalendarService {
       authClient.setCredentials({ access_token: accessToken });
 
       const calendar = google.calendar({ version: "v3", auth: authClient });
-      const params = { calendarId: calendarId, text: input.text };
+      const params = { calendarId: id, text: input.text };
       await calendar.events.quickAdd(params);
     } catch (error) {
       console.error(JSON.stringify(error));
@@ -166,7 +167,6 @@ export class GoogleCalendarService {
   }
 
   async createEvent(
-    calendarId: string,
     input: IGoogleCalendarService.IEventRequestBodyInput,
   ): Promise<IGoogleCalendarService.IGoogleCalendarEvent> {
     try {
@@ -182,7 +182,7 @@ export class GoogleCalendarService {
       const calendar = google.calendar({ version: "v3", auth: authClient });
 
       const event = await calendar.events.insert({
-        calendarId: calendarId,
+        calendarId: input.id,
         conferenceDataVersion: input.isConferencing === true ? 1 : 0,
         requestBody: this.makeEventRequestBody(input),
       });
@@ -194,10 +194,9 @@ export class GoogleCalendarService {
   }
 
   async updateEvent(
-    calendarId: string,
-    eventId: string,
     input: IGoogleCalendarService.IEventRequestBodyInput,
   ): Promise<IGoogleCalendarService.IGoogleCalendarEvent> {
+    const { calendarId, eventId } = input;
     const googleService = new GoogleService({
       ...this.props,
     });
@@ -225,10 +224,9 @@ export class GoogleCalendarService {
   }
 
   async addAttendeesToEvent(
-    calendarId: string,
-    eventId: string,
     input: IGoogleCalendarService.IAddAttendeesToEventInput,
   ): Promise<IGoogleCalendarService.IGoogleCalendarEvent> {
+    const { calendarId, eventId } = input;
     const googleService = new GoogleService({
       ...this.props,
     });
@@ -267,7 +265,11 @@ export class GoogleCalendarService {
     }
   }
 
-  async deleteEvent(calendarId: string, eventId: string): Promise<void> {
+  async deleteEvent(input: {
+    calendarId: string;
+    eventId: string;
+  }): Promise<void> {
+    const { calendarId, eventId } = input;
     const googleService = new GoogleService({
       ...this.props,
     });
@@ -289,7 +291,9 @@ export class GoogleCalendarService {
     }
   }
 
-  parseEventInfo(event: any): IGoogleCalendarService.IGoogleCalendarEvent {
+  private parseEventInfo(
+    event: any,
+  ): IGoogleCalendarService.IGoogleCalendarEvent {
     return {
       id: event.id || null,
       htmlLink: event.htmlLink || null,
@@ -314,7 +318,9 @@ export class GoogleCalendarService {
     };
   }
 
-  makeEventRequestBody(input: IGoogleCalendarService.IEventRequestBodyInput) {
+  private makeEventRequestBody(
+    input: IGoogleCalendarService.IEventRequestBodyInput,
+  ) {
     const {
       start,
       end,
@@ -388,7 +394,7 @@ export class GoogleCalendarService {
   /**
    * 이벤트 시작 / 종료날짜 지정시 KST로 변환해서 지정해줘야 함
    */
-  makeDateForUTC(dateTime: string & tags.Format<"date-time">) {
+  private makeDateForUTC(dateTime: string & tags.Format<"date-time">) {
     const date = new Date(dateTime); // date-time 문자열을 Date 객체로 변환
     return date.toISOString(); // UTC 기준 ISO 문자열 반환
   }
@@ -396,7 +402,7 @@ export class GoogleCalendarService {
   /**
    * 이벤트 반복 script 지정
    */
-  createRecurrence(
+  private createRecurrence(
     freq?: string,
     until?: string & tags.Format<"date-time">,
     count?: number,

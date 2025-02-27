@@ -33,8 +33,8 @@ export class AwsS3Service {
    * @param key 키 이름
    * @returns 버킷 이름을 붙여 만든 전체 파일 경로
    */
-  addBucketPrefix(key: string): string {
-    const url = `https://${this.props.bucket}.s3.${this.props.region}.amazonaws.com/${key}`;
+  addBucketPrefix(input: { key: string }): string {
+    const url = `https://${this.props.bucket}.s3.${this.props.region}.amazonaws.com/${input.key}`;
     return url;
   }
 
@@ -47,7 +47,7 @@ export class AwsS3Service {
       ContentType: contentType,
     });
     await this.s3.send(putObjectConfig);
-    return this.addBucketPrefix(input.key);
+    return this.addBucketPrefix({ key: input.key });
   }
 
   async getPutObjectUrl(
@@ -87,7 +87,9 @@ export class AwsS3Service {
     try {
       let getObjectCommand: GetObjectCommand;
       if ("fileUrl" in input) {
-        const { bucket, key } = this.extractS3InfoFromUrl(input.fileUrl);
+        const { bucket, key } = this.extractS3InfoFromUrl({
+          url: input.fileUrl,
+        });
         getObjectCommand = new GetObjectCommand({
           Bucket: bucket,
           Key: key,
@@ -122,7 +124,8 @@ export class AwsS3Service {
   /**
    * Transforms S3 URLs in output to presigned URLs
    */
-  async getGetObjectUrl(fileUrl: string): Promise<string> {
+  async getGetObjectUrl(input: { fileUrl: string }): Promise<string> {
+    const { fileUrl } = input;
     const match = fileUrl.match(this.S3BucketURL);
 
     if (!match) {
@@ -142,11 +145,12 @@ export class AwsS3Service {
     );
   }
 
-  extractS3InfoFromUrl(url: string): {
+  extractS3InfoFromUrl(input: { url: string }): {
     bucket: string;
     key: string;
   } {
     try {
+      const { url } = input;
       const match = url.match(this.S3BucketURL);
       if (!match) {
         throw new Error("Invalid S3 URL");
@@ -162,7 +166,8 @@ export class AwsS3Service {
     }
   }
 
-  async getFileSize(fileUrl: string): Promise<number> {
+  async getFileSize(input: { fileUrl: string }): Promise<number> {
+    const { fileUrl } = input;
     const [url] = fileUrl.split("?"); // 쿼리파라미터 부분 제거
     const matches = url?.match(this.S3BucketURL);
 

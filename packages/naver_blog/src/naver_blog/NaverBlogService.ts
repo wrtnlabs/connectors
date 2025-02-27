@@ -40,7 +40,7 @@ export class NaverBlogService {
     }
   }
 
-  makeQuery(
+  private makeQuery(
     andKeywords: string[],
     orKeywords: string[],
     notKeywords: string[],

@@ -12,6 +12,13 @@ export namespace IGoogleSearchService {
    */
   export interface IRequest {
     /**
+     * Set the target site to search for.
+     *
+     * @title Target site
+     */
+    targetSite?: string;
+
+    /**
      * Set keywords that must be included in search results.
      *
      * @title Must-include keywords

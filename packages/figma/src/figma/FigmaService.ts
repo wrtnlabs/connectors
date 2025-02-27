@@ -77,10 +77,11 @@ export class FigmaService {
     }
   }
 
-  async getProjectCanvas(
-    projectId: string,
-  ): Promise<IFigmaService.IGetProjectFileOutput> {
+  async getProjectCanvas(input: {
+    projectId: string;
+  }): Promise<IFigmaService.IGetProjectFileOutput> {
     try {
+      const { projectId } = input;
       const url = `https://api.figma.com/v1/projects/${projectId}/files`;
       const accessToken = await this.refresh();
 
@@ -99,12 +100,14 @@ export class FigmaService {
 
   async getStatistics(
     input: IFigmaService.IGetProjectStatisticsInput,
-    team: IFigmaService.IGetProejctOutput,
   ): Promise<IFigmaService.IGetStatisticsOutput[]> {
     try {
+      const { team } = input;
       return await Promise.all(
         team.projects.map(async (project) => {
-          const projectDetail = await this.getProjectCanvas(project.id);
+          const projectDetail = await this.getProjectCanvas({
+            projectId: project.id,
+          });
 
           const canvasList = await Promise.all(
             projectDetail.files.map(async (canvas) => {

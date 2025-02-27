@@ -56,7 +56,7 @@ export class DaumCafeService {
     }
   }
 
-  makeQuery(
+  private makeQuery(
     andKeywords: string[],
     orKeywords: string[],
     notKeywords: string[],

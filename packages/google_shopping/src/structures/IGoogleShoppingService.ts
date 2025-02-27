@@ -13,6 +13,13 @@ export namespace IGoogleShoppingService {
    */
   export interface IRequestStandAlone {
     /**
+     * Set the time period of the search results.
+     *
+     * @title Time period
+     */
+    tbs: string;
+
+    /**
      * Enter the keyword you want to search for.
      *
      * @title Search term

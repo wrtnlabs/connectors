@@ -39,7 +39,7 @@ export class NaverCafeService {
     }
   }
 
-  makeQuery(
+  private makeQuery(
     andKeywords: string[],
     orKeywords: string[],
     notKeywords: string[],

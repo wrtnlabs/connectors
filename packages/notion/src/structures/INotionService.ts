@@ -1882,6 +1882,11 @@ export namespace INotionService {
    */
   export interface IFindDatabaseItemInput {
     /**
+     * Database ID.
+     */
+    id: string;
+
+    /**
      * The title of the item in the database item
      *
      * @title Title

@@ -23,8 +23,8 @@ export class GoogleSearchService {
 
   async searchResult(
     input: IGoogleSearchService.IRequest,
-    targetSite?: string,
   ): Promise<IGoogleSearchService.IResponse[]> {
+    const { targetSite } = input;
     try {
       const maxResultPerPage: number = 10;
       let start: number = 0;

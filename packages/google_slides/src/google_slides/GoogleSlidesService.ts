@@ -144,7 +144,7 @@ export class GoogleSlidesService {
     }
 
     const transformed = await Promise.all(
-      matched.map(async (match) => this.s3.getGetObjectUrl(match)),
+      matched.map(async (match) => this.s3.getGetObjectUrl({ fileUrl: match })),
     );
 
     // let stringified = JSON.stringify(input);
@@ -176,20 +176,19 @@ export class GoogleSlidesService {
   }
 
   async appendImageSlide(
-    presentationId: string,
     input: IGoogleSlidesService.AppendSlideInput,
   ): Promise<IGoogleSlidesService.ISimplePresentationIdOutput> {
     try {
       input = await this.transformUrl(input);
 
       const presentation = await this.getPresentation({
-        presentationId,
+        presentationId: input.id,
       });
 
       const size = this.getSize(presentation);
-      const body = this.createSlide(input, size);
+      const body = this.createSlide({ ...input, size });
 
-      await this.appendSlide({ presentationId, body });
+      await this.appendSlide({ presentationId: input.id, body });
 
       return {
         presentationId: presentation.presentationId,
@@ -203,25 +202,29 @@ export class GoogleSlidesService {
   }
 
   async appendSlidesByType(
-    presentationId: string,
-    type: "QuarterDivision" | "Entire" | "Landscape" | "Square" | "Vertical",
-    input:
+    input: (
       | IGoogleSlidesService.AppendQuarterDivisionSlideInput
       | IGoogleSlidesService.AppendEntireSlideInput
       | IGoogleSlidesService.AppendLandscapeSlideInput
       | IGoogleSlidesService.AppendVerticalSlideInput
-      | IGoogleSlidesService.AppendSquareSlideInput,
+      | IGoogleSlidesService.AppendSquareSlideInput
+    ) & {
+      presentationId: string;
+      type: "QuarterDivision" | "Entire" | "Landscape" | "Square" | "Vertical";
+    },
   ): Promise<IGoogleSlidesService.ISimplePresentationIdOutput> {
     const { templates } = input;
     const presentation = await this.getPresentation({
-      presentationId,
+      presentationId: input.presentationId,
     });
 
     const size = this.getSize(presentation);
-    const typed = { templates: templates.map((el) => ({ ...el, type })) };
-    const body = this.createSlide(typed as any, size);
+    const typed = {
+      templates: templates.map((el) => ({ ...el, type: input.type })),
+    };
+    const body = this.createSlide({ ...(typed as any), size });
 
-    await this.appendSlide({ body, presentationId });
+    await this.appendSlide({ body, presentationId: input.presentationId });
 
     return presentation;
   }
@@ -258,14 +261,15 @@ export class GoogleSlidesService {
     }
   }
 
-  createQuarterDivisionImageSlide(
-    templates: IGoogleSlidesService.Template.QuarterDivision[],
+  createQuarterDivisionImageSlide(input: {
+    templates: IGoogleSlidesService.Template.QuarterDivision[];
     presentationSize: {
       height: number; // heigh와 width의 크기가 같다.
       width: number;
       unit?: IGoogleSlidesService.Unit | null;
-    },
-  ): IGoogleSlidesService.BatchUpdateInput[] {
+    };
+  }): IGoogleSlidesService.BatchUpdateInput[] {
+    const { templates, presentationSize } = input;
     const slideId = v4();
     const firstImageId = v4();
     const firstShapeId = v4();
@@ -636,14 +640,15 @@ export class GoogleSlidesService {
     );
   }
 
-  createEntireImageSlide(
-    templates: IGoogleSlidesService.Template.Entire[],
+  createEntireImageSlide(input: {
+    templates: IGoogleSlidesService.Template.Entire[];
     presentationSize: {
       height: number; // heigh와 width의 크기가 같다.
       width: number;
       unit?: IGoogleSlidesService.Unit | null;
-    },
-  ): IGoogleSlidesService.BatchUpdateInput[] {
+    };
+  }): IGoogleSlidesService.BatchUpdateInput[] {
+    const { templates, presentationSize } = input;
     const slideId = v4();
     const imageId = v4();
 
@@ -677,14 +682,15 @@ export class GoogleSlidesService {
     );
   }
 
-  createLandscapeImageSlide(
-    templates: IGoogleSlidesService.Template.Landscape[],
+  createLandscapeImageSlide(input: {
+    templates: IGoogleSlidesService.Template.Landscape[];
     presentationSize: {
       height: number; // heigh와 width의 크기가 같다.
       width: number;
       unit?: IGoogleSlidesService.Unit | null;
-    },
-  ): IGoogleSlidesService.BatchUpdateInput[] {
+    };
+  }): IGoogleSlidesService.BatchUpdateInput[] {
+    const { templates, presentationSize } = input;
     const slideId = v4();
     const imageId = v4();
     const shapeId = v4();
@@ -767,14 +773,15 @@ export class GoogleSlidesService {
     );
   }
 
-  createVerticalImageSlide(
-    templates: IGoogleSlidesService.Template.Vertical[],
+  createVerticalImageSlide(input: {
+    templates: IGoogleSlidesService.Template.Vertical[];
     presentationSize: {
       height: number; // heigh와 width의 크기가 같다.
       width: number;
       unit?: IGoogleSlidesService.Unit | null;
-    },
-  ): IGoogleSlidesService.BatchUpdateInput[] {
+    };
+  }): IGoogleSlidesService.BatchUpdateInput[] {
+    const { templates, presentationSize } = input;
     const slideId = v4();
     const imageId = v4();
     const shapeId = v4();
@@ -857,14 +864,15 @@ export class GoogleSlidesService {
     );
   }
 
-  createSqaureImageSlide(
-    templates: IGoogleSlidesService.Template.Square[],
+  createSqaureImageSlide(input: {
+    templates: IGoogleSlidesService.Template.Square[];
     presentationSize: {
       height: number; // heigh와 width의 크기가 같다.
       width: number;
       unit?: IGoogleSlidesService.Unit | null;
-    },
-  ): IGoogleSlidesService.BatchUpdateInput[] {
+    };
+  }): IGoogleSlidesService.BatchUpdateInput[] {
+    const { templates, presentationSize } = input;
     const slideId = v4();
     const imageId = v4();
     const shapeId = v4();
@@ -954,11 +962,12 @@ export class GoogleSlidesService {
   }
 
   createSlide(
-    input: Pick<IGoogleSlidesService.AppendSlideInput, "templates">,
-    size: {
-      height: number;
-      width: number;
-      unit?: IGoogleSlidesService.Unit | null;
+    input: Pick<IGoogleSlidesService.AppendSlideInput, "templates"> & {
+      size: {
+        height: number;
+        width: number;
+        unit?: IGoogleSlidesService.Unit | null;
+      };
     },
   ): Pick<IGoogleSlidesService.IUpdatePresentationInput, "requests"> {
     const body: Pick<
@@ -968,15 +977,30 @@ export class GoogleSlidesService {
       requests: input.templates
         .flatMap((template): IGoogleSlidesService.BatchUpdateInput[] => {
           if (template.type === "Vertical") {
-            return this.createVerticalImageSlide([template], size);
+            return this.createVerticalImageSlide({
+              templates: [template],
+              presentationSize: input.size,
+            });
           } else if (template.type === "Square") {
-            return this.createSqaureImageSlide([template], size);
+            return this.createSqaureImageSlide({
+              templates: [template],
+              presentationSize: input.size,
+            });
           } else if (template.type === "Landscape") {
-            return this.createLandscapeImageSlide([template], size);
+            return this.createLandscapeImageSlide({
+              templates: [template],
+              presentationSize: input.size,
+            });
           } else if (template.type === "Entire") {
-            return this.createEntireImageSlide([template], size);
+            return this.createEntireImageSlide({
+              templates: [template],
+              presentationSize: input.size,
+            });
           } else if (template.type === "QuarterDivision") {
-            return this.createQuarterDivisionImageSlide([template], size);
+            return this.createQuarterDivisionImageSlide({
+              templates: [template],
+              presentationSize: input.size,
+            });
           }
 
           return null!;
@@ -1040,7 +1064,9 @@ export class GoogleSlidesService {
                 key: `${v4()}.jpg`,
               });
 
-              request.createImage.url = await this.s3.getGetObjectUrl(saved);
+              request.createImage.url = await this.s3.getGetObjectUrl({
+                fileUrl: saved,
+              });
             }
           }
         }

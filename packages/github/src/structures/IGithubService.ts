@@ -765,6 +765,9 @@ export namespace IGithubService {
      * @title folder name
      */
     path?: string & tags.Default<"">;
+
+    depth?: number;
+    includeMediaFile?: boolean;
   }
 
   export type IGetFileContentOutput =

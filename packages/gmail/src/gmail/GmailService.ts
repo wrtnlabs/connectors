@@ -31,7 +31,7 @@ export class GmailService {
     }
   }
 
-  async hardDelete(id: string): Promise<void> {
+  async hardDelete(input: { id: string }): Promise<void> {
     try {
       const googleService = new GoogleService(this.props);
 
@@ -43,7 +43,7 @@ export class GmailService {
 
       await gmail.users.messages.delete({
         userId: "me",
-        id,
+        id: input.id,
       });
     } catch (error) {
       console.error(JSON.stringify(error));
@@ -108,7 +108,6 @@ export class GmailService {
   }
 
   async reply(
-    id: string,
     input: IGmailService.IReplyInput,
   ): Promise<IGmailService.ISendMailOutput> {
     try {
@@ -126,7 +125,7 @@ export class GmailService {
        */
       const originalMessage = await gmail.users.messages.get({
         userId: "me",
-        id: id,
+        id: input.id,
       });
 
       /**
@@ -140,7 +139,7 @@ export class GmailService {
       const references =
         (headers?.find((header) => header.name === "References")?.value || "") +
         " " +
-        id;
+        input.id;
       const inReplyTo = headers?.find(
         (header) => header.name === "Message-ID",
       )?.value;
@@ -208,7 +207,6 @@ export class GmailService {
   }
 
   async addLabelToMail(
-    mailId: string,
     input: IGmailService.IMailLabelOperationInput,
   ): Promise<void> {
     try {
@@ -223,7 +221,7 @@ export class GmailService {
 
       await gmail.users.messages.modify({
         userId: "me",
-        id: mailId,
+        id: input.id,
         requestBody: {
           addLabelIds: input.labelIds,
         },
@@ -235,7 +233,6 @@ export class GmailService {
   }
 
   async removeLabelFromMail(
-    mailId: string,
     input: IGmailService.IMailLabelOperationInput,
   ): Promise<void> {
     try {
@@ -250,7 +247,7 @@ export class GmailService {
 
       await gmail.users.messages.modify({
         userId: "me",
-        id: mailId,
+        id: input.id,
         requestBody: {
           removeLabelIds: input.labelIds,
         },
@@ -261,7 +258,9 @@ export class GmailService {
     }
   }
 
-  async findEmail(id: string): Promise<IGmailService.IFindGmailOutput> {
+  async findEmail(input: {
+    id: string;
+  }): Promise<IGmailService.IFindGmailOutput> {
     try {
       const googleService = new GoogleService(this.props);
 
@@ -272,10 +271,10 @@ export class GmailService {
 
       const gmail = google.gmail({ version: "v1", auth: authClient });
 
-      if (!id) {
+      if (!input.id) {
         throw new Error("Email ID is required");
       }
-      const emailData = await this.getEmailData(gmail, id);
+      const emailData = await this.getEmailData(gmail, input.id);
       return emailData;
     } catch (error) {
       console.error(JSON.stringify(error));
@@ -332,7 +331,7 @@ export class GmailService {
 
   // TODO: 이미 휴지통에 들어있을 때 처리하는 로직 추가되어야 함
 
-  async removeEmail(id: string): Promise<void> {
+  async removeEmail(input: { id: string }): Promise<void> {
     try {
       const googleService = new GoogleService(this.props);
 
@@ -343,50 +342,18 @@ export class GmailService {
 
       const gmail = google.gmail({ version: "v1", auth: authClient });
 
-      if (!id) {
+      if (!input.id) {
         throw new Error("Email ID is required");
       }
 
       await gmail.users.messages.trash({
         userId: "me",
-        id: id,
+        id: input.id,
       });
     } catch (error) {
       console.error(JSON.stringify(error));
       throw error;
     }
-  }
-
-  async getEmailData(gmail: gmail_v1.Gmail, id: string) {
-    if (!id) {
-      return {
-        data: [],
-      };
-    }
-
-    const result = await gmail.users.messages.get({
-      userId: "me",
-      id: id,
-    });
-
-    const messageId = result.data.id;
-
-    if (!messageId) {
-      throw new Error("Find Email Error");
-    }
-
-    const labelIds = result.data.labelIds;
-    const payload = result.data.payload;
-    const headers = payload?.headers;
-
-    const from = headers?.find((header) => header.name === "From")?.value;
-    const subject = headers?.find((header) => header.name === "Subject")?.value;
-    const body = result.data.snippet;
-    const attachments = payload?.parts?.filter(
-      (part) => part.filename && part.filename.length > 0,
-    );
-
-    return { id, labelIds, from, subject, body, attachments };
   }
 
   async makeConpleteContents(
@@ -452,16 +419,48 @@ export class GmailService {
   /**
    * 한글 base64 인코딩
    */
-  encodeHeaderFieldForKorean(name: string, value: string) {
+  private encodeHeaderFieldForKorean(name: string, value: string) {
     return `${name}: =?utf-8?B?${Buffer.from(value, "utf-8").toString(
       "base64",
     )}?=`;
   }
 
+  private async getEmailData(gmail: gmail_v1.Gmail, id: string) {
+    if (!id) {
+      return {
+        data: [],
+      };
+    }
+
+    const result = await gmail.users.messages.get({
+      userId: "me",
+      id: id,
+    });
+
+    const messageId = result.data.id;
+
+    if (!messageId) {
+      throw new Error("Find Email Error");
+    }
+
+    const labelIds = result.data.labelIds;
+    const payload = result.data.payload;
+    const headers = payload?.headers;
+
+    const from = headers?.find((header) => header.name === "From")?.value;
+    const subject = headers?.find((header) => header.name === "Subject")?.value;
+    const body = result.data.snippet;
+    const attachments = payload?.parts?.filter(
+      (part) => part.filename && part.filename.length > 0,
+    );
+
+    return { id, labelIds, from, subject, body, attachments };
+  }
+
   /**
    * gmail 메일 헤더 및 본문 base64 인코딩
    */
-  makeEmailContent(headers: string[], body: string) {
+  private makeEmailContent(headers: string[], body: string) {
     const emailLines = [...headers, "", body, ""];
 
     const email = emailLines.join("\r\n");
@@ -472,7 +471,7 @@ export class GmailService {
       .replace(/=+$/, "");
   }
 
-  makeQueryForGetGmail(input: IGmailService.IFindEmailListInput) {
+  private makeQueryForGetGmail(input: IGmailService.IFindEmailListInput) {
     let query: string = "";
 
     if (input.from) {

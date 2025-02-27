@@ -79,11 +79,11 @@ export class GithubService {
     const MAX_DEPTH = 100;
 
     // 전체 폴더 구조 가져오기
-    const rootFiles = await this.getRepositoryFolderStructures(
-      input,
-      MAX_DEPTH,
-      false, // 파일을 모두 복사하여 RAG할 때에는 미디어 파일까지 가져올 필요가 없다.
-    );
+    const rootFiles = await this.getRepositoryFolderStructures({
+      ...input,
+      depth: MAX_DEPTH,
+      includeMediaFile: false,
+    });
 
     // 전체 순회하며 파일인 경우 content를 가져오게 하기
     const traverseOption = {
@@ -145,7 +145,7 @@ export class GithubService {
       let FILE_NUM = 0;
       for await (const analyzedFile of analyzedFiles) {
         const key = `${AWS_KEY}/${FILE_NUM}.txt`;
-        const link = await this.upload(analyzedFile, key);
+        const link = await this.upload({ files: analyzedFile, key });
         links.push(link);
         FILE_NUM++;
       }
@@ -154,10 +154,11 @@ export class GithubService {
     return links;
   }
 
-  async upload(
-    files: Pick<IGithubService.RepositoryFile, "path" | "content">[],
-    key: string,
-  ) {
+  async upload(input: {
+    files: Pick<IGithubService.RepositoryFile, "path" | "content">[];
+    key: string;
+  }) {
+    const { files, key } = input;
     if (!this.s3) {
       throw new Error("AWS S3 Not Applied.");
     }
@@ -777,9 +778,8 @@ export class GithubService {
 
   async getRepositoryFolderStructures(
     input: IGithubService.IGetRepositoryFolderStructureInput,
-    depth: number = 2,
-    includeMediaFile: boolean = true,
   ): Promise<IGithubService.IGetRepositoryFolderStructureOutput> {
+    const { depth = 2, includeMediaFile = true } = input;
     const rootFiles = await this.getFileContents(input);
 
     return this.getRepositoryFolders(input, rootFiles, depth, includeMediaFile);
