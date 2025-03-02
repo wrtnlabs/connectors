@@ -4,6 +4,14 @@ import { IKakaoMapService } from "../structures/IKakaoMapService";
 export class KakaoMapService {
   constructor(private readonly props: IKakaoMapService.IProps) {}
 
+  /**
+   * Search with Kakao Map
+   *
+   * In addition to the place name company, category, and phone number,
+   * it also provides lot number and road name addresses in the Korean address system.
+   * It can be used with public data or other address-based connectors.
+   *
+   */
   async searchByKeyword(
     input: IKakaoMapService.SearchByKeywordInput,
   ): Promise<IKakaoMapService.SearchByKeywordOutput> {
