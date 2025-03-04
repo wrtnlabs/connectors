@@ -611,3 +611,227 @@ export interface IBbsArticle {
   created_at: string & tags.Format<"date-time">;
 }
 ```
+
+## 6. Packages
+The Connector packages are the individual export of the Connector server's service functions to npm as a package.
+When you use Connector packages, you can use Connector packages using `@agentica/core` packages. Alternatively, you can use 'typia.llm.application' to convert it to OpenAI function scheme.
+Consequently, the connector package can be used as an agent development tool.
+
+If you want to know the details of `@agentica` pacakge, please refer to this [document](https://github.com/wrtnlabs/agentica/blob/main/packages/core/README.md).
+
+### 6.1. How to use
+---
+Tool(Connector) calling can be performed using Connector packages with the '@agentica/core' package.
+
+### Setup
+
+install the packages related with `@agentica/core`
+```bash
+npm install @agentica/core @samchon/openapi typia
+npx typia setup
+```
+install the Connector packages.
+```bash
+npm install @wrtnlabs/connector-${packageName}
+
+# If you want to use github connector, use this command.
+npm install @wrtnlabs/connector-github
+```
+
+
+### Use Connector package with `@agentica` package.
+This is the example of using `@wrtnlabs/connector-kakao-map` and `@wrtnlabs/connector-gmail` connector packages.
+
+install the connector packages about kakao map and gmail.
+
+```bash
+npm install @wrtnlabs/connector-kakao-map @wrtnlabs/connector-gmail
+```
+
+```ts
+import { GmailService } from "@wrtnlabs/connector-gmail";
+import { KakaoMapService } from "@wrtnlabs/connector-kakao-map";
+
+async function main() {
+  const agent = new Agentica({
+    provider: {
+      api: new OpenAI({
+          apiKey: "YOUR_OPENAI_API_KEY",
+        }),
+        model: "gpt-4o-mini",
+      },
+      model: "gpt-4o-mini",
+      type: "chatgpt",
+    },
+    controllers: [
+      {
+        name: "Gmail Connector",
+        protocol: "class",
+        application: typia.llm.applicationOfValidate<GmailService, "chatgpt">(),
+        execute: new GmailService({
+          clientId: "YOUR_GOOGLE_CLIENT_ID",
+          clientSecret: "YOUR_GOOGLE_CLIENT_SECRET",
+          secret: "YOUR_GOOGLE_SECRET",
+        }),
+      },
+      {
+        name: "Google Map Connector",
+        protocol: "class",
+        application: typia.llm.applicationOfValidate<
+          GoogleMapService,
+          "chatgpt"
+        >(),
+        execute: new GoogleMapService({
+          googleApiKey: "YOUR_GOOGLE_API_KEY",
+          serpApiKey: "YOUR_SERP_API_KEY",
+        }),
+      },
+    ],
+  );
+
+  await agent.conversate("What you can do?");
+  await agent.conversate("Find a good restaurant near Gangnam Station. And fill out the information in a markdown format and send it to me by email 'wrtnlabs@wrtn.io'.")
+}
+
+main().catch(console.error)
+
+```
+
+Define the LLM model to be used through `new OpenAI()` and create an agent to allow tool calls by injecting the `OpenAI` class into `new Agentica()`. And you can define the tool to use by entering Connector package(tool) in the controllers part of the creator. At this time, the protocol must be set to "class" and the methods of the class must be set to "class" so that the methods of the class can be executed through utterance with LLM. `typia.llm.applicationOfValidate<ConnectorService, "chatgpt">()` converts the methods implemented in class in Typescript compilation time into openai function scheme.
+
+### 6.2 How to Contribute this Repository.
+---
+
+If you want to contribute our repository, Please follow this guide.
+
+First, You make a directory about the service that you want to add features.
+The directory name follows the lower snake case.
+The file name follows the Pascal case.
+
+```bash
+cd packages
+
+mkdir <package-name>
+```   
+
+The mono repo structure is as follow.
+```bash
+<package-name>
+│
+├── src
+│    │
+│    ├── <package-name> # Main service logic is located here.
+│    │    │
+│    │    └── ${PackageName}Service.ts
+│    │
+│    ├── structures # Every Dtos or Interfaces or Types are located here.
+│    │    │
+│    │    └── I${PackageName}Service.ts # Add prefix "I" to the file name.
+│    │
+│    └── index.ts # Export classes and interfaces in src directory.
+│
+├── test # Write the Test code about the service that you implement.
+│    │
+│    ├── features # Implement test about each features.
+│    │    │
+│    │    └── test_${package_name}_${feature} # Test code file.
+│    │
+│    ├── index.ts # Test execute file.
+│    │
+│    ├── TestGlobal.ts # Define the environment variables for Test.
+│    │
+│    └── tsconfig.json # tsconfig.json for Test.
+│
+├── package.json
+│
+├── README.md
+│
+├── rollup.config.js
+│
+└── tsconfig.json
+```
+
+
+
+
+### Service
+The Main Service Logic is implemented by class. There are no exceptions, because the methods of class are converted to OpenAI Function schemes through 'typia.llm.application()' to perform tool calls.
+The class name of the service must end with "Service".
+
+**annotation**
+
+Also, you should add comments to each public method. (private is not necessary) The comments are needed to write down a description of what services each function is, what functions it performs, and what needs to be done. This will help LLM select that function more accurately later.
+First, write the service name related with the method.
+Second, write the description under the service name.
+
+**Keep in mind. the input parameters for all methods must be in object format.**
+
+```ts
+export class SlackService {
+  constructor(private readonly props: ISlackService.IProps) {}
+  /**
+   * Slack Service.
+   * 
+   * Get Specific Message Information.
+   *
+   * Get channel information and ts and get information of a specific message.
+   */
+  async getMessage(input: ISlackService.IGetMessageInput): Promise<ISlackService.IGetMessageOutput> {
+    // Implement the get message logic.
+  }
+}
+```
+
+### Interface
+Interface is implemented with namespace. (not necessary)
+You should the prefix `I` to interface name like `ISlackService`.
+Write the input parameter or return type object about Method.
+
+The input parameters for all methods must be in object format.
+
+```ts
+export namespace ISlackService {
+  export interface IGetMessageInput {
+    /**
+     * this is message id from the channel.
+     * 
+     * @title Slack Message ID.
+     */
+    messageId: string & tags.Format<"uuid">;
+  }
+
+  export interface IGetMessageOutput {
+    /**
+     * Message body.
+     * 
+     * @title Message Content. 
+     */
+    message: string;
+  }
+}
+```
+
+### Test
+In order to contribute to the connector package, all tests must finally pass.
+You should make `.env` file on the root directory. and write the necessary environment variables related the tests to `TestGlobal.ts` file.
+The name of test function must have the `test` in the prefix and should be exported.
+
+```ts
+// test/features
+export const test_slack_get_message = async () => {
+  const slackService = new SlackService({
+    // props
+  })
+
+  const res = await slackService.getMessage();
+
+  typia.assert(res)
+}
+
+// test/TestGlobal.ts
+interface IEnvironments {
+  SLACK_CLIENT_ID: string;
+  SLACK_CLIENT_SECRET: string;
+  SLACK_TEST_SECRET: string;
+}
+```
