@@ -12,6 +12,8 @@ export class WebCrawlerService {
   }
 
   /**
+   * Web Crawler Service.
+   *
    * Get HTML content from the URL
    *
    * This API accepts a URL as input and returns the HTML content of the body of the corresponding web page.
@@ -97,7 +99,7 @@ export class WebCrawlerService {
     }
   }
 
-  transformNaverBlogURL(url: string): string {
+  private transformNaverBlogURL(url: string): string {
     const regex = /https:\/\/blog\.naver\.com\/([^/]+)\/(\d+)/;
     const match = url.match(regex);
 
@@ -110,7 +112,7 @@ export class WebCrawlerService {
     }
   }
 
-  transformUrl(url: string): string {
+  private transformUrl(url: string): string {
     if (url.includes(this.naverBlogBaseUrl)) {
       return this.transformNaverBlogURL(url);
     } else {
@@ -118,7 +120,7 @@ export class WebCrawlerService {
     }
   }
 
-  getProxyOptions(url: string) {
+  private getProxyOptions(url: string) {
     if (url.includes(this.arxivBaseUrl)) {
       return {
         proxy_country: "kr",

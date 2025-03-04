@@ -4,6 +4,11 @@ import { INaverCafeService } from "../structures/INaverCafeService";
 export class NaverCafeService {
   constructor(private readonly props: INaverCafeService.IProps) {}
 
+  /**
+   * Naver Cafe Service.
+   *
+   * Search Naver Cafe contents
+   */
   async getCafe(
     input: INaverCafeService.INaverKeywordInput,
   ): Promise<INaverCafeService.ICafeNaverOutput> {

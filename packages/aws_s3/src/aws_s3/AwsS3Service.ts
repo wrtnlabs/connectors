@@ -12,6 +12,8 @@ import { IAwsS3Service } from "../structures/IAwsS3Service";
 export class AwsS3Service {
   private readonly s3: S3Client;
   private readonly expirationInMinute: number;
+  private readonly S3BucketURL =
+    /https?:\/\/([^.]+)\.s3(?:\.([^.]+))?\.amazonaws\.com\/([a-zA-Z0-9\/.\-_\s%]+)/;
 
   constructor(private readonly props: IAwsS3Service.IProps) {
     //-----
@@ -30,14 +32,10 @@ export class AwsS3Service {
   }
 
   /**
-   * @param key 키 이름
-   * @returns 버킷 이름을 붙여 만든 전체 파일 경로
+   * AWS S3 Service.
+   *
+   * Upload an object to S3
    */
-  addBucketPrefix(input: { key: string }): string {
-    const url = `https://${this.props.bucket}.s3.${this.props.region}.amazonaws.com/${input.key}`;
-    return url;
-  }
-
   async uploadObject(input: IAwsS3Service.IUploadObjectInput): Promise<string> {
     const { data, contentType } = input;
     const putObjectConfig = new PutObjectCommand({
@@ -50,6 +48,11 @@ export class AwsS3Service {
     return this.addBucketPrefix({ key: input.key });
   }
 
+  /**
+   * AWS S3 Service.
+   *
+   * Generate the URL required to upload a file
+   */
   async getPutObjectUrl(
     input: IAwsS3Service.IGetPutObjectUrlInput,
   ): Promise<IAwsS3Service.IGetPutObjectUrlOutput> {
@@ -81,6 +84,11 @@ export class AwsS3Service {
     }
   }
 
+  /**
+   * AWS S3 Service.
+   *
+   * Get an object from S3
+   */
   async getObject(
     input: { fileUrl: string } | { filename: string },
   ): Promise<Buffer> {
@@ -122,6 +130,8 @@ export class AwsS3Service {
   }
 
   /**
+   * AWS S3 Service.
+   *
    * Transforms S3 URLs in output to presigned URLs
    */
   async getGetObjectUrl(input: { fileUrl: string }): Promise<string> {
@@ -145,6 +155,11 @@ export class AwsS3Service {
     );
   }
 
+  /**
+   * AWS S3 Service.
+   *
+   * Extract S3 information from URL
+   */
   extractS3InfoFromUrl(input: { url: string }): {
     bucket: string;
     key: string;
@@ -166,6 +181,11 @@ export class AwsS3Service {
     }
   }
 
+  /**
+   * AWS S3 Service.
+   *
+   * Get the size of an object in S3
+   */
   async getFileSize(input: { fileUrl: string }): Promise<number> {
     const { fileUrl } = input;
     const [url] = fileUrl.split("?"); // 쿼리파라미터 부분 제거
@@ -196,6 +216,12 @@ export class AwsS3Service {
     }
   }
 
-  S3BucketURL =
-    /https?:\/\/([^.]+)\.s3(?:\.([^.]+))?\.amazonaws\.com\/([a-zA-Z0-9\/.\-_\s%]+)/;
+  /**
+   * @param key 키 이름
+   * @returns 버킷 이름을 붙여 만든 전체 파일 경로
+   */
+  addBucketPrefix(input: { key: string }): string {
+    const url = `https://${this.props.bucket}.s3.${this.props.region}.amazonaws.com/${input.key}`;
+    return url;
+  }
 }

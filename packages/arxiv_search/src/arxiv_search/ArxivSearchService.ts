@@ -4,6 +4,11 @@ import { IConnector } from "@wrtnlabs/connector-shared";
 import { IArxivSearchService } from "../structures/IArxivSearchService";
 
 export class ArxivSearchService {
+  /**
+   * Arxiv Search Service.
+   *
+   * Searches the archive for papers based on the search criteria you entered
+   */
   async search(
     input: IConnector.ISearchInput,
   ): Promise<IConnector.ISearchOutput> {

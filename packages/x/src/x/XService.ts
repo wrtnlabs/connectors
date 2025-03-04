@@ -4,17 +4,44 @@ import { IXService } from "../structures/IXService";
 export class XService {
   constructor(private readonly props: IXService.IProps) {}
 
+  /**
+   * X Service.
+   *
+   * Get User Information by username
+   */
   async getUsers(
     input: IXService.IUserInput,
   ): Promise<IXService.IUserOutput[]> {
     return this.getTweetUserInformations({ userNames: input.userNames });
   }
 
+  /**
+   * X Service.
+   *
+   * Get X user information of celebrities. Useful for understanding trends in various fields such as world affairs and IT.
+   */
   async getPreDefinedInfluencers(): Promise<IXService.IUserOutput[]> {
     const influencerList: string[] = ["hwchase17", "ilyasut", "miramurati"];
     return await this.getTweetUserInformations({ userNames: influencerList });
   }
 
+  /**
+   * X Service.
+   *
+   * Fetches and indexes the tweets of given users requested.
+   *
+   * Before executing fetches and indexes the tweets, you must call the /get-users or /get-influencers endpoint to get user information.
+   *
+   * You should put as many users as you want to fetch tweets from.
+   *
+   * This endpoint is designed to handle multiple users efficiently.
+   *
+   * It already get information from multiple user's, you must not make multiple requests to this endpoint to fetch tweets from multiple users. you must use the results from a single request.
+   *
+   * For example, if you are fetch tweets from multiple users and have a summary request, you must use the results from only one request to summarize the tweets for each user.
+   *
+   * You must use the /summarize endpoint to proceed with the summary after fetching the tweet, do not allow this endpoint to be used just for summarization.
+   */
   // async prepareSummary(
   //   input: IXService.IPrePareSummarizeTweetInput,
   // ): Promise<IXService.IPrePareSummarizeTweetOutput> {
@@ -29,6 +56,21 @@ export class XService {
   //   }
   // }
 
+  /**
+   * X Service.
+   *
+   * Summarizes the tweets of those requested them.
+   *
+   * Note that this endpoint is intended to be used for a single keyword or subject.
+   *
+   * If you need to summarize multiple keywords or subjects, you must make multiple requests for each keyword or subject no exceptions.
+   *
+   * For example, if you want to summarize tweets about "Elon Musk" and "AI", make two requests, one for "Elon Musk" and one for "AI".
+   *
+   * You must assume that the results may contain irrelevant tweets against the query. You must filter the results based on the query. Do your best to cherry-pick the relevant tweets only.
+   *
+   * Any tweet that are not relevant to the query must be ignored, even if that tweet is related to the user request, not the query.
+   */
   // async summarizeTweet(
   //   input: IXService.ISummarizeTweetInput,
   // ): Promise<IXService.IGetChunkDocumentOutput> {
@@ -398,39 +440,15 @@ export class XService {
   //   }
   // }
 
-  async refresh(): Promise<string> {
-    try {
-      const params = new URLSearchParams();
-      params.append("grant_type", "refresh_token");
-      params.append("refresh_token", this.props.bearerToken);
-      params.append("client_id", this.props.clientId);
-      const BasicAuthToken = Buffer.from(
-        `${this.props.clientId}:${this.props.clientSecret}`,
-        "utf8",
-      ).toString("base64");
-      const res = await axios.post("https://api.x.com/2/oauth2/token", params, {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          Authorization: `Basic ${BasicAuthToken}`,
-        },
-      });
-
-      /**
-       * Only for test environment
-       */
-      // if (process.env.NODE_ENV === "test") {
-      //   await ConnectorGlobal.write({
-      //     X_TEST_SECRET: res.data.refresh_token,
-      //   });
-      // }
-      this.props.bearerToken = res.data.refresh_token;
-      return res.data.access_token;
-    } catch (err) {
-      console.error(JSON.stringify(err));
-      throw err;
-    }
-  }
-
+  /**
+   * X Service.
+   *
+   * Search for tweets based on search query requested by the user.
+   *
+   * You need to analyze the user's request and retrieve tweets through natural language queries (search terms).
+   *
+   * For example, when a user requests "Search for books that are trending on Twitter these days," the query (search term) should be natural language, not a keyword, such as "trending books."
+   */
   async generalSearch(
     input: IXService.IGeneralSearchRequest,
   ): Promise<IXService.IGeneralSearchResponse[]> {
@@ -548,5 +566,38 @@ export class XService {
     }
 
     return `${query} has:media lang:${input.lang}`;
+  }
+
+  private async refresh(): Promise<string> {
+    try {
+      const params = new URLSearchParams();
+      params.append("grant_type", "refresh_token");
+      params.append("refresh_token", this.props.bearerToken);
+      params.append("client_id", this.props.clientId);
+      const BasicAuthToken = Buffer.from(
+        `${this.props.clientId}:${this.props.clientSecret}`,
+        "utf8",
+      ).toString("base64");
+      const res = await axios.post("https://api.x.com/2/oauth2/token", params, {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          Authorization: `Basic ${BasicAuthToken}`,
+        },
+      });
+
+      /**
+       * Only for test environment
+       */
+      // if (process.env.NODE_ENV === "test") {
+      //   await ConnectorGlobal.write({
+      //     X_TEST_SECRET: res.data.refresh_token,
+      //   });
+      // }
+      this.props.bearerToken = res.data.refresh_token;
+      return res.data.access_token;
+    } catch (err) {
+      console.error(JSON.stringify(err));
+      throw err;
+    }
   }
 }

@@ -19,6 +19,11 @@ export class GoogleSlidesService {
 
   uploadPrefix: string = "google-slides-connector";
 
+  /**
+   * Google Slides Service.
+   *
+   * Export Google Slides presentations to Hanshow format
+   */
   async createHanshow(input: {
     presentationId: string;
   }): Promise<IGoogleSlidesService.IExportHanshowOutput> {
@@ -52,6 +57,13 @@ export class GoogleSlidesService {
     }
   }
 
+  /**
+   * Google Slides Service.
+   *
+   * Export Google Slides presentations to PowerPoint format
+   *
+   * A connector that can be used when creating stories or picture books.
+   */
   async createPowerPoint(input: {
     presentationId: string;
   }): Promise<IGoogleSlidesService.IExportPresentationOutput> {
@@ -85,6 +97,11 @@ export class GoogleSlidesService {
     }
   }
 
+  /**
+   * Google Slides Service.
+   *
+   * Retrieve a Google Slides presentation
+   */
   async getPresentation(
     input: IGoogleSlidesService.IGetPresentationInput,
   ): Promise<IGoogleSlidesService.ISimplePresentationIdOutput> {
@@ -175,6 +192,21 @@ export class GoogleSlidesService {
     return input;
   }
 
+  /**
+   * Google Slides Service.
+   *
+   * Add slides to a Google Slides presentation
+   *
+   * Use this connector with connector/google-slides/presentations when creating a story or picture book.
+   * When creating a story or picture book, insert the story and pictures created using this connector into the presentation created from connector/google-slides/presentations connector.
+   * Be careful not to use this connector when creating a story or picture book, as it may result in an empty picture book.
+   * Slide type must be one of: "Vertical", "Square", "Landscape", "Entire", "QuarterDivision".
+   * It is common to choose a "Square" type when there is one image.
+   *
+   * You may need an image when the user asks you to add a slide.
+   * In this case, rather than inserting any image, you should first secure the image using a search connector or an image creation connector.
+   * It is safe to ask the user for consent to this process.
+   */
   async appendImageSlide(
     input: IGoogleSlidesService.AppendSlideInput,
   ): Promise<IGoogleSlidesService.ISimplePresentationIdOutput> {
@@ -201,7 +233,109 @@ export class GoogleSlidesService {
     }
   }
 
-  async appendSlidesByType(
+  /**
+   * Google Slides Service.
+   *
+   * Add "QuarterDivision" type slides to a Google Slides presentation
+   *
+   * The "QuarterDivision" type slides are templates that are designed to place images and text in the upper left, upper right, lower left, and lower right, like a four-cut cartoon.
+   * Four images are required for this template, and the text is located right under each image.
+   *
+   * You may need an image when the user asks you to add a slide.
+   * In this case, rather than inserting any image, you should first secure the image using a search connector or an image creation connector.
+   * It is safe to ask the user for consent to this process.
+   */
+  async appendQuarterDivisionImageSlide(
+    input: IGoogleSlidesService.AppendQuarterDivisionSlideInput & {
+      presentationId: string;
+    },
+  ): Promise<IGoogleSlidesService.ISimplePresentationIdOutput> {
+    return this.appendSlidesByType({ ...input, type: "QuarterDivision" });
+  }
+
+  /**
+   * Google Slides Service.
+   *
+   * Add "Entire" type slides to a Google Slides presentation
+   *
+   * The "Entire" type of slide is a template that packs an image all over, and you can't put any extra text in it. Maybe it's usually suitable for putting a cover.
+   * Because ordinary presentations have longer horizontal lengths, if you put a square image, gaps on the left and right can appear large.
+   *
+   * You may need an image when the user asks you to add a slide.
+   * In this case, rather than inserting any image, you should first secure the image using a search connector or an image creation connector.
+   * It is safe to ask the user for consent to this process.
+   */
+  async appendEntireImageSlide(
+    input: IGoogleSlidesService.AppendEntireSlideInput & {
+      presentationId: string;
+    },
+  ): Promise<IGoogleSlidesService.ISimplePresentationIdOutput> {
+    return this.appendSlidesByType({ ...input, type: "Entire" });
+  }
+
+  /**
+   * Google Slides Service.
+   *
+   * Add "Landscape" type slides to a Google Slides presentation
+   *
+   * The "Landscape" type template fits text underneath with a longer horizontal image tightly packed like a background.
+   * It is suitable when the image is highlighted and the text is short.
+   * It is suitable for marking images and titles as if they were on display.
+   *
+   * You may need an image when the user asks you to add a slide.
+   * In this case, rather than inserting any image, you should first secure the image using a search connector or an image creation connector.
+   * It is safe to ask the user for consent to this process.
+   */
+  async appendLandscapeImageSlide(
+    input: IGoogleSlidesService.AppendLandscapeSlideInput & {
+      presentationId: string;
+    },
+  ): Promise<IGoogleSlidesService.ISimplePresentationIdOutput> {
+    return this.appendSlidesByType({ ...input, type: "Landscape" });
+  }
+
+  /**
+   * Google Slides Service.
+   *
+   * Add "Square" type slides to a Google Slides presentation
+   *
+   * The "Square" type slides put square images and text. In this case, you should put at least four to five lines of text, because there is so much space to put text.
+   * The picture is on the left, and the text is on the right.
+   *
+   * You may need an image when the user asks you to add a slide.
+   * In this case, rather than inserting any image, you should first secure the image using a search connector or an image creation connector.
+   * It is safe to ask the user for consent to this process.
+   */
+  async appendSquareImageSlide(
+    input: IGoogleSlidesService.AppendSquareSlideInput & {
+      presentationId: string;
+    },
+  ): Promise<IGoogleSlidesService.ISimplePresentationIdOutput> {
+    return this.appendSlidesByType({ ...input, type: "Square" });
+  }
+
+  /**
+   * Google Slides Service.
+   *
+   * Add "Vertical" type slides to a Google Slides presentation
+   *
+   * The "Vertical" type is like a square type slide, with an image on the left and text on the right.
+   * In this case, unlike the square type, the image is filled to the height of the presentation while maintaining the proportion.
+   * This also allows for enough text.
+   *
+   * You may need an image when the user asks you to add a slide.
+   * In this case, rather than inserting any image, you should first secure the image using a search connector or an image creation connector.
+   * It is safe to ask the user for consent to this process.
+   */
+  async appendVerticalImageSlide(
+    input: IGoogleSlidesService.AppendVerticalSlideInput & {
+      presentationId: string;
+    },
+  ): Promise<IGoogleSlidesService.ISimplePresentationIdOutput> {
+    return this.appendSlidesByType({ ...input, type: "Vertical" });
+  }
+
+  private async appendSlidesByType(
     input: (
       | IGoogleSlidesService.AppendQuarterDivisionSlideInput
       | IGoogleSlidesService.AppendEntireSlideInput
@@ -229,6 +363,16 @@ export class GoogleSlidesService {
     return presentation;
   }
 
+  /**
+   * Google Slides Service.
+   *
+   * Create a Google Slides presentation
+   *
+   * This connector can be used when creating a story or picture book.
+   * Please use it with the connector/google-slides/image-slide connector when creating a story or picture book.
+   * When creating a story or picture book, create a new presentation with this connector and insert the created story and picture into the slide using other connector.
+   * This creates a blank presentation file, which is basically created with the first slide with no text.
+   */
   async createPresentation(): Promise<IGoogleSlidesService.ISimplePresentationIdOutput> {
     try {
       const googleService = new GoogleService({
@@ -261,7 +405,7 @@ export class GoogleSlidesService {
     }
   }
 
-  createQuarterDivisionImageSlide(input: {
+  private createQuarterDivisionImageSlide(input: {
     templates: IGoogleSlidesService.Template.QuarterDivision[];
     presentationSize: {
       height: number; // heigh와 width의 크기가 같다.
@@ -640,7 +784,7 @@ export class GoogleSlidesService {
     );
   }
 
-  createEntireImageSlide(input: {
+  private createEntireImageSlide(input: {
     templates: IGoogleSlidesService.Template.Entire[];
     presentationSize: {
       height: number; // heigh와 width의 크기가 같다.
@@ -682,7 +826,7 @@ export class GoogleSlidesService {
     );
   }
 
-  createLandscapeImageSlide(input: {
+  private createLandscapeImageSlide(input: {
     templates: IGoogleSlidesService.Template.Landscape[];
     presentationSize: {
       height: number; // heigh와 width의 크기가 같다.
@@ -773,7 +917,7 @@ export class GoogleSlidesService {
     );
   }
 
-  createVerticalImageSlide(input: {
+  private createVerticalImageSlide(input: {
     templates: IGoogleSlidesService.Template.Vertical[];
     presentationSize: {
       height: number; // heigh와 width의 크기가 같다.
@@ -864,7 +1008,7 @@ export class GoogleSlidesService {
     );
   }
 
-  createSqaureImageSlide(input: {
+  private createSqaureImageSlide(input: {
     templates: IGoogleSlidesService.Template.Square[];
     presentationSize: {
       height: number; // heigh와 width의 크기가 같다.
@@ -953,7 +1097,7 @@ export class GoogleSlidesService {
     );
   }
 
-  getSize(presentation: IGoogleSlidesService.Presentation) {
+  private getSize(presentation: IGoogleSlidesService.Presentation) {
     const height = presentation.pageSize?.height?.magnitude as number;
     const unit = presentation.pageSize?.height?.unit;
     const width = presentation.pageSize?.width?.magnitude as number;
@@ -961,7 +1105,7 @@ export class GoogleSlidesService {
     return { height, width, unit };
   }
 
-  createSlide(
+  private createSlide(
     input: Pick<IGoogleSlidesService.AppendSlideInput, "templates"> & {
       size: {
         height: number;
@@ -1011,7 +1155,7 @@ export class GoogleSlidesService {
     return body;
   }
 
-  async appendSlide(input: {
+  private async appendSlide(input: {
     presentationId: string;
     body: Pick<IGoogleSlidesService.IUpdatePresentationInput, "requests">;
   }): Promise<void> {

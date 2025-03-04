@@ -6,6 +6,11 @@ interface IScoredItemWithIndex {
 }
 
 export class RankerService {
+  /**
+   * Ranker Service.
+   *
+   * Sorts the given array of items in order of highest score
+   */
   sortByRank(input: IRankerService.IRankInput): IRankerService.IRankOutput {
     const indices = input.items
       .map<IScoredItemWithIndex>((item, index) => ({

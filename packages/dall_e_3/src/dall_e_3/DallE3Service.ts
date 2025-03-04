@@ -4,6 +4,12 @@ import { AwsS3Service } from "@wrtnlabs/connector-aws-s3";
 
 export class DallE3Service {
   constructor(private readonly props: IDallE3Service.IProps) {}
+
+  /**
+   * DallE3 Service.
+   *
+   * Generate an image using the dall-e-3 model
+   */
   async generateImage(
     input: IDallE3Service.IRequest,
   ): Promise<IDallE3Service.IResponse> {

@@ -14,6 +14,11 @@ export class ExcelService {
     });
   }
 
+  /**
+   * Excel Service.
+   *
+   * Get a list of Excel worksheets that exist in the input file url
+   */
   async readSheets(
     input: IExcelService.IGetWorksheetListInput,
   ): Promise<IExcelService.IWorksheetListOutput> {
@@ -39,6 +44,11 @@ export class ExcelService {
     }
   }
 
+  /**
+   * Excel Service.
+   *
+   * Get the contents of the corresponding Excel file based on the input file information
+   */
   getExcelData(input: {
     workbook: Excel.Workbook;
     sheetName?: string | null;
@@ -82,6 +92,11 @@ export class ExcelService {
     }
   }
 
+  /**
+   * Excel Service.
+   *
+   * Based on the input file information, the headers of the corresponding Excel file are retrieved
+   */
   async readHeaders(input: IExcelService.IReadExcelInput): Promise<string[]> {
     const { fileUrl, sheetName } = input;
     const workbook = await this.getExcelFile({ fileUrl });
@@ -105,6 +120,40 @@ export class ExcelService {
     return headers;
   }
 
+  /**
+   * Excel Service.
+   *
+   * Upload an Excel file to add data to the file
+   *
+   * When adding data to Excel, sheet creation precedes if it is a sheet that does not exist yet.
+   * Therefore, this feature can also be used for sheet creation.
+   * If you want to create a sheet only and create an empty file without any data,
+   * you just need to specify the name of the sheet without any data.
+   *
+   * When adding rows to an already existing sheet,
+   * it is supposed to be added to the lower line, so it is recommended to check the data before adding it.
+   * If you provide fileUrl, you can modify it after you work on it. After modification, the file will be issued as a new link.
+   *
+   * It is a connector that allows users to upload files by drag and drop.
+   */
+  async insertRowsByUpload(
+    input: IExcelService.IInsertExcelRowByUploadInput,
+  ): Promise<IExcelService.IExportExcelFileOutput> {
+    return this.insertRows(input);
+  }
+
+  /**
+   * Excel Service.
+   *
+   * Add data to the Excel file with an Excel file link
+   *
+   * If the sheet doesn’t exist, it will be created, allowing both sheet creation and data addition.
+   * To create an empty sheet, specify only the sheet name without data.
+   * Rows added to an existing sheet will appear on the next line; verify data before adding.
+   * If you provide a file URL, modifications are saved, and a new link is issued.
+   * This connector updates Excel files directly via file links, improving user experience over uploading files.
+   * A link is generated immediately after file creation, making data management more efficient.
+   */
   async insertRows(
     input: IExcelService.IInsertExcelRowInput,
   ): Promise<IExcelService.IExportExcelFileOutput> {
@@ -150,7 +199,9 @@ export class ExcelService {
     }
   }
 
-  async getExcelFile(input: { fileUrl?: string }): Promise<Excel.Workbook> {
+  private async getExcelFile(input: {
+    fileUrl?: string;
+  }): Promise<Excel.Workbook> {
     if (input.fileUrl) {
       const response = await axios.get(input.fileUrl, {
         responseType: "arraybuffer",
@@ -162,6 +213,15 @@ export class ExcelService {
     return new Excel.Workbook();
   }
 
+  /**
+   * Excel Service.
+   *
+   * Add Excel files and sheet
+   *
+   * Create an Excel file and get the link back.
+   * You can also forward this link to the following connector to reflect further modifications.
+   * When creating a sheet with this feature, the default name 'Sheet1' is created if the sheet name is not provided.
+   */
   async createSheets(
     input: IExcelService.ICreateSheetInput,
   ): Promise<IExcelService.IExportExcelFileOutput> {

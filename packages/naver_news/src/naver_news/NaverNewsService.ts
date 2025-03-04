@@ -4,6 +4,11 @@ import { INaverNewsService } from "../structures/INaverNewsService";
 export class NaverNewsService {
   constructor(private readonly props: INaverNewsService.IProps) {}
 
+  /**
+   * Naver News Service.
+   *
+   * Search Naver News
+   */
   async getNews(
     input: INaverNewsService.INaverKeywordInput,
   ): Promise<INaverNewsService.INewsNaverOutput> {

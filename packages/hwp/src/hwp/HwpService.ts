@@ -4,6 +4,11 @@ import { IHwpService } from "../structures/IHwpService";
 export class HwpService {
   constructor(private readonly props: IHwpService.IProps) {}
 
+  /**
+   * Hwp Service.
+   *
+   * Parse the hwp file
+   */
   async parseHwp(
     input: IHwpService.IParseInput,
   ): Promise<IHwpService.IParseOutput> {

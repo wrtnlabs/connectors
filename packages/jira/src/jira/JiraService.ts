@@ -7,6 +7,11 @@ import { markdownToJiraBlock } from "../utils/markdownToJiraBlock";
 export class JiraService {
   constructor(private readonly props: IJiraService.IProps) {}
 
+  /**
+   * Jira Service.
+   *
+   * Find a person within the issue who can be assigned as assignee.
+   */
   async getUsersAssignableInIssue(
     input: IJiraService.__IGetIssueAssignableInput,
   ): Promise<IJiraService.IGetIssueAssignableOutput> {
@@ -36,6 +41,11 @@ export class JiraService {
     }
   }
 
+  /**
+   * Jira Service.
+   *
+   * Get status categories
+   */
   async getStatusCategories(
     input: IJiraService.__IGetStatusCategoryInput,
   ): Promise<IJiraService.IGetStatusCategoryOutput> {
@@ -59,6 +69,11 @@ export class JiraService {
     }
   }
 
+  /**
+   * Jira Service.
+   *
+   * Find a person within the project who can be assigned as assignee.
+   */
   async getUsersAssignableInProject(
     input: IJiraService.__IGetProjectAssignableInput,
   ): Promise<IJiraService.IGetProjectAssignableOutput> {
@@ -86,6 +101,11 @@ export class JiraService {
     }
   }
 
+  /**
+   * Jira Service.
+   *
+   * Find issue statuses for searching issue
+   */
   async getIssueStatuses(
     input: IJiraService.__IGetIssueStatusInput,
   ): Promise<IJiraService.IGetIssueStatusOutput> {
@@ -124,6 +144,11 @@ export class JiraService {
     }
   }
 
+  /**
+   * Jira Service.
+   *
+   * Find issue labels
+   */
   async getIssueLabels(
     input: IJiraService.__IGetIssueLabelInput,
   ): Promise<IJiraService.IGetIssueLabelOutput> {
@@ -147,6 +172,14 @@ export class JiraService {
     }
   }
 
+  /**
+   * Jira Service.
+   *
+   * There are five priorities: 'Highest', 'High', 'Medium', 'Low', and 'Lowest'.
+   * Therefore, it can be used as an enum value without requesting this API,
+   * and this API is already deprecated on the Jira REST API document.
+   * However, for projects that can already be specified by creating a priority level, this connector is added just in case.
+   */
   async getIssuePriorities(
     input: IJiraService.__IGetIssuePriorityInput,
   ): Promise<IJiraService.IGetIssuePriorityOutput> {
@@ -170,6 +203,16 @@ export class JiraService {
     }
   }
 
+  /**
+   * Jira Service.
+   *
+   * Find issue types
+   *
+   * In order for the user to inquire about the issue type, the ID of the project is required.
+   * If the user mentioned the key or name of the project,
+   * it is necessary to first inquire the project and get the correct project ID.
+   * The ID of the project is a numeric character type.
+   */
   async getIssueTypes(
     input: IJiraService.__IGetIssueTypeInput,
   ): Promise<IJiraService.IGetIssueTypeOutput> {
@@ -193,6 +236,16 @@ export class JiraService {
     }
   }
 
+  /**
+   * Jira Service.
+   *
+   * Find the Jira projects
+   *
+   * The Jira project has a unique key and can then be used to query issues with the key.
+   * Returns a paginated list of projects visible to the user.
+   *
+   * In order to inquire about any issues within the project, you must first inquire about the project and find out the key of the project.
+   */
   async getProjects(
     input:
       | IJiraService.__IGetProjectInputByBasicAuth
@@ -224,6 +277,16 @@ export class JiraService {
     }
   }
 
+  /**
+   * Jira Service.
+   *
+   * Get detailed issue information
+   *
+   * Provides more accurate and detailed information, including the title and body of the issue
+   *
+   * It can be used to look up the issue list first, or if you already know the key or ID of the issue.
+   * If you do not know the key or ID, it is recommended to use the issue inquiry connector first.
+   */
   async getIssueDetail(
     input: IJiraService.__IGetIssueDetailInput,
   ): Promise<IJiraService.IGetIssueDetailOutput> {
@@ -250,6 +313,13 @@ export class JiraService {
     }
   }
 
+  /**
+   * Jira Service.
+   *
+   * Find Jira issues
+   *
+   * In order to inquire about any issues within the project, you must first inquire about the project and find out the key of the project.
+   */
   async getIssues(
     input:
       | IJiraService.__IGetIssueInputByBasicAuth
@@ -304,6 +374,11 @@ export class JiraService {
     }
   }
 
+  /**
+   * Jira Service.
+   *
+   * Get user profile
+   */
   async getUserProfile(input: {
     access_token: string;
   }): Promise<{ email: string }> {
@@ -317,6 +392,11 @@ export class JiraService {
     return res.data;
   }
 
+  /**
+   * Jira Service.
+   *
+   * Get accessible resources
+   */
   async getAccessibleResources(input: {
     access_token: string;
   }): Promise<IJiraService.IGetAccessibleResourcesOutput> {
@@ -330,6 +410,11 @@ export class JiraService {
     return res.data[0];
   }
 
+  /**
+   * Jira Service.
+   *
+   * Get authorization and domain
+   */
   async getAuthorizationAndDomain(
     input?: IJiraService.BasicAuthorization,
   ): Promise<{ Authorization: string; baseUrl: string; domain?: string }> {
@@ -346,6 +431,11 @@ export class JiraService {
     }
   }
 
+  /**
+   * Jira Service.
+   *
+   * Get authorization
+   */
   async getAuthorization(
     input?: Pick<IJiraService.BasicAuthorization, "token" | "email">,
   ) {
@@ -389,6 +479,15 @@ export class JiraService {
     }
   }
 
+  /**
+   * Jira Service.
+   *
+   * Delete the comment
+   *
+   * Delete the comments on the issue.
+   * In order to delete the comments on the issue, you need the issue ID or key and the ID of the comment to be deleted.
+   * Please be careful because deleted comments will not be able to be viewed again.
+   */
   async deleteComment(
     input: IJiraService.__IDeleteCommentInput,
   ): Promise<void> {
@@ -412,6 +511,12 @@ export class JiraService {
     }
   }
 
+  /**
+   * Jira Service.
+   *
+   * Creates a comment on an issue
+   * Here, user can write the body of the comment you want to write with the ID or key of the issue.
+   */
   async createComment(
     input: IJiraService.__ICreateCommentByMarkdownInput,
   ): Promise<IJiraService.ICreateCommentOutput> {
@@ -450,6 +555,16 @@ export class JiraService {
     }
   }
 
+  /**
+   * Jira Service.
+   *
+   * Get comments by issue id or key
+   *
+   * This connector uses the issue's key or ID value to query the comments written on the issue.
+   * Comments are also visible when looking up issues,
+   * but not all comments inside are visible,
+   * so user have to use this connector to look up them in pagination.
+   */
   async getComments(
     input: IJiraService.__IGetCommentInput,
   ): Promise<IJiraService.IGetCommentOutput> {
@@ -476,6 +591,11 @@ export class JiraService {
     }
   }
 
+  /**
+   * Jira Service.
+   *
+   * Unassign the assignee from the Jira issue
+   */
   async unassign(input: IJiraService.__IUnAssignInput): Promise<void> {
     try {
       await this.updateIssue({
@@ -499,6 +619,11 @@ export class JiraService {
     }
   }
 
+  /**
+   * Jira Service.
+   *
+   * Assign the assignee from the Jira issue
+   */
   async assign(input: IJiraService.__IAssignInput): Promise<void> {
     try {
       await this.updateIssue({
@@ -522,6 +647,15 @@ export class JiraService {
     }
   }
 
+  /**
+   * Jira Service.
+   *
+   * Inquire the transition of an issue, which is an edge on a workflow that allows you to change the status of an issue
+   * If the person who designed the workflow for the project defined three states that could be moved from the current state, there would be three edges.
+   * In Jira, just because there is a status that can be viewed in a project or issue does not mean that you can change the status unconditionally.
+   * When designing an edge, for example, you can also design an issue in the 'backoff' state to go through the 'in progress' state once.
+   * In this case, you need to move two edges to turn the backoff issue into 'done'.
+   */
   async getTransitions(
     input: IJiraService.__IGetTransitionInput,
   ): Promise<IJiraService.IGetTransitionOutput> {
@@ -549,6 +683,14 @@ export class JiraService {
     }
   }
 
+  /**
+   * Jira Service.
+   *
+   * Change issue status
+   *
+   * Changing the status of an issue must be done after inquiring about changeable Transitions from the current issue.
+   * This is forced by the person who designed the workflow in the project, so you must change the status in the order set.
+   */
   async updateIssueStatus(
     input: IJiraService.__IUpdateStatusInput,
   ): Promise<void> {
@@ -579,6 +721,14 @@ export class JiraService {
     }
   }
 
+  /**
+   * Jira Service.
+   *
+   * modify comment
+   *
+   * Modify the comment. You can only modify the body of the comment here.
+   * To create comment in issue, Just write markdown string format contents.
+   */
   async updateComment(
     input: IJiraService.IUpdateCommentByMarkdownInput,
   ): Promise<void> {
@@ -614,6 +764,17 @@ export class JiraService {
     }
   }
 
+  /**
+   * Jira Service.
+   *
+   * Update an issue
+   *
+   * You can modify any element in the field.
+   * It can be used to modify the issue type, person in charge, summary, and description.
+   *
+   * In order to write the body of an issue, you must create the body as if you were assembling several blocks.
+   * There are pre-designated content types, so please check this type information carefully.
+   */
   async updateIssue(
     input: IJiraService.__IUpdateIssueInput & { id: IJiraService.Issue["id"] },
   ): Promise<void> {
@@ -648,6 +809,18 @@ export class JiraService {
     }
   }
 
+  /**
+   * Jira Service.
+   *
+   * Create an Issue with Markdown
+   *
+   * Required: issue type, project, and summary. Use other connectors to find IDs for issue or priority types if unknown.
+   * Write the body using predefined content blocks. Check content type guidelines carefully.
+   * Prioritization depends on project settings. If prioritization fails, remove priority and retry.
+   * Assignees must exist in the system and may differ from names in other services (e.g., Slack). Verify names within Jira.
+   * For errors, create a basic issue using the project key, ID, and text, then update assignee or priority incrementally.
+   * Provide a link for users to verify the created issue and confirm allocable attributes like assignees and priorities.
+   */
   async createIssueByMarkdown(
     input: IJiraService.ICreateIssueByMarkdownInput,
   ): Promise<{ id: string; key: string }> {

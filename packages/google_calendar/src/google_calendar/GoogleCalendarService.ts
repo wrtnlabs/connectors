@@ -6,7 +6,12 @@ import { GoogleService } from "@wrtnlabs/connector-google";
 export class GoogleCalendarService {
   constructor(private readonly props: IGoogleCalendarService.IProps) {}
 
-  async calendarList(): Promise<
+  /**
+   * Google Calendar Service.
+   *
+   * Get a list of Google Calendars
+   */
+  async getCalendarList(): Promise<
     IGoogleCalendarService.IGoogleCalendarOutput[]
   > {
     try {
@@ -40,6 +45,11 @@ export class GoogleCalendarService {
     }
   }
 
+  /**
+   * Google Calendar Service.
+   *
+   * Create a Google Calendar
+   */
   async createCalendar(
     input: IGoogleCalendarService.ICreateCalendarInput,
   ): Promise<IGoogleCalendarService.IGoogleCalendarOutput> {
@@ -73,6 +83,11 @@ export class GoogleCalendarService {
     }
   }
 
+  /**
+   * Google Calendar Service.
+   *
+   * Delete a calendar
+   */
   async deleteCalendar(input: { calendarId: string }): Promise<void> {
     try {
       const { calendarId } = input;
@@ -93,6 +108,11 @@ export class GoogleCalendarService {
     }
   }
 
+  /**
+   * Google Calendar Service.
+   *
+   * Get a list of events in Google Calendar
+   */
   async eventList(
     input: IGoogleCalendarService.IReadGoogleCalendarEventInput,
   ): Promise<IGoogleCalendarService.IReadGoogleCalendarEventOutput> {
@@ -143,6 +163,11 @@ export class GoogleCalendarService {
     }
   }
 
+  /**
+   * Google Calendar Service.
+   *
+   * Add a quick event to Google Calendar
+   */
   async createQuickEvent(
     input: IGoogleCalendarService.ICreateQuickEventInput,
   ): Promise<void> {
@@ -166,6 +191,11 @@ export class GoogleCalendarService {
     }
   }
 
+  /**
+   * Google Calendar Service.
+   *
+   * Add an event to Google Calendar
+   */
   async createEvent(
     input: IGoogleCalendarService.IEventRequestBodyInput,
   ): Promise<IGoogleCalendarService.IGoogleCalendarEvent> {
@@ -193,6 +223,11 @@ export class GoogleCalendarService {
     }
   }
 
+  /**
+   * Google Calendar Service.
+   *
+   * Modify an event
+   */
   async updateEvent(
     input: IGoogleCalendarService.IEventRequestBodyInput,
   ): Promise<IGoogleCalendarService.IGoogleCalendarEvent> {
@@ -223,6 +258,11 @@ export class GoogleCalendarService {
     }
   }
 
+  /**
+   * Google Calendar Service.
+   *
+   * Add attendees to an event
+   */
   async addAttendeesToEvent(
     input: IGoogleCalendarService.IAddAttendeesToEventInput,
   ): Promise<IGoogleCalendarService.IGoogleCalendarEvent> {
@@ -265,6 +305,11 @@ export class GoogleCalendarService {
     }
   }
 
+  /**
+   * Google Calendar Service.
+   *
+   * Delete an event
+   */
   async deleteEvent(input: {
     calendarId: string;
     eventId: string;

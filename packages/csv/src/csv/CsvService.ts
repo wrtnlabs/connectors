@@ -17,10 +17,15 @@ export class CsvService {
     });
   }
 
+  /**
+   * Csv Service.
+   *
+   * Read CSV file contents
+   */
   async read(input: ICsvService.IReadInput): Promise<ICsvService.IReadOutput> {
     try {
       const { s3Url, delimiter } = input;
-      const match = s3Url.match(this.s3.S3BucketURL);
+      const match = s3Url.match(this.props.aws.s3.bucket);
 
       const body: string = await (async (): Promise<string> => {
         if (match) {
@@ -45,6 +50,11 @@ export class CsvService {
     }
   }
 
+  /**
+   * Csv Service.
+   *
+   * Create a CSV file
+   */
   async write(
     input: ICsvService.IWriteInput,
   ): Promise<ICsvService.IWriteOutput> {
@@ -95,11 +105,16 @@ export class CsvService {
     };
   }
 
+  /**
+   * Csv Service.
+   *
+   * Convert CSV file to Excel file.
+   */
   async convertCsvToExcel(
     input: ICsvService.ICsvToExcelInput,
   ): Promise<ICsvService.ICsvToExcelOutput> {
     const { s3Url, delimiter } = input;
-    const match = s3Url.match(this.s3.S3BucketURL);
+    const match = s3Url.match(this.props.aws.s3.bucket);
     if (!match) throw new Error("Invalid S3 URL");
 
     const filename = match[3]!;

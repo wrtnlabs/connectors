@@ -5,14 +5,18 @@ import {
 import { google } from "googleapis";
 import { IGoogleSheetService } from "../structures/IGoogleSheetService";
 import { GoogleService } from "@wrtnlabs/connector-google";
-import { ISpreadsheetCell } from "@wrtnlabs/connector-shared";
+// import { ISpreadsheetCell } from "@wrtnlabs/connector-shared";
 import { AxiosError } from "axios";
 
 export class GoogleSheetService {
   constructor(private readonly props: IGoogleSheetService.IProps) {}
 
   /**
-   * Create Google Sheet
+   * Google Sheet Service.
+   *
+   * Create a Google Sheet
+   *
+   * The created sheet will be created in the Google Drive root path.
    */
   async createSpreadsheet(
     input: IGoogleSheetService.ICreateGoogleSheetInput,
@@ -56,57 +60,59 @@ export class GoogleSheetService {
     }
   }
 
-  async insertCells(input: {
-    spreadsheetId: string;
-    cells: ISpreadsheetCell.ICreate[];
-  }) {
-    const googleService = new GoogleService({
-      clientId: this.props.clientId,
-      clientSecret: this.props.clientSecret,
-      secret: this.props.secret,
-    });
+  // async insertCells(input: {
+  //   spreadsheetId: string;
+  //   cells: ISpreadsheetCell.ICreate[];
+  // }) {
+  //   const googleService = new GoogleService({
+  //     clientId: this.props.clientId,
+  //     clientSecret: this.props.clientSecret,
+  //     secret: this.props.secret,
+  //   });
 
-    const accessToken = await googleService.refreshAccessToken();
-    const authClient = new google.auth.OAuth2();
-    authClient.setCredentials({ access_token: accessToken });
+  //   const accessToken = await googleService.refreshAccessToken();
+  //   const authClient = new google.auth.OAuth2();
+  //   authClient.setCredentials({ access_token: accessToken });
 
-    await google
-      .sheets({ version: "v4", auth: authClient })
-      .spreadsheets.batchUpdate({
-        spreadsheetId: input.spreadsheetId,
-        requestBody: {
-          requests: input.cells.map((cell) => {
-            return {
-              updateCells: {
-                range: {
-                  /**
-                   * @todo 시트 아이디를 지정할 수 있게 하기
-                   */
-                  sheetId: 0, // 0번째 시트를 의미
-                  startRowIndex: cell.row - 1,
-                  startColumnIndex: cell.column - 1,
-                  endRowIndex: cell.row,
-                  endColumnIndex: cell.column,
-                },
-                rows: [
-                  {
-                    values: [
-                      {
-                        userEnteredValue: { stringValue: cell.snapshot.value },
-                      },
-                    ],
-                  },
-                ],
-                fields: "*",
-              },
-            };
-          }),
-        },
-      });
-  }
+  //   await google
+  //     .sheets({ version: "v4", auth: authClient })
+  //     .spreadsheets.batchUpdate({
+  //       spreadsheetId: input.spreadsheetId,
+  //       requestBody: {
+  //         requests: input.cells.map((cell) => {
+  //           return {
+  //             updateCells: {
+  //               range: {
+  //                 /**
+  //                  * @todo 시트 아이디를 지정할 수 있게 하기
+  //                  */
+  //                 sheetId: 0, // 0번째 시트를 의미
+  //                 startRowIndex: cell.row - 1,
+  //                 startColumnIndex: cell.column - 1,
+  //                 endRowIndex: cell.row,
+  //                 endColumnIndex: cell.column,
+  //               },
+  //               rows: [
+  //                 {
+  //                   values: [
+  //                     {
+  //                       userEnteredValue: { stringValue: cell.snapshot.value },
+  //                     },
+  //                   ],
+  //                 },
+  //               ],
+  //               fields: "*",
+  //             },
+  //           };
+  //         }),
+  //       },
+  //     });
+  // }
 
   /**
-   * Append To Sheet
+   * Google Sheet Service.
+   *
+   * Add content to Google Sheets
    */
   async appendToSheet(
     input: IGoogleSheetService.IAppendToSheetInput,
@@ -152,8 +158,9 @@ export class GoogleSheetService {
   }
 
   /**
-   * Read Google Sheet Headers
-   * @param input Google Sheet Url and index number(default 0)
+   * Google Sheet Service.
+   *
+   * Get the header information of a Google Sheet
    */
   async readHeaders(
     input: IGoogleSheetService.IReadGoogleSheetHeadersInput,
@@ -191,8 +198,9 @@ export class GoogleSheetService {
   }
 
   /**
-   * Add Permission to Google Sheet
-   * @param input Google Sheet Url and Permission List including email and role
+   * Google Sheet Service.
+   *
+   * Grant permissions to Google Sheets
    */
   async permission(input: IGoogleSheetService.IPermissionInput): Promise<void> {
     const googleService = new GoogleService({
@@ -225,8 +233,9 @@ export class GoogleSheetService {
   }
 
   /**
-   * Add new Headers to Google Sheet
-   * @param input Google Sheet Url and new Header Names
+   * Google Sheet Service.
+   *
+   * Add a header to a Google Sheet
    */
   async writeHeaders(
     input: IGoogleSheetService.IWriteGoogleSheetHeadersInput,
@@ -267,6 +276,11 @@ export class GoogleSheetService {
     }
   }
 
+  /**
+   * Google Sheet Service.
+   *
+   * Get a list of Google Worksheets
+   */
   async getWorkSheet(
     input: IGoogleSheetService.IGetWorkSheetInput,
   ): Promise<IGoogleSheetService.IGetWorkSheetOutput> {
@@ -297,6 +311,11 @@ export class GoogleSheetService {
     }
   }
 
+  /**
+   * Google Sheet Service.
+   *
+   * Get row information from Google Sheets
+   */
   async readRows(
     input: IGoogleSheetService.IReadGoogleSheetRowsInput,
   ): Promise<IGoogleSheetService.IReadGoogleSheetRowsOutput> {

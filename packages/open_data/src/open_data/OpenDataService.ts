@@ -35,6 +35,8 @@ export class OpenDataService {
   // }
 
   /**
+   * Open Data Service.
+   *
    * Search for the address system of the Republic of Korea
    *
    * - If you enter a postal address, you can convert it to a street address and a road name address.
@@ -55,6 +57,8 @@ export class OpenDataService {
   }
 
   /**
+   * Open Data Service.
+   *
    * [Ministry of Land, Infrastructure and Transport] Retrieves information on single-family homes and multi-family homes for lease or rent
    *
    * This Connect is based on data obtained from public data portals in Korea.
@@ -101,6 +105,8 @@ export class OpenDataService {
   }
 
   /**
+   * Open Data Service.
+   *
    * [Ministry of Land, Infrastructure and Transport] Retrieves officetel lease and rent information
    *
    * This Connect is based on data obtained from public data portals in Korea.
@@ -150,6 +156,8 @@ export class OpenDataService {
   }
 
   /**
+   * Open Data Service.
+   *
    * [Ministry of Land, Infrastructure and Transport] Retrieves apartment lease and rent information
    *
    * This Connect is based on data obtained from public data portals in Korea.
@@ -197,6 +205,8 @@ export class OpenDataService {
   }
 
   /**
+   * Open Data Service.
+   *
    * [Korea Land and Housing Corporation] Retrieves information on LH rental housing complexes
    *
    * This Connect is based on data obtained from public data portals in Korea.
@@ -245,6 +255,8 @@ export class OpenDataService {
   }
 
   /**
+   * Open Data Service.
+   *
    * [National Information Society Agency] Retrieves parking lot information
    *
    * This Connect is based on data obtained from public data portals in Korea.
@@ -287,6 +299,8 @@ export class OpenDataService {
   }
 
   /**
+   * Open Data Service.
+   *
    * [Ministry of Land, Infrastructure and Transport] Retrieves building registration information
    *
    * This Connect is based on data obtained from public data portals in Korea.
@@ -336,6 +350,8 @@ export class OpenDataService {
   }
 
   /**
+   * Open Data Service.
+   *
    * [Ministry of the Interior and Safety] Retrieves administrative standard codes for domestic regions
    *
    * This Connect is based on data obtained from public data portals in Korea.
@@ -392,6 +408,8 @@ export class OpenDataService {
   }
 
   /**
+   * Open Data Service.
+   *
    * [Financial Services Commission] Retrieves market capitalization and stock information
    *
    * This Connect is based on data obtained from public data portals in Korea.
@@ -433,6 +451,8 @@ export class OpenDataService {
   }
 
   /**
+   * Open Data Service.
+   *
    * [Korea Meteorological Administration] Retrieves today's weather information
    *
    * Latitude and longitude coordinates are required for querying.
@@ -541,6 +561,8 @@ export class OpenDataService {
   }
 
   /**
+   * Open Data Service.
+   *
    * [Korea Copyright Commission] Searches for copyright information
    *
    * This Connect is based on data obtained from public data portals in Korea.

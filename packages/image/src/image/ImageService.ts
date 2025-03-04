@@ -6,6 +6,8 @@ export class ImageService {
   constructor() {}
 
   /**
+   * Image Service.
+   *
    * Get cropped image file from url.
    *
    * @param input - Image url and target ratio.
@@ -39,6 +41,8 @@ export class ImageService {
   }
 
   /**
+   * Image Service.
+   *
    * Calculate size of image according to target ratio.
    *
    * @param input - Original size of image and target ratio.

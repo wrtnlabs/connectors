@@ -7,12 +7,15 @@ import { createQueryParameter } from "@wrtnlabs/connector-shared";
 
 export class GoogleMapService {
   constructor(private readonly props: IGoogleMapService.IProps) {}
+
   /**
-   * 1,000회 요청 당 2.83 달러를 사용하나, Google Map은 매 달 200달러까지는 무료 사용이 가능하다.
-   * 다른 API 사용량과 합산하여 금액이 결정된다.
+   * Google Map Service.
    *
-   * @param input
-   * @returns
+   * recommendations for automatic completion or location through a search word or a latitude coordinate value to be used with the search word.
+   *
+   * Since it is a text auto-completion, this feature allows you to find better search keywords.
+   * However, since there is a separate connector for searching the surrounding geography, it is recommended to use that connector if you want to find a place that is not a keyword.
+   * It is recommended that you use this connector to narrow down the search keyword before writing the place search connector.
    */
   async autocomplete(
     input: IGoogleMapService.IAutocompleteInput,
@@ -58,24 +61,14 @@ export class GoogleMapService {
     };
   }
 
-  async getPhoto(input: {
-    photoResourceName: `places/${string}/photos/${string}`;
-  }): Promise<{
-    name: string;
-    photoUri: string & tags.Format<"iri">;
-  }> {
-    const { photoResourceName } = input;
-    const queryParameter = createQueryParameter({
-      key: this.props.googleApiKey,
-      maxHeightPx: 1600,
-      skipHttpRedirect: true,
-    });
-
-    const url = `https://places.googleapis.com/v1/${photoResourceName}/media?${queryParameter}`;
-    const res = await axios.get(url);
-    return res.data;
-  }
-
+  /**
+   * Google Map Service.
+   *
+   * General search functionality on Google Maps
+   *
+   * If possible, it is recommended to use POST/connector/google-map/search-text connector rather than this.
+   * Here, it is difficult to conduct additional search after providing information to users because only restaurants are searched using the Serp API and the response parameter does not provide a Google Map link.
+   */
   async searchText(
     input: IGoogleMapService.ISearchTextInput,
   ): Promise<IGoogleMapService.ISearchTextOutput> {
@@ -122,6 +115,11 @@ export class GoogleMapService {
     }
   }
 
+  /**
+   * Google Map Service.
+   *
+   * Search for restaurants using Google Maps
+   */
   async search(
     input: IGoogleMapService.IRequest,
   ): Promise<IGoogleMapService.IResponse[]> {
@@ -165,6 +163,11 @@ export class GoogleMapService {
     }
   }
 
+  /**
+   * Google Map Service.
+   *
+   * Search for restaurant reviews selected from Google Maps
+   */
   async review(
     input: IGoogleMapService.IReviewRequest,
   ): Promise<IGoogleMapService.IReviewResponse[]> {
@@ -198,5 +201,23 @@ export class GoogleMapService {
       console.error(JSON.stringify(err));
       throw err;
     }
+  }
+
+  private async getPhoto(input: {
+    photoResourceName: `places/${string}/photos/${string}`;
+  }): Promise<{
+    name: string;
+    photoUri: string & tags.Format<"iri">;
+  }> {
+    const { photoResourceName } = input;
+    const queryParameter = createQueryParameter({
+      key: this.props.googleApiKey,
+      maxHeightPx: 1600,
+      skipHttpRedirect: true,
+    });
+
+    const url = `https://places.googleapis.com/v1/${photoResourceName}/media?${queryParameter}`;
+    const res = await axios.get(url);
+    return res.data;
   }
 }

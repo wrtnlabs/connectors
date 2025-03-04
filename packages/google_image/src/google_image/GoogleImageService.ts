@@ -4,6 +4,11 @@ import { IGoogleImageService } from "../structures/IGoogleImageService";
 export class GoogleImageService {
   constructor(private readonly props: IGoogleImageService.IProps) {}
 
+  /**
+   * Google Image Service.
+   *
+   * Search Google for images based on the search terms you enter
+   */
   async search(
     input: IGoogleImageService.IRequest,
   ): Promise<IGoogleImageService.IResponse[]> {

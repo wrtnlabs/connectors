@@ -4,6 +4,11 @@ import { IDaumBlogService } from "../structures/IDaumBlogService";
 export class DaumBlogService {
   constructor(private readonly props: IDaumBlogService.IProps) {}
 
+  /**
+   * Daum Blog Service.
+   *
+   * Search the following blog content
+   */
   async search(
     input: IDaumBlogService.ISearchInput,
   ): Promise<IDaumBlogService.IBlogOutput> {

@@ -21,6 +21,22 @@ export class GoogleSearchService {
     };
   }
 
+  /**
+   * Google Search Service.
+   *
+   * Search Google for the search term you entered
+   */
+  async search(
+    input: IGoogleSearchService.IRequest,
+  ): Promise<IGoogleSearchService.IResponse[]> {
+    return this.searchResult(input);
+  }
+
+  /**
+   * Google Search Service.
+   *
+   * Search Google for the search term you entered
+   */
   async searchResult(
     input: IGoogleSearchService.IRequest,
   ): Promise<IGoogleSearchService.IResponse[]> {
@@ -89,11 +105,5 @@ export class GoogleSearchService {
       console.error(JSON.stringify(error));
       throw error;
     }
-  }
-
-  async search(
-    input: IGoogleSearchService.IRequest,
-  ): Promise<IGoogleSearchService.IResponse[]> {
-    return this.searchResult(input);
   }
 }

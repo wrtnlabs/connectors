@@ -20,6 +20,13 @@ export class GoogleHotelService {
     };
   }
 
+  /**
+   * Google Hotel Service.
+   *
+   * Search for accommodations using Google Hotels service
+   * Only one keyword should be requested per request.
+   * For example, if you need to enter Seoul and Tokyo as keywords, you should make two requests with one word, "Seoul" and "Tokyo", not "Seoul, Tokyo".
+   */
   async search(
     input: IGoogleHotelService.IRequest,
   ): Promise<IGoogleHotelService.IResponse[]> {

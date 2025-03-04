@@ -4,6 +4,11 @@ import { IKakaoNaviService } from "../structures/IKakaoNaviService";
 export class KakaoNaviService {
   constructor(private readonly props: IKakaoNaviService.IProps) {}
 
+  /**
+   * Kakao Navi Service.
+   *
+   * Finding directions with Kakao Navi
+   */
   async getFutureDirections(
     input: IKakaoNaviService.IGetFutureDirectionsInput,
   ): Promise<IKakaoNaviService.IGetFutureDirectionsOutput> {

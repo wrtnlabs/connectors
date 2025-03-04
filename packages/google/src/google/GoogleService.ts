@@ -4,6 +4,11 @@ import { IGoogleService } from "../structures/IGoogleService";
 export class GoogleService {
   constructor(private readonly props: IGoogleService.IProps) {}
 
+  /**
+   * Google Auth Service.
+   *
+   * Request to reissue Google access token
+   */
   async refreshAccessToken(): Promise<string> {
     const client = new google.auth.OAuth2(
       this.props.clientId,

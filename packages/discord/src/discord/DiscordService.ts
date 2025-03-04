@@ -4,6 +4,12 @@ import { IDiscordService } from "../structures/IDiscordService";
 export class DiscordService {
   constructor(private readonly props: IDiscordService.IProps) {}
 
+  /**
+   * Discord Service.
+   *
+   * Get a list of members on the server
+   *
+   */
   async getListGuildMembers(): Promise<IDiscordService.IGuildMember[]> {
     try {
       const guildId = this.getGuildInfo();
@@ -22,6 +28,12 @@ export class DiscordService {
     }
   }
 
+  /**
+   * Discord Service.
+   *
+   * Create a new DM channel
+   *
+   */
   async createDM(
     input: IDiscordService.ICreateDMRequest,
   ): Promise<IDiscordService.IChannel> {
@@ -45,6 +57,12 @@ export class DiscordService {
     }
   }
 
+  /**
+   * Discord Service.
+   *
+   * Modify server information
+   *
+   */
   async modifyGuild(
     input: IDiscordService.IModifyGuildRequest,
   ): Promise<IDiscordService.IGuild> {
@@ -68,6 +86,12 @@ export class DiscordService {
     }
   }
 
+  /**
+   * Discord Service.
+   *
+   * Get a list of channels on the server
+   *
+   */
   async getGuildChannels(): Promise<IDiscordService.IChannel[]> {
     try {
       const guildId = this.getGuildInfo();
@@ -86,6 +110,12 @@ export class DiscordService {
     }
   }
 
+  /**
+   * Discord Service.
+   *
+   * Create a new channel on the server
+   *
+   */
   async createGuildChannel(
     input: IDiscordService.ICreateGuildChannelRequest,
   ): Promise<IDiscordService.IChannel> {
@@ -111,6 +141,12 @@ export class DiscordService {
     }
   }
 
+  /**
+   * Discord Service.
+   *
+   * Kicks selected members from the server
+   *
+   */
   async removeGuildMember(
     input: IDiscordService.IRemoveGuildMember,
   ): Promise<void> {
@@ -131,7 +167,9 @@ export class DiscordService {
   }
 
   /**
-   * Channel
+   * Discord Service.
+   *
+   * Modify channel information
    */
   async modifyChannel(
     input: IDiscordService.IModifyChannelRequest,
@@ -155,6 +193,11 @@ export class DiscordService {
     }
   }
 
+  /**
+   * Discord Service.
+   *
+   * Delete the selected channel
+   */
   async deleteChannel(
     input: IDiscordService.IDeleteChannelRequest,
   ): Promise<void> {
@@ -173,6 +216,11 @@ export class DiscordService {
     }
   }
 
+  /**
+   * Discord Service.
+   *
+   * Get a list of pinned messages in a channel
+   */
   async getPinnedMessages(
     input: IDiscordService.IGetPinnedMessagesRequest,
   ): Promise<IDiscordService.IMessage[]> {
@@ -192,6 +240,12 @@ export class DiscordService {
     }
   }
 
+  /**
+   * Discord Service.
+   *
+   * Pin a message to a channel
+   *
+   */
   async pinMessage(
     input: IDiscordService.IPinOrUnpinMessagesRequest,
   ): Promise<void> {
@@ -211,6 +265,11 @@ export class DiscordService {
     }
   }
 
+  /**
+   * Discord Service.
+   *
+   * Unpin a pinned message from a channel
+   */
   async unpinMessage(
     input: IDiscordService.IPinOrUnpinMessagesRequest,
   ): Promise<void> {
@@ -230,7 +289,9 @@ export class DiscordService {
   }
 
   /**
-   * Message
+   * Discord Service.
+   *
+   * Get the messages that exist in the channel
    */
   async getChannelMessageHistories(
     input: IDiscordService.IGetChannelMessageHistoriesRequest,
@@ -273,6 +334,11 @@ export class DiscordService {
     }
   }
 
+  /**
+   * Discord Service.
+   *
+   * Send a message
+   */
   async createMessage(
     input: IDiscordService.ICreateMessageRequest,
   ): Promise<IDiscordService.IMessage> {
@@ -295,6 +361,11 @@ export class DiscordService {
     }
   }
 
+  /**
+   * Discord Service.
+   *
+   * Modify the message
+   */
   async editMessage(
     input: IDiscordService.IEditMessageRequest,
   ): Promise<IDiscordService.IMessage> {
@@ -317,6 +388,11 @@ export class DiscordService {
     }
   }
 
+  /**
+   * Discord Service.
+   *
+   * Delete message
+   */
   async deleteMessage(
     input: IDiscordService.IDeleteMessageRequest,
   ): Promise<void> {
@@ -335,6 +411,11 @@ export class DiscordService {
     }
   }
 
+  /**
+   * Discord Service.
+   *
+   * Delete multiple messages
+   */
   async bulkDeleteMessages(
     input: IDiscordService.IBulkDeleteMessagesRequest,
   ): Promise<void> {
@@ -356,6 +437,11 @@ export class DiscordService {
     }
   }
 
+  /**
+   * Discord Service.
+   *
+   * Get the guild IDs of the user
+   */
   async getGuildIds(): Promise<IDiscordService.IGetGuildIdsOutput> {
     const res = await axios.get(
       `https://discord.com/api/v10/users/@me/guilds`,

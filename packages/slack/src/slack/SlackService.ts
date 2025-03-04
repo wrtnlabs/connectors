@@ -15,6 +15,16 @@ import { SlackTemplateService } from "./SlackTemplateService";
 export class SlackService {
   constructor(private readonly props: ISlackService.IProps) {}
 
+  /**
+   * Slack Service.
+   *
+   * Delete the scheduled message
+   *
+   * To clear a scheduled message,
+   * you must get the exact id of that message, so you must first use the scheduled message lookup connector.
+   * When using this connector,
+   * the ID of the channel is also required, which can be retrieved from the message object by querying the channel or by querying the scheduled message.
+   */
   async deleteScheduleMessage(
     input: ISlackService.IDeleteSCheduleMessageInput,
   ): Promise<void> {
@@ -39,6 +49,19 @@ export class SlackService {
     }
   }
 
+  /**
+   * Slack Service.
+   *
+   * Get a list of scheduled messages
+   *
+   * Look up the messages you booked.
+   * You can use `post_at` and `post_at_date` to find out when the message will be sent.
+   * If you want to clear the message, use the `id` value in the scheduled message.
+   *
+   * If a user wants to send a reservation message to himself,
+   * he or she should look up both the user and the 'im' channel, then find the 'im' channel with his or her user ID and send it to that channel.
+   * What is on the 'im' channel includes not only the user's own channel, but also all the channels that can send and receive direct messages for each user.
+   */
   async getScheduledMessages(
     input: ISlackService.IGetScheduledMessageListInput,
   ): Promise<ISlackService.IGetScheduledMessageListOutput> {
@@ -86,6 +109,24 @@ export class SlackService {
     }
   }
 
+  /**
+   * Slack Service.
+   *
+   * Create a schduled message
+   *
+   * By default,
+   * it is not much different from sending a message except for specifying a schduled time,
+   * and requires a channel ID and message content.
+   * If the message you want to schedule is within a specific thread, you must pass the ts value of the parent message.
+   *
+   * Messages booked through this feature are not visible in the Slack desktop app and can only be canceled through the API.
+   * Therefore, be careful in writing messages.
+   * If you want to cancel, please refer to the message created through another connector and call the delete connector again.
+   *
+   * Users may be embarrassed if the message you booked is not viewed in the Slack desktop app,
+   * so although it cannot be viewed before and after transmission,
+   * it would be a good idea to let them know that it will actually be transmitted in our service.
+   */
   async sendScheduleMessage(
     input: ISlackService.ISCheduleMessageInput,
   ): Promise<Pick<ISlackService.ScheduledMessage, "post_at">> {
@@ -114,6 +155,9 @@ export class SlackService {
     }
   }
 
+  /**
+   * @hidden
+   */
   async interactivity(
     input: ISlackService.InteractiveComponentInput,
   ): Promise<any[]> {
@@ -185,6 +229,13 @@ export class SlackService {
     return blocks ?? [];
   }
 
+  /**
+   * Slack Service.
+   *
+   * Marks a specific message in a Slack channel as read
+   *
+   * You need to know both the channel ID and the ts value of the message.
+   */
   async mark(input: ISlackService.IMarkInput): Promise<void> {
     const url = `https://slack.com/api/conversations.mark`;
 
@@ -207,6 +258,19 @@ export class SlackService {
     }
   }
 
+  /**
+   * Slack Service.
+   *
+   * send reply message to thread
+   *
+   * Creates a reply.
+   * To reply, you must first look up the thread.
+   * You can look up the thread and pass on the 'ts' value of that thread.
+   * You still need the channel's ID here.
+   * The channel's ID will start with a C or D and be an unknown string,
+   * not a natural language name recognized by the user.
+   * Therefore, if you don't know the channel ID, you should also look up the channel.
+   */
   async sendReply(
     input: ISlackService.IPostMessageReplyInput,
   ): Promise<Pick<ISlackService.Message, "ts">> {
@@ -219,6 +283,8 @@ export class SlackService {
   }
 
   /**
+   * Slack Service.
+   *
    * Inquire the inside of the thread in History
    *
    * If you have inquired the history of a channel,
@@ -362,52 +428,15 @@ export class SlackService {
     };
   }
 
-  private extract(target: "usergroup") {
-    if (target === "usergroup") {
-      return function (input: {
-        response: Pick<ISlackService.Message, "text">[];
-        allUserGroup: ISlackService.UserGroup[];
-      }): ISlackService.UserGroup[] {
-        const refinedTags = Array.from(
-          new Set(
-            ...input.response.flatMap((message) => {
-              const tags = message.text.match(/<!subteam\^\w+>/g);
-              const refinedTags: string[] = tags
-                ? Array.from(new Set(tags))
-                : [];
-              return refinedTags;
-            }),
-          ),
-        );
-        const includedUsergroups = input.allUserGroup.filter((usergroup) => {
-          return refinedTags.includes(`<!subteam^${usergroup.id}>`);
-        });
-
-        return includedUsergroups;
-      };
-    }
-
-    throw new Error("invalid target.");
-  }
-
-  async getAllUsers(): Promise<
-    Awaited<ReturnType<typeof this.getUsers>>["users"]
-  > {
-    let nextCursor: string | null = null;
-    let response: Awaited<ReturnType<typeof this.getUsers>>["users"] = [];
-    do {
-      const { next_cursor, users } = await this.getUsers({
-        ...(nextCursor ? { cursor: nextCursor } : {}),
-        limit: 1000,
-      });
-
-      response = response.concat(users);
-      nextCursor = next_cursor;
-    } while (nextCursor);
-
-    return response;
-  }
-
+  /**
+   * Slack Service.
+   *
+   * Inquire user details
+   *
+   * Inquire the user's detailed profile to acquire information such as phone number, email, and position.
+   * It cannot be verified if the user has not filled in.
+   * This function receives the user's ID in an array and inquires at once.
+   */
   async getUserDetails(
     input: ISlackService.IGetUserDetailInput,
   ): Promise<ISlackService.IGetUserDetailOutput[]> {
@@ -456,6 +485,24 @@ export class SlackService {
     return response;
   }
 
+  /**
+   * Slack Service.
+   *
+   * Look up the list of users.
+   *
+   * Users include bots and refer to all users in the team who are looking up.
+   * Here, you can look up the user's ID and name, the name the user wanted to display, the profile image, and whether the user has been deleted.
+   * If you look up the user here, you can send a message to your colleagues on a specific direct channel, such as an `im` ( = channel type. )
+   *
+   * This connector is essential because the `im` channel query only shows the user's ID and does not know who the direct channel is talking to.
+   *
+   * The user has a separate display name.
+   * A display name is a name that the user has chosen to show.
+   * Therefore, it would be best to use this name as a courtesy.
+   *
+   * It can look up Slack users, but it can look up the entire user through pagenation.
+   * There could be hundreds of people in the company, so you'll have to look at multiple pages.
+   */
   async getUsers(
     input: ISlackService.IGetUserListInput,
   ): Promise<ISlackService.IGetUserListOutput> {
@@ -497,6 +544,16 @@ export class SlackService {
     return { users, next_cursor: next_cursor ? next_cursor : null };
   }
 
+  /**
+   * Slack Service.
+   *
+   * send message to myself
+   *
+   * Here, you can send a message as long as you have the message.
+   * This feature identifies who the token's users are inside and sends a message to themselves.
+   * Therefore, even if you don't specify a channel,
+   * you send a message to the `im` channel that corresponds to your own user id.
+   */
   async sendTextToMyself(
     input: ISlackService.IPostMessageToMyselfInput,
   ): Promise<Pick<ISlackService.Message, "ts">> {
@@ -510,6 +567,14 @@ export class SlackService {
     });
   }
 
+  /**
+   * Slack Service.
+   *
+   * Update message body
+   *
+   * Use to modify messages sent by users.
+   * If the message is not sent by the user, user cannot modify it.
+   */
   async updateMessage(
     input: ISlackService.IUpdateMessageInput,
   ): Promise<ISlackService.IUpdateMessageOutput> {
@@ -597,6 +662,20 @@ export class SlackService {
     return res.data;
   }
 
+  /**
+   * Slack Service.
+   *
+   * send message to channel
+   *
+   * Here, you can send a message as long as you have the message and channel information you want to send.
+   * Slack is a very close service to work, so it's dangerous to send messages that haven't been confirmed.
+   * You must send the contents after receiving confirmation from the user.
+   *
+   * If you want to send a message to a DM channel, you need to search for an IM channel.
+   * Most IM channel IDs will start with 'D', but if the value provided by the user is a value that starts with 'U',
+   * this is most likely the user ID of the IM channel, not the channel.
+   * You need to search for a user starting with that ID and then send a message.
+   */
   async sendText(
     input: ISlackService.IPostMessageInput,
   ): Promise<Pick<ISlackService.Message, "ts">> {
@@ -607,6 +686,18 @@ export class SlackService {
     });
   }
 
+  /**
+   * Slack Service.
+   *
+   * Get Channel Links from Channel Histories
+   *
+   * Retrieves conversations in and out of channels.
+   * A channel ID starts with 'C' or 'D' (uppercase). If no ID is provided, search by channel name or keywords.
+   * Users often don’t know channel IDs, so prioritize finding the channel unless the input starts with 'C' or 'D'.
+   * Search conversations within specific timeframes using datetime formats.
+   * Filters out messages without links, retaining only those with links in the links property.
+   * This ensures efficient link extraction from conversation histories.
+   */
   async getChannelLinkHistories(
     input: ISlackService.IGetChannelHistoryInput,
   ): Promise<ISlackService.IGetChannelLinkHistoryOutput> {
@@ -680,7 +771,7 @@ export class SlackService {
     }; // next_cursor가 빈 문자인 경우 대비
   }
 
-  async getChannelName(
+  private async getChannelName(
     input: Pick<
       ISlackService.IGetChannelHistoryInput,
       "channel_type" | "channel"
@@ -707,6 +798,18 @@ export class SlackService {
     return { name: null };
   }
 
+  /**
+   * Slack Service.
+   *
+   * Get Channel Histories
+   *
+   * Retrieves conversations in and out of channels.
+   * Channel IDs start with 'C' or 'D' (uppercase). If no ID is provided, search by channel name or keywords.
+   * Users typically don’t know channel IDs, so prioritize finding the channel unless the input starts with 'C' or 'D'.
+   * Search conversations within specific timeframes using datetime formats.
+   * In history, links and code boxes are shown as <LINK/> and <CODE/>. Mentions appear as <@USERNAME>, but this indicates a mention, not the conversation starter.
+   * Filters by date should prioritize the datetime format for accuracy.
+   */
   async getChannelHistories(
     input: ISlackService.IGetChannelHistoryInput,
   ): Promise<ISlackService.IGetChannelHistoryOutput> {
@@ -782,7 +885,7 @@ export class SlackService {
     }; // next_cursor가 빈 문자인 경우 대비
   }
 
-  getMembers(input: {
+  private getMembers(input: {
     userIds: (string | null)[];
     allMembers: StrictOmit<ISlackService.IGetUserOutput, "fields">[];
     im_channels: ISlackService.ImChannel[];
@@ -802,6 +905,18 @@ export class SlackService {
     return members;
   }
 
+  /**
+   * Slack Service.
+   *
+   * get private channels
+   *
+   * View channels.
+   * This connector will only look up its own `private` channel.
+   * The channel ID is required to look up the conversation history within the channel later.
+   * `private` channel is a locked channel that can only be viewed by those invited to the channel.
+   *
+   * If you can't find the channel ID by name, it might be because it's on the next page, not because you don't have a channel.
+   */
   async getAllPrivateChannels() {
     let nextCursor: string | null = null;
     let response: Awaited<
@@ -820,7 +935,7 @@ export class SlackService {
     return response;
   }
 
-  async getPrivateChannels(
+  private async getPrivateChannels(
     input: ISlackService.IGetChannelInput,
   ): Promise<ISlackService.IGetPrivateChannelOutput> {
     const url = `https://slack.com/api/conversations.list?pretty=1`;
@@ -848,6 +963,17 @@ export class SlackService {
     return { channels, next_cursor: next_cursor ? next_cursor : null }; // next_cursor가 빈 문자인 경우 대비
   }
 
+  /**
+   * Slack Service.
+   *
+   * get public channels
+   *
+   * View channels.
+   * This connector will only look up its own `public` channel.
+   * The channel ID is required to look up the conversation history within the channel later.
+   * The `public` channel is anyone's accessible.
+   * This does not require an invitation process, and users can join the channel themselves if necessary.
+   */
   async getAllPublicChannels() {
     let nextCursor: string | null = null;
     let response: Awaited<
@@ -866,7 +992,7 @@ export class SlackService {
     return response;
   }
 
-  async getPublicChannels(
+  private async getPublicChannels(
     input: ISlackService.IGetChannelInput,
   ): Promise<ISlackService.IGetPublicChannelOutput> {
     const url = `https://slack.com/api/conversations.list?pretty=1`;
@@ -894,6 +1020,19 @@ export class SlackService {
     return { channels, next_cursor: next_cursor ? next_cursor : null }; // next_cursor가 빈 문자인 경우 대비
   }
 
+  /**
+   * Slack Service.
+   *
+   * get im channels
+   *
+   * View channels.
+   * This connector will only look up its own `im` channel.
+   * The channel ID is required to look up the conversation history within the channel later.
+   * `im` channel is a conversation that takes place in one's profile and refers to a personal channel that can only be viewed by oneself.
+   * Users also use chat as storage or notepad, such as storing files and images here.
+   *
+   * To send a 1:1 message to other users, you must first look up the `im` channel.
+   */
   async getAllImChannels() {
     const users = await this.getAllUsers();
     const response: Awaited<ReturnType<typeof this.getImChannels>>["channels"] =
@@ -906,7 +1045,7 @@ export class SlackService {
     });
   }
 
-  async __getAllImChannels() {
+  private async __getAllImChannels() {
     let nextCursor: string | null = null;
     let response: Awaited<ReturnType<typeof this.getImChannels>>["channels"] =
       [];
@@ -928,7 +1067,7 @@ export class SlackService {
     return response;
   }
 
-  async getImChannels(): Promise<ISlackService.IGetImChannelOutput> {
+  private async getImChannels(): Promise<ISlackService.IGetImChannelOutput> {
     const url = `https://slack.com/api/conversations.list?pretty=1`;
     const secretKey = this.props.secretKey;
 
@@ -947,6 +1086,14 @@ export class SlackService {
     return { channels, next_cursor: next_cursor ? next_cursor : null }; // next_cursor가 빈 문자인 경우 대비
   }
 
+  /**
+   * Slack Service.
+   *
+   * get files in workspace
+   *
+   * You can look up Slack workspace and channels, or all files sent from users.
+   * It is pagenation and can filter by file type, and also provides thumbnail links, download links, and original message links.
+   */
   async getFiles(
     input: ISlackService.IGetFileInput,
   ): Promise<ISlackService.IGetFileOutput> {
@@ -980,6 +1127,11 @@ export class SlackService {
     return res.data;
   }
 
+  /**
+   * Slack Service.
+   *
+   * Send Slack Custom Template Messages for Voting
+   */
   async vote(
     input: ISlackService.IHoldVoteInput,
   ): Promise<ISlackService.IHoldVoteOutput> {
@@ -1012,6 +1164,16 @@ export class SlackService {
     throw new Error("슬랙 템플릿 메시지 전송 실패");
   }
 
+  /**
+   * Slack Service.
+   *
+   *  get user groups in workspace
+   *
+   * Look up user groups. This can be used to call all specific groups by tagging.
+   * However, it is difficult to know if it is an appropriate user group other than 'handle' because all internal users come out with IDs.
+   * If you want to see a list of users, use the User Inquiry connector together.
+   * If you want to see the user's nickname or name that corresponds to the user's ID, refer to the User Inquiry connector.
+   */
   async getUserGroups(): Promise<ISlackService.IGetUserGroupOutput> {
     try {
       const url = `https://slack.com/api/usergroups.list?include_users=true`;
@@ -1153,6 +1315,15 @@ export class SlackService {
     }
   }
 
+  /**
+   * Slack Service.
+   *
+   * Get Requester's Information
+   *
+   * You can use that function to get requester's information.
+   * If you want to get information about requester, call this function.
+   * Then you can use that information wherever you need requester's information.
+   */
   async getMyInfo(): Promise<ISlackService.IGetMyInfoOutput> {
     const url = `https://slack.com/api/auth.test`;
 
@@ -1193,6 +1364,20 @@ export class SlackService {
     }
   }
 
+  /**
+   * Slack Service.
+   *
+   * Delete Messages
+   *
+   * You must strictly distinguish between the requester's information and other's information. Always verify whether the information being requested pertains to the requester or someone else.
+   * Before you call this function, you must call the function that gets requester's information.
+   * You must only use requester's information to delete messages.
+   * You must strictly filter the messages you delete to only those that match the requester's `User ID`
+   * You must look through all the messages and only delete the ones that match the requester's user id.
+   * Don't read one message and stop working on it because it has a different user id of requester.
+   * To delete messages,
+   * You need the timestamps of the messages you wrote that you want to delete and channel id.
+   */
   async deleteMessage(input: ISlackService.IDeleteMessageInput): Promise<void> {
     const url = `https://slack.com/api/chat.delete`;
 
@@ -1229,5 +1414,51 @@ export class SlackService {
     }
 
     return;
+  }
+
+  private extract(target: "usergroup") {
+    if (target === "usergroup") {
+      return function (input: {
+        response: Pick<ISlackService.Message, "text">[];
+        allUserGroup: ISlackService.UserGroup[];
+      }): ISlackService.UserGroup[] {
+        const refinedTags = Array.from(
+          new Set(
+            ...input.response.flatMap((message) => {
+              const tags = message.text.match(/<!subteam\^\w+>/g);
+              const refinedTags: string[] = tags
+                ? Array.from(new Set(tags))
+                : [];
+              return refinedTags;
+            }),
+          ),
+        );
+        const includedUsergroups = input.allUserGroup.filter((usergroup) => {
+          return refinedTags.includes(`<!subteam^${usergroup.id}>`);
+        });
+
+        return includedUsergroups;
+      };
+    }
+
+    throw new Error("invalid target.");
+  }
+
+  private async getAllUsers(): Promise<
+    Awaited<ReturnType<typeof this.getUsers>>["users"]
+  > {
+    let nextCursor: string | null = null;
+    let response: Awaited<ReturnType<typeof this.getUsers>>["users"] = [];
+    do {
+      const { next_cursor, users } = await this.getUsers({
+        ...(nextCursor ? { cursor: nextCursor } : {}),
+        limit: 1000,
+      });
+
+      response = response.concat(users);
+      nextCursor = next_cursor;
+    } while (nextCursor);
+
+    return response;
   }
 }

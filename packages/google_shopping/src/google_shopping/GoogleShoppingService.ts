@@ -125,7 +125,9 @@ export class GoogleShoppingService {
   // }
 
   /**
-   * 생필품 카테고리
+   * Google Shopping Service.
+   *
+   * Search for products on Coupang
    */
   async coupang(
     input: IGoogleShoppingService.IRequestStandAlone,
@@ -133,18 +135,35 @@ export class GoogleShoppingService {
     return this.getGoogleShoppingResults(input);
   }
 
+  /**
+   * Google Shopping Service.
+   *
+   * Search for products on Kurly
+   * Kurly is a service where you can purchase groceries.
+   */
   async kurly(
     input: IGoogleShoppingService.IRequestStandAlone,
   ): Promise<IGoogleShoppingService.IResponse[]> {
     return this.getGoogleShoppingResults(input);
   }
 
+  /**
+   * Google Shopping Service.
+   *
+   * Search for products on iHerb
+   * iHerb is a service that allows you to purchase Nutritional supplement.
+   */
   async iherb(
     input: IGoogleShoppingService.IRequestStandAlone,
   ): Promise<IGoogleShoppingService.IResponse[]> {
     return this.getGoogleShoppingResults(input);
   }
 
+  /**
+   * Google Shopping Service.
+   *
+   * Search for products on AliExpress
+   */
   async aliExpress(
     input: IGoogleShoppingService.IRequestStandAlone,
   ): Promise<IGoogleShoppingService.IResponse[]> {
@@ -152,7 +171,10 @@ export class GoogleShoppingService {
   }
 
   /**
-   * 화장품 카테고리
+   * Google Shopping Service.
+   *
+   * Search for products at Olive Young
+   * Olive Young is a service that allows you to purchase cosmetics.
    */
   async oliveYoung(
     input: IGoogleShoppingService.IRequestStandAlone,
@@ -161,7 +183,10 @@ export class GoogleShoppingService {
   }
 
   /**
-   * 인테리어 카테고리
+   * Google Shopping Service.
+   *
+   * Search for products at Today House
+   * Today House is a service that allows you to purchase home appliances.
    */
   async todayHouse(
     input: IGoogleShoppingService.IRequestStandAlone,
@@ -170,7 +195,10 @@ export class GoogleShoppingService {
   }
 
   /**
-   * 도서 카테고리
+   * Google Shopping Service.
+   *
+   * Search for products on yes24
+   * yes24 is a service that allows you to purchase books.
    */
   async yes24(
     input: IGoogleShoppingService.IRequestStandAlone,
@@ -228,6 +256,12 @@ export class GoogleShoppingService {
     return this.getGoogleShoppingResults(input);
   }
 
+  /**
+   * Google Shopping Service.
+   *
+   * Search for products in Aladdin
+   * Aladdin is a service that allows you to purchase used books.
+   */
   async aladine(
     input: IGoogleShoppingService.IRequestStandAlone,
   ): Promise<IGoogleShoppingService.IResponse[]> {

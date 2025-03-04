@@ -5,6 +5,11 @@ import { AwsS3Service } from "@wrtnlabs/connector-aws-s3";
 export class StableDiffusionBetaService {
   constructor(private readonly props: IStableDiffusionBetaService.IProps) {}
 
+  /**
+   * Stable Diffusion Beta Service.
+   *
+   * Generate an image using the stable diffusion model
+   */
   async generateImage(
     input: IStableDiffusionBetaService.IRequest,
   ): Promise<IStableDiffusionBetaService.IResponse> {
