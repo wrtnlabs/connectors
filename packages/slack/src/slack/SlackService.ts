@@ -358,6 +358,8 @@ export class SlackService {
   }
 
   /**
+   * Slack Service.
+   *
    * Get Specific Message Information.
    *
    * Get channel information and ts and get information of a specific message.
