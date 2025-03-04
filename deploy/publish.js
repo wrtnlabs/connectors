@@ -78,10 +78,10 @@ const main = () => {
   else if (tag === "latest" && dev === true)
     throw new Error(`latest tag can only be used for non-dev versions.`);
 
-  cp.execSync("pnpm install", {
-    cwd: `${__dirname}/../`,
-    stdio: "inherit",
-  });
+  // cp.execSync("pnpm install", {
+  //   cwd: `${__dirname}/../`,
+  //   stdio: "inherit",
+  // });
   loadPackages().forEach((name) =>
     build({
       name,

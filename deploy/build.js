@@ -23,10 +23,10 @@ const build = (name) => {
 };
 
 const main = () => {
-  cp.execSync("pnpm install", {
-    cwd: `${__dirname}/../`,
-    stdio: "inherit",
-  });
+  // cp.execSync("pnpm install", {
+  //   cwd: `${__dirname}/../`,
+  //   stdio: "inherit",
+  // });
   loadPackages().forEach(build);
 };
 main();
