@@ -7,7 +7,7 @@
 ### Setup
 
 install the packages related with `@agentica/core`
-- `@agentica` [document](https://github.com/wrtnlabs/agentica).
+- `@agentica` : [README.md](https://github.com/wrtnlabs/agentica).
 
 ```bash
 npm install @agentica/core @samchon/openapi typia
