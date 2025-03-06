@@ -1,4 +1,4 @@
-export namespace IRankerService {
+export namespace ISortService {
   /**
    * @title Items to sort
    */

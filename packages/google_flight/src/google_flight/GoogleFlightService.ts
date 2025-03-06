@@ -19,6 +19,12 @@ export class GoogleFlightService {
       currency: "KRW",
     };
   }
+
+  /**
+   * Google Flight Service.
+   *
+   * Search for one-way flights
+   */
   async searchOneWay(
     input: IGoogleFlightService.IRequest,
   ): Promise<IGoogleFlightService.IFinalResponse> {
@@ -66,6 +72,11 @@ export class GoogleFlightService {
     }
   }
 
+  /**
+   * Google Flight Service.
+   *
+   * Search for round-trip flights
+   */
   async searchRoundTrip(
     input: IGoogleFlightService.IRequest,
   ): Promise<IGoogleFlightService.IFinalResponse> {

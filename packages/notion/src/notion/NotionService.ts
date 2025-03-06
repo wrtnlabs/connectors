@@ -10,6 +10,14 @@ import { retry } from "@wrtnlabs/connector-shared";
 export class NotionService {
   constructor(private readonly props: INotionService.IProps) {}
 
+  /**
+   * Notion Service.
+   *
+   * Delete a block
+   *
+   * Sets a Block object, including page blocks,
+   * to archived: true using the ID specified. Note: in the Notion UI application, this moves the block to the "Trash" where it can still be accessed and restored.
+   */
   async deleteBlock(input: INotionService.IDeleteBlockInput): Promise<void> {
     const { block_id } = input;
     const headers = await this.getHeaders();
@@ -17,6 +25,20 @@ export class NotionService {
     await axios.delete(url, { headers: headers });
   }
 
+  /**
+   * Notion Service.
+   *
+   * Append an file type child node
+   *
+   * Notion is a very complex type, so you have to create a page in a block coding manner.
+   * Therefore, this connector is designed to create a page by taking only the page ID and one block of the corresponding block and continuously adding it to the bottom.
+   * The type of block you can put in here is `file`.
+   *
+   * Uploading a file exposes it to the Notion page as an icon in the file format, but there is no Preview.
+   * If you want the internal elements to be seen as soon as you enter the page, it is better to create the image, pdf format for each format, and consider embed for other formats.
+   *
+   * Calling this connector requires the correct page ID, so it should only be called if you have previously created a page to obtain that ID, viewed the page, or obtained a link or page ID from the user in advance.
+   */
   async createFile(
     input: INotionService.ICreateChildContentTypeFileInput,
   ): Promise<void> {
@@ -33,6 +55,19 @@ export class NotionService {
     }
   }
 
+  /**
+   * Notion Service.
+   *
+   * Append an embed type child node
+   *
+   * Notion is a very complex type, so you have to create a page in a block coding manner.
+   * Therefore, this connector is designed to create a page by taking only the page ID and one block of the corresponding block and continuously adding it to the bottom.
+   * The type of block you can put in here is `embed`.
+   *
+   * This is suitable when you want an internal element to be rendered immediately, such as an imprame within a page.
+   *
+   * Calling this connector requires the correct page ID, so it should only be called if you have previously created a page to obtain that ID, viewed the page, or obtained a link or page ID from the user in advance.
+   */
   async createEmbed(
     input: INotionService.ICreateChildContentTypeEmbedInput,
   ): Promise<void> {
@@ -49,6 +84,19 @@ export class NotionService {
     }
   }
 
+  /**
+   * Notion Service.
+   *
+   * Append an bookmark type child node
+   *
+   * Notion is a very complex type, so you have to create a page in a block coding manner.
+   * Therefore, this connector is designed to create a page by taking only the page ID and one block of the corresponding block and continuously adding it to the bottom.
+   * The type of block you can put in here is `bookmark`.
+   *
+   * Bookmarks are visually better and more organized because they have previews, images, and explanations than just saving url as text.
+   *
+   * Calling this connector requires the correct page ID, so it should only be called if you have previously created a page to obtain that ID, viewed the page, or obtained a link or page ID from the user in advance.
+   */
   async createBookmark(
     input: INotionService.ICreateChildContentTypeBookmarkInput,
   ): Promise<void> {
@@ -65,6 +113,19 @@ export class NotionService {
     }
   }
 
+  /**
+   * Notion Service.
+   *
+   * Append an image type child node
+   *
+   * Notion is a very complex type, so you have to create a page in a block coding manner.
+   * Therefore, this connector is designed to create a page by taking only the page ID and one block of the corresponding block and continuously adding it to the bottom.
+   * The type of block you can put in here is `image`.
+   *
+   * image file's extension is one of: 'bmp', 'gif', 'heic', 'jpg', 'jpeg', 'png', 'svg', 'tif', 'tiff'.
+   *
+   * Calling this connector requires the correct page ID, so it should only be called if you have previously created a page to obtain that ID, viewed the page, or obtained a link or page ID from the user in advance.
+   */
   async createImage(
     input: INotionService.ICreateChildContentTypeImageInput,
   ): Promise<void> {
@@ -81,6 +142,22 @@ export class NotionService {
     }
   }
 
+  /**
+   * Notion Service.
+   *
+   * Append an video type child node
+   *
+   * Notion is a very complex type, so you have to create a page in a block coding manner.
+   * Therefore, this connector is designed to create a page by taking only the page ID and one block of the corresponding block and continuously adding it to the bottom.
+   * The type of block you can put in here is `video`.
+   *
+   * video file must be one of: 'amv' ,'asf' ,'avi' ,'f4v' ,'flv' ,'gifv' ,'mkv' ,'mov' ,'mpg' ,'mpeg' ,'mpv' ,'mp4' ,'m4v' ,'qt' ,'wmv'
+   * OR
+   * YouTube video links that include embed or watch.
+   * E.g. https://www.youtube.com/watch?v=[id], https://www.youtube.com/embed/[id]
+   *
+   * Calling this connector requires the correct page ID, so it should only be called if you have previously created a page to obtain that ID, viewed the page, or obtained a link or page ID from the user in advance.
+   */
   async createVideo(
     input: INotionService.ICreateChildContentTypeVideoInput,
   ): Promise<void> {
@@ -97,6 +174,17 @@ export class NotionService {
     }
   }
 
+  /**
+   * Notion Service.
+   *
+   * Append an pdf type child node
+   *
+   * Notion is a very complex type, so you have to create a page in a block coding manner.
+   * Therefore, this connector is designed to create a page by taking only the page ID and one block of the corresponding block and continuously adding it to the bottom.
+   * The type of block you can put in here is `pdf`.
+   *
+   * Calling this connector requires the correct page ID, so it should only be called if you have previously created a page to obtain that ID, viewed the page, or obtained a link or page ID from the user in advance.
+   */
   async createPdf(
     input: INotionService.ICreateChildContentTypePdfInput,
   ): Promise<void> {
@@ -113,6 +201,17 @@ export class NotionService {
     }
   }
 
+  /**
+   * Notion Service.
+   *
+   * Append an code type child node
+   *
+   * Notion is a very complex type, so you have to create a page in a block coding manner.
+   * Therefore, this connector is designed to create a page by taking only the page ID and one block of the corresponding block and continuously adding it to the bottom.
+   * The type of block you can put in here is `code`.
+   *
+   * Calling this connector requires the correct page ID, so it should only be called if you have previously created a page to obtain that ID, viewed the page, or obtained a link or page ID from the user in advance.
+   */
   async createCode(
     input: INotionService.ICreateChildContentTypeCodeInput,
   ): Promise<void> {
@@ -129,6 +228,17 @@ export class NotionService {
     }
   }
 
+  /**
+   * Notion Service.
+   *
+   * Append an equation type child node
+   *
+   * Notion is a very complex type, so you have to create a page in a block coding manner.
+   * Therefore, this connector is designed to create a page by taking only the page ID and one block of the corresponding block and continuously adding it to the bottom.
+   * The type of block you can put in here is `equation`.
+   *
+   * Calling this connector requires the correct page ID, so it should only be called if you have previously created a page to obtain that ID, viewed the page, or obtained a link or page ID from the user in advance.
+   */
   async createEquation(
     input: INotionService.ICreateChildContentTypeEquationInput,
   ): Promise<void> {
@@ -145,6 +255,17 @@ export class NotionService {
     }
   }
 
+  /**
+   * Notion Service.
+   *
+   * Append an divider type child node
+   *
+   * Notion is a very complex type, so you have to create a page in a block coding manner.
+   * Therefore, this connector is designed to create a page by taking only the page ID and one block of the corresponding block and continuously adding it to the bottom.
+   * The type of block you can put in here is `divider`.
+   *
+   * Calling this connector requires the correct page ID, so it should only be called if you have previously created a page to obtain that ID, viewed the page, or obtained a link or page ID from the user in advance.
+   */
   async createDivider(
     input: INotionService.ICreateChildContentTypeDividerInput,
   ): Promise<void> {
@@ -161,6 +282,17 @@ export class NotionService {
     }
   }
 
+  /**
+   * Notion Service.
+   *
+   * Append an table_of_contents type child node
+   *
+   * Notion is a very complex type, so you have to create a page in a block coding manner.
+   * Therefore, this connector is designed to create a page by taking only the page ID and one block of the corresponding block and continuously adding it to the bottom.
+   * The type of block you can put in here is `table_of_contents`.
+   *
+   * Calling this connector requires the correct page ID, so it should only be called if you have previously created a page to obtain that ID, viewed the page, or obtained a link or page ID from the user in advance.
+   */
   async createTableOfContents(
     input: INotionService.ICreateChildContentTypeTableOfContentsInput,
   ): Promise<void> {
@@ -177,6 +309,17 @@ export class NotionService {
     }
   }
 
+  /**
+   * Notion Service.
+   *
+   * Append an link_to_page type child node
+   *
+   * Notion is a very complex type, so you have to create a page in a block coding manner.
+   * Therefore, this connector is designed to create a page by taking only the page ID and one block of the corresponding block and continuously adding it to the bottom.
+   * The type of block you can put in here is `link_to_page`.
+   *
+   * Calling this connector requires the correct page ID, so it should only be called if you have previously created a page to obtain that ID, viewed the page, or obtained a link or page ID from the user in advance.
+   */
   async createLinkToPage(
     input: INotionService.ICreateChildContentTypeLinkToPageInput,
   ): Promise<void> {
@@ -193,6 +336,17 @@ export class NotionService {
     }
   }
 
+  /**
+   * Notion Service.
+   *
+   * Append an toggle type child node
+   *
+   * Notion is a very complex type, so you have to create a page in a block coding manner.
+   * Therefore, this connector is designed to create a page by taking only the page ID and one block of the corresponding block and continuously adding it to the bottom.
+   * The type of block you can put in here is `toggle`.
+   *
+   * Calling this connector requires the correct page ID, so it should only be called if you have previously created a page to obtain that ID, viewed the page, or obtained a link or page ID from the user in advance.
+   */
   async createToggle(
     input: INotionService.ICreateChildContentTypeToggleInput,
   ): Promise<void> {
@@ -240,6 +394,14 @@ export class NotionService {
     }
   }
 
+  /**
+   * Notion Service.
+   *
+   * Read the contents of a Notion page.
+   * Reads the contents of a Notion page in Markdown format.
+   *
+   * Read Notion page contents
+   */
   async readPageContents(
     input: INotionService.IReadPageContentInput,
   ): Promise<INotionService.IReadPageContentOutput> {
@@ -267,6 +429,11 @@ export class NotionService {
     }
   }
 
+  /**
+   * Notion Service.
+   *
+   * Retrieve a list of all pages in your Notion workspace
+   */
   async readPageList(): Promise<INotionService.IReadPageOutput[]> {
     try {
       const headers = await this.getHeaders();
@@ -308,6 +475,11 @@ export class NotionService {
     }
   }
 
+  /**
+   * Notion Service.
+   *
+   * Retrieves database information to create items in the database
+   */
   async getDatabaseInfo(input: {
     databaseId: string;
   }): Promise<INotionService.IDatabaseInfo> {
@@ -338,6 +510,11 @@ export class NotionService {
     }
   }
 
+  /**
+   * Notion Service.
+   *
+   * Query the database list to create items in the database
+   */
   async getDatabaseListInfo(): Promise<INotionService.IDatabaseInfo[]> {
     try {
       const notion = await this.createClient();
@@ -467,6 +644,11 @@ export class NotionService {
   //   }
   // }
 
+  /**
+   * Notion Service.
+   *
+   * Retrieve the list of users in the workspace
+   */
   async getUsers(): Promise<INotionService.IUserOutput[]> {
     try {
       const headers = await this.getHeaders();
@@ -491,6 +673,11 @@ export class NotionService {
     }
   }
 
+  /**
+   * Notion Service.
+   *
+   * Search for pages by title
+   */
   async findPageByTitle(
     input: INotionService.IFindPageOrDatabaseItemInput,
   ): Promise<INotionService.IFindPageByTitleOutput> {
@@ -516,6 +703,11 @@ export class NotionService {
     return pageOutput;
   }
 
+  /**
+   * Notion Service.
+   *
+   * Retrieve a list of items that exist in a table database
+   */
   async findDatabaseItemList(input: {
     databaseId: string;
   }): Promise<INotionService.IDatabaseItemOutput[]> {
@@ -538,6 +730,11 @@ export class NotionService {
     }
   }
 
+  /**
+   * Notion Service.
+   *
+   * Retrieves an item that exists in a table database
+   */
   async findDatabaseItem(
     input: INotionService.IFindDatabaseItemInput,
   ): Promise<INotionService.IDatabaseItemOutput> {
@@ -604,101 +801,78 @@ export class NotionService {
   /**
    * 데이터베이스 아이템 생성 및 업데이트시 프로퍼티 별 형식에 맞추어 프로퍼티 값 적용
    */
-  formattingDatabaseProperties(
-    input: INotionService.ICreateDatabaseItemInput & {
-      propertiesInfo: Record<string, INotionService.DatabaseProperty>;
-    },
-  ): INotionService.IDatabasePropertyInput {
-    const { propertiesInfo } = input;
-    const properties: INotionService.IDatabasePropertyInput = {};
+  // formattingDatabaseProperties(
+  //   input: INotionService.ICreateDatabaseItemInput & {
+  //     propertiesInfo: Record<string, INotionService.DatabaseProperty>;
+  //   },
+  // ): INotionService.IDatabasePropertyInput {
+  //   const { propertiesInfo } = input;
+  //   const properties: INotionService.IDatabasePropertyInput = {};
 
-    for (const [, property] of Object.entries(propertiesInfo)) {
-      const key = property.name;
+  //   for (const [, property] of Object.entries(propertiesInfo)) {
+  //     const key = property.name;
 
-      // 데이터베이스 아이템 업데이트 시 업데이트 하지 않는 프로퍼티가 있을 수 있음
-      if (input[key] === undefined) continue;
+  //     // 데이터베이스 아이템 업데이트 시 업데이트 하지 않는 프로퍼티가 있을 수 있음
+  //     if (input[key] === undefined) continue;
 
-      switch (property.type) {
-        case "multi_select": {
-          properties[key] = {
-            multi_select: input[key].map((item: string) => ({ name: item })),
-          };
-          break;
-        }
-        case "select": {
-          properties[key] = { select: { name: input[key] } };
-          break;
-        }
-        case "title": {
-          properties[key] = { title: [{ text: { content: input[key] } }] };
-          break;
-        }
-        case "rich_text": {
-          properties[key] = { rich_text: [{ text: { content: input[key] } }] };
-          break;
-        }
-        case "number":
-        case "email":
-        case "url":
-        case "phone_number":
-        case "checkbox": {
-          properties[key] = { [property.type]: input[key] };
-          break;
-        }
-        // start는 필수, end는 optional(null 가능)
-        case "date": {
-          properties[key] = {
-            date: { start: input[key].start, end: input[key].end },
-          };
-          break;
-        }
-        // getUsers() 함수로 부터 받아온 워크스페이스에 속한 사람들 id
-        case "people": {
-          properties[key] = {
-            people: input[key].map((item: string) => ({ id: item })),
-          };
-          break;
-        }
-      }
-    }
-    return properties;
-  }
+  //     switch (property.type) {
+  //       case "multi_select": {
+  //         properties[key] = {
+  //           multi_select: input[key].map((item: string) => ({ name: item })),
+  //         };
+  //         break;
+  //       }
+  //       case "select": {
+  //         properties[key] = { select: { name: input[key] } };
+  //         break;
+  //       }
+  //       case "title": {
+  //         properties[key] = { title: [{ text: { content: input[key] } }] };
+  //         break;
+  //       }
+  //       case "rich_text": {
+  //         properties[key] = { rich_text: [{ text: { content: input[key] } }] };
+  //         break;
+  //       }
+  //       case "number":
+  //       case "email":
+  //       case "url":
+  //       case "phone_number":
+  //       case "checkbox": {
+  //         properties[key] = { [property.type]: input[key] };
+  //         break;
+  //       }
+  //       // start는 필수, end는 optional(null 가능)
+  //       case "date": {
+  //         properties[key] = {
+  //           date: { start: input[key].start, end: input[key].end },
+  //         };
+  //         break;
+  //       }
+  //       // getUsers() 함수로 부터 받아온 워크스페이스에 속한 사람들 id
+  //       case "people": {
+  //         properties[key] = {
+  //           people: input[key].map((item: string) => ({ id: item })),
+  //         };
+  //         break;
+  //       }
+  //     }
+  //   }
+  //   return properties;
+  // }
 
-  async createClient() {
-    return new Client({ auth: this.props.secret });
-  }
-
-  async getHeaders() {
-    return {
-      "content-type": "application/json",
-      Authorization: `Bearer ${this.props.secret}`,
-      "Notion-Version": "2022-06-28",
-      accept: "application/json",
-    };
-  }
-
-  private removeChildren<T extends object | object[]>(target: T): T {
-    if (target instanceof Array) {
-      target.forEach((el) => this.removeChildren(el));
-    } else {
-      Object.entries(target).forEach(([key, value]) => {
-        if (key === "children") {
-          if ((value as any[]).length === 0) {
-            delete (target as any)["children"];
-          }
-
-          this.removeChildren(value);
-        } else {
-          if (typeof value === "object" && value !== null) {
-            this.removeChildren(value);
-          }
-        }
-      });
-    }
-
-    return target;
-  }
-
+  /**
+   * Notion Service.
+   *
+   * Append block by markdown format
+   *
+   * You can add blocks to the page immediately with only the markdown grammar.
+   * You can create pages more effectively than other connectors, so you can prioritize this.
+   * If there are unique blocks of the note that cannot be created with the grammar of the markdown, it must be associated with other block generation connectors.
+   *
+   * Since users may not know the markdown grammar, it is more desirable to use the markdown grammar instead of guiding them.
+   * Markdown supports text and heading 1, 2, 3, and various grammar such as table or bull list, number list, image attachment, boldface, italics, etc.
+   */
   async appendBlocksByMarkdown(
     input: INotionService.IAppendPageByMarkdownInput,
   ): Promise<INotionService.IAppendPageByMarkdownOutput> {
@@ -727,6 +901,20 @@ export class NotionService {
     }
   }
 
+  /**
+   * Notion Service.
+   *
+   * Create page by markdown format
+   *
+   * Receive the markdown text and immediately create it as a notation page.
+   * You can create pages more effectively than other connectors, so you can prioritize this.
+   * If there are unique blocks of the note that cannot be created with the grammar of the markdown, it must be associated with other block generation connectors.
+   *
+   * Since users may not know the markdown grammar, it is more desirable to use the markdown grammar instead of guiding them.
+   * Markdown supports text and heading 1, 2, 3, and various grammar such as table or bull list, number list, image attachment, boldface, italics, etc.
+   *
+   * Since Notion prioritizes accessible pages during authentication, creating pages must be sub-pages within the page, which means that there must be a parent page.
+   */
   async createPageByMarkdown(
     input: INotionService.ICreatePageByMarkdownInput,
   ): Promise<INotionService.ICreatePageOutput> {
@@ -919,6 +1107,11 @@ export class NotionService {
     }
   }
 
+  /**
+   * Notion Service.
+   *
+   * Update Notion Page Title
+   */
   async updatePageTitle(
     input: INotionService.IUpdateNotionTitleInput,
   ): Promise<INotionService.ICreatePageOutput> {
@@ -941,6 +1134,16 @@ export class NotionService {
     }
   }
 
+  /**
+   * Notion Service.
+   *
+   * Create a gallery view database for notion.
+   *
+   * It is not possible to create a gallery view at once, and you must change the view to a gallery directly.
+   * This endpoint must not be used to create each items.
+   * This endpoint is only used to create a database.
+   * Creating a database is different from adding items to a database.
+   */
   async createGalleryDatabase(
     input: INotionService.ICreateGalleryDatabaseInput,
   ): Promise<INotionService.ICreateGalleryDatabaseOutput> {
@@ -986,86 +1189,99 @@ export class NotionService {
     }
   }
 
-  //  async  createGalleryDatabaseItem(
+  /**
+   * Notion Service.
+   *
+   * Create an item in the generated gallery view database.
+   * Creating a database item means adding an item to an existing database.
+   * If there is no database received from input, you must first create a database using the POST: /connector/notion/create-gallery-database endpoint and then run it.
+   * You should use this endpoint when adding items to an already created database.
+   * You need to use this endpoint to add multiple items to the gallery database at once.
+   * If you need to add 3 items, instead of calling the endpoint 3 times, you should put the 3 items in an array in the info information and add the 3 items in 1 endpoint call.
+   * Since the Notion database can only be created in table format, you will need to instruct users to manually change it to a gallery database view.
+   */
+  // async createGalleryDatabaseItem(
   //   input: INotionService.ICreateGalleryDatabaseItemInput,
   // ): Promise<INotionService.ICreateGalleryDatabaseItemOutput[]> {
   //   try {
   //     const result: INotionService.ICreateGalleryDatabaseItemOutput[] = [];
   //     await Promise.all(
-  //       input.info.map(async (info: INotionService.ICreateGalleryDatabaseItemInfo) => {
-  //         try {
-  //           const headers = await this.getHeaders();
+  //       input.info.map(
+  //         async (info: INotionService.ICreateGalleryDatabaseItemInfo) => {
+  //           try {
+  //             const headers = await this.getHeaders();
 
-  //           const imageRegex = /!\[.*?\]\((https?:\/\/[^\s)]+)\)/g;
-  //           const matches = [...info.markdown.matchAll(imageRegex)];
-  //           const imageUrls = await Promise.all(
-  //             matches.map(async (match) => {
-  //               const imageUrl = match.at(1);
+  //             const imageRegex = /!\[.*?\]\((https?:\/\/[^\s)]+)\)/g;
+  //             const matches = [...info.markdown.matchAll(imageRegex)];
+  //             const imageUrls = await Promise.all(
+  //               matches.map(async (match) => {
+  //                 const imageUrl = match.at(1);
 
-  //               if (!imageUrl) {
-  //                 throw new Error("Image Url not Exists.")
-  //               }
+  //                 if (!imageUrl) {
+  //                   throw new Error("Image Url not Exists.");
+  //                 }
 
-  //               const imageBuffer = await axios.get(imageUrl, {
-  //                 responseType: "arraybuffer",
-  //               });
-  //               return await this.uploadImageToS3(imageBuffer.data);
-  //             }),
-  //           );
+  //                 const imageBuffer = await axios.get(imageUrl, {
+  //                   responseType: "arraybuffer",
+  //                 });
+  //                 return await this.uploadImageToS3(imageBuffer.data);
+  //               }),
+  //             );
 
-  //           const modifiedMarkdown = matches.reduce((acc, match, index) => {
-  //             return acc.replace(match[0], `![Image](${imageUrls[index]})`);
-  //           }, info.markdown);
+  //             const modifiedMarkdown = matches.reduce((acc, match, index) => {
+  //               return acc.replace(match[0], `![Image](${imageUrls[index]})`);
+  //             }, info.markdown);
 
-  //           const blocks = markdownToBlocks(modifiedMarkdown);
+  //             const blocks = markdownToBlocks(modifiedMarkdown);
 
-  //           const database = await axios.get(
-  //             `https://api.notion.com/v1/databases/${input.databaseId}`,
-  //             {
-  //               headers: headers,
-  //             },
-  //           );
-
-  //           const titlePropertyName: any = Object.keys(
-  //             database.data.properties,
-  //           ).find((key) => database.data.properties[key].type === "title");
-
-  //           const item = await axios.post(
-  //             `https://api.notion.com/v1/pages`,
-  //             {
-  //               parent: {
-  //                 type: "database_id",
-  //                 database_id: input.databaseId,
+  //             const database = await axios.get(
+  //               `https://api.notion.com/v1/databases/${input.databaseId}`,
+  //               {
+  //                 headers: headers,
   //               },
-  //               properties: {
-  //                 [titlePropertyName]: {
-  //                   title: [
-  //                     {
-  //                       type: "text",
-  //                       text: {
-  //                         content: info.title,
-  //                       },
-  //                     },
-  //                   ],
+  //             );
+
+  //             const titlePropertyName: any = Object.keys(
+  //               database.data.properties,
+  //             ).find((key) => database.data.properties[key].type === "title");
+
+  //             const item = await axios.post(
+  //               `https://api.notion.com/v1/pages`,
+  //               {
+  //                 parent: {
+  //                   type: "database_id",
+  //                   database_id: input.databaseId,
   //                 },
+  //                 properties: {
+  //                   [titlePropertyName]: {
+  //                     title: [
+  //                       {
+  //                         type: "text",
+  //                         text: {
+  //                           content: info.title,
+  //                         },
+  //                       },
+  //                     ],
+  //                   },
+  //                 },
+  //                 children: blocks,
   //               },
-  //               children: blocks,
-  //             },
-  //             {
-  //               headers: headers,
-  //             },
-  //           );
-  //           result.push({
-  //             pageId: item.data.id,
-  //             url: item.data.url,
-  //           });
-  //         } catch (err) {
-  //           console.error(
-  //             `Error creating page for input titled "${info.title}":`,
-  //             JSON.stringify(err),
-  //           );
-  //         }
-  //       }),
+  //               {
+  //                 headers: headers,
+  //               },
+  //             );
+  //             result.push({
+  //               pageId: item.data.id,
+  //               url: item.data.url,
+  //             });
+  //           } catch (err) {
+  //             console.error(
+  //               `Error creating page for input titled "${info.title}":`,
+  //               JSON.stringify(err),
+  //             );
+  //           }
+  //         },
+  //       ),
   //     );
   //     return result;
   //   } catch (err) {
@@ -1074,7 +1290,7 @@ export class NotionService {
   //   }
   // }
 
-  // async  uploadImageToS3(img: Buffer) {
+  // async uploadImageToS3(img: Buffer) {
   //   try {
   //     const imgUrl = await AwsProvider.uploadObject({
   //       key: `connector/notion/gallery-database-image/${v4()}.png`,
@@ -1089,6 +1305,15 @@ export class NotionService {
   //   }
   // }
 
+  /**
+   * Notion Service.
+   *
+   * Updates the contents of the page.
+   *
+   * This function updates the contents written on the page to the desired contents.
+   *
+   * The contents to be updated must be written in Markdown format.
+   */
   async updatePageContent(
     input: INotionService.IUpdatePageContentInput,
   ): Promise<INotionService.IAppendPageByMarkdownOutput> {
@@ -1104,6 +1329,15 @@ export class NotionService {
     }
   }
 
+  /**
+   * Notion Service.
+   *
+   * Create a Notion Database
+   *
+   * Creating a database is different from adding items to a database.
+   * Creating a database is a process of creating a database, and adding items to a database is a process of adding items to an existing database.
+   * You need to understand what your users are asking for, how many properties they need, and which properties should be created.
+   */
   async createDatabase(
     input: INotionService.ICreateDatabaseInput,
   ): Promise<INotionService.ICreateDatabaseOutput> {
@@ -1150,6 +1384,14 @@ export class NotionService {
     }
   }
 
+  /**
+   * Notion Service.
+   *
+   * Add property to notion database
+   * If you want to add a property to an existing database, you should use this function.
+   * For example, if there is an English word database in the Notion database, and there are three existing properties: word, meaning, and example sentence, and the user wants to add a property called Korean meaning, you should use this function to add a new property.
+   * This function can only add one property at a time.
+   */
   async addDatabaseProperty(
     input: INotionService.IAddDatabasePropertyInput,
   ): Promise<INotionService.IAddDatabasePropertyOutput> {
@@ -1175,6 +1417,15 @@ export class NotionService {
     }
   }
 
+  /**
+   * Notion Service.
+   *
+   * Delete property to notion database
+   * If you want to delete a property in an existing database, you should use this function.
+   * For example, if there is an English word database in the Notion database, and there are 4 properties: word, meaning, example, and Korean meaning, and the user wants to delete the property called Korean meaning, you should use this function to delete the property.
+   * You need to know the property name to delete it.
+   * This function can only delete one property at a time.
+   */
   async deleteDatabaseProperty(
     input: INotionService.IDeleteDatabasePropertyInput,
   ): Promise<INotionService.IDeleteDatabasePropertyOutput> {
@@ -1202,24 +1453,17 @@ export class NotionService {
     }
   }
 
-  async getDatabaseProperties(
-    databaseId: string,
-  ): Promise<INotionService.IDatabaseProperties> {
-    try {
-      const headers = await this.getHeaders();
-      const res = await axios.get(
-        `https://api.notion.com/v1/databases/${databaseId}`,
-        {
-          headers: headers,
-        },
-      );
-      return res.data.properties;
-    } catch (err) {
-      console.error(JSON.stringify(err));
-      throw err;
-    }
-  }
-
+  /**
+   * Notion Service.
+   *
+   * Adds an item to each row in the database
+   * If you want to add items to an existing database, you should use this function.
+   * You should analyze the user's requirements and assign appropriate values ​​to each property.
+   * You should select the value you want to add and the property to which you want to add the value.
+   * For example, if you have an English vocabulary database and the properties are word, example, and Korean meaning, and you create two items,
+   * if the items to add are [{"apple", "Apple is a fruit", "사과"}, {"snack", "I like snack", "과자"}],
+   * you should assign "apple" and "snack" to the word property,  "Apple is a fruit" and "I like snack" to the example, and "사과" and "과자" to the Korean meaning property.
+   */
   async addItemsToDatabase(
     input: INotionService.IAddItemsToDatabaseInput,
   ): Promise<INotionService.IAddItemsToDatabaseOutput> {
@@ -1328,5 +1572,58 @@ export class NotionService {
       console.error(JSON.stringify(err));
       throw err;
     }
+  }
+
+  private async getDatabaseProperties(
+    databaseId: string,
+  ): Promise<INotionService.IDatabaseProperties> {
+    try {
+      const headers = await this.getHeaders();
+      const res = await axios.get(
+        `https://api.notion.com/v1/databases/${databaseId}`,
+        {
+          headers: headers,
+        },
+      );
+      return res.data.properties;
+    } catch (err) {
+      console.error(JSON.stringify(err));
+      throw err;
+    }
+  }
+
+  private async createClient() {
+    return new Client({ auth: this.props.secret });
+  }
+
+  private async getHeaders() {
+    return {
+      "content-type": "application/json",
+      Authorization: `Bearer ${this.props.secret}`,
+      "Notion-Version": "2022-06-28",
+      accept: "application/json",
+    };
+  }
+
+  private removeChildren<T extends object | object[]>(target: T): T {
+    if (target instanceof Array) {
+      target.forEach((el) => this.removeChildren(el));
+    } else {
+      Object.entries(target).forEach(([key, value]) => {
+        if (key === "children") {
+          if ((value as any[]).length === 0) {
+            delete (target as any)["children"];
+          }
+
+          this.removeChildren(value);
+        } else {
+          if (typeof value === "object" && value !== null) {
+            this.removeChildren(value);
+          }
+        }
+      });
+    }
+
+    return target;
   }
 }

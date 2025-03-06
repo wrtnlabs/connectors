@@ -5,6 +5,8 @@ export class KakaoTalkService {
   constructor(private readonly props: IKakaoTalkService.IProps) {}
 
   /**
+   * Kakao Talk Service.
+   *
    * Retrieves the list of friends on KakaoTalk(카카오톡)
    *
    * KakaoTalk(카카오톡) is a mobile messenger application in South Korea, which also provides various additional services.
@@ -38,6 +40,8 @@ export class KakaoTalkService {
   }
 
   /**
+   * Kakao Talk Service.
+   *
    * Adds an event to the KakaoTalk(카카오톡) calendar
    *
    * KakaoTalk(카카오톡) is a mobile messenger application in South Korea, which also provides various additional services.
@@ -73,6 +77,8 @@ export class KakaoTalkService {
   }
 
   /**
+   * Kakao Talk Service.
+   *
    * Retrieves KakaoTalk(카카오톡) calendar events.
    *
    * The user needs to provide the calendar ID as an input parameter.
@@ -114,6 +120,8 @@ export class KakaoTalkService {
   }
 
   /**
+   * Kakao Talk Service.
+   *
    * Retrieves all KakaoTalk(카카오톡) calendar lists
    *
    * There are two types of calendars: your primary calendars and calendars you are subscribed to.
@@ -174,6 +182,8 @@ export class KakaoTalkService {
   }
 
   /**
+   * Kakao Talk Service.
+   *
    * Sends a text type KakaoTalk(카카오톡) message to a friend
    *
    * KakaoTalk(카카오톡) is a mobile messenger application in South Korea, which also provides various additional services.
@@ -222,6 +232,8 @@ export class KakaoTalkService {
   }
 
   /**
+   * Kakao Talk Service.
+   *
    * Sends a commerce type message to myself on KakaoTalk(카카오톡)
    *
    * When sending a KakaoTalk(카카오톡) message, there are buttons. If you want to add a link to the button, you should use a URL starting with `https://studio-pro.wrtn.ai/` or a redirect link. If the link starts with `https://studio-pro.wrtn.ai/`, the page will be viewed, otherwise, it will redirect to the new link. This is because only links registered in our domain are allowed according to the KakaoTalk(카카오톡) API specifications.

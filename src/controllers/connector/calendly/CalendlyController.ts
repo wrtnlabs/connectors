@@ -211,9 +211,9 @@ export class CalendlyController {
 
   /**
    * Retrieves the list of invitees for a scheduled event.
-   * 
+   *
    * This can be used to see who is expected to attend and manage communications with them.
-
+   *
    * @summary Get all invitees for a scheduled event
    * @param input The input to filter invitees.
    * @returns The list of invitees for the event.
@@ -234,9 +234,9 @@ export class CalendlyController {
 
   /**
    * Allows users to create a one-off event type for special occasions or single events.
-   * 
+   *
    * This is useful for events that do not fit into regular scheduling patterns.
-
+   *
    * @summary Create a one-off event type
    * @param input The details needed to create a one-off event type.
    * @returns The created one-off event type details.

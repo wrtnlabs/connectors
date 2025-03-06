@@ -9,6 +9,11 @@ import { IGoogleDocsService } from "../structures/IGoogleDocsService";
 export class GoogleDocsService {
   constructor(private readonly props: IGoogleDocsService.IProps) {}
 
+  /**
+   * Google Docs Service.
+   *
+   * Update Google Docs title and contents
+   */
   async update(
     input: IGoogleDocsService.IUpdateInput,
   ): Promise<IGoogleDocsService.IUpdateOutput> {
@@ -44,6 +49,13 @@ export class GoogleDocsService {
     };
   }
 
+  /**
+   * Google Docs Service.
+   *
+   * Remove entire contents of google docs
+   *
+   * Make Google Docs a blank file like you just created.
+   */
   async clear(
     input: IGoogleDocsService.IClearInput,
   ): Promise<IGoogleDocsService.IClearOutput> {
@@ -87,6 +99,14 @@ export class GoogleDocsService {
     return { id: input.documentId, url };
   }
 
+  /**
+   * Google Docs Service.
+   *
+   * Generate Google Docs By markdown format string
+   *
+   * Create a document with a markdown, which is the ID of the markdown file and the ID of the document.
+   * In the case of Google Docs, URLs are included, so you can open and inquire files directly based on your ID.
+   */
   async write(
     input: IGoogleDocsService.IRequest,
   ): Promise<IGoogleDocsService.IResponse> {
@@ -132,6 +152,17 @@ export class GoogleDocsService {
     };
   }
 
+  /**
+   * Google Docs Service.
+   *
+   * Generate Google Docs
+   *
+   * Since this is creating a blank page, we recommend that you use
+   * connectors that add the content of google-docs in a row.
+   * Alternatively, we recommend using a different connector because
+   * there are other connectors that have the ability to generate
+   * documents with markdown.
+   */
   async createDocs(
     input: IGoogleDocsService.ICreateGoogleDocsInput,
   ): Promise<IGoogleDocsService.ICreateEmptyFileOutput> {
@@ -172,6 +203,11 @@ export class GoogleDocsService {
     }
   }
 
+  /**
+   * Google Docs Service.
+   *
+   * Grant permission to Google Docs
+   */
   async permission(
     input: IGoogleDocsService.IPermissionGoogleDocsInput,
   ): Promise<void> {
@@ -206,6 +242,11 @@ export class GoogleDocsService {
     }
   }
 
+  /**
+   * Google Docs Service.
+   *
+   * Read the contents of Google Docs
+   */
   async readDocs(input: {
     id: string;
   }): Promise<IGoogleDocsService.IReadGoogleDocsOutput> {
@@ -290,6 +331,11 @@ export class GoogleDocsService {
     }
   }
 
+  /**
+   * Google Docs Service.
+   *
+   * Create new Google Docs by copying existing Google Docs
+   */
   async createDocByTemplate(
     input: IGoogleDocsService.ICreateDocByTemplateInput,
   ): Promise<IGoogleDocsService.ICreateDocByTemplateOutput> {
@@ -330,6 +376,11 @@ export class GoogleDocsService {
     }
   }
 
+  /**
+   * Google Docs Service.
+   *
+   * Delete Google Docs By ID.
+   */
   async deleteById(input: { id: string }): Promise<void> {
     try {
       const googleService = new GoogleService({
@@ -355,6 +406,11 @@ export class GoogleDocsService {
     }
   }
 
+  /**
+   * Google Docs Service.
+   *
+   * Get a list of Google Docs
+   */
   async list(): Promise<IGoogleDocsService.IListGoogleDocsOutput> {
     try {
       const googleService = new GoogleService({
@@ -399,35 +455,46 @@ export class GoogleDocsService {
     }
   }
 
-  async getDocuments(input: IGoogleDocsService.IAppendTextGoogleDocsInput) {
-    const { documentId } = input;
-    const googleService = new GoogleService({
-      clientId: this.props.clientId,
-      clientSecret: this.props.clientSecret,
-      secret: this.props.secret,
-    });
-    const accessToken = await googleService.refreshAccessToken();
-    const authClient = new google.auth.OAuth2();
-    authClient.setCredentials({ access_token: accessToken });
-    const docs = google.docs({ version: "v1", auth: authClient });
-    const document = await docs.documents.get({ documentId });
-    return document.data;
-  }
+  // async getDocuments(input: IGoogleDocsService.IAppendTextGoogleDocsInput) {
+  //   const { documentId } = input;
+  //   const googleService = new GoogleService({
+  //     clientId: this.props.clientId,
+  //     clientSecret: this.props.clientSecret,
+  //     secret: this.props.secret,
+  //   });
+  //   const accessToken = await googleService.refreshAccessToken();
+  //   const authClient = new google.auth.OAuth2();
+  //   authClient.setCredentials({ access_token: accessToken });
+  //   const docs = google.docs({ version: "v1", auth: authClient });
+  //   const document = await docs.documents.get({ documentId });
+  //   return document.data;
+  // }
 
-  getEndIndex(document: { data: docs_v1.Schema$Document }) {
-    console.log(JSON.stringify(document.data.body?.content, null, 2));
-    // 문서의 끝 인덱스 반환
-    const weight =
-      (document.data.body?.content?.reduce<number>((acc, element) => {
-        if (typeof element.endIndex === "number") {
-          return Math.max(acc, element.endIndex);
-        }
-        return acc;
-      }, 0) ?? 2) - 2; // 빈 문서는 줄바꿈 문자를 포함하여 최소 index가 2부터 시작한다.
+  // getEndIndex(document: { data: docs_v1.Schema$Document }) {
+  //   console.log(JSON.stringify(document.data.body?.content, null, 2));
+  //   // 문서의 끝 인덱스 반환
+  //   const weight =
+  //     (document.data.body?.content?.reduce<number>((acc, element) => {
+  //       if (typeof element.endIndex === "number") {
+  //         return Math.max(acc, element.endIndex);
+  //       }
+  //       return acc;
+  //     }, 0) ?? 2) - 2; // 빈 문서는 줄바꿈 문자를 포함하여 최소 index가 2부터 시작한다.
 
-    return weight;
-  }
+  //   return weight;
+  // }
 
+  /**
+   * Google Docs Service.
+   *
+   * Add text to Google Docs
+   *
+   * When you pass the input of the markdown format, change the markdown to the appropriate format.
+   * It is recommended to check the existing content
+   * and then use the `update` connector to include the existing content,
+   * in the case of the 'append' connector, it is not fully Markdown compatible.
+   * Update connector is `PUT /connector/google-docs/:id`.
+   */
   async append(
     input: IGoogleDocsService.IAppendTextGoogleDocsInput,
   ): Promise<IGoogleDocsService.ICreateGoogleDocsOutput> {

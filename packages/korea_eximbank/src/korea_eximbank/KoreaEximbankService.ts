@@ -3,6 +3,11 @@ import { IKoreaEximbankService } from "../structures/IKoreaEximbankService";
 export class KoreaEximbankService {
   constructor(private readonly props: IKoreaEximbankService.IProps) {}
 
+  /**
+   * Korea Export-Import Bank Service.
+   *
+   * Korea Export-Import Bank Current Exchange Rate Inquiry
+   */
   async getExchange(): Promise<IKoreaEximbankService.IGetExchangeOutput> {
     try {
       const baseUrl = `https://www.koreaexim.go.kr/site/program/financial/exchangeJSON`;

@@ -5,6 +5,8 @@ export class ZoomService {
   constructor(private readonly props: IZoomService.Iprops) {}
 
   /**
+   * Zoom Service.
+   *
    * Create a zoom meeting
    */
   async createMeeting(

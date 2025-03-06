@@ -4,6 +4,11 @@ import { IDaumCafeService } from "../structures/IDaumCafeService";
 export class DaumCafeService {
   constructor(private readonly props: IDaumCafeService.IProps) {}
 
+  /**
+   * Daum Cafe Service.
+   *
+   * Search for the following cafe content
+   */
   async search(
     input: IDaumCafeService.ISearchInput,
   ): Promise<IDaumCafeService.ICafeOutput> {

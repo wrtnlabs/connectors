@@ -4,6 +4,11 @@ import { IFigmaService } from "../structures/IFigmaService";
 export class FigmaService {
   constructor(private readonly props: IFigmaService.IProps) {}
 
+  /**
+   * Figma Service.
+   *
+   * Import Figma files
+   */
   async getFiles(
     input: IFigmaService.IReadFileInput,
   ): Promise<IFigmaService.IReadFileOutput> {
@@ -30,6 +35,11 @@ export class FigmaService {
     }
   }
 
+  /**
+   * Figma Service.
+   *
+   * Write a comment
+   */
   async addComment(input: IFigmaService.IAddCommentInput) {
     try {
       const { fileKey, ...requestBody } = input;
@@ -51,6 +61,11 @@ export class FigmaService {
     }
   }
 
+  /**
+   * Figma Service.
+   *
+   * Get Figma comments
+   */
   async getComments(
     input: IFigmaService.IReadCommentInput,
   ): Promise<IFigmaService.IReadCommentOutput> {
@@ -77,6 +92,15 @@ export class FigmaService {
     }
   }
 
+  /**
+   * Figma Service.
+   *
+   * Get all canvases of a specific project
+   *
+   * Canvases are Figma files managed by a specific team.
+   *
+   * This connector allows users to see which canvases are managed within their Figma team, along with their canvas names and thumbnail links.
+   */
   async getProjectCanvas(input: {
     projectId: string;
   }): Promise<IFigmaService.IGetProjectFileOutput> {
@@ -98,6 +122,11 @@ export class FigmaService {
     }
   }
 
+  /**
+   * Figma Service.
+   *
+   * Retrieve team-level statistics
+   */
   async getStatistics(
     input: IFigmaService.IGetProjectStatisticsInput,
   ): Promise<IFigmaService.IGetStatisticsOutput[]> {
@@ -144,6 +173,15 @@ export class FigmaService {
     }
   }
 
+  /**
+   * Figma Service.
+   *
+   * Search for projects within a team
+   *
+   * As an argument, it should receive teamId, which is the team ID, and can be found by looking at the URL path of figma.
+   * When accessing the link `https://www.figma.com/files/team`, a number is automatically added after the `team` keyword, which is the team ID.
+   * A user can belong to multiple teams, so if you do not want to automate the search for these projects, you need to get a different team ID.
+   */
   async getProjects(
     input: IFigmaService.IGetProjectInput,
   ): Promise<IFigmaService.IGetProejctOutput> {

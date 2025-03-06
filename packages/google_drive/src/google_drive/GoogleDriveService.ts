@@ -8,6 +8,11 @@ import { GoogleService } from "@wrtnlabs/connector-google";
 export class GoogleDriveService {
   constructor(private readonly props: IGoogleDriveService.IProps) {}
 
+  /**
+   * Google Drive Service.
+   *
+   * Get a list of folders in Google Drive
+   */
   async folderList(): Promise<IGoogleDriveService.IFolderListGoogleDriveOutput> {
     const googleService = new GoogleService({
       clientId: this.props.clientId,
@@ -63,6 +68,11 @@ export class GoogleDriveService {
     }
   }
 
+  /**
+   * Google Drive Service.
+   *
+   * Get a list of files in Google Drive
+   */
   async fileList(
     input: IGoogleDriveService.IFileListGoogleDriveInput,
   ): Promise<IGoogleDriveService.IFileListGoogleDriveOutput> {
@@ -102,6 +112,11 @@ export class GoogleDriveService {
     return { data: output };
   }
 
+  /**
+   * Google Drive Service.
+   *
+   * Create a new folder in Google Drive
+   */
   async createFolder(
     input: IGoogleDriveService.ICreateFolderGoogleDriveInput,
   ): Promise<IGoogleDriveService.ICreateFolderGoogleDriveOutput> {
@@ -133,6 +148,11 @@ export class GoogleDriveService {
     return { id };
   }
 
+  /**
+   * Google Drive Service.
+   *
+   * Delete a folder in Google Drive
+   */
   async deleteFolder(input: { id: string }): Promise<void> {
     const googleService = new GoogleService({
       clientId: this.props.clientId,
@@ -188,6 +208,11 @@ export class GoogleDriveService {
     return { id };
   }
 
+  /**
+   * Google Drive Service.
+   *
+   * Create a new file in Google Drive
+   */
   async uploadFile(
     input: IGoogleDriveService.IUploadFileInput,
   ): Promise<IGoogleDriveService.ICreateFileGoogleDriveOutput> {
@@ -231,6 +256,11 @@ export class GoogleDriveService {
     return { id };
   }
 
+  /**
+   * Google Drive Service.
+   *
+   * Delete a file in Google Drive
+   */
   async deleteFile(input: { id: string }): Promise<void> {
     const googleService = new GoogleService({
       clientId: this.props.clientId,
@@ -249,6 +279,11 @@ export class GoogleDriveService {
     });
   }
 
+  /**
+   * Google Drive Service.
+   *
+   * Grants permission to access a file or folder
+   */
   async permission(
     input: IGoogleDriveService.IPermissionGoogleDriveInput,
   ): Promise<void> {
@@ -288,6 +323,11 @@ export class GoogleDriveService {
     }
   }
 
+  /**
+   * Google Drive Service.
+   *
+   * Read text from a file
+   */
   async getFile(input: {
     fileId: string;
   }): Promise<IGoogleDriveService.IGetFileOutput> {

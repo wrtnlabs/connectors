@@ -1,5 +1,5 @@
 // TYPES
-export * from "./structures/IRankerService";
+export * from "./structures/ISortService";
 
 // CLASS
-export * from "./sort/RankerService";
+export * from "./sort/SortService";

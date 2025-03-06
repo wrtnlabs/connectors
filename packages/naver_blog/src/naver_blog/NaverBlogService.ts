@@ -4,6 +4,11 @@ import { INaverBlogService } from "../structures/INaverBlogService";
 export class NaverBlogService {
   constructor(private readonly props: INaverBlogService.IProps) {}
 
+  /**
+   * Naver Blog Service.
+   *
+   * Search Naver blog content
+   */
   async getBlog(
     input: INaverBlogService.INaverKeywordInput,
   ): Promise<INaverBlogService.IBlogNaverOutput> {

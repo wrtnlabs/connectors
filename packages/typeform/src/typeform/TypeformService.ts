@@ -7,8 +7,9 @@ export class TypeformService {
   constructor(private readonly props: ITypeformService.IProps) {}
 
   /**
-   * Create a workspace
+   * Typeform Service.
    *
+   * Create a workspace
    */
   async createWorkspace(
     input: ITypeformService.ICreateWorkspaceInput,
@@ -40,8 +41,9 @@ export class TypeformService {
   }
 
   /**
-   * Get workspace information
+   * Typeform Service.
    *
+   * Get workspace information
    */
   async getWorkspaces(): Promise<ITypeformService.IFindWorkspaceOutput[]> {
     try {
@@ -71,6 +73,11 @@ export class TypeformService {
     }
   }
 
+  /**
+   * Typeform Service.
+   *
+   * Create an empty form in the workspace
+   */
   async createEmptyForm(
     input: ITypeformService.ICreateEmptyFormInput,
   ): Promise<ITypeformService.ICreateFormOutput> {
@@ -103,8 +110,9 @@ export class TypeformService {
   }
 
   /**
-   * Create an empty form in the workspace
+   * Typeform Service.
    *
+   * Get a list of forms that exist in the workspace
    */
   async getForms(): Promise<ITypeformService.IFindFormOutput[]> {
     try {
@@ -133,8 +141,9 @@ export class TypeformService {
   }
 
   /**
-   * Copy a form that exists in the workspace
+   * Typeform Service.
    *
+   * Copy a form that exists in the workspace
    */
   async duplicateExistingForm(
     input: ITypeformService.IDuplicateExistingFormInput,
@@ -208,8 +217,9 @@ export class TypeformService {
   }
 
   /**
-   * Get the field information of the form to update the options of the ranking, dropdown, and multiple choice questions
+   * Typeform Service.
    *
+   * Get the field information of the form to update the options of the ranking, dropdown, and multiple choice questions
    */
   async getFieldsForUpdateFieldValue(
     input: ITypeformService.IGetFieldForUpdateFieldValueInput,
@@ -246,8 +256,9 @@ export class TypeformService {
   }
 
   /**
-   * Updates options for ranking, dropdown, and multiple choice questions
+   * Typeform Service.
    *
+   * Updates options for ranking, dropdown, and multiple choice questions
    */
   async updateFormFieldValue(
     input: ITypeformService.IUpdateFormFieldValueInput,
@@ -272,8 +283,9 @@ export class TypeformService {
   }
 
   /**
-   * Delete a workspace
+   * Typeform Service.
    *
+   * Delete a workspace
    */
   async deleteWorkspace(workspaceId: string): Promise<void> {
     try {
@@ -290,8 +302,9 @@ export class TypeformService {
   }
 
   /**
-   * Delete a form
+   * Typeform Service.
    *
+   * Delete a form
    */
   async deleteForm(formId: string): Promise<void> {
     try {

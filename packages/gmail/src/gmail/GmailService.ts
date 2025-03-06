@@ -7,6 +7,16 @@ import { GoogleService } from "@wrtnlabs/connector-google";
 export class GmailService {
   constructor(private readonly props: IGmailService.IProps) {}
 
+  /**
+   * Gmail Service.
+   *
+   * Delete multiple mails
+   *
+   * Gmail is a free web-based email service provided by Google.
+   * This function requires special attention because it permanently deletes mail instead of moving it to the trash.
+   * Most users will want to delete mail that is already in the trash.
+   * Therefore, if the user wants to delete it, it is better to guide them to move the mail to the trash, but if they still want to delete it, it is right to target the trash.
+   */
   async deleteMailList(
     input: IGmailService.IDeleteMailListInput,
   ): Promise<void> {
@@ -31,6 +41,19 @@ export class GmailService {
     }
   }
 
+  /**
+   * Gmail Service.
+   *
+   * Delete mail
+   *
+   * Gmail is a free web-based email service provided by Google.
+   *
+   * This function requires special attention because it permanently deletes mail instead of moving it to the trash.
+   *
+   * Most users will want to delete mail that is already in the trash.
+   *
+   * Therefore, if the user wants to delete it, it is better to guide them to move the mail to the trash, but if they still want to delete it, it is right to target the trash.
+   */
   async hardDelete(input: { id: string }): Promise<void> {
     try {
       const googleService = new GoogleService(this.props);
@@ -51,6 +74,21 @@ export class GmailService {
     }
   }
 
+  /**
+   * Gmail Service.
+   *
+   * Sending mail
+   *
+   * Gmail is a free web-based email service provided by Google.
+   *
+   * This connector is for sending emails,
+   * and if you send it as simple text, the sentences will be displayed as one long line, so you need to insert a line break character.
+   * The current format uses `text/html; charset=utf-8` as content-type.
+   * In some cases, you can use the HTML format.
+   *
+   * If you want to attach a file, you must specify the name of the file and the address at which it is stored.
+   * The saved file is read as a GET request inside the function, encoded, and processed.
+   */
   async sendEmail(
     input: IGmailService.ICreateMailInput,
   ): Promise<IGmailService.ISendMailOutput> {
@@ -81,6 +119,21 @@ export class GmailService {
     }
   }
 
+  /**
+   * Gmail Service.
+   *
+   * Create a mail draft
+   *
+   * Gmail is a free web-based email service provided by Google.
+   *
+   * This connector is for sending emails,
+   * and if you send it as simple text, the sentences will be displayed as one long line, so you need to insert a line break character.
+   * The current format uses `text/html; charset=utf-8` as content-type.
+   * In some cases, you can use the html format.
+   *
+   * If you want to attach a file, you must specify the name of the file and the address at which it is stored.
+   * The saved file is read as a GET request inside the function, encoded, and processed.
+   */
   async createDraft(input: IGmailService.ICreateMailInput): Promise<void> {
     try {
       const googleService = new GoogleService(this.props);
@@ -107,6 +160,18 @@ export class GmailService {
     }
   }
 
+  /**
+   * Gmail Service.
+   *
+   * Reply to received email
+   *
+   * Gmail is a free web-based email service provided by Google.
+   *
+   * This connector is for sending emails,
+   * and if you send it as simple text, the sentences will be displayed as one long line, so you need to insert a line break character.
+   * The current format uses `text/html; charset=utf-8` as content-type.
+   * In some cases, you can also use the HTML format.
+   */
   async reply(
     input: IGmailService.IReplyInput,
   ): Promise<IGmailService.ISendMailOutput> {
@@ -173,6 +238,13 @@ export class GmailService {
     }
   }
 
+  /**
+   * Gmail Service.
+   *
+   * Create a label
+   *
+   * Gmail is a free web-based email service provided by Google.
+   */
   async createLabel(
     input: IGmailService.ILabelInput,
   ): Promise<IGmailService.ILabelOutput> {
@@ -206,6 +278,13 @@ export class GmailService {
     }
   }
 
+  /**
+   * Gmail Service.
+   *
+   * Assign a label to a mail
+   *
+   * Gmail is a free web-based email service provided by Google.
+   */
   async addLabelToMail(
     input: IGmailService.IMailLabelOperationInput,
   ): Promise<void> {
@@ -232,6 +311,13 @@ export class GmailService {
     }
   }
 
+  /**
+   * Gmail Service.
+   *
+   * Remove labels assigned to mail
+   *
+   * Gmail is a free web-based email service provided by Google.
+   */
   async removeLabelFromMail(
     input: IGmailService.IMailLabelOperationInput,
   ): Promise<void> {
@@ -258,6 +344,13 @@ export class GmailService {
     }
   }
 
+  /**
+   * Gmail Service.
+   *
+   * Get information about a mail
+   *
+   * Gmail is a free web-based email service provided by Google.
+   */
   async findEmail(input: {
     id: string;
   }): Promise<IGmailService.IFindGmailOutput> {
@@ -282,6 +375,13 @@ export class GmailService {
     }
   }
 
+  /**
+   * Gmail Service.
+   *
+   * Get mailing list
+   *
+   * Gmail is a free web-based email service provided by Google.
+   */
   async findEmails(
     input: IGmailService.IFindEmailListInput,
   ): Promise<IGmailService.IFindGmailListOutput> {
@@ -331,6 +431,13 @@ export class GmailService {
 
   // TODO: 이미 휴지통에 들어있을 때 처리하는 로직 추가되어야 함
 
+  /**
+   * Gmail Service.
+   *
+   * Move mail to trash
+   *
+   * Gmail is a free web-based email service provided by Google.
+   */
   async removeEmail(input: { id: string }): Promise<void> {
     try {
       const googleService = new GoogleService(this.props);
@@ -356,7 +463,7 @@ export class GmailService {
     }
   }
 
-  async makeConpleteContents(
+  private async makeConpleteContents(
     input: IGmailService.ICreateMailInput,
   ): Promise<string> {
     // 파일이 존재할 경우에는 Content-Type을 multipart/mixed가 되게 수정

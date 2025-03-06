@@ -8,6 +8,8 @@ export class CareerService {
   constructor(private readonly props: ICareerService.IProps) {}
 
   /**
+   * Career Service.
+   *
    * Search for job postings on Jumpit
    *
    */
@@ -25,6 +27,8 @@ export class CareerService {
   }
 
   /**
+   * Career Service.
+   *
    * Search for job postings on Wanted
    *
    */
@@ -42,6 +46,8 @@ export class CareerService {
   }
 
   /**
+   * Career Service.
+   *
    * Search for job postings on Incruit
    *
    */
@@ -59,6 +65,8 @@ export class CareerService {
   }
 
   /**
+   * Career Service.
+   *
    * Search for job postings on Saramin
    *
    */

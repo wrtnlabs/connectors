@@ -8,6 +8,8 @@ import { AwsS3Service } from "@wrtnlabs/connector-aws-s3";
 export class MarpService {
   constructor(private readonly props: IMarpService.IProps) {}
   /**
+   * Marp Service.
+   *
    * Converts Marp markdown to a PPT and uploads to S3.
    *
    * @param input The Marp markdown input

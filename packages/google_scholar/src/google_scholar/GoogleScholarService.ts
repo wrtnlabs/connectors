@@ -5,6 +5,11 @@ import { makeQuery } from "@wrtnlabs/connector-shared";
 export class GoogleScholarService {
   constructor(private readonly props: IGoogleScholarService.IProps) {}
 
+  /**
+   * Google Scholar Service.
+   *
+   * Get a list of papers in Google Scholar
+   */
   async search(
     input: IGoogleScholarService.ISearchInput,
   ): Promise<IGoogleScholarService.ISearchOutput[]> {

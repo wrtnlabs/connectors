@@ -4,6 +4,18 @@ import { IImwebService } from "../structures/IImwebService";
 export class ImwebService {
   constructor(private readonly props: IImwebService.IProps) {}
 
+  /**
+   * Imweb Service.
+   *
+   * Look up the sales product
+   *
+   * The `Imweb` seller uses the seller's authentication key and secret to import his or her product.
+   * `Imweb` is a Korean webbuilder site that offers a similar experience to the service called Wix.
+   * If a commerce site is opened using `Imweb`,
+   * sellers can register the items they are selling,
+   * which is only available to sellers who open `Imweb` pages and is intended to bring up their products.
+   * Sellers must provide their API keys and secrets to import `Imweb` products.
+   */
   async getProducts(
     input: IImwebService.IGetProductInput,
   ): Promise<IImwebService.Product[]> {
@@ -42,6 +54,11 @@ export class ImwebService {
     }
   }
 
+  /**
+   * Imweb Service.
+   *
+   * Issue Aimweb Access Token
+   */
   async getAccessToken(): Promise<IImwebService.IGetAccessTokenOutput> {
     try {
       const res = await axios.get(

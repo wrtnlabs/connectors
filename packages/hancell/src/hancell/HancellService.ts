@@ -14,6 +14,13 @@ export class HancellService {
     });
   }
 
+  /**
+   * Hancell Service.
+   *
+   * Modify a Hansel sheet
+   *
+   * If the sheet already exists, modify it, or add it if it did not exist before.
+   */
   async upsertSheet(
     input: IHancellService.IUpsertSheetInput,
   ): Promise<IHancellService.IUpsertSheetOutput> {
@@ -50,6 +57,11 @@ export class HancellService {
     }
   }
 
+  /**
+   * Hancell Service.
+   *
+   * Read a Hansel file
+   */
   async getHancellData(
     input: IHancellService.IReadHancellInput,
   ): Promise<IHancellService.IReadHancellOutput> {
@@ -101,7 +113,10 @@ export class HancellService {
    * @param cells 시트에 덮어쓰기 할 셀 정보
    * @returns 인자로 받은 `sheet`를 덮어 쓴 결과물
    */
-  insertCells(input: { sheet: xlsx.WorkSheet; cells: IHancellService.Cells }) {
+  private insertCells(input: {
+    sheet: xlsx.WorkSheet;
+    cells: IHancellService.Cells;
+  }) {
     const { sheet, cells } = input;
     Object.entries(cells).forEach(([key, value]) => {
       sheet[key] = {

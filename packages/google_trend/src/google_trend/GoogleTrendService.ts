@@ -4,6 +4,11 @@ import { IGoogleTrendService } from "../structures/IGoogleTrendService";
 export class GoogleTrendService {
   constructor(private readonly props: IGoogleTrendService.IProps) {}
 
+  /**
+   * Google Trend Service.
+   *
+   * Get daily search results from Google Trends
+   */
   async dailyTrend(
     input: IGoogleTrendService.IRequest,
   ): Promise<IGoogleTrendService.IResponse[]> {
