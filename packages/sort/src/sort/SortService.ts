@@ -1,17 +1,17 @@
-import { IRankerService } from "../structures/IRankerService";
+import { ISortService } from "../structures/ISortService";
 
 interface IScoredItemWithIndex {
   score: number;
   index: number;
 }
 
-export class RankerService {
+export class SortService {
   /**
-   * Ranker Service.
+   * Sort Service.
    *
    * Sorts the given array of items in order of highest score
    */
-  sortByRank(input: IRankerService.IRankInput): IRankerService.IRankOutput {
+  sortByRank(input: ISortService.IRankInput): ISortService.IRankOutput {
     const indices = input.items
       .map<IScoredItemWithIndex>((item, index) => ({
         score: item.score,
