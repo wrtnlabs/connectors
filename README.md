@@ -296,7 +296,7 @@ Please refer to the links below for the validation function.
 - [Google Flight](https://github.com/wrtnlabs/connectors/blob/main/packages/google_flight/README.md)
 - [Google Hotel](https://github.com/wrtnlabs/connectors/blob/main/packages/google_hotel/README.md)
 - [Google Image](https://github.com/wrtnlabs/connectors/blob/main/packages/google_image/README.md)
-- [Google Map](https://github.com/wrtnlabs/connectors/blob/main/packages/google_map/README.md)\
+- [Google Map](https://github.com/wrtnlabs/connectors/blob/main/packages/google_map/README.md)
 - [Google Scholar](https://github.com/wrtnlabs/connectors/blob/main/packages/google_scholar/README.md)
 - [Google Search](https://github.com/wrtnlabs/connectors/blob/main/packages/google_search/README.md)
 - [Google Shopping](https://github.com/wrtnlabs/connectors/blob/main/packages/google_shopping/README.md)
