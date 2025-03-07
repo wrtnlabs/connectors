@@ -17,7 +17,7 @@
   "license": "MIT",
   "devDependencies": {
     "@eslint/js": "^9.20.0",
-    "@nestia/e2e": "^0.7.0",
+    "@nestia/e2e": "^0.8.2",
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^12.1.1",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
@@ -40,6 +40,6 @@
     "@wrtnlabs/connector-aws-s3": "workspace:^",
     "axios": "^1.7.9",
     "openai": "^4.24.1",
-    "typia": "^7.6.4"
+    "typia": "^8.0.0"
   }
 }
