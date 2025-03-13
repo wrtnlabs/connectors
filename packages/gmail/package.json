@@ -42,6 +42,6 @@
     "@wrtnlabs/connector-shared": "workspace:^",
     "axios": "^1.8.1",
     "googleapis": "^144.0.0",
-    "typia": "^7.6.4"
+    "typia": "^8.0.1"
   }
 }

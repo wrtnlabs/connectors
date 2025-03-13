@@ -40,6 +40,6 @@
     "@wrtnlabs/connector-google": "workspace:^",
     "@wrtnlabs/connector-shared": "workspace:^",
     "googleapis": "^144.0.0",
-    "typia": "^7.6.4"
+    "typia": "^8.0.1"
   }
 }

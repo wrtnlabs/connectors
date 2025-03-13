@@ -41,6 +41,6 @@
     "@wrtnlabs/connector-shared": "workspace:^",
     "axios": "^1.7.7",
     "slackify-markdown": "^4.4.0",
-    "typia": "^7.6.4"
+    "typia": "^8.0.1"
   }
 }

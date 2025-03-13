@@ -39,6 +39,6 @@
   "dependencies": {
     "@wrtnlabs/connector-shared": "workspace:^",
     "serpapi": "^2.0.0",
-    "typia": "^7.6.4"
+    "typia": "^8.0.1"
   }
 }

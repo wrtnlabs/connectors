@@ -22,7 +22,7 @@ importers:
         version: 0.0.12
       '@nestia/core':
         specifier: ^4.6.1
-        version: 4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3))
+        version: 4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3))
       '@nestia/fetcher':
         specifier: ^4.5.1
         version: 4.6.2(typescript@5.7.3)
@@ -70,7 +70,7 @@ importers:
         version: 1.2.3
       '@wrtnio/decorators':
         specifier: ^1.6.0
-        version: 1.6.0(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)))(@nestia/sdk@4.6.2(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)))(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.76)(typescript@5.7.3))(typescript@5.7.3)(typia@7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)))(typia@7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3))
+        version: 1.6.0(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)))(@nestia/sdk@4.6.2(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)))(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.76)(typescript@5.7.3))(typescript@5.7.3)(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)))(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3))
       '@wrtnio/schema':
         specifier: ^3.2.1
         version: 3.2.1
@@ -171,8 +171,8 @@ importers:
         specifier: ^1.17.2
         version: 1.20.1
       typia:
-        specifier: ^7.5.1
-        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        specifier: ^8.0.1
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
       uuid:
         specifier: ^10.0.0
         version: 10.0.0
@@ -197,13 +197,13 @@ importers:
         version: 0.18.0
       '@nestia/agent':
         specifier: ^0.3.7
-        version: 0.3.12(@samchon/openapi@2.4.3)(openai@4.85.4)(typia@7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3))
+        version: 0.3.12(@samchon/openapi@2.4.3)(openai@4.85.4)(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3))
       '@nestia/e2e':
         specifier: ^0.7.0
         version: 0.7.0
       '@nestia/sdk':
         specifier: ^4.6.1
-        version: 4.6.2(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)))(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.76)(typescript@5.7.3))(typescript@5.7.3)(typia@7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3))
+        version: 4.6.2(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)))(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.76)(typescript@5.7.3))(typescript@5.7.3)(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3))
       '@ryoppippi/unplugin-typia':
         specifier: ^1.1.0
         version: 1.2.0(@samchon/openapi@2.4.3)(@types/node@18.19.76)(jiti@2.4.2)(rollup@4.34.8)(terser@5.39.0)
@@ -323,8 +323,8 @@ importers:
         specifier: ^1.8.1
         version: 1.8.1
       typia:
-        specifier: ^7.6.4
-        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        specifier: ^8.0.1
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
       xml2js:
         specifier: ^0.6.2
         version: 0.6.2
@@ -408,8 +408,8 @@ importers:
         specifier: ^0.0.3
         version: 0.0.3
       typia:
-        specifier: ^7.6.4
-        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        specifier: ^8.0.1
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -478,8 +478,8 @@ importers:
         specifier: ^1.7.9
         version: 1.7.9
       typia:
-        specifier: ^7.6.4
-        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        specifier: ^8.0.1
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -548,8 +548,8 @@ importers:
         specifier: workspace:^
         version: link:../google_search
       typia:
-        specifier: ^7.6.4
-        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        specifier: ^8.0.1
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -630,8 +630,8 @@ importers:
         specifier: ^3.0.2
         version: 3.0.3
       typia:
-        specifier: ^7.6.4
-        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        specifier: ^8.0.1
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -706,8 +706,8 @@ importers:
         specifier: ^4.24.1
         version: 4.85.4
       typia:
-        specifier: ^7.6.4
-        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        specifier: ^8.0.1
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -773,8 +773,8 @@ importers:
         specifier: ^1.7.9
         version: 1.7.9
       typia:
-        specifier: ^7.6.4
-        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        specifier: ^8.0.1
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -843,8 +843,8 @@ importers:
         specifier: ^1.7.9
         version: 1.7.9
       typia:
-        specifier: ^7.6.4
-        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        specifier: ^8.0.1
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -913,8 +913,8 @@ importers:
         specifier: ^1.8.1
         version: 1.8.1
       typia:
-        specifier: ^7.6.4
-        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        specifier: ^8.0.1
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -989,8 +989,8 @@ importers:
         specifier: ^1.7.9
         version: 1.7.9
       typia:
-        specifier: ^7.6.4
-        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        specifier: ^8.0.1
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -1065,8 +1065,8 @@ importers:
         specifier: ^1.7.9
         version: 1.7.9
       typia:
-        specifier: ^7.6.4
-        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        specifier: ^8.0.1
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -1138,8 +1138,8 @@ importers:
         specifier: ^1.7.9
         version: 1.7.9
       typia:
-        specifier: ^7.6.4
-        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        specifier: ^8.0.1
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -1217,8 +1217,8 @@ importers:
         specifier: ^144.0.0
         version: 144.0.0
       typia:
-        specifier: ^7.6.4
-        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        specifier: ^8.0.1
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -1290,8 +1290,8 @@ importers:
         specifier: ^144.0.0
         version: 144.0.0
       typia:
-        specifier: ^7.6.4
-        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        specifier: ^8.0.1
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -1369,8 +1369,8 @@ importers:
         specifier: ^1.0.1
         version: 1.0.1
       typia:
-        specifier: ^7.6.4
-        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        specifier: ^8.0.1
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
       uuid:
         specifier: ^10.0.0
         version: 10.0.0
@@ -1448,8 +1448,8 @@ importers:
         specifier: ^144.0.0
         version: 144.0.0
       typia:
-        specifier: ^7.6.4
-        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        specifier: ^8.0.1
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -1527,8 +1527,8 @@ importers:
         specifier: ^14.1.2
         version: 14.1.4
       typia:
-        specifier: ^7.6.4
-        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        specifier: ^8.0.1
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -1606,8 +1606,8 @@ importers:
         specifier: ^0.0.3
         version: 0.0.3
       typia:
-        specifier: ^7.6.4
-        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        specifier: ^8.0.1
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -1685,8 +1685,8 @@ importers:
         specifier: ^2.0.0
         version: 2.1.0
       typia:
-        specifier: ^7.6.4
-        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        specifier: ^8.0.1
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -1749,8 +1749,8 @@ importers:
   packages/google_hotel:
     dependencies:
       typia:
-        specifier: ^7.6.4
-        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        specifier: ^8.0.1
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -1892,8 +1892,8 @@ importers:
         specifier: ^2.0.0
         version: 2.1.0
       typia:
-        specifier: ^7.6.4
-        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        specifier: ^8.0.1
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -1962,8 +1962,8 @@ importers:
         specifier: ^2.0.0
         version: 2.1.0
       typia:
-        specifier: ^7.6.4
-        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        specifier: ^8.0.1
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -2032,8 +2032,8 @@ importers:
         specifier: ^2.0.0
         version: 2.1.0
       typia:
-        specifier: ^7.6.4
-        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        specifier: ^8.0.1
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -2111,8 +2111,8 @@ importers:
         specifier: ^144.0.0
         version: 144.0.0
       typia:
-        specifier: ^7.6.4
-        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        specifier: ^8.0.1
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -2181,8 +2181,8 @@ importers:
         specifier: ^2.0.0
         version: 2.1.0
       typia:
-        specifier: ^7.6.4
-        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        specifier: ^8.0.1
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -2263,8 +2263,8 @@ importers:
         specifier: ^0.33.5
         version: 0.33.5
       typia:
-        specifier: ^7.6.4
-        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        specifier: ^8.0.1
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
       uuid:
         specifier: ^10.0.0
         version: 10.0.0
@@ -2342,8 +2342,8 @@ importers:
         specifier: ^2.0.0
         version: 2.1.0
       typia:
-        specifier: ^7.6.4
-        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        specifier: ^8.0.1
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -2415,8 +2415,8 @@ importers:
         specifier: ^1.7.9
         version: 1.7.9
       typia:
-        specifier: ^7.6.4
-        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        specifier: ^8.0.1
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
       uuid:
         specifier: ^10.0.0
         version: 10.0.0
@@ -2497,8 +2497,8 @@ importers:
         specifier: ^1.7.9
         version: 1.7.9
       typia:
-        specifier: ^7.6.4
-        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        specifier: ^8.0.1
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -2570,8 +2570,8 @@ importers:
         specifier: ^0.33.5
         version: 0.33.5
       typia:
-        specifier: ^7.6.4
-        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        specifier: ^8.0.1
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -2637,8 +2637,8 @@ importers:
         specifier: ^1.7.9
         version: 1.7.9
       typia:
-        specifier: ^7.6.4
-        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        specifier: ^8.0.1
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -2710,8 +2710,8 @@ importers:
         specifier: ^14.1.2
         version: 14.1.4
       typia:
-        specifier: ^7.6.4
-        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        specifier: ^8.0.1
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -2774,8 +2774,8 @@ importers:
   packages/kakao_map:
     dependencies:
       typia:
-        specifier: ^7.6.4
-        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        specifier: ^8.0.1
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -2841,8 +2841,8 @@ importers:
         specifier: workspace:^
         version: link:../shared
       typia:
-        specifier: ^7.6.4
-        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        specifier: ^8.0.1
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -2911,8 +2911,8 @@ importers:
         specifier: ^1.8.1
         version: 1.8.1
       typia:
-        specifier: ^7.6.4
-        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        specifier: ^8.0.1
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -2978,8 +2978,8 @@ importers:
   packages/korea_eximbank:
     dependencies:
       typia:
-        specifier: ^7.6.4
-        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        specifier: ^8.0.1
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -3057,8 +3057,8 @@ importers:
         specifier: ^0.12.7
         version: 0.12.7
       typia:
-        specifier: ^7.6.4
-        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        specifier: ^8.0.1
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -3121,8 +3121,8 @@ importers:
         specifier: ^1.7.9
         version: 1.7.9
       typia:
-        specifier: ^7.6.4
-        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        specifier: ^8.0.1
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -3191,8 +3191,8 @@ importers:
         specifier: ^1.7.9
         version: 1.7.9
       typia:
-        specifier: ^7.6.4
-        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        specifier: ^8.0.1
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -3261,8 +3261,8 @@ importers:
         specifier: ^1.7.9
         version: 1.7.9
       typia:
-        specifier: ^7.6.4
-        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        specifier: ^8.0.1
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -3340,8 +3340,8 @@ importers:
         specifier: ^3.1.1
         version: 3.1.6
       typia:
-        specifier: ^7.6.4
-        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        specifier: ^8.0.1
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -3413,8 +3413,8 @@ importers:
         specifier: ^1.8.1
         version: 1.8.1
       typia:
-        specifier: ^7.6.4
-        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        specifier: ^8.0.1
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -3489,8 +3489,8 @@ importers:
         specifier: ^1.7.9
         version: 1.7.9
       typia:
-        specifier: ^7.6.4
-        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        specifier: ^8.0.1
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -3565,8 +3565,8 @@ importers:
         specifier: ^14.1.2
         version: 14.1.4
       typia:
-        specifier: ^7.6.4
-        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        specifier: ^8.0.1
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
       xml2js:
         specifier: ^0.6.2
         version: 0.6.2
@@ -3644,8 +3644,8 @@ importers:
         specifier: ^4.4.0
         version: 4.4.0
       typia:
-        specifier: ^7.6.4
-        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        specifier: ^8.0.1
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -3708,8 +3708,8 @@ importers:
   packages/sort:
     dependencies:
       typia:
-        specifier: ^7.6.4
-        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        specifier: ^8.0.1
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -3778,8 +3778,8 @@ importers:
         specifier: ^1.7.9
         version: 1.7.9
       typia:
-        specifier: ^7.6.4
-        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        specifier: ^8.0.1
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -3848,8 +3848,8 @@ importers:
         specifier: ^1.8.1
         version: 1.8.1
       typia:
-        specifier: ^7.6.4
-        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        specifier: ^8.0.1
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -3921,8 +3921,8 @@ importers:
         specifier: ^6.14.0
         version: 6.14.0
       typia:
-        specifier: ^7.6.4
-        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        specifier: ^8.0.1
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -3994,8 +3994,8 @@ importers:
         specifier: ^1.0.0
         version: 1.0.0
       typia:
-        specifier: ^7.6.4
-        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        specifier: ^8.0.1
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
       zenrows:
         specifier: ^2.0.1
         version: 2.0.1
@@ -4064,8 +4064,8 @@ importers:
         specifier: ^1.8.1
         version: 1.8.1
       typia:
-        specifier: ^7.6.4
-        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        specifier: ^8.0.1
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -4140,8 +4140,8 @@ importers:
         specifier: ^2.0.0
         version: 2.1.0
       typia:
-        specifier: ^7.6.4
-        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        specifier: ^8.0.1
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -4213,8 +4213,8 @@ importers:
         specifier: ^1.8.1
         version: 1.8.1
       typia:
-        specifier: ^7.6.4
-        version: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        specifier: ^8.0.1
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -9888,6 +9888,13 @@ packages:
       '@samchon/openapi': '>=2.4.2 <3.0.0'
       typescript: '>=4.8.0 <5.8.0'
 
+  typia@8.0.1:
+    resolution: {integrity: sha512-g+oA+ayBP+yv2Cx+RdWR4V54CLL11lQCiwLWF5ux47kw0WHcuitrFNedcuo7NcPloAA26cPshShNcTs91Z0sDw==}
+    hasBin: true
+    peerDependencies:
+      '@samchon/openapi': '>=3.0.0 <4.0.0'
+      typescript: '>=4.8.0 <5.9.0'
+
   uc.micro@1.0.6:
     resolution: {integrity: sha512-8Y75pvTYkLJW2hWQHXxoqRgV7qb9B+9vFEtidML+7koHUFapnVJAZ6cKs+Qjz5Aw3aZWHMC6u0wJE3At+nSGwA==}
 
@@ -11556,14 +11563,14 @@ snapshots:
       call-me-maybe: 1.0.2
       glob-to-regexp: 0.3.0
 
-  '@nestia/agent@0.3.12(@samchon/openapi@2.4.3)(openai@4.85.4)(typia@7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3))':
+  '@nestia/agent@0.3.12(@samchon/openapi@2.4.3)(openai@4.85.4)(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3))':
     dependencies:
       '@samchon/openapi': 2.4.3
       openai: 4.85.4
-      typia: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+      typia: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
       uuid: 11.1.0
 
-  '@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3))':
+  '@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3))':
     dependencies:
       '@nestia/fetcher': 4.6.2(typescript@5.7.3)
       '@nestjs/common': 11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2)
@@ -11577,7 +11584,7 @@ snapshots:
       reflect-metadata: 0.2.2
       rxjs: 7.8.2
       tgrid: 1.1.0
-      typia: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+      typia: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
       ws: 7.5.10
     transitivePeerDependencies:
       - bufferutil
@@ -11591,9 +11598,9 @@ snapshots:
       typescript: 5.7.3
       typia: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
 
-  '@nestia/sdk@4.6.2(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)))(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.76)(typescript@5.7.3))(typescript@5.7.3)(typia@7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3))':
+  '@nestia/sdk@4.6.2(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)))(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.76)(typescript@5.7.3))(typescript@5.7.3)(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3))':
     dependencies:
-      '@nestia/core': 4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3))
+      '@nestia/core': 4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3))
       '@nestia/fetcher': 4.6.2(typescript@5.7.3)
       '@nestjs/common': 11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2)
       '@nestjs/core': 11.0.10(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.0.10)(reflect-metadata@0.2.2)(rxjs@7.8.2)
@@ -11608,7 +11615,7 @@ snapshots:
       tsconfck: 2.1.2(typescript@5.7.3)
       tsconfig-paths: 4.2.0
       tstl: 3.0.0
-      typia: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+      typia: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
     transitivePeerDependencies:
       - typescript
 
@@ -12787,11 +12794,11 @@ snapshots:
       webpack: 5.98.0(webpack-cli@5.1.4)
       webpack-cli: 5.1.4(webpack@5.98.0)
 
-  '@wrtnio/decorators@1.6.0(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)))(@nestia/sdk@4.6.2(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)))(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.76)(typescript@5.7.3))(typescript@5.7.3)(typia@7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)))(typia@7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3))':
+  '@wrtnio/decorators@1.6.0(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)))(@nestia/sdk@4.6.2(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)))(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.76)(typescript@5.7.3))(typescript@5.7.3)(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)))(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3))':
     dependencies:
-      '@nestia/core': 4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3))
-      '@nestia/sdk': 4.6.2(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)))(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.76)(typescript@5.7.3))(typescript@5.7.3)(typia@7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3))
-      typia: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+      '@nestia/core': 4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3))
+      '@nestia/sdk': 4.6.2(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)))(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.76)(typescript@5.7.3))(typescript@5.7.3)(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3))
+      typia: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
 
   '@wrtnio/schema@3.2.1':
     dependencies:
@@ -16963,6 +16970,16 @@ snapshots:
       typescript: 5.6.3
 
   typia@7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3):
+    dependencies:
+      '@samchon/openapi': 2.4.3
+      commander: 10.0.1
+      comment-json: 4.2.5
+      inquirer: 8.2.6
+      package-manager-detector: 0.2.9
+      randexp: 0.5.3
+      typescript: 5.7.3
+
+  typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3):
     dependencies:
       '@samchon/openapi': 2.4.3
       commander: 10.0.1
