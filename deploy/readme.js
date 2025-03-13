@@ -18,6 +18,10 @@ function toKebabCase(str) {
 function generateReadme(packageName) {
   const baseName = packageName.replace("@wrtnlabs/connector-", "");
 
+  if (baseName === "api" || baseName === "backend") {
+    return;
+  }
+
   const serviceClass = toPascalCase(baseName) + "Service"; // Convert to PascalCase
   const connectorName = toPascalCase(baseName.replace(/_/g, " "));
   const kebabCaseBaseName = toKebabCase(baseName); // Convert to kebab-case
