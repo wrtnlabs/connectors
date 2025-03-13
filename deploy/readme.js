@@ -18,7 +18,7 @@ function toKebabCase(str) {
 function generateReadme(packageName) {
   const baseName = packageName.replace("@wrtnlabs/connector-", "");
 
-  if (baseName === "api" || baseName === "backend") {
+  if (baseName === "api" || baseName === "backend" || baseName === "shared") {
     return;
   }
 
