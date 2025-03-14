@@ -35,8 +35,14 @@ interface IEnvironments {
 }
 
 const environments = new Singleton(() => {
+  const isTs = __filename.endsWith(".ts");
+  const envPath = path.resolve(
+    __dirname,
+    isTs ? "../../../.env" : "../../../../.env",
+  );
+
   const env = dotenv.config({
-    path: path.resolve(__dirname, "../../../.env"),
+    path: envPath,
   });
   dotenvExpand.expand(env);
 

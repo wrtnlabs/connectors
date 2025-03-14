@@ -3,12 +3,20 @@ const terser = require("@rollup/plugin-terser");
 
 module.exports = {
   input: "./src/index.ts",
-  output: {
-    dir: "lib",
-    format: "esm",
-    entryFileNames: "[name].mjs",
-    sourcemap: true,
-  },
+  output: [
+    {
+      dir: "lib",
+      format: "esm",
+      entryFileNames: "[name].mjs",
+      sourcemap: true,
+    },
+    {
+      dir: "lib",
+      format: "cjs",
+      entryFileNames: "[name].cjs",
+      sourcemap: true,
+    },
+  ],
   plugins: [
     typescript({
       tsconfig: "tsconfig.json",

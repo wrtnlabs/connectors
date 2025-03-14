@@ -698,18 +698,18 @@ export class GithubService {
   /**
    * Github Service.
    *
-   * List repository issues
+   * List repository issues.
    *
-   * List issues in a repository.
-   * This connector is perfect if you want to see the issue of the repository because it can be viewed without being authenticated.
-   * Information on the issue comes out, but only 10 people and labels attached to the issue are provided.
-   * Therefore, if you want more detailed information, it's a good idea to look at it with a connector that looks at the details of the issue.
-   * When looking up an issue, you can view open and closed issues and sort them by creation time, correction time, comment count, and reaction count.
-   * For more information, you should check the properties part of the request type.
+   * This connector allows viewing repository issues without authentication.
+   * It provides issue details, including up to 10 users and labels, but omits the body.
    *
-   * The content of the body is omitted, so if you want to see it, you should use the detailed lookup connector.
-   * If the user wants to see the body property, '/connector/github/repositories/issues/get-detail' connector must be called.
-   * You do not know who owns the repository, so you must ask the user who owns the repository and fill the owner field of the request interface.
+   * To view the issue body, use the detailed lookup connector:
+   * '/connector/github/repositories/issues/get-detail'.
+   *
+   * Issues can be filtered by open/closed status and sorted by creation time,
+   * update time, comment count, or reaction count.
+   *
+   * Since the repository owner is unknown, users must specify the owner in the request.
    */
   async fetchRepositoryIssues(
     input: IGithubService.IFetchRepositoryInput,

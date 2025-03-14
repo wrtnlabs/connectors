@@ -10,7 +10,6 @@ const main = async (): Promise<void> => {
   const report: DynamicExecutor.IReport = await DynamicExecutor.validate({
     prefix: "test_",
     location: __dirname + "/features",
-    extension: "ts",
     parameters: () => [],
     onComplete: (exec) => {
       const trace = (str: string) =>
