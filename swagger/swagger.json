@@ -15,7 +15,7 @@
     }
   ],
   "info": {
-    "version": "0.1.475",
+    "version": "0.1.476",
     "title": "@wrtn/connector",
     "description": "wrtn-ecosystem connectors and sdk",
     "license": {
