@@ -22,10 +22,10 @@ importers:
         version: 0.0.12
       '@nestia/core':
         specifier: ^4.6.1
-        version: 4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3))
+        version: 4.6.2(@nestia/fetcher@4.6.2(typescript@5.8.2))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2))
       '@nestia/fetcher':
         specifier: ^4.5.1
-        version: 4.6.2(typescript@5.7.3)
+        version: 4.6.2(typescript@5.8.2)
       '@nestjs/axios':
         specifier: ^4.0.0
         version: 4.0.0(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(axios@1.7.9)(rxjs@7.8.2)
@@ -70,7 +70,7 @@ importers:
         version: 1.2.3
       '@wrtnio/decorators':
         specifier: ^1.6.0
-        version: 1.6.0(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)))(@nestia/sdk@4.6.2(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)))(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.76)(typescript@5.7.3))(typescript@5.7.3)(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)))(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3))
+        version: 1.6.0(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.8.2))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)))(@nestia/sdk@4.6.2(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.8.2))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)))(@nestia/fetcher@4.6.2(typescript@5.8.2))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.76)(typescript@5.8.2))(typescript@5.8.2)(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)))(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2))
       '@wrtnio/schema':
         specifier: ^3.2.1
         version: 3.2.1
@@ -172,7 +172,7 @@ importers:
         version: 1.20.1
       typia:
         specifier: ^8.0.1
-        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
       uuid:
         specifier: ^10.0.0
         version: 10.0.0
@@ -185,10 +185,14 @@ importers:
       zenrows:
         specifier: ^2.0.1
         version: 2.0.1
+    optionalDependencies:
+      sharp:
+        specifier: ^0.33.5
+        version: 0.33.5
     devDependencies:
       '@commitlint/cli':
         specifier: ^19.3.0
-        version: 19.7.1(@types/node@18.19.76)(typescript@5.7.3)
+        version: 19.7.1(@types/node@18.19.76)(typescript@5.8.2)
       '@commitlint/config-conventional':
         specifier: ^19.2.2
         version: 19.7.1
@@ -197,13 +201,13 @@ importers:
         version: 0.18.0
       '@nestia/agent':
         specifier: ^0.3.7
-        version: 0.3.12(@samchon/openapi@2.4.3)(openai@4.85.4)(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3))
+        version: 0.3.12(@samchon/openapi@2.4.3)(openai@4.85.4)(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2))
       '@nestia/e2e':
         specifier: ^0.7.0
         version: 0.7.0
       '@nestia/sdk':
         specifier: ^4.6.1
-        version: 4.6.2(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)))(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.76)(typescript@5.7.3))(typescript@5.7.3)(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3))
+        version: 4.6.2(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.8.2))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)))(@nestia/fetcher@4.6.2(typescript@5.8.2))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.76)(typescript@5.8.2))(typescript@5.8.2)(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2))
       '@ryoppippi/unplugin-typia':
         specifier: ^1.1.0
         version: 1.2.0(@samchon/openapi@2.4.3)(@types/node@18.19.76)(jiti@2.4.2)(rollup@4.34.8)(terser@5.39.0)
@@ -242,10 +246,10 @@ importers:
         version: 0.4.14
       '@typescript-eslint/eslint-plugin':
         specifier: ^5.40.0
-        version: 5.62.0(@typescript-eslint/parser@5.62.0(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3))(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 5.62.0(@typescript-eslint/parser@5.62.0(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2))(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       '@typescript-eslint/parser':
         specifier: ^5.40.0
-        version: 5.62.0(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 5.62.0(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       '@vitest/coverage-istanbul':
         specifier: ^2.1.8
         version: 2.1.9(vitest@2.1.9(@types/node@18.19.76)(terser@5.39.0))
@@ -257,7 +261,7 @@ importers:
         version: 11.0.0(webpack@5.98.0)
       eslint-plugin-deprecation:
         specifier: ^1.4.1
-        version: 1.6.0(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 1.6.0(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       express:
         specifier: ^4.18.2
         version: 4.21.2
@@ -284,19 +288,19 @@ importers:
         version: 5.0.1(express@4.21.2)
       ts-loader:
         specifier: ^9.5.1
-        version: 9.5.2(typescript@5.7.3)(webpack@5.98.0)
+        version: 9.5.2(typescript@5.8.2)(webpack@5.98.0)
       ts-node:
         specifier: ^10.9.1
-        version: 10.9.2(@types/node@18.19.76)(typescript@5.7.3)
+        version: 10.9.2(@types/node@18.19.76)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
       vitest:
         specifier: ^2.1.8
         version: 2.1.9(@types/node@18.19.76)(terser@5.39.0)
@@ -309,10 +313,6 @@ importers:
       write-file-webpack-plugin:
         specifier: ^4.5.1
         version: 4.5.1
-    optionalDependencies:
-      sharp:
-        specifier: ^0.33.5
-        version: 0.33.5
 
   packages/arxiv_search:
     dependencies:
@@ -324,7 +324,7 @@ importers:
         version: 1.8.1
       typia:
         specifier: ^8.0.1
-        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
       xml2js:
         specifier: ^0.6.2
         version: 0.6.2
@@ -340,7 +340,7 @@ importers:
         version: 0.4.4(rollup@4.34.8)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
@@ -373,7 +373,7 @@ importers:
         version: 4.34.8
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -381,14 +381,14 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.24.1
-        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
 
   packages/aws_s3:
     dependencies:
@@ -409,7 +409,7 @@ importers:
         version: 0.0.3
       typia:
         specifier: ^8.0.1
-        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -422,7 +422,7 @@ importers:
         version: 0.4.4(rollup@4.34.8)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
@@ -452,7 +452,7 @@ importers:
         version: 4.34.8
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -460,14 +460,14 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.24.1
-        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
 
   packages/calendly:
     dependencies:
@@ -479,7 +479,7 @@ importers:
         version: 1.7.9
       typia:
         specifier: ^8.0.1
-        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -492,7 +492,7 @@ importers:
         version: 0.4.4(rollup@4.34.8)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
@@ -525,7 +525,7 @@ importers:
         version: 4.34.8
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -533,14 +533,14 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.24.1
-        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
 
   packages/career:
     dependencies:
@@ -549,7 +549,7 @@ importers:
         version: link:../google_search
       typia:
         specifier: ^8.0.1
-        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -562,7 +562,7 @@ importers:
         version: 0.4.4(rollup@4.34.8)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
@@ -592,7 +592,7 @@ importers:
         version: 4.34.8
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -600,14 +600,14 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.24.1
-        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
 
   packages/csv:
     dependencies:
@@ -631,7 +631,7 @@ importers:
         version: 3.0.3
       typia:
         specifier: ^8.0.1
-        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -644,7 +644,7 @@ importers:
         version: 0.4.4(rollup@4.34.8)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
@@ -677,7 +677,7 @@ importers:
         version: 4.34.8
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -685,14 +685,14 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.24.1
-        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
 
   packages/dall_e_3:
     dependencies:
@@ -707,7 +707,7 @@ importers:
         version: 4.85.4
       typia:
         specifier: ^8.0.1
-        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -720,7 +720,7 @@ importers:
         version: 0.4.4(rollup@4.34.8)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
@@ -750,7 +750,7 @@ importers:
         version: 4.34.8
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -758,14 +758,14 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.24.1
-        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
 
   packages/daum_blog:
     dependencies:
@@ -774,7 +774,7 @@ importers:
         version: 1.7.9
       typia:
         specifier: ^8.0.1
-        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -787,7 +787,7 @@ importers:
         version: 0.4.4(rollup@4.34.8)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
@@ -820,7 +820,7 @@ importers:
         version: 4.34.8
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -828,14 +828,14 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.24.1
-        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
 
   packages/daum_cafe:
     dependencies:
@@ -844,7 +844,7 @@ importers:
         version: 1.7.9
       typia:
         specifier: ^8.0.1
-        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -857,7 +857,7 @@ importers:
         version: 0.4.4(rollup@4.34.8)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
@@ -890,7 +890,7 @@ importers:
         version: 4.34.8
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -898,14 +898,14 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.24.1
-        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
 
   packages/discord:
     dependencies:
@@ -914,7 +914,7 @@ importers:
         version: 1.8.1
       typia:
         specifier: ^8.0.1
-        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -927,7 +927,7 @@ importers:
         version: 0.4.4(rollup@4.34.8)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
@@ -960,7 +960,7 @@ importers:
         version: 4.34.8
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -968,14 +968,14 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.24.1
-        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
 
   packages/excel:
     dependencies:
@@ -990,7 +990,7 @@ importers:
         version: 1.7.9
       typia:
         specifier: ^8.0.1
-        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -1003,7 +1003,7 @@ importers:
         version: 0.4.4(rollup@4.34.8)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
@@ -1036,7 +1036,7 @@ importers:
         version: 4.34.8
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -1044,14 +1044,14 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.24.1
-        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
 
   packages/figma:
     dependencies:
@@ -1066,7 +1066,7 @@ importers:
         version: 1.7.9
       typia:
         specifier: ^8.0.1
-        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -1079,7 +1079,7 @@ importers:
         version: 0.4.4(rollup@4.34.8)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
@@ -1109,7 +1109,7 @@ importers:
         version: 4.34.8
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -1117,14 +1117,14 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.24.1
-        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
 
   packages/github:
     dependencies:
@@ -1139,7 +1139,7 @@ importers:
         version: 1.7.9
       typia:
         specifier: ^8.0.1
-        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -1152,7 +1152,7 @@ importers:
         version: 0.4.4(rollup@4.34.8)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
@@ -1185,7 +1185,7 @@ importers:
         version: 4.34.8
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -1193,14 +1193,14 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.24.1
-        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
 
   packages/gmail:
     dependencies:
@@ -1218,7 +1218,7 @@ importers:
         version: 144.0.0
       typia:
         specifier: ^8.0.1
-        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -1231,7 +1231,7 @@ importers:
         version: 0.4.4(rollup@4.34.8)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
@@ -1264,7 +1264,7 @@ importers:
         version: 4.34.8
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -1272,14 +1272,14 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.24.1
-        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
 
   packages/google:
     dependencies:
@@ -1291,7 +1291,7 @@ importers:
         version: 144.0.0
       typia:
         specifier: ^8.0.1
-        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -1304,7 +1304,7 @@ importers:
         version: 0.4.4(rollup@4.34.8)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
@@ -1334,7 +1334,7 @@ importers:
         version: 4.34.8
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -1342,14 +1342,14 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.24.1
-        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
 
   packages/google_ads:
     dependencies:
@@ -1370,7 +1370,7 @@ importers:
         version: 1.0.1
       typia:
         specifier: ^8.0.1
-        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
       uuid:
         specifier: ^10.0.0
         version: 10.0.0
@@ -1386,7 +1386,7 @@ importers:
         version: 0.4.4(rollup@4.34.8)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
@@ -1419,7 +1419,7 @@ importers:
         version: 4.34.8
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -1427,14 +1427,14 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.24.1
-        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
 
   packages/google_calendar:
     dependencies:
@@ -1449,7 +1449,7 @@ importers:
         version: 144.0.0
       typia:
         specifier: ^8.0.1
-        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -1462,7 +1462,7 @@ importers:
         version: 0.4.4(rollup@4.34.8)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
@@ -1492,7 +1492,7 @@ importers:
         version: 4.34.8
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -1500,14 +1500,14 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.24.1
-        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
 
   packages/google_docs:
     dependencies:
@@ -1528,7 +1528,7 @@ importers:
         version: 14.1.4
       typia:
         specifier: ^8.0.1
-        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -1541,7 +1541,7 @@ importers:
         version: 0.4.4(rollup@4.34.8)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
@@ -1571,7 +1571,7 @@ importers:
         version: 4.34.8
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -1579,14 +1579,14 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.24.1
-        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
 
   packages/google_drive:
     dependencies:
@@ -1607,7 +1607,7 @@ importers:
         version: 0.0.3
       typia:
         specifier: ^8.0.1
-        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -1620,7 +1620,7 @@ importers:
         version: 0.4.4(rollup@4.34.8)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
@@ -1659,7 +1659,7 @@ importers:
         version: 4.34.8
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -1667,14 +1667,14 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.24.1
-        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
 
   packages/google_flight:
     dependencies:
@@ -1686,7 +1686,7 @@ importers:
         version: 2.1.0
       typia:
         specifier: ^8.0.1
-        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -1699,7 +1699,7 @@ importers:
         version: 0.4.4(rollup@4.34.8)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
@@ -1729,7 +1729,7 @@ importers:
         version: 4.34.8
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -1737,20 +1737,20 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.24.1
-        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
 
   packages/google_hotel:
     dependencies:
       typia:
         specifier: ^8.0.1
-        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -1763,7 +1763,7 @@ importers:
         version: 0.4.4(rollup@4.34.8)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
@@ -1793,7 +1793,7 @@ importers:
         version: 4.34.8
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -1801,14 +1801,14 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.24.1
-        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
 
   packages/google_image:
     dependencies:
@@ -1830,7 +1830,7 @@ importers:
         version: 0.4.4(rollup@4.34.8)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
@@ -1860,7 +1860,7 @@ importers:
         version: 4.34.8
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -1868,14 +1868,14 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.24.1
-        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
 
   packages/google_map:
     dependencies:
@@ -1893,7 +1893,7 @@ importers:
         version: 2.1.0
       typia:
         specifier: ^8.0.1
-        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -1906,7 +1906,7 @@ importers:
         version: 0.4.4(rollup@4.34.8)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
@@ -1936,7 +1936,7 @@ importers:
         version: 4.34.8
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -1944,14 +1944,14 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.24.1
-        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
 
   packages/google_scholar:
     dependencies:
@@ -1963,7 +1963,7 @@ importers:
         version: 2.1.0
       typia:
         specifier: ^8.0.1
-        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -1976,7 +1976,7 @@ importers:
         version: 0.4.4(rollup@4.34.8)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
@@ -2006,7 +2006,7 @@ importers:
         version: 4.34.8
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -2014,14 +2014,14 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.24.1
-        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
 
   packages/google_search:
     dependencies:
@@ -2033,7 +2033,7 @@ importers:
         version: 2.1.0
       typia:
         specifier: ^8.0.1
-        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -2046,7 +2046,7 @@ importers:
         version: 0.4.4(rollup@4.34.8)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
@@ -2076,7 +2076,7 @@ importers:
         version: 4.34.8
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -2084,14 +2084,14 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.24.1
-        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
 
   packages/google_sheet:
     dependencies:
@@ -2112,7 +2112,7 @@ importers:
         version: 144.0.0
       typia:
         specifier: ^8.0.1
-        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -2125,7 +2125,7 @@ importers:
         version: 0.4.4(rollup@4.34.8)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
@@ -2158,7 +2158,7 @@ importers:
         version: 4.34.8
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -2166,14 +2166,14 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.24.1
-        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
 
   packages/google_shopping:
     dependencies:
@@ -2182,7 +2182,7 @@ importers:
         version: 2.1.0
       typia:
         specifier: ^8.0.1
-        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -2195,7 +2195,7 @@ importers:
         version: 0.4.4(rollup@4.34.8)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
@@ -2225,7 +2225,7 @@ importers:
         version: 4.34.8
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -2233,14 +2233,14 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.24.1
-        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
 
   packages/google_slides:
     dependencies:
@@ -2264,7 +2264,7 @@ importers:
         version: 0.33.5
       typia:
         specifier: ^8.0.1
-        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
       uuid:
         specifier: ^10.0.0
         version: 10.0.0
@@ -2280,7 +2280,7 @@ importers:
         version: 0.4.4(rollup@4.34.8)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
@@ -2319,7 +2319,7 @@ importers:
         version: 4.34.8
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -2327,14 +2327,14 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.24.1
-        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
 
   packages/google_trend:
     dependencies:
@@ -2343,7 +2343,7 @@ importers:
         version: 2.1.0
       typia:
         specifier: ^8.0.1
-        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -2356,7 +2356,7 @@ importers:
         version: 0.4.4(rollup@4.34.8)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
@@ -2389,7 +2389,7 @@ importers:
         version: 4.34.8
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -2397,14 +2397,14 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.24.1
-        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
 
   packages/hancell:
     dependencies:
@@ -2416,7 +2416,7 @@ importers:
         version: 1.7.9
       typia:
         specifier: ^8.0.1
-        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
       uuid:
         specifier: ^10.0.0
         version: 10.0.0
@@ -2435,7 +2435,7 @@ importers:
         version: 0.4.4(rollup@4.34.8)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
@@ -2474,7 +2474,7 @@ importers:
         version: 4.34.8
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -2482,14 +2482,14 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.24.1
-        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
 
   packages/hwp:
     dependencies:
@@ -2498,7 +2498,7 @@ importers:
         version: 1.7.9
       typia:
         specifier: ^8.0.1
-        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -2511,7 +2511,7 @@ importers:
         version: 0.4.4(rollup@4.34.8)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
@@ -2544,7 +2544,7 @@ importers:
         version: 4.34.8
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -2552,14 +2552,14 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.24.1
-        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
 
   packages/image:
     dependencies:
@@ -2571,7 +2571,7 @@ importers:
         version: 0.33.5
       typia:
         specifier: ^8.0.1
-        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -2584,7 +2584,7 @@ importers:
         version: 0.4.4(rollup@4.34.8)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
@@ -2614,7 +2614,7 @@ importers:
         version: 4.34.8
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -2622,14 +2622,14 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.24.1
-        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
 
   packages/imweb:
     dependencies:
@@ -2638,7 +2638,7 @@ importers:
         version: 1.7.9
       typia:
         specifier: ^8.0.1
-        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -2651,7 +2651,7 @@ importers:
         version: 0.4.4(rollup@4.34.8)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
@@ -2681,7 +2681,7 @@ importers:
         version: 4.34.8
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -2689,14 +2689,14 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.24.1
-        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
 
   packages/jira:
     dependencies:
@@ -2711,7 +2711,7 @@ importers:
         version: 14.1.4
       typia:
         specifier: ^8.0.1
-        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -2724,7 +2724,7 @@ importers:
         version: 0.4.4(rollup@4.34.8)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
@@ -2754,7 +2754,7 @@ importers:
         version: 4.34.8
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -2762,20 +2762,20 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.24.1
-        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
 
   packages/kakao_map:
     dependencies:
       typia:
         specifier: ^8.0.1
-        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -2788,7 +2788,7 @@ importers:
         version: 0.4.4(rollup@4.34.8)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
@@ -2818,7 +2818,7 @@ importers:
         version: 4.34.8
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -2826,14 +2826,14 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.24.1
-        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
 
   packages/kakao_navi:
     dependencies:
@@ -2842,7 +2842,7 @@ importers:
         version: link:../shared
       typia:
         specifier: ^8.0.1
-        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -2855,7 +2855,7 @@ importers:
         version: 0.4.4(rollup@4.34.8)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
@@ -2885,7 +2885,7 @@ importers:
         version: 4.34.8
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -2893,14 +2893,14 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.24.1
-        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
 
   packages/kakao_talk:
     dependencies:
@@ -2912,7 +2912,7 @@ importers:
         version: 1.8.1
       typia:
         specifier: ^8.0.1
-        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -2925,7 +2925,7 @@ importers:
         version: 0.4.4(rollup@4.34.8)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
@@ -2958,7 +2958,7 @@ importers:
         version: 4.34.8
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -2966,20 +2966,20 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.24.1
-        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
 
   packages/korea_eximbank:
     dependencies:
       typia:
         specifier: ^8.0.1
-        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -2992,7 +2992,7 @@ importers:
         version: 0.4.4(rollup@4.34.8)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
@@ -3022,7 +3022,7 @@ importers:
         version: 4.34.8
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -3030,14 +3030,14 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.24.1
-        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
 
   packages/marp:
     dependencies:
@@ -3058,7 +3058,7 @@ importers:
         version: 0.12.7
       typia:
         specifier: ^8.0.1
-        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -3071,7 +3071,7 @@ importers:
         version: 0.4.4(rollup@4.34.8)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
@@ -3098,7 +3098,7 @@ importers:
         version: 4.34.8
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -3106,14 +3106,14 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.24.1
-        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
 
   packages/naver_blog:
     dependencies:
@@ -3122,7 +3122,7 @@ importers:
         version: 1.7.9
       typia:
         specifier: ^8.0.1
-        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -3135,7 +3135,7 @@ importers:
         version: 0.4.4(rollup@4.34.8)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
@@ -3168,7 +3168,7 @@ importers:
         version: 4.34.8
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -3176,14 +3176,14 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.24.1
-        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
 
   packages/naver_cafe:
     dependencies:
@@ -3192,7 +3192,7 @@ importers:
         version: 1.7.9
       typia:
         specifier: ^8.0.1
-        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -3205,7 +3205,7 @@ importers:
         version: 0.4.4(rollup@4.34.8)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
@@ -3238,7 +3238,7 @@ importers:
         version: 4.34.8
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -3246,14 +3246,14 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.24.1
-        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
 
   packages/naver_news:
     dependencies:
@@ -3262,7 +3262,7 @@ importers:
         version: 1.7.9
       typia:
         specifier: ^8.0.1
-        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -3275,7 +3275,7 @@ importers:
         version: 0.4.4(rollup@4.34.8)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
@@ -3305,7 +3305,7 @@ importers:
         version: 4.34.8
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -3313,14 +3313,14 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.24.1
-        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
 
   packages/notion:
     dependencies:
@@ -3341,7 +3341,7 @@ importers:
         version: 3.1.6
       typia:
         specifier: ^8.0.1
-        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -3354,7 +3354,7 @@ importers:
         version: 0.4.4(rollup@4.34.8)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
@@ -3387,7 +3387,7 @@ importers:
         version: 4.34.8
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -3395,14 +3395,14 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.24.1
-        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
 
   packages/open_data:
     dependencies:
@@ -3414,7 +3414,7 @@ importers:
         version: 1.8.1
       typia:
         specifier: ^8.0.1
-        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -3427,7 +3427,7 @@ importers:
         version: 0.4.4(rollup@4.34.8)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
@@ -3463,7 +3463,7 @@ importers:
         version: 4.34.8
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -3471,14 +3471,14 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.24.1
-        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
 
   packages/reddit:
     dependencies:
@@ -3490,7 +3490,7 @@ importers:
         version: 1.7.9
       typia:
         specifier: ^8.0.1
-        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -3503,7 +3503,7 @@ importers:
         version: 0.4.4(rollup@4.34.8)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
@@ -3539,7 +3539,7 @@ importers:
         version: 4.34.8
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -3547,14 +3547,14 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.24.1
-        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
 
   packages/shared:
     dependencies:
@@ -3566,7 +3566,7 @@ importers:
         version: 14.1.4
       typia:
         specifier: ^8.0.1
-        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
       xml2js:
         specifier: ^0.6.2
         version: 0.6.2
@@ -3579,7 +3579,7 @@ importers:
         version: 0.4.4(rollup@4.34.8)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
@@ -3612,7 +3612,7 @@ importers:
         version: 4.34.8
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -3620,14 +3620,14 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.24.1
-        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
 
   packages/slack:
     dependencies:
@@ -3645,7 +3645,7 @@ importers:
         version: 4.4.0
       typia:
         specifier: ^8.0.1
-        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -3658,7 +3658,7 @@ importers:
         version: 0.4.4(rollup@4.34.8)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
@@ -3688,7 +3688,7 @@ importers:
         version: 4.34.8
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -3696,20 +3696,20 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.24.1
-        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
 
   packages/sort:
     dependencies:
       typia:
         specifier: ^8.0.1
-        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -3722,7 +3722,7 @@ importers:
         version: 0.4.4(rollup@4.34.8)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
@@ -3752,7 +3752,7 @@ importers:
         version: 4.34.8
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -3760,14 +3760,14 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.24.1
-        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
 
   packages/stable_diffusion_beta:
     dependencies:
@@ -3779,7 +3779,7 @@ importers:
         version: 1.7.9
       typia:
         specifier: ^8.0.1
-        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -3792,7 +3792,7 @@ importers:
         version: 0.4.4(rollup@4.34.8)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
@@ -3822,7 +3822,7 @@ importers:
         version: 4.34.8
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -3830,14 +3830,14 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.24.1
-        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
 
   packages/sweet_tracker:
     dependencies:
@@ -3849,7 +3849,7 @@ importers:
         version: 1.8.1
       typia:
         specifier: ^8.0.1
-        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -3862,7 +3862,7 @@ importers:
         version: 0.4.4(rollup@4.34.8)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
@@ -3895,7 +3895,7 @@ importers:
         version: 4.34.8
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -3903,14 +3903,14 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.24.1
-        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
 
   packages/typeform:
     dependencies:
@@ -3922,7 +3922,7 @@ importers:
         version: 6.14.0
       typia:
         specifier: ^8.0.1
-        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -3935,7 +3935,7 @@ importers:
         version: 0.4.4(rollup@4.34.8)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
@@ -3971,7 +3971,7 @@ importers:
         version: 4.34.8
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -3979,14 +3979,14 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.24.1
-        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
 
   packages/web_crawler:
     dependencies:
@@ -3995,7 +3995,7 @@ importers:
         version: 1.0.0
       typia:
         specifier: ^8.0.1
-        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
       zenrows:
         specifier: ^2.0.1
         version: 2.0.1
@@ -4011,7 +4011,7 @@ importers:
         version: 0.4.4(rollup@4.34.8)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
@@ -4041,7 +4041,7 @@ importers:
         version: 4.34.8
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -4049,14 +4049,14 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.24.1
-        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
 
   packages/x:
     dependencies:
@@ -4065,7 +4065,7 @@ importers:
         version: 1.8.1
       typia:
         specifier: ^8.0.1
-        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -4078,7 +4078,7 @@ importers:
         version: 0.4.4(rollup@4.34.8)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
@@ -4111,7 +4111,7 @@ importers:
         version: 4.34.8
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -4119,14 +4119,14 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.24.1
-        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
 
   packages/youbute_search:
     dependencies:
@@ -4141,7 +4141,7 @@ importers:
         version: 2.1.0
       typia:
         specifier: ^8.0.1
-        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -4154,7 +4154,7 @@ importers:
         version: 0.4.4(rollup@4.34.8)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
@@ -4187,7 +4187,7 @@ importers:
         version: 4.34.8
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -4195,14 +4195,14 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.24.1
-        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
 
   packages/zoom:
     dependencies:
@@ -4214,7 +4214,7 @@ importers:
         version: 1.8.1
       typia:
         specifier: ^8.0.1
-        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+        version: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -4227,7 +4227,7 @@ importers:
         version: 0.4.4(rollup@4.34.8)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.1)
@@ -4257,7 +4257,7 @@ importers:
         version: 4.34.8
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
+        version: 10.9.2(@types/node@20.17.19)(typescript@5.8.2)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -4265,14 +4265,14 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       typescript:
-        specifier: ~5.7.3
-        version: 5.7.3
+        specifier: ~5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.24.1
-        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+        version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       typescript-transform-paths:
         specifier: ^3.5.1
-        version: 3.5.3(typescript@5.7.3)
+        version: 3.5.3(typescript@5.8.2)
 
 packages:
 
@@ -9876,8 +9876,8 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
-  typescript@5.7.3:
-    resolution: {integrity: sha512-84MVSjMEHP+FQRPy3pX9sTVV/INIex71s9TL2Gm5FG/WG1SqXeKyZ0k7/blY/4FdOzI12CBy1vGc4og/eus0fw==}
+  typescript@5.8.2:
+    resolution: {integrity: sha512-aJn6wq13/afZp/jT9QZmwEjDqqvSGp1VT5GVg+f/t6/oVyrgXM6BY1h9BRh/O5p3PlUPAe+WuiEZOmb/49RqoQ==}
     engines: {node: '>=14.17'}
     hasBin: true
 
@@ -10985,11 +10985,11 @@ snapshots:
       '@babel/helper-string-parser': 7.25.9
       '@babel/helper-validator-identifier': 7.25.9
 
-  '@commitlint/cli@19.7.1(@types/node@18.19.76)(typescript@5.7.3)':
+  '@commitlint/cli@19.7.1(@types/node@18.19.76)(typescript@5.8.2)':
     dependencies:
       '@commitlint/format': 19.5.0
       '@commitlint/lint': 19.7.1
-      '@commitlint/load': 19.6.1(@types/node@18.19.76)(typescript@5.7.3)
+      '@commitlint/load': 19.6.1(@types/node@18.19.76)(typescript@5.8.2)
       '@commitlint/read': 19.5.0
       '@commitlint/types': 19.5.0
       tinyexec: 0.3.2
@@ -11036,15 +11036,15 @@ snapshots:
       '@commitlint/rules': 19.6.0
       '@commitlint/types': 19.5.0
 
-  '@commitlint/load@19.6.1(@types/node@18.19.76)(typescript@5.7.3)':
+  '@commitlint/load@19.6.1(@types/node@18.19.76)(typescript@5.8.2)':
     dependencies:
       '@commitlint/config-validator': 19.5.0
       '@commitlint/execute-rule': 19.5.0
       '@commitlint/resolve-extends': 19.5.0
       '@commitlint/types': 19.5.0
       chalk: 5.4.1
-      cosmiconfig: 9.0.0(typescript@5.7.3)
-      cosmiconfig-typescript-loader: 6.1.0(@types/node@18.19.76)(cosmiconfig@9.0.0(typescript@5.7.3))(typescript@5.7.3)
+      cosmiconfig: 9.0.0(typescript@5.8.2)
+      cosmiconfig-typescript-loader: 6.1.0(@types/node@18.19.76)(cosmiconfig@9.0.0(typescript@5.8.2))(typescript@5.8.2)
       lodash.isplainobject: 4.0.6
       lodash.merge: 4.6.2
       lodash.uniq: 4.5.0
@@ -11563,16 +11563,16 @@ snapshots:
       call-me-maybe: 1.0.2
       glob-to-regexp: 0.3.0
 
-  '@nestia/agent@0.3.12(@samchon/openapi@2.4.3)(openai@4.85.4)(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3))':
+  '@nestia/agent@0.3.12(@samchon/openapi@2.4.3)(openai@4.85.4)(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2))':
     dependencies:
       '@samchon/openapi': 2.4.3
       openai: 4.85.4
-      typia: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+      typia: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
       uuid: 11.1.0
 
-  '@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3))':
+  '@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.8.2))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2))':
     dependencies:
-      '@nestia/fetcher': 4.6.2(typescript@5.7.3)
+      '@nestia/fetcher': 4.6.2(typescript@5.8.2)
       '@nestjs/common': 11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2)
       '@nestjs/core': 11.0.10(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.0.10)(reflect-metadata@0.2.2)(rxjs@7.8.2)
       '@samchon/openapi': 2.4.3
@@ -11584,7 +11584,7 @@ snapshots:
       reflect-metadata: 0.2.2
       rxjs: 7.8.2
       tgrid: 1.1.0
-      typia: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+      typia: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
       ws: 7.5.10
     transitivePeerDependencies:
       - bufferutil
@@ -11592,16 +11592,16 @@ snapshots:
 
   '@nestia/e2e@0.7.0': {}
 
-  '@nestia/fetcher@4.6.2(typescript@5.7.3)':
+  '@nestia/fetcher@4.6.2(typescript@5.8.2)':
     dependencies:
       '@samchon/openapi': 2.4.3
-      typescript: 5.7.3
-      typia: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3)
+      typescript: 5.8.2
+      typia: 7.6.4(@samchon/openapi@2.4.3)(typescript@5.8.2)
 
-  '@nestia/sdk@4.6.2(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)))(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.76)(typescript@5.7.3))(typescript@5.7.3)(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3))':
+  '@nestia/sdk@4.6.2(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.8.2))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)))(@nestia/fetcher@4.6.2(typescript@5.8.2))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.76)(typescript@5.8.2))(typescript@5.8.2)(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2))':
     dependencies:
-      '@nestia/core': 4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3))
-      '@nestia/fetcher': 4.6.2(typescript@5.7.3)
+      '@nestia/core': 4.6.2(@nestia/fetcher@4.6.2(typescript@5.8.2))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2))
+      '@nestia/fetcher': 4.6.2(typescript@5.8.2)
       '@nestjs/common': 11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2)
       '@nestjs/core': 11.0.10(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.0.10)(reflect-metadata@0.2.2)(rxjs@7.8.2)
       '@samchon/openapi': 2.4.3
@@ -11611,11 +11611,11 @@ snapshots:
       path-to-regexp: 6.3.0
       prettier: 3.5.1
       reflect-metadata: 0.2.2
-      ts-node: 10.9.2(@types/node@18.19.76)(typescript@5.7.3)
-      tsconfck: 2.1.2(typescript@5.7.3)
+      ts-node: 10.9.2(@types/node@18.19.76)(typescript@5.8.2)
+      tsconfck: 2.1.2(typescript@5.8.2)
       tsconfig-paths: 4.2.0
       tstl: 3.0.0
-      typia: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+      typia: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
     transitivePeerDependencies:
       - typescript
 
@@ -11796,11 +11796,11 @@ snapshots:
     optionalDependencies:
       rollup: 4.34.8
 
-  '@rollup/plugin-typescript@12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.7.3)':
+  '@rollup/plugin-typescript@12.1.2(rollup@4.34.8)(tslib@2.8.1)(typescript@5.8.2)':
     dependencies:
       '@rollup/pluginutils': 5.1.4(rollup@4.34.8)
       resolve: 1.22.10
-      typescript: 5.7.3
+      typescript: 5.8.2
     optionalDependencies:
       rollup: 4.34.8
       tslib: 2.8.1
@@ -12445,63 +12445,63 @@ snapshots:
     dependencies:
       '@types/node': 18.19.76
 
-  '@typescript-eslint/eslint-plugin@5.62.0(@typescript-eslint/parser@5.62.0(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3))(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)':
+  '@typescript-eslint/eslint-plugin@5.62.0(@typescript-eslint/parser@5.62.0(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2))(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)':
     dependencies:
       '@eslint-community/regexpp': 4.12.1
-      '@typescript-eslint/parser': 5.62.0(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+      '@typescript-eslint/parser': 5.62.0(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       '@typescript-eslint/scope-manager': 5.62.0
-      '@typescript-eslint/type-utils': 5.62.0(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
-      '@typescript-eslint/utils': 5.62.0(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+      '@typescript-eslint/type-utils': 5.62.0(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
+      '@typescript-eslint/utils': 5.62.0(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       debug: 4.4.0
       eslint: 9.20.1(jiti@2.4.2)
       graphemer: 1.4.0
       ignore: 5.3.2
       natural-compare-lite: 1.4.0
       semver: 7.7.1
-      tsutils: 3.21.0(typescript@5.7.3)
+      tsutils: 3.21.0(typescript@5.8.2)
     optionalDependencies:
-      typescript: 5.7.3
+      typescript: 5.8.2
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/eslint-plugin@8.24.1(@typescript-eslint/parser@8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3))(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)':
+  '@typescript-eslint/eslint-plugin@8.24.1(@typescript-eslint/parser@8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2))(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)':
     dependencies:
       '@eslint-community/regexpp': 4.12.1
-      '@typescript-eslint/parser': 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+      '@typescript-eslint/parser': 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       '@typescript-eslint/scope-manager': 8.24.1
-      '@typescript-eslint/type-utils': 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
-      '@typescript-eslint/utils': 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+      '@typescript-eslint/type-utils': 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
+      '@typescript-eslint/utils': 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       '@typescript-eslint/visitor-keys': 8.24.1
       eslint: 9.20.1(jiti@2.4.2)
       graphemer: 1.4.0
       ignore: 5.3.2
       natural-compare: 1.4.0
-      ts-api-utils: 2.0.1(typescript@5.7.3)
-      typescript: 5.7.3
+      ts-api-utils: 2.0.1(typescript@5.8.2)
+      typescript: 5.8.2
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/parser@5.62.0(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)':
+  '@typescript-eslint/parser@5.62.0(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)':
     dependencies:
       '@typescript-eslint/scope-manager': 5.62.0
       '@typescript-eslint/types': 5.62.0
-      '@typescript-eslint/typescript-estree': 5.62.0(typescript@5.7.3)
+      '@typescript-eslint/typescript-estree': 5.62.0(typescript@5.8.2)
       debug: 4.4.0
       eslint: 9.20.1(jiti@2.4.2)
     optionalDependencies:
-      typescript: 5.7.3
+      typescript: 5.8.2
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/parser@8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)':
+  '@typescript-eslint/parser@8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)':
     dependencies:
       '@typescript-eslint/scope-manager': 8.24.1
       '@typescript-eslint/types': 8.24.1
-      '@typescript-eslint/typescript-estree': 8.24.1(typescript@5.7.3)
+      '@typescript-eslint/typescript-estree': 8.24.1(typescript@5.8.2)
       '@typescript-eslint/visitor-keys': 8.24.1
       debug: 4.4.0
       eslint: 9.20.1(jiti@2.4.2)
-      typescript: 5.7.3
+      typescript: 5.8.2
     transitivePeerDependencies:
       - supports-color
 
@@ -12520,26 +12520,26 @@ snapshots:
       '@typescript-eslint/types': 8.24.1
       '@typescript-eslint/visitor-keys': 8.24.1
 
-  '@typescript-eslint/type-utils@5.62.0(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)':
+  '@typescript-eslint/type-utils@5.62.0(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)':
     dependencies:
-      '@typescript-eslint/typescript-estree': 5.62.0(typescript@5.7.3)
-      '@typescript-eslint/utils': 5.62.0(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+      '@typescript-eslint/typescript-estree': 5.62.0(typescript@5.8.2)
+      '@typescript-eslint/utils': 5.62.0(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       debug: 4.4.0
       eslint: 9.20.1(jiti@2.4.2)
-      tsutils: 3.21.0(typescript@5.7.3)
+      tsutils: 3.21.0(typescript@5.8.2)
     optionalDependencies:
-      typescript: 5.7.3
+      typescript: 5.8.2
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/type-utils@8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)':
+  '@typescript-eslint/type-utils@8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)':
     dependencies:
-      '@typescript-eslint/typescript-estree': 8.24.1(typescript@5.7.3)
-      '@typescript-eslint/utils': 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+      '@typescript-eslint/typescript-estree': 8.24.1(typescript@5.8.2)
+      '@typescript-eslint/utils': 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       debug: 4.4.0
       eslint: 9.20.1(jiti@2.4.2)
-      ts-api-utils: 2.0.1(typescript@5.7.3)
-      typescript: 5.7.3
+      ts-api-utils: 2.0.1(typescript@5.8.2)
+      typescript: 5.8.2
     transitivePeerDependencies:
       - supports-color
 
@@ -12549,7 +12549,7 @@ snapshots:
 
   '@typescript-eslint/types@8.24.1': {}
 
-  '@typescript-eslint/typescript-estree@5.62.0(typescript@5.7.3)':
+  '@typescript-eslint/typescript-estree@5.62.0(typescript@5.8.2)':
     dependencies:
       '@typescript-eslint/types': 5.62.0
       '@typescript-eslint/visitor-keys': 5.62.0
@@ -12557,13 +12557,13 @@ snapshots:
       globby: 11.1.0
       is-glob: 4.0.3
       semver: 7.7.1
-      tsutils: 3.21.0(typescript@5.7.3)
+      tsutils: 3.21.0(typescript@5.8.2)
     optionalDependencies:
-      typescript: 5.7.3
+      typescript: 5.8.2
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/typescript-estree@6.21.0(typescript@5.7.3)':
+  '@typescript-eslint/typescript-estree@6.21.0(typescript@5.8.2)':
     dependencies:
       '@typescript-eslint/types': 6.21.0
       '@typescript-eslint/visitor-keys': 6.21.0
@@ -12572,13 +12572,13 @@ snapshots:
       is-glob: 4.0.3
       minimatch: 9.0.3
       semver: 7.7.1
-      ts-api-utils: 1.4.3(typescript@5.7.3)
+      ts-api-utils: 1.4.3(typescript@5.8.2)
     optionalDependencies:
-      typescript: 5.7.3
+      typescript: 5.8.2
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/typescript-estree@8.24.1(typescript@5.7.3)':
+  '@typescript-eslint/typescript-estree@8.24.1(typescript@5.8.2)':
     dependencies:
       '@typescript-eslint/types': 8.24.1
       '@typescript-eslint/visitor-keys': 8.24.1
@@ -12587,19 +12587,19 @@ snapshots:
       is-glob: 4.0.3
       minimatch: 9.0.5
       semver: 7.7.1
-      ts-api-utils: 2.0.1(typescript@5.7.3)
-      typescript: 5.7.3
+      ts-api-utils: 2.0.1(typescript@5.8.2)
+      typescript: 5.8.2
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/utils@5.62.0(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)':
+  '@typescript-eslint/utils@5.62.0(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)':
     dependencies:
       '@eslint-community/eslint-utils': 4.4.1(eslint@9.20.1(jiti@2.4.2))
       '@types/json-schema': 7.0.15
       '@types/semver': 7.5.8
       '@typescript-eslint/scope-manager': 5.62.0
       '@typescript-eslint/types': 5.62.0
-      '@typescript-eslint/typescript-estree': 5.62.0(typescript@5.7.3)
+      '@typescript-eslint/typescript-estree': 5.62.0(typescript@5.8.2)
       eslint: 9.20.1(jiti@2.4.2)
       eslint-scope: 5.1.1
       semver: 7.7.1
@@ -12607,28 +12607,28 @@ snapshots:
       - supports-color
       - typescript
 
-  '@typescript-eslint/utils@6.21.0(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)':
+  '@typescript-eslint/utils@6.21.0(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)':
     dependencies:
       '@eslint-community/eslint-utils': 4.4.1(eslint@9.20.1(jiti@2.4.2))
       '@types/json-schema': 7.0.15
       '@types/semver': 7.5.8
       '@typescript-eslint/scope-manager': 6.21.0
       '@typescript-eslint/types': 6.21.0
-      '@typescript-eslint/typescript-estree': 6.21.0(typescript@5.7.3)
+      '@typescript-eslint/typescript-estree': 6.21.0(typescript@5.8.2)
       eslint: 9.20.1(jiti@2.4.2)
       semver: 7.7.1
     transitivePeerDependencies:
       - supports-color
       - typescript
 
-  '@typescript-eslint/utils@8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)':
+  '@typescript-eslint/utils@8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)':
     dependencies:
       '@eslint-community/eslint-utils': 4.4.1(eslint@9.20.1(jiti@2.4.2))
       '@typescript-eslint/scope-manager': 8.24.1
       '@typescript-eslint/types': 8.24.1
-      '@typescript-eslint/typescript-estree': 8.24.1(typescript@5.7.3)
+      '@typescript-eslint/typescript-estree': 8.24.1(typescript@5.8.2)
       eslint: 9.20.1(jiti@2.4.2)
-      typescript: 5.7.3
+      typescript: 5.8.2
     transitivePeerDependencies:
       - supports-color
 
@@ -12794,11 +12794,11 @@ snapshots:
       webpack: 5.98.0(webpack-cli@5.1.4)
       webpack-cli: 5.1.4(webpack@5.98.0)
 
-  '@wrtnio/decorators@1.6.0(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)))(@nestia/sdk@4.6.2(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)))(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.76)(typescript@5.7.3))(typescript@5.7.3)(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)))(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3))':
+  '@wrtnio/decorators@1.6.0(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.8.2))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)))(@nestia/sdk@4.6.2(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.8.2))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)))(@nestia/fetcher@4.6.2(typescript@5.8.2))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.76)(typescript@5.8.2))(typescript@5.8.2)(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)))(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2))':
     dependencies:
-      '@nestia/core': 4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3))
-      '@nestia/sdk': 4.6.2(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)))(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.76)(typescript@5.7.3))(typescript@5.7.3)(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3))
-      typia: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3)
+      '@nestia/core': 4.6.2(@nestia/fetcher@4.6.2(typescript@5.8.2))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2))
+      '@nestia/sdk': 4.6.2(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.8.2))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)))(@nestia/fetcher@4.6.2(typescript@5.8.2))(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.76)(typescript@5.8.2))(typescript@5.8.2)(typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2))
+      typia: 8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2)
 
   '@wrtnio/schema@3.2.1':
     dependencies:
@@ -13502,12 +13502,12 @@ snapshots:
       object-assign: 4.1.1
       vary: 1.1.2
 
-  cosmiconfig-typescript-loader@6.1.0(@types/node@18.19.76)(cosmiconfig@9.0.0(typescript@5.7.3))(typescript@5.7.3):
+  cosmiconfig-typescript-loader@6.1.0(@types/node@18.19.76)(cosmiconfig@9.0.0(typescript@5.8.2))(typescript@5.8.2):
     dependencies:
       '@types/node': 18.19.76
-      cosmiconfig: 9.0.0(typescript@5.7.3)
+      cosmiconfig: 9.0.0(typescript@5.8.2)
       jiti: 2.4.2
-      typescript: 5.7.3
+      typescript: 5.8.2
 
   cosmiconfig@5.2.1:
     dependencies:
@@ -13516,14 +13516,14 @@ snapshots:
       js-yaml: 3.14.1
       parse-json: 4.0.0
 
-  cosmiconfig@9.0.0(typescript@5.7.3):
+  cosmiconfig@9.0.0(typescript@5.8.2):
     dependencies:
       env-paths: 2.2.1
       import-fresh: 3.3.1
       js-yaml: 4.1.0
       parse-json: 5.2.0
     optionalDependencies:
-      typescript: 5.7.3
+      typescript: 5.8.2
 
   crc-32@1.2.2: {}
 
@@ -13876,13 +13876,13 @@ snapshots:
 
   escape-string-regexp@4.0.0: {}
 
-  eslint-plugin-deprecation@1.6.0(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3):
+  eslint-plugin-deprecation@1.6.0(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2):
     dependencies:
-      '@typescript-eslint/utils': 6.21.0(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+      '@typescript-eslint/utils': 6.21.0(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       eslint: 9.20.1(jiti@2.4.2)
       tslib: 2.8.1
-      tsutils: 3.21.0(typescript@5.7.3)
-      typescript: 5.7.3
+      tsutils: 3.21.0(typescript@5.8.2)
+      typescript: 5.8.2
     transitivePeerDependencies:
       - supports-color
 
@@ -16825,25 +16825,25 @@ snapshots:
 
   trough@1.0.5: {}
 
-  ts-api-utils@1.4.3(typescript@5.7.3):
+  ts-api-utils@1.4.3(typescript@5.8.2):
     dependencies:
-      typescript: 5.7.3
+      typescript: 5.8.2
 
-  ts-api-utils@2.0.1(typescript@5.7.3):
+  ts-api-utils@2.0.1(typescript@5.8.2):
     dependencies:
-      typescript: 5.7.3
+      typescript: 5.8.2
 
-  ts-loader@9.5.2(typescript@5.7.3)(webpack@5.98.0):
+  ts-loader@9.5.2(typescript@5.8.2)(webpack@5.98.0):
     dependencies:
       chalk: 4.1.2
       enhanced-resolve: 5.18.1
       micromatch: 4.0.8
       semver: 7.7.1
       source-map: 0.7.4
-      typescript: 5.7.3
+      typescript: 5.8.2
       webpack: 5.98.0(webpack-cli@5.1.4)
 
-  ts-node@10.9.2(@types/node@18.19.76)(typescript@5.7.3):
+  ts-node@10.9.2(@types/node@18.19.76)(typescript@5.8.2):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
       '@tsconfig/node10': 1.0.11
@@ -16857,11 +16857,11 @@ snapshots:
       create-require: 1.1.1
       diff: 4.0.2
       make-error: 1.3.6
-      typescript: 5.7.3
+      typescript: 5.8.2
       v8-compile-cache-lib: 3.0.1
       yn: 3.1.1
 
-  ts-node@10.9.2(@types/node@20.17.19)(typescript@5.7.3):
+  ts-node@10.9.2(@types/node@20.17.19)(typescript@5.8.2):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
       '@tsconfig/node10': 1.0.11
@@ -16875,7 +16875,7 @@ snapshots:
       create-require: 1.1.1
       diff: 4.0.2
       make-error: 1.3.6
-      typescript: 5.7.3
+      typescript: 5.8.2
       v8-compile-cache-lib: 3.0.1
       yn: 3.1.1
 
@@ -16888,9 +16888,9 @@ snapshots:
       semver: 7.7.1
       strip-ansi: 6.0.1
 
-  tsconfck@2.1.2(typescript@5.7.3):
+  tsconfck@2.1.2(typescript@5.8.2):
     optionalDependencies:
-      typescript: 5.7.3
+      typescript: 5.8.2
 
   tsconfig-paths@4.2.0:
     dependencies:
@@ -16904,10 +16904,10 @@ snapshots:
 
   tstl@3.0.0: {}
 
-  tsutils@3.21.0(typescript@5.7.3):
+  tsutils@3.21.0(typescript@5.8.2):
     dependencies:
       tslib: 1.14.1
-      typescript: 5.7.3
+      typescript: 5.8.2
 
   ttl-set@1.0.0:
     dependencies:
@@ -16940,24 +16940,24 @@ snapshots:
 
   typedarray@0.0.6: {}
 
-  typescript-eslint@8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3):
+  typescript-eslint@8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2):
     dependencies:
-      '@typescript-eslint/eslint-plugin': 8.24.1(@typescript-eslint/parser@8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3))(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
-      '@typescript-eslint/parser': 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
-      '@typescript-eslint/utils': 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+      '@typescript-eslint/eslint-plugin': 8.24.1(@typescript-eslint/parser@8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2))(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
+      '@typescript-eslint/parser': 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
+      '@typescript-eslint/utils': 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.2)
       eslint: 9.20.1(jiti@2.4.2)
-      typescript: 5.7.3
+      typescript: 5.8.2
     transitivePeerDependencies:
       - supports-color
 
-  typescript-transform-paths@3.5.3(typescript@5.7.3):
+  typescript-transform-paths@3.5.3(typescript@5.8.2):
     dependencies:
       minimatch: 9.0.5
-      typescript: 5.7.3
+      typescript: 5.8.2
 
   typescript@5.6.3: {}
 
-  typescript@5.7.3: {}
+  typescript@5.8.2: {}
 
   typia@7.6.4(@samchon/openapi@2.4.3)(typescript@5.6.3):
     dependencies:
@@ -16969,7 +16969,7 @@ snapshots:
       randexp: 0.5.3
       typescript: 5.6.3
 
-  typia@7.6.4(@samchon/openapi@2.4.3)(typescript@5.7.3):
+  typia@7.6.4(@samchon/openapi@2.4.3)(typescript@5.8.2):
     dependencies:
       '@samchon/openapi': 2.4.3
       commander: 10.0.1
@@ -16977,9 +16977,9 @@ snapshots:
       inquirer: 8.2.6
       package-manager-detector: 0.2.9
       randexp: 0.5.3
-      typescript: 5.7.3
+      typescript: 5.8.2
 
-  typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.7.3):
+  typia@8.0.1(@samchon/openapi@2.4.3)(typescript@5.8.2):
     dependencies:
       '@samchon/openapi': 2.4.3
       commander: 10.0.1
@@ -16987,7 +16987,7 @@ snapshots:
       inquirer: 8.2.6
       package-manager-detector: 0.2.9
       randexp: 0.5.3
-      typescript: 5.7.3
+      typescript: 5.8.2
 
   uc.micro@1.0.6: {}
 
