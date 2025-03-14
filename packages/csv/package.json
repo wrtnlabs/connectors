@@ -44,6 +44,6 @@
     "fast-csv": "^5.0.0",
     "stream": "^0.0.3",
     "stream-buffers": "^3.0.2",
-    "typia": "^7.6.4"
+    "typia": "^8.0.1"
   }
 }

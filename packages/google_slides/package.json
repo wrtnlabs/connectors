@@ -46,7 +46,7 @@
     "@wrtnlabs/connector-shared": "workspace:^",
     "axios": "^1.7.9",
     "sharp": "^0.33.5",
-    "typia": "^7.6.4",
+    "typia": "^8.0.1",
     "uuid": "^10.0.0"
   }
 }

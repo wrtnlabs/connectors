@@ -42,6 +42,6 @@
     "@wrtnlabs/connector-shared": "workspace:^",
     "crypto": "^1.0.1",
     "stream": "^0.0.3",
-    "typia": "^7.6.4"
+    "typia": "^8.0.1"
   }
 }

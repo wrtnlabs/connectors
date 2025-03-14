@@ -28,6 +28,7 @@
     "package.json",
     "README.md"
   ],
+
   "devDependencies": {
     "rimraf": "^5.0.5",
     "ts-node": "^10.9.2",

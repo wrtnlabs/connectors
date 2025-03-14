@@ -40,6 +40,6 @@
     "@wrtnlabs/connector-shared": "workspace:^",
     "axios": "^1.7.9",
     "marked": "^14.1.2",
-    "typia": "^7.6.4"
+    "typia": "^8.0.1"
   }
 }

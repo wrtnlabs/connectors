@@ -37,6 +37,6 @@
     "typescript-transform-paths": "^3.5.1"
   },
   "dependencies": {
-    "typia": "^7.6.4"
+    "typia": "^8.0.1"
   }
 }

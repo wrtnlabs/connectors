@@ -26,7 +26,7 @@ export const test_gmail = async () => {
   /**
    * Find Email.
    */
-  const email = await gmailService.findEmail(emailId);
+  const email = await gmailService.findEmail({ id: emailId });
   typia.assert<IGmailService.IFindGmailOutput>(email);
 
   /**
@@ -40,7 +40,7 @@ export const test_gmail = async () => {
   /**
    * Remove Email. (move mail to trash)
    */
-  await gmailService.removeEmail(emailId);
+  await gmailService.removeEmail({ id: emailId });
 
   /**
    * Create Label.
@@ -53,31 +53,34 @@ export const test_gmail = async () => {
   /**
    * Add Label To Email.
    */
-  await gmailService.addLabelToMail(emailId, {
+  await gmailService.addLabelToMail({
+    id: emailId,
     labelIds: [label.id],
   });
 
   /**
    * Remove Label From Email.
    */
-  await gmailService.removeLabelFromMail(emailId, {
+  await gmailService.removeLabelFromMail({
+    id: emailId,
     labelIds: [label.id],
   });
 
   /**
    * Reply To Email.
    */
-  const reply = await gmailService.reply(emailId, {
+  const reply = await gmailService.reply({
+    id: emailId,
     replyText: "답장입니다.",
   });
 
   /**
    * remove Email. (hard delete)
    */
-  await gmailService.hardDelete(emailId);
+  await gmailService.hardDelete({ id: emailId });
 
   /**
    * remove Reply Email. (hard delete)
    */
-  await gmailService.hardDelete(reply.id);
+  await gmailService.hardDelete({ id: reply.id });
 };
