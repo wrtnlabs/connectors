@@ -131,5 +131,5 @@ const main = async (): Promise<void> => {
     kind: "title",
     directory: `${__dirname}/../api/structures`,
   });
-};
+}; 
 main().catch(console.error);
