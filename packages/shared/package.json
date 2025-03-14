@@ -10,7 +10,7 @@
   },
   "scripts": {
     "prepare": "ts-patch install && typia patch",
-    "build": "pnpm build:main && pnpm build:test",
+    "build": "pnpm build:main",
     "build:main": "rimraf lib && tsc && rollup -c",
     "build:test": "rimraf bin && tsc -p test/tsconfig.json",
     "dev": "pnpm build:test --watch",
