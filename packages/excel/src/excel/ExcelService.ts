@@ -1,9 +1,9 @@
-import { NotFoundException } from "@nestjs/common";
 import * as Excel from "exceljs";
 import { v4 } from "uuid";
 import { IExcelService } from "../structures/IExcelService";
 import { AwsS3Service } from "@wrtnlabs/connector-aws-s3";
 import axios from "axios";
+import { ISpreadsheetCell } from "@wrtnlabs/connector-shared";
 
 export class ExcelService {
   private readonly s3: AwsS3Service;
@@ -49,14 +49,15 @@ export class ExcelService {
    *
    * Get the contents of the corresponding Excel file based on the input file information
    */
-  getExcelData(input: {
-    workbook: Excel.Workbook;
-    sheetName?: string | null;
-  }): IExcelService.IReadExcelOutput {
+  async getExcelData(
+    input: IExcelService.IReadExcelInput,
+  ): Promise<IExcelService.IReadExcelOutput> {
+    const workbook = await this.getExcelFile({ fileUrl: input.fileUrl });
+
     try {
-      const sheet = input.workbook.getWorksheet(input.sheetName ?? 1);
+      const sheet = workbook.getWorksheet(input.sheetName ?? 1);
       if (!sheet) {
-        throw new NotFoundException("Not existing sheet");
+        throw new Error("Not existing sheet");
       }
 
       const result: Record<string, string>[] = [];
@@ -103,7 +104,7 @@ export class ExcelService {
     return this.readExcelHeaders({ workbook, sheetName });
   }
 
-  readExcelHeaders(input: {
+  private readExcelHeaders(input: {
     workbook: Excel.Workbook;
     sheetName?: string | null;
   }): string[] {
@@ -175,7 +176,7 @@ export class ExcelService {
       const CREATED_SHEET = 1 as const;
       const sheet = workbook.getWorksheet(sheetName ?? CREATED_SHEET);
       if (!sheet) {
-        throw new NotFoundException("Not existing sheet");
+        throw new Error("Not existing sheet");
       }
 
       data.forEach((data) => {
@@ -252,46 +253,48 @@ export class ExcelService {
 
   /**
    * 모든 행이 누락된 열이 없다고 가정한, 테스트 용 transformer 함수
+   *
+   * @hidden
    * @param input 모든 행이 누락된 열이 없다고 가정한, 즉 직사각형 형태의 시트를 의미한다.
    * @returns
    */
-  // private transform(
-  //   input: Record<string, string | number>[],
-  // ): ISpreadsheetCell.ICreate[] {
-  //   if (input.length === 0) {
-  //     return [];
-  //   }
+  transform(input: {
+    data: Record<string, string | number>[];
+  }): ISpreadsheetCell.ICreate[] {
+    if (input.data.length === 0) {
+      return [];
+    }
 
-  //   const keys = Object.keys(input[0]!).map(
-  //     (value, columnIndex): ISpreadsheetCell.ICreate => {
-  //       return {
-  //         row: 1,
-  //         column: columnIndex + 1,
-  //         snapshot: {
-  //           type: "text",
-  //           value: String(value),
-  //         },
-  //       };
-  //     },
-  //   );
+    const keys = Object.keys(input.data[0]!).map(
+      (value, columnIndex): ISpreadsheetCell.ICreate => {
+        return {
+          row: 1,
+          column: columnIndex + 1,
+          snapshot: {
+            type: "text",
+            value: String(value),
+          },
+        };
+      },
+    );
 
-  //   const values = input.flatMap(
-  //     (data, rowIndex): ISpreadsheetCell.ICreate[] => {
-  //       return Object.values(data).map(
-  //         (value, columnIndex): ISpreadsheetCell.ICreate => {
-  //           return {
-  //             row: rowIndex + 1 + 1,
-  //             column: columnIndex + 1,
-  //             snapshot: {
-  //               type: "text",
-  //               value: String(value),
-  //             },
-  //           };
-  //         },
-  //       );
-  //     },
-  //   );
+    const values = input.data.flatMap(
+      (data, rowIndex): ISpreadsheetCell.ICreate[] => {
+        return Object.values(data).map(
+          (value, columnIndex): ISpreadsheetCell.ICreate => {
+            return {
+              row: rowIndex + 1 + 1,
+              column: columnIndex + 1,
+              snapshot: {
+                type: "text",
+                value: String(value),
+              },
+            };
+          },
+        );
+      },
+    );
 
-  //   return [...keys, ...values];
-  // }
+    return [...keys, ...values];
+  }
 }
