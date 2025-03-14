@@ -4,7 +4,7 @@ interface ISection {
   from: number;
   to: number;
   lines: string[];
-}
+} 
 
 const trimLines = (lines: string[]): void => {
   while (true)
