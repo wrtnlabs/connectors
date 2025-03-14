@@ -3,6 +3,11 @@
   "version": "0.0.1",
   "description": "",
   "main": "src/index.ts",
+  "exports": {
+    "import": "./lib/index.mjs",
+    "require": "./lib/index.cjs",
+    "default": "./lib/index.cjs"
+  },
   "scripts": {
     "prepare": "ts-patch install && typia patch",
     "build": "pnpm build:main && pnpm build:test",
@@ -10,7 +15,7 @@
     "build:test": "rimraf bin && tsc -p test/tsconfig.json",
     "dev": "pnpm build:test --watch",
     "eslint": "eslint ./**/*.ts",
-    "test": "cross-env NODE_ENV=test ts-node test/index.ts"
+    "test": "node bin/test"
   },
   "keywords": [],
   "author": "",

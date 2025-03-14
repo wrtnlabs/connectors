@@ -3,14 +3,19 @@
   "version": "0.0.1",
   "description": "",
   "main": "src/index.ts",
+  "exports": {
+    "import": "./lib/index.mjs",
+    "require": "./lib/index.cjs",
+    "default": "./lib/index.cjs"
+  },
   "scripts": {
     "prepare": "ts-patch install && typia patch",
-    "build": "pnpm build:main",
+    "build": "pnpm build:main && pnpm build:test",
     "build:main": "rimraf lib && tsc && rollup -c",
     "build:test": "rimraf bin && tsc -p test/tsconfig.json",
     "dev": "pnpm build:test --watch",
     "eslint": "eslint ./**/*.ts",
-    "test": "ts-node test/index.ts"
+    "test": "node bin/test"
   },
   "keywords": [],
   "author": "",
