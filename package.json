@@ -1,7 +1,7 @@
 {
   "private": false,
   "name": "@wrtn/connector",
-  "version": "0.1.478",
+  "version": "0.1.479",
   "description": "wrtn-ecosystem connectors and sdk",
   "main": "lib/index.js",
   "scripts": {
