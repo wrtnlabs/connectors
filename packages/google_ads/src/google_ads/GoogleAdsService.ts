@@ -18,8 +18,9 @@ export class GoogleAdsService {
   constructor(private readonly props: IGoogleAdsService.IProps) {}
 
   /**
-   * Get Google Ads Customer ID.
+   * Google Ads Service.
    *
+   * Get Google Ads Customer ID.
    * Check that the user's secret key and the advertising account you want to use are valid.
    * If the ID of the advertising account has not been delivered, it will pass you through even if you do not select it if the length of the advertising account list is 1.
    *
@@ -53,18 +54,18 @@ export class GoogleAdsService {
   }
 
   /**
-   * Designate Wrtn as the advertising account manager of the user
+   * Google Ads Service.
    *
-   * To call the Google Ads API for a specific Google account, you must own the advertising account or be registered as an administrator.
-   * This connector is a connector that sends a kind of invitation to all of the user's Google advertising accounts to register the `Wrtn` advertising account as the customer's administrator.
-   * After the connector is executed, an email registered to the customer account will be sent via Gmail.
-   * Those who receive the email can go to the dashboard through the email and give the `Wrtn` account administrator rights.
-   * If `Wrtn` is registered as an administrator, he will be able to use other APIs created in Google Ads.
+   * Designates Wrtn as the user's advertising account manager.
+   * To call the Google Ads API for a specific account, the user must own or administer it.
+   * This connector sends invitations to all of the user's Google Ads accounts, requesting admin access for Wrtn.
+   * Upon execution, an email is sent to the customer account via Gmail, allowing recipients to grant Wrtn admin rights.
+   * Admin access enables Wrtn to use other Google Ads APIs.
    *
-   * This administrator designation must be done before calling all Google Ads connectors except for connectors that do not receive `customerId` as an argument, such as keyword recommendations.
-   * However, even if this connector is called, `Wrtn` will not be designated as an administrator without the user's approval, so there is no need to worry.
+   * This step is required before calling most Google Ads connectors, except those not requiring customerId (e.g., keyword recommendations).
+   * Admin rights are only granted with user approval.
    *
-   * Before calling the function, we need to ask the user for his `customerId`, so we need to suggest a connector that can check `customerId`.
+   * Before calling, prompt the user to check their customerId using a relevant connector.
    */
   async publish(): Promise<void> {
     try {
@@ -85,8 +86,9 @@ export class GoogleAdsService {
   }
 
   /**
-   * Recommend keywords for Google Ads
+   * Google Ads Service.
    *
+   * Recommend keywords for Google Ads
    * In order to execute ads in Google Ads, you need to register keywords.
    * A keyword must be registered to target the end users of the ad, and it is one of the `adGroupCriteria` mapped to `adGroup` among the resources of Google Ads.
    * This connector is a function to recommend such keywords, and when the user enters the keywords and URL that he or she wanted to register, it recommends other keywords that can be derived from them.
@@ -97,7 +99,70 @@ export class GoogleAdsService {
    *
    * Before calling the function, you need to ask the user for `customerId`, so you need to suggest a connector that can check `customerId`.
    */
-  async generateKeywordIdeas(
+  async getKeywordsAndUrl(
+    input: IGoogleAdsService.IGenerateKeywordIdeaByKeywordsAndUrlInput,
+  ): Promise<IGoogleAdsService.IGenerateKeywordIdeaOutput> {
+    const customerId = await this.getTargetCustomerId({});
+
+    return await this.generateKeywordIdeas({
+      ...input,
+      customerId,
+    });
+  }
+
+  /**
+   * Google Ads Service.
+   *
+   * Get keyword recommendations for Google Ads
+   *
+   * In order to execute ads in Google Ads, you need to register keywords.
+   * A keyword must be registered to target the end users of the ad, and it is one of the `adGroupCriteria` mapped to `adGroup` among the resources of Google Ads.
+   * This connector is a function to recommend such keywords, and when the user enters the keywords that he or she wanted to register, it recommends other keywords that can be derived from them.
+   *
+   * The request result is a list of keywords, the competition index, unit price, and the expected index values when registering an ad for each keyword.
+   *
+   * This connector excludes keywords for adult ads, and the language condition is set to Korean and the geographical condition is set to Korea (South Korea).
+   *
+   * Before calling the function, you need to ask the user for `customerId`, so you need to suggest a connector that can check `customerId`.
+   */
+  async getKeywordRecommendations(
+    input: IGoogleAdsService.IGenerateKeywordIdeaByKeywordsInput,
+  ): Promise<IGoogleAdsService.IGenerateKeywordIdeaOutput> {
+    const customerId = await this.getTargetCustomerId({});
+
+    return await this.generateKeywordIdeas({
+      ...input,
+      customerId,
+    });
+  }
+
+  /**
+   * Google Ads Service.
+   *
+   * Get keyword recommendations for Google Ads
+   *
+   * In order to execute ads in Google Ads, you need to register keywords.
+   * A keyword must be registered to target the end users of the ad, and it is one of the `adGroupCriteria` mapped to `adGroup` among the resources of Google Ads.
+   * This connector is a function to recommend such keywords, and when the user enters the URL that he or she wanted to register, it recommends other keywords that can be derived from it.
+   *
+   * The request result is a list of keywords, competition index, unit price, and expected index values for each keyword when registering an ad.
+   *
+   * This connector excludes keywords for adult ads, and the language condition is set to Korean and the geographical condition is set to Korea (South Korea).
+   *
+   * Before calling the function, you need to ask the user for `customerId`, so you need to suggest a connector that can check `customerId`.
+   */
+  async getUrl(
+    input: IGoogleAdsService.IGenerateKeywordIdeaByURLInput,
+  ): Promise<IGoogleAdsService.IGenerateKeywordIdeaOutput> {
+    const customerId = await this.getTargetCustomerId({});
+
+    return await this.generateKeywordIdeas({
+      ...input,
+      customerId,
+    });
+  }
+
+  private async generateKeywordIdeas(
     input:
       | IGoogleAdsService.IGenerateKeywordIdeaByURLInput
       | IGoogleAdsService.IGenerateKeywordIdeaByKeywordsInput
@@ -134,6 +199,8 @@ export class GoogleAdsService {
   }
 
   /**
+   * Google Ads Service.
+   *
    * View ad details
    *
    * Depending on the campaign, it is either a responsive search ad or a responsive display ad.
@@ -181,25 +248,22 @@ export class GoogleAdsService {
   }
 
   /**
-   * Change the ad status of a Google customer account
+   * Google Ads Service.
    *
-   * Change the ad status by receiving the ID of the ad account and the resource name of the ad in the ad group (=`adGroupAd```ResourceName`).
+   * Changes the ad status of a Google customer account.
    *
-   * If `customerId` is not passed, it is automatically selected only if there is only one ad account that `Wrtn` can access from the user.
+   * Updates ad status using `customerId` and `adGroupAdResourceName`.
+   * If `customerId` is not provided, it auto-selects if Wrtn has access to only one account.
+   * Supports `ENABLED` (active) and `PAUSED` (suspended) statuses.
    *
-   * The ad status supported by this connector is `ENABLED` and `PAUSED`, which means the execution and suspension of the ad, respectively.
-   * Since the `Wrtn` manager account only changes the status of the ad without changing the status of the campaign and ad group,
-   * unless the user changes the status of the campaign and ad group directly in the Google Ads dashboard, the ad status means whether or not spending occurs.
-   * If the user wants to change the status of the ad group, instead of changing the status of the ad group, query the ad group and change the status of all ads in the ad group.
-   * If the user wants to change the status of the campaign, instead of changing the status of the campaign, query the campaign and change the status of all ads in the campaign. However, if you change the status of a campaign, you must go down the campaign and ad group in the Google Ads ad structure and terminate all ads.
+   * Wrtn changes only the ad status, not the campaign or ad group.
+   * Users should manually update campaign/ad group statuses in the Google Ads dashboard.
+   * To pause an ad group or campaign, update all ads within them.
    *
-   * Also, our connector does not support deleting ads.
+   * Ads cannot be deleted via this connector. Instead, pause all child ads.
+   * Deleting ads removes performance data, so pausing is recommended for future use.
    *
-   * If there is a user who wants to delete a campaign, ad group, or ad, we recommend changing all child ads of the corresponding node to the `PAUSED` status.
-   *
-   * Since deleting an ad means losing the means to check previous performance and indicators, it is advantageous to terminate the ad instead of deleting it for future ad re-execution.
-   *
-   * Before calling the function, you must ask the user for `customerId`, so you must suggest a connector that can check `customerId`.
+   * Before calling, prompt the user to check `customerId` using a relevant connector.
    */
   async updateAd(input: IGoogleAdsService.ISetOnOffInput) {
     try {
@@ -232,91 +296,108 @@ export class GoogleAdsService {
   }
 
   /**
-   * Create an ad for a Google customer account.
+   * Google Ads Service.
    *
-   * The `Wrtn` manager creates one ad per ad group for convenience.
-   * Therefore, this connector does not receive the resource name or ID of the ad group (=adGroup) to create the ad, and the ad group is created first when creating the ad.
-   * Since the types of ads that can be created depend on the campaign, you must create them after checking the campaign.
-   * For example, search ads must be created in a search campaign.
+   * Creates Search Ads in Google customer accounts at once.
    *
-   * If `customerId` is not passed, `Wrtn` will automatically select only one ad account that the user can access.
+   * This process includes creating campaigns, ad groups, and ads in a single step.
+   * No need to specify a campaign, as everything is generated from the top-level campaign node.
+   * Campaigns manage budgets, and ads optimize performance within them.
    *
-   * The ad is immediately moved to the review stage after creation, and if Google's review is passed, the ad will be executed and expenses will be incurred.
-   * However, when creating an ad with this connector, the ad status is set to `PAUSED`.
-   * This is to allow users to check the campaign, ad group, ad, etc. again to check if they have been created in the desired state in case of an emergency.
-   * Therefore, even if the ad review is complete, the ad will not be executed, and no performance or expenses will be incurred. If the ad is checked to be correct, the user can change the ad status to `ENABLED` using the `ad edit connector`.
+   * This method is convenient for executing ads but may not suit cases requiring multiple ad variations.
+   * If `customerId` is not provided, it auto-selects if Wrtn has access to only one account.
    *
-   * Before calling the function, you should ask the user for `customerId`, so you should suggest a connector that can check `customerId`.
+   * Ads are initially set to `PAUSED` for user review, ensuring no unintended expenses.
+   * Once verified, users can enable ads via the `Ad Edit Connector`.
    *
+   * There is a spending limit of 100,000 KRW per campaign for emergencies.
+   * Before calling, prompt the user to check `customerId` using a relevant connector.
+   */
+  async createSearchAd(
+    input: IGoogleAdsService.ICreateAdGroupSearchAdAtOnceInput,
+  ) {
+    const customerId = await this.getTargetCustomerId({});
+
+    const { campaign, campaignBudget } = await this.createCampaign({
+      ...input.campaign,
+      advertisingChannelType: "SEARCH",
+      customerId,
+    });
+
+    const ad = await this.createAd({
+      ...input.ad,
+      campaignResourceName: campaign.resourceName,
+      customerId,
+      type: "SEARCH_STANDARD",
+    });
+
+    return {
+      campaign,
+      campaignBudget,
+      ad,
+    };
+  }
+
+  /**
+   * Google Ads Service.
    *
-   * @todo Search Ads 분리.
+   * Creates Display Ads in a Google customer account at once.
    *
+   * This includes campaigns, ad groups, and ads in one step.
+   * No need to specify a campaign, as the entire structure is created together.
+   * Campaigns manage budgets, while ads optimize exposure dynamically.
    *
-   * If you want to create Search Ads, you must follow the following steps.
+   * This method is convenient but may not suit cases requiring multiple ad variations.
+   * If `customerId` is not provided, it auto-selects if Wrtn has access to only one account.
    *
-   * Create search ads in Google customer accounts at once
+   * Ads are initially set to `PAUSED` for user review, ensuring no unintended expenses.
+   * Once reviewed, users can enable ads via the `Ad Edit Connector`.
    *
-   * Creating Google ads at once means creating campaigns, ad groups, and ads that exist in the Google Ads tree structure at once.
+   * Ads undergo immediate review, and upon approval, they are ready for activation.
+   * Spending is limited to 100,000 KRW per campaign for emergencies.
+   * Before calling, prompt the user to check `customerId` using a relevant connector.
+   */
+  async createDisplayAd(
+    input: IGoogleAdsService.ICreateAdGroupDisplayAdAtOnceInput,
+  ) {
+    const customerId = await this.getTargetCustomerId({});
+
+    const { campaign, campaignBudget } = await this.createCampaign({
+      ...input.campaign,
+      advertisingChannelType: "DISPLAY",
+      customerId,
+    });
+
+    const ad = await this.createAd({
+      ...input.ad,
+      campaignResourceName: campaign.resourceName,
+      customerId,
+      type: "DISPLAY_STANDARD",
+    });
+
+    return {
+      campaign,
+      campaignBudget,
+      ad,
+    };
+  }
+
+  /**
+   * Google Ads Service.
    *
-   * In this case, you do not need to specify which campaign to create ads for.
+   * Creates an ad for a Google customer account.
    *
-   * This is because everything from the first resource, the campaign, to the ad is created at once.
+   * `Wrtn` creates one ad per ad group for convenience.
+   * The ad group is created automatically, so no `adGroup` ID is required.
+   * Ad types depend on the campaign (e.g., search ads require a search campaign).
    *
-   * The campaign tree structure of Google Ads is such that the top campaign node is in charge of the budget, and when the ad is optimized, the ad group and ad share the budget of the campaign.
-   * In simple terms, this means that the ad within the campaign learns and optimizes itself to determine which ad will be exposed to the end user.
+   * If `customerId` is not provided, Wrtn selects an accessible account automatically.
    *
-   * Therefore, it is easy to create ads in the connector structure that creates them at once, but it may not be suitable if you want to create multiple ads.
+   * Ads enter Google's review process immediately after creation.
+   * However, they are initially set to `PAUSED` for user verification, preventing unintended expenses.
+   * Once confirmed, users can enable ads via the `ad edit connector`.
    *
-   * However, if you have multiple ad materials and do not intend to create and compare multiple ads, it will be very convenient because you can easily execute the ad.
-   *
-   * In most cases, there is no problem creating ads in this way.
-   *
-   * If `customerId` is not passed, it is automatically selected only if there is only one ad account accessible to `Wrtn` from the user.
-   *
-   * The ad is immediately reviewed after being created, and if Google's review is passed, the ad will be executed and expenses will be incurred.
-   * However, if an ad is created with this connector, the ad status is set to `PAUSED`.
-   * This is to prepare for an emergency so that the user can check the campaign, ad group, ad, etc. again to see if they are in the desired state.
-   * Therefore, even if the ad review is complete, the ad will not be executed and no performance or expenses will be incurred.
-   *
-   * If the ad is checked to be correct, the user can change the ad status to `ENABLED` using the `Ad Edit Connector`.
-   *
-   * Before calling the function, you should ask the user for `customerId`, so you should suggest a connector that can check `customerId`.
-   *
-   * Originally, there was no amount limit, but in preparation for an emergency, the function is currently limited to 100,000 won per campaign.
-   *
-   * @todo Display Ads 분리.
-   *
-   * If you want to create Display Ads, you must follow the following steps.
-   *
-   * Create display ads in your Google customer account at once
-   *
-   * Creating Google ads at once means creating campaigns, ad groups, and ads that exist in the Google Ads tree structure at once.
-   *
-   * In this case, you do not need to specify which campaign to create ads for.
-   *
-   * This is because everything from the first resource, the campaign, to the ad is created at once.
-   *
-   * The campaign tree structure of Google Ads is such that the top campaign node is in charge of the budget, and when the ad is optimized, the ad group and ad share the budget of the campaign.
-   * In simple terms, this means that the ad within the campaign learns and optimizes itself to determine which ad will be exposed to the end user.
-   *
-   * Therefore, it is easy to create ads in the connector structure that creates them at once, but it may not be suitable if you want to create multiple ads.
-   *
-   * However, if you have multiple ad materials and do not intend to create and compare multiple ads, it will be very convenient because you can easily execute the ad.
-   *
-   * In most cases, there is no problem creating ads in this way.
-   *
-   * If `customerId` is not passed, it is automatically selected only if there is only one ad account accessible to `Wrtn` from the user.
-   *
-   * The ad is immediately reviewed after being created, and if Google's review is passed, the ad will be executed and expenses will be incurred.
-   * However, if an ad is created with this connector, the ad status is set to `PAUSED`.
-   * This is to prepare for an emergency so that the user can check the campaign, ad group, ad, etc. again to see if they are in the desired state.
-   * Therefore, even if the ad review is complete, the ad will not be executed and no performance or expenses will be incurred.
-   *
-   * If the ad is checked to be correct, the user can change the ad status to `ENABLED` using the `Ad Edit Connector`.
-   *
-   * Before calling the function, you should ask the user for `customerId`, so you should suggest a connector that can check `customerId`.
-   *
-   * Originally, there was no amount limit, but in preparation for an emergency, the function is currently limited to 100,000 won per campaign.
+   * Before calling, prompt the user to check `customerId` using a relevant connector.
    */
   async createAd(
     input: Omit<
@@ -434,23 +515,21 @@ export class GoogleAdsService {
   }
 
   /**
-   * Edit an ad campaign for your Google customer account
+   * Google Ads Service.
    *
-   * Edit a campaign.
-   * The only things you can edit in a campaign are the campaign name, budget, and end date.
-   * The campaign name is a value for people to recognize and has no effect on the ad, so you can specify it as you like.
-   * For the budget, you can enter the budget you want to advertise in Korean Won (KRW), and in this case, the daily ad spending will be formed above and below the budget.
-   * In some cases, you may spend more than the budget, or if the ad optimization is not done, you may spend less than the budget.
-   * The last end date can be used as a scheduled end date because the ad will not end and will continue to run if it is not specified.
-   * However, if you do not delete the end date that you have already specified, the ad may not be executed even if you turn it on later.
-   * If you want to turn on the ad for a campaign that has ended, you must also change the campaign's scheduled end date.
+   * Edits an ad campaign for a Google customer account.
    *
-   * If you do not pass `customerId`, it will be automatically selected only if there is only one ad account that `Wrtn` can access from the user.
+   * You can edit the campaign name, budget, and end date.
+   * The campaign name is for recognition and doesn't affect the ad.
+   * The budget is entered in Korean Won (KRW), with daily spending fluctuating above or below the set budget.
+   * The end date can be used as a scheduled end date; if not specified, the ad continues to run.
+   * If the end date is already set, it must be updated to ensure the ad is executed.
    *
-   * Before calling the function, we need to ask the user for `customerId`, so we need to suggest a connector that can check `customerId`.
+   * If `customerId` is not provided, Wrtn auto-selects an accessible account.
    *
-   * Originally, there is no amount limit, but in case of an emergency, we currently limit the function to 100,000 won per campaign.
+   * Before calling, prompt the user to check `customerId` using a relevant connector.
    *
+   * A 100,000 KRW limit per campaign is currently set for emergency purposes.
    */
   async updateCampaign(
     input: IGoogleAdsService.IUpdateCampaignInput & {
@@ -501,21 +580,20 @@ export class GoogleAdsService {
   }
 
   /**
-   * Create an ad campaign for your Google customer account
+   * Google Ads Service.
    *
-   * Create a campaign (=campaign).
-   * A campaign is located under an account in Google Ads, and is located at the top of the tree structure consisting of campaigns, ad groups, and ads.
-   * A campaign is a parent object for grouping ad groups, and is responsible for the duration, budget, purpose, channel, etc. of the ad.
-   * If you do not specify a campaign name, a random name will be assigned. In this case, it may be difficult to identify.
-   * Therefore, it is recommended to give different names to each campaign according to its purpose so that you can distinguish them.
-   * The name of the campaign is only for the user to easily identify, and does not affect the effectiveness of the ad at all, so you can rest assured.
+   * Creates an ad campaign for a Google customer account.
    *
-   * If you do not pass `customerId`, it will be automatically selected only if there is only one ad account accessible to `Wrtn` from the user.
+   * A campaign is the top-level object in Google Ads, grouping ad groups and ads.
+   * It manages the ad's duration, budget, purpose, and channel.
+   * If no campaign name is provided, a random name is assigned, which may be hard to identify.
+   * It’s recommended to give meaningful names to campaigns, but the name does not affect ad effectiveness.
    *
-   * You should ask the user for `customerId` before calling the function, so you should suggest a connector that can check `customerId`.
+   * If `customerId` is not passed, Wrtn will auto-select an accessible account.
    *
-   * Originally, there was no limit on the amount, but in preparation for an emergency, the function is currently limited to 100,000 won per campaign.
+   * Before calling, prompt the user to check `customerId` using a relevant connector.
    *
+   * A 100,000 KRW limit per campaign is set for emergency purposes.
    */
   async createCampaign(
     input: IGoogleAdsService.ICreateCampaignInput & {
@@ -569,6 +647,8 @@ export class GoogleAdsService {
   }
 
   /**
+   * Google Ads Service.
+   *
    * Get ad groups from Google customer account
    *
    * Pass `customerId` to the user and search for ad groups (=adGroup) in the customer ad account.
@@ -612,6 +692,8 @@ export class GoogleAdsService {
   }
 
   /**
+   * Google Ads Service.
+   *
    * Delete keywords from specific ads in Google customer account
    *
    * Receive the resource name of keyword (=`AdGroupCriterion`) from the user and delete all of them.
@@ -653,24 +735,21 @@ export class GoogleAdsService {
   }
 
   /**
-   * Add search keywords to ads in Google customer accounts
+   * Google Ads Service.
    *
-   * Strictly speaking, add ad keywords to ad groups (=adGroup).
+   * Adds search keywords to ads in Google customer accounts.
    *
-   * For convenience, this connector receives the resource name of the ad, finds the parent ad group of the ad, and then inserts the keyword.
-   * The result value of this connector helps users check whether all keywords have been added properly by re-checking them after adding the keyword.
-   * However, not all keywords added are used in ads.
-   * Keywords are reviewed by Google and used for targeting, and at this time, keywords may be excluded from ad keywords due to inappropriate reviews.
-   * However, since ads will work properly if there are other keywords, it is advantageous to register various keywords so that users can be attracted.
+   * This connector adds keywords to ad groups by first finding the parent ad group of the ad using its resource name.
+   * The result helps users check if all keywords are added correctly.
+   * Not all keywords will be used in ads as they undergo Google’s review, and inappropriate keywords may be excluded.
+   * It’s beneficial to register a variety of keywords to attract users.
    *
-   * There are also recommended connectors for keywords.
+   * Recommended connectors for keyword management are also available.
    *
-   * This connector receives an ad account as an argument from the user as authentication for the customer account, but this is also optional.
+   * The connector accepts an ad account for authentication, but this is optional.
+   * If `customerId` is not provided, Wrtn auto-selects an accessible ad account.
    *
-   * If `customerId` is not passed, it is automatically selected only if `Wrtn` has only one ad account accessible to the user.
-   *
-   * Before calling the function, we need to ask the user for `customerId`, so we need to suggest a connector that can check `customerId`.
-   *
+   * Before calling, prompt the user to check `customerId` using a relevant connector.
    */
   async getKeywords(input: {
     customerId: string;
@@ -702,21 +781,18 @@ export class GoogleAdsService {
   }
 
   /**
-   * View metrics per Google customer account ad
+   * Google Ads Service.
    *
-   * Pass `customerId` to the user and view statistical metrics for the customer ad group.
-   * If `customerId` is not passed, `Wrtn` will automatically select only one ad account that the user can access.
-   * Users can view ad metrics for a specific date through this connector,
-   * and these metrics include impressions, clicks, video views, views based on video playback range, and average page count.
-   * You can also check simple information about the searched content, such as the resource name of the ad group.
-   * In addition, `costMicros` information is provided, which is the advertising expenditure in micro units and means the amount actually executed.
-   * If this figure is `1,000,000`, if the currency unit is `KRW`, 1 won was used.
-   * This figure is the actual amount used, unlike the campaign budget, and according to Google policy, advertising costs may be slightly more than the budget. Also, the total spend of the ad group in the campaign must be equal to the total spend of the campaign.
+   * View metrics per Google customer account ad.
    *
-   * This connector allows the user to check whether their ads are being executed efficiently in terms of cost and performance.
+   * Pass `customerId` to view statistical metrics for the customer ad group. If `customerId` is not provided, Wrtn auto-selects an accessible ad account.
+   * Metrics include impressions, clicks, video views, views based on video playback range, average page count, and the resource name of the ad group.
+   * Additionally, `costMicros` shows advertising expenditure in micro-units, e.g., if `1,000,000` KRW, it means 1 won spent.
+   * This value reflects actual spending and may slightly exceed the campaign budget, as per Google policy.
+   * The total spend of an ad group must match the total spend of the campaign.
    *
-   * Before calling the function, you should ask the user for `customerId`, so you should suggest a connector that can check `customerId`.
-   *
+   * This connector helps users assess ad performance and efficiency in terms of cost and results.
+   * Before calling, prompt the user to check `customerId` using a relevant connector.
    */
   async getMetrics(input: Required<IGoogleAdsService.IGetMetricInput>) {
     const customerId = await this.getTargetCustomerId(input);
@@ -743,27 +819,19 @@ export class GoogleAdsService {
   }
 
   /**
-   * Get the list of ads from the Google customer account
+   * Google Ads Service.
    *
-   * Pass the `customerId` to the user and search for the ads (=ad) in the customer's ad account.
-   * If `customerId` is not passed, it will be automatically selected only if there is only one ad account accessible to `Wrtn` from the user.
-   * An ad is a node at the end of a tree structure consisting of campaigns, ad groups, and ads, and is a section in charge of materials,
-   * and is also a unit exposed to end users.
-   * If the resource name of an ad group (=adGroup) is passed as an argument, only the ads belonging to that ad group will be searched.
-   * The purpose of this connector is to determine whether the user's ad is currently running or not.
-   * In the case of `Wrtn` managers, campaigns and ad groups are not changed to `PAUSED` status unless the user directly changes the campaign and ad group status in the Google Ads dashboard.
-   * Therefore, in general, if the ad status is `ENABLED`, the ad is running, and if it is `PAUSED`, the ad is stopped. Again, the `Wrtn` connector does not change the status of a campaign or ad group.
+   * Get the list of ads from the Google customer account.
    *
-   * This function can also be used to check whether an ad is being properly executed in addition to viewing the ad.
-   *
-   * Each ad has an evaluation history for ad review and policy, which exists as a property called `PolicySummary`.
-   *
-   * This property contains whether the ad has been approved, and the `APPROVED` status means that Google has approved the review and determined it is eligible.
-   *
-   * You can change the ad status in `PATCH connector/google-ads/campaigns/ads/status`.
-   *
-   * Before calling the function, you should ask the user for their `customerId`, so you should suggest a connector that can check their `customerId`.
-   *
+   * Pass `customerId` to search for ads in the customer's ad account. If `customerId` is not provided, Wrtn auto-selects an accessible ad account.
+   * Ads are the final node in the tree structure consisting of campaigns, ad groups, and ads, responsible for materials and exposure to users.
+   * If the resource name of an ad group is provided, only ads within that ad group will be searched.
+   * The purpose of this connector is to check if the user's ad is running. Ads are generally `ENABLED` when running and `PAUSED` when stopped.
+   * Wrtn does not change campaign or ad group status, only the user can modify these statuses.
+   * The connector also checks ad execution and policy compliance, with `PolicySummary` showing approval status.
+   * If the ad is approved, it is eligible for display.
+   * Ad status can be updated via `PATCH connector/google-ads/campaigns/ads/status`.
+   * Before calling, ask the user for `customerId` and suggest a connector to check it.
    */
   async getAdGroupAds(input: {
     customerId: string;
@@ -789,6 +857,8 @@ export class GoogleAdsService {
   }
 
   /**
+   * Google Ads Service.
+   *
    * Get a list of ad groups in a Google customer account
    *
    * Pass `customerId` to the user and search for ad groups (=adGroup) in the customer ad account.
@@ -851,6 +921,8 @@ export class GoogleAdsService {
   }
 
   /**
+   * Google Ads Service.
+   *
    * Add search keywords to ads in Google customer accounts
    *
    * Strictly speaking, add keywords to the ad group (=adGroup), which is the parent of the ad.
@@ -908,6 +980,8 @@ export class GoogleAdsService {
   }
 
   /**
+   * Google Ads Service.
+   *
    * Get a list of campaigns for a Google customer account
    *
    * Pass `customerId` to the user and search for campaigns in the customer's advertising account.
@@ -951,19 +1025,15 @@ export class GoogleAdsService {
   }
 
   /**
-   * Get the customer's advertising account
+   * Google Ads Service.
    *
-   * Using the user's access token, search for the user's advertising account, i.e., `customer`, among the accounts where `Wrtn` is an administrator.
-   * Even if the user has an advertising account, if `Wrtn` is not an administrator, it will not be listed.
-   * Therefore, if `Wrtn` has never been registered as an administrator, you must call the `POST connector/google-ads/customerClientLink` connector.
+   * Get the customer's advertising account.
    *
-   * In addition, this connector filters out advertising accounts that do not use the Korean currency unit `KRW`.
-   * The reason for this is to prevent mistakes from occurring in other campaign budget modification or ad status change connectors in the future.
-   * When creating ads through the Google Ads connector, human errors may occur in budget settings depending on the currency unit of each account.
-   * For example, if you register a budget for an account with a currency unit of `USD` as an account with a currency unit of `KRW`, a budget difference of the exchange rate may occur.
-   *
-   * Before calling the function, we need to ask the user for his `customerId`, so we need to suggest a connector that can check `customerId`.
-   *
+   * Using the user's access token, search for the user's advertising account (`customer`) among the accounts where Wrtn is an administrator.
+   * If Wrtn is not an administrator for an account, it will not be listed. In such cases, call `POST connector/google-ads/customerClientLink`.
+   * This connector filters out accounts that do not use the Korean currency unit `KRW` to avoid errors in future budget modifications or ad status changes.
+   * If an account with a different currency (e.g., USD) is used, budget discrepancies may occur due to exchange rates.
+   * Before calling the function, ask the user for their `customerId` and suggest a connector to check it.
    */
   async getCustomers(): Promise<IGoogleAdsService.CustomerClient[]> {
     try {
@@ -991,6 +1061,8 @@ export class GoogleAdsService {
   }
 
   /**
+   * Google Ads Service.
+   *
    * Create a sub-account.
    *
    * @deprecated
@@ -1023,6 +1095,8 @@ export class GoogleAdsService {
   }
 
   /**
+   * Google Ads Service.
+   *
    * Function that identifies the number of customers or inquires about the resource name of the customer.
    */
   async getCustomerClient() {
@@ -1035,6 +1109,8 @@ export class GoogleAdsService {
   }
 
   /**
+   * Google Ads Service.
+   *
    * Create a campaign budget.
    *
    * @param input
