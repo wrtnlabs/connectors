@@ -32,5 +32,7 @@ const extractPackageInfo = async (packagePath) => {
 
 const packageList = await Promise.all(packages.map(extractPackageInfo));
 
+packageList.sort((a, b) => a.name.localeCompare(b.name));
+
 /** write package list to file */
 await fs.writeFile(`${ROOT_DIR}/connectors-list.json`, JSON.stringify(packageList, null, 2));

@@ -48,6 +48,10 @@
     "version": "0.0.1"
   },
   {
+    "name": "@wrtnlabs/connector-gmail",
+    "version": "0.0.1"
+  },
+  {
     "name": "@wrtnlabs/connector-google",
     "version": "0.0.1"
   },
@@ -57,10 +61,6 @@
   },
   {
     "name": "@wrtnlabs/connector-google-calendar",
-    "version": "0.0.1"
-  },
-  {
-    "name": "@wrtnlabs/connector-gmail",
     "version": "0.0.1"
   },
   {
@@ -84,11 +84,11 @@
     "version": "0.0.1"
   },
   {
-    "name": "@wrtnlabs/connector-google-scholar",
+    "name": "@wrtnlabs/connector-google-map",
     "version": "0.0.1"
   },
   {
-    "name": "@wrtnlabs/connector-google-map",
+    "name": "@wrtnlabs/connector-google-scholar",
     "version": "0.0.1"
   },
   {
@@ -108,11 +108,11 @@
     "version": "0.0.1"
   },
   {
-    "name": "@wrtnlabs/connector-hancell",
+    "name": "@wrtnlabs/connector-google-trend",
     "version": "0.0.1"
   },
   {
-    "name": "@wrtnlabs/connector-google-trend",
+    "name": "@wrtnlabs/connector-hancell",
     "version": "0.0.1"
   },
   {
@@ -152,11 +152,11 @@
     "version": "0.0.1"
   },
   {
-    "name": "@wrtnlabs/connector-naver-cafe",
+    "name": "@wrtnlabs/connector-naver-blog",
     "version": "0.0.1"
   },
   {
-    "name": "@wrtnlabs/connector-naver-blog",
+    "name": "@wrtnlabs/connector-naver-cafe",
     "version": "0.0.1"
   },
   {
