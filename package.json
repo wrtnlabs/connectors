@@ -22,7 +22,7 @@
     "dev": "pnpm run build:test --watch",
     "eslint": "eslint src && eslint test",
     "eslint:fix": "eslint --fix src && eslint --fix test",
-    "prepare": "ts-patch install && typia patch && git update-index --assume-unchanged .env",
+    "prepare": "ts-patch install && typia patch && git update-index --assume-unchanged .env && npm run list-connectors",
     "prettier": "prettier src --write && prettier test --write",
     "------------------------WEBPACK------------------------": "",
     "webpack": "rimraf dist && webpack",
@@ -35,7 +35,8 @@
     "start:swagger": "ts-node src/executable/swagger.ts",
     "translate": "ts-node src/executable/translate.ts",
     "swagger:update": "node lib/UpdateSwaggerJson.js",
-    "google-sheets": "ts-node src/executable/swagger-to-google-sheets.ts"
+    "google-sheets": "ts-node src/executable/swagger-to-google-sheets.ts",
+    "list-connectors": "./deploy/list-connectors.mjs"
   },
   "repository": {
     "type": "git",
@@ -85,6 +86,7 @@
     "rimraf": "^6.0.1",
     "source-map-support": "^0.5.21",
     "swagger-ui-express": "^5.0.0",
+    "tinyglobby": "^0.2.12",
     "ts-loader": "^9.5.1",
     "ts-node": "^10.9.1",
     "ts-patch": "^3.3.0",
