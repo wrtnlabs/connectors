@@ -23,16 +23,22 @@ const packages = await glob([
 /** extract package name from package.json */
 const extractPackageInfo = async (packagePath) => {
   const packageJson = await fs.readFile(`${packagePath}/package.json`, 'utf8');
-  const packageInfo = JSON.parse(packageJson);
-  return {
-    name: packageInfo.name,
-    version: packageInfo.version
-  };
+  const { name } = JSON.parse(packageJson);
+  return name;
 };
 
-const packageList = await Promise.all(packages.map(extractPackageInfo));
+const connectors = await Promise.all(packages.map(extractPackageInfo));
 
-packageList.sort((a, b) => a.name.localeCompare(b.name));
+connectors.sort((a, b) => a.localeCompare(b));
+
+/** get version from root package.json */
+const rootPackageJson = await fs.readFile(`${ROOT_DIR}/package.json`, 'utf8');
+const { version } = JSON.parse(rootPackageJson);
+
+const connectorsListData = {
+  connectors,
+  version,
+};
 
 /** write package list to file */
-await fs.writeFile(`${ROOT_DIR}/connectors-list.json`, JSON.stringify(packageList, null, 2));
+await fs.writeFile(`${ROOT_DIR}/connectors-list.json`, JSON.stringify(connectorsListData, null, 2));

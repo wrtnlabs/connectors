@@ -1,214 +1,58 @@
-[
-  {
-    "name": "@wrtnlabs/connector-arxiv-search",
-    "version": "0.0.1"
-  },
-  {
-    "name": "@wrtnlabs/connector-aws-s3",
-    "version": "0.0.1"
-  },
-  {
-    "name": "@wrtnlabs/connector-calendly",
-    "version": "0.0.1"
-  },
-  {
-    "name": "@wrtnlabs/connector-career",
-    "version": "0.0.1"
-  },
-  {
-    "name": "@wrtnlabs/connector-csv",
-    "version": "0.0.1"
-  },
-  {
-    "name": "@wrtnlabs/connector-dall-e-3",
-    "version": "0.0.1"
-  },
-  {
-    "name": "@wrtnlabs/connector-daum-blog",
-    "version": "0.0.1"
-  },
-  {
-    "name": "@wrtnlabs/connector-daum-cafe",
-    "version": "0.0.1"
-  },
-  {
-    "name": "@wrtnlabs/connector-discord",
-    "version": "0.0.1"
-  },
-  {
-    "name": "@wrtnlabs/connector-excel",
-    "version": "0.0.1"
-  },
-  {
-    "name": "@wrtnlabs/connector-figma",
-    "version": "0.0.1"
-  },
-  {
-    "name": "@wrtnlabs/connector-github",
-    "version": "0.0.1"
-  },
-  {
-    "name": "@wrtnlabs/connector-gmail",
-    "version": "0.0.1"
-  },
-  {
-    "name": "@wrtnlabs/connector-google",
-    "version": "0.0.1"
-  },
-  {
-    "name": "@wrtnlabs/connector-google-ads",
-    "version": "0.0.1"
-  },
-  {
-    "name": "@wrtnlabs/connector-google-calendar",
-    "version": "0.0.1"
-  },
-  {
-    "name": "@wrtnlabs/connector-google-docs",
-    "version": "0.0.1"
-  },
-  {
-    "name": "@wrtnlabs/connector-google-drive",
-    "version": "0.0.1"
-  },
-  {
-    "name": "@wrtnlabs/connector-google-flight",
-    "version": "0.0.1"
-  },
-  {
-    "name": "@wrtnlabs/connector-google-hotel",
-    "version": "0.0.1"
-  },
-  {
-    "name": "@wrtnlabs/connector-google-image",
-    "version": "0.0.1"
-  },
-  {
-    "name": "@wrtnlabs/connector-google-map",
-    "version": "0.0.1"
-  },
-  {
-    "name": "@wrtnlabs/connector-google-scholar",
-    "version": "0.0.1"
-  },
-  {
-    "name": "@wrtnlabs/connector-google-search",
-    "version": "0.0.1"
-  },
-  {
-    "name": "@wrtnlabs/connector-google-sheet",
-    "version": "0.0.1"
-  },
-  {
-    "name": "@wrtnlabs/connector-google-shopping",
-    "version": "0.0.1"
-  },
-  {
-    "name": "@wrtnlabs/connector-google-slides",
-    "version": "0.0.1"
-  },
-  {
-    "name": "@wrtnlabs/connector-google-trend",
-    "version": "0.0.1"
-  },
-  {
-    "name": "@wrtnlabs/connector-hancell",
-    "version": "0.0.1"
-  },
-  {
-    "name": "@wrtnlabs/connector-hwp",
-    "version": "0.0.1"
-  },
-  {
-    "name": "@wrtnlabs/connector-image",
-    "version": "0.0.1"
-  },
-  {
-    "name": "@wrtnlabs/connector-imweb",
-    "version": "0.0.1"
-  },
-  {
-    "name": "@wrtnlabs/connector-jira",
-    "version": "0.0.1"
-  },
-  {
-    "name": "@wrtnlabs/connector-kakao-map",
-    "version": "0.0.1"
-  },
-  {
-    "name": "@wrtnlabs/connector-kakao-navi",
-    "version": "0.0.1"
-  },
-  {
-    "name": "@wrtnlabs/connector-kakao-talk",
-    "version": "0.0.1"
-  },
-  {
-    "name": "@wrtnlabs/connector-korea-eximbank",
-    "version": "0.0.1"
-  },
-  {
-    "name": "@wrtnlabs/connector-marp",
-    "version": "0.0.1"
-  },
-  {
-    "name": "@wrtnlabs/connector-naver-blog",
-    "version": "0.0.1"
-  },
-  {
-    "name": "@wrtnlabs/connector-naver-cafe",
-    "version": "0.0.1"
-  },
-  {
-    "name": "@wrtnlabs/connector-naver-news",
-    "version": "0.0.1"
-  },
-  {
-    "name": "@wrtnlabs/connector-notion",
-    "version": "0.0.1"
-  },
-  {
-    "name": "@wrtnlabs/connector-open-data",
-    "version": "0.0.1"
-  },
-  {
-    "name": "@wrtnlabs/connector-reddit",
-    "version": "0.0.1"
-  },
-  {
-    "name": "@wrtnlabs/connector-slack",
-    "version": "0.0.1"
-  },
-  {
-    "name": "@wrtnlabs/connector-sort",
-    "version": "0.0.1"
-  },
-  {
-    "name": "@wrtnlabs/connector-stable-diffusion-beta",
-    "version": "0.0.1"
-  },
-  {
-    "name": "@wrtnlabs/connector-sweet-tracker",
-    "version": "0.0.1"
-  },
-  {
-    "name": "@wrtnlabs/connector-typeform",
-    "version": "0.0.1"
-  },
-  {
-    "name": "@wrtnlabs/connector-web-crawler",
-    "version": "0.0.1"
-  },
-  {
-    "name": "@wrtnlabs/connector-x",
-    "version": "0.0.1"
-  },
-  {
-    "name": "@wrtnlabs/connector-youtube-search",
-    "version": "0.0.1"
-  },
-  {
-    "name": "@wrtnlabs/connector-zoom",
-    "version": "0.0.1"
-  }
-]
+{
+  "connectors": [
+    "@wrtnlabs/connector-arxiv-search",
+    "@wrtnlabs/connector-aws-s3",
+    "@wrtnlabs/connector-calendly",
+    "@wrtnlabs/connector-career",
+    "@wrtnlabs/connector-csv",
+    "@wrtnlabs/connector-dall-e-3",
+    "@wrtnlabs/connector-daum-blog",
+    "@wrtnlabs/connector-daum-cafe",
+    "@wrtnlabs/connector-discord",
+    "@wrtnlabs/connector-excel",
+    "@wrtnlabs/connector-figma",
+    "@wrtnlabs/connector-github",
+    "@wrtnlabs/connector-gmail",
+    "@wrtnlabs/connector-google",
+    "@wrtnlabs/connector-google-ads",
+    "@wrtnlabs/connector-google-calendar",
+    "@wrtnlabs/connector-google-docs",
+    "@wrtnlabs/connector-google-drive",
+    "@wrtnlabs/connector-google-flight",
+    "@wrtnlabs/connector-google-hotel",
+    "@wrtnlabs/connector-google-image",
+    "@wrtnlabs/connector-google-map",
+    "@wrtnlabs/connector-google-scholar",
+    "@wrtnlabs/connector-google-search",
+    "@wrtnlabs/connector-google-sheet",
+    "@wrtnlabs/connector-google-shopping",
+    "@wrtnlabs/connector-google-slides",
+    "@wrtnlabs/connector-google-trend",
+    "@wrtnlabs/connector-hancell",
+    "@wrtnlabs/connector-hwp",
+    "@wrtnlabs/connector-image",
+    "@wrtnlabs/connector-imweb",
+    "@wrtnlabs/connector-jira",
+    "@wrtnlabs/connector-kakao-map",
+    "@wrtnlabs/connector-kakao-navi",
+    "@wrtnlabs/connector-kakao-talk",
+    "@wrtnlabs/connector-korea-eximbank",
+    "@wrtnlabs/connector-marp",
+    "@wrtnlabs/connector-naver-blog",
+    "@wrtnlabs/connector-naver-cafe",
+    "@wrtnlabs/connector-naver-news",
+    "@wrtnlabs/connector-notion",
+    "@wrtnlabs/connector-open-data",
+    "@wrtnlabs/connector-reddit",
+    "@wrtnlabs/connector-slack",
+    "@wrtnlabs/connector-sort",
+    "@wrtnlabs/connector-stable-diffusion-beta",
+    "@wrtnlabs/connector-sweet-tracker",
+    "@wrtnlabs/connector-typeform",
+    "@wrtnlabs/connector-web-crawler",
+    "@wrtnlabs/connector-x",
+    "@wrtnlabs/connector-youtube-search",
+    "@wrtnlabs/connector-zoom"
+  ],
+  "version": "0.1.479"
+}
