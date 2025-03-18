@@ -317,19 +317,17 @@ export class SlackService {
 
     const link_count = 0;
     const next_cursor = res.data.response_metadata?.next_cursor;
-    const replies: ISlackService.ChannelHistory[] = res.data.messages
-      .slice(1) // 0번째 인덱스는 부모 스레드가 나오기 때문
-      .map(
-        (message: ISlackService.Reply): ISlackService.ChannelHistory =>
-          this.convertMessageFormat({
-            message: { ...message, channel: input.channel },
-            channel: input.channel,
-            link_count,
-            allMembers,
-            workspaceUrl,
-            allUsergroups: usergroups,
-          }),
-      );
+    const replies: ISlackService.ChannelHistory[] = res.data.messages.map(
+      (message: ISlackService.Reply): ISlackService.ChannelHistory =>
+        this.convertMessageFormat({
+          message: { ...message, channel: input.channel },
+          channel: input.channel,
+          link_count,
+          allMembers,
+          workspaceUrl,
+          allUsergroups: usergroups,
+        }),
+    );
 
     const includedUsergroups = this.extract("usergroup")?.({
       response: replies,
