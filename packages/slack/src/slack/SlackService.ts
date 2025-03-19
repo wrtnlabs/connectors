@@ -9,7 +9,6 @@ import {
   StrictOmit,
 } from "@wrtnlabs/connector-shared";
 import { WebClient } from "@slack/web-api";
-import slackifyMarkdown from "slackify-markdown";
 import { SlackTemplateService } from "./SlackTemplateService";
 
 export class SlackService {
@@ -137,7 +136,7 @@ export class SlackService {
         url,
         {
           channel: input.channel,
-          text: `${input.text}\n\n\n\n> Sent by Action Agent in Wrtn Studio Pro`,
+          text: input.text.replaceAll("\\n", "\n"),
           post_at: input.post_at,
           ...(input.thread_ts && { thread_ts: input.thread_ts }),
         },
@@ -579,11 +578,9 @@ export class SlackService {
     input: ISlackService.IUpdateMessageInput,
   ): Promise<ISlackService.IUpdateMessageOutput> {
     const client = new WebClient(this.props.secretKey);
-    const preconfiged = `${input.text}\n\n\n\n> Sent by Action Agent in Wrtn Studio Pro`;
-    const text = slackifyMarkdown(preconfiged);
     const res = await client.chat.update({
       channel: input.channel,
-      text: text.replaceAll("\\n", "\n"), // 줄바꿈 문자를 잘못 입력했을 경우에 대비한다.
+      text: input.text.replaceAll("\\n", "\n"), // 줄바꿈 문자를 잘못 입력했을 경우에 대비한다.
       token: this.props.secretKey,
       ts: input.thread_ts,
       attachments: [],
@@ -624,13 +621,11 @@ export class SlackService {
     const url = `https://slack.com/api/chat.postMessage`;
 
     try {
-      const preconfiged = `${input.text}\n\n\n\n> Sent by Action Agent in Wrtn Studio Pro`;
-      const text = slackifyMarkdown(preconfiged);
       const res = await axios.post(
         url,
         {
           channel: input.channel,
-          text: text.replaceAll("\\n", "\n"), // 줄바꿈 문자를 잘못 입력했을 경우에 대비한다.
+          text: input.text.replaceAll("\\n", "\n"), // 줄바꿈 문자를 잘못 입력했을 경우에 대비한다.
           ...(input.thread_ts && { thread_ts: input.thread_ts }),
         },
         {
