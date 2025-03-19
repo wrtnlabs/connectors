@@ -4131,7 +4131,7 @@ importers:
         specifier: ^3.5.1
         version: 3.5.3(typescript@5.7.3)
 
-  packages/youbute_search:
+  packages/youtube_search:
     dependencies:
       '@wrtnlabs/connector-shared':
         specifier: workspace:^
