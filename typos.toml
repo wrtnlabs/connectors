@@ -13,4 +13,6 @@ Agentica = "Agentica"
 
 [files]
 # add paths to exclude from spellchecking
-extend-exclude = []
+extend-exclude = [
+  "website/out"
+]
