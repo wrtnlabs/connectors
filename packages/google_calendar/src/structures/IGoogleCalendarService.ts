@@ -544,21 +544,6 @@ export namespace IGoogleCalendarService {
    */
   export interface IEventRequestBodyInput {
     /**
-     * Calendar ID.
-     */
-    calendarId: string;
-
-    /**
-     * Event ID.
-     */
-    eventId: string;
-
-    /**
-     * Calendar ID.
-     */
-    id: string;
-
-    /**
      * The title of the event to be generated.
      *
      * @title Event title

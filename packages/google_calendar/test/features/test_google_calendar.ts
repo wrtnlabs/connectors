@@ -53,18 +53,19 @@ export const test_google_calendar = async () => {
   /**
    * Delete Calendar
    */
-  await googleCalendarService.deleteCalendar(calendarId!);
+  await googleCalendarService.deleteCalendar({ calendarId: calendarId! });
 
   /**
    * Read Calendar List
    */
-  const calendarList = await googleCalendarService.calendarList();
+  const calendarList = await googleCalendarService.getCalendarList();
   typia.assert(calendarList);
 
   /**
    * Read Event List
    */
-  const eventList = await googleCalendarService.eventList("primary", {
+  const eventList = await googleCalendarService.eventList({
+    id: "primary",
     time_min: today.toISOString().replace(/T.*/, "T06:00:00Z"),
     time_max: oneMonthLater.toISOString().replace(/T.*/, "T06:00:00Z"),
   });
@@ -73,7 +74,8 @@ export const test_google_calendar = async () => {
   /**
    * Create Quick Event
    */
-  const quickEvent = await googleCalendarService.createQuickEvent("primary", {
+  const quickEvent = await googleCalendarService.createQuickEvent({
+    id: "primary",
     text: "test",
   });
   typia.assert(quickEvent);
@@ -81,7 +83,8 @@ export const test_google_calendar = async () => {
   /**
    * Create Event
    */
-  const createdEvent = await googleCalendarService.createEvent("primary", {
+  const createdEvent = await googleCalendarService.createEvent({
+    calendarId: "primary",
     ...requestBody,
   });
   typia.assert(createdEvent);
@@ -91,15 +94,11 @@ export const test_google_calendar = async () => {
   /**
    * Update Event
    */
-  const updatedEvent = await googleCalendarService.updateEvent(
-    "primary",
-    eventId!,
-    {
-      title: "이벤트 업데이트",
-      start: requestBody.start,
-      end: requestBody.end,
-    },
-  );
+  const updatedEvent = await googleCalendarService.updateEvent({
+    calendarId: "primary",
+    eventId: eventId!,
+    ...requestBody,
+  });
   typia.assert(updatedEvent);
 
   /**
@@ -118,5 +117,8 @@ export const test_google_calendar = async () => {
   /**
    * Delete Event
    */
-  await googleCalendarService.deleteEvent("primary", eventId!);
+  await googleCalendarService.deleteEvent({
+    calendarId: "primary",
+    eventId: eventId!,
+  });
 };
