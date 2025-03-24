@@ -168,76 +168,74 @@ export const test_api_connector_google_slides_append_image_slide = async () => {
   });
 
   const testImage = `https://dev-studio-pro.s3.amazonaws.com/connector/generate-story-copy/f42e4450-3064-43d1-b973-2c913f08581a`;
-  await googleSlideService.appendImageSlide(
-    presentation.presentationId as string,
-    {
-      templates: [
-        {
-          type: "Vertical",
-          contents: {
+  await googleSlideService.appendImageSlide({
+    id: presentation.presentationId as string,
+    templates: [
+      {
+        type: "Vertical",
+        contents: {
+          text: {
+            text: "Vertical",
+          },
+          url: testImage,
+        },
+      } as IGoogleSlidesService.Template.Vertical,
+      {
+        type: "Square",
+        contents: {
+          text: {
+            text: "Square",
+          },
+          url: testImage,
+        },
+      } as IGoogleSlidesService.Template.Square,
+      {
+        type: "Landscape",
+        contents: {
+          text: {
+            text: "Landscape",
+          },
+          url: testImage,
+        },
+      } as IGoogleSlidesService.Template.Landscape,
+      {
+        type: "Entire",
+        contents: {
+          text: {
+            text: "Entire",
+          },
+          url: testImage,
+        },
+      } as IGoogleSlidesService.Template.Entire,
+      {
+        type: "QuarterDivision",
+        contents: [
+          {
             text: {
-              text: "Vertical",
+              text: "QuarterDivision1",
             },
             url: testImage,
           },
-        } as IGoogleSlidesService.Template.Vertical,
-        {
-          type: "Square",
-          contents: {
+          {
             text: {
-              text: "Square",
+              text: "QuarterDivision2",
             },
             url: testImage,
           },
-        } as IGoogleSlidesService.Template.Square,
-        {
-          type: "Landscape",
-          contents: {
+          {
             text: {
-              text: "Landscape",
+              text: "QuarterDivision3",
             },
             url: testImage,
           },
-        } as IGoogleSlidesService.Template.Landscape,
-        {
-          type: "Entire",
-          contents: {
+          {
             text: {
-              text: "Entire",
+              text: "QuarterDivision4",
             },
             url: testImage,
           },
-        } as IGoogleSlidesService.Template.Entire,
-        {
-          type: "QuarterDivision",
-          contents: [
-            {
-              text: {
-                text: "QuarterDivision1",
-              },
-              url: testImage,
-            },
-            {
-              text: {
-                text: "QuarterDivision2",
-              },
-              url: testImage,
-            },
-            {
-              text: {
-                text: "QuarterDivision3",
-              },
-              url: testImage,
-            },
-            {
-              text: {
-                text: "QuarterDivision4",
-              },
-              url: testImage,
-            },
-          ],
-        } as IGoogleSlidesService.Template.QuarterDivision,
-      ],
-    },
-  );
+        ],
+      } as IGoogleSlidesService.Template.QuarterDivision,
+    ],
+  });
 };
