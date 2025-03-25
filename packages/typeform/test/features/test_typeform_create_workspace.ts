@@ -1,6 +1,6 @@
 import typia from "typia";
 import { TestGlobal } from "../TestGlobal";
-import { TypeformService } from "@wrtnlabs/connector-kakao-map/lib/typeform/TypeformService";
+import { TypeformService } from "@wrtnlabs/connector-typeform";
 
 export const test_typeform_create_workspace = async () => {
   const typeformService = new TypeformService({

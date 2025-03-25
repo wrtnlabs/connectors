@@ -11,6 +11,7 @@ export const test_google_shopping = async () => {
     keyword: "니트",
     lang: "ko",
     max_results: 100,
+    tbs: "mr:1,merchagg:g316277865|m138871704",
   });
   typia.assert(musinsa_result);
 
@@ -19,6 +20,7 @@ export const test_google_shopping = async () => {
       keyword: "데님",
       lang: "ko",
       max_results: 10,
+      tbs: "mr:1,merchagg:m114992958",
     },
   );
   typia.assert(twentyNineCentimeter);
@@ -27,6 +29,7 @@ export const test_google_shopping = async () => {
     keyword: "볼캡",
     lang: "ko",
     max_results: 10,
+    tbs: "mr:1,merchagg:m764640149",
   });
   typia.assert(eql);
 
@@ -34,6 +37,7 @@ export const test_google_shopping = async () => {
     keyword: "더비슈즈",
     lang: "ko",
     max_results: 10,
+    tbs: "mr:1,merchagg:m134397367",
   });
   typia.assert(oco);
 
@@ -41,6 +45,7 @@ export const test_google_shopping = async () => {
     keyword: "셔츠",
     lang: "ko",
     max_results: 10,
+    tbs: "mr:1,merchagg:g10415709|m228577309",
   });
   typia.assert(uniqlo);
 
@@ -53,6 +58,7 @@ export const test_google_shopping = async () => {
     keyword: "휴지",
     lang: "ko",
     max_results: 10,
+    tbs: "mr:1,merchagg:g139180266|m139321488",
   });
   typia.assert(coupang);
 
@@ -60,6 +66,7 @@ export const test_google_shopping = async () => {
     keyword: "사과",
     lang: "ko",
     max_results: 10,
+    tbs: "mr:1,merchagg:m128922144",
   });
   typia.assert(marketKurly);
 
@@ -67,6 +74,7 @@ export const test_google_shopping = async () => {
     keyword: "비타민",
     lang: "ko",
     max_results: 10,
+    tbs: "mr:1,merchagg:m169620201",
   });
   typia.assert(iHerb);
 
@@ -74,6 +82,7 @@ export const test_google_shopping = async () => {
     keyword: "키보드",
     lang: "ko",
     max_results: 10,
+    tbs: "mr:1,merchagg:g6802718|m5356299783|m5348983679|m5345522195|m5349919702",
   });
   typia.assert(aliExpress);
 
@@ -81,13 +90,23 @@ export const test_google_shopping = async () => {
     keyword: "선크림",
     lang: "ko",
     max_results: 10,
+    tbs: "mr:1,merchagg:g651998268|m117387471",
   });
   typia.assert(oliveYoung);
+
+  const todayHouse = await googleShoppingService.todayHouse({
+    keyword: "침대",
+    lang: "ko",
+    max_results: 10,
+    tbs: "mr:1,merchagg:m133751878",
+  });
+  typia.assert(todayHouse);
 
   const yes24 = await googleShoppingService.yes24({
     keyword: "타입스크립트",
     lang: "ko",
     max_results: 10,
+    tbs: "mr:1,merchagg:m534059966",
   });
   typia.assert(yes24);
 
@@ -95,6 +114,7 @@ export const test_google_shopping = async () => {
     keyword: "도커",
     lang: "ko",
     max_results: 10,
+    tbs: "mr:1,merchagg:m139753761",
   });
   typia.assert(aladine);
 

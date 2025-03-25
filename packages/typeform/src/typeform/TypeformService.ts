@@ -287,14 +287,17 @@ export class TypeformService {
    *
    * Delete a workspace
    */
-  async deleteWorkspace(workspaceId: string): Promise<void> {
+  async deleteWorkspace(input: { workspaceId: string }): Promise<void> {
     try {
       const accessToken = await this.refresh();
-      await axios.delete(`https://api.typeform.com/workspaces/${workspaceId}`, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
+      await axios.delete(
+        `https://api.typeform.com/workspaces/${input.workspaceId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
         },
-      });
+      );
     } catch (err) {
       console.error(JSON.stringify(err));
       throw err;
@@ -306,10 +309,10 @@ export class TypeformService {
    *
    * Delete a form
    */
-  async deleteForm(formId: string): Promise<void> {
+  async deleteForm(input: { formId: string }): Promise<void> {
     try {
       const accessToken = await this.refresh();
-      await axios.delete(`https://api.typeform.com/forms/${formId}`, {
+      await axios.delete(`https://api.typeform.com/forms/${input.formId}`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },

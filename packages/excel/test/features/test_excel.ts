@@ -301,43 +301,45 @@ export const test_excel_insert_row_fail_case_2 = async () => {
   });
   const res = await excelService.insertRows({
     sheetName: "Sheet1",
-    data: excelService.transform([
-      {
-        AirlineName: "Air Mock",
-        FlightNumber: "AM1234",
-        DepartureTime: "08:00",
-        ArrivalTime: "10:00",
-        Status: "On Time",
-      },
-      {
-        AirlineName: "Sky High",
-        FlightNumber: "SH5678",
-        DepartureTime: "09:30",
-        ArrivalTime: "11:30",
-        Status: "Delayed",
-      },
-      {
-        AirlineName: "Cloud Airlines",
-        FlightNumber: "CA9101",
-        DepartureTime: "12:00",
-        ArrivalTime: "14:00",
-        Status: "Cancelled",
-      },
-      {
-        AirlineName: "Jet Setters",
-        FlightNumber: "JS2345",
-        DepartureTime: "15:15",
-        ArrivalTime: "17:15",
-        Status: "On Time",
-      },
-      {
-        AirlineName: "Fly Fast",
-        FlightNumber: "FF6789",
-        DepartureTime: "18:45",
-        ArrivalTime: "20:45",
-        Status: "On Time",
-      },
-    ]),
+    data: excelService.transform({
+      data: [
+        {
+          AirlineName: "Air Mock",
+          FlightNumber: "AM1234",
+          DepartureTime: "08:00",
+          ArrivalTime: "10:00",
+          Status: "On Time",
+        },
+        {
+          AirlineName: "Sky High",
+          FlightNumber: "SH5678",
+          DepartureTime: "09:30",
+          ArrivalTime: "11:30",
+          Status: "Delayed",
+        },
+        {
+          AirlineName: "Cloud Airlines",
+          FlightNumber: "CA9101",
+          DepartureTime: "12:00",
+          ArrivalTime: "14:00",
+          Status: "Cancelled",
+        },
+        {
+          AirlineName: "Jet Setters",
+          FlightNumber: "JS2345",
+          DepartureTime: "15:15",
+          ArrivalTime: "17:15",
+          Status: "On Time",
+        },
+        {
+          AirlineName: "Fly Fast",
+          FlightNumber: "FF6789",
+          DepartureTime: "18:45",
+          ArrivalTime: "20:45",
+          Status: "On Time",
+        },
+      ],
+    }),
   });
 
   typia.assert(res);
@@ -488,10 +490,10 @@ export const test_excel_insert_row_fail_case_3 = async () => {
     ],
   });
 
-  const workbook = await excelService.getExcelFile({ fileUrl: second.fileUrl });
-  const option = { workbook, sheetName: "Sheet1" };
-
-  const res = excelService.getExcelData(option);
+  const res = excelService.getExcelData({
+    fileUrl: second.fileUrl,
+    sheetName: "Sheet1",
+  });
 
   const answer = {
     headers: [
@@ -541,14 +543,16 @@ export const test_excel_insert_row_to_empty_excel_file = async () => {
   const res = await excelService.insertRows({
     fileUrl: file.fileUrl,
     sheetName: "TEST",
-    data: excelService.transform([
-      {
-        이름: "홍길동",
-        나이: 25,
-        직업: "엔지니어",
-        이메일: "hong@example.com",
-      },
-    ]),
+    data: excelService.transform({
+      data: [
+        {
+          이름: "홍길동",
+          나이: 25,
+          직업: "엔지니어",
+          이메일: "hong@example.com",
+        },
+      ],
+    }),
   });
 
   typia.assert(res);
@@ -585,13 +589,15 @@ export const test_excel = async () => {
    */
 
   const insertRowsInput: IExcelService.IInsertExcelRowInput = {
-    data: excelService.transform([
-      {
-        Identifier: typia.random<string>(),
-        "First name": typia.random<string>(),
-        "Last name": typia.random<string>(),
-      },
-    ]),
+    data: excelService.transform({
+      data: [
+        {
+          Identifier: typia.random<string>(),
+          "First name": typia.random<string>(),
+          "Last name": typia.random<string>(),
+        },
+      ],
+    }),
   };
   const insertRowsOutput = await excelService.insertRows(insertRowsInput);
   typia.assert(insertRowsOutput);
@@ -604,11 +610,6 @@ export const test_excel = async () => {
     sheetName: worksheetListOutput.data[0]?.sheetName,
   };
 
-  const workbook = await excelService.getExcelFile({
-    fileUrl: readExcelInput.fileUrl,
-  });
-  const option = { workbook, sheetName: "Sheet1" };
-
-  const readExcelOutput = excelService.getExcelData(option);
+  const readExcelOutput = await excelService.getExcelData(readExcelInput);
   typia.assert<IExcelService.IReadExcelOutput>(readExcelOutput);
 };

@@ -89,7 +89,9 @@ export const test_figma_get_project_files = async () => {
   const team = await test_figma_get_projects();
 
   for await (const project of team.projects) {
-    const files = await figmaService.getProjectCanvas(project.id);
+    const files = await figmaService.getProjectCanvas({
+      projectId: project.id,
+    });
 
     typia.assert(files);
   }
@@ -106,13 +108,11 @@ export const test_get_statistics = async () => {
     teamId: "1379663189749043465",
   });
 
-  const res = await figmaService.getStatistics(
-    {
-      as_md: true,
-      teamId: "1379663189749043465",
-    },
+  const res = await figmaService.getStatistics({
+    as_md: true,
+    teamId: "1379663189749043465",
     team,
-  );
+  });
 
   typia.assert(res);
 };

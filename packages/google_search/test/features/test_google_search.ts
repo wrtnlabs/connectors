@@ -15,58 +15,43 @@ export const test_google_search = async () => {
   });
   typia.assert(search_result);
 
-  const wanted_result = await googleSearchService.searchResult(
-    {
-      andKeywords: ["NestJS"],
-      orKeywords: [],
-      notKeywords: [],
-      max_results: 20,
-    },
-    "https://www.wanted.co.kr",
-  );
+  const wanted_result = await googleSearchService.searchResult({
+    andKeywords: ["NestJS"],
+    orKeywords: [],
+    notKeywords: [],
+    max_results: 20,
+  });
   typia.assert(wanted_result);
 
-  const incruit_result = await googleSearchService.searchResult(
-    {
-      andKeywords: ["React"],
-      orKeywords: [],
-      notKeywords: [],
-      max_results: 10,
-    },
-    "https://www.incruit.com",
-  );
+  const incruit_result = await googleSearchService.searchResult({
+    andKeywords: ["React"],
+    orKeywords: [],
+    notKeywords: [],
+    max_results: 10,
+  });
   typia.assert(incruit_result);
 
-  const saramin_result = await googleSearchService.searchResult(
-    {
-      andKeywords: ["JAVA"],
-      orKeywords: [],
-      notKeywords: [],
-      max_results: 10,
-    },
-    "https://www.saramin.co.kr/zf_user",
-  );
+  const saramin_result = await googleSearchService.searchResult({
+    andKeywords: ["JAVA"],
+    orKeywords: [],
+    notKeywords: [],
+    max_results: 10,
+  });
   typia.assert(saramin_result);
 
-  const jumpit_result = await googleSearchService.searchResult(
-    {
-      andKeywords: ["파이썬"],
-      orKeywords: [],
-      notKeywords: [],
-      max_results: 10,
-    },
-    "https://www.jumpit.co.kr",
-  );
+  const jumpit_result = await googleSearchService.searchResult({
+    andKeywords: ["파이썬"],
+    orKeywords: [],
+    notKeywords: [],
+    max_results: 10,
+  });
   typia.assert(jumpit_result);
 
-  const careerly_result = await googleSearchService.searchResult(
-    {
-      andKeywords: [""],
-      orKeywords: [],
-      notKeywords: [],
-      max_results: 10,
-    },
-    "https://careerly.co.kr",
-  );
+  const careerly_result = await googleSearchService.searchResult({
+    andKeywords: [""],
+    orKeywords: [],
+    notKeywords: [],
+    max_results: 10,
+  });
   typia.assert(careerly_result);
 };

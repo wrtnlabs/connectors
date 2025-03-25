@@ -1877,65 +1877,65 @@ export namespace INotionService {
     title: string;
   }
 
-  /**
-   * @title Information needed to find an item in the database
-   */
-  export interface IFindDatabaseItemInput {
-    /**
-     * Database ID.
-     */
-    id: string;
+  // /**
+  //  * @title Information needed to find an item in the database
+  //  */
+  // export interface IFindDatabaseItemInput {
+  //   /**
+  //    * Database ID.
+  //    */
+  //   id: string;
 
-    /**
-     * The title of the item in the database item
-     *
-     * @title Title
-     */
-    title?: string;
+  //   /**
+  //    * The title of the item in the database item
+  //    *
+  //    * @title Title
+  //    */
+  //   title?: string;
 
-    /**
-     * Number in database item
-     *
-     * @title Number
-     */
-    number?: number & tags.Type<"int32">;
+  //   /**
+  //    * Number in database item
+  //    *
+  //    * @title Number
+  //    */
+  //   number?: number & tags.Type<"int32">;
 
-    /**
-     * url in database item
-     *
-     * @title url
-     */
-    url?: string & tags.Format<"iri">;
+  //   /**
+  //    * url in database item
+  //    *
+  //    * @title url
+  //    */
+  //   url?: string & tags.Format<"iri">;
 
-    /**
-     * Email address in database item
-     *
-     * @title Email address
-     */
-    email?: string & tags.Format<"email">;
+  //   /**
+  //    * Email address in database item
+  //    *
+  //    * @title Email address
+  //    */
+  //   email?: string & tags.Format<"email">;
 
-    /**
-     * Text in database item
-     *
-     * @title text
-     */
-    rich_text?: string;
+  //   /**
+  //    * Text in database item
+  //    *
+  //    * @title text
+  //    */
+  //   rich_text?: string;
 
-    /**
-     * Phone number in database item
-     *
-     * @title Phone number
-     */
-    phone_number?: string;
+  //   /**
+  //    * Phone number in database item
+  //    *
+  //    * @title Phone number
+  //    */
+  //   phone_number?: string;
 
-    /**
-     * When searching for a database item, multiple attributes can come up (title, number, url, email, text, phone number)
-     * Since the values coming for each attribute are different, declare it as any
-     *
-     * TODO: Type confirmation and changes to fit the inspector structure are needed
-     */
-    [key: string]: any;
-  }
+  //   /**
+  //    * When searching for a database item, multiple attributes can come up (title, number, url, email, text, phone number)
+  //    * Since the values coming for each attribute are different, declare it as any
+  //    *
+  //    * TODO: Type confirmation and changes to fit the inspector structure are needed
+  //    */
+  //   [key: string]: any;
+  // }
 
   /**
    * @title Page Information

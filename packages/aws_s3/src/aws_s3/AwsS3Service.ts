@@ -89,12 +89,13 @@ export class AwsS3Service {
    *
    * Get an object from S3
    */
-  async getObject(
-    input: { fileUrl: string } | { filename: string },
-  ): Promise<Buffer> {
+  async getObject(input: {
+    fileUrl?: string;
+    filename?: string;
+  }): Promise<Buffer> {
     try {
       let getObjectCommand: GetObjectCommand;
-      if ("fileUrl" in input) {
+      if (input.fileUrl) {
         const { bucket, key } = this.extractS3InfoFromUrl({
           url: input.fileUrl,
         });

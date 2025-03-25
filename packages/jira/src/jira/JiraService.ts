@@ -16,7 +16,9 @@ export class JiraService {
     input: IJiraService.__IGetIssueAssignableInput,
   ): Promise<IJiraService.IGetIssueAssignableOutput> {
     try {
-      const config = await this.getAuthorizationAndDomain(input);
+      const config = await this.getAuthorizationAndDomain({
+        props: input,
+      });
       const queryParameter = createQueryParameter({
         maxResults: input.maxResults,
         startAt: input.startAt,
@@ -50,7 +52,9 @@ export class JiraService {
     input: IJiraService.__IGetStatusCategoryInput,
   ): Promise<IJiraService.IGetStatusCategoryOutput> {
     try {
-      const config = await this.getAuthorizationAndDomain(input);
+      const config = await this.getAuthorizationAndDomain({
+        props: input,
+      });
       const res = await axios.get(`${config.baseUrl}/statuscategory`, {
         headers: {
           Authorization: config.Authorization,
@@ -78,7 +82,9 @@ export class JiraService {
     input: IJiraService.__IGetProjectAssignableInput,
   ): Promise<IJiraService.IGetProjectAssignableOutput> {
     try {
-      const config = await this.getAuthorizationAndDomain(input);
+      const config = await this.getAuthorizationAndDomain({
+        props: input,
+      });
       const queryParameter = createQueryParameter({
         maxResults: input.maxResults,
         startAt: input.startAt,
@@ -111,7 +117,9 @@ export class JiraService {
   ): Promise<IJiraService.IGetIssueStatusOutput> {
     try {
       const projectId = input.projectId;
-      const config = await this.getAuthorizationAndDomain(input);
+      const config = await this.getAuthorizationAndDomain({
+        props: input,
+      });
       const url = `${config.baseUrl}/status`;
       const res = await axios.get(url, {
         headers: {
@@ -153,7 +161,9 @@ export class JiraService {
     input: IJiraService.__IGetIssueLabelInput,
   ): Promise<IJiraService.IGetIssueLabelOutput> {
     try {
-      const config = await this.getAuthorizationAndDomain(input);
+      const config = await this.getAuthorizationAndDomain({
+        props: input,
+      });
       const url = `${config.baseUrl}/label`;
       const res = await axios.get(url, {
         headers: {
@@ -184,7 +194,9 @@ export class JiraService {
     input: IJiraService.__IGetIssuePriorityInput,
   ): Promise<IJiraService.IGetIssuePriorityOutput> {
     try {
-      const config = await this.getAuthorizationAndDomain(input);
+      const config = await this.getAuthorizationAndDomain({
+        props: input,
+      });
       const url = `${config.baseUrl}/priority`;
       const res = await axios.get(url, {
         headers: {
@@ -217,7 +229,9 @@ export class JiraService {
     input: IJiraService.__IGetIssueTypeInput,
   ): Promise<IJiraService.IGetIssueTypeOutput> {
     try {
-      const config = await this.getAuthorizationAndDomain(input);
+      const config = await this.getAuthorizationAndDomain({
+        props: input,
+      });
       const url = `${config.baseUrl}/issuetype/project?projectId=${input.projectId}`;
       const res = await axios.get(url, {
         headers: {
@@ -246,17 +260,17 @@ export class JiraService {
    *
    * In order to inquire about any issues within the project, you must first inquire about the project and find out the key of the project.
    */
-  async getProjects(
-    input:
+  async getProjects(input: {
+    props:
       | IJiraService.__IGetProjectInputByBasicAuth
-      | IJiraService.IGetProjectInputBySecretKey,
-  ) {
+      | IJiraService.IGetProjectInputBySecretKey;
+  }) {
     try {
-      const config = await this.getAuthorizationAndDomain();
+      const config = await this.getAuthorizationAndDomain({});
       const queryParameter = createQueryParameter({
-        maxResults: input.maxResults,
-        orderBy: input.orderBy,
-        startAt: input.startAt,
+        maxResults: input.props.maxResults,
+        orderBy: input.props.orderBy,
+        startAt: input.props.startAt,
       });
 
       const url = `${config.baseUrl}/project/search?${queryParameter}`;
@@ -291,7 +305,9 @@ export class JiraService {
     input: IJiraService.__IGetIssueDetailInput,
   ): Promise<IJiraService.IGetIssueDetailOutput> {
     try {
-      const config = await this.getAuthorizationAndDomain(input);
+      const config = await this.getAuthorizationAndDomain({
+        props: input,
+      });
       const res = await axios.get(
         `${config.baseUrl}/issue/${input.issueIdOrKey}`,
         {
@@ -320,30 +336,30 @@ export class JiraService {
    *
    * In order to inquire about any issues within the project, you must first inquire about the project and find out the key of the project.
    */
-  async getIssues(
-    input:
+  async getIssues(input: {
+    props:
       | IJiraService.__IGetIssueInputByBasicAuth
-      | IJiraService.IGetIssueInputBySecretKey,
-  ): Promise<IJiraService.IGetIssueOutput> {
+      | IJiraService.IGetIssueInputBySecretKey;
+  }): Promise<IJiraService.IGetIssueOutput> {
     try {
-      const config = await this.getAuthorizationAndDomain();
+      const config = await this.getAuthorizationAndDomain({});
       const res = await axios.post(
         `${config.baseUrl}/search`,
         {
           jql: `
-          project = "${input.project_key}"
-          ${input.issuetype ? ` AND issuetype = "${input.issuetype}" ` : ""}
-          ${input.status ? ` AND status = "${input.status}" ` : ""}
-          ${input.assignee ? ` AND assignee = "${input.assignee}" ` : ""}
-          ${input.reporter ? ` AND reporter = "${input.reporter}" ` : ""}
-          ${input.priority ? ` AND priority = "${input.priority}" ` : ""}
-          ${input.labels?.length ? ` AND labels IN (${input.labels.map((label) => `"${label}"`)}) ` : ""}
-          ${input.created_start_date ? ` AND created >= "${input.created_start_date}" ` : ""}
-          ${input.created_end_date ? ` AND created < "${input.created_end_date}" ` : ""}
-          ${input.keyword ? ` AND text ~ "${input.keyword}" ` : ""}
+          project = "${input.props.project_key}"
+          ${input.props.issuetype ? ` AND issuetype = "${input.props.issuetype}" ` : ""}
+          ${input.props.status ? ` AND status = "${input.props.status}" ` : ""}
+          ${input.props.assignee ? ` AND assignee = "${input.props.assignee}" ` : ""}
+          ${input.props.reporter ? ` AND reporter = "${input.props.reporter}" ` : ""}
+          ${input.props.priority ? ` AND priority = "${input.props.priority}" ` : ""}
+          ${input.props.labels?.length ? ` AND labels IN (${input.props.labels.map((label) => `"${label}"`)}) ` : ""}
+          ${input.props.created_start_date ? ` AND created >= "${input.props.created_start_date}" ` : ""}
+          ${input.props.created_end_date ? ` AND created < "${input.props.created_end_date}" ` : ""}
+          ${input.props.keyword ? ` AND text ~ "${input.props.keyword}" ` : ""}
           `,
-          ...(input.maxResults && { maxResults: input.maxResults }),
-          ...(input.startAt && { startAt: input.startAt }),
+          ...(input.props.maxResults && { maxResults: input.props.maxResults }),
+          ...(input.props.startAt && { startAt: input.props.startAt }),
         },
         {
           headers: {
@@ -415,13 +431,13 @@ export class JiraService {
    *
    * Get authorization and domain
    */
-  async getAuthorizationAndDomain(
-    input?: IJiraService.BasicAuthorization,
-  ): Promise<{ Authorization: string; baseUrl: string; domain?: string }> {
-    const Authorization = await this.getAuthorization(input);
-    if (input && "email" in input && "token" in input) {
-      const baseUrl = `${input.domain}/rest/api/3`;
-      return { Authorization, baseUrl: baseUrl, domain: input.domain };
+  async getAuthorizationAndDomain(input: {
+    props?: IJiraService.BasicAuthorization;
+  }): Promise<{ Authorization: string; baseUrl: string; domain?: string }> {
+    const Authorization = await this.getAuthorization({ props: input.props });
+    if (input.props && "email" in input.props && "token" in input.props) {
+      const baseUrl = `${input.props.domain}/rest/api/3`;
+      return { Authorization, baseUrl: baseUrl, domain: input.props.domain };
     } else {
       // OAuth
       const accessTokenDto = await this.refresh();
@@ -436,12 +452,12 @@ export class JiraService {
    *
    * Get authorization
    */
-  async getAuthorization(
-    input?: Pick<IJiraService.BasicAuthorization, "token" | "email">,
-  ) {
+  async getAuthorization(input: {
+    props?: Pick<IJiraService.BasicAuthorization, "token" | "email">;
+  }) {
     // secretKey를 가지고 있지만 OAuth가 아닌 경우가 있을 수 있기 때문에 email, token 검증을 먼저 하게 한다. (basic auth 우선)
-    if (input && "email" in input && "token" in input) {
-      const basicAuth = `${input.email}:${input.token}`;
+    if (input.props && "email" in input.props && "token" in input.props) {
+      const basicAuth = `${input.props.email}:${input.props.token}`;
       return `Basic ${Buffer.from(basicAuth).toString("base64")}`;
     } else {
       const { access_token } = await this.refresh();
@@ -492,7 +508,9 @@ export class JiraService {
     input: IJiraService.__IDeleteCommentInput,
   ): Promise<void> {
     try {
-      const config = await this.getAuthorizationAndDomain(input);
+      const config = await this.getAuthorizationAndDomain({
+        props: input,
+      });
       await axios.delete(
         `${config.baseUrl}/issue/${input.issueIdOrKey}/comment/${input.commentId}`,
         {
@@ -521,7 +539,9 @@ export class JiraService {
     input: IJiraService.__ICreateCommentByMarkdownInput,
   ): Promise<IJiraService.ICreateCommentOutput> {
     try {
-      const config = await this.getAuthorizationAndDomain(input);
+      const config = await this.getAuthorizationAndDomain({
+        props: input,
+      });
       const copiedInput: Pick<IJiraService.ICreateCommentInput, "body"> =
         JSON.parse(JSON.stringify(input));
 
@@ -569,7 +589,9 @@ export class JiraService {
     input: IJiraService.__IGetCommentInput,
   ): Promise<IJiraService.IGetCommentOutput> {
     try {
-      const config = await this.getAuthorizationAndDomain(input);
+      const config = await this.getAuthorizationAndDomain({
+        props: input,
+      });
       const res = await axios.get(
         `${config.baseUrl}/issue/${input.issueIdOrKey}/comment`,
         {
@@ -660,7 +682,9 @@ export class JiraService {
     input: IJiraService.__IGetTransitionInput,
   ): Promise<IJiraService.IGetTransitionOutput> {
     try {
-      const config = await this.getAuthorizationAndDomain(input);
+      const config = await this.getAuthorizationAndDomain({
+        props: input,
+      });
       const res = await axios.get(
         `${config.baseUrl}/issue/${input.issueIdOrKey}/transitions`,
         {
@@ -695,7 +719,9 @@ export class JiraService {
     input: IJiraService.__IUpdateStatusInput,
   ): Promise<void> {
     try {
-      const config = await this.getAuthorizationAndDomain(input);
+      const config = await this.getAuthorizationAndDomain({
+        props: input,
+      });
       await axios.post(
         `${config.baseUrl}/issue/${input.issueIdOrKey}/transitions`,
         {
@@ -733,7 +759,7 @@ export class JiraService {
     input: IJiraService.IUpdateCommentByMarkdownInput,
   ): Promise<void> {
     try {
-      const config = await this.getAuthorizationAndDomain();
+      const config = await this.getAuthorizationAndDomain({});
       const copiedInput = JSON.parse(JSON.stringify(input));
       if (typeof input.body.content === "string") {
         const content = markdownToJiraBlock(input.body.content);
@@ -861,7 +887,9 @@ export class JiraService {
     input: IJiraService.ICreateIssueInput,
   ): Promise<{ id: string; key: string }> {
     try {
-      const config = await this.getAuthorizationAndDomain(input);
+      const config = await this.getAuthorizationAndDomain({
+        props: input,
+      });
       const res = await axios.post(
         `${config.baseUrl}/issue`,
         {

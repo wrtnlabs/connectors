@@ -268,15 +268,15 @@ export class OpenDataService {
    * Please be aware of this.
    *
    */
-  async getParkingLot(
-    input: INIA.IGetParkingLotInput,
-  ): Promise<INIA.IGetParkingLotOutput> {
+  async getParkingLot(input: {
+    props: INIA.IGetParkingLotInput;
+  }): Promise<INIA.IGetParkingLotOutput> {
     try {
       const baseUrl = `http://api.data.go.kr/openapi/tn_pubr_prkplce_info_api`;
       const serviceKey = `${this.props.apiKey}`;
 
       const queryString = Object.entries({
-        ...input,
+        ...input.props,
         serviceKey,
         type: "json",
       })
@@ -419,9 +419,9 @@ export class OpenDataService {
    * Also, since this is based on the closing of the stock market, you can only look up from about two months ago (9 days ago) to yesterday from today's date.
    *
    */
-  async getStockPriceInfo(
-    input: IOpenDataService.FinancialServicesCommission.IGetStockPriceInfoInput,
-  ): Promise<IOpenDataService.FinancialServicesCommission.IGetStockPriceInfoOutput> {
+  async getStockPriceInfo(input: {
+    props: IOpenDataService.FinancialServicesCommission.IGetStockPriceInfoInput;
+  }): Promise<IOpenDataService.FinancialServicesCommission.IGetStockPriceInfoOutput> {
     try {
       const baseUrl = `https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo`;
       const serviceKey = `${this.props.apiKey}`;
@@ -429,7 +429,7 @@ export class OpenDataService {
       // 형식에 안맞는 date format일 경우 공공 데이터 포맷에 맞게 변형
       const is = typia.createIs<string & tags.Format<"date">>();
 
-      const transformedInput = Object.entries(input)
+      const transformedInput = Object.entries(input.props)
         .map((el) => (is(el) ? el.replaceAll("-", "") : el))
         .reduce((acc, [key, value]) => {
           acc = Object.assign({ [key]: value });
@@ -451,49 +451,30 @@ export class OpenDataService {
   }
 
   /**
-   * Open Data Service.
+   * Open Data Service for Korea Meteorological Administration.
    *
-   * [Korea Meteorological Administration] Retrieves today's weather information
+   * Retrieves today's weather data using latitude & longitude or grid coordinates.
+   * If lat/lon is provided, it converts to grid coordinates internally.
    *
-   * Latitude and longitude coordinates are required for querying.
-   * When provided, the latitude and longitude will be used to get current weather data based on the 00 minute mark of each hour for that region.
-   * The output will be converted from grid coordinates to latitude and longitude, and provide weather-related information such as current weather, wind direction, and wind speed for the region.
-   * The currently provided information includes:
-   *
-   * - POP: Probability of Precipitation
+   * **Weather Data Includes:**
+   * - POP: Precipitation Probability
    * - PTY: Precipitation Type
-   * - PCP: Precipitation Amount in the Last Hour
+   * - PCP: Precipitation Amount (Last Hour)
    * - REH: Humidity
-   * - SNO: Snowfall in the Last Hour
+   * - SNO: Snowfall (Last Hour)
    * - SKY: Sky Condition
-   * - TMP: Temperature in the Last Hour
-   * - TMN: Daily Minimum Temperature
-   * - TMX: Daily Maximum Temperature
-   * - UUU: Wind Speed (East-West Component)
-   * - VVV: Wind Speed (North-South Component)
+   * - TMP/T1H: Temperature
+   * - TMN/TMX: Min/Max Temperature
+   * - UUU/VVV: Wind Speed (EW/NS)
    * - WAV: Wave Height
    * - VEC: Wind Direction
    * - WSD: Wind Speed
-   * - T1H: Temperature
-   * - RN1: Precipitation Amount in the Last Hour
-   * - VEC: Wind Direction
-   * - T1H: Temperature
+   * - RN1: Rainfall (Last Hour)
    *
-   * This Connect is based on data obtained from public data portals in Korea.
-   * If you talk about a specific organization here, it is an organization in Korea, and information or deducible facts that data or statistics point to can also be limited to Korea.
-   *
-   * There are two types in request body.
-   * One is 'latitude_and_longitude' and the other is 'grid_coordinates'.
-   * This function uses grid coordinate values to express Korean geographical conditions inside,
-   * so grid coordinates must be entered.
-   * However, grid coordinates also allow for latitude values because it is difficult for users to know their local coordinates. In this case,
-   * you must deliver the values of nx and ny together with the values of 'latitude_and_longitude'.
-   * If the latitude hardness value is delivered,
-   * it is converted to grid coordinate value from the inside and used.
-   *
-   * Since this is Korean public data, most searches may have to be done in Korean.
-   * Please be aware of this.
-   *
+   * **Notes:**
+   * - Uses public data from Korea.
+   * - Most queries may require Korean.
+   * - Supports both lat/lon and grid coordinates.
    */
   async getShortTermForecast(
     input: IKoreaMeteorologicalAdministration.IGetVillageForecastInformationInput,

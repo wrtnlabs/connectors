@@ -197,7 +197,12 @@ export class GoogleCalendarService {
    * Add an event to Google Calendar
    */
   async createEvent(
-    input: IGoogleCalendarService.IEventRequestBodyInput,
+    input: IGoogleCalendarService.IEventRequestBodyInput & {
+      /**
+       * Calendar ID.
+       */
+      calendarId: string;
+    },
   ): Promise<IGoogleCalendarService.IGoogleCalendarEvent> {
     try {
       const googleService = new GoogleService({
@@ -212,7 +217,7 @@ export class GoogleCalendarService {
       const calendar = google.calendar({ version: "v3", auth: authClient });
 
       const event = await calendar.events.insert({
-        calendarId: input.id,
+        calendarId: input.calendarId,
         conferenceDataVersion: input.isConferencing === true ? 1 : 0,
         requestBody: this.makeEventRequestBody(input),
       });
@@ -229,7 +234,17 @@ export class GoogleCalendarService {
    * Modify an event
    */
   async updateEvent(
-    input: IGoogleCalendarService.IEventRequestBodyInput,
+    input: IGoogleCalendarService.IEventRequestBodyInput & {
+      /**
+       * Calendar ID.
+       */
+      calendarId: string;
+
+      /**
+       * Event ID.
+       */
+      eventId: string;
+    },
   ): Promise<IGoogleCalendarService.IGoogleCalendarEvent> {
     const { calendarId, eventId } = input;
     const googleService = new GoogleService({

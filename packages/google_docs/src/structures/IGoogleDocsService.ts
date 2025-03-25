@@ -144,7 +144,9 @@ export namespace IGoogleDocsService {
   /**
    * @title Information to update docs file
    */
-  export type IUpdateInput = (IUpdateTitleInput | IUpdateContentInput) & {
+  export type IUpdateInput = Partial<
+    IUpdateTitleInput & IUpdateContentInput
+  > & {
     file_id: string;
   };
 

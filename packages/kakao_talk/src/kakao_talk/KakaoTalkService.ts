@@ -91,11 +91,11 @@ export class KakaoTalkService {
    * KakaoTalk(카카오톡) is a mobile messaging application in South Korea, and it also provides additional services.
    *
    */
-  async getEvents(
-    input: IKakaoTalkService.IGetEventInput,
-  ): Promise<IKakaoTalkService.IGetEventOutput> {
+  async getEvents(input: {
+    props: IKakaoTalkService.IGetEventInput;
+  }): Promise<IKakaoTalkService.IGetEventOutput> {
     try {
-      const { ...getEventQueryParam } = input;
+      const { ...getEventQueryParam } = input.props;
       const queryParams = Object.entries(getEventQueryParam)
         .map(([key, value]) => `${key}=${value}`)
         .join("&");
@@ -240,19 +240,19 @@ export class KakaoTalkService {
    *
    * KakaoTalk(카카오톡) is a mobile messenger application in South Korea, which also provides various additional services.
    */
-  async memo(
-    input:
+  async memo(input: {
+    props:
       | IKakaoTalkService.ISendKakaoTalkCommerceInput
       | IKakaoTalkService.ISendKakaoTalkLocationInput
       | IKakaoTalkService.ISendKakaoTalkListInput
       | IKakaoTalkService.ISendKakaoTalkFeedInput
-      | IKakaoTalkService.ISendKakaoTalkTextInput,
-  ): Promise<IKakaoTalkService.IMemoOutput> {
+      | IKakaoTalkService.ISendKakaoTalkTextInput;
+  }): Promise<IKakaoTalkService.IMemoOutput> {
     try {
       const accessToken = await this.refresh();
 
       const defaultUrl = "https://studio-pro.wrtn.ai" as const;
-      input.template_object.buttons?.forEach((button) => {
+      input.props.template_object.buttons?.forEach((button) => {
         button.title = "이동하기";
         if ("web_url" in button.link) {
           if (!button.link.web_url.startsWith(defaultUrl)) {
@@ -280,7 +280,7 @@ export class KakaoTalkService {
       const res = await axios.post(
         "https://kapi.kakao.com/v2/api/talk/memo/default/send",
         {
-          template_object: JSON.stringify(input.template_object),
+          template_object: JSON.stringify(input.props.template_object),
         },
         {
           headers: {

@@ -1,6 +1,6 @@
 import typia from "typia";
 import { TestGlobal } from "../TestGlobal";
-import { TypeformService } from "@wrtnlabs/connector-kakao-map/lib/typeform/TypeformService";
+import { TypeformService } from "@wrtnlabs/connector-typeform";
 import { test_typeform_create_workspace } from "./test_typeform_create_workspace";
 
 export const test_typeform_delete_workspace = async () => {
@@ -15,7 +15,9 @@ export const test_typeform_delete_workspace = async () => {
   /**
    * Delete Workspace
    */
-  const res = await typeformService.deleteWorkspace(workspace.id);
+  const res = await typeformService.deleteWorkspace({
+    workspaceId: workspace.id,
+  });
   typia.assert(res);
   return res;
 };

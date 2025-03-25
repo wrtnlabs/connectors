@@ -47,7 +47,9 @@ export const test_calendly = async () => {
 
   // get_one_scheduled_event
   const eventUuid = scheduledEvents.collection.at(0)?.uuid;
-  const res = await calendlyService.getOneScheduledEvent(eventUuid!);
+  const res = await calendlyService.getOneScheduledEvent({
+    scheduledEventId: eventUuid!,
+  });
 
   typia.assert(res);
 
@@ -65,15 +67,18 @@ export const test_calendly = async () => {
   const searchText = "https://api.calendly.com/scheduled_events";
   const eventId = invitee.event.replace(searchText, "");
 
-  const inviteeDetail = await calendlyService.getOneInvitee(
-    eventId,
-    invitee.uuid,
-  );
+  const inviteeDetail = await calendlyService.getOneInvitee({
+    scheduledEventId: eventId,
+    inviteeId: invitee.uuid,
+  });
   typia.assert(inviteeDetail);
 
   // get cancel link
   await new Promise((res) => setTimeout(res, 10000));
-  const cancelLink = await calendlyService.cancel(eventId, invitee.uuid);
+  const cancelLink = await calendlyService.cancel({
+    scheduledEventId: eventId,
+    inviteeId: invitee.uuid,
+  });
   typia.assert(cancelLink);
 
   // create scheduling link
