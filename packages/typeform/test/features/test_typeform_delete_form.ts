@@ -1,4 +1,4 @@
-import { TypeformService } from "@wrtnlabs/connector-kakao-map/lib/typeform/TypeformService";
+import { TypeformService } from "@wrtnlabs/connector-typeform";
 import typia from "typia";
 import { TestGlobal } from "../TestGlobal";
 import { test_typeform_create_empty_form } from "./test_typeform_create_empty_form";
@@ -15,7 +15,7 @@ export const test_typeform_delete_form = async () => {
   /**
    * Delete Form
    */
-  const res = await typeformService.deleteForm(form.id);
+  const res = await typeformService.deleteForm({ formId: form.id });
   typia.assert(res);
   return res;
 };
