@@ -6,7 +6,7 @@ export namespace IRedditService {
     /**
      * Reddit Refresh Token.
      */
-    secret: string;
+    refreshToken: string;
 
     /**
      * Reddit Client ID.

@@ -322,7 +322,7 @@ export class RedditService {
       url,
       {
         grant_type: "refresh_token",
-        refresh_token: this.props.secret,
+        refresh_token: this.props.refreshToken,
       },
       {
         headers: {
