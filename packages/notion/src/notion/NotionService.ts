@@ -735,68 +735,68 @@ export class NotionService {
    *
    * Retrieves an item that exists in a table database
    */
-  async findDatabaseItem(
-    input: INotionService.IFindDatabaseItemInput,
-  ): Promise<INotionService.IDatabaseItemOutput> {
-    try {
-      const database = await this.getDatabaseInfo({
-        databaseId: input.id,
-      });
+  // async findDatabaseItem(
+  //   input: INotionService.IFindDatabaseItemInput,
+  // ): Promise<INotionService.IDatabaseItemOutput> {
+  //   try {
+  //     const database = await this.getDatabaseInfo({
+  //       databaseId: input.id,
+  //     });
 
-      const propertiesInfo: Record<string, INotionService.DatabaseProperty> =
-        database.properties;
+  //     const propertiesInfo: Record<string, INotionService.DatabaseProperty> =
+  //       database.properties;
 
-      const filters = [];
+  //     const filters = [];
 
-      for (const key in propertiesInfo) {
-        const property = propertiesInfo[key];
-        /**
-         * 데이터베이스 아이템을 찾을 때 필터 조건으로 가능한 프로퍼티는
-         * title, rich_text, email, url, phone_number, number 프로퍼티로 필터 생성 가능
-         */
-        for (const inputKey in input) {
-          /**
-           * input의 key로 property의 type과 value를 받음
-           * ex) number: 1 , title: "뤼튼" ....
-           */
-          if (inputKey === property?.type && input[inputKey] !== undefined) {
-            const filter = {
-              property: property.name,
-              [property.type]: { equals: input[inputKey] },
-            };
-            filters.push(filter);
-          }
-        }
-      }
-      const headers = await this.getHeaders();
+  //     for (const key in propertiesInfo) {
+  //       const property = propertiesInfo[key];
+  //       /**
+  //        * 데이터베이스 아이템을 찾을 때 필터 조건으로 가능한 프로퍼티는
+  //        * title, rich_text, email, url, phone_number, number 프로퍼티로 필터 생성 가능
+  //        */
+  //       for (const inputKey in input) {
+  //         /**
+  //          * input의 key로 property의 type과 value를 받음
+  //          * ex) number: 1 , title: "뤼튼" ....
+  //          */
+  //         if (inputKey === property?.type && input[inputKey] !== undefined) {
+  //           const filter = {
+  //             property: property.name,
+  //             [property.type]: { equals: input[inputKey] },
+  //           };
+  //           filters.push(filter);
+  //         }
+  //       }
+  //     }
+  //     const headers = await this.getHeaders();
 
-      const res = await axios.post(
-        `https://api.notion.com/v1/databases/${input.id}/query`,
-        {
-          filter: {
-            /**
-             * and 조건을 사용해서 입력한 모든 조건이 만족하는 데이터베이스만 찾도록 필터 적용
-             * docs: https://developers.notion.com/reference/post-database-query-filter
-             */
-            and: filters,
-          },
-        },
-        {
-          headers: headers,
-        },
-      );
+  //     const res = await axios.post(
+  //       `https://api.notion.com/v1/databases/${input.id}/query`,
+  //       {
+  //         filter: {
+  //           /**
+  //            * and 조건을 사용해서 입력한 모든 조건이 만족하는 데이터베이스만 찾도록 필터 적용
+  //            * docs: https://developers.notion.com/reference/post-database-query-filter
+  //            */
+  //           and: filters,
+  //         },
+  //       },
+  //       {
+  //         headers: headers,
+  //       },
+  //     );
 
-      const databaseItem = res.data.results[0];
-      if (!databaseItem) {
-        throw new Error("Cannot Find Database Item for condition");
-      }
+  //     const databaseItem = res.data.results[0];
+  //     if (!databaseItem) {
+  //       throw new Error("Cannot Find Database Item for condition");
+  //     }
 
-      return databaseItem;
-    } catch (error) {
-      console.error(JSON.stringify(error));
-      throw error;
-    }
-  }
+  //     return databaseItem;
+  //   } catch (error) {
+  //     console.error(JSON.stringify(error));
+  //     throw error;
+  //   }
+  // }
 
   /**
    * 데이터베이스 아이템 생성 및 업데이트시 프로퍼티 별 형식에 맞추어 프로퍼티 값 적용
