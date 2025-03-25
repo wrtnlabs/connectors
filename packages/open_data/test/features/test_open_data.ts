@@ -42,9 +42,11 @@ export const test_open_data_get_get_parking_lot = async () => {
   });
 
   const res = await openDataService.getParkingLot({
-    pageNo: 1,
-    numOfRows: 100,
-    lnmadr: "강원도 평창군 대관령면 횡계리 321-10",
+    props: {
+      pageNo: 1,
+      numOfRows: 100,
+      lnmadr: "강원도 평창군 대관령면 횡계리 321-10",
+    },
   });
 
   typia.assert(res);
