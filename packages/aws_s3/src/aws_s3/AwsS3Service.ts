@@ -20,11 +20,11 @@ export class AwsS3Service {
     // CONFIGURATION
     //-----
     this.s3 = new S3Client({
-      region: this.props.region,
+      region: this.props.awsS3Region,
       maxAttempts: 3,
       credentials: {
-        accessKeyId: this.props.accessKeyId,
-        secretAccessKey: this.props.secretAccessKey,
+        accessKeyId: this.props.awsAccessKeyId,
+        secretAccessKey: this.props.awsSecretAccessKey,
       },
     });
 
@@ -39,7 +39,7 @@ export class AwsS3Service {
   async uploadObject(input: IAwsS3Service.IUploadObjectInput): Promise<string> {
     const { data, contentType } = input;
     const putObjectConfig = new PutObjectCommand({
-      Bucket: this.props.bucket,
+      Bucket: this.props.awsS3Bucket,
       Key: input.key,
       Body: data,
       ContentType: contentType,
@@ -61,7 +61,7 @@ export class AwsS3Service {
       const fileUUID = randomUUID();
       const fileSuffixUrl = `${fileUUID}.${extension}`;
       const putObjectConfig = new PutObjectCommand({
-        Bucket: this.props.bucket,
+        Bucket: this.props.awsS3Bucket,
         Key: `${fileSuffixUrl}`,
       });
       const urlValidityThresholdInMinutes = 3 * 1000 * 60;
@@ -70,7 +70,7 @@ export class AwsS3Service {
       const urlExpDate = now;
       const uploadUrl = await getSignedUrl(this.s3, putObjectConfig, {
         expiresIn: 60 * 3,
-        signingRegion: this.props.region,
+        signingRegion: this.props.awsS3Region,
       });
 
       return {
@@ -105,7 +105,7 @@ export class AwsS3Service {
         });
       } else {
         getObjectCommand = new GetObjectCommand({
-          Bucket: this.props.bucket,
+          Bucket: this.props.awsS3Bucket,
           Key: input.filename, // file name
         });
       }
@@ -151,7 +151,7 @@ export class AwsS3Service {
       new GetObjectCommand({ Bucket: bucket, Key: key }),
       {
         expiresIn: 60 * this.expirationInMinute,
-        signingRegion: this.props.region,
+        signingRegion: this.props.awsS3Region,
       },
     );
   }
@@ -222,7 +222,7 @@ export class AwsS3Service {
    * @returns complete file path with bucket name prefix
    */
   addBucketPrefix(input: { key: string }): string {
-    const url = `https://${this.props.bucket}.s3.${this.props.region}.amazonaws.com/${input.key}`;
+    const url = `https://${this.props.awsS3Bucket}.s3.${this.props.awsS3Region}.amazonaws.com/${input.key}`;
     return url;
   }
 }

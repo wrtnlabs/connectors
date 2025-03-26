@@ -5,22 +5,22 @@ export namespace IAwsS3Service {
     /**
      * AWS Access Key ID.
      */
-    accessKeyId: string;
+    awsAccessKeyId: string;
 
     /**
      * AWS Secret Aeccess Key.
      */
-    secretAccessKey: string;
+    awsSecretAccessKey: string;
 
     /**
      * AWS S3 Bucket name.
      */
-    bucket: string;
+    awsS3Bucket: string;
 
     /**
      * AWS Region.
      */
-    region: string;
+    awsS3Region: string;
   }
 
   export interface IGetPutObjectUrlInput {
