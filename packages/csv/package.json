@@ -43,7 +43,6 @@
     "typescript-transform-paths": "^3.5.1"
   },
   "dependencies": {
-    "@wrtnlabs/connector-aws-s3": "workspace:^",
     "csv-parse": "^5.5.5",
     "exceljs": "^4.4.0",
     "fast-csv": "^5.0.0",

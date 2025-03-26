@@ -1,42 +1,23 @@
 import { parse } from "csv-parse/sync";
 import ExcelJS from "exceljs";
 import * as csv from "fast-csv";
-import * as streamBuffers from "stream-buffers";
 import { WritableStreamBuffer } from "stream-buffers";
 
 import { Readable } from "stream";
 import { ICsvService } from "../structures/ICsvService";
-import { AwsS3Service } from "@wrtnlabs/connector-aws-s3";
 
 export class CsvService {
-  private readonly s3: AwsS3Service;
-
-  constructor(private readonly props: ICsvService.IProps) {
-    this.s3 = new AwsS3Service({
-      ...this.props.aws.s3,
-    });
-  }
-
   /**
    * Csv Service.
    *
-   * Read CSV file contents
+   * Read CSV file contents from base64 encoded string.
    */
   async read(input: ICsvService.IReadInput): Promise<ICsvService.IReadOutput> {
     try {
-      const { s3Url, delimiter } = input;
-      const match = s3Url.match(this.props.aws.s3.bucket);
+      const { csvBuffer, delimiter } = input;
 
-      const body: string = await (async (): Promise<string> => {
-        if (match) {
-          return (await this.s3.getObject({ filename: match[0] })).toString(
-            "utf-8",
-          );
-        } else {
-          const response: Response = await fetch(s3Url);
-          return response.text();
-        }
-      })();
+      const body: string = Buffer.from(csvBuffer, "base64").toString("utf-8");
+
       const res = parse(body, {
         columns: true,
         delimiter: delimiter,
@@ -44,65 +25,10 @@ export class CsvService {
       });
 
       return { data: res };
-    } catch (error) {
-      console.error(JSON.stringify(error));
-      throw error;
+    } catch (err) {
+      console.error(JSON.stringify(err));
+      throw err;
     }
-  }
-
-  /**
-   * Csv Service.
-   *
-   * Create a CSV file
-   */
-  async write(
-    input: ICsvService.IWriteInput,
-  ): Promise<ICsvService.IWriteOutput> {
-    const { values, fileName: filename, delimiter } = input;
-    let existValues = [];
-    try {
-      const response =
-        (await this.s3.getObject({ filename })).toString("utf-8") || "";
-      existValues = parse(response, {
-        columns: true,
-        delimiter: delimiter,
-      });
-    } catch (err: unknown) {
-      if ((err as any).Code !== "NoSuchKey") {
-        console.error("Error reading file:", err);
-        throw err;
-      }
-    }
-
-    const insertValues = [...existValues, ...values];
-
-    const s3 = this.s3;
-
-    const csvBuffer = new streamBuffers.WritableStreamBuffer();
-    await new Promise<void>((resolve, reject) =>
-      csv
-        .write(insertValues, { headers: true, delimiter: delimiter })
-        .pipe(csvBuffer)
-        .on("finish", async function () {
-          try {
-            const bufferContent = csvBuffer.getContents() || Buffer.from("");
-
-            await s3.uploadObject({
-              key: filename,
-              data: bufferContent,
-              contentType: "text/csv",
-            });
-            resolve();
-          } catch (err) {
-            console.error("Error uploading file:", err);
-            reject(err);
-          }
-        }),
-    );
-    // TODO: override bucket
-    return {
-      s3Url: `https://${this.props.aws.s3.bucket}.s3.amazonaws.com/${filename}`,
-    };
   }
 
   /**
@@ -113,28 +39,24 @@ export class CsvService {
   async convertCsvToExcel(
     input: ICsvService.ICsvToExcelInput,
   ): Promise<ICsvService.ICsvToExcelOutput> {
-    const { s3Url, delimiter } = input;
-    const match = s3Url.match(this.props.aws.s3.bucket);
-    if (!match) throw new Error("Invalid S3 URL");
+    const { csvBuffer, delimiter } = input;
 
-    const filename = match[3]!;
-    const s3Buffer = await this.s3.getObject({ filename: filename });
+    // base64 디코딩
+    const csvData = Buffer.from(csvBuffer, "base64").toString("utf-8");
 
-    // Buffer를 스트림으로 변환
-    const s3Stream = new Readable();
-    s3Stream.push(s3Buffer);
-    s3Stream.push(null); // 스트림의 끝을 나타냄
+    // CSV 데이터를 스트림으로 변환
+    const csvStream = new Readable();
+    csvStream.push(csvData);
+    csvStream.push(null);
 
     const buffer = new WritableStreamBuffer();
     const workbook = new ExcelJS.stream.xlsx.WorkbookWriter({ stream: buffer });
     const worksheet = workbook.addWorksheet("Sheet1");
     let headers;
 
-    const key = `${filename.split(".").slice(0, -1).join(".")}.xlsx`;
-
     await new Promise<void>((resolve, reject) => {
       try {
-        s3Stream
+        csvStream
           .pipe(csv.parse({ headers: true, delimiter: delimiter }))
           .on("headers", (receivedHeaders: string[]) => {
             headers = receivedHeaders;
@@ -148,22 +70,21 @@ export class CsvService {
           })
           .on("end", async () => {
             await workbook.commit();
-
-            const uploadParams = {
-              key: key,
-              data: buffer.getContents() || Buffer.from(""), // 버퍼 내용이 없을 경우 빈 버퍼 처리
-              contentType:
-                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-            };
-            await this.s3.uploadObject(uploadParams);
             resolve();
           });
       } catch (err) {
         reject(err);
       }
     });
+
+    const res = buffer.getContents();
+
+    if (!res) {
+      throw new Error("Fail to convert csv to excel");
+    }
+
     return {
-      url: `https://${this.props.aws.s3.bucket}.s3.ap-northeast-2.amazonaws.com/${key}`,
+      excelBuffer: res.toString("base64"),
     };
   }
 }
