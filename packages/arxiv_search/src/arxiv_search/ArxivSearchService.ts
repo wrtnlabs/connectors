@@ -24,8 +24,8 @@ export class ArxivSearchService {
       };
 
       /**
-       * arxiv api를 통해 검색 결과 가져옴
-       * xml 형식
+       * Get search results through arxiv api
+       * in XML format
        */
       const arxivSearchXmlResults = await axios.get(
         "https://export.arxiv.org/api/query",
@@ -35,7 +35,7 @@ export class ArxivSearchService {
       );
 
       /**
-       * xml 형식을 json 형식으로 변환
+       * Convert XML format to JSON format
        */
       const arxivSearchJsonResults = await this.convertXmlToJson(
         arxivSearchXmlResults.data,
@@ -69,7 +69,7 @@ export class ArxivSearchService {
   }
 
   /**
-   * arxiv api를 통해 검색하기 위한 쿼리 생성
+   * Generate query for searching through arxiv api
    * https://info.arxiv.org/help/api/user-manual.html#query_details
    */
   private generateSearchQuery = (
@@ -112,8 +112,8 @@ export class ArxivSearchService {
 
   /**
    *
-   * @param xmlData xml 형식의 데이터
-   * @returns xml 형식의 데이터를 json 형식으로 변환
+   * @param xmlData Data in XML format
+   * @returns Convert XML format data to JSON format
    */
   private async convertXmlToJson(xmlData: string): Promise<any> {
     try {
