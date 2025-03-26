@@ -6,7 +6,7 @@ export const test_calendly = async () => {
   const calendlyService = new CalendlyService({
     clientId: TestGlobal.env.CALENDLY_CLIENT_ID,
     clientSecret: TestGlobal.env.CALENDLY_CLIENT_SECRET,
-    secret: TestGlobal.env.CALENDLY_TEST_SECRET,
+    refreshToken: TestGlobal.env.CALENDLY_TEST_SECRET,
   });
 
   // get_me

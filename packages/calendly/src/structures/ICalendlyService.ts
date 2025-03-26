@@ -15,7 +15,7 @@ export namespace ICalendlyService {
     /**
      * Calendly Refresh Token.
      */
-    secret: string;
+    refreshToken: string;
   }
 
   export type IGetUserInfoOutput = {

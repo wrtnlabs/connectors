@@ -284,18 +284,12 @@ export class CalendlyService {
   }
 
   private async refresh() {
-    console.log(process.env.NODE_ENV);
-    console.log("refresh");
-    console.log(this.props.secret);
-    console.log(this.props.clientId);
-    console.log(this.props.clientSecret);
-
     try {
       const res = await axios.post(
         "https://auth.calendly.com/oauth/token",
         {
           grant_type: "refresh_token",
-          refresh_token: this.props.secret,
+          refresh_token: this.props.refreshToken,
         },
         {
           headers: {
@@ -305,12 +299,10 @@ export class CalendlyService {
         },
       );
 
-      console.log("bye");
-
       const { access_token, refresh_token: newRefreshToken } = res.data;
 
       if (process.env.NODE_ENV === "test") {
-        this.props.secret = newRefreshToken;
+        this.props.refreshToken = newRefreshToken;
       }
 
       return access_token;
