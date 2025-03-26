@@ -218,8 +218,8 @@ export class AwsS3Service {
   }
 
   /**
-   * @param key 키 이름
-   * @returns 버킷 이름을 붙여 만든 전체 파일 경로
+   * @param key key name
+   * @returns complete file path with bucket name prefix
    */
   addBucketPrefix(input: { key: string }): string {
     const url = `https://${this.props.bucket}.s3.${this.props.region}.amazonaws.com/${input.key}`;
