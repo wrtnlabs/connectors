@@ -3,6 +3,6 @@ export namespace ICareerService {
     /**
      * Serp API Key.
      */
-    apiKey: string;
+    serpApiKey: string;
   }
 }
