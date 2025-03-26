@@ -5,17 +5,17 @@ export namespace ICalendlyService {
     /**
      * Calendly Client ID.
      */
-    clientId: string;
+    calendlyClientId: string;
 
     /**
      * Calendly Client Secret.
      */
-    clientSecret: string;
+    calendlyClientSecret: string;
 
     /**
      * Calendly Refresh Token.
      */
-    refreshToken: string;
+    calendlyRefreshToken: string;
   }
 
   export type IGetUserInfoOutput = {

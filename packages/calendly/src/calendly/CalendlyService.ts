@@ -289,7 +289,7 @@ export class CalendlyService {
         "https://auth.calendly.com/oauth/token",
         {
           grant_type: "refresh_token",
-          refresh_token: this.props.refreshToken,
+          refresh_token: this.props.calendlyRefreshToken,
         },
         {
           headers: {
@@ -302,7 +302,7 @@ export class CalendlyService {
       const { access_token, refresh_token: newRefreshToken } = res.data;
 
       if (process.env.NODE_ENV === "test") {
-        this.props.refreshToken = newRefreshToken;
+        this.props.calendlyRefreshToken = newRefreshToken;
       }
 
       return access_token;
@@ -313,7 +313,8 @@ export class CalendlyService {
 
   private getBasicAuthorization() {
     // client_id:client_secret 형식으로 문자열 생성
-    const credentials = this.props.clientId + ":" + this.props.clientSecret;
+    const credentials =
+      this.props.calendlyClientId + ":" + this.props.calendlyClientSecret;
 
     // Base64 인코딩
     const encodedCredentials = btoa(credentials);

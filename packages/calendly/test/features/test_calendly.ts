@@ -4,9 +4,9 @@ import { TestGlobal } from "../TestGlobal";
 
 export const test_calendly = async () => {
   const calendlyService = new CalendlyService({
-    clientId: TestGlobal.env.CALENDLY_CLIENT_ID,
-    clientSecret: TestGlobal.env.CALENDLY_CLIENT_SECRET,
-    refreshToken: TestGlobal.env.CALENDLY_TEST_SECRET,
+    calendlyClientId: TestGlobal.env.CALENDLY_CLIENT_ID,
+    calendlyClientSecret: TestGlobal.env.CALENDLY_CLIENT_SECRET,
+    calendlyRefreshToken: TestGlobal.env.CALENDLY_TEST_SECRET,
   });
 
   // get_me
