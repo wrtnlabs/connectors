@@ -1,3 +1,4 @@
+export * from "./base64ToString";
 export * from "./convertAllPropertyToString";
 export * from "./convertXmlToJson";
 export * from "./CreateQueryParameter";
@@ -9,6 +10,7 @@ export * from "./markdown-converter";
 export * from "./MathUtil";
 export * from "./PaginationUtil";
 export * from "./retry";
+export * from "./stringTobase64";
 export * from "./TypedSplit";
 
 // CONSTANTS
