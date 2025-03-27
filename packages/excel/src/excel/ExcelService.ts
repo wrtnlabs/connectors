@@ -1,6 +1,6 @@
 import * as Excel from "exceljs";
 import { IExcelService } from "../structures/IExcelService";
-import { ISpreadsheetCell } from "@wrtnlabs/connector-shared";
+import { base64ToBuffer, ISpreadsheetCell } from "@wrtnlabs/connector-shared";
 
 export class ExcelService {
   constructor() {}
@@ -14,10 +14,10 @@ export class ExcelService {
     input: IExcelService.IGetWorksheetListInput,
   ): Promise<IExcelService.IWorksheetListOutput> {
     try {
-      const { fileBuffer } = input;
+      const { fileBase64 } = input;
 
       const workbook = new Excel.Workbook();
-      await workbook.xlsx.load(Buffer.from(fileBuffer, "base64"));
+      await workbook.xlsx.load(base64ToBuffer(fileBase64));
 
       const result: { id: number; sheetName: string }[] = [];
       workbook.eachSheet((sheet, id) => {
@@ -42,7 +42,7 @@ export class ExcelService {
   async getExcelData(
     input: IExcelService.IReadExcelInput,
   ): Promise<IExcelService.IReadExcelOutput> {
-    const workbook = await this.getExcelFile({ fileBuffer: input.fileBuffer });
+    const workbook = await this.getExcelFile({ fileBase64: input.fileBase64 });
 
     try {
       const sheet = workbook.getWorksheet(input.sheetName ?? 1);
@@ -89,8 +89,8 @@ export class ExcelService {
    * Based on the input file information, the headers of the corresponding Excel file are retrieved
    */
   async readHeaders(input: IExcelService.IReadExcelInput): Promise<string[]> {
-    const { fileBuffer, sheetName } = input;
-    const workbook = await this.getExcelFile({ fileBuffer });
+    const { fileBase64, sheetName } = input;
+    const workbook = await this.getExcelFile({ fileBase64 });
     return this.readExcelHeaders({ workbook, sheetName });
   }
 
@@ -149,8 +149,8 @@ export class ExcelService {
     input: IExcelService.IInsertExcelRowInput,
   ): Promise<IExcelService.IExportExcelFileOutput> {
     try {
-      const { sheetName, data, fileBuffer } = input;
-      const workbook = await this.getExcelFile({ fileBuffer });
+      const { sheetName, data, fileBase64 } = input;
+      const workbook = await this.getExcelFile({ fileBase64 });
       if (
         typeof sheetName === "string" &&
         workbook.worksheets.every((worksheet) => worksheet.name !== sheetName)
@@ -177,7 +177,7 @@ export class ExcelService {
 
       const modifiedBuffer = await workbook.xlsx.writeBuffer();
 
-      return { fileBuffer: Buffer.from(modifiedBuffer).toString("base64") };
+      return { fileBase64: Buffer.from(modifiedBuffer).toString("base64") };
     } catch (error) {
       console.error(JSON.stringify(error));
       throw error;
@@ -185,12 +185,12 @@ export class ExcelService {
   }
 
   private async getExcelFile(input: {
-    fileBuffer?: string;
+    fileBase64?: string;
   }): Promise<Excel.Workbook> {
-    if (input.fileBuffer) {
+    if (input.fileBase64) {
       // 워크북 로드
       return new Excel.Workbook().xlsx.load(
-        Buffer.from(input.fileBuffer, "base64"),
+        Buffer.from(input.fileBase64, "base64"),
       );
     }
     return new Excel.Workbook();
@@ -211,9 +211,9 @@ export class ExcelService {
     const workbook = new Excel.Workbook();
     workbook.addWorksheet(input.sheetName ?? "Sheet1");
 
-    const modifiedBuffer: ArrayBuffer = await workbook.xlsx.writeBuffer();
+    const modifiedBuffer = await workbook.xlsx.writeBuffer();
 
-    return { fileBuffer: Buffer.from(modifiedBuffer).toString("base64") };
+    return { fileBase64: Buffer.from(modifiedBuffer).toString("base64") };
   }
 
   private columnNumberToLetter(column: number): string {

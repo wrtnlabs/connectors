@@ -2,7 +2,7 @@ import typia from "typia";
 import { deepStrictEqual } from "assert";
 import { ExcelService, IExcelService } from "@wrtnlabs/connector-excel";
 import { TestGlobal } from "../TestGlobal";
-import * as fs from "node:fs/promises";
+// import * as fs from "node:fs/promises";
 
 export const test_excel_create_file_witnout_sheet_name = async () => {
   const excelService = new ExcelService();
@@ -10,7 +10,7 @@ export const test_excel_create_file_witnout_sheet_name = async () => {
 
   typia.assert(file);
 
-  await fs.writeFile("create_test.xlsx", file.fileBuffer, "base64");
+  // await fs.writeFile("create_test.xlsx", file.fileBase64, "base64");
 };
 
 export const test_excel_create_file_with_sheet_name = async () => {
@@ -21,11 +21,11 @@ export const test_excel_create_file_with_sheet_name = async () => {
 
   typia.assert(file);
 
-  await fs.writeFile(
-    "create_test_with_sheet_name.xlsx",
-    file.fileBuffer,
-    "base64",
-  );
+  // await fs.writeFile(
+  //   "create_test_with_sheet_name.xlsx",
+  //   file.fileBase64,
+  //   "base64",
+  // );
 };
 
 export const test_excel_insert_rows_without_file_url = async () => {
@@ -94,11 +94,11 @@ export const test_excel_insert_rows_without_file_url = async () => {
 
   typia.assert(res);
 
-  await fs.writeFile(
-    "insert_rows_without_file_url.xlsx",
-    res.fileBuffer,
-    "base64",
-  );
+  // await fs.writeFile(
+  //   "insert_rows_without_file_url.xlsx",
+  //   res.fileBase64,
+  //   "base64",
+  // );
 };
 
 export const test_excel_insert_rows_with_file_url = async () => {
@@ -111,7 +111,7 @@ export const test_excel_insert_rows_with_file_url = async () => {
    * insert rows
    */
   const res = await excelService.insertRows({
-    fileBuffer: file.fileBuffer,
+    fileBase64: file.fileBase64,
     data: [
       {
         row: 1,
@@ -166,11 +166,11 @@ export const test_excel_insert_rows_with_file_url = async () => {
 
   typia.assert(res);
 
-  await fs.writeFile(
-    "insert_rows_with_file_url.xlsx",
-    res.fileBuffer,
-    "base64",
-  );
+  // await fs.writeFile(
+  //   "insert_rows_with_file_url.xlsx",
+  //   res.fileBase64,
+  //   "base64",
+  // );
 };
 
 // 이전 실패 케이스에 대한 테스트 코드 추가
@@ -190,7 +190,7 @@ export const test_excel_insert_row_fail_case_1 = async () => {
   // ];
 
   const res = await excelService.insertRows({
-    fileBuffer: file.fileBuffer,
+    fileBase64: file.fileBase64,
     sheetName: "TEST",
     data: [
       {
@@ -262,11 +262,11 @@ export const test_excel_insert_row_fail_case_1 = async () => {
 
   typia.assert(res);
 
-  await fs.writeFile(
-    "insert_rows_with_file_url_and_sheet_name.xlsx",
-    res.fileBuffer,
-    "base64",
-  );
+  // await fs.writeFile(
+  //   "insert_rows_with_file_url_and_sheet_name.xlsx",
+  //   res.fileBase64,
+  //   "base64",
+  // );
 };
 
 // 이전 실패 케이스에 대한 테스트 코드 추가
@@ -317,11 +317,11 @@ export const test_excel_insert_row_fail_case_2 = async () => {
 
   typia.assert(res);
 
-  await fs.writeFile(
-    "insert_rows_with_file_url_and_sheet_name_2.xlsx",
-    res.fileBuffer,
-    "base64",
-  );
+  // await fs.writeFile(
+  //   "insert_rows_with_file_url_and_sheet_name_2.xlsx",
+  //   res.fileBase64,
+  //   "base64",
+  // );
 };
 
 // 이전 실패 케이스에 대한 테스트 코드 추가, 2번에 나눠서 저장한 경우 누적이 잘 되는지를 검증
@@ -414,7 +414,7 @@ export const test_excel_insert_row_fail_case_3 = async () => {
   });
 
   const second = await excelService.insertRows({
-    fileBuffer: first.fileBuffer,
+    fileBase64: first.fileBase64,
     sheetName: "Sheet1",
     data: [
       {
@@ -460,14 +460,14 @@ export const test_excel_insert_row_fail_case_3 = async () => {
     ],
   });
 
-  await fs.writeFile(
-    "insert_rows_with_file_url_and_sheet_name_3.xlsx",
-    second.fileBuffer,
-    "base64",
-  );
+  // await fs.writeFile(
+  //   "insert_rows_with_file_url_and_sheet_name_3.xlsx",
+  //   second.fileBase64,
+  //   "base64",
+  // );
 
   const res = await excelService.getExcelData({
-    fileBuffer: second.fileBuffer,
+    fileBase64: second.fileBase64,
     sheetName: "Sheet1",
   });
 
@@ -508,7 +508,7 @@ export const test_excel_insert_row_to_empty_excel_file = async () => {
   });
 
   const res = await excelService.insertRows({
-    fileBuffer: file.fileBuffer,
+    fileBase64: file.fileBase64,
     sheetName: "TEST",
     data: excelService.transform({
       data: [
@@ -545,7 +545,7 @@ export const test_excel = async () => {
   const excelBuffer = Buffer.from(body).toString("base64");
 
   const worksheetListOutput = await excelService.readSheets({
-    fileBuffer: excelBuffer,
+    fileBase64: excelBuffer,
   });
   typia.assert<IExcelService.IWorksheetListOutput>(worksheetListOutput);
 
@@ -571,7 +571,7 @@ export const test_excel = async () => {
    * read rows data
    */
   const readExcelInput = {
-    fileBuffer: insertRowsOutput.fileBuffer,
+    fileBase64: insertRowsOutput.fileBase64,
     sheetName: worksheetListOutput.data[0]?.sheetName,
   };
 

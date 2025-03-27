@@ -12,7 +12,7 @@ export namespace IExcelService {
      *
      * @title Excel file
      */
-    fileBuffer: string & tags.Format<"byte">;
+    fileBase64: string & tags.Format<"byte">;
 
     /**
      * Sheet name to read
@@ -59,7 +59,7 @@ export namespace IExcelService {
      *
      * @title Excel file
      */
-    fileBuffer: string & tags.Format<"byte">;
+    fileBase64: string & tags.Format<"byte">;
   }
 
   /**
@@ -101,7 +101,7 @@ export namespace IExcelService {
      *
      * @title Excel file
      */
-    fileBuffer?: string & tags.Format<"byte">;
+    fileBase64?: string & tags.Format<"byte">;
 
     /**
      * The type of data and coordinates of each row and column
@@ -126,7 +126,7 @@ export namespace IExcelService {
      *
      * @title Excel file
      */
-    fileBuffer?: string & tags.Format<"byte">;
+    fileBase64?: string & tags.Format<"byte">;
 
     /**
      * The type of data and coordinates of each row and column
@@ -155,6 +155,6 @@ export namespace IExcelService {
      *
      * @title Generated Excel file
      */
-    fileBuffer: string & tags.Format<"byte">;
+    fileBase64: string & tags.Format<"byte">;
   }
 }
