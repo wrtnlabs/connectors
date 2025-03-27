@@ -3,6 +3,7 @@ import { ICsvService } from "@wrtnlabs/connector-csv/lib/structures/ICsvService"
 import typia from "typia";
 import { TestGlobal } from "../TestGlobal";
 import * as fs from "node:fs/promises";
+import { stringToBase64 } from "@wrtnlabs/connector-shared";
 
 export const test_csv = async () => {
   const csvService = new CsvService();
@@ -18,7 +19,7 @@ export const test_csv = async () => {
   const response = await fetch(readCsvInput.s3Url);
   const body = await response.text();
 
-  const csvBuffer = Buffer.from(body).toString("base64");
+  const csvBuffer = stringToBase64(body);
 
   const result = await csvService.read({
     csvBuffer: csvBuffer,

@@ -5,6 +5,7 @@ import { WritableStreamBuffer } from "stream-buffers";
 
 import { Readable } from "stream";
 import { ICsvService } from "../structures/ICsvService";
+import { base64ToString } from "@wrtnlabs/connector-shared";
 
 export class CsvService {
   /**
@@ -16,7 +17,7 @@ export class CsvService {
     try {
       const { csvBuffer, delimiter } = input;
 
-      const body: string = Buffer.from(csvBuffer, "base64").toString("utf-8");
+      const body: string = base64ToString(csvBuffer);
 
       const res = parse(body, {
         columns: true,
