@@ -49,6 +49,7 @@
     "@wrtnlabs/connector-google-drive": "workspace:^",
     "@wrtnlabs/connector-shared": "workspace:^",
     "axios": "^1.7.9",
+    "googleapis": "^144.0.0",
     "sharp": "^0.33.5",
     "typia": "^8.0.1",
     "uuid": "^10.0.0"
