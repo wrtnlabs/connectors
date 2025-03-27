@@ -1,17 +1,7 @@
 import { tags } from "typia";
-import { IAwsS3Service } from "@wrtnlabs/connector-aws-s3";
 import { ContentMediaType } from "typia/lib/tags";
 
 export namespace IHancellService {
-  export interface IProps {
-    /**
-     * AWS.
-     */
-    aws: {
-      s3: IAwsS3Service.IProps;
-    };
-  }
-
   export interface IUpsertSheetInput extends IReadHancellInput {
     /**
      * @title Sheet name
@@ -28,9 +18,9 @@ export namespace IHancellService {
 
   export interface IUpsertSheetOutput {
     /**
-     * @title New Hansel File Link
+     * @title New hancel base64 file
      */
-    fileUrl: string;
+    fileBase64: string;
   }
 
   /**

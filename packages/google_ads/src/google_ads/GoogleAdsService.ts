@@ -3,7 +3,6 @@ import { randomUUID } from "crypto";
 import typia from "typia";
 import { v4 } from "uuid";
 import { IGoogleAdsService } from "../structures/IGoogleAdsService";
-import { GoogleService } from "@wrtnlabs/connector-google";
 import { ImageService } from "@wrtnlabs/connector-image";
 import {
   Camelize,
@@ -11,6 +10,7 @@ import {
   StringToDeepObject,
   TypedSplit,
 } from "@wrtnlabs/connector-shared";
+import { google } from "googleapis";
 
 export class GoogleAdsService {
   private readonly baseUrl = "https://googleads.googleapis.com/v17";
@@ -1357,12 +1357,10 @@ export class GoogleAdsService {
    * @returns
    */
   private async listAccessibleCustomers(): Promise<IGoogleAdsService.IGetlistAccessibleCustomersOutput> {
-    const googleService = new GoogleService(this.props.google);
-
     const url = `${this.baseUrl}/customers:listAccessibleCustomers`;
     const developerToken = (await this.getHeaders())["developer-token"];
 
-    const accessToken = await googleService.refreshAccessToken();
+    const accessToken = await this.refreshAccessToken();
     const res = await axios.get(url, {
       headers: {
         Authorization: `Bearer ${accessToken}`,
@@ -1407,5 +1405,29 @@ export class GoogleAdsService {
       "developer-token": this.props.googleAds.developerToken, // developer token of parent account.
       "login-customer-id": this.props.googleAds.accountId, // parent account id.
     };
+  }
+
+  /**
+   * Google Auth Service.
+   *
+   * Request to reissue Google access token
+   */
+  private async refreshAccessToken(): Promise<string> {
+    const client = new google.auth.OAuth2(
+      this.props.google.clientId,
+      this.props.google.clientSecret,
+    );
+
+    client.setCredentials({
+      refresh_token: decodeURIComponent(this.props.google.refreshToken),
+    });
+    const { credentials } = await client.refreshAccessToken();
+    const accessToken = credentials.access_token;
+
+    if (!accessToken) {
+      throw new Error("Failed to refresh access token");
+    }
+
+    return accessToken;
   }
 }

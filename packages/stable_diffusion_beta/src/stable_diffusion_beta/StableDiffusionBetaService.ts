@@ -1,6 +1,6 @@
 import axios from "axios";
 import { IStableDiffusionBetaService } from "../structures/IStableDiffusionBetaService";
-import { AwsS3Service } from "@wrtnlabs/connector-aws-s3";
+import { bufferToBase64 } from "@wrtnlabs/connector-shared";
 
 export class StableDiffusionBetaService {
   constructor(private readonly props: IStableDiffusionBetaService.IProps) {}
@@ -24,45 +24,15 @@ export class StableDiffusionBetaService {
         input.image_ratio,
         input.style_preset,
       );
-      const { imgUrl } = await this.uploadImageToS3(img, {
-        ...input.s3,
+
+      const imageBase64List: string[] = img.map((img) => {
+        return bufferToBase64(img);
       });
-      return { imgUrl: imgUrl };
+
+      return { imgBase64: imageBase64List[0]! };
     } catch (error) {
       console.error(JSON.stringify(error));
       throw error;
-    }
-  }
-
-  private async uploadImageToS3(
-    img: Buffer[],
-    input: IStableDiffusionBetaService.IRequest["s3"],
-  ) {
-    if (!this.props.aws?.s3) {
-      throw new Error("AWS S3 Not Applied.");
-    }
-
-    try {
-      const s3 = new AwsS3Service({
-        ...this.props.aws.s3,
-      });
-
-      const imgUrl = await Promise.all(
-        img.map(async (img) => {
-          return await s3.uploadObject({
-            key: input.key,
-            data: img,
-            contentType: input.contentType ?? "image/png",
-          });
-        }),
-      );
-
-      return {
-        imgUrl: imgUrl[0]!,
-      };
-    } catch (err) {
-      console.error(JSON.stringify(err));
-      throw err;
     }
   }
 

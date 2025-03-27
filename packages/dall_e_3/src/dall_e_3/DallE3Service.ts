@@ -1,6 +1,6 @@
 import axios from "axios";
 import { IDallE3Service } from "../structures/IDallE3Service";
-import { AwsS3Service } from "@wrtnlabs/connector-aws-s3";
+import { bufferToBase64 } from "@wrtnlabs/connector-shared";
 
 export class DallE3Service {
   constructor(private readonly props: IDallE3Service.IProps) {}
@@ -42,38 +42,19 @@ export class DallE3Service {
 
       const data = await axios.get(res?.url!, { responseType: "arraybuffer" });
 
-      const { imgUrl } = await this.uploadDallE3ToS3(data.data, {
-        ...input.s3,
-      });
+      const { imageBase64 } = await this.uploadDallE3ToS3(data.data);
 
-      return { imgUrl };
+      return { imageBase64 };
     } catch (error) {
       console.error(JSON.stringify(error));
       throw error;
     }
   }
 
-  private async uploadDallE3ToS3(
-    img: Buffer,
-    input: IDallE3Service.IRequest["s3"],
-  ) {
-    if (!this.props.aws?.s3) {
-      throw new Error("AWS S3 Not Applied.");
-    }
-
+  private async uploadDallE3ToS3(img: Buffer) {
     try {
-      const s3 = new AwsS3Service({
-        ...this.props.aws.s3,
-      });
-
-      const imgUrl = await s3.uploadObject({
-        key: input.key,
-        data: img,
-        contentType: input.contentType ?? "image/png",
-      });
-
       return {
-        imgUrl: imgUrl,
+        imageBase64: bufferToBase64(img),
       };
     } catch (err) {
       console.log("err", err);

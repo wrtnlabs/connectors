@@ -1,15 +1,13 @@
 import typia from "typia";
-import { IYoutubeSearchService } from "@wrtnlabs/connector-youtube-search";
-import { YoutubeSearchService } from "@wrtnlabs/connector-youtube-search/lib/youtube_search/YoutubeSearchService";
 import { TestGlobal } from "../TestGlobal";
+import { IYoutubeOfficialSearchService } from "@wrtnlabs/connector-youtube-search/lib/structures/IYoutubeOfficialSearchService";
+import { YoutubeOfficialSearchService } from "@wrtnlabs/connector-youtube-search/lib/youtube_official_search/YoutubeOfficialSearchService";
 
 export const test_youtube_official = async (): Promise<
-  IYoutubeSearchService.IYoutubeSearchVideoResponse[]
+  IYoutubeOfficialSearchService.IYoutubeSearchVideoResponse[]
 > => {
-  const youtubeSearchService = new YoutubeSearchService({
+  const youtubeSearchService = new YoutubeOfficialSearchService({
     googleApiKey: TestGlobal.env.GOOGLE_API_KEY,
-    searchApiKey: TestGlobal.env.SEARCH_API_KEY,
-    serpApiKey: TestGlobal.env.SERP_API_KEY,
   });
 
   const result = await youtubeSearchService.searchVideo({

@@ -28,9 +28,9 @@ export class TestGlobal {
 }
 
 interface IEnvironments {
-  GOOGLE_CLIENT_ID: string;
-  GOOGLE_CLIENT_SECRET: string;
-  GOOGLE_TEST_SECRET: string;
+  SEARCH_API_KEY: string;
+  SERP_API_KEY: string;
+  GOOGLE_API_KEY: string;
 }
 
 const environments = new Singleton(() => {

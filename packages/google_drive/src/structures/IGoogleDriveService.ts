@@ -43,7 +43,7 @@ export namespace IGoogleDriveService {
     /**
      * Google Refresh Token.
      */
-    secret: string;
+    refreshToken: string;
   }
   /**
    * @title Information required to create a Google Drive folder

@@ -1,19 +1,22 @@
 import axios from "axios";
 import { v4 } from "uuid";
 import sharp from "sharp";
-import { GoogleService } from "@wrtnlabs/connector-google";
-import { AwsS3Service } from "@wrtnlabs/connector-aws-s3";
 import typia from "typia";
-import { imageExtensions } from "@wrtnlabs/connector-shared";
+import { AwsS3Service } from "@wrtnlabs/connector-aws-s3";
+import { bufferToBase64, imageExtensions } from "@wrtnlabs/connector-shared";
 import { GoogleDriveService } from "@wrtnlabs/connector-google-drive";
 import { IGoogleSlidesService } from "../structures/IGoogleSlidesService";
+import { google } from "googleapis";
 
 export class GoogleSlidesService {
   private readonly s3: AwsS3Service;
 
   constructor(private readonly props: IGoogleSlidesService.IProps) {
     this.s3 = new AwsS3Service({
-      ...this.props.aws.s3,
+      accessKeyId: "props.awsAccessKeyId",
+      secretAccessKey: "props.awsSecretAccessKey",
+      region: "props.awsRegion",
+      bucket: "props.awsBucket",
     });
   }
 
@@ -28,13 +31,7 @@ export class GoogleSlidesService {
     presentationId: string;
   }): Promise<IGoogleSlidesService.IExportHanshowOutput> {
     try {
-      const googleService = new GoogleService({
-        clientId: this.props.clientId,
-        clientSecret: this.props.clientSecret,
-        secret: this.props.secret,
-      });
-
-      const accessToken = await googleService.refreshAccessToken();
+      const accessToken = await this.refreshAccessToken();
 
       const mimeType = `application/vnd.openxmlformats-officedocument.presentationml.presentation`;
       const url = `https://www.googleapis.com/drive/v3/files/${input.presentationId}/?mimeType=${mimeType}`;
@@ -45,12 +42,7 @@ export class GoogleSlidesService {
         responseType: "arraybuffer",
       });
 
-      const hanshow = await this.s3.uploadObject({
-        contentType: mimeType,
-        data: res.data,
-        key: `${this.uploadPrefix}/${v4()}.show`,
-      });
-      return { hanshow };
+      return { hanshowBase64: bufferToBase64(res.data) };
     } catch (err) {
       console.error(JSON.stringify(err));
       throw err;
@@ -68,13 +60,7 @@ export class GoogleSlidesService {
     presentationId: string;
   }): Promise<IGoogleSlidesService.IExportPresentationOutput> {
     try {
-      const googleService = new GoogleService({
-        clientId: this.props.clientId,
-        clientSecret: this.props.clientSecret,
-        secret: this.props.secret,
-      });
-
-      const accessToken = await googleService.refreshAccessToken();
+      const accessToken = await this.refreshAccessToken();
 
       const mimeType = `application/vnd.openxmlformats-officedocument.presentationml.presentation`;
       const url = `https://www.googleapis.com/drive/v3/files/${input.presentationId}/?mimeType=${mimeType}`;
@@ -85,12 +71,7 @@ export class GoogleSlidesService {
         responseType: "arraybuffer",
       });
 
-      const powerPoint = await this.s3.uploadObject({
-        contentType: mimeType,
-        data: res.data,
-        key: `${this.uploadPrefix}/${v4()}.pptx`,
-      });
-      return { powerPoint };
+      return { powerPointBase64: bufferToBase64(res.data) };
     } catch (err) {
       console.error(JSON.stringify(err));
       throw err;
@@ -106,15 +87,9 @@ export class GoogleSlidesService {
     input: IGoogleSlidesService.IGetPresentationInput,
   ): Promise<IGoogleSlidesService.ISimplePresentationIdOutput> {
     try {
-      const googleService = new GoogleService({
-        clientId: this.props.clientId,
-        clientSecret: this.props.clientSecret,
-        secret: this.props.secret,
-      });
-
       const { presentationId } = input;
 
-      const accessToken = await googleService.refreshAccessToken();
+      const accessToken = await this.refreshAccessToken();
 
       const res = await axios.get(
         `https://slides.googleapis.com/v1/presentations/${presentationId}`,
@@ -375,13 +350,7 @@ export class GoogleSlidesService {
    */
   async createPresentation(): Promise<IGoogleSlidesService.ISimplePresentationIdOutput> {
     try {
-      const googleService = new GoogleService({
-        clientId: this.props.clientId,
-        clientSecret: this.props.clientSecret,
-        secret: this.props.secret,
-      });
-
-      const accessToken = await googleService.refreshAccessToken();
+      const accessToken = await this.refreshAccessToken();
 
       const res = await axios.post(
         "https://slides.googleapis.com/v1/presentations",
@@ -1159,13 +1128,7 @@ export class GoogleSlidesService {
     presentationId: string;
     body: Pick<IGoogleSlidesService.IUpdatePresentationInput, "requests">;
   }): Promise<void> {
-    const googleService = new GoogleService({
-      clientId: this.props.clientId,
-      clientSecret: this.props.clientSecret,
-      secret: this.props.secret,
-    });
-
-    const accessToken = await googleService.refreshAccessToken();
+    const accessToken = await this.refreshAccessToken();
 
     const is = typia.createIs<{
       createImage: IGoogleSlidesService.CreateImageRequest;
@@ -1231,5 +1194,29 @@ export class GoogleSlidesService {
       console.error(JSON.stringify((err as any).response.data));
       throw err;
     }
+  }
+
+  /**
+   * Google Auth Service.
+   *
+   * Request to reissue Google access token
+   */
+  private async refreshAccessToken(): Promise<string> {
+    const client = new google.auth.OAuth2(
+      this.props.clientId,
+      this.props.clientSecret,
+    );
+
+    client.setCredentials({
+      refresh_token: decodeURIComponent(this.props.refreshToken),
+    });
+    const { credentials } = await client.refreshAccessToken();
+    const accessToken = credentials.access_token;
+
+    if (!accessToken) {
+      throw new Error("Failed to refresh access token");
+    }
+
+    return accessToken;
   }
 }
