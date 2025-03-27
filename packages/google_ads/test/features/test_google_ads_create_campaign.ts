@@ -14,7 +14,7 @@ export const test_google_ads_create_campaign_search_type = async () => {
     google: {
       clientId: TestGlobal.env.GOOGLE_CLIENT_ID,
       clientSecret: TestGlobal.env.GOOGLE_CLIENT_SECRET,
-      secret: TestGlobal.env.GOOGLE_TEST_SECRET,
+      refreshToken: TestGlobal.env.GOOGLE_TEST_SECRET,
     },
   });
 
@@ -50,7 +50,7 @@ export const test_google_ads_create_campaign_display_type = async () => {
     google: {
       clientId: TestGlobal.env.GOOGLE_CLIENT_ID,
       clientSecret: TestGlobal.env.GOOGLE_CLIENT_SECRET,
-      secret: TestGlobal.env.GOOGLE_TEST_SECRET,
+      refreshToken: TestGlobal.env.GOOGLE_TEST_SECRET,
     },
   });
 
@@ -87,7 +87,7 @@ export const test_google_ads_create_campaign_search_type_with_start_date =
       google: {
         clientId: TestGlobal.env.GOOGLE_CLIENT_ID,
         clientSecret: TestGlobal.env.GOOGLE_CLIENT_SECRET,
-        secret: TestGlobal.env.GOOGLE_TEST_SECRET,
+        refreshToken: TestGlobal.env.GOOGLE_TEST_SECRET,
       },
     });
 
@@ -128,7 +128,7 @@ export const test_google_ads_create_campaign_search_type_with_end_date =
       google: {
         clientId: TestGlobal.env.GOOGLE_CLIENT_ID,
         clientSecret: TestGlobal.env.GOOGLE_CLIENT_SECRET,
-        secret: TestGlobal.env.GOOGLE_TEST_SECRET,
+        refreshToken: TestGlobal.env.GOOGLE_TEST_SECRET,
       },
     });
 
@@ -169,7 +169,7 @@ export const test_google_ads_create_campaign_search_type_with_end_date_and_date 
       google: {
         clientId: TestGlobal.env.GOOGLE_CLIENT_ID,
         clientSecret: TestGlobal.env.GOOGLE_CLIENT_SECRET,
-        secret: TestGlobal.env.GOOGLE_TEST_SECRET,
+        refreshToken: TestGlobal.env.GOOGLE_TEST_SECRET,
       },
     });
 
@@ -212,7 +212,7 @@ export const test_google_ads_create_campaign_without_campaign_name =
       google: {
         clientId: TestGlobal.env.GOOGLE_CLIENT_ID,
         clientSecret: TestGlobal.env.GOOGLE_CLIENT_SECRET,
-        secret: TestGlobal.env.GOOGLE_TEST_SECRET,
+        refreshToken: TestGlobal.env.GOOGLE_TEST_SECRET,
       },
     });
 

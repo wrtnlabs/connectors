@@ -10,6 +10,8 @@ export * from "./MathUtil";
 export * from "./PaginationUtil";
 export * from "./retry";
 export * from "./TypedSplit";
+export * from "./bufferUtil";
+export * from "./imageUtil";
 
 // CONSTANTS
 export * from "./constants/extensions";
