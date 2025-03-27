@@ -29,7 +29,6 @@
     "@wrtnlabs/connector-google-trend",
     "@wrtnlabs/connector-hancell",
     "@wrtnlabs/connector-hwp",
-    "@wrtnlabs/connector-image",
     "@wrtnlabs/connector-imweb",
     "@wrtnlabs/connector-jira",
     "@wrtnlabs/connector-kakao-map",

@@ -1,4 +1,4 @@
-export namespace IImageService {
+export namespace IImage {
   export interface GetImageFileInput {
     /**
      * @title Image url.

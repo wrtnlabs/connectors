@@ -3,9 +3,9 @@ import { randomUUID } from "crypto";
 import typia from "typia";
 import { v4 } from "uuid";
 import { IGoogleAdsService } from "../structures/IGoogleAdsService";
-import { ImageService } from "@wrtnlabs/connector-image";
 import {
   Camelize,
+  getCroppedImage,
   SelectedColumns,
   StringToDeepObject,
   TypedSplit,
@@ -1194,9 +1194,7 @@ export class GoogleAdsService {
       typia.tags.ContentMediaType<"image/*">,
     ratio: 1 | 1.91 | 0.8,
   ): Promise<string> {
-    const imageService = new ImageService();
-
-    const imageFile = await imageService.getCroppedImage({
+    const imageFile = await getCroppedImage({
       imageUrl: image,
       ratio,
     });
