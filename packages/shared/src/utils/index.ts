@@ -12,6 +12,8 @@ export * from "./PaginationUtil";
 export * from "./retry";
 export * from "./stringTobase64";
 export * from "./TypedSplit";
+export * from "./bufferUtil";
+export * from "./imageUtil";
 
 // CONSTANTS
 export * from "./constants/extensions";

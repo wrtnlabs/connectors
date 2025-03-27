@@ -5,7 +5,6 @@ import {
   NTpule,
   StrictOmit,
 } from "@wrtnlabs/connector-shared";
-import { IAwsS3Service } from "@wrtnlabs/connector-aws-s3";
 
 type OneOf<T extends object, K extends keyof T = keyof T> = K extends any
   ? Record<K, T[K]>
@@ -26,11 +25,7 @@ export namespace IGoogleSlidesService {
     /**
      * Google Refresh Token.
      */
-    secret: string;
-
-    aws: {
-      s3: IAwsS3Service.IProps;
-    };
+    refreshToken: string;
   }
 
   export type ISimplePresentationIdOutput = MyPick<
@@ -40,16 +35,16 @@ export namespace IGoogleSlidesService {
 
   export interface IExportHanshowOutput {
     /**
-     * @title File download link
+     * @title Base64 encoded Hanshow file
      */
-    hanshow: string & tags.Format<"uri">;
+    hanshowBase64: string;
   }
 
   export interface IExportPresentationOutput {
     /**
-     * @title File download link
+     * @title Base64 encoded PowerPoint file
      */
-    powerPoint: string & tags.Format<"uri">;
+    powerPointBase64: string;
   }
 
   export interface AppendQuarterDivisionSlideInput {

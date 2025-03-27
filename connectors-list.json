@@ -13,7 +13,6 @@
     "@wrtnlabs/connector-figma",
     "@wrtnlabs/connector-github",
     "@wrtnlabs/connector-gmail",
-    "@wrtnlabs/connector-google",
     "@wrtnlabs/connector-google-ads",
     "@wrtnlabs/connector-google-calendar",
     "@wrtnlabs/connector-google-docs",
@@ -30,7 +29,6 @@
     "@wrtnlabs/connector-google-trend",
     "@wrtnlabs/connector-hancell",
     "@wrtnlabs/connector-hwp",
-    "@wrtnlabs/connector-image",
     "@wrtnlabs/connector-imweb",
     "@wrtnlabs/connector-jira",
     "@wrtnlabs/connector-kakao-map",
@@ -51,8 +49,10 @@
     "@wrtnlabs/connector-typeform",
     "@wrtnlabs/connector-web-crawler",
     "@wrtnlabs/connector-x",
+    "@wrtnlabs/connector-youtube-official-search",
     "@wrtnlabs/connector-youtube-search",
+    "@wrtnlabs/connector-youtube-transcript",
     "@wrtnlabs/connector-zoom"
   ],
-  "version": "0.1.481"
+  "version": "0.1.483"
 }

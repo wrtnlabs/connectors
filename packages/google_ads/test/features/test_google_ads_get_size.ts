@@ -1,13 +1,11 @@
-import { ImageService } from "@wrtnlabs/connector-image";
+import { changeImageSize } from "@wrtnlabs/connector-shared/src/utils/imageUtil";
 import { deepStrictEqual } from "assert";
 
 /**
  * 정방형 이미지의 가로형으로의 편집
  */
 export const test_google_ads_get_size_1_1 = async () => {
-  const imageService = new ImageService();
-
-  const response = imageService.changeImageSize({
+  const response = changeImageSize({
     left: 0,
     top: 0,
     width: 600,
@@ -22,9 +20,7 @@ export const test_google_ads_get_size_1_1 = async () => {
  * 정방형 이미지를 정방형으로 편집하는 경우
  */
 export const test_google_ads_get_size_1_2 = async () => {
-  const imageService = new ImageService();
-
-  const response = imageService.changeImageSize({
+  const response = changeImageSize({
     left: 0,
     top: 0,
     width: 600,
@@ -39,9 +35,7 @@ export const test_google_ads_get_size_1_2 = async () => {
  * 정방형 이미지를 세로형으로 편집하는 경우
  */
 export const test_google_ads_get_size_1_3 = async () => {
-  const imageService = new ImageService();
-
-  const response = imageService.changeImageSize({
+  const response = changeImageSize({
     left: 0,
     top: 0,
     width: 600,
@@ -56,9 +50,7 @@ export const test_google_ads_get_size_1_3 = async () => {
  * 세로형 이미지의 가로형으로의 편집
  */
 export const test_google_ads_get_size_2_1 = async () => {
-  const imageService = new ImageService();
-
-  const response = imageService.changeImageSize({
+  const response = changeImageSize({
     left: 0,
     top: 0,
     width: 600,
@@ -73,9 +65,7 @@ export const test_google_ads_get_size_2_1 = async () => {
  * 세로형 이미지를 정방형으로 편집하는 경우
  */
 export const test_google_ads_get_size_2_2 = async () => {
-  const imageService = new ImageService();
-
-  const response = imageService.changeImageSize({
+  const response = changeImageSize({
     left: 0,
     top: 0,
     width: 600,
@@ -90,9 +80,7 @@ export const test_google_ads_get_size_2_2 = async () => {
  * 세로형 이미지를 세로형으로 편집하는 경우
  */
 export const test_google_ads_get_size_2_3 = async () => {
-  const imageService = new ImageService();
-
-  const response = imageService.changeImageSize({
+  const response = changeImageSize({
     left: 0,
     top: 0,
     width: 600,
@@ -107,8 +95,7 @@ export const test_google_ads_get_size_2_3 = async () => {
  * 가로형 이미지의 가로형으로의 편집
  */
 export const test_google_ads_get_size_3_1 = async () => {
-  const imageService = new ImageService();
-  const response = imageService.changeImageSize({
+  const response = changeImageSize({
     left: 0,
     top: 0,
     width: 800,
@@ -123,9 +110,7 @@ export const test_google_ads_get_size_3_1 = async () => {
  * 가로형 이미지를 정방형으로 편집하는 경우
  */
 export const test_google_ads_get_size_3_2 = async () => {
-  const imageService = new ImageService();
-
-  const response = imageService.changeImageSize({
+  const response = changeImageSize({
     left: 0,
     top: 0,
     width: 800,
@@ -140,9 +125,7 @@ export const test_google_ads_get_size_3_2 = async () => {
  * 가로형 이미지를 세로형으로 편집하는 경우
  */
 export const test_google_ads_get_size_3_3 = async () => {
-  const imageService = new ImageService();
-
-  const response = imageService.changeImageSize({
+  const response = changeImageSize({
     left: 0,
     top: 0,
     width: 800,

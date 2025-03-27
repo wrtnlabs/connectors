@@ -1,4 +1,3 @@
-import { IAwsS3Service } from "@wrtnlabs/connector-aws-s3";
 import { tags } from "typia";
 
 export namespace IStableDiffusionBetaService {
@@ -27,16 +26,6 @@ export namespace IStableDiffusionBetaService {
      * CFG Scale.
      */
     cfgScale: number;
-
-    /**
-     * AWS
-     */
-    aws: {
-      /**
-       * S3
-       */
-      s3: IAwsS3Service.IProps;
-    };
   }
 
   /**
@@ -108,11 +97,11 @@ export namespace IStableDiffusionBetaService {
    */
   export interface IResponse {
     /**
-     * Generated image url
+     * Generated image base64
      *
-     * @title Generated image Url
+     * @title Generated image Base64
      */
-    imgUrl: string & tags.Format<"iri"> & tags.ContentMediaType<"image/*">;
+    imgBase64: string;
   }
 
   /**

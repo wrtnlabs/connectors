@@ -3,10 +3,9 @@ import { execSync } from "child_process";
 import { randomUUID } from "crypto";
 import path from "path";
 import { IMarpService } from "../structures/IMarpService";
-import { AwsS3Service } from "@wrtnlabs/connector-aws-s3";
+import { bufferToBase64 } from "@wrtnlabs/connector-shared";
 
 export class MarpService {
-  constructor(private readonly props: IMarpService.IProps) {}
   /**
    * Marp Service.
    *
@@ -22,10 +21,6 @@ export class MarpService {
     const markdownFilePath = path.join(__dirname, `${uuid}.md`);
     const pptFilePath = path.join(__dirname, `${uuid}.html`);
 
-    const s3 = new AwsS3Service({
-      ...this.props.aws.s3,
-    });
-
     try {
       await fs.writeFile(markdownFilePath, input.markdown);
 
@@ -34,13 +29,8 @@ export class MarpService {
       execSync(command, { stdio: "ignore" });
 
       const data = await fs.readFile(pptFilePath);
-      const uploaded = await s3.uploadObject({
-        contentType: "text/html; charset=UTF-8",
-        data: data,
-        key: input.s3.key,
-      });
 
-      return { s3Link: uploaded };
+      return { pptBase64: bufferToBase64(data) };
     } catch (error) {
       throw new Error(
         `Failed to convert Marp markdown to PPT: ${error instanceof Error ? error.message : String(error)}`,

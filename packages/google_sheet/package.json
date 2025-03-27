@@ -43,7 +43,6 @@
     "typescript-transform-paths": "^3.5.1"
   },
   "dependencies": {
-    "@wrtnlabs/connector-google": "workspace:^",
     "@wrtnlabs/connector-shared": "workspace:^",
     "axios": "^1.7.9",
     "google-spreadsheet": "^4.1.1",

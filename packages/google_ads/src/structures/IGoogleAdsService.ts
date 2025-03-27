@@ -39,7 +39,7 @@ export namespace IGoogleAdsService {
       /**
        * @title Google Refresh Token
        */
-      secret: string;
+      refreshToken: string;
     };
   }
 

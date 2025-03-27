@@ -3,9 +3,7 @@ import {
   GoogleSpreadsheetWorksheet,
 } from "google-spreadsheet";
 import { google } from "googleapis";
-import { IGoogleSheetService } from "../structures/IGoogleSheetService";
-import { GoogleService } from "@wrtnlabs/connector-google";
-// import { ISpreadsheetCell } from "@wrtnlabs/connector-shared";
+import { IGoogleSheetService } from "../structures/IGoogleSheetService"; // import { ISpreadsheetCell } from "@wrtnlabs/connector-shared";
 import { AxiosError } from "axios";
 
 export class GoogleSheetService {
@@ -22,13 +20,7 @@ export class GoogleSheetService {
     input: IGoogleSheetService.ICreateGoogleSheetInput,
   ): Promise<IGoogleSheetService.ICreateGoogleSheetOutput> {
     try {
-      const googleService = new GoogleService({
-        clientId: this.props.clientId,
-        clientSecret: this.props.clientSecret,
-        secret: this.props.secret,
-      });
-
-      const accessToken = await googleService.refreshAccessToken();
+      const accessToken = await this.refreshAccessToken();
       const authClient = new google.auth.OAuth2();
 
       authClient.setCredentials({ access_token: accessToken });
@@ -64,13 +56,7 @@ export class GoogleSheetService {
   //   spreadsheetId: string;
   //   cells: ISpreadsheetCell.ICreate[];
   // }) {
-  //   const googleService = new GoogleService({
-  //     clientId: this.props.clientId,
-  //     clientSecret: this.props.clientSecret,
-  //     secret: this.props.secret,
-  //   });
-
-  //   const accessToken = await googleService.refreshAccessToken();
+  //   const accessToken = await this.refreshAccessToken();
   //   const authClient = new google.auth.OAuth2();
   //   authClient.setCredentials({ access_token: accessToken });
 
@@ -118,14 +104,8 @@ export class GoogleSheetService {
     input: IGoogleSheetService.IAppendToSheetInput,
   ): Promise<IGoogleSheetService.ICreateGoogleSheetOutput> {
     try {
-      const googleService = new GoogleService({
-        clientId: this.props.clientId,
-        clientSecret: this.props.clientSecret,
-        secret: this.props.secret,
-      });
-
       const { values, spreadSheetId } = input;
-      const accessToken = await googleService.refreshAccessToken();
+      const accessToken = await this.refreshAccessToken();
       const authClient = new google.auth.OAuth2();
 
       authClient.setCredentials({ access_token: accessToken });
@@ -166,15 +146,9 @@ export class GoogleSheetService {
     input: IGoogleSheetService.IReadGoogleSheetHeadersInput,
   ): Promise<IGoogleSheetService.IReadGoogleSheetOutput> {
     try {
-      const googleService = new GoogleService({
-        clientId: this.props.clientId,
-        clientSecret: this.props.clientSecret,
-        secret: this.props.secret,
-      });
-
       const { url, index = 0 } = input;
       const id = this.getSpreadSheetId(url);
-      const accessToken = await googleService.refreshAccessToken();
+      const accessToken = await this.refreshAccessToken();
       const authClient = new google.auth.OAuth2();
 
       authClient.setCredentials({ access_token: accessToken });
@@ -203,15 +177,9 @@ export class GoogleSheetService {
    * Grant permissions to Google Sheets
    */
   async permission(input: IGoogleSheetService.IPermissionInput): Promise<void> {
-    const googleService = new GoogleService({
-      clientId: this.props.clientId,
-      clientSecret: this.props.clientSecret,
-      secret: this.props.secret,
-    });
-
     const { url, permissions } = input;
     const id = this.getSpreadSheetId(url);
-    const accessToken = await googleService.refreshAccessToken();
+    const accessToken = await this.refreshAccessToken();
     const authClient = new google.auth.OAuth2();
 
     authClient.setCredentials({ access_token: accessToken });
@@ -241,14 +209,8 @@ export class GoogleSheetService {
     input: IGoogleSheetService.IWriteGoogleSheetHeadersInput,
   ): Promise<void> {
     try {
-      const googleService = new GoogleService({
-        clientId: this.props.clientId,
-        clientSecret: this.props.clientSecret,
-        secret: this.props.secret,
-      });
-
       const { url, headerNames, index = 0 } = input;
-      const accessToken = await googleService.refreshAccessToken();
+      const accessToken = await this.refreshAccessToken();
       const authClient = new google.auth.OAuth2();
 
       authClient.setCredentials({ access_token: accessToken });
@@ -285,15 +247,9 @@ export class GoogleSheetService {
     input: IGoogleSheetService.IGetWorkSheetInput,
   ): Promise<IGoogleSheetService.IGetWorkSheetOutput> {
     try {
-      const googleService = new GoogleService({
-        clientId: this.props.clientId,
-        clientSecret: this.props.clientSecret,
-        secret: this.props.secret,
-      });
-
       const { url } = input;
       const id = this.getSpreadSheetId(url);
-      const accessToken = await googleService.refreshAccessToken();
+      const accessToken = await this.refreshAccessToken();
       const authClient = new google.auth.OAuth2();
 
       authClient.setCredentials({ access_token: accessToken });
@@ -320,15 +276,9 @@ export class GoogleSheetService {
     input: IGoogleSheetService.IReadGoogleSheetRowsInput,
   ): Promise<IGoogleSheetService.IReadGoogleSheetRowsOutput> {
     try {
-      const googleService = new GoogleService({
-        clientId: this.props.clientId,
-        clientSecret: this.props.clientSecret,
-        secret: this.props.secret,
-      });
-
       const { url, workSheetTitle } = input;
       const id = this.getSpreadSheetId(url);
-      const accessToken = await googleService.refreshAccessToken();
+      const accessToken = await this.refreshAccessToken();
       const authClient = new google.auth.OAuth2();
 
       authClient.setCredentials({ access_token: accessToken });
@@ -362,5 +312,24 @@ export class GoogleSheetService {
   private getSpreadSheetId(url: string): string {
     const match = url.match(/\/d\/(.+?)\/edit/);
     return match ? match[1]! : "";
+  }
+
+  private async refreshAccessToken(): Promise<string> {
+    const client = new google.auth.OAuth2(
+      this.props.clientId,
+      this.props.clientSecret,
+    );
+
+    client.setCredentials({
+      refresh_token: decodeURIComponent(this.props.secret),
+    });
+    const { credentials } = await client.refreshAccessToken();
+    const accessToken = credentials.access_token;
+
+    if (!accessToken) {
+      throw new Error("Failed to refresh access token");
+    }
+
+    return accessToken;
   }
 }

@@ -3,7 +3,6 @@ import * as stream from "stream";
 import axios from "axios";
 import mime from "mime-types";
 import { IGoogleDriveService } from "../structures/IGoogleDriveService";
-import { GoogleService } from "@wrtnlabs/connector-google";
 
 export class GoogleDriveService {
   constructor(private readonly props: IGoogleDriveService.IProps) {}
@@ -14,13 +13,7 @@ export class GoogleDriveService {
    * Get a list of folders in Google Drive
    */
   async folderList(): Promise<IGoogleDriveService.IFolderListGoogleDriveOutput> {
-    const googleService = new GoogleService({
-      clientId: this.props.clientId,
-      clientSecret: this.props.clientSecret,
-      secret: this.props.secret,
-    });
-
-    const accessToken = await googleService.refreshAccessToken();
+    const accessToken = await this.refreshAccessToken();
     const authClient = new google.auth.OAuth2();
 
     authClient.setCredentials({ access_token: accessToken });
@@ -44,13 +37,7 @@ export class GoogleDriveService {
   }
 
   async getFolderByName(input: { name: string }): Promise<string | null> {
-    const googleService = new GoogleService({
-      clientId: this.props.clientId,
-      clientSecret: this.props.clientSecret,
-      secret: this.props.secret,
-    });
-
-    const accessToken = await googleService.refreshAccessToken();
+    const accessToken = await this.refreshAccessToken();
     const authClient = new google.auth.OAuth2();
 
     authClient.setCredentials({ access_token: accessToken });
@@ -78,14 +65,8 @@ export class GoogleDriveService {
   ): Promise<IGoogleDriveService.IFileListGoogleDriveOutput> {
     const { folderId } = input;
 
-    const googleService = new GoogleService({
-      clientId: this.props.clientId,
-      clientSecret: this.props.clientSecret,
-      secret: this.props.secret,
-    });
-
     const authClient = new google.auth.OAuth2();
-    const accessToken = await googleService.refreshAccessToken();
+    const accessToken = await this.refreshAccessToken();
     authClient.setCredentials({
       access_token: accessToken,
     });
@@ -122,13 +103,7 @@ export class GoogleDriveService {
   ): Promise<IGoogleDriveService.ICreateFolderGoogleDriveOutput> {
     const { name } = input;
 
-    const googleService = new GoogleService({
-      clientId: this.props.clientId,
-      clientSecret: this.props.clientSecret,
-      secret: this.props.secret,
-    });
-
-    const accessToken = await googleService.refreshAccessToken();
+    const accessToken = await this.refreshAccessToken();
     const authClient = new google.auth.OAuth2();
 
     authClient.setCredentials({ access_token: accessToken });
@@ -154,13 +129,7 @@ export class GoogleDriveService {
    * Delete a folder in Google Drive
    */
   async deleteFolder(input: { id: string }): Promise<void> {
-    const googleService = new GoogleService({
-      clientId: this.props.clientId,
-      clientSecret: this.props.clientSecret,
-      secret: this.props.secret,
-    });
-
-    const accessToken = await googleService.refreshAccessToken();
+    const accessToken = await this.refreshAccessToken();
     const authClient = new google.auth.OAuth2();
 
     authClient.setCredentials({ access_token: accessToken });
@@ -180,13 +149,7 @@ export class GoogleDriveService {
   ): Promise<IGoogleDriveService.ICreateFileGoogleDriveOutput> {
     const { name, folderIds, content } = input;
 
-    const googleService = new GoogleService({
-      clientId: this.props.clientId,
-      clientSecret: this.props.clientSecret,
-      secret: this.props.secret,
-    });
-
-    const accessToken = await googleService.refreshAccessToken();
+    const accessToken = await this.refreshAccessToken();
     const authClient = new google.auth.OAuth2();
 
     authClient.setCredentials({ access_token: accessToken });
@@ -216,18 +179,12 @@ export class GoogleDriveService {
   async uploadFile(
     input: IGoogleDriveService.IUploadFileInput,
   ): Promise<IGoogleDriveService.ICreateFileGoogleDriveOutput> {
-    const googleService = new GoogleService({
-      clientId: this.props.clientId,
-      clientSecret: this.props.clientSecret,
-      secret: this.props.secret,
-    });
-
     const { name, folderIds, fileUrl } = input;
     const { data: arrayBuffer } = await axios.get(fileUrl, {
       responseType: "arraybuffer",
     });
 
-    const accessToken = await googleService.refreshAccessToken();
+    const accessToken = await this.refreshAccessToken();
     const authClient = new google.auth.OAuth2();
 
     const mimeType = mime.lookup(fileUrl);
@@ -262,13 +219,7 @@ export class GoogleDriveService {
    * Delete a file in Google Drive
    */
   async deleteFile(input: { id: string }): Promise<void> {
-    const googleService = new GoogleService({
-      clientId: this.props.clientId,
-      clientSecret: this.props.clientSecret,
-      secret: this.props.secret,
-    });
-
-    const accessToken = await googleService.refreshAccessToken();
+    const accessToken = await this.refreshAccessToken();
     const authClient = new google.auth.OAuth2();
 
     authClient.setCredentials({ access_token: accessToken });
@@ -292,13 +243,7 @@ export class GoogleDriveService {
       throw new Error("Either a file ID or a folder ID is required.");
     }
 
-    const googleService = new GoogleService({
-      clientId: this.props.clientId,
-      clientSecret: this.props.clientSecret,
-      secret: this.props.secret,
-    });
-
-    const accessToken = await googleService.refreshAccessToken();
+    const accessToken = await this.refreshAccessToken();
     const authClient = new google.auth.OAuth2();
 
     authClient.setCredentials({ access_token: accessToken });
@@ -331,13 +276,7 @@ export class GoogleDriveService {
   async getFile(input: {
     fileId: string;
   }): Promise<IGoogleDriveService.IGetFileOutput> {
-    const googleService = new GoogleService({
-      clientId: this.props.clientId,
-      clientSecret: this.props.clientSecret,
-      secret: this.props.secret,
-    });
-
-    const accessToken = await googleService.refreshAccessToken();
+    const accessToken = await this.refreshAccessToken();
 
     try {
       const res = await axios.get(
@@ -354,5 +293,29 @@ export class GoogleDriveService {
       console.error(JSON.stringify((err as any)?.response.data));
       throw err;
     }
+  }
+
+  /**
+   * Google Auth Service.
+   *
+   * Request to reissue Google access token
+   */
+  private async refreshAccessToken(): Promise<string> {
+    const client = new google.auth.OAuth2(
+      this.props.clientId,
+      this.props.clientSecret,
+    );
+
+    client.setCredentials({
+      refresh_token: decodeURIComponent(this.props.refreshToken),
+    });
+    const { credentials } = await client.refreshAccessToken();
+    const accessToken = credentials.access_token;
+
+    if (!accessToken) {
+      throw new Error("Failed to refresh access token");
+    }
+
+    return accessToken;
   }
 }
