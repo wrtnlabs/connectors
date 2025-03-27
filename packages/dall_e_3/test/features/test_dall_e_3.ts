@@ -2,7 +2,7 @@ import { DallE3Service, IDallE3Service } from "@wrtnlabs/connector-dall-e-3";
 import OpenAI from "openai";
 import typia from "typia";
 import { TestGlobal } from "../TestGlobal";
-import { v4 } from "uuid";
+import * as fs from "node:fs/promises";
 
 export const test_dall_e_3 = async () => {
   const openai = new OpenAI({
@@ -11,14 +11,6 @@ export const test_dall_e_3 = async () => {
 
   const dalleService = new DallE3Service({
     openai,
-    aws: {
-      s3: {
-        accessKeyId: TestGlobal.env.AWS_ACCESS_KEY_ID,
-        bucket: TestGlobal.env.AWS_S3_BUCKET,
-        region: "ap-northeast-2",
-        secretAccessKey: TestGlobal.env.AWS_SECRET_ACCESS_KEY,
-      },
-    },
   });
 
   const requestBody: IDallE3Service.IRequest = {
@@ -57,12 +49,12 @@ Unless specified by the user, always create the marketing copy in Korean.
 I REPEAT: unless the user said otherwise, always use Korean.
 Generate the marketing copy.`,
     image_ratio: "square",
-
-    s3: {
-      key: `connector/generate-DallE3-node/dall-e-3/${v4()}`,
-    },
   };
 
   const output = await dalleService.generateImage(requestBody);
   typia.assert<IDallE3Service.IResponse>(output);
+
+  await fs.writeFile("output.png", output.imgBuffer, {
+    encoding: "base64",
+  });
 };
