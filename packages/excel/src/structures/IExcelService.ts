@@ -1,33 +1,18 @@
 import { tags } from "typia";
-import { ContentMediaType } from "typia/lib/tags/ContentMediaType";
-import { IAwsS3Service } from "@wrtnlabs/connector-aws-s3";
 import { ISpreadsheetCell } from "@wrtnlabs/connector-shared";
 
 export namespace IExcelService {
-  export interface IProps {
-    /**
-     * AWS
-     */
-    aws: {
-      /**
-       * S3.
-       */
-      s3: IAwsS3Service.IProps;
-    };
-  }
-
   /**
    * @title file information
    */
   export interface IReadExcelInput {
     /**
      * Excel file to read
+     * base64 encoded string
      *
      * @title Excel file
      */
-    fileUrl: string &
-      tags.Format<"uri"> &
-      ContentMediaType<"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">;
+    fileBuffer: string & tags.Format<"byte">;
 
     /**
      * Sheet name to read
@@ -70,12 +55,11 @@ export namespace IExcelService {
   export interface IGetWorksheetListInput {
     /**
      * File to import list of Excel worksheets
+     * base64 encoded string
      *
      * @title Excel file
      */
-    fileUrl: string &
-      tags.Format<"uri"> &
-      ContentMediaType<"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">;
+    fileBuffer: string & tags.Format<"byte">;
   }
 
   /**
@@ -107,17 +91,17 @@ export namespace IExcelService {
    */
   export interface IInsertExcelRowByUploadInput extends ICreateSheetInput {
     /**
-     * 엑셀 행을 추가할 파일
+     * Excel file to add rows to
      *
      * If you have this address, take an Excel file from that path and modify it.
      * The modified file is saved as a new link and does not modify the original file in this path.
      * If this address does not exist, create a new file immediately.
      *
-     * @title 엑셀 파일
+     * base64 encoded string
+     *
+     * @title Excel file
      */
-    fileUrl?: string &
-      tags.Format<"uri"> &
-      ContentMediaType<"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">;
+    fileBuffer?: string & tags.Format<"byte">;
 
     /**
      * The type of data and coordinates of each row and column
@@ -132,15 +116,17 @@ export namespace IExcelService {
    */
   export interface IInsertExcelRowInput extends ICreateSheetInput {
     /**
-     * 엑셀 행을 추가할 파일
+     * Excel file to add rows to
      *
      * If you have this address, take an Excel file from that path and modify it.
      * The modified file is saved as a new link and does not modify the original file in this path.
      * If this address does not exist, create a new file immediately.
      *
-     * @title 엑셀 파일
+     * base64 encoded string
+     *
+     * @title Excel file
      */
-    fileUrl?: string & tags.Format<"iri">;
+    fileBuffer?: string & tags.Format<"byte">;
 
     /**
      * The type of data and coordinates of each row and column
@@ -165,15 +151,10 @@ export namespace IExcelService {
    */
   export interface IExportExcelFileOutput {
     /**
-     * @title S3 path of file
+     * base64 encoded string
+     *
+     * @title Generated Excel file
      */
-    fileId: string;
-
-    /**
-     * @title Generated Excel file url
-     */
-    fileUrl: string &
-      tags.Format<"uri"> &
-      ContentMediaType<"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">;
+    fileBuffer: string & tags.Format<"byte">;
   }
 }

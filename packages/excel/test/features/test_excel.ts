@@ -2,39 +2,30 @@ import typia from "typia";
 import { deepStrictEqual } from "assert";
 import { ExcelService, IExcelService } from "@wrtnlabs/connector-excel";
 import { TestGlobal } from "../TestGlobal";
+import * as fs from "node:fs/promises";
 
 export const test_excel_create_file_witnout_sheet_name = async () => {
-  const excelService = new ExcelService({
-    aws: {
-      s3: {
-        accessKeyId: TestGlobal.env.AWS_ACCESS_KEY_ID,
-        bucket: TestGlobal.env.AWS_S3_BUCKET,
-        region: "ap-northeast-2",
-        secretAccessKey: TestGlobal.env.AWS_SECRET_ACCESS_KEY,
-      },
-    },
-  });
+  const excelService = new ExcelService();
+  const file = await excelService.createSheets({});
+
+  typia.assert(file);
+
+  await fs.writeFile("create_test.xlsx", file.fileBuffer, "base64");
+};
+
+export const test_excel_create_file_with_sheet_name = async () => {
+  const excelService = new ExcelService();
   const file = await excelService.createSheets({
     sheetName: "TEST",
   });
 
   typia.assert(file);
-};
 
-export const test_excel_create_file_with_sheet_name = async () => {
-  const excelService = new ExcelService({
-    aws: {
-      s3: {
-        accessKeyId: TestGlobal.env.AWS_ACCESS_KEY_ID,
-        bucket: TestGlobal.env.AWS_S3_BUCKET,
-        region: "ap-northeast-2",
-        secretAccessKey: TestGlobal.env.AWS_SECRET_ACCESS_KEY,
-      },
-    },
-  });
-  const file = await excelService.createSheets({});
-
-  typia.assert(file);
+  await fs.writeFile(
+    "create_test_with_sheet_name.xlsx",
+    file.fileBuffer,
+    "base64",
+  );
 };
 
 export const test_excel_insert_rows_without_file_url = async () => {
@@ -47,16 +38,7 @@ export const test_excel_insert_rows_without_file_url = async () => {
   //   "Last name": typia.random<string>(),
   // };
 
-  const excelService = new ExcelService({
-    aws: {
-      s3: {
-        accessKeyId: TestGlobal.env.AWS_ACCESS_KEY_ID,
-        bucket: TestGlobal.env.AWS_S3_BUCKET,
-        region: "ap-northeast-2",
-        secretAccessKey: TestGlobal.env.AWS_SECRET_ACCESS_KEY,
-      },
-    },
-  });
+  const excelService = new ExcelService();
   const res = await excelService.insertRows({
     data: [
       {
@@ -111,19 +93,16 @@ export const test_excel_insert_rows_without_file_url = async () => {
   });
 
   typia.assert(res);
+
+  await fs.writeFile(
+    "insert_rows_without_file_url.xlsx",
+    res.fileBuffer,
+    "base64",
+  );
 };
 
 export const test_excel_insert_rows_with_file_url = async () => {
-  const excelService = new ExcelService({
-    aws: {
-      s3: {
-        accessKeyId: TestGlobal.env.AWS_ACCESS_KEY_ID,
-        bucket: TestGlobal.env.AWS_S3_BUCKET,
-        region: "ap-northeast-2",
-        secretAccessKey: TestGlobal.env.AWS_SECRET_ACCESS_KEY,
-      },
-    },
-  });
+  const excelService = new ExcelService();
   const file = await excelService.createSheets({
     sheetName: "TEST",
   });
@@ -132,7 +111,7 @@ export const test_excel_insert_rows_with_file_url = async () => {
    * insert rows
    */
   const res = await excelService.insertRows({
-    fileUrl: file.fileUrl,
+    fileBuffer: file.fileBuffer,
     data: [
       {
         row: 1,
@@ -186,20 +165,17 @@ export const test_excel_insert_rows_with_file_url = async () => {
   });
 
   typia.assert(res);
+
+  await fs.writeFile(
+    "insert_rows_with_file_url.xlsx",
+    res.fileBuffer,
+    "base64",
+  );
 };
 
 // 이전 실패 케이스에 대한 테스트 코드 추가
 export const test_excel_insert_row_fail_case_1 = async () => {
-  const excelService = new ExcelService({
-    aws: {
-      s3: {
-        accessKeyId: TestGlobal.env.AWS_ACCESS_KEY_ID,
-        bucket: TestGlobal.env.AWS_S3_BUCKET,
-        region: "ap-northeast-2",
-        secretAccessKey: TestGlobal.env.AWS_SECRET_ACCESS_KEY,
-      },
-    },
-  });
+  const excelService = new ExcelService();
   const file = await excelService.createSheets({
     sheetName: "TEST",
   });
@@ -214,7 +190,7 @@ export const test_excel_insert_row_fail_case_1 = async () => {
   // ];
 
   const res = await excelService.insertRows({
-    fileUrl: file.fileUrl,
+    fileBuffer: file.fileBuffer,
     sheetName: "TEST",
     data: [
       {
@@ -285,20 +261,17 @@ export const test_excel_insert_row_fail_case_1 = async () => {
   });
 
   typia.assert(res);
+
+  await fs.writeFile(
+    "insert_rows_with_file_url_and_sheet_name.xlsx",
+    res.fileBuffer,
+    "base64",
+  );
 };
 
 // 이전 실패 케이스에 대한 테스트 코드 추가
 export const test_excel_insert_row_fail_case_2 = async () => {
-  const excelService = new ExcelService({
-    aws: {
-      s3: {
-        accessKeyId: TestGlobal.env.AWS_ACCESS_KEY_ID,
-        bucket: TestGlobal.env.AWS_S3_BUCKET,
-        region: "ap-northeast-2",
-        secretAccessKey: TestGlobal.env.AWS_SECRET_ACCESS_KEY,
-      },
-    },
-  });
+  const excelService = new ExcelService();
   const res = await excelService.insertRows({
     sheetName: "Sheet1",
     data: excelService.transform({
@@ -343,20 +316,17 @@ export const test_excel_insert_row_fail_case_2 = async () => {
   });
 
   typia.assert(res);
+
+  await fs.writeFile(
+    "insert_rows_with_file_url_and_sheet_name_2.xlsx",
+    res.fileBuffer,
+    "base64",
+  );
 };
 
 // 이전 실패 케이스에 대한 테스트 코드 추가, 2번에 나눠서 저장한 경우 누적이 잘 되는지를 검증
 export const test_excel_insert_row_fail_case_3 = async () => {
-  const excelService = new ExcelService({
-    aws: {
-      s3: {
-        accessKeyId: TestGlobal.env.AWS_ACCESS_KEY_ID,
-        bucket: TestGlobal.env.AWS_S3_BUCKET,
-        region: "ap-northeast-2",
-        secretAccessKey: TestGlobal.env.AWS_SECRET_ACCESS_KEY,
-      },
-    },
-  });
+  const excelService = new ExcelService();
   const first = await excelService.insertRows({
     sheetName: "Sheet1",
     data: [
@@ -444,7 +414,7 @@ export const test_excel_insert_row_fail_case_3 = async () => {
   });
 
   const second = await excelService.insertRows({
-    fileUrl: first.fileUrl,
+    fileBuffer: first.fileBuffer,
     sheetName: "Sheet1",
     data: [
       {
@@ -490,8 +460,14 @@ export const test_excel_insert_row_fail_case_3 = async () => {
     ],
   });
 
-  const res = excelService.getExcelData({
-    fileUrl: second.fileUrl,
+  await fs.writeFile(
+    "insert_rows_with_file_url_and_sheet_name_3.xlsx",
+    second.fileBuffer,
+    "base64",
+  );
+
+  const res = await excelService.getExcelData({
+    fileBuffer: second.fileBuffer,
     sheetName: "Sheet1",
   });
 
@@ -526,22 +502,13 @@ export const test_excel_insert_row_fail_case_3 = async () => {
 
 // 빈 엑셀 파일에 데이터를 넣을 때에는 헤더가 추가되어야 한다.
 export const test_excel_insert_row_to_empty_excel_file = async () => {
-  const excelService = new ExcelService({
-    aws: {
-      s3: {
-        accessKeyId: TestGlobal.env.AWS_ACCESS_KEY_ID,
-        bucket: TestGlobal.env.AWS_S3_BUCKET,
-        region: "ap-northeast-2",
-        secretAccessKey: TestGlobal.env.AWS_SECRET_ACCESS_KEY,
-      },
-    },
-  });
+  const excelService = new ExcelService();
   const file = await excelService.createSheets({
     sheetName: "TEST",
   });
 
   const res = await excelService.insertRows({
-    fileUrl: file.fileUrl,
+    fileBuffer: file.fileBuffer,
     sheetName: "TEST",
     data: excelService.transform({
       data: [
@@ -564,30 +531,27 @@ export const test_excel_insert_row_to_empty_excel_file = async () => {
  * @param connection
  */
 export const test_excel = async () => {
-  const excelService = new ExcelService({
-    aws: {
-      s3: {
-        accessKeyId: TestGlobal.env.AWS_ACCESS_KEY_ID,
-        bucket: TestGlobal.env.AWS_S3_BUCKET,
-        region: "ap-northeast-2",
-        secretAccessKey: TestGlobal.env.AWS_SECRET_ACCESS_KEY,
-      },
-    },
-  });
+  const excelService = new ExcelService();
 
   /**
    * read worksheet list
    */
-  const worksheetListInput: IExcelService.IGetWorksheetListInput = {
-    fileUrl: `https://${TestGlobal.env.AWS_S3_BUCKET}.s3.ap-northeast-2.amazonaws.com/connector-test.xlsx`,
-  };
-  const worksheetListOutput = await excelService.readSheets(worksheetListInput);
+  const s3Url = `https://${TestGlobal.env.AWS_S3_BUCKET}.s3.ap-northeast-2.amazonaws.com/connector-test.xlsx`;
+
+  const response = await fetch(s3Url);
+
+  const body = await response.arrayBuffer();
+
+  const excelBuffer = Buffer.from(body).toString("base64");
+
+  const worksheetListOutput = await excelService.readSheets({
+    fileBuffer: excelBuffer,
+  });
   typia.assert<IExcelService.IWorksheetListOutput>(worksheetListOutput);
 
   /**
    * insert rows
    */
-
   const insertRowsInput: IExcelService.IInsertExcelRowInput = {
     data: excelService.transform({
       data: [
@@ -600,13 +564,14 @@ export const test_excel = async () => {
     }),
   };
   const insertRowsOutput = await excelService.insertRows(insertRowsInput);
+
   typia.assert(insertRowsOutput);
 
   /**
    * read rows data
    */
   const readExcelInput = {
-    fileUrl: `https://${TestGlobal.env.AWS_S3_BUCKET}.s3.ap-northeast-2.amazonaws.com/connector-test.xlsx`,
+    fileBuffer: insertRowsOutput.fileBuffer,
     sheetName: worksheetListOutput.data[0]?.sheetName,
   };
 
