@@ -699,9 +699,9 @@ importers:
 
   packages/dall_e_3:
     dependencies:
-      '@wrtnlabs/connector-shared':
+      '@wrtnlabs/connector-aws-s3':
         specifier: workspace:^
-        version: link:../shared
+        version: link:../aws_s3
       axios:
         specifier: ^1.7.9
         version: 1.8.4
