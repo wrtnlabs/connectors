@@ -16,9 +16,6 @@ export function bufferToBase64(buffer: Buffer): string {
  * @author Asher
  */
 export function base64ToBuffer(base64: string): Buffer {
-  if (!base64 || typeof base64 !== "string") {
-    throw new Error("Input must be a non-empty string");
-  }
   try {
     return Buffer.from(base64, "base64");
   } catch (error) {

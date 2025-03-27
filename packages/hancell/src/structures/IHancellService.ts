@@ -1,6 +1,3 @@
-import { tags } from "typia";
-import { ContentMediaType } from "typia/lib/tags";
-
 export namespace IHancellService {
   export interface IUpsertSheetInput extends IReadHancellInput {
     /**
@@ -28,13 +25,9 @@ export namespace IHancellService {
    */
   export type IReadHancellInput = {
     /**
-     * Excel file to read
-     *
-     * @title Excel file
+     * @title File base64
      */
-    fileUrl: string &
-      tags.Format<"uri"> &
-      ContentMediaType<"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">;
+    fileBase64: string;
   };
 
   /**

@@ -1,7 +1,6 @@
-import axios from "axios";
 import xlsx from "xlsx";
 import { IHancellService } from "../structures/IHancellService";
-import { bufferToBase64 } from "@wrtnlabs/connector-shared";
+import { base64ToBuffer, bufferToBase64 } from "@wrtnlabs/connector-shared";
 
 export class HancellService {
   /**
@@ -81,12 +80,9 @@ export class HancellService {
   }
 
   private async getWorkboot(input: IHancellService.IReadHancellInput) {
-    const response = await axios.get(input.fileUrl, {
-      responseType: "arraybuffer",
-    });
+    const buffer = base64ToBuffer(input.fileBase64);
 
-    const file = response.data;
-    const workbook = xlsx.read(file, { type: "buffer" });
+    const workbook = xlsx.read(buffer, { type: "buffer" });
 
     return workbook;
   }
