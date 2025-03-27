@@ -10,7 +10,7 @@ export namespace ICsvService {
      *
      * @title file
      */
-    csvBuffer: string & tags.Format<"byte">;
+    csvBase64: string & tags.Format<"byte">;
 
     /**
      * This is the CSV file delimiter to read.
@@ -43,7 +43,7 @@ export namespace ICsvService {
      *
      * @title file
      */
-    csvBuffer: string & tags.Format<"byte">;
+    csvBase64: string & tags.Format<"byte">;
 
     /**
      * This is the file delimiter to convert from csv to excel.
@@ -57,6 +57,11 @@ export namespace ICsvService {
    * @title Csv file to Excel file conversion result
    */
   export interface ICsvToExcelOutput {
-    excelBuffer: string & tags.Format<"byte">;
+    /**
+     * This is the Excel file encoded in base64.
+     *
+     * @title excel file
+     */
+    excelBase64: string & tags.Format<"byte">;
   }
 }

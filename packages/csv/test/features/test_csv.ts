@@ -2,7 +2,7 @@ import { CsvService } from "@wrtnlabs/connector-csv/lib/csv/CsvService";
 import { ICsvService } from "@wrtnlabs/connector-csv/lib/structures/ICsvService";
 import typia from "typia";
 import { TestGlobal } from "../TestGlobal";
-import * as fs from "node:fs/promises";
+// import * as fs from "node:fs/promises";
 import { stringToBase64 } from "@wrtnlabs/connector-shared";
 
 export const test_csv = async () => {
@@ -19,23 +19,23 @@ export const test_csv = async () => {
   const response = await fetch(readCsvInput.s3Url);
   const body = await response.text();
 
-  const csvBuffer = stringToBase64(body);
+  const csvBase64 = stringToBase64(body);
 
   const result = await csvService.read({
-    csvBuffer: csvBuffer,
+    csvBase64: csvBase64,
     delimiter: readCsvInput.delimiter,
   });
 
   typia.assert<ICsvService.IReadOutput>(result);
 
-  await fs.writeFile("a.csv", csvBuffer, "base64");
+  // await fs.writeFile("a.csv", csvBase64, "base64");
 
   const csvToExcelResult = await csvService.convertCsvToExcel({
-    csvBuffer: csvBuffer,
+    csvBase64: csvBase64,
     delimiter: readCsvInput.delimiter,
   });
 
   typia.assert<ICsvService.ICsvToExcelOutput>(csvToExcelResult);
 
-  await fs.writeFile("a.xlsx", csvToExcelResult.excelBuffer, "base64");
+  // await fs.writeFile("a.xlsx", csvToExcelResult.excelBase64, "base64");
 };

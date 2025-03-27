@@ -15,9 +15,9 @@ export class CsvService {
    */
   async read(input: ICsvService.IReadInput): Promise<ICsvService.IReadOutput> {
     try {
-      const { csvBuffer, delimiter } = input;
+      const { csvBase64, delimiter } = input;
 
-      const body: string = base64ToString(csvBuffer);
+      const body: string = base64ToString(csvBase64);
 
       const res = parse(body, {
         columns: true,
@@ -40,10 +40,10 @@ export class CsvService {
   async convertCsvToExcel(
     input: ICsvService.ICsvToExcelInput,
   ): Promise<ICsvService.ICsvToExcelOutput> {
-    const { csvBuffer, delimiter } = input;
+    const { csvBase64, delimiter } = input;
 
     // base64 디코딩
-    const csvData = Buffer.from(csvBuffer, "base64").toString("utf-8");
+    const csvData = Buffer.from(csvBase64, "base64").toString("utf-8");
 
     // CSV 데이터를 스트림으로 변환
     const csvStream = new Readable();
@@ -85,7 +85,7 @@ export class CsvService {
     }
 
     return {
-      excelBuffer: res.toString("base64"),
+      excelBase64: res.toString("base64"),
     };
   }
 }
