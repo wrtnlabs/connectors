@@ -20,7 +20,7 @@ npx typia setup
 install the `@wrtnlabs/connector-youbute-official-search` package.
 
 ```bash
-npm install @wrtnlabs/connector-youbute-search
+npm install @wrtnlabs/connector-youbute-official-search
 ```
 
 ### Usage
