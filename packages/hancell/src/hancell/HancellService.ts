@@ -1,8 +1,19 @@
+import axios from "axios";
+import { v4 } from "uuid";
 import xlsx from "xlsx";
 import { IHancellService } from "../structures/IHancellService";
-import { base64ToBuffer, bufferToBase64 } from "@wrtnlabs/connector-shared";
+import { AwsS3Service } from "@wrtnlabs/connector-aws-s3";
 
 export class HancellService {
+  private readonly s3: AwsS3Service;
+  private readonly uploadPrefix = "hancell-connector";
+
+  constructor(private readonly props: IHancellService.IProps) {
+    this.s3 = new AwsS3Service({
+      ...this.props.aws.s3,
+    });
+  }
+
   /**
    * Hancell Service.
    *
@@ -34,7 +45,12 @@ export class HancellService {
       xlsx.utils.book_append_sheet(workbook, updatedSheet, input.sheetName);
       const buffer = xlsx.write(workbook, { bookType: "xlsx", type: "buffer" });
 
-      return { fileBase64: bufferToBase64(buffer) };
+      const key = `${this.uploadPrefix}/${v4()}`;
+      const contentType = `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet`;
+      await this.s3.uploadObject({ key, data: buffer, contentType });
+
+      const fileUrl = this.s3.addBucketPrefix({ key });
+      return { fileUrl };
     } catch (error) {
       console.error(JSON.stringify(error));
       throw error;
@@ -80,9 +96,12 @@ export class HancellService {
   }
 
   private async getWorkboot(input: IHancellService.IReadHancellInput) {
-    const buffer = base64ToBuffer(input.fileBase64);
+    const response = await axios.get(input.fileUrl, {
+      responseType: "arraybuffer",
+    });
 
-    const workbook = xlsx.read(buffer, { type: "buffer" });
+    const file = response.data;
+    const workbook = xlsx.read(file, { type: "buffer" });
 
     return workbook;
   }

@@ -5,7 +5,7 @@ export const test_gmail_create_draft_with_files = async () => {
   const gmailService = new GmailService({
     clientId: TestGlobal.env.GOOGLE_CLIENT_ID,
     clientSecret: TestGlobal.env.GOOGLE_CLIENT_SECRET,
-    refreshToken: TestGlobal.env.GOOGLE_TEST_SECRET,
+    secret: TestGlobal.env.GOOGLE_TEST_SECRET,
   });
 
   await gmailService.createDraft({

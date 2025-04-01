@@ -15,7 +15,7 @@ export namespace IGmailService {
     /**
      * Google Refresh Token.
      */
-    refreshToken: string;
+    secret: string;
   }
 
   export interface IDeleteMailListInput {

@@ -2,6 +2,7 @@ import { docs_v1, google } from "googleapis";
 import { decode } from "he";
 import { Tokens } from "marked";
 import { markdownConverter } from "@wrtnlabs/connector-shared";
+import { GoogleService } from "@wrtnlabs/connector-google";
 import {} from "@wrtnlabs/connector-shared";
 import { IGoogleDocsService } from "../structures/IGoogleDocsService";
 
@@ -16,7 +17,12 @@ export class GoogleDocsService {
   async update(
     input: IGoogleDocsService.IUpdateInput,
   ): Promise<IGoogleDocsService.IUpdateOutput> {
-    const accessToken = await this.refreshAccessToken();
+    const googleService = new GoogleService({
+      clientId: this.props.clientId,
+      clientSecret: this.props.clientSecret,
+      secret: this.props.secret,
+    });
+    const accessToken = await googleService.refreshAccessToken();
     const authClient = new google.auth.OAuth2();
 
     authClient.setCredentials({ access_token: accessToken });
@@ -53,7 +59,12 @@ export class GoogleDocsService {
   async clear(
     input: IGoogleDocsService.IClearInput,
   ): Promise<IGoogleDocsService.IClearOutput> {
-    const accessToken = await this.refreshAccessToken();
+    const googleService = new GoogleService({
+      clientId: this.props.clientId,
+      clientSecret: this.props.clientSecret,
+      secret: this.props.secret,
+    });
+    const accessToken = await googleService.refreshAccessToken();
     const authClient = new google.auth.OAuth2();
 
     authClient.setCredentials({ access_token: accessToken });
@@ -99,7 +110,12 @@ export class GoogleDocsService {
   async write(
     input: IGoogleDocsService.IRequest,
   ): Promise<IGoogleDocsService.IResponse> {
-    const accessToken = await this.refreshAccessToken();
+    const googleService = new GoogleService({
+      clientId: this.props.clientId,
+      clientSecret: this.props.clientSecret,
+      secret: this.props.secret,
+    });
+    const accessToken = await googleService.refreshAccessToken();
     const authClient = new google.auth.OAuth2();
 
     authClient.setCredentials({ access_token: accessToken });
@@ -151,7 +167,12 @@ export class GoogleDocsService {
     input: IGoogleDocsService.ICreateGoogleDocsInput,
   ): Promise<IGoogleDocsService.ICreateEmptyFileOutput> {
     try {
-      const accessToken = await this.refreshAccessToken();
+      const googleService = new GoogleService({
+        clientId: this.props.clientId,
+        clientSecret: this.props.clientSecret,
+        secret: this.props.secret,
+      });
+      const accessToken = await googleService.refreshAccessToken();
       const authClient = new google.auth.OAuth2();
 
       authClient.setCredentials({ access_token: accessToken });
@@ -192,8 +213,13 @@ export class GoogleDocsService {
   ): Promise<void> {
     try {
       const { documentId, permissions } = input;
+      const googleService = new GoogleService({
+        clientId: this.props.clientId,
+        clientSecret: this.props.clientSecret,
+        secret: this.props.secret,
+      });
 
-      const accessToken = await this.refreshAccessToken();
+      const accessToken = await googleService.refreshAccessToken();
       const authClient = new google.auth.OAuth2();
 
       authClient.setCredentials({ access_token: accessToken });
@@ -225,7 +251,12 @@ export class GoogleDocsService {
     id: string;
   }): Promise<IGoogleDocsService.IReadGoogleDocsOutput> {
     try {
-      const accessToken = await this.refreshAccessToken();
+      const googleService = new GoogleService({
+        clientId: this.props.clientId,
+        clientSecret: this.props.clientSecret,
+        secret: this.props.secret,
+      });
+      const accessToken = await googleService.refreshAccessToken();
       const authClient = new google.auth.OAuth2();
 
       authClient.setCredentials({ access_token: accessToken });
@@ -310,7 +341,12 @@ export class GoogleDocsService {
   ): Promise<IGoogleDocsService.ICreateDocByTemplateOutput> {
     try {
       const { title, templateId } = input;
-      const accessToken = await this.refreshAccessToken();
+      const googleService = new GoogleService({
+        clientId: this.props.clientId,
+        clientSecret: this.props.clientSecret,
+        secret: this.props.secret,
+      });
+      const accessToken = await googleService.refreshAccessToken();
       const authClient = new google.auth.OAuth2();
 
       authClient.setCredentials({ access_token: accessToken });
@@ -347,7 +383,12 @@ export class GoogleDocsService {
    */
   async deleteById(input: { id: string }): Promise<void> {
     try {
-      const accessToken = await this.refreshAccessToken();
+      const googleService = new GoogleService({
+        clientId: this.props.clientId,
+        clientSecret: this.props.clientSecret,
+        secret: this.props.secret,
+      });
+      const accessToken = await googleService.refreshAccessToken();
       const authClient = new google.auth.OAuth2();
 
       authClient.setCredentials({ access_token: accessToken });
@@ -372,7 +413,12 @@ export class GoogleDocsService {
    */
   async list(): Promise<IGoogleDocsService.IListGoogleDocsOutput> {
     try {
-      const accessToken = await this.refreshAccessToken();
+      const googleService = new GoogleService({
+        clientId: this.props.clientId,
+        clientSecret: this.props.clientSecret,
+        secret: this.props.secret,
+      });
+      const accessToken = await googleService.refreshAccessToken();
       const authClient = new google.auth.OAuth2();
 
       authClient.setCredentials({ access_token: accessToken });
@@ -411,7 +457,12 @@ export class GoogleDocsService {
 
   // async getDocuments(input: IGoogleDocsService.IAppendTextGoogleDocsInput) {
   //   const { documentId } = input;
-  //   const accessToken = await this.refreshAccessToken();
+  //   const googleService = new GoogleService({
+  //     clientId: this.props.clientId,
+  //     clientSecret: this.props.clientSecret,
+  //     secret: this.props.secret,
+  //   });
+  //   const accessToken = await googleService.refreshAccessToken();
   //   const authClient = new google.auth.OAuth2();
   //   authClient.setCredentials({ access_token: accessToken });
   //   const docs = google.docs({ version: "v1", auth: authClient });
@@ -449,7 +500,12 @@ export class GoogleDocsService {
   ): Promise<IGoogleDocsService.ICreateGoogleDocsOutput> {
     try {
       const { documentId } = input;
-      const accessToken = await this.refreshAccessToken();
+      const googleService = new GoogleService({
+        clientId: this.props.clientId,
+        clientSecret: this.props.clientSecret,
+        secret: this.props.secret,
+      });
+      const accessToken = await googleService.refreshAccessToken();
       const authClient = new google.auth.OAuth2();
 
       authClient.setCredentials({ access_token: accessToken });
@@ -506,30 +562,6 @@ export class GoogleDocsService {
       console.error(JSON.stringify(error));
       throw error;
     }
-  }
-
-  /**
-   * Google Auth Service.
-   *
-   * Request to reissue Google access token
-   */
-  private async refreshAccessToken(): Promise<string> {
-    const client = new google.auth.OAuth2(
-      this.props.clientId,
-      this.props.clientSecret,
-    );
-
-    client.setCredentials({
-      refresh_token: decodeURIComponent(this.props.secret),
-    });
-    const { credentials } = await client.refreshAccessToken();
-    const accessToken = credentials.access_token;
-
-    if (!accessToken) {
-      throw new Error("Failed to refresh access token");
-    }
-
-    return accessToken;
   }
 }
 

@@ -43,9 +43,10 @@
     "typescript-transform-paths": "^3.5.1"
   },
   "dependencies": {
+    "@wrtnlabs/connector-google": "workspace:^",
+    "@wrtnlabs/connector-image": "workspace:^",
     "@wrtnlabs/connector-shared": "workspace:^",
     "axios": "^1.8.1",
-    "googleapis": "^144.0.0",
     "crypto": "^1.0.1",
     "typia": "^8.0.1",
     "uuid": "^10.0.0"

@@ -41,7 +41,7 @@
     "typescript-transform-paths": "^3.5.1"
   },
   "dependencies": {
-    "@wrtnlabs/connector-shared": "workspace:^",
+    "@wrtnlabs/connector-aws-s3": "workspace:^",
     "child_process": "^1.0.2",
     "crypto": "^1.0.1",
     "fs": "0.0.1-security",

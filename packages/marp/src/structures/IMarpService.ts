@@ -1,4 +1,17 @@
+import { IAwsS3Service } from "@wrtnlabs/connector-aws-s3";
+
 export namespace IMarpService {
+  export interface IProps {
+    /**
+     * AWS
+     */
+    aws: {
+      /**
+       * S3
+       */
+      s3: IAwsS3Service.IProps;
+    };
+  }
   /**
    * @title Parameters for Marp conversion
    */
@@ -9,6 +22,16 @@ export namespace IMarpService {
      * @title Marp markdown
      */
     markdown: string;
+
+    /**
+     * AWS S3 Properties.
+     */
+    s3: {
+      /**
+       * S3 Bucket Key(path).
+       */
+      key: string;
+    };
   }
 
   /**
@@ -16,8 +39,10 @@ export namespace IMarpService {
    */
   export interface IConvertOutput {
     /**
-     * Base64 of the converted PPT.
+     * S3 link for the converted PPT.
+     *
+     * @title S3 link
      */
-    pptBase64: string;
+    s3Link: string;
   }
 }

@@ -2,6 +2,7 @@ import { gmail_v1, google } from "googleapis";
 
 import axios from "axios";
 import { IGmailService } from "../structures/IGmailService";
+import { GoogleService } from "@wrtnlabs/connector-google";
 
 export class GmailService {
   constructor(private readonly props: IGmailService.IProps) {}
@@ -20,7 +21,9 @@ export class GmailService {
     input: IGmailService.IDeleteMailListInput,
   ): Promise<void> {
     try {
-      const accessToken = await this.refreshAccessToken();
+      const googleService = new GoogleService(this.props);
+
+      const accessToken = await googleService.refreshAccessToken();
       const authClient = new google.auth.OAuth2();
 
       authClient.setCredentials({ access_token: accessToken });
@@ -53,7 +56,9 @@ export class GmailService {
    */
   async hardDelete(input: { id: string }): Promise<void> {
     try {
-      const accessToken = await this.refreshAccessToken();
+      const googleService = new GoogleService(this.props);
+
+      const accessToken = await googleService.refreshAccessToken();
       const authClient = new google.auth.OAuth2();
 
       authClient.setCredentials({ access_token: accessToken });
@@ -88,7 +93,9 @@ export class GmailService {
     input: IGmailService.ICreateMailInput,
   ): Promise<IGmailService.ISendMailOutput> {
     try {
-      const accessToken = await this.refreshAccessToken();
+      const googleService = new GoogleService(this.props);
+
+      const accessToken = await googleService.refreshAccessToken();
       const authClient = new google.auth.OAuth2();
 
       authClient.setCredentials({ access_token: accessToken });
@@ -129,7 +136,9 @@ export class GmailService {
    */
   async createDraft(input: IGmailService.ICreateMailInput): Promise<void> {
     try {
-      const accessToken = await this.refreshAccessToken();
+      const googleService = new GoogleService(this.props);
+
+      const accessToken = await googleService.refreshAccessToken();
       const authClient = new google.auth.OAuth2();
 
       authClient.setCredentials({ access_token: accessToken });
@@ -167,7 +176,9 @@ export class GmailService {
     input: IGmailService.IReplyInput,
   ): Promise<IGmailService.ISendMailOutput> {
     try {
-      const accessToken = await this.refreshAccessToken();
+      const googleService = new GoogleService(this.props);
+
+      const accessToken = await googleService.refreshAccessToken();
       const authClient = new google.auth.OAuth2();
 
       authClient.setCredentials({ access_token: accessToken });
@@ -238,7 +249,9 @@ export class GmailService {
     input: IGmailService.ILabelInput,
   ): Promise<IGmailService.ILabelOutput> {
     try {
-      const accessToken = await this.refreshAccessToken();
+      const googleService = new GoogleService(this.props);
+
+      const accessToken = await googleService.refreshAccessToken();
       const authClient = new google.auth.OAuth2();
 
       authClient.setCredentials({ access_token: accessToken });
@@ -276,7 +289,9 @@ export class GmailService {
     input: IGmailService.IMailLabelOperationInput,
   ): Promise<void> {
     try {
-      const accessToken = await this.refreshAccessToken();
+      const googleService = new GoogleService(this.props);
+
+      const accessToken = await googleService.refreshAccessToken();
       const authClient = new google.auth.OAuth2();
 
       authClient.setCredentials({ access_token: accessToken });
@@ -307,7 +322,9 @@ export class GmailService {
     input: IGmailService.IMailLabelOperationInput,
   ): Promise<void> {
     try {
-      const accessToken = await this.refreshAccessToken();
+      const googleService = new GoogleService(this.props);
+
+      const accessToken = await googleService.refreshAccessToken();
       const authClient = new google.auth.OAuth2();
 
       authClient.setCredentials({ access_token: accessToken });
@@ -338,7 +355,9 @@ export class GmailService {
     id: string;
   }): Promise<IGmailService.IFindGmailOutput> {
     try {
-      const accessToken = await this.refreshAccessToken();
+      const googleService = new GoogleService(this.props);
+
+      const accessToken = await googleService.refreshAccessToken();
       const authClient = new google.auth.OAuth2();
 
       authClient.setCredentials({ access_token: accessToken });
@@ -367,7 +386,9 @@ export class GmailService {
     input: IGmailService.IFindEmailListInput,
   ): Promise<IGmailService.IFindGmailListOutput> {
     try {
-      const accessToken = await this.refreshAccessToken();
+      const googleService = new GoogleService(this.props);
+
+      const accessToken = await googleService.refreshAccessToken();
       const authClient = new google.auth.OAuth2();
 
       authClient.setCredentials({ access_token: accessToken });
@@ -419,7 +440,9 @@ export class GmailService {
    */
   async removeEmail(input: { id: string }): Promise<void> {
     try {
-      const accessToken = await this.refreshAccessToken();
+      const googleService = new GoogleService(this.props);
+
+      const accessToken = await googleService.refreshAccessToken();
       const authClient = new google.auth.OAuth2();
 
       authClient.setCredentials({ access_token: accessToken });
@@ -583,29 +606,5 @@ export class GmailService {
     }
 
     return query.trim();
-  }
-
-  /**
-   * Google Auth Service.
-   *
-   * Request to reissue Google access token
-   */
-  private async refreshAccessToken(): Promise<string> {
-    const client = new google.auth.OAuth2(
-      this.props.clientId,
-      this.props.clientSecret,
-    );
-
-    client.setCredentials({
-      refresh_token: decodeURIComponent(this.props.refreshToken),
-    });
-    const { credentials } = await client.refreshAccessToken();
-    const accessToken = credentials.access_token;
-
-    if (!accessToken) {
-      throw new Error("Failed to refresh access token");
-    }
-
-    return accessToken;
   }
 }

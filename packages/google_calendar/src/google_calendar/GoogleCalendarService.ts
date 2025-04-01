@@ -1,6 +1,7 @@
 import { google } from "googleapis";
 import { tags } from "typia";
 import { IGoogleCalendarService } from "../structures/IGoogleCalendarService";
+import { GoogleService } from "@wrtnlabs/connector-google";
 
 export class GoogleCalendarService {
   constructor(private readonly props: IGoogleCalendarService.IProps) {}
@@ -14,7 +15,11 @@ export class GoogleCalendarService {
     IGoogleCalendarService.IGoogleCalendarOutput[]
   > {
     try {
-      const accessToken = await this.refreshAccessToken();
+      const googleService = new GoogleService({
+        ...this.props,
+      });
+
+      const accessToken = await googleService.refreshAccessToken();
       const authClient = new google.auth.OAuth2();
 
       authClient.setCredentials({ access_token: accessToken });
@@ -49,7 +54,11 @@ export class GoogleCalendarService {
     input: IGoogleCalendarService.ICreateCalendarInput,
   ): Promise<IGoogleCalendarService.IGoogleCalendarOutput> {
     try {
-      const accessToken = await this.refreshAccessToken();
+      const googleService = new GoogleService({
+        ...this.props,
+      });
+
+      const accessToken = await googleService.refreshAccessToken();
       const authClient = new google.auth.OAuth2();
 
       authClient.setCredentials({ access_token: accessToken });
@@ -82,8 +91,11 @@ export class GoogleCalendarService {
   async deleteCalendar(input: { calendarId: string }): Promise<void> {
     try {
       const { calendarId } = input;
+      const googleService = new GoogleService({
+        ...this.props,
+      });
 
-      const accessToken = await this.refreshAccessToken();
+      const accessToken = await googleService.refreshAccessToken();
       const authClient = new google.auth.OAuth2();
 
       authClient.setCredentials({ access_token: accessToken });
@@ -106,8 +118,11 @@ export class GoogleCalendarService {
   ): Promise<IGoogleCalendarService.IReadGoogleCalendarEventOutput> {
     try {
       const { id } = input;
+      const googleService = new GoogleService({
+        ...this.props,
+      });
 
-      const accessToken = await this.refreshAccessToken();
+      const accessToken = await googleService.refreshAccessToken();
       const authClient = new google.auth.OAuth2();
 
       authClient.setCredentials({ access_token: accessToken });
@@ -158,8 +173,11 @@ export class GoogleCalendarService {
   ): Promise<void> {
     try {
       const { id } = input;
+      const googleService = new GoogleService({
+        ...this.props,
+      });
 
-      const accessToken = await this.refreshAccessToken();
+      const accessToken = await googleService.refreshAccessToken();
       const authClient = new google.auth.OAuth2();
 
       authClient.setCredentials({ access_token: accessToken });
@@ -187,7 +205,11 @@ export class GoogleCalendarService {
     },
   ): Promise<IGoogleCalendarService.IGoogleCalendarEvent> {
     try {
-      const accessToken = await this.refreshAccessToken();
+      const googleService = new GoogleService({
+        ...this.props,
+      });
+
+      const accessToken = await googleService.refreshAccessToken();
       const authClient = new google.auth.OAuth2();
 
       authClient.setCredentials({ access_token: accessToken });
@@ -225,8 +247,11 @@ export class GoogleCalendarService {
     },
   ): Promise<IGoogleCalendarService.IGoogleCalendarEvent> {
     const { calendarId, eventId } = input;
+    const googleService = new GoogleService({
+      ...this.props,
+    });
 
-    const accessToken = await this.refreshAccessToken();
+    const accessToken = await googleService.refreshAccessToken();
     const authClient = new google.auth.OAuth2();
 
     authClient.setCredentials({ access_token: accessToken });
@@ -257,8 +282,11 @@ export class GoogleCalendarService {
     input: IGoogleCalendarService.IAddAttendeesToEventInput,
   ): Promise<IGoogleCalendarService.IGoogleCalendarEvent> {
     const { calendarId, eventId } = input;
+    const googleService = new GoogleService({
+      ...this.props,
+    });
 
-    const accessToken = await this.refreshAccessToken();
+    const accessToken = await googleService.refreshAccessToken();
     const authClient = new google.auth.OAuth2();
 
     authClient.setCredentials({ access_token: accessToken });
@@ -302,8 +330,11 @@ export class GoogleCalendarService {
     eventId: string;
   }): Promise<void> {
     const { calendarId, eventId } = input;
+    const googleService = new GoogleService({
+      ...this.props,
+    });
 
-    const accessToken = await this.refreshAccessToken();
+    const accessToken = await googleService.refreshAccessToken();
     const authClient = new google.auth.OAuth2();
 
     authClient.setCredentials({ access_token: accessToken });
@@ -451,29 +482,5 @@ export class GoogleCalendarService {
     }
 
     return [`RRULE:${recurrenceFields.join(";")}`];
-  }
-
-  /**
-   * Google Auth Service.
-   *
-   * Request to reissue Google access token
-   */
-  private async refreshAccessToken(): Promise<string> {
-    const client = new google.auth.OAuth2(
-      this.props.clientId,
-      this.props.clientSecret,
-    );
-
-    client.setCredentials({
-      refresh_token: decodeURIComponent(this.props.secret),
-    });
-    const { credentials } = await client.refreshAccessToken();
-    const accessToken = credentials.access_token;
-
-    if (!accessToken) {
-      throw new Error("Failed to refresh access token");
-    }
-
-    return accessToken;
   }
 }

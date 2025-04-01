@@ -7,6 +7,8 @@ export const test_youtube_search = async (): Promise<
   IYoutubeSearchService.ISearchOutput[]
 > => {
   const youtubeSearchService = new YoutubeSearchService({
+    googleApiKey: TestGlobal.env.GOOGLE_API_KEY,
+    searchApiKey: TestGlobal.env.SEARCH_API_KEY,
     serpApiKey: TestGlobal.env.SERP_API_KEY,
   });
 

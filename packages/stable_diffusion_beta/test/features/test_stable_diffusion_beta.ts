@@ -13,6 +13,14 @@ export const test_stable_diffusion_beta = async () => {
     defaultStep: Number(TestGlobal.env.STABILITY_AI_DEFAULT_STEP),
     engineId: TestGlobal.env.STABILITY_AI_ENGINE_ID,
     host: TestGlobal.env.STABILITY_AI_HOST,
+    aws: {
+      s3: {
+        accessKeyId: TestGlobal.env.AWS_ACCESS_KEY_ID,
+        bucket: TestGlobal.env.AWS_S3_BUCKET,
+        region: "ap-northeast-2",
+        secretAccessKey: TestGlobal.env.AWS_SECRET_ACCESS_KEY,
+      },
+    },
   });
 
   const requestBody: IStableDiffusionBetaService.IRequest = {

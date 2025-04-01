@@ -1,0 +1,16 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "target": "ES2015",
+    "outDir": "../bin",
+    "paths": {
+      "@wrtnlabs/connector-google": ["../src/index.ts"],
+      "@wrtnlabs/connector-google/lib/*": ["../src/*"]
+    },
+    "plugins": [
+      { "transform": "typescript-transform-paths" },
+      { "transform": "typia/lib/transform" }
+    ]
+  },
+  "include": ["../src", "./"]
+}

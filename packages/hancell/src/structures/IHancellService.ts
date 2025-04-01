@@ -1,4 +1,17 @@
+import { tags } from "typia";
+import { IAwsS3Service } from "@wrtnlabs/connector-aws-s3";
+import { ContentMediaType } from "typia/lib/tags";
+
 export namespace IHancellService {
+  export interface IProps {
+    /**
+     * AWS.
+     */
+    aws: {
+      s3: IAwsS3Service.IProps;
+    };
+  }
+
   export interface IUpsertSheetInput extends IReadHancellInput {
     /**
      * @title Sheet name
@@ -15,9 +28,9 @@ export namespace IHancellService {
 
   export interface IUpsertSheetOutput {
     /**
-     * @title New hancel base64 file
+     * @title New Hansel File Link
      */
-    fileBase64: string;
+    fileUrl: string;
   }
 
   /**
@@ -25,9 +38,13 @@ export namespace IHancellService {
    */
   export type IReadHancellInput = {
     /**
-     * @title File base64
+     * Excel file to read
+     *
+     * @title Excel file
      */
-    fileBase64: string;
+    fileUrl: string &
+      tags.Format<"uri"> &
+      ContentMediaType<"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">;
   };
 
   /**
