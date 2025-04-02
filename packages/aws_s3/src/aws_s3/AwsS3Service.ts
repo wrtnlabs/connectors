@@ -8,10 +8,9 @@ import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import { randomUUID } from "crypto";
 import { Readable } from "stream";
 import { IAwsS3Service } from "../structures/IAwsS3Service";
-
-export class AwsS3Service {
+import { FileManager, IFileManager } from "@wrtnlabs/connector-shared";
+export class AwsS3Service implements FileManager {
   private readonly s3: S3Client;
-  private readonly expirationInMinute: number;
   private readonly S3BucketURL =
     /https?:\/\/([^.]+)\.s3(?:\.([^.]+))?\.amazonaws\.com\/([a-zA-Z0-9\/.\-_\s%]+)/;
 
@@ -27,8 +26,6 @@ export class AwsS3Service {
         secretAccessKey: this.props.awsSecretAccessKey,
       },
     });
-
-    this.expirationInMinute = 3 as const;
   }
 
   /**
@@ -36,22 +33,75 @@ export class AwsS3Service {
    *
    * Upload an object to S3
    */
-  async uploadObject(input: IAwsS3Service.IUploadObjectInput): Promise<string> {
+  async upload(
+    input: IFileManager.IUploadInput,
+  ): Promise<IFileManager.IUploadOutput> {
+    // TODO: In future, add the upload logic using the presented-url.
+    switch (input.props.type) {
+      case "object":
+        return await this.uploadObject(input.props);
+      default:
+        throw new Error("Invalid input type");
+    }
+  }
+
+  private async uploadObject(
+    input: IFileManager.IUploadByObjectInput,
+  ): Promise<IFileManager.IUploadOutput> {
     const { data, contentType } = input;
     const putObjectConfig = new PutObjectCommand({
       Bucket: this.props.awsS3Bucket,
-      Key: input.key,
+      Key: input.path,
       Body: data,
       ContentType: contentType,
     });
     await this.s3.send(putObjectConfig);
-    return this.addBucketPrefix({ key: input.key });
+    return { ...this.addBucketPrefix({ key: input.path }) };
   }
 
   /**
    * AWS S3 Service.
    *
-   * Generate the URL required to upload a file
+   * Get an object from S3 Url.
+   *
+   * @hidden
+   */
+  async read(input: {
+    props: IFileManager.IReadByUrlInput;
+  }): Promise<IFileManager.IReadOutput> {
+    try {
+      const { bucket, key } = this.extractS3InfoFromUrl({
+        url: input.props.url,
+      });
+      const getObjectCommand = new GetObjectCommand({
+        Bucket: bucket,
+        Key: key,
+      });
+
+      const response = await this.s3.send(getObjectCommand);
+
+      if (!response.Body) {
+        throw new Error("S3 object has no content");
+      }
+
+      const stream = response.Body as Readable;
+      const chunks: Buffer[] = [];
+
+      for await (const chunk of stream) {
+        chunks.push(Buffer.from(chunk));
+      }
+
+      return { data: Buffer.concat(chunks) };
+    } catch (error) {
+      console.error(`Failed to get object from S3: ${error}`);
+      throw error;
+    }
+  }
+
+  /**
+   * AWS S3 Service.
+   *
+   * Generate the Presigned URL required to upload a file
    */
   async getPutObjectUrl(
     input: IAwsS3Service.IGetPutObjectUrlInput,
@@ -87,57 +137,13 @@ export class AwsS3Service {
   /**
    * AWS S3 Service.
    *
-   * Get an object from S3
-   */
-  async getObject(input: {
-    fileUrl?: string;
-    filename?: string;
-  }): Promise<Buffer> {
-    try {
-      let getObjectCommand: GetObjectCommand;
-      if (input.fileUrl) {
-        const { bucket, key } = this.extractS3InfoFromUrl({
-          url: input.fileUrl,
-        });
-        getObjectCommand = new GetObjectCommand({
-          Bucket: bucket,
-          Key: key,
-        });
-      } else {
-        getObjectCommand = new GetObjectCommand({
-          Bucket: this.props.awsS3Bucket,
-          Key: input.filename, // file name
-        });
-      }
-
-      const response = await this.s3.send(getObjectCommand);
-
-      if (!response.Body) {
-        throw new Error("S3 object has no content");
-      }
-
-      const stream = response.Body as Readable;
-      const chunks: Buffer[] = [];
-
-      for await (const chunk of stream) {
-        chunks.push(Buffer.from(chunk));
-      }
-
-      return Buffer.concat(chunks);
-    } catch (error) {
-      console.error(`Failed to get object from S3: ${error}`);
-      throw error;
-    }
-  }
-
-  /**
-   * AWS S3 Service.
-   *
    * Transforms S3 URLs in output to presigned URLs
    */
-  async getGetObjectUrl(input: { fileUrl: string }): Promise<string> {
-    const { fileUrl } = input;
-    const match = fileUrl.match(this.S3BucketURL);
+  async getGetObjectUrl(
+    input: IAwsS3Service.IGetObjectUrlInput,
+  ): Promise<string> {
+    const { url, expirationInMinute } = input;
+    const match = url.match(this.S3BucketURL);
 
     if (!match) {
       throw new Error("Invalid format");
@@ -150,7 +156,7 @@ export class AwsS3Service {
       this.s3,
       new GetObjectCommand({ Bucket: bucket, Key: key }),
       {
-        expiresIn: 60 * this.expirationInMinute,
+        expiresIn: 60 * expirationInMinute,
         signingRegion: this.props.awsS3Region,
       },
     );
@@ -161,10 +167,9 @@ export class AwsS3Service {
    *
    * Extract S3 information from URL
    */
-  extractS3InfoFromUrl(input: { url: string }): {
-    bucket: string;
-    key: string;
-  } {
+  extractS3InfoFromUrl(
+    input: IAwsS3Service.IExtractS3InfoFromUrlInput,
+  ): IAwsS3Service.IExtractS3InfoFromUrlOutput {
     try {
       const { url } = input;
       const match = url.match(this.S3BucketURL);
@@ -187,9 +192,10 @@ export class AwsS3Service {
    *
    * Get the size of an object in S3
    */
-  async getFileSize(input: { fileUrl: string }): Promise<number> {
-    const { fileUrl } = input;
-    const [url] = fileUrl.split("?"); // 쿼리파라미터 부분 제거
+  async getFileSize(
+    input: IAwsS3Service.IGetFileSizeInput,
+  ): Promise<IAwsS3Service.IGetFileSizeOutput> {
+    const [url] = input.url.split("?"); // 쿼리파라미터 부분 제거
     const matches = url?.match(this.S3BucketURL);
 
     if (!matches) {
@@ -210,7 +216,7 @@ export class AwsS3Service {
       if (!ContentLength) {
         throw new Error();
       }
-      return ContentLength;
+      return { size: ContentLength };
     } catch (err) {
       console.error(JSON.stringify(`Failed to get file size: ${err}`));
       throw err;
@@ -221,8 +227,10 @@ export class AwsS3Service {
    * @param key key name
    * @returns complete file path with bucket name prefix
    */
-  addBucketPrefix(input: { key: string }): string {
+  addBucketPrefix(
+    input: IAwsS3Service.IAddBucketPrefixInput,
+  ): IAwsS3Service.IAddBucketPrefixOutput {
     const url = `https://${this.props.awsS3Bucket}.s3.${this.props.awsS3Region}.amazonaws.com/${input.key}`;
-    return url;
+    return { url };
   }
 }
