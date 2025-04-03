@@ -8,7 +8,7 @@ import { TestGlobal } from "../TestGlobal";
 export const test_cafe_daum =
   async (): Promise<IDaumCafeService.ICafeOutput> => {
     const daumCafeService = new DaumCafeService({
-      apiKey: TestGlobal.env.DAUM_API_KEY,
+      daumApiKey: TestGlobal.env.DAUM_API_KEY,
     });
 
     const input: IDaumCafeService.ISearchInput = {

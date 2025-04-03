@@ -1,4 +1,7 @@
 import { tags } from "typia";
+import { SnakeToCamel } from "@wrtnlabs/connector-shared";
+
+export const ENV_LIST = ["DAUM_API_KEY"] as const;
 
 /**
  * accuracy: accuracy (default)
@@ -10,12 +13,10 @@ import { tags } from "typia";
 type Sort = "accuracy" | "recency";
 
 export namespace IDaumCafeService {
-  export interface IProps {
-    /**
-     * Daum API Key.
-     */
-    apiKey: string;
-  }
+  export type IProps = {
+    [key in SnakeToCamel<(typeof ENV_LIST)[number]>]: string;
+  };
+
   /**
    * @title Information needed for the next search
    */

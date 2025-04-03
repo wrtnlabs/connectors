@@ -30,7 +30,7 @@ export class DaumCafeService {
         `https://dapi.kakao.com/v2/search/cafe?query=${query}&sort=${sort}&size=${size}&page=${page}`,
         {
           headers: {
-            Authorization: `KakaoAK ${this.props.apiKey}`,
+            Authorization: `KakaoAK ${this.props.daumApiKey}`,
           },
         },
       );
