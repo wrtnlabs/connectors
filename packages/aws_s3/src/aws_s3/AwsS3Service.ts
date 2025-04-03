@@ -230,7 +230,8 @@ export class AwsS3Service implements FileManager {
   addBucketPrefix(
     input: IAwsS3Service.IAddBucketPrefixInput,
   ): IAwsS3Service.IAddBucketPrefixOutput {
-    const url = `https://${this.props.awsS3Bucket}.s3.${this.props.awsS3Region}.amazonaws.com/${input.key}`;
+    const key = input.key.at(0) === "/" ? input.key.slice(1) : input.key;
+    const url = `https://${this.props.awsS3Bucket}.s3.${this.props.awsS3Region}.amazonaws.com/${key}`;
     return { url };
   }
 
