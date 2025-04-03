@@ -17,7 +17,7 @@ export class DiscordService {
         `https://discord.com/api/v10/guilds/${guildId}/members`,
         {
           headers: {
-            Authorization: `Bot ${this.props.secret}`,
+            Authorization: `Bot ${this.props.discordToken}`,
           },
         },
       );
@@ -45,7 +45,7 @@ export class DiscordService {
         },
         {
           headers: {
-            Authorization: `Bot ${this.props.secret}`,
+            Authorization: `Bot ${this.props.discordToken}`,
           },
         },
       );
@@ -75,7 +75,7 @@ export class DiscordService {
         },
         {
           headers: {
-            Authorization: `Bot ${this.props.secret}`,
+            Authorization: `Bot ${this.props.discordToken}`,
           },
         },
       );
@@ -99,7 +99,7 @@ export class DiscordService {
         `https://discord.com/api/v10/guilds/${guildId}/channels`,
         {
           headers: {
-            Authorization: `Bot ${this.props.secret}`,
+            Authorization: `Bot ${this.props.discordToken}`,
           },
         },
       );
@@ -130,7 +130,7 @@ export class DiscordService {
         },
         {
           headers: {
-            Authorization: `Bot ${this.props.secret}`,
+            Authorization: `Bot ${this.props.discordToken}`,
           },
         },
       );
@@ -156,7 +156,7 @@ export class DiscordService {
         `https://discord.com/api/v10/guilds/${guildId}/members/${input.userId}`,
         {
           headers: {
-            Authorization: `Bot ${this.props.secret}`,
+            Authorization: `Bot ${this.props.discordToken}`,
           },
         },
       );
@@ -182,7 +182,7 @@ export class DiscordService {
         },
         {
           headers: {
-            Authorization: `Bot ${this.props.secret}`,
+            Authorization: `Bot ${this.props.discordToken}`,
           },
         },
       );
@@ -206,7 +206,7 @@ export class DiscordService {
         `https://discord.com/api/v10/channels/${input.channelId}`,
         {
           headers: {
-            Authorization: `Bot ${this.props.secret}`,
+            Authorization: `Bot ${this.props.discordToken}`,
           },
         },
       );
@@ -229,7 +229,7 @@ export class DiscordService {
         `https://discord.com/api/v10/channels/${input.channelId}/pins`,
         {
           headers: {
-            Authorization: `Bot ${this.props.secret}`,
+            Authorization: `Bot ${this.props.discordToken}`,
           },
         },
       );
@@ -255,7 +255,7 @@ export class DiscordService {
         {},
         {
           headers: {
-            Authorization: `Bot ${this.props.secret}`,
+            Authorization: `Bot ${this.props.discordToken}`,
           },
         },
       );
@@ -278,7 +278,7 @@ export class DiscordService {
         `https://discord.com/api/v10/channels/${input.channelId}/pins/${input.messageId}`,
         {
           headers: {
-            Authorization: `Bot ${this.props.secret}`,
+            Authorization: `Bot ${this.props.discordToken}`,
           },
         },
       );
@@ -309,7 +309,7 @@ export class DiscordService {
           `https://discord.com/api/v10/channels/${input.channelId}/messages`,
           {
             headers: {
-              Authorization: `Bot ${this.props.secret}`,
+              Authorization: `Bot ${this.props.discordToken}`,
             },
             params: {
               limit,
@@ -350,7 +350,7 @@ export class DiscordService {
         },
         {
           headers: {
-            Authorization: `Bot ${this.props.secret}`,
+            Authorization: `Bot ${this.props.discordToken}`,
           },
         },
       );
@@ -377,7 +377,7 @@ export class DiscordService {
         },
         {
           headers: {
-            Authorization: `Bot ${this.props.secret}`,
+            Authorization: `Bot ${this.props.discordToken}`,
           },
         },
       );
@@ -401,7 +401,7 @@ export class DiscordService {
         `https://discord.com/api/v10/channels/${input.channelId}/messages/${input.messageId}`,
         {
           headers: {
-            Authorization: `Bot ${this.props.secret}`,
+            Authorization: `Bot ${this.props.discordToken}`,
           },
         },
       );
@@ -427,7 +427,7 @@ export class DiscordService {
         },
         {
           headers: {
-            Authorization: `Bot ${this.props.secret}`,
+            Authorization: `Bot ${this.props.discordToken}`,
           },
         },
       );
@@ -447,7 +447,7 @@ export class DiscordService {
       `https://discord.com/api/v10/users/@me/guilds`,
       {
         headers: {
-          Authorization: `Bot ${this.props.secret}`,
+          Authorization: `Bot ${this.props.discordToken}`,
         },
       },
     );

@@ -1,17 +1,17 @@
 import { tags } from "typia";
+import { SnakeToCamel } from "@wrtnlabs/connector-shared";
+
+export const ENV_LIST = ["DISCORD_TOKEN"] as const;
 
 export namespace IDiscordService {
-  export interface IProps {
-    /**
-     * Discord Bot Token.
-     */
-    secret: string;
-
+  export type IProps = {
+    [key in SnakeToCamel<(typeof ENV_LIST)[number]>]: string;
+  } & {
     /**
      * Discord Guild ID.
      */
     guildId: string;
-  }
+  };
 
   /**
    * @title 서버 정보

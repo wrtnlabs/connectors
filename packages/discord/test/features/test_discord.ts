@@ -4,7 +4,7 @@ import { TestGlobal } from "../TestGlobal";
 
 export const test_discord = async () => {
   const discordService = new DiscordService({
-    secret: TestGlobal.env.DISCORD_BOT_TOKEN,
+    discordToken: TestGlobal.env.DISCORD_BOT_TOKEN,
     guildId: "1260868337467129989",
   });
 
