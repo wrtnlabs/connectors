@@ -16,7 +16,7 @@ export const test_blog_daum = async () => {
   };
 
   const daumBlogService = new DaumBlogService({
-    apiKey: TestGlobal.env.DAUM_API_KEY,
+    daumApiKey: TestGlobal.env.DAUM_API_KEY,
   });
 
   const result = await daumBlogService.search(input);
