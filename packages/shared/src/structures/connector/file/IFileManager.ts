@@ -87,4 +87,12 @@ export namespace IFileManager {
      */
     data: Buffer;
   }
+
+  export interface IMatchInput {
+    /**
+     * File uri.
+     * URI includes the file path and scheme.
+     */
+    uri: string & tags.Format<"iri">;
+  }
 }
