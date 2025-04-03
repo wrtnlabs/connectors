@@ -8,12 +8,10 @@ export namespace IExcelService {
   export interface IReadExcelInput {
     /**
      * Excel file to read
-     * base64 encoded string
      *
-     * @title Excel file
+     * @title Excel file URI
      */
-    fileBase64: string & tags.Format<"byte">;
-
+    uri: string & tags.Format<"iri">;
     /**
      * Sheet name to read
      *
@@ -54,12 +52,11 @@ export namespace IExcelService {
    */
   export interface IGetWorksheetListInput {
     /**
-     * File to import list of Excel worksheets
-     * base64 encoded string
+     * The URI of the file to import list of Excel worksheets
      *
-     * @title Excel file
+     * @title Excel file URI
      */
-    fileBase64: string & tags.Format<"byte">;
+    uri: string & tags.Format<"iri">;
   }
 
   /**
@@ -97,11 +94,9 @@ export namespace IExcelService {
      * The modified file is saved as a new link and does not modify the original file in this path.
      * If this address does not exist, create a new file immediately.
      *
-     * base64 encoded string
-     *
-     * @title Excel file
+     * @title Excel file URI
      */
-    fileBase64?: string & tags.Format<"byte">;
+    uri?: string & tags.Format<"iri">;
 
     /**
      * The type of data and coordinates of each row and column
@@ -109,12 +104,20 @@ export namespace IExcelService {
      * @title Cell informations
      */
     data: ISpreadsheetCell.ICreate[];
+
+    /**
+     * Sheet name to add Excel rows to
+     * If no input is entered, the first sheet is used as the default.
+     *
+     * @title Excel sheet name
+     */
+    sheetName?: (string & tags.MaxLength<31>) | null;
   }
 
   /**
    * @title Information for adding data
    */
-  export interface IInsertExcelRowInput extends ICreateSheetInput {
+  export interface IInsertExcelRowInput {
     /**
      * Excel file to add rows to
      *
@@ -122,11 +125,9 @@ export namespace IExcelService {
      * The modified file is saved as a new link and does not modify the original file in this path.
      * If this address does not exist, create a new file immediately.
      *
-     * base64 encoded string
-     *
-     * @title Excel file
+     * @title Excel file URI
      */
-    fileBase64?: string & tags.Format<"byte">;
+    uri?: string & tags.Format<"iri">;
 
     /**
      * The type of data and coordinates of each row and column
@@ -134,9 +135,25 @@ export namespace IExcelService {
      * @title Cell informations
      */
     data: ISpreadsheetCell.ICreate[];
+
+    /**
+     * Sheet name to add Excel rows to
+     * If no input is entered, the first sheet is used as the default.
+     *
+     * @title Excel sheet name
+     */
+    sheetName?: (string & tags.MaxLength<31>) | null;
   }
 
   export interface ICreateSheetInput {
+    /**
+     * The Path of the Excel file including the file name.
+     * The File Path that you want to save the Excel file.
+     *
+     * @title Excel file path
+     */
+    path: string & tags.Format<"iri">;
+
     /**
      * Sheet name to add Excel rows to
      * If no input is entered, the first sheet is used as the default.
@@ -151,10 +168,8 @@ export namespace IExcelService {
    */
   export interface IExportExcelFileOutput {
     /**
-     * base64 encoded string
-     *
-     * @title Generated Excel file
+     * @title Generated Excel file URI
      */
-    fileBase64: string & tags.Format<"byte">;
+    uri: string & tags.Format<"iri">;
   }
 }

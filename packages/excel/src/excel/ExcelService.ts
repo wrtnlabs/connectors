@@ -1,9 +1,9 @@
 import * as Excel from "exceljs";
 import { IExcelService } from "../structures/IExcelService";
-import { base64ToBuffer, ISpreadsheetCell } from "@wrtnlabs/connector-shared";
+import { FileManager, ISpreadsheetCell } from "@wrtnlabs/connector-shared";
 
 export class ExcelService {
-  constructor() {}
+  constructor(private readonly fileManager: FileManager) {}
 
   /**
    * Excel Service.
@@ -14,10 +14,13 @@ export class ExcelService {
     input: IExcelService.IGetWorksheetListInput,
   ): Promise<IExcelService.IWorksheetListOutput> {
     try {
-      const { fileBase64 } = input;
+      const { uri } = input;
+      const file = await this.fileManager.read({
+        props: { type: "url", url: uri },
+      });
 
       const workbook = new Excel.Workbook();
-      await workbook.xlsx.load(base64ToBuffer(fileBase64));
+      await workbook.xlsx.load(file.data);
 
       const result: { id: number; sheetName: string }[] = [];
       workbook.eachSheet((sheet, id) => {
@@ -42,7 +45,7 @@ export class ExcelService {
   async getExcelData(
     input: IExcelService.IReadExcelInput,
   ): Promise<IExcelService.IReadExcelOutput> {
-    const workbook = await this.getExcelFile({ fileBase64: input.fileBase64 });
+    const workbook = await this.getExcelFile({ uri: input.uri });
 
     try {
       const sheet = workbook.getWorksheet(input.sheetName ?? 1);
@@ -89,8 +92,8 @@ export class ExcelService {
    * Based on the input file information, the headers of the corresponding Excel file are retrieved
    */
   async readHeaders(input: IExcelService.IReadExcelInput): Promise<string[]> {
-    const { fileBase64, sheetName } = input;
-    const workbook = await this.getExcelFile({ fileBase64 });
+    const { uri, sheetName } = input;
+    const workbook = await this.getExcelFile({ uri });
     return this.readExcelHeaders({ workbook, sheetName });
   }
 
@@ -149,8 +152,17 @@ export class ExcelService {
     input: IExcelService.IInsertExcelRowInput,
   ): Promise<IExcelService.IExportExcelFileOutput> {
     try {
-      const { sheetName, data, fileBase64 } = input;
-      const workbook = await this.getExcelFile({ fileBase64 });
+      const { sheetName, data, uri } = input;
+
+      console.log(`uri: ${uri}`);
+
+      const filepath = uri?.split("//").at(1)?.split("/").slice(1).join("/");
+
+      if (!filepath) {
+        throw new Error("Invalid File URL");
+      }
+
+      const workbook = await this.getExcelFile({ uri });
       if (
         typeof sheetName === "string" &&
         workbook.worksheets.every((worksheet) => worksheet.name !== sheetName)
@@ -162,6 +174,8 @@ export class ExcelService {
         workbook.addWorksheet(sheetName ?? "Sheet1");
       }
 
+      console.log("hello");
+
       // 0번 인덱스는 우리가 생성한 적 없는 시트이므로 패스한다.
       const CREATED_SHEET = 1 as const;
       const sheet = workbook.getWorksheet(sheetName ?? CREATED_SHEET);
@@ -169,29 +183,44 @@ export class ExcelService {
         throw new Error("Not existing sheet");
       }
 
+      console.log("hello2");
+
       data.forEach((data) => {
         const column = this.columnNumberToLetter(data.column);
         const position = `${column}${data.row}`; // A1, A2, ... 와 같은 형식
         sheet.getCell(position).value = data.snapshot.value;
       });
 
+      console.log("hello3");
+
       const modifiedBuffer = await workbook.xlsx.writeBuffer();
 
-      return { fileBase64: Buffer.from(modifiedBuffer).toString("base64") };
+      const file = await this.fileManager.upload({
+        props: {
+          type: "object",
+          data: Buffer.from(modifiedBuffer),
+          contentType:
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          path: filepath,
+        },
+      });
+
+      console.log("hello4");
+
+      return { uri: file.uri };
     } catch (error) {
       console.error(JSON.stringify(error));
       throw error;
     }
   }
 
-  private async getExcelFile(input: {
-    fileBase64?: string;
-  }): Promise<Excel.Workbook> {
-    if (input.fileBase64) {
+  private async getExcelFile(input: { uri?: string }): Promise<Excel.Workbook> {
+    if (input.uri) {
+      const res = await fetch(input.uri);
+      const buffer = await res.arrayBuffer();
+
       // 워크북 로드
-      return new Excel.Workbook().xlsx.load(
-        Buffer.from(input.fileBase64, "base64"),
-      );
+      return new Excel.Workbook().xlsx.load(buffer);
     }
     return new Excel.Workbook();
   }
@@ -213,7 +242,17 @@ export class ExcelService {
 
     const modifiedBuffer = await workbook.xlsx.writeBuffer();
 
-    return { fileBase64: Buffer.from(modifiedBuffer).toString("base64") };
+    const file = await this.fileManager.upload({
+      props: {
+        type: "object",
+        path: input.path,
+        data: Buffer.from(modifiedBuffer),
+        contentType:
+          "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      },
+    });
+
+    return { uri: file.uri };
   }
 
   private columnNumberToLetter(column: number): string {
