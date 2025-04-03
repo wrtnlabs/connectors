@@ -1,8 +1,11 @@
 import axios from "axios";
 import { IDallE3Service } from "../structures/IDallE3Service";
-
+import { FileManager } from "@wrtnlabs/connector-shared";
 export class DallE3Service {
-  constructor(private readonly props: IDallE3Service.IProps) {}
+  constructor(
+    private readonly props: IDallE3Service.IProps,
+    private readonly fileManager: FileManager,
+  ) {}
 
   /**
    * DallE3 Service.
@@ -43,12 +46,35 @@ export class DallE3Service {
 
       const img: Buffer = data.data;
 
-      const imgBuffer = img.toString("base64");
+      const { uri } = await this.uploadDallE3ToS3({
+        img,
+        path: input.path,
+      });
 
-      return { imgBuffer };
+      return { uri };
     } catch (error) {
       console.error(JSON.stringify(error));
       throw error;
+    }
+  }
+
+  private async uploadDallE3ToS3(input: { img: Buffer; path: string }) {
+    try {
+      const res = await this.fileManager.upload({
+        props: {
+          type: "object",
+          path: input.path,
+          data: input.img,
+          contentType: "image/png",
+        },
+      });
+
+      return {
+        uri: res.uri,
+      };
+    } catch (err) {
+      console.log(err);
+      throw err;
     }
   }
 }

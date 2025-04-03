@@ -31,6 +31,13 @@ export namespace IDallE3Service {
       | tags.Constant<"square", { title: "정사각형"; description: "1024x1024" }>
       | tags.Constant<"landscape", { title: "풍경"; description: "1792x1024" }>
       | tags.Constant<"portrait", { title: "인물"; description: "1024x1792" }>;
+
+    /**
+     * Path to save the image including the file name.
+     *
+     * @title File Path with File Name
+     */
+    path: string;
   }
 
   /**
@@ -38,10 +45,10 @@ export namespace IDallE3Service {
    */
   export interface IResponse {
     /**
-     * Generated image buffer in base64 format.
+     * Generated image URI.
      *
-     * @title Generated image Buffer
+     * @title Generated image URI
      */
-    imgBuffer: string & tags.Format<"byte">;
+    uri: string & tags.Format<"iri">;
   }
 }

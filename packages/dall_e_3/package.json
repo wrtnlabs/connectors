@@ -26,6 +26,7 @@
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^12.1.1",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "@wrtnlabs/connector-aws-s3": "workspace:^",
     "chalk": "^4.1.2",
     "dotenv": "^16.3.1",
     "dotenv-expand": "^10.0.0",
@@ -42,6 +43,7 @@
     "typescript-transform-paths": "^3.5.1"
   },
   "dependencies": {
+    "@wrtnlabs/connector-shared": "workspace:^",
     "axios": "^1.7.9",
     "openai": "^4.24.1",
     "typia": "^8.0.1"

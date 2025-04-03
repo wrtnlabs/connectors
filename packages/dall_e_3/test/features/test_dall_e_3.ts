@@ -1,19 +1,30 @@
 import { DallE3Service, IDallE3Service } from "@wrtnlabs/connector-dall-e-3";
+import { AwsS3Service } from "@wrtnlabs/connector-aws-s3";
 import OpenAI from "openai";
 import typia from "typia";
 import { TestGlobal } from "../TestGlobal";
-import * as fs from "node:fs/promises";
 
 export const test_dall_e_3 = async () => {
   const openai = new OpenAI({
     apiKey: TestGlobal.env.OPENAI_API_KEY,
   });
 
-  const dalleService = new DallE3Service({
-    openai,
+  const awsS3Service = new AwsS3Service({
+    awsAccessKeyId: TestGlobal.env.AWS_ACCESS_KEY_ID,
+    awsSecretAccessKey: TestGlobal.env.AWS_SECRET_ACCESS_KEY,
+    awsS3Bucket: TestGlobal.env.AWS_S3_BUCKET,
+    awsS3Region: "ap-northeast-2",
   });
 
+  const dalleService = new DallE3Service(
+    {
+      openai,
+    },
+    awsS3Service,
+  );
+
   const requestBody: IDallE3Service.IRequest = {
+    path: "dall_e_3/test.png",
     prompt: `You are a marketing copywriter, given the task of writing a marketing copy.
 You are given the marketing purpose, the distribution channel and the reference content, from which you should use the keyword to generate the marketing copy.
 The marketing purpose is the following: {
@@ -52,9 +63,6 @@ Generate the marketing copy.`,
   };
 
   const output = await dalleService.generateImage(requestBody);
-  typia.assert<IDallE3Service.IResponse>(output);
 
-  await fs.writeFile("output.png", output.imgBuffer, {
-    encoding: "base64",
-  });
+  typia.assert<IDallE3Service.IResponse>(output);
 };
