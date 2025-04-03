@@ -1,4 +1,5 @@
 import { tags } from "typia";
+import { ContentMediaType } from "typia/lib/tags";
 
 export namespace ICsvService {
   /**
@@ -6,14 +7,16 @@ export namespace ICsvService {
    */
   export interface IReadInput {
     /**
-     * This is the Csv file to read encoded in base64.
+     * This is the uri of Csv file to read.
      *
-     * @title file
+     * @title file uri
      */
-    csvBase64: string & tags.Format<"byte">;
+    uri: string & tags.Format<"iri"> & ContentMediaType<"text/csv">;
 
     /**
      * This is the CSV file delimiter to read.
+     *
+     * Default is ","
      *
      * @title delimiter
      */
@@ -35,18 +38,60 @@ export namespace ICsvService {
   }
 
   /**
+   * @title Information required to create a CSV file
+   */
+  export interface IWriteInput {
+    /**
+     * The path of the Csv file to be created, including the file name.
+     *
+     * @title File path
+     */
+    path: string;
+
+    /**
+     * The Csv file delimiter to be generated.
+     *
+     * @title delimiter
+     */
+    delimiter: string;
+
+    /**
+     * These are the data values to be placed in the Csv file to be created.
+     *
+     * @title File data values
+     */
+    values: {
+      [key: string]: string;
+    }[];
+  }
+
+  /**
+   * @title Csv file creation result
+   */
+  export interface IWriteOutput {
+    /**
+     * This is the uri of the csv file that was created.
+     *
+     * @title csv file uri
+     */
+    uri: string & tags.Format<"iri"> & ContentMediaType<"text/csv">;
+  }
+
+  /**
    * @title Information needed to convert a Csv file to an Excel file
    */
   export interface ICsvToExcelInput {
     /**
-     * This is the Csv file to read encoded in base64.
+     * This is the uri of Csv file to read.
      *
-     * @title file
+     * @title file uri
      */
-    csvBase64: string & tags.Format<"byte">;
+    uri: string & tags.Format<"iri"> & ContentMediaType<"text/csv">;
 
     /**
      * This is the file delimiter to convert from csv to excel.
+     *
+     * Default is ","
      *
      * @title delimiter
      */
@@ -58,10 +103,10 @@ export namespace ICsvService {
    */
   export interface ICsvToExcelOutput {
     /**
-     * This is the Excel file encoded in base64.
+     * Here is the uri of converted excel file.
      *
-     * @title excel file
+     * @title uri
      */
-    excelBase64: string & tags.Format<"byte">;
+    uri: string & tags.Format<"iri"> & ContentMediaType<"text/csv">;
   }
 }

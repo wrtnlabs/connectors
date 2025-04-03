@@ -2,11 +2,17 @@ import { CsvService } from "@wrtnlabs/connector-csv/lib/csv/CsvService";
 import { ICsvService } from "@wrtnlabs/connector-csv/lib/structures/ICsvService";
 import typia from "typia";
 import { TestGlobal } from "../TestGlobal";
-// import * as fs from "node:fs/promises";
-import { stringToBase64 } from "@wrtnlabs/connector-shared";
+import { AwsS3Service } from "@wrtnlabs/connector-aws-s3";
 
 export const test_csv = async () => {
-  const csvService = new CsvService();
+  const awsS3Service = new AwsS3Service({
+    awsAccessKeyId: TestGlobal.env.AWS_ACCESS_KEY_ID,
+    awsSecretAccessKey: TestGlobal.env.AWS_SECRET_ACCESS_KEY,
+    awsS3Bucket: TestGlobal.env.AWS_S3_BUCKET,
+    awsS3Region: "ap-northeast-2",
+  });
+
+  const csvService = new CsvService(awsS3Service);
 
   /**
    * read csv file from s3
@@ -16,26 +22,17 @@ export const test_csv = async () => {
     delimiter: ",",
   };
 
-  const response = await fetch(readCsvInput.s3Url);
-  const body = await response.text();
-
-  const csvBase64 = stringToBase64(body);
-
   const result = await csvService.read({
-    csvBase64: csvBase64,
+    uri: readCsvInput.s3Url,
     delimiter: readCsvInput.delimiter,
   });
 
   typia.assert<ICsvService.IReadOutput>(result);
 
-  // await fs.writeFile("a.csv", csvBase64, "base64");
-
   const csvToExcelResult = await csvService.convertCsvToExcel({
-    csvBase64: csvBase64,
+    uri: readCsvInput.s3Url,
     delimiter: readCsvInput.delimiter,
   });
 
   typia.assert<ICsvService.ICsvToExcelOutput>(csvToExcelResult);
-
-  // await fs.writeFile("a.xlsx", csvToExcelResult.excelBase64, "base64");
 };

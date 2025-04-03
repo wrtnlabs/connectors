@@ -5,9 +5,10 @@ import { WritableStreamBuffer } from "stream-buffers";
 
 import { Readable } from "stream";
 import { ICsvService } from "../structures/ICsvService";
-import { base64ToString } from "@wrtnlabs/connector-shared";
+import { FileManager } from "@wrtnlabs/connector-shared";
 
 export class CsvService {
+  constructor(private readonly fileManager: FileManager) {}
   /**
    * Csv Service.
    *
@@ -15,9 +16,20 @@ export class CsvService {
    */
   async read(input: ICsvService.IReadInput): Promise<ICsvService.IReadOutput> {
     try {
-      const { csvBase64, delimiter } = input;
+      const { uri, delimiter } = input;
 
-      const body: string = base64ToString(csvBase64);
+      const body: string = await (async (): Promise<string> => {
+        const isMatch = this.fileManager.isMatch({ uri });
+
+        if (isMatch) {
+          return (
+            await this.fileManager.read({ props: { type: "url", url: uri } })
+          ).data.toString("utf-8");
+        } else {
+          const response: Response = await fetch(uri);
+          return await response.text();
+        }
+      })();
 
       const res = parse(body, {
         columns: true,
@@ -40,22 +52,37 @@ export class CsvService {
   async convertCsvToExcel(
     input: ICsvService.ICsvToExcelInput,
   ): Promise<ICsvService.ICsvToExcelOutput> {
-    const { csvBase64, delimiter } = input;
+    const { uri, delimiter } = input;
 
-    // base64 디코딩
-    const csvData = Buffer.from(csvBase64, "base64").toString("utf-8");
+    const isMatch = this.fileManager.isMatch({ uri });
+    if (!isMatch) {
+      throw new Error("Invalid File URL");
+    }
 
-    // CSV 데이터를 스트림으로 변환
+    const csvData = await this.fileManager.read({
+      props: { type: "url", url: uri },
+    });
+
+    // Convert Buffer to stream
     const csvStream = new Readable();
-    csvStream.push(csvData);
-    csvStream.push(null);
+    csvStream.push(csvData.data);
+    csvStream.push(null); // Indicates end of stream
 
     const buffer = new WritableStreamBuffer();
     const workbook = new ExcelJS.stream.xlsx.WorkbookWriter({ stream: buffer });
     const worksheet = workbook.addWorksheet("Sheet1");
     let headers;
 
-    await new Promise<void>((resolve, reject) => {
+    const filename =
+      uri.split("//").at(1)?.split("/").slice(1).join("/") ?? uri;
+
+    if (!filename) {
+      throw new Error(`Invalid File name: ${filename}`);
+    }
+
+    const excelFilename = `${filename.split(".").slice(0, -1).join(".")}.xlsx`;
+
+    const res = await new Promise<string>((resolve, reject) => {
       try {
         csvStream
           .pipe(csv.parse({ headers: true, delimiter: delimiter }))
@@ -71,21 +98,26 @@ export class CsvService {
           })
           .on("end", async () => {
             await workbook.commit();
-            resolve();
+
+            const response = await this.fileManager.upload({
+              props: {
+                type: "object",
+                path: excelFilename,
+                data: buffer.getContents() || Buffer.from(""), // 버퍼 내용이 없을 경우 빈 버퍼 처리
+                contentType:
+                  "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+              },
+            });
+
+            resolve(response.uri);
           });
       } catch (err) {
         reject(err);
       }
     });
 
-    const res = buffer.getContents();
-
-    if (!res) {
-      throw new Error("Fail to convert csv to excel");
-    }
-
     return {
-      excelBase64: res.toString("base64"),
+      uri: res,
     };
   }
 }
