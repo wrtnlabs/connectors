@@ -1,24 +1,17 @@
 import { tags } from "typia";
-import { MyPick, PickPartial, StrictOmit } from "@wrtnlabs/connector-shared";
-import { IAwsS3Service } from "@wrtnlabs/connector-aws-s3";
+import {
+  MyPick,
+  PickPartial,
+  SnakeToCamel,
+  StrictOmit,
+} from "@wrtnlabs/connector-shared";
+
+export const ENV_LIST = ["GITHUB_REFRESH_TOKEN"] as const;
 
 export namespace IGithubService {
-  export interface IProps {
-    /**
-     * Github Refresh Token.
-     */
-    secret: string;
-
-    /**
-     * AWS
-     */
-    aws?: {
-      /**
-       * S3
-       */
-      s3?: IAwsS3Service.IProps;
-    };
-  }
+  export type IProps = {
+    [K in SnakeToCamel<(typeof ENV_LIST)[number]>]: string;
+  };
 
   export interface ICommonPaginationOutput {
     /**

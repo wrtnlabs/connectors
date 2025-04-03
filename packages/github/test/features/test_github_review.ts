@@ -6,7 +6,7 @@ import { TestGlobal } from "../TestGlobal";
 // create pull request 테스트 코드에 리뷰 요청을 추가하여 작성
 export const test_github_request_review_and_delete_review = async () => {
   const githubService = new GithubService({
-    secret: TestGlobal.env.G_GITHUB_TEST_SECRET,
+    githubRefreshToken: TestGlobal.env.G_GITHUB_TEST_SECRET,
   });
 
   const created = await githubService.createPullRequest({

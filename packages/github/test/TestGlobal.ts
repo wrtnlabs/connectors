@@ -30,6 +30,11 @@ export class TestGlobal {
 interface IEnvironments {
   G_GITHUB_TEST_SECRET: string;
   G_GITHUB_TEST_SECRET_2: string;
+
+  // AWS
+  AWS_ACCESS_KEY_ID: string;
+  AWS_SECRET_ACCESS_KEY: string;
+  AWS_S3_BUCKET: string;
 }
 
 const environments = new Singleton(() => {

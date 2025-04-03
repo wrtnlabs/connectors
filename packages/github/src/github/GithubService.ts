@@ -9,18 +9,9 @@ import {
   PickPartial,
   videoExtensions,
 } from "@wrtnlabs/connector-shared";
-// import { AwsS3Service } from "@wrtnlabs/connector-aws-s3";
 
 export class GithubService {
-  // private readonly s3?: AwsS3Service;
-
-  constructor(private readonly props: IGithubService.IProps) {
-    // if (this.props.aws?.s3) {
-    //   this.s3 = new AwsS3Service({
-    //     ...this.props.aws.s3,
-    //   });
-    // }
-  }
+  constructor(private readonly props: IGithubService.IProps) {}
 
   /**
    * Github Service.
@@ -39,7 +30,7 @@ export class GithubService {
     const url = `https://api.github.com/users/${username}/orgs?${queryParameters}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.secret}`,
+        Authorization: `Bearer ${this.props.githubRefreshToken}`,
       },
     });
 
@@ -65,138 +56,15 @@ export class GithubService {
     const url = `https://api.github.com/user/orgs?${queryParameters}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.secret}`,
+        Authorization: this.props.githubRefreshToken
+          ? `Bearer ${this.props.githubRefreshToken}`
+          : undefined,
       },
     });
 
     const link = res.headers["link"];
     return { result: res.data, ...this.getCursors(link) };
   }
-
-  // async copyAllFiles(
-  //   input: IGithubService.IAnalyzeInput,
-  // ): Promise<IGithubService.IAnalyzeOutput> {
-  //   // 이전에 분석했던 기록이 있는지 보기 위해 유니크한 키를 만든다. (owner, repo, commit hash를 이용한다.)
-  //   const { default_branch: commit_sha } = await this.getRepository(input);
-  //   const head = await this.getCommitHeads({ ...input, commit_sha });
-  //   const AWS_KEY = `connector/github/repos/analyzed/${input.owner}/${input.repo}/${head.sha}`;
-
-  //   // // 이미 분석한 적 있을 경우 AWS S3에서 조회하여 갖고 온다.
-  //   // const fileUrl = this.s3.getFileUrl(AWS_KEY);
-  //   // const isSaved = await this.s3.getGetObjectUrl(fileUrl);
-  //   // console.log(isSaved, "isSaved");
-  //   // if (isSaved) {
-  //   //   const counts = [0, 1, 2, 3, 4] as const;
-  //   //   return counts
-  //   //     .map((file_count) => `${AWS_KEY}/${file_count}.txt`)
-  //   //     .map((key) => this.s3.getFileUrl(key));
-  //   // }
-
-  //   const MAX_SIZE = 3 * 1024 * 1024;
-  //   const MAX_DEPTH = 100;
-
-  //   // 전체 폴더 구조 가져오기
-  //   const rootFiles = await this.getRepositoryFolderStructures({
-  //     ...input,
-  //     depth: MAX_DEPTH,
-  //     includeMediaFile: false,
-  //   });
-
-  //   // 전체 순회하며 파일인 경우 content를 가져오게 하기
-  //   const traverseOption = {
-  //     result: [[], [], [], [], []] as StrictOmit<
-  //       IGithubService.RepositoryFile,
-  //       "encoding"
-  //     >[][],
-  //     currentIndex: 0,
-  //     currentSize: 0,
-  //   };
-
-  //   if (rootFiles instanceof Array) {
-  //     await Promise.allSettled(
-  //       rootFiles
-  //         .filter(
-  //           (file) =>
-  //             !file.path.includes("test") &&
-  //             !file.path.includes("benchmark") &&
-  //             !file.path.includes("yarn") &&
-  //             !file.path.includes("pnp") &&
-  //             this.isMediaFile(file) === false,
-  //         )
-  //         .map(async (file) => {
-  //           if (traverseOption.currentIndex === 5) {
-  //             return;
-  //           }
-
-  //           const path = file.path;
-  //           if (file.type === "dir") {
-  //             await this.traverseTree(input, file, traverseOption);
-  //           } else {
-  //             const detailed = await this.getFileContents({ ...input, path });
-  //             const { content } =
-  //               typia.assert<IGithubService.RepositoryFile>(detailed);
-
-  //             if (MAX_SIZE < traverseOption.currentSize + file.size) {
-  //               traverseOption.currentSize = 0; // 사이즈 초기화
-  //               traverseOption.currentIndex += 1; // 다음 파일 인덱스로 이전
-  //               console.log(`${file.path} 파일을 만나서 파일 인덱스 증가 연산`);
-  //             }
-
-  //             if (traverseOption.currentIndex === 5) {
-  //               return;
-  //             }
-
-  //             traverseOption.currentSize += file.size;
-  //             traverseOption.result[traverseOption.currentIndex]?.push({
-  //               ...file,
-  //               content,
-  //             });
-  //           }
-  //         }),
-  //     );
-  //   }
-
-  //   const analyzedFiles = traverseOption.result.filter((el) => el.length);
-  //   const links: string[] = [];
-  //   if (analyzedFiles) {
-  //     let FILE_NUM = 0;
-  //     for await (const analyzedFile of analyzedFiles) {
-  //       const key = `${AWS_KEY}/${FILE_NUM}.txt`;
-  //       const link = await this.upload({ files: analyzedFile, key });
-  //       links.push(link);
-  //       FILE_NUM++;
-  //     }
-  //   }
-
-  //   return links;
-  // }
-
-  // async upload(input: {
-  //   files: Pick<IGithubService.RepositoryFile, "path" | "content">[];
-  //   key: string;
-  // }) {
-  //   const { files, key } = input;
-  //   if (!this.s3) {
-  //     throw new Error("AWS S3 Not Applied.");
-  //   }
-
-  //   const stringified = files.map(({ path, content }) => ({ path, content }));
-  //   const buffer = Buffer.from(JSON.stringify(stringified), "utf-8");
-  //   const link = await this.s3.uploadObject({
-  //     contentType: "text/plain; charset=utf-8;",
-  //     data: buffer,
-  //     key,
-  //   });
-
-  //   return link;
-  // }
-
-  // async analyze(
-  //   input: IGithubService.IAnalyzeInput,
-  // ): Promise<IRag.IAnalysisOutput> {
-  //   const urls = await this.copyAllFiles(input);
-  //   return await this.ragProvider.analyze({ url: urls });
-  // }
 
   private async getRepository(input: {
     owner: string;
@@ -205,7 +73,7 @@ export class GithubService {
     const url = `https://api.github.com/repos/${input.owner}/${input.repo}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.secret}`,
+        Authorization: `Bearer ${this.props.githubRefreshToken}`,
       },
     });
     return res.data;
@@ -214,7 +82,7 @@ export class GithubService {
   // async call(input: IGithubService.ICallInput) {
   //   const res = await axios.get(input.url, {
   //     headers: {
-  //       Authorization: `Bearer ${this.props.secret}`,
+  //       Authorization: `Bearer ${this.props.githubRefreshToken}`,
   //     },
   //   });
   //   return res.data;
@@ -237,7 +105,7 @@ export class GithubService {
     const url = `https://api.github.com/repos/${owner}/${repo}/commits/${commit_sha}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.secret}`,
+        Authorization: `Bearer ${this.props.githubRefreshToken}`,
       },
     });
     return res.data;
@@ -263,7 +131,7 @@ export class GithubService {
     const url = `https://api.github.com/users/${username}/received_events?${queryParameters}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.secret}`,
+        Authorization: `Bearer ${this.props.githubRefreshToken}`,
       },
     });
 
@@ -295,7 +163,7 @@ export class GithubService {
     const url = `https://api.github.com/users/${login}/events/orgs/${organization}?${queryParameters}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.secret}`,
+        Authorization: `Bearer ${this.props.githubRefreshToken}`,
       },
     });
 
@@ -324,7 +192,7 @@ export class GithubService {
     const url = `https://api.github.com/repos/${owner}/${repo}/pulls/${pull_number}/requested_reviewers`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.secret}`,
+        Authorization: `Bearer ${this.props.githubRefreshToken}`,
       },
     });
 
@@ -347,7 +215,7 @@ export class GithubService {
     await axios.delete(url, {
       data: { ...rest },
       headers: {
-        Authorization: `Bearer ${this.props.secret}`,
+        Authorization: `Bearer ${this.props.githubRefreshToken}`,
       },
     });
   }
@@ -372,7 +240,7 @@ export class GithubService {
       },
       {
         headers: {
-          Authorization: `Bearer ${this.props.secret}`,
+          Authorization: `Bearer ${this.props.githubRefreshToken}`,
         },
       },
     );
@@ -393,7 +261,7 @@ export class GithubService {
     const url = `https://api.github.com/repos/${owner}/${repo}/pulls/${pull_number}/reviews/${review_id}/comments?${queryParameter}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.secret}`,
+        Authorization: `Bearer ${this.props.githubRefreshToken}`,
       },
     });
 
@@ -419,7 +287,7 @@ export class GithubService {
     const url = `https://api.github.com/repos/${owner}/${repo}/pulls/${pull_number}/reviews?${queryParameter}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.secret}`,
+        Authorization: `Bearer ${this.props.githubRefreshToken}`,
       },
     });
 
@@ -450,7 +318,7 @@ export class GithubService {
         },
         {
           headers: {
-            Authorization: `Bearer ${this.props.secret}`,
+            Authorization: `Bearer ${this.props.githubRefreshToken}`,
           },
         },
       );
@@ -481,7 +349,7 @@ export class GithubService {
     const url = `https://api.github.com/repos/${owner}/${repo}/pulls/${pull_number}/files?${queryParameter}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.secret}`,
+        Authorization: `Bearer ${this.props.githubRefreshToken}`,
       },
     });
 
@@ -507,7 +375,7 @@ export class GithubService {
     const url = `https://api.github.com/repos/${owner}/${repo}/pulls/${pull_number}/commits?${queryParameter}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.secret}`,
+        Authorization: `Bearer ${this.props.githubRefreshToken}`,
       },
     });
 
@@ -543,7 +411,7 @@ export class GithubService {
       const url = `https://api.github.com/repos/${owner}/${repo}/pulls/${pull_number}`;
       const res = await axios.get(url, {
         headers: {
-          Authorization: `Bearer ${this.props.secret}`,
+          Authorization: `Bearer ${this.props.githubRefreshToken}`,
           Accept: "application/vnd.github.diff",
         },
       });
@@ -580,7 +448,7 @@ export class GithubService {
     const url = `https://api.github.com/repos/${owner}/${repo}/pulls/${pull_number}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.secret}`,
+        Authorization: `Bearer ${this.props.githubRefreshToken}`,
       },
     });
 
@@ -680,7 +548,7 @@ export class GithubService {
       },
       {
         headers: {
-          Authorization: `Bearer ${this.props.secret}`,
+          Authorization: `Bearer ${this.props.githubRefreshToken}`,
         },
       },
     );
@@ -791,7 +659,7 @@ export class GithubService {
       },
       {
         headers: {
-          Authorization: `Bearer ${this.props.secret}`,
+          Authorization: `Bearer ${this.props.githubRefreshToken}`,
         },
       },
     );
@@ -836,7 +704,7 @@ export class GithubService {
   //   const url = `https://api.github.com/repos/${owner}/${repo}/issues?${queryParameter}`;
   //   const res = await axios.get(url, {
   //     headers: {
-  //       Authorization: `Bearer ${this.props.secret}`,
+  //       Authorization: `Bearer ${this.props.githubRefreshToken}`,
   //       Accept: "application/vnd.github+json",
   //     },
   //   });
@@ -865,7 +733,7 @@ export class GithubService {
     const url = `https://api.github.com/orgs/${organization}/issues?${queryParameter}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.secret}`,
+        Authorization: `Bearer ${this.props.githubRefreshToken}`,
         Accept: "application/vnd.github+json",
       },
     });
@@ -901,7 +769,7 @@ export class GithubService {
     const url = `https://api.github.com/orgs/${organization}/events?${queryParameters}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.secret}`,
+        Authorization: `Bearer ${this.props.githubRefreshToken}`,
       },
     });
 
@@ -929,7 +797,7 @@ export class GithubService {
     const url = `https://api.github.com/repos/${owner}/${repo}/collaborators`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.secret}`,
+        Authorization: `Bearer ${this.props.githubRefreshToken}`,
       },
     });
 
@@ -1002,7 +870,7 @@ export class GithubService {
       },
       {
         headers: {
-          Authorization: `Bearer ${this.props.secret}`,
+          Authorization: `Bearer ${this.props.githubRefreshToken}`,
         },
       },
     );
@@ -1032,7 +900,7 @@ export class GithubService {
     await axios.delete(url, {
       data: { ...rest },
       headers: {
-        Authorization: `Bearer ${this.props.secret}`,
+        Authorization: `Bearer ${this.props.githubRefreshToken}`,
       },
     });
   }
@@ -1127,7 +995,7 @@ export class GithubService {
           ref: branch,
         },
         headers: {
-          Authorization: `Bearer ${this.props.secret}`,
+          Authorization: `Bearer ${this.props.githubRefreshToken}`,
           "Content-Type": "application/vnd.github.object+json",
         },
       });
@@ -1181,7 +1049,7 @@ export class GithubService {
       const url = `https://api.github.com/repos/${owner}/${repo}/readme`;
       const res = await axios.get(url, {
         headers: {
-          Authorization: `Bearer ${this.props.secret}`,
+          Authorization: `Bearer ${this.props.githubRefreshToken}`,
           "Content-Type": "application/vnd.github.object+json",
         },
       });
@@ -1216,7 +1084,7 @@ export class GithubService {
     const url = `https://api.github.com/repos/${username}/${repo}/events?${queryParameters}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.secret}`,
+        Authorization: `Bearer ${this.props.githubRefreshToken}`,
       },
     });
 
@@ -1250,7 +1118,7 @@ export class GithubService {
     const url = `https://api.github.com/networks/${username}/${repo}/events?${queryParameters}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.secret}`,
+        Authorization: `Bearer ${this.props.githubRefreshToken}`,
       },
     });
 
@@ -1286,7 +1154,7 @@ export class GithubService {
     const url = `https://api.github.com/users/${username}/events?${queryParameters}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.secret}`,
+        Authorization: `Bearer ${this.props.githubRefreshToken}`,
       },
     });
 
@@ -1315,7 +1183,7 @@ export class GithubService {
     const url = `https://api.github.com/events?${queryParameters}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.secret}`,
+        Authorization: `Bearer ${this.props.githubRefreshToken}`,
       },
     });
 
@@ -1327,7 +1195,7 @@ export class GithubService {
     const url = `https://api.github.com/user`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.secret}`,
+        Authorization: `Bearer ${this.props.githubRefreshToken}`,
         Accept: "application/vnd.github+json",
       },
     });
@@ -1362,7 +1230,7 @@ export class GithubService {
       },
       {
         headers: {
-          Authorization: `Bearer ${this.props.secret}`,
+          Authorization: `Bearer ${this.props.githubRefreshToken}`,
         },
       },
     );
@@ -1397,7 +1265,7 @@ export class GithubService {
       },
       {
         headers: {
-          Authorization: `Bearer ${this.props.secret}`,
+          Authorization: `Bearer ${this.props.githubRefreshToken}`,
         },
       },
     );
@@ -1429,7 +1297,7 @@ export class GithubService {
     const url = `https://api.github.com/repos/${owner}/${repo}/activity?${queryParameters}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.secret}`,
+        Authorization: `Bearer ${this.props.githubRefreshToken}`,
       },
     });
 
@@ -1459,7 +1327,7 @@ export class GithubService {
       },
       {
         headers: {
-          Authorization: `Bearer ${this.props.secret}`,
+          Authorization: `Bearer ${this.props.githubRefreshToken}`,
         },
       },
     );
@@ -1507,7 +1375,7 @@ export class GithubService {
         },
         {
           headers: {
-            Authorization: `Bearer ${this.props.secret}`,
+            Authorization: `Bearer ${this.props.githubRefreshToken}`,
           },
         },
       );
@@ -1536,7 +1404,7 @@ export class GithubService {
     const url = `https://api.github.com/search/users?${queryParameters}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.secret}`,
+        Authorization: `Bearer ${this.props.githubRefreshToken}`,
         Accept: "application/vnd.github+json",
       },
     });
@@ -1563,7 +1431,7 @@ export class GithubService {
     const url = `https://api.github.com/users/${input.username}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.secret}`,
+        Authorization: `Bearer ${this.props.githubRefreshToken}`,
         Accept: "application/vnd.github+json",
       },
     });
@@ -1586,7 +1454,7 @@ export class GithubService {
     const url = `https://api.github.com/issues?${queryParameter}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.secret}`,
+        Authorization: `Bearer ${this.props.githubRefreshToken}`,
         Accept: "application/vnd.github+json",
       },
     });
@@ -1610,7 +1478,7 @@ export class GithubService {
     const url = `https://api.github.com/repos/${owner}/${repo}/issues/${issue_number}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.secret}`,
+        Authorization: `Bearer ${this.props.githubRefreshToken}`,
         Accept: "application/vnd.github+json",
       },
     });
@@ -1638,7 +1506,7 @@ export class GithubService {
     const url = `https://api.github.com/repos/${owner}/${repo}/issues/${pull_number}/comments?${queryParameter}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.secret}`,
+        Authorization: `Bearer ${this.props.githubRefreshToken}`,
       },
     });
 
@@ -1663,7 +1531,7 @@ export class GithubService {
     const url = `https://api.github.com/repos/${owner}/${repo}/issues/${issue_number}/comments?${queryParameter}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.secret}`,
+        Authorization: `Bearer ${this.props.githubRefreshToken}`,
       },
     });
 
@@ -1703,7 +1571,7 @@ export class GithubService {
         },
         {
           headers: {
-            Authorization: `Bearer ${this.props.secret}`,
+            Authorization: `Bearer ${this.props.githubRefreshToken}`,
           },
         },
       );
@@ -1732,7 +1600,7 @@ export class GithubService {
     const url = `https://api.github.com/orgs/${organization}/repos?${queryParameter}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.secret}`,
+        Authorization: `Bearer ${this.props.githubRefreshToken}`,
         Accept: "application/vnd.github+json",
       },
     });
@@ -1775,7 +1643,7 @@ export class GithubService {
       },
       {
         headers: {
-          Authorization: `Bearer ${this.props.secret}`,
+          Authorization: `Bearer ${this.props.githubRefreshToken}`,
         },
       },
     );
@@ -1802,7 +1670,7 @@ export class GithubService {
     const url = `https://api.github.com/users/${username}/repos?${queryParameter}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.secret}`,
+        Authorization: `Bearer ${this.props.githubRefreshToken}`,
         Accept: "application/vnd.github+json",
       },
     });
@@ -1842,7 +1710,7 @@ export class GithubService {
     const url = `https://api.github.com/repos/${owner}/${repo}/branches?${queryParameter}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.secret}`,
+        Authorization: `Bearer ${this.props.githubRefreshToken}`,
         Accept: "application/vnd.github+json",
       },
     });
@@ -1884,7 +1752,7 @@ export class GithubService {
       },
       {
         headers: {
-          Authorization: `Bearer ${this.props.secret}`,
+          Authorization: `Bearer ${this.props.githubRefreshToken}`,
         },
       },
     );
@@ -1907,7 +1775,7 @@ export class GithubService {
     const url = `https://api.github.com/repos/${owner}/${repo}/commits/${commit_sha}/pulls`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.secret}`,
+        Authorization: `Bearer ${this.props.githubRefreshToken}`,
       },
     });
 
@@ -1935,7 +1803,7 @@ export class GithubService {
     const url = `https://api.github.com/repos/${owner}/${repo}/commits/${branch}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.secret}`,
+        Authorization: `Bearer ${this.props.githubRefreshToken}`,
         Accept: "application/vnd.github+json",
       },
     });
@@ -1961,7 +1829,7 @@ export class GithubService {
     const url = `https://api.github.com/repos/${owner}/${repo}/commits/${branch}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.secret}`,
+        Authorization: `Bearer ${this.props.githubRefreshToken}`,
         Accept: "application/vnd.github.diff",
       },
     });
@@ -1985,7 +1853,7 @@ export class GithubService {
     const url = `https://api.github.com/repos/${owner}/${repo}/commits?${queryParameter}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.secret}`,
+        Authorization: `Bearer ${this.props.githubRefreshToken}`,
         Accept: "application/vnd.github.json",
       },
     });
@@ -2011,7 +1879,7 @@ export class GithubService {
     const url = `https://api.github.com/users/${username}/followers?${queryParameter}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.secret}`,
+        Authorization: `Bearer ${this.props.githubRefreshToken}`,
         Accept: "application/vnd.github+json",
       },
     });
@@ -2037,7 +1905,7 @@ export class GithubService {
     const url = `https://api.github.com/users/${username}/following?${queryParameter}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.secret}`,
+        Authorization: `Bearer ${this.props.githubRefreshToken}`,
         Accept: "application/vnd.github+json",
       },
     });
@@ -2066,7 +1934,7 @@ export class GithubService {
 
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.secret}`,
+        Authorization: `Bearer ${this.props.githubRefreshToken}`,
       },
     });
 
@@ -2332,7 +2200,7 @@ export class GithubService {
     const url = `https://api.github.com/repos/${owner}/${repo}/branches/${name}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.secret}`,
+        Authorization: `Bearer ${this.props.githubRefreshToken}`,
         Accept: "application/vnd.github+json",
       },
     });
