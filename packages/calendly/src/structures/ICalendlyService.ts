@@ -1,22 +1,16 @@
+import { SnakeToCamel } from "@wrtnlabs/connector-shared";
 import { tags } from "typia";
 
+export const ENV_LIST = [
+  "CALENDLY_CLIENT_ID",
+  "CALENDLY_CLIENT_SECRET",
+  "CALENDLY_REFRESH_TOKEN",
+] as const;
+
 export namespace ICalendlyService {
-  export interface IProps {
-    /**
-     * Calendly Client ID.
-     */
-    calendlyClientId: string;
-
-    /**
-     * Calendly Client Secret.
-     */
-    calendlyClientSecret: string;
-
-    /**
-     * Calendly Refresh Token.
-     */
-    calendlyRefreshToken: string;
-  }
+  export type IProps = {
+    [key in SnakeToCamel<(typeof ENV_LIST)[number]>]: string;
+  };
 
   export type IGetUserInfoOutput = {
     /**
