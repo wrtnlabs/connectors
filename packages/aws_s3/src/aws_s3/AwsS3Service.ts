@@ -56,7 +56,7 @@ export class AwsS3Service implements FileManager {
       ContentType: contentType,
     });
     await this.s3.send(putObjectConfig);
-    return { ...this.addBucketPrefix({ key: input.path }) };
+    return { uri: this.addBucketPrefix({ key: input.path }).url };
   }
 
   /**
@@ -232,5 +232,9 @@ export class AwsS3Service implements FileManager {
   ): IAwsS3Service.IAddBucketPrefixOutput {
     const url = `https://${this.props.awsS3Bucket}.s3.${this.props.awsS3Region}.amazonaws.com/${input.key}`;
     return { url };
+  }
+
+  isMatch(input: IFileManager.IMatchInput): boolean {
+    return input.uri.match(this.S3BucketURL) !== null;
   }
 }

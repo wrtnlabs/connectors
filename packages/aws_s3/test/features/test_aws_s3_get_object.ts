@@ -21,6 +21,8 @@ export const test_aws_s3_get_put_object_url = async () => {
 };
 
 export const test_aws_s3_upload_and_read = async () => {
+  console.log(TestGlobal.env.AWS_S3_BUCKET);
+
   const awsS3Service = new AwsS3Service({
     awsAccessKeyId: TestGlobal.env.AWS_ACCESS_KEY_ID!,
     awsSecretAccessKey: TestGlobal.env.AWS_SECRET_ACCESS_KEY!,
@@ -42,7 +44,7 @@ export const test_aws_s3_upload_and_read = async () => {
   const res2 = await awsS3Service.read({
     props: {
       type: "url",
-      url: res.url,
+      url: res.uri,
     },
   });
 
