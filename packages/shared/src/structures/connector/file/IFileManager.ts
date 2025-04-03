@@ -1,8 +1,15 @@
+import { tags } from "typia";
+
 export namespace IFileManager {
   /**
    * Upload file by object input.
    */
   export interface IUploadByObjectInput {
+    /**
+     * Type of upload.
+     */
+    type: "object";
+
     /**
      * Data of file.
      */
@@ -17,11 +24,6 @@ export namespace IFileManager {
      * Content type of file.
      */
     contentType: string;
-
-    /**
-     * Type of upload.
-     */
-    type: "object";
   }
 
   /**
@@ -33,9 +35,10 @@ export namespace IFileManager {
 
   export interface IUploadOutput {
     /**
-     * File url.
+     * File uri.
+     * URI includes the file path and scheme.
      */
-    url: string;
+    uri: string & tags.Format<"iri">;
   }
 
   /**
@@ -50,7 +53,7 @@ export namespace IFileManager {
     /**
      * File url.
      */
-    url: string;
+    url: string & tags.Format<"iri">;
   }
 
   /**
