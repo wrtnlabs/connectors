@@ -1,24 +1,15 @@
 import { tags } from "typia";
 import { ContentMediaType } from "typia/lib/tags";
+import { SnakeToCamel } from "@wrtnlabs/connector-shared";
+
+export const ENV_LIST = ["IMWEB_API_KEY", "IMWEB_SECRET_KEY"] as const;
 
 export namespace IImwebService {
-  export interface IProps {
-    /**
-     * @title API Key
-     *
-     * This can be found in the configuration settings on the `Imweb`.
-     */
-    key: string;
+  export type IProps = {
+    [key in SnakeToCamel<(typeof ENV_LIST)[number]>]: string;
+  };
 
-    /**
-     * @title API Secret Key
-     *
-     * This can be found in the configuration settings on the `Imweb`.
-     */
-    secret: string;
-  }
-
-  export interface ResponseForm {
+  export interface IResponseForm {
     /**
      * @title Summary message for the response
      */
@@ -65,7 +56,7 @@ export namespace IImwebService {
   /**
    * @title Product inquiry results
    */
-  export interface IGetProductOutput extends ResponseForm {
+  export interface IGetProductOutput extends IResponseForm {
     /**
      * @title Product info
      */
@@ -73,11 +64,11 @@ export namespace IImwebService {
       /**
        * @title Product list
        */
-      list: IImwebService.Product[];
+      list: IImwebService.IProduct[];
     };
   }
 
-  export interface Product {
+  export interface IProduct {
     /**
      * @title Product number
      */
@@ -204,7 +195,7 @@ export namespace IImwebService {
     /**
      * @title Set up a reserve
      */
-    point: IImwebService.PointConfigData;
+    point: IImwebService.IPointConfigData;
 
     /**
      * @title Set Discount Usage
@@ -223,7 +214,7 @@ export namespace IImwebService {
     /**
      * @title Product Stock Information
      */
-    stock: IImwebService.ProdStockConfigData;
+    stock: IImwebService.IProdStockConfigData;
 
     /**
      * @title Origin
@@ -243,17 +234,17 @@ export namespace IImwebService {
     /**
      * @title Badge Information
      */
-    badge: IImwebService.ProdBadgeData;
+    badge: IImwebService.IProdBadgeData;
 
     /**
      * @title External Integration Information
      */
-    sync: IImwebService.ProdSyncData;
+    sync: IImwebService.IProdSyncData;
 
     /**
      * @title Miscellaneous Settings
      */
-    etc: IImwebService.ProdEtcData;
+    etc: IImwebService.IProdEtcData;
 
     /**
      * @title Product Information Disclosure
@@ -325,7 +316,7 @@ export namespace IImwebService {
   /**
    * @title Point Configuration Data Structure
    */
-  export interface PointConfigData {
+  export interface IPointConfigData {
     /**
      * @title Point Configuration Type
      */
@@ -351,7 +342,7 @@ export namespace IImwebService {
   /**
    * @title Product Stock Information Data Structure
    */
-  export interface ProdStockConfigData {
+  export interface IProdStockConfigData {
     /**
      * @title Use Stock
      */
@@ -376,7 +367,7 @@ export namespace IImwebService {
   /**
    * @title Badge Information Data Structure
    */
-  export interface ProdBadgeData {
+  export interface IProdBadgeData {
     /**
      * @title New Product
      */
@@ -401,7 +392,7 @@ export namespace IImwebService {
   /**
    * @title External Integration Information Data Structure
    */
-  export interface ProdSyncData {
+  export interface IProdSyncData {
     /**
      * @title Product Name for Naver and Kakao Shopping Exposure
      */
@@ -464,7 +455,7 @@ export namespace IImwebService {
   /**
    * @title Miscellaneous Settings Data Structure
    */
-  export interface ProdEtcData {
+  export interface IProdEtcData {
     /**
      * @title Minimum Purchase Quantity
      */
@@ -524,7 +515,7 @@ export namespace IImwebService {
    *
    * @title Imweb Access Token Request DTO
    */
-  export interface Credential {
+  export interface ICredential {
     /**
      * @title API Key
      *

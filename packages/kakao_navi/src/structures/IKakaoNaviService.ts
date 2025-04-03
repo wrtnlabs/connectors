@@ -1,13 +1,12 @@
 import { tags } from "typia";
-import { MyPick } from "@wrtnlabs/connector-shared";
+import { MyPick, SnakeToCamel } from "@wrtnlabs/connector-shared";
+
+export const ENV_LIST = ["KAKAO_NATIVE_CLIENT_ID"] as const;
 
 export namespace IKakaoNaviService {
-  export interface IProps {
-    /**
-     * Kakao Talk Client ID.
-     */
-    clientId: string;
-  }
+  export type IProps = {
+    [key in SnakeToCamel<(typeof ENV_LIST)[number]>]: string;
+  };
 
   /**
    * @title Request Conditions
@@ -37,12 +36,12 @@ export namespace IKakaoNaviService {
   /**
    * @title Response Results
    */
-  export type IGetFutureDirectionsOutput = SuccessCase;
+  export type IGetFutureDirectionsOutput = ISuccessCase;
 
   /**
    * @title Success response
    */
-  export interface SuccessCase {
+  export interface ISuccessCase {
     /**
      * @title Path Request ID
      */
@@ -51,14 +50,14 @@ export namespace IKakaoNaviService {
     /**
      * @title Path information
      */
-    routes: Route[];
+    routes: IRoute[];
   }
 
-  export interface Route {
+  export interface IRoute {
     /**
      * @title Path search result code
      */
-    result_code: Route.Code;
+    result_code: IRoute.Code;
 
     /**
      * @title Path search result message
@@ -68,15 +67,15 @@ export namespace IKakaoNaviService {
     /**
      * @title Path Summary Information
      */
-    summary?: Summary;
+    summary?: ISummary;
 
     /**
      * @title Route information by section
      */
-    sections?: Section[];
+    sections?: ISection[];
   }
 
-  export namespace Route {
+  export namespace IRoute {
     export type Code =
       | tags.Constant<0, { title: "길찾기 성공" }>
       | tags.Constant<1, { title: "길찾기 결과를 찾을 수 없음" }>
@@ -142,22 +141,22 @@ export namespace IKakaoNaviService {
         >;
   }
 
-  export interface Summary
-    extends MyPick<Section, "bound" | "distance" | "duration"> {
+  export interface ISummary
+    extends MyPick<ISection, "bound" | "distance" | "duration"> {
     /**
      * @title Departure information
      */
-    origin: Place;
+    origin: IPlace;
 
     /**
      * @title destination information
      */
-    destination: Place;
+    destination: IPlace;
 
     /**
      * @title Transit Information
      */
-    waypoints: Place[];
+    waypoints: IPlace[];
 
     /**
      * @title Path Finding Priority Options
@@ -167,10 +166,10 @@ export namespace IKakaoNaviService {
     /**
      * @title Rate Information
      */
-    fare: Fare;
+    fare: IFare;
   }
 
-  export interface Place {
+  export interface IPlace {
     /**
      * @title place name
      */
@@ -190,7 +189,7 @@ export namespace IKakaoNaviService {
   /**
    * @title Bounding box of a rectangle containing all paths
    */
-  export interface Bound {
+  export interface IBound {
     /**
      * @title X coordinate of the bottom left of the bounding box
      */
@@ -215,7 +214,7 @@ export namespace IKakaoNaviService {
   /**
    * @title Rate Information
    */
-  export interface Fare {
+  export interface IFare {
     /**
      * @title Taxi fare (won)
      */
@@ -231,7 +230,7 @@ export namespace IKakaoNaviService {
    * @title Route information by section
    * @description If there is a waypoint, a section is created equal to the number of waypoints plus 1.
    */
-  export interface Section {
+  export interface ISection {
     /**
      * @title Section Distance (meters)
      */
@@ -245,23 +244,23 @@ export namespace IKakaoNaviService {
     /**
      * @title A rectangular bounding box that contains all paths
      */
-    bound: Bound;
+    bound: IBound;
 
     /**
      * @title Road Information
      */
-    roads?: Road[];
+    roads?: IRoad[];
 
     /**
      * @title Guide Information
      */
-    guides?: Guide[];
+    guides?: IGuide[];
   }
 
   /**
    * @title Road Information
    */
-  export interface Road {
+  export interface IRoad {
     /**
      * @title road name
      */
@@ -308,9 +307,9 @@ export namespace IKakaoNaviService {
   /**
    * @title Guide information
    */
-  export interface Guide
-    extends Place,
-      MyPick<Section, "distance" | "duration"> {
+  export interface IGuide
+    extends IPlace,
+      MyPick<ISection, "distance" | "duration"> {
     /**
      * @title Guide type
      */

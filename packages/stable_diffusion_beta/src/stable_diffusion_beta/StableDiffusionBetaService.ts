@@ -1,9 +1,14 @@
 import axios from "axios";
 import { IStableDiffusionBetaService } from "../structures/IStableDiffusionBetaService";
-import { bufferToBase64 } from "@wrtnlabs/connector-shared";
+import { FileManager } from "@wrtnlabs/connector-shared";
+import { v4 } from "uuid";
+import typia from "typia";
 
 export class StableDiffusionBetaService {
-  constructor(private readonly props: IStableDiffusionBetaService.IProps) {}
+  constructor(
+    private readonly props: IStableDiffusionBetaService.IProps,
+    private readonly fileManager: FileManager,
+  ) {}
 
   /**
    * Stable Diffusion Beta Service.
@@ -25,11 +30,16 @@ export class StableDiffusionBetaService {
         input.style_preset,
       );
 
-      const imageBase64List: string[] = img.map((img) => {
-        return bufferToBase64(img);
+      const imageUrl = await this.fileManager.upload({
+        props: {
+          path: `${input.file.path ?? "/stablediffusion"}/${v4()}`,
+          type: "object",
+          data: img[0]!,
+          contentType: input.file.contentType ?? "image/png",
+        },
       });
 
-      return { imgBase64: imageBase64List[0]! };
+      return typia.assert<IStableDiffusionBetaService.IResponse>(imageUrl.uri);
     } catch (error) {
       console.error(JSON.stringify(error));
       throw error;

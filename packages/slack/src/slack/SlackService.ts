@@ -128,7 +128,7 @@ export class SlackService {
    */
   async sendScheduleMessage(
     input: ISlackService.ISCheduleMessageInput,
-  ): Promise<Pick<ISlackService.ScheduledMessage, "post_at">> {
+  ): Promise<Pick<ISlackService.IScheduledMessage, "post_at">> {
     const url = `https://slack.com/api/chat.scheduleMessage`;
 
     try {
@@ -317,7 +317,7 @@ export class SlackService {
     const link_count = 0;
     const next_cursor = res.data.response_metadata?.next_cursor;
     const replies: ISlackService.ChannelHistory[] = res.data.messages.map(
-      (message: ISlackService.Reply): ISlackService.ChannelHistory =>
+      (message: ISlackService.IReply): ISlackService.ChannelHistory =>
         this.convertMessageFormat({
           message: { ...message, channel: input.channel },
           channel: input.channel,
@@ -390,7 +390,7 @@ export class SlackService {
     const replies: ISlackService.ChannelHistory[] = res.data.messages
       .slice(0, 1) // 0번째 인덱스는 부모 스레드가 나오기 때문
       .map(
-        (message: ISlackService.Reply): ISlackService.ChannelHistory =>
+        (message: ISlackService.IReply): ISlackService.ChannelHistory =>
           this.convertMessageFormat({
             message: { ...message, channel: input.channel },
             channel: input.channel,
@@ -520,7 +520,7 @@ export class SlackService {
     const next_cursor = res.data.response_metadata?.next_cursor;
     type User = StrictOmit<ISlackService.IGetUserOutput, "fields">;
     const users: User[] = res.data.members.map(
-      (el: ISlackService.User): User => {
+      (el: ISlackService.IUser): User => {
         const im_channel = im_channels.find(
           (channel) => channel.user === el.id,
         );
@@ -948,7 +948,7 @@ export class SlackService {
 
     const next_cursor = res.data.response_metadata?.next_cursor;
     const channels = res.data.channels.map(
-      (channel: ISlackService.PrivateChannel) => {
+      (channel: ISlackService.IPrivateChannel) => {
         return {
           id: channel.id,
           name: channel.name,
@@ -1005,7 +1005,7 @@ export class SlackService {
 
     const next_cursor = res.data.response_metadata?.next_cursor;
     const channels = res.data.channels.map(
-      (channel: ISlackService.PublicChannel) => {
+      (channel: ISlackService.IPublicChannel) => {
         return {
           id: channel.id,
           name: channel.name,
@@ -1225,10 +1225,10 @@ export class SlackService {
       ISlackService.Message,
       "reply_count" | "reply_users_count"
     >;
-    channel: ISlackService.Channel["id"];
+    channel: ISlackService.IChannel["id"];
     link_count: number;
     allMembers: StrictOmit<ISlackService.IGetUserOutput, "fields">[];
-    allUsergroups: ISlackService.UserGroup[];
+    allUsergroups: ISlackService.IUserGroup[];
     workspaceUrl: string & tags.Format<"uri">;
   }): ISlackService.ChannelHistory {
     function extractLinks(text: string): string[] {
@@ -1415,8 +1415,8 @@ export class SlackService {
     if (target === "usergroup") {
       return function (input: {
         response: Pick<ISlackService.Message, "text">[];
-        allUserGroup: ISlackService.UserGroup[];
-      }): ISlackService.UserGroup[] {
+        allUserGroup: ISlackService.IUserGroup[];
+      }): ISlackService.IUserGroup[] {
         const refinedTags = Array.from(
           new Set(
             ...input.response.flatMap((message) => {

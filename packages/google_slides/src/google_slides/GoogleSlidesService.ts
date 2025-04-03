@@ -2,23 +2,16 @@ import axios from "axios";
 import { v4 } from "uuid";
 import sharp from "sharp";
 import typia from "typia";
-import { AwsS3Service } from "@wrtnlabs/connector-aws-s3";
-import { bufferToBase64, imageExtensions } from "@wrtnlabs/connector-shared";
+import { FileManager, imageExtensions } from "@wrtnlabs/connector-shared";
 import { GoogleDriveService } from "@wrtnlabs/connector-google-drive";
 import { IGoogleSlidesService } from "../structures/IGoogleSlidesService";
 import { google } from "googleapis";
 
 export class GoogleSlidesService {
-  private readonly s3: AwsS3Service;
-
-  constructor(private readonly props: IGoogleSlidesService.IProps) {
-    this.s3 = new AwsS3Service({
-      accessKeyId: "props.awsAccessKeyId",
-      secretAccessKey: "props.awsSecretAccessKey",
-      region: "props.awsRegion",
-      bucket: "props.awsBucket",
-    });
-  }
+  constructor(
+    private readonly props: IGoogleSlidesService.IProps,
+    private readonly fileManager: FileManager,
+  ) {}
 
   uploadPrefix: string = "google-slides-connector";
 
@@ -42,7 +35,16 @@ export class GoogleSlidesService {
         responseType: "arraybuffer",
       });
 
-      return { hanshowBase64: bufferToBase64(res.data) };
+      const upload = await this.fileManager.upload({
+        props: {
+          type: "object",
+          data: res.data,
+          contentType: mimeType,
+          path: `${this.uploadPrefix}/${v4()}.show`,
+        },
+      });
+
+      return { hanshowUrl: upload.uri };
     } catch (err) {
       console.error(JSON.stringify(err));
       throw err;
@@ -71,7 +73,16 @@ export class GoogleSlidesService {
         responseType: "arraybuffer",
       });
 
-      return { powerPointBase64: bufferToBase64(res.data) };
+      const upload = await this.fileManager.upload({
+        props: {
+          type: "object",
+          data: res.data,
+          contentType: mimeType,
+          path: `${this.uploadPrefix}/${v4()}.pptx`,
+        },
+      });
+
+      return { powerPointUrl: upload.uri };
     } catch (err) {
       console.error(JSON.stringify(err));
       throw err;
@@ -100,7 +111,7 @@ export class GoogleSlidesService {
         },
       );
 
-      const data: IGoogleSlidesService.Presentation = res.data;
+      const data: IGoogleSlidesService.IPresentation = res.data;
       return {
         presentationId: data.presentationId,
         pageSize: data.pageSize,
@@ -120,8 +131,8 @@ export class GoogleSlidesService {
    * @returns
    */
   async transformUrl(
-    input: IGoogleSlidesService.AppendSlideInput,
-  ): Promise<IGoogleSlidesService.AppendSlideInput> {
+    input: IGoogleSlidesService.IAppendSlideInput,
+  ): Promise<IGoogleSlidesService.IAppendSlideInput> {
     // if there are s3 buckets urls, get presigned url
     const matched = Array.from(
       new Set(
@@ -135,9 +146,7 @@ export class GoogleSlidesService {
       return input;
     }
 
-    const transformed = await Promise.all(
-      matched.map(async (match) => this.s3.getGetObjectUrl({ fileUrl: match })),
-    );
+    const transformed = await Promise.all(matched.map((match) => match));
 
     // let stringified = JSON.stringify(input);
     // matched.forEach((match, index) => {
@@ -183,7 +192,7 @@ export class GoogleSlidesService {
    * It is safe to ask the user for consent to this process.
    */
   async appendImageSlide(
-    input: IGoogleSlidesService.AppendSlideInput,
+    input: IGoogleSlidesService.IAppendSlideInput,
   ): Promise<IGoogleSlidesService.ISimplePresentationIdOutput> {
     try {
       input = await this.transformUrl(input);
@@ -221,7 +230,7 @@ export class GoogleSlidesService {
    * It is safe to ask the user for consent to this process.
    */
   async appendQuarterDivisionImageSlide(
-    input: IGoogleSlidesService.AppendQuarterDivisionSlideInput & {
+    input: IGoogleSlidesService.IAppendQuarterDivisionSlideInput & {
       presentationId: string;
     },
   ): Promise<IGoogleSlidesService.ISimplePresentationIdOutput> {
@@ -241,7 +250,7 @@ export class GoogleSlidesService {
    * It is safe to ask the user for consent to this process.
    */
   async appendEntireImageSlide(
-    input: IGoogleSlidesService.AppendEntireSlideInput & {
+    input: IGoogleSlidesService.IAppendEntireSlideInput & {
       presentationId: string;
     },
   ): Promise<IGoogleSlidesService.ISimplePresentationIdOutput> {
@@ -262,7 +271,7 @@ export class GoogleSlidesService {
    * It is safe to ask the user for consent to this process.
    */
   async appendLandscapeImageSlide(
-    input: IGoogleSlidesService.AppendLandscapeSlideInput & {
+    input: IGoogleSlidesService.IAppendLandscapeSlideInput & {
       presentationId: string;
     },
   ): Promise<IGoogleSlidesService.ISimplePresentationIdOutput> {
@@ -282,7 +291,7 @@ export class GoogleSlidesService {
    * It is safe to ask the user for consent to this process.
    */
   async appendSquareImageSlide(
-    input: IGoogleSlidesService.AppendSquareSlideInput & {
+    input: IGoogleSlidesService.IAppendSquareSlideInput & {
       presentationId: string;
     },
   ): Promise<IGoogleSlidesService.ISimplePresentationIdOutput> {
@@ -303,7 +312,7 @@ export class GoogleSlidesService {
    * It is safe to ask the user for consent to this process.
    */
   async appendVerticalImageSlide(
-    input: IGoogleSlidesService.AppendVerticalSlideInput & {
+    input: IGoogleSlidesService.IAppendVerticalSlideInput & {
       presentationId: string;
     },
   ): Promise<IGoogleSlidesService.ISimplePresentationIdOutput> {
@@ -312,11 +321,11 @@ export class GoogleSlidesService {
 
   private async appendSlidesByType(
     input: (
-      | IGoogleSlidesService.AppendQuarterDivisionSlideInput
-      | IGoogleSlidesService.AppendEntireSlideInput
-      | IGoogleSlidesService.AppendLandscapeSlideInput
-      | IGoogleSlidesService.AppendVerticalSlideInput
-      | IGoogleSlidesService.AppendSquareSlideInput
+      | IGoogleSlidesService.IAppendQuarterDivisionSlideInput
+      | IGoogleSlidesService.IAppendEntireSlideInput
+      | IGoogleSlidesService.IAppendLandscapeSlideInput
+      | IGoogleSlidesService.IAppendVerticalSlideInput
+      | IGoogleSlidesService.IAppendSquareSlideInput
     ) & {
       presentationId: string;
       type: "QuarterDivision" | "Entire" | "Landscape" | "Square" | "Vertical";
@@ -362,7 +371,7 @@ export class GoogleSlidesService {
         },
       );
 
-      const data: IGoogleSlidesService.Presentation = res.data;
+      const data: IGoogleSlidesService.IPresentation = res.data;
       return {
         presentationId: data.presentationId,
         pageSize: data.pageSize,
@@ -1066,7 +1075,7 @@ export class GoogleSlidesService {
     );
   }
 
-  private getSize(presentation: IGoogleSlidesService.Presentation) {
+  private getSize(presentation: IGoogleSlidesService.IPresentation) {
     const height = presentation.pageSize?.height?.magnitude as number;
     const unit = presentation.pageSize?.height?.unit;
     const width = presentation.pageSize?.width?.magnitude as number;
@@ -1075,7 +1084,7 @@ export class GoogleSlidesService {
   }
 
   private createSlide(
-    input: Pick<IGoogleSlidesService.AppendSlideInput, "templates"> & {
+    input: Pick<IGoogleSlidesService.IAppendSlideInput, "templates"> & {
       size: {
         height: number;
         width: number;
@@ -1131,7 +1140,7 @@ export class GoogleSlidesService {
     const accessToken = await this.refreshAccessToken();
 
     const is = typia.createIs<{
-      createImage: IGoogleSlidesService.CreateImageRequest;
+      createImage: IGoogleSlidesService.ICreateImageRequest;
     }>();
 
     const name = "connector/google-slides";
@@ -1165,15 +1174,16 @@ export class GoogleSlidesService {
             const format = (await originalImage.metadata()).format;
             if (imageExtensions.some((ext) => ext === format)) {
               const jpg = await originalImage.jpeg({ quality: 100 }).toBuffer();
-              const saved = await this.s3.uploadObject({
-                contentType: "image/jpg",
-                data: jpg,
-                key: `${v4()}.jpg`,
+              const saved = await this.fileManager.upload({
+                props: {
+                  contentType: "image/jpg",
+                  data: jpg,
+                  path: `${v4()}.jpg`,
+                  type: "object",
+                },
               });
 
-              request.createImage.url = await this.s3.getGetObjectUrl({
-                fileUrl: saved,
-              });
+              request.createImage.url = saved.uri;
             }
           }
         }

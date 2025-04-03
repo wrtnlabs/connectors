@@ -1,13 +1,15 @@
 import { tags } from "typia";
-import { MyPartial } from "@wrtnlabs/connector-shared";
+import { MyPartial, SnakeToCamel } from "@wrtnlabs/connector-shared";
+
+/**
+ * Write the environment variables that are required for the AWS S3 service.
+ */
+export const ENV_LIST = ["ZOOM_SECRET_KEY"] as const;
 
 export namespace IZoomService {
-  export interface Iprops {
-    /**
-     * Zoom API Secret Key.
-     */
-    secretKey: string;
-  }
+  export type IProps = {
+    [key in SnakeToCamel<(typeof ENV_LIST)[number]>]: string;
+  };
 
   export interface ICreateMeetingInput {
     userId: string;

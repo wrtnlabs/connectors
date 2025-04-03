@@ -4,15 +4,19 @@ import {
   CreatePageParameters,
 } from "@notionhq/client/build/src/api-endpoints";
 
-import { Hierarchy, MyPick, StrictOmit } from "@wrtnlabs/connector-shared";
+import {
+  Hierarchy,
+  MyPick,
+  SnakeToCamel,
+  StrictOmit,
+} from "@wrtnlabs/connector-shared";
+
+export const ENV_LIST = ["NOTION_API_KEY"] as const;
 
 export namespace INotionService {
-  export interface IProps {
-    /**
-     * Notion Refresh Token.
-     */
-    secret: string;
-  }
+  export type IProps = {
+    [key in SnakeToCamel<(typeof ENV_LIST)[number]>]: string;
+  };
 
   /**
    * @title color

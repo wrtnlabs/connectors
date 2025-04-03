@@ -97,11 +97,11 @@ export class RedditService {
   ): IRedditService.IFlattenCommentsOutput {
     const idx = input.children.findIndex((el) => el.kind === "more");
     const more = idx === -1 ? null : input.children.splice(idx, 1)[0];
-    typia.assertGuard<IRedditService.ChildMore | null>(more);
+    typia.assertGuard<IRedditService.IChildMore | null>(more);
 
     function flat(
-      children?: (IRedditService.ChildComment | IRedditService.ChildMore)[],
-    ): IRedditService.ChildComment[] {
+      children?: (IRedditService.IChildComment | IRedditService.IChildMore)[],
+    ): IRedditService.IChildComment[] {
       if (!children) {
         return [];
       }

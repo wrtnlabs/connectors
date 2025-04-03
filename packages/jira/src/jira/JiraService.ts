@@ -370,7 +370,7 @@ export class JiraService {
       );
 
       const issues = res.data.issues as Pick<
-        IJiraService.Issue,
+        IJiraService.IIssue,
         "fields" | "id" | "key"
       >[];
 
@@ -432,7 +432,7 @@ export class JiraService {
    * Get authorization and domain
    */
   async getAuthorizationAndDomain(input: {
-    props?: IJiraService.BasicAuthorization;
+    props?: IJiraService.IBasicAuthorization;
   }): Promise<{ Authorization: string; baseUrl: string; domain?: string }> {
     const Authorization = await this.getAuthorization({ props: input.props });
     if (input.props && "email" in input.props && "token" in input.props) {
@@ -453,7 +453,7 @@ export class JiraService {
    * Get authorization
    */
   async getAuthorization(input: {
-    props?: Pick<IJiraService.BasicAuthorization, "token" | "email">;
+    props?: Pick<IJiraService.IBasicAuthorization, "token" | "email">;
   }) {
     // secretKey를 가지고 있지만 OAuth가 아닌 경우가 있을 수 있기 때문에 email, token 검증을 먼저 하게 한다. (basic auth 우선)
     if (input.props && "email" in input.props && "token" in input.props) {
@@ -802,7 +802,7 @@ export class JiraService {
    * There are pre-designated content types, so please check this type information carefully.
    */
   async updateIssue(
-    input: IJiraService.__IUpdateIssueInput & { id: IJiraService.Issue["id"] },
+    input: IJiraService.__IUpdateIssueInput & { id: IJiraService.IIssue["id"] },
   ): Promise<void> {
     try {
       const copiedInput = JSON.parse(JSON.stringify(input));
@@ -917,8 +917,8 @@ export class JiraService {
 
   parseSecretKey(input: {
     secretKey: string;
-  }): IJiraService.BasicAuthorization {
-    return typia.json.assertParse<IJiraService.BasicAuthorization>(
+  }): IJiraService.IBasicAuthorization {
+    return typia.json.assertParse<IJiraService.IBasicAuthorization>(
       input.secretKey,
     );
   }

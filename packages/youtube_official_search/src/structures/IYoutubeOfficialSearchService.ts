@@ -1,12 +1,15 @@
 import { tags } from "typia";
+import { SnakeToCamel } from "@wrtnlabs/connector-shared";
+
+/**
+ * Write the environment variables that are required for the AWS S3 service.
+ */
+const ENV_LIST = ["YOUTUBE_OFFICIAL_SEARCH_GOOGLE_API_KEY"] as const;
 
 export namespace IYoutubeOfficialSearchService {
-  export interface IProps {
-    /**
-     * Google API Key.
-     */
-    googleApiKey: string;
-  }
+  export type IProps = {
+    [key in SnakeToCamel<(typeof ENV_LIST)[number]>]: string;
+  };
 
   export interface IYoutubeSearchVideoRequest {
     /**

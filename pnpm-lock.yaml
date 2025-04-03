@@ -550,6 +550,9 @@ importers:
       '@wrtnlabs/connector-google-search':
         specifier: workspace:^
         version: link:../google_search
+      '@wrtnlabs/connector-shared':
+        specifier: workspace:^
+        version: link:../shared
       typia:
         specifier: ^8.0.1
         version: 8.0.3(@samchon/openapi@3.1.0)(typescript@5.7.3)
@@ -614,9 +617,9 @@ importers:
 
   packages/csv:
     dependencies:
-      '@wrtnlabs/connector-aws-s3':
-        specifier: workspace:^
-        version: link:../aws_s3
+      '@wrtnlabs/connector-shared':
+        specifier: workspace:*
+        version: link:../shared
       csv-parse:
         specifier: ^5.5.5
         version: 5.6.0
@@ -699,9 +702,9 @@ importers:
 
   packages/dall_e_3:
     dependencies:
-      '@wrtnlabs/connector-aws-s3':
+      '@wrtnlabs/connector-shared':
         specifier: workspace:^
-        version: link:../aws_s3
+        version: link:../shared
       axios:
         specifier: ^1.7.9
         version: 1.8.4
@@ -772,6 +775,9 @@ importers:
 
   packages/daum_blog:
     dependencies:
+      '@wrtnlabs/connector-shared':
+        specifier: workspace:^
+        version: link:../shared
       axios:
         specifier: ^1.7.9
         version: 1.8.4
@@ -842,6 +848,9 @@ importers:
 
   packages/daum_cafe:
     dependencies:
+      '@wrtnlabs/connector-shared':
+        specifier: workspace:^
+        version: link:../shared
       axios:
         specifier: ^1.7.9
         version: 1.8.4
@@ -912,6 +921,9 @@ importers:
 
   packages/discord:
     dependencies:
+      '@wrtnlabs/connector-shared':
+        specifier: workspace:^
+        version: link:../shared
       axios:
         specifier: ^1.8.1
         version: 1.8.4
@@ -982,15 +994,9 @@ importers:
 
   packages/excel:
     dependencies:
-      '@wrtnlabs/connector-aws-s3':
-        specifier: workspace:^
-        version: link:../aws_s3
       '@wrtnlabs/connector-shared':
         specifier: workspace:^
         version: link:../shared
-      axios:
-        specifier: ^1.7.9
-        version: 1.8.4
       typia:
         specifier: ^8.0.1
         version: 8.0.3(@samchon/openapi@3.1.0)(typescript@5.7.3)
@@ -1292,6 +1298,9 @@ importers:
       crypto:
         specifier: ^1.0.1
         version: 1.0.1
+      googleapis:
+        specifier: ^144.0.0
+        version: 144.0.0
       typia:
         specifier: ^8.0.1
         version: 8.0.3(@samchon/openapi@3.1.0)(typescript@5.7.3)
@@ -1508,6 +1517,9 @@ importers:
 
   packages/google_drive:
     dependencies:
+      '@wrtnlabs/connector-shared':
+        specifier: workspace:^
+        version: link:../shared
       axios:
         specifier: ^1.7.9
         version: 1.8.4
@@ -1663,6 +1675,9 @@ importers:
 
   packages/google_hotel:
     dependencies:
+      '@wrtnlabs/connector-shared':
+        specifier: workspace:^
+        version: link:../shared
       typia:
         specifier: ^8.0.1
         version: 8.0.3(@samchon/openapi@3.1.0)(typescript@5.7.3)
@@ -2089,6 +2104,9 @@ importers:
 
   packages/google_shopping:
     dependencies:
+      '@wrtnlabs/connector-shared':
+        specifier: workspace:^
+        version: link:../shared
       serpapi:
         specifier: ^2.0.0
         version: 2.1.0
@@ -2168,6 +2186,9 @@ importers:
       axios:
         specifier: ^1.7.9
         version: 1.8.4
+      googleapis:
+        specifier: ^144.0.0
+        version: 144.0.0
       sharp:
         specifier: ^0.33.5
         version: 0.33.5
@@ -2247,6 +2268,9 @@ importers:
 
   packages/google_trend:
     dependencies:
+      '@wrtnlabs/connector-shared':
+        specifier: workspace:^
+        version: link:../shared
       serpapi:
         specifier: ^2.0.0
         version: 2.1.0
@@ -2402,6 +2426,9 @@ importers:
 
   packages/hwp:
     dependencies:
+      '@wrtnlabs/connector-shared':
+        specifier: workspace:^
+        version: link:../shared
       axios:
         specifier: ^1.7.9
         version: 1.8.4
@@ -2472,6 +2499,9 @@ importers:
 
   packages/imweb:
     dependencies:
+      '@wrtnlabs/connector-shared':
+        specifier: workspace:^
+        version: link:../shared
       axios:
         specifier: ^1.7.9
         version: 1.8.4
@@ -2612,6 +2642,9 @@ importers:
 
   packages/kakao_map:
     dependencies:
+      '@wrtnlabs/connector-shared':
+        specifier: workspace:^
+        version: link:../shared
       typia:
         specifier: ^8.0.1
         version: 8.0.3(@samchon/openapi@3.1.0)(typescript@5.7.3)
@@ -2816,6 +2849,9 @@ importers:
 
   packages/korea_eximbank:
     dependencies:
+      '@wrtnlabs/connector-shared':
+        specifier: workspace:^
+        version: link:../shared
       typia:
         specifier: ^8.0.1
         version: 8.0.3(@samchon/openapi@3.1.0)(typescript@5.7.3)
@@ -2956,6 +2992,9 @@ importers:
 
   packages/naver_blog:
     dependencies:
+      '@wrtnlabs/connector-shared':
+        specifier: workspace:^
+        version: link:../shared
       axios:
         specifier: ^1.7.9
         version: 1.8.4
@@ -3026,6 +3065,9 @@ importers:
 
   packages/naver_cafe:
     dependencies:
+      '@wrtnlabs/connector-shared':
+        specifier: workspace:^
+        version: link:../shared
       axios:
         specifier: ^1.7.9
         version: 1.8.4
@@ -3096,6 +3138,9 @@ importers:
 
   packages/naver_news:
     dependencies:
+      '@wrtnlabs/connector-shared':
+        specifier: workspace:^
+        version: link:../shared
       axios:
         specifier: ^1.7.9
         version: 1.8.4
@@ -3546,6 +3591,9 @@ importers:
 
   packages/sort:
     dependencies:
+      '@wrtnlabs/connector-shared':
+        specifier: workspace:^
+        version: link:../shared
       typia:
         specifier: ^8.0.1
         version: 8.0.3(@samchon/openapi@3.1.0)(typescript@5.7.3)
@@ -3753,6 +3801,9 @@ importers:
 
   packages/typeform:
     dependencies:
+      '@wrtnlabs/connector-shared':
+        specifier: workspace:^
+        version: link:../shared
       axios:
         specifier: ^1.8.1
         version: 1.8.4
@@ -3829,6 +3880,9 @@ importers:
 
   packages/web_crawler:
     dependencies:
+      '@wrtnlabs/connector-shared':
+        specifier: workspace:^
+        version: link:../shared
       cheerio:
         specifier: ^1.0.0
         version: 1.0.0
@@ -3899,6 +3953,9 @@ importers:
 
   packages/x:
     dependencies:
+      '@wrtnlabs/connector-shared':
+        specifier: workspace:^
+        version: link:../shared
       axios:
         specifier: ^1.8.1
         version: 1.8.4

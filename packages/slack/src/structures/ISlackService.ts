@@ -1,15 +1,14 @@
 import { Block, KnownBlock } from "@slack/web-api";
 import { tags } from "typia";
 import { ContentMediaType } from "typia/lib/tags";
-import { MyPick, StrictOmit } from "@wrtnlabs/connector-shared";
+import { MyPick, SnakeToCamel, StrictOmit } from "@wrtnlabs/connector-shared";
+
+export const ENV_LIST = ["SLACK_TOKEN"] as const;
 
 export namespace ISlackService {
-  export interface IProps {
-    /**
-     * Slack Refresh Token.
-     */
-    secretKey: string;
-  }
+  export type IProps = {
+    [key in SnakeToCamel<(typeof ENV_LIST)[number]>]: string;
+  };
 
   export interface IHoldVoteOutput extends Pick<ISlackService.Message, "ts"> {
     /**
@@ -22,7 +21,7 @@ export namespace ISlackService {
     /**
      * @title channel id
      */
-    channel: Channel["id"];
+    channel: IChannel["id"];
     /**
      * @title Title of vote to be held
      *
@@ -207,7 +206,7 @@ export namespace ISlackService {
      *
      * @title channel id
      */
-    channel: Channel["id"];
+    channel: IChannel["id"];
 
     /**
      * @title scheduled message id to delete
@@ -239,7 +238,7 @@ export namespace ISlackService {
      *
      * @title channel id
      */
-    channel: Channel["id"];
+    channel: IChannel["id"];
 
     /**
      * It means the 'ts' value of the chat you want to mark
@@ -293,7 +292,7 @@ export namespace ISlackService {
      *
      * @title User ID
      */
-    id: ISlackService.User["id"];
+    id: ISlackService.IUser["id"];
 
     /**
      * @title slack_team_id
@@ -320,7 +319,7 @@ export namespace ISlackService {
      *
      * @title name
      */
-    name: ISlackService.User["name"];
+    name: ISlackService.IUser["name"];
 
     /**
      * The user has a separate display name.
@@ -329,7 +328,7 @@ export namespace ISlackService {
      *
      * @title display name
      */
-    display_name: ISlackService.User["profile"]["display_name"];
+    display_name: ISlackService.IUser["profile"]["display_name"];
 
     /**
      * The user's first and last name.
@@ -338,14 +337,14 @@ export namespace ISlackService {
      *
      * @title real_name
      */
-    real_name: ISlackService.User["profile"]["real_name"];
+    real_name: ISlackService.IUser["profile"]["real_name"];
 
     /**
      * This value is used to distinguish between deleted users.
      *
      * @title deleted
      */
-    deleted: ISlackService.User["deleted"];
+    deleted: ISlackService.IUser["deleted"];
 
     /**
      * There are several profile images for each image quality,
@@ -353,12 +352,12 @@ export namespace ISlackService {
      *
      * @title profile image
      */
-    profile_image: ISlackService.User["profile"]["image_original"];
+    profile_image: ISlackService.IUser["profile"]["image_original"];
 
     /**
      * @title status
      */
-    status_text?: ISlackService.User["status_text"];
+    status_text?: ISlackService.IUser["status_text"];
 
     /**
      * @title custom fields
@@ -371,7 +370,7 @@ export namespace ISlackService {
     /**
      * @title scheduled messages
      */
-    scheduled_messages: (ScheduledMessage & {
+    scheduled_messages: (IScheduledMessage & {
       /**
        * @title id of scheduled message
        */
@@ -393,7 +392,7 @@ export namespace ISlackService {
      *
      * You can enter the ID value of the user who wants to look up the details.
      */
-    userIds: ISlackService.User["id"][] & tags.MinItems<1>;
+    userIds: ISlackService.IUser["id"][] & tags.MinItems<1>;
   }
 
   export interface IGetUserListInput
@@ -452,7 +451,7 @@ export namespace ISlackService {
      *
      * @title channel id
      */
-    channel: Channel["id"];
+    channel: IChannel["id"];
 
     /**
      * When a user enters a markdown format string, the internal function modifies it to the format of the slack.
@@ -524,7 +523,7 @@ export namespace ISlackService {
     /**
      * @title usergroups
      */
-    usergroups: ISlackService.UserGroup[];
+    usergroups: ISlackService.IUserGroup[];
 
     /**
      * @title Channel information
@@ -538,8 +537,8 @@ export namespace ISlackService {
        * @title Channel Name
        */
       name:
-        | PublicChannel["name"]
-        | PrivateChannel["name"]
+        | IPublicChannel["name"]
+        | IPrivateChannel["name"]
         | ImChannel["username"]
         | null;
     };
@@ -564,7 +563,7 @@ export namespace ISlackService {
     /**
      * @title username of the person who made this message
      */
-    username: User["name"] | null;
+    username: IUser["name"] | null;
 
     /**
      * @title user profile image
@@ -593,7 +592,7 @@ export namespace ISlackService {
     /**
      * @title usergroups
      */
-    usergroups: ISlackService.UserGroup[];
+    usergroups: ISlackService.IUserGroup[];
 
     /**
      * @title Channel information
@@ -607,8 +606,8 @@ export namespace ISlackService {
        * @title Channel Name
        */
       name:
-        | PublicChannel["name"]
-        | PrivateChannel["name"]
+        | IPublicChannel["name"]
+        | IPrivateChannel["name"]
         | ImChannel["username"]
         | null;
     };
@@ -634,7 +633,7 @@ export namespace ISlackService {
     /**
      * @title usergroups
      */
-    usergroups: ISlackService.UserGroup[];
+    usergroups: ISlackService.IUserGroup[];
 
     /**
      * @title Channel information
@@ -648,8 +647,8 @@ export namespace ISlackService {
        * @title Channel Name
        */
       name:
-        | PublicChannel["name"]
-        | PrivateChannel["name"]
+        | IPublicChannel["name"]
+        | IPrivateChannel["name"]
         | ImChannel["username"]
         | null;
     };
@@ -673,7 +672,7 @@ export namespace ISlackService {
      *
      * @title channel id
      */
-    channel: Channel["id"];
+    channel: IChannel["id"];
 
     /**
      * Only messages before this date-time will be included in results. Default is the current time.
@@ -699,7 +698,7 @@ export namespace ISlackService {
     /**
      * @title channels
      */
-    channels: ISlackService.PrivateChannel[];
+    channels: ISlackService.IPrivateChannel[];
   }
 
   /**
@@ -709,7 +708,7 @@ export namespace ISlackService {
     /**
      * @title channels
      */
-    channels: ISlackService.PublicChannel[];
+    channels: ISlackService.IPublicChannel[];
   }
 
   /**
@@ -739,7 +738,7 @@ export namespace ISlackService {
     cursor?: string;
   }
 
-  export interface ImChannel extends Channel {
+  export interface ImChannel extends IChannel {
     /**
      * @title created time
      */
@@ -768,7 +767,7 @@ export namespace ISlackService {
     /**
      * @title channel owner's id
      */
-    user: User["id"];
+    user: IUser["id"];
 
     /**
      * @title channel owner's team id
@@ -778,24 +777,24 @@ export namespace ISlackService {
     /**
      * @title username
      */
-    username?: User["name"] | null;
+    username?: IUser["name"] | null;
   }
 
-  export interface PrivateChannel extends Channel {
+  export interface IPrivateChannel extends IChannel {
     /**
      * @title channel name
      */
     name: string;
   }
 
-  export interface PublicChannel extends Channel {
+  export interface IPublicChannel extends IChannel {
     /**
      * @title channel name
      */
     name: string;
   }
 
-  export interface Channel {
+  export interface IChannel {
     /**
      * The channel ID starts with 'C' and 'D', and for a private DM channel, 'D'.
      * But Sometimes there are channel names that start with a G.
@@ -805,7 +804,7 @@ export namespace ISlackService {
     id: string & tags.Pattern<"^((C(.*))|(D(.*))|(G(.*)))">;
   }
 
-  export interface User {
+  export interface IUser {
     /**
      * @title user id
      */
@@ -851,7 +850,7 @@ export namespace ISlackService {
     status_text?: string | null;
   }
 
-  export interface Reply
+  export interface IReply
     extends MyPick<
       Message,
       "type" | "user" | "text" | "ts" | "ts_date" | "attachments" | "link"
@@ -868,7 +867,7 @@ export namespace ISlackService {
      *
      * @title ID of the person who made parent message of this message
      */
-    parent_user_id: User["id"] | null;
+    parent_user_id: IUser["id"] | null;
 
     /**
      * @title links
@@ -878,7 +877,7 @@ export namespace ISlackService {
     links: (string & tags.Format<"iri">)[];
   }
 
-  export interface ScheduledMessage
+  export interface IScheduledMessage
     extends StrictOmit<
       Message,
       | "ts"
@@ -923,12 +922,12 @@ export namespace ISlackService {
      *
      * If not a user, message does not have an ID.
      */
-    user: User["id"] | null;
+    user: IUser["id"] | null;
 
     /**
      * @title channel id
      */
-    channel: Channel["id"];
+    channel: IChannel["id"];
 
     /**
      * When users occasionally call others, they can be called in the form of '@USERNAME', which is called a tag.
@@ -978,7 +977,7 @@ export namespace ISlackService {
      *
      * @title Attachments
      */
-    attachments?: MyPick<ISlackService.Attachment, "id" | "title">[];
+    attachments?: MyPick<ISlackService.IAttachment, "id" | "title">[];
 
     /**
      * Link to view the conversation history immediately.
@@ -989,7 +988,7 @@ export namespace ISlackService {
     link: string & tags.Format<"iri">;
   }
 
-  export interface Attachment {
+  export interface IAttachment {
     /**
      * The main body text of the attachment.
      * It can be formatted as plain text, or with mrkdwn by including it in the mrkdwn_in field.
@@ -1045,7 +1044,7 @@ export namespace ISlackService {
     title_link?: string;
   }
 
-  export interface File {
+  export interface IFile {
     /**
      * @title id
      */
@@ -1230,7 +1229,7 @@ export namespace ISlackService {
     /**
      * @title channels
      */
-    channels: Channel["id"][];
+    channels: IChannel["id"][];
 
     /**
      * @title groups
@@ -1254,7 +1253,7 @@ export namespace ISlackService {
   export interface IGetFileOutput {
     ok: boolean;
     files: MyPick<
-      ISlackService.File,
+      ISlackService.IFile,
       | "id"
       | "channels"
       | "comments_count"
@@ -1302,14 +1301,14 @@ export namespace ISlackService {
      *
      * If not specified, the entire Slack workspace will be explored.
      */
-    channel?: Channel["id"];
+    channel?: IChannel["id"];
 
     /**
      * @title user id
      *
      * If you only want to check files sent by a particular user, enter your ID.
      */
-    user?: ISlackService.User["id"];
+    user?: ISlackService.IUser["id"];
 
     /**
      * The file types you may encounter include (but are not limited to):
@@ -1378,10 +1377,10 @@ export namespace ISlackService {
   }
 
   /**
-   * @title UserGroup
+   * @title IUserGroup
    * @description Represents a user group with various properties like ID, name, and user details.
    */
-  export interface UserGroup {
+  export interface IUserGroup {
     /**
      * @title ID
      * @description The ID of the user group.
@@ -1511,7 +1510,7 @@ export namespace ISlackService {
      * @inheritdoc
      * @title usergroups
      */
-    usergroups: ISlackService.UserGroup[];
+    usergroups: ISlackService.IUserGroup[];
   }
 
   export interface IGetMyInfoOutput {

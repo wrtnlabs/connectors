@@ -19,7 +19,7 @@ export const test_stable_diffusion_beta = async () => {
     prompt: `손들고 있는 고양이 그려줘`,
     image_ratio: "square",
     style_preset: "digital-art",
-    s3: {
+    file: {
       key: `connector/generate-image-node/sdxl-beta/${v4()}`,
     },
   };

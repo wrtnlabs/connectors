@@ -1,17 +1,16 @@
 import { tags } from "typia";
+import { SnakeToCamel } from "@wrtnlabs/connector-shared";
+
+export const ENV_LIST = [
+  "NAVER_BLOG_CLIENT_ID",
+  "NAVER_BLOG_CLIENT_SECRET",
+] as const;
 
 export namespace INaverBlogService {
-  export interface IProps {
-    /**
-     * Naver Client ID.
-     */
-    clientId: string;
+  export type IProps = {
+    [key in SnakeToCamel<(typeof ENV_LIST)[number]>]: string;
+  };
 
-    /**
-     * Naver Client Secret.
-     */
-    clientSecret: string;
-  }
   /**
    * @title Search Conditions
    */

@@ -1,24 +1,17 @@
 import { tags } from "typia";
 import type { ContentMediaType } from "typia/lib/tags";
-import { MyPick } from "@wrtnlabs/connector-shared";
+import { MyPick, SnakeToCamel } from "@wrtnlabs/connector-shared";
+
+export const ENV_LIST = [
+  "KAKAO_TALK_CLIENT_ID",
+  "KAKAO_TALK_CLIENT_SECRET",
+  "KAKAO_TALK_REFRESH_TOKEN",
+] as const;
 
 export namespace IKakaoTalkService {
-  export interface IProps {
-    /**
-     * @title KakaoTalk Client ID
-     */
-    clientId: string;
-
-    /**
-     * @title KakaoTalk Client Secret
-     */
-    clientSecret: string;
-
-    /**
-     * @title KakaoTalk Refresh Token.
-     */
-    secret: string;
-  }
+  export type IProps = {
+    [key in SnakeToCamel<(typeof ENV_LIST)[number]>]: string;
+  };
 
   /**
    * @title DTO for the code received after Kakao login
@@ -104,7 +97,7 @@ export namespace IKakaoTalkService {
   /**
    * @title KakaoTalk friend
    */
-  export interface Friend {
+  export interface IFriend {
     /**
      * User ID
      *
@@ -148,7 +141,7 @@ export namespace IKakaoTalkService {
     /**
      * @title Friends list
      */
-    elements: Friend[];
+    elements: IFriend[];
 
     /**
      * @title Total number of friends
@@ -178,7 +171,7 @@ export namespace IKakaoTalkService {
     /**
      * @title List of events
      */
-    events: IKakaoTalkService.EventBrief[];
+    events: IKakaoTalkService.IEventBrief[];
 
     /**
      * @title Whether there is a next page
@@ -198,7 +191,7 @@ export namespace IKakaoTalkService {
   /**
    * @title Event
    */
-  export interface EventBrief {
+  export interface IEventBrief {
     /**
      * @title Event ID
      */
@@ -218,12 +211,12 @@ export namespace IKakaoTalkService {
      * @title Calendar ID
      * @description Fixed to primary for the default calendar
      */
-    calendar_id?: Calendar["id"];
+    calendar_id?: ICalendar["id"];
 
     /**
      * @title Event time
      */
-    time: IKakaoTalkService.Time;
+    time: IKakaoTalkService.ITime;
 
     /**
      * @title Whether the user is the host of the event
@@ -247,7 +240,7 @@ export namespace IKakaoTalkService {
   /**
    * @title Time settings for an event
    */
-  export interface Time {
+  export interface ITime {
     /**
      * @title Start time of the event
      * @description Can be set in 5-minute intervals
@@ -282,7 +275,7 @@ export namespace IKakaoTalkService {
    *
    * @title Event
    */
-  export interface Event {
+  export interface IEvent {
     /**
      * @title Event title
      */
@@ -291,7 +284,7 @@ export namespace IKakaoTalkService {
     /**
      * @title Event time
      */
-    time: IKakaoTalkService.Time;
+    time: IKakaoTalkService.ITime;
 
     /**
      * @title Recurrence rule for the event
@@ -307,7 +300,7 @@ export namespace IKakaoTalkService {
     /**
      * @title Event location
      */
-    location?: IKakaoTalkService.Location;
+    location?: IKakaoTalkService.ILocation;
 
     /**
      * @title Reminder settings
@@ -342,18 +335,18 @@ export namespace IKakaoTalkService {
     /**
      * @title Calendar ID to create the event in
      */
-    calendar_id?: Calendar["id"];
+    calendar_id?: ICalendar["id"];
 
     /**
      * @title Information of the event to be created
      */
-    event: Event;
+    event: IEvent;
   }
 
   /**
    * @title Location
    */
-  export interface Location {
+  export interface ILocation {
     /**
      * @title Place Name
      */
@@ -389,7 +382,7 @@ export namespace IKakaoTalkService {
      * @title Calendar ID to Retrieve Events
      * @description Defaults to retrieving all calendars if not specified.
      */
-    calender_id?: Calendar["id"];
+    calender_id?: ICalendar["id"];
 
     /**
      * @title Time Period for Retrieving Events
@@ -472,7 +465,7 @@ export namespace IKakaoTalkService {
      *
      * @title Basic Calendar
      */
-    calendars?: IKakaoTalkService.Calendar[];
+    calendars?: IKakaoTalkService.ICalendar[];
 
     /**
      * Subscription calendars.
@@ -480,13 +473,13 @@ export namespace IKakaoTalkService {
      *
      * @title List of Subscribed Calendars
      */
-    subscribe_calendars?: IKakaoTalkService.SubscribeCalendars[];
+    subscribe_calendars?: IKakaoTalkService.ISubscribeCalendars[];
   }
 
   /**
    * @title List of Subscribed Calendars
    */
-  export interface SubscribeCalendars extends IKakaoTalkService.Calendar {
+  export interface ISubscribeCalendars extends IKakaoTalkService.ICalendar {
     /**
      * @title Description of the subscribed calendar set by the channel
      */
@@ -511,7 +504,7 @@ export namespace IKakaoTalkService {
    * @title Basic Calendar
    * @description List of sub-calendars
    */
-  export interface Calendar {
+  export interface ICalendar {
     /**
      * @title Calendar ID
      *
@@ -543,7 +536,7 @@ export namespace IKakaoTalkService {
   /**
    * @title Button Information
    */
-  export interface Button {
+  export interface IButton {
     /**
      * @title Button Name
      */
@@ -613,7 +606,7 @@ export namespace IKakaoTalkService {
     /**
      * @title List of friends' UUIDs
      */
-    receiver_uuids: Friend["uuid"][] & tags.MinItems<1> & tags.MaxItems<5>;
+    receiver_uuids: IFriend["uuid"][] & tags.MinItems<1> & tags.MaxItems<5>;
 
     /**
      * @title Message to send
@@ -633,13 +626,13 @@ export namespace IKakaoTalkService {
     /**
      * @title Failure Information
      */
-    failure_info?: failureInfo;
+    failure_info?: IFailureInfo;
   }
 
   /**
    * @title Failure Information
    */
-  export interface failureInfo {
+  export interface IFailureInfo {
     /**
      * @title Error Code
      */
@@ -709,7 +702,7 @@ export namespace IKakaoTalkService {
   /**
    * @title Common Values for All Templates
    */
-  export interface MemoBase {
+  export interface IMemoBase {
     /**
      * @title Message Content
      */
@@ -724,7 +717,7 @@ export namespace IKakaoTalkService {
   /**
    * @title Commerce Template
    */
-  export interface ICommerceMemoInput extends MemoBase {
+  export interface ICommerceMemoInput extends IMemoBase {
     /**
      * @title Commerce Type
      */
@@ -739,7 +732,7 @@ export namespace IKakaoTalkService {
      * @title List of Buttons
      * @description Used to customize button titles and links. Supports two buttons and takes precedence over `button_title`.
      */
-    buttons?: IKakaoTalkService.Button[] & tags.MaxItems<2>;
+    buttons?: IKakaoTalkService.IButton[] & tags.MaxItems<2>;
   }
 
   export type Commerce = {
@@ -792,7 +785,7 @@ export namespace IKakaoTalkService {
   /**
    * @title Location Template
    */
-  export interface ILocationMemoInput extends MemoBase {
+  export interface ILocationMemoInput extends IMemoBase {
     /**
      * @title Location Type
      */
@@ -811,19 +804,19 @@ export namespace IKakaoTalkService {
     /**
      * @title Additional Social Information
      */
-    social?: IKakaoTalkService.Social;
+    social?: IKakaoTalkService.ISocial;
 
     /**
      * @title List of Buttons
      * @description Used to customize button titles and links. Supports two buttons and takes precedence over `button_title`.
      */
-    buttons?: IKakaoTalkService.Button[] & tags.MaxItems<2>;
+    buttons?: IKakaoTalkService.IButton[] & tags.MaxItems<2>;
   }
 
   /**
    * @title List Template
    */
-  export interface IListMemoInput extends MyPick<MemoBase, "button_title"> {
+  export interface IListMemoInput extends MyPick<IMemoBase, "button_title"> {
     /**
      * @title List Type
      */
@@ -848,7 +841,7 @@ export namespace IKakaoTalkService {
      * @title List of Buttons
      * @description Used to customize button titles and links. Supports two buttons and takes precedence over `button_title`.
      */
-    buttons?: IKakaoTalkService.Button[] & tags.MaxItems<2>;
+    buttons?: IKakaoTalkService.IButton[] & tags.MaxItems<2>;
   }
 
   /**
@@ -881,13 +874,13 @@ export namespace IKakaoTalkService {
      * @title Custom Button Information
      * @description Calendar messages provide default buttons for adding public events or subscribing to calendars. One custom button can be optionally added.
      */
-    buttons?: IKakaoTalkService.Button[] & tags.MaxItems<1>;
+    buttons?: IKakaoTalkService.IButton[] & tags.MaxItems<1>;
   }
 
   /**
    * @title Feed Template
    */
-  export interface IFeedMemoInput extends MemoBase {
+  export interface IFeedMemoInput extends IMemoBase {
     /**
      * @title Feed Type
      */
@@ -901,13 +894,13 @@ export namespace IKakaoTalkService {
     /**
      * @title Social Information About the Content
      */
-    social?: IKakaoTalkService.Social;
+    social?: IKakaoTalkService.ISocial;
 
     /**
      * @title List of Buttons
      * @description Used to customize button titles and links. Supports two buttons and takes precedence over `button_title`.
      */
-    buttons?: IKakaoTalkService.Button[] & tags.MaxItems<2>;
+    buttons?: IKakaoTalkService.IButton[] & tags.MaxItems<2>;
   }
 
   /**
@@ -1025,7 +1018,7 @@ export namespace IKakaoTalkService {
    * @title Social Information
    * @description Up to 3 out of 5 attributes will be displayed. Priority is Like > Comment > Shared > View > Subscriber.
    */
-  export interface Social {
+  export interface ISocial {
     /**
      * @title Number of Likes on the Content
      */
@@ -1055,7 +1048,7 @@ export namespace IKakaoTalkService {
   /**
    * @title Text Template
    */
-  export interface ITextMemoInput extends MyPick<MemoBase, "button_title"> {
+  export interface ITextMemoInput extends MyPick<IMemoBase, "button_title"> {
     /**
      * @title Text Type
      */
@@ -1075,7 +1068,7 @@ export namespace IKakaoTalkService {
      * @title List of Buttons
      * @description Used to customize button titles and links. Supports two buttons and takes precedence over `button_title`.
      */
-    buttons?: IKakaoTalkService.Button[] & tags.MaxItems<2>;
+    buttons?: IKakaoTalkService.IButton[] & tags.MaxItems<2>;
   }
 
   export interface IMemoOutput {

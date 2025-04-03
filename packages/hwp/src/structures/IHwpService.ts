@@ -26,7 +26,6 @@ export namespace IHwpService {
   /**
    * @title hwp file parsing result
    */
-
   export interface IParseOutput {
     /**
      * Text of the parsed hwp file

@@ -9,6 +9,11 @@ export namespace IMarpService {
      * @title Marp markdown
      */
     markdown: string;
+
+    /**
+     * S3 object path.
+     */
+    filePath?: string;
   }
 
   /**
@@ -16,8 +21,10 @@ export namespace IMarpService {
    */
   export interface IConvertOutput {
     /**
-     * Base64 of the converted PPT.
+     * S3 link for the converted PPT.
+     *
+     * @title S3 link
      */
-    pptBase64: string;
+    s3Link: string;
   }
 }

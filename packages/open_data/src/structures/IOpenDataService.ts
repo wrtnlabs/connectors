@@ -1,18 +1,16 @@
 import { tags } from "typia";
 import { IOpenWeather } from "./IOpenWeather";
+import { SnakeToCamel } from "@wrtnlabs/connector-shared";
+
+export const ENV_LIST = [
+  "OPEN_DATA_API_KEY",
+  "OPEN_DATA_WEATHER_API_KEY",
+] as const;
 
 export namespace IOpenDataService {
-  export interface IProps {
-    /**
-     * Open Data API Key.
-     */
-    apiKey: string;
-
-    /**
-     * Open Weather API Key.
-     */
-    weatherApiKey?: string;
-  }
+  export type IProps = {
+    [key in SnakeToCamel<(typeof ENV_LIST)[number]>]: string;
+  };
 
   export namespace ICommon {
     export interface IPaginationInput {

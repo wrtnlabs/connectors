@@ -6,7 +6,8 @@
   "exports": {
     "import": "./lib/index.mjs",
     "require": "./lib/index.cjs",
-    "default": "./lib/index.cjs"
+    "default": "./lib/index.cjs",
+    "types": "./lib/index.d.ts"
   },
   "scripts": {
     "prepare": "ts-patch install && typia patch",
@@ -49,6 +50,7 @@
     "googleapis": "^144.0.0",
     "mime-types": "^2.1.35",
     "stream": "^0.0.3",
-    "typia": "^8.0.1"
+    "typia": "^8.0.1",
+    "@wrtnlabs/connector-shared": "workspace:^"
   }
 }

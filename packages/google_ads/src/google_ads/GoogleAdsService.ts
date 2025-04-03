@@ -29,7 +29,7 @@ export class GoogleAdsService {
    */
   private async getTargetCustomerId(
     input: IGoogleAdsService.IGetTargetCustomerIdInput,
-  ): Promise<IGoogleAdsService.Customer["id"]> {
+  ): Promise<IGoogleAdsService.ICustomer["id"]> {
     const customers = await this.getCustomers();
     let customerId: string | null = input.customerId ?? null;
     if (input.customerId) {
@@ -935,7 +935,7 @@ export class GoogleAdsService {
    */
   async createAdGroupCriteria(
     input: IGoogleAdsService.ICreateKeywordInput & {
-      adGroupResourceName: IGoogleAdsService.AdGroup["resourceName"];
+      adGroupResourceName: IGoogleAdsService.IAdGroup["resourceName"];
     },
   ): Promise<IGoogleAdsService.ICreateAdGroupCriteriaOutput> {
     try {
@@ -1035,7 +1035,7 @@ export class GoogleAdsService {
    * If an account with a different currency (e.g., USD) is used, budget discrepancies may occur due to exchange rates.
    * Before calling the function, ask the user for their `customerId` and suggest a connector to check it.
    */
-  async getCustomers(): Promise<IGoogleAdsService.CustomerClient[]> {
+  async getCustomers(): Promise<IGoogleAdsService.ICustomerClient[]> {
     try {
       const customers = await this.listAccessibleCustomers();
 
@@ -1155,7 +1155,7 @@ export class GoogleAdsService {
     > & {
       campaignResourceName: string;
     },
-  ): Promise<IGoogleAdsService.AdGroup["resourceName"]> {
+  ): Promise<IGoogleAdsService.IAdGroup["resourceName"]> {
     try {
       const url = `${this.baseUrl}/customers/${input.customerId}/adGroups:mutate`;
       const headers = await this.getHeaders();
@@ -1203,7 +1203,7 @@ export class GoogleAdsService {
   }
 
   private async updateCampaignBudget(
-    customerId: IGoogleAdsService.CustomerClient["id"],
+    customerId: IGoogleAdsService.ICustomerClient["id"],
     campaignBudgetResourceName: IGoogleAdsService.CampaignBudget["resourceName"],
     campaignBudget: number, // 한국 돈 단위
   ) {
@@ -1320,7 +1320,7 @@ export class GoogleAdsService {
    * @returns
    */
   private async createClientLink(input: {
-    resourceName: IGoogleAdsService.Customer["resourceName"];
+    resourceName: IGoogleAdsService.ICustomer["resourceName"];
   }): Promise<void> {
     try {
       const parentId = this.props.googleAds.accountId;

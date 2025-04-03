@@ -18,7 +18,7 @@ export class ImwebService {
    */
   async getProducts(
     input: IImwebService.IGetProductInput,
-  ): Promise<IImwebService.Product[]> {
+  ): Promise<IImwebService.IProduct[]> {
     try {
       const { access_token } = await this.getAccessToken();
       const queryParameter = Object.entries({

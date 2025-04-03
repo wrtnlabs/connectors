@@ -9,14 +9,14 @@ export namespace ISpreadsheet {
     /**
      * @title Spreadsheet information
      */
-    export interface SnapshotOutput {
+    export interface ISnapshotOutput {
       /**
        * @title spreadsheet information
        */
       spreadsheet: ISpreadsheet;
     }
 
-    export interface SnapshotInput {
+    export interface ISnapshotInput {
       /**
        * @title snapshot information for synchronization
        */
@@ -68,7 +68,7 @@ export namespace ISpreadsheet {
     /**
      * @title result of exporting spreadsheet to excel
      */
-    export interface ToExcelToOutput extends SnapshotOutput {
+    export interface ToExcelToOutput extends ISnapshotOutput {
       /**
        * Indicates whether synchronization is successful or not
        *
@@ -80,18 +80,18 @@ export namespace ISpreadsheet {
     /**
      * @title Information to export to excel file
      */
-    export type ToExcelToInput = SnapshotInput;
+    export type ToExcelToInput = ISnapshotInput;
   }
 
   export namespace IExport {
-    export interface SnapshotOutput {
+    export interface ISnapshotOutput {
       /**
        * @title Exporting infomation
        */
       spreadsheet_exports: StrictOmit<ISpreadsheetExport, "deleted_at">;
     }
 
-    export interface SnapshotInput {
+    export interface ISnapshotInput {
       /**
        * @title snapshot information to export
        */
@@ -103,7 +103,7 @@ export namespace ISpreadsheet {
       };
     }
 
-    export interface ToExcelToOutput extends IExport.SnapshotOutput {
+    export interface IToExcelToOutput extends IExport.ISnapshotOutput {
       excel: {
         /**
          * @title Created excel spreadsheet ID
@@ -122,9 +122,9 @@ export namespace ISpreadsheet {
       };
     }
 
-    export type ToExcelToInput = IExport.SnapshotInput;
+    export type IToExcelToInput = IExport.ISnapshotInput;
 
-    export interface ToGoogleSheetsToOutput extends IExport.SnapshotOutput {
+    export interface IToGoogleSheetsToOutput extends IExport.ISnapshotOutput {
       google_sheets: {
         /**
          * @title Created google sheets spreadsheet ID
@@ -143,7 +143,7 @@ export namespace ISpreadsheet {
       };
     }
 
-    export interface ToGoogleSheetsToInput extends IExport.SnapshotInput {
+    export interface IToGoogleSheetsToInput extends IExport.ISnapshotInput {
       google_sheets: {
         secret: string;
       };

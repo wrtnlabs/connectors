@@ -1,4 +1,9 @@
-import { MyPartial, MyPick, StrictOmit } from "@wrtnlabs/connector-shared";
+import {
+  MyPartial,
+  MyPick,
+  SnakeToCamel,
+  StrictOmit,
+} from "@wrtnlabs/connector-shared";
 import type { tags } from "typia";
 import { ListNode } from "./ListNode";
 
@@ -6,28 +11,17 @@ export type LookUp<U extends { type: string }, T> = U extends { type: T }
   ? U
   : never;
 
+export const ENV_LIST = [
+  "JIRA_CLIENT_ID",
+  "JIRA_CLIENT_SECRET",
+  "JIRA_REDIRECT_URI",
+  "JIRA_REFRESH_TOKEN",
+] as const;
+
 export namespace IJiraService {
-  export interface IProps {
-    /**
-     * Jira Client ID.
-     */
-    clientId: string;
-
-    /**
-     * Jira Client Secret.
-     */
-    clientSecret: string;
-
-    /**
-     * Jira Redirect URI.
-     */
-    redirectUri: string;
-
-    /**
-     * Jira Refresh Token.
-     */
-    secret: string;
-  }
+  export type IProps = {
+    [key in SnakeToCamel<(typeof ENV_LIST)[number]>]: string;
+  };
 
   /**
    * To call the API in Jira, you must have API Token,
@@ -40,7 +34,7 @@ export namespace IJiraService {
    *
    * @title BasicAuthorization
    */
-  export interface BasicAuthorization {
+  export interface IBasicAuthorization {
     /**
      * Indicates the email address that the user is using in the Jira workspace.
      * It must be an email address that Jira is using, not any email address of the user.
@@ -107,7 +101,7 @@ export namespace IJiraService {
   /**
    * @title issue status
    */
-  export interface Status {
+  export interface IStatus {
     /**
      * @title status id
      */
@@ -149,7 +143,7 @@ export namespace IJiraService {
      * @title comments
      */
     comments: (MyPick<
-      IJiraService.Comment,
+      IJiraService.IComment,
       "id" | "author" | "created" | "updated" | "updateAuthor"
     > & {
       /**
@@ -166,7 +160,7 @@ export namespace IJiraService {
     > {}
 
   export interface __IGetCommentInput
-    extends BasicAuthorization,
+    extends IBasicAuthorization,
       ICommonPaginationInput {
     /**
      * This connector doesn't matter the key or ID of the issue.
@@ -174,7 +168,7 @@ export namespace IJiraService {
      *
      * @title issue id or key
      */
-    issueIdOrKey: Issue["id"];
+    issueIdOrKey: IIssue["id"];
   }
 
   export interface IDeleteCommentInput
@@ -183,19 +177,19 @@ export namespace IJiraService {
       "domain" | "email" | "token"
     > {}
 
-  export interface __IDeleteCommentInput extends BasicAuthorization {
+  export interface __IDeleteCommentInput extends IBasicAuthorization {
     /**
      * This connector doesn't matter the key or ID of the issue.
      * If you hand over one of them, you can use it to look up.
      *
      * @title issue id or key
      */
-    issueIdOrKey: Issue["id"];
+    issueIdOrKey: IIssue["id"];
 
     /**
      * @title ID of comment to delete
      */
-    commentId: Comment["id"];
+    commentId: IComment["id"];
   }
 
   export interface ICreateCommentOutput {
@@ -213,7 +207,7 @@ export namespace IJiraService {
     /**
      * @title body of comment
      */
-    body: StrictOmit<Comment["body"], "content"> & {
+    body: StrictOmit<IComment["body"], "content"> & {
       /**
        * You must use markdown format string.
        *
@@ -231,7 +225,7 @@ export namespace IJiraService {
     /**
      * @title body of comment
      */
-    body: StrictOmit<Comment["body"], "content"> & {
+    body: StrictOmit<IComment["body"], "content"> & {
       /**
        * You must use markdown format string.
        *
@@ -244,19 +238,19 @@ export namespace IJiraService {
     };
   }
 
-  export interface ICreateCommentInput extends BasicAuthorization {
+  export interface ICreateCommentInput extends IBasicAuthorization {
     /**
      * This connector doesn't matter the key or ID of the issue.
      * If you hand over one of them, you can use it to look up.
      *
      * @title issue id or key
      */
-    issueIdOrKey: Issue["id"];
+    issueIdOrKey: IIssue["id"];
 
     /**
      * @title body of comment
      */
-    body: Comment["body"];
+    body: IComment["body"];
   }
 
   /**
@@ -266,12 +260,12 @@ export namespace IJiraService {
     /**
      * @title ID of the issue that was created just now
      */
-    id: Issue["id"];
+    id: IIssue["id"];
 
     /**
      * @title Key of the issue that was created just now
      */
-    key: Issue["key"];
+    key: IIssue["key"];
   }
 
   export interface IGetTransitionOutput {
@@ -290,7 +284,7 @@ export namespace IJiraService {
        *
        * @title to
        */
-      to: MyPick<Status, "id" | "description" | "name" | "statusCategory">;
+      to: MyPick<IStatus, "id" | "description" | "name" | "statusCategory">;
     }[];
   }
 
@@ -300,14 +294,14 @@ export namespace IJiraService {
       "domain" | "email" | "token"
     > {}
 
-  export interface __IUpdateStatusInput extends BasicAuthorization {
+  export interface __IUpdateStatusInput extends IBasicAuthorization {
     /**
      * This connector doesn't matter the key or ID of the issue.
      * If you hand over one of them, you can use it to look up.
      *
      * @title issue id or key
      */
-    issueIdOrKey: Issue["id"];
+    issueIdOrKey: IIssue["id"];
 
     /**
      * @title ID of transition
@@ -320,14 +314,14 @@ export namespace IJiraService {
       IJiraService.__IGetTransitionInput,
       "domain" | "email" | "token"
     > {}
-  export interface __IGetTransitionInput extends BasicAuthorization {
+  export interface __IGetTransitionInput extends IBasicAuthorization {
     /**
      * This connector doesn't matter the key or ID of the issue.
      * If you hand over one of them, you can use it to look up.
      *
      * @title issue id or key
      */
-    issueIdOrKey: Issue["id"];
+    issueIdOrKey: IIssue["id"];
   }
 
   export interface IUnAssignInput
@@ -344,11 +338,11 @@ export namespace IJiraService {
       "domain" | "email" | "token"
     > {}
 
-  export interface __IAssignInput extends BasicAuthorization {
+  export interface __IAssignInput extends IBasicAuthorization {
     /**
      * @title ID of issue
      */
-    issueId: Issue["id"];
+    issueId: IIssue["id"];
 
     /**
      * If you want to designate a person in charge, you need that user's ID. Therefore, you need to look up the user first. There are connectors that look up who can be assigned to a project or issue. You can find the ID of the person in charge by choosing what you want.
@@ -356,7 +350,7 @@ export namespace IJiraService {
      *
      * @title accountId of the user you want to designate as the person in charge
      */
-    asigneeId: User["accountId"];
+    asigneeId: IUser["accountId"];
   }
 
   export interface IUpdateCommentByMarkdownInput
@@ -367,7 +361,7 @@ export namespace IJiraService {
     /**
      * @title body of comment
      */
-    body: StrictOmit<Comment["body"], "content"> & {
+    body: StrictOmit<IComment["body"], "content"> & {
       /**
        * You must use markdown format string.
        *
@@ -381,9 +375,9 @@ export namespace IJiraService {
   }
 
   export interface IUpdateCommentInput
-    extends BasicAuthorization,
+    extends IBasicAuthorization,
       MyPartial<
-        StrictOmit<ICreateCommentInput, keyof BasicAuthorization | "body">
+        StrictOmit<ICreateCommentInput, keyof IBasicAuthorization | "body">
       > {
     /**
      * This connector doesn't matter the key or ID of the issue.
@@ -391,17 +385,17 @@ export namespace IJiraService {
      *
      * @title issue id or key
      */
-    issueIdOrKey: Issue["id"];
+    issueIdOrKey: IIssue["id"];
 
     /**
      * @title ID of comment to update
      */
-    commentId: Comment["id"];
+    commentId: IComment["id"];
 
     /**
      * @title body of comment to update
      */
-    body: Comment["body"];
+    body: IComment["body"];
   }
 
   export interface IUpdateIssueInput
@@ -414,9 +408,9 @@ export namespace IJiraService {
    * @title Issue update Conditions
    */
   export interface __IUpdateIssueInput
-    extends BasicAuthorization,
+    extends IBasicAuthorization,
       MyPartial<
-        StrictOmit<ICreateIssueInput, keyof BasicAuthorization | "fields">
+        StrictOmit<ICreateIssueInput, keyof IBasicAuthorization | "fields">
       > {
     /**
      * @title fields to update
@@ -432,7 +426,7 @@ export namespace IJiraService {
          *
          * @title accountId of the user you want to designate as the person in charge
          */
-        id: null | User["accountId"];
+        id: null | IUser["accountId"];
       };
 
       /**
@@ -488,7 +482,7 @@ export namespace IJiraService {
          * @title id of issue type
          * @inheritdoc
          */
-        id: IssueType["id"];
+        id: IIssueType["id"];
       };
 
       /**
@@ -510,7 +504,7 @@ export namespace IJiraService {
          *
          * @title key of parent issue
          */
-        key: Issue["key"];
+        key: IIssue["key"];
       };
 
       /**
@@ -525,7 +519,7 @@ export namespace IJiraService {
          *
          * @title id of proirity
          */
-        id: Priority["id"];
+        id: IPriority["id"];
       };
 
       /**
@@ -540,13 +534,13 @@ export namespace IJiraService {
             /**
              * @title id of project
              */
-            id: Project["id"];
+            id: IProject["id"];
           }
         | {
             /**
              * @title key of project
              */
-            key: Project["key"];
+            key: IProject["key"];
           };
 
       /**
@@ -581,7 +575,7 @@ export namespace IJiraService {
          *
          * @title accountId of the user you want to designate as the person in charge
          */
-        id: null | User["accountId"];
+        id: null | IUser["accountId"];
       };
 
       /**
@@ -634,7 +628,7 @@ export namespace IJiraService {
          * @title id of issue type
          * @inheritdoc
          */
-        id: IssueType["id"];
+        id: IIssueType["id"];
       };
 
       /**
@@ -656,7 +650,7 @@ export namespace IJiraService {
          *
          * @title key of parent issue
          */
-        key: Issue["key"];
+        key: IIssue["key"];
       };
 
       /**
@@ -684,7 +678,7 @@ export namespace IJiraService {
          *
          * @title id of proirity
          */
-        id: Priority["id"];
+        id: IPriority["id"];
       };
 
       /**
@@ -701,13 +695,13 @@ export namespace IJiraService {
             /**
              * @title id of project
              */
-            id: Project["id"];
+            id: IProject["id"];
           }
         | {
             /**
              * @title key of project
              */
-            key: Project["key"];
+            key: IProject["key"];
           };
 
       /**
@@ -728,7 +722,7 @@ export namespace IJiraService {
   /**
    * @title Issue Creation Conditions
    */
-  export interface ICreateIssueInput extends BasicAuthorization {
+  export interface ICreateIssueInput extends IBasicAuthorization {
     /**
      * Indicates the fields that you need to fill in when you want to create an issue.
      *
@@ -745,7 +739,7 @@ export namespace IJiraService {
          *
          * @title accountId of the user you want to designate as the person in charge
          */
-        id: null | User["accountId"];
+        id: null | IUser["accountId"];
       };
 
       /**
@@ -801,7 +795,7 @@ export namespace IJiraService {
          * @title id of issue type
          * @inheritdoc
          */
-        id: IssueType["id"];
+        id: IIssueType["id"];
       };
 
       /**
@@ -823,7 +817,7 @@ export namespace IJiraService {
          *
          * @title key of parent issue
          */
-        key: Issue["key"];
+        key: IIssue["key"];
       };
 
       /**
@@ -838,7 +832,7 @@ export namespace IJiraService {
          *
          * @title id of proirity
          */
-        id: Priority["id"];
+        id: IPriority["id"];
       };
 
       /**
@@ -853,13 +847,13 @@ export namespace IJiraService {
             /**
              * @title id of project
              */
-            id: Project["id"];
+            id: IProject["id"];
           }
         | {
             /**
              * @title key of project
              */
-            key: Project["key"];
+            key: IProject["key"];
           };
 
       /**
@@ -886,10 +880,10 @@ export namespace IJiraService {
     > {}
 
   export interface __IGetIssueLabelInput
-    extends BasicAuthorization,
+    extends IBasicAuthorization,
       ICommonPaginationInput {}
 
-  export type IGetIssuePriorityOutput = MyPick<Priority, "id" | "name">[];
+  export type IGetIssuePriorityOutput = MyPick<IPriority, "id" | "name">[];
 
   export interface IGetIssuePriorityInput
     extends StrictOmit<
@@ -897,13 +891,13 @@ export namespace IJiraService {
       "domain" | "email" | "token"
     > {}
 
-  export type __IGetIssuePriorityInput = BasicAuthorization;
+  export type __IGetIssuePriorityInput = IBasicAuthorization;
 
   export interface IGetIssueStatusOutput {
     /**
      * @title statuses
      */
-    statuses: (MyPick<Status, "id" | "name" | "untranslatedName"> & {
+    statuses: (MyPick<IStatus, "id" | "name" | "untranslatedName"> & {
       /**
        * @title projectId
        */
@@ -917,7 +911,7 @@ export namespace IJiraService {
       "domain" | "email" | "token"
     > {}
 
-  export interface __IGetIssueStatusInput extends BasicAuthorization {
+  export interface __IGetIssueStatusInput extends IBasicAuthorization {
     /**
      * If the status does not have the project ID,
      * it means this status is beyond the scope of the project and can be selected by the entire team.
@@ -925,19 +919,19 @@ export namespace IJiraService {
      *
      * @title id of project
      */
-    projectId?: Project["id"];
+    projectId?: IProject["id"];
   }
 
   export interface IGetIssueCommonRequestInput {
     /**
      * @title key of project
      */
-    project_key: Project["key"];
+    project_key: IProject["key"];
 
     /**
      * @title issue type
      */
-    issuetype?: IssueType["id"];
+    issuetype?: IIssueType["id"];
 
     /**
      * @title status
@@ -989,7 +983,7 @@ export namespace IJiraService {
     labels?: string[];
   }
 
-  export interface IGetIssueDetailOutput extends Issue {
+  export interface IGetIssueDetailOutput extends IIssue {
     /**
      * @title labels attached to the issue
      */
@@ -998,7 +992,7 @@ export namespace IJiraService {
     /**
      * @title Details of the issue
      */
-    fields: StrictOmit<DetailedIssueField, "comment" | "description"> & {
+    fields: StrictOmit<IDetailedIssueField, "comment" | "description"> & {
       /**
        * @title Comment Infomation and Pagination Metadata
        */
@@ -1825,14 +1819,14 @@ export namespace IJiraService {
       "domain" | "email" | "token"
     > {}
 
-  export interface __IGetIssueDetailInput extends BasicAuthorization {
+  export interface __IGetIssueDetailInput extends IBasicAuthorization {
     /**
      * This connector doesn't matter the key or ID of the issue.
      * If you hand over one of them, you can use it to look up.
      *
      * @title issue id or key
      */
-    issueIdOrKey: Issue["id"];
+    issueIdOrKey: IIssue["id"];
   }
 
   export interface IGetIssueInputByBasicAuth
@@ -1842,7 +1836,7 @@ export namespace IJiraService {
     > {}
 
   export interface __IGetIssueInputByBasicAuth
-    extends BasicAuthorization,
+    extends IBasicAuthorization,
       ICommonPaginationInput,
       IGetIssueCommonRequestInput {}
 
@@ -1851,7 +1845,7 @@ export namespace IJiraService {
       IGetIssueCommonRequestInput {}
 
   export type IGetIssueAssignableOutput = MyPick<
-    User,
+    IUser,
     "accountId" | "displayName" | "active"
   >[];
 
@@ -1863,35 +1857,35 @@ export namespace IJiraService {
 
   export interface __IGetIssueAssignableInput
     extends ICommonPaginationInput,
-      BasicAuthorization {
+      IBasicAuthorization {
     /**
      * @title key of project
      *
      * It refers to the key of the project to search for the user to be assigned.
      */
-    project: Project["key"];
+    project: IProject["key"];
 
     /**
      * @title key of issue
      *
      * It refers to the key of the issue to search for the user to be assigned.
      */
-    issueKey: Issue["key"];
+    issueKey: IIssue["key"];
   }
 
   export type IGetProjectAssignableOutput = MyPick<
-    User,
+    IUser,
     "accountId" | "displayName" | "active"
   >[];
 
   export type IGetStatusOutput = MyPick<
-    Status,
+    IStatus,
     "id" | "name" | "statusCategory" | "description" | "untranslatedName"
   >[];
 
-  export type IGetStatusInput = BasicAuthorization;
+  export type IGetStatusInput = IBasicAuthorization;
 
-  export type IGetStatusCategoryOutput = StatusCategory[];
+  export type IGetStatusCategoryOutput = IStatusCategory[];
 
   export interface IGetStatusCategoryInput
     extends StrictOmit<
@@ -1899,7 +1893,7 @@ export namespace IJiraService {
       "domain" | "email" | "token"
     > {}
 
-  export type __IGetStatusCategoryInput = BasicAuthorization;
+  export type __IGetStatusCategoryInput = IBasicAuthorization;
 
   export interface IGetProjectAssignableInput
     extends StrictOmit<
@@ -1909,13 +1903,13 @@ export namespace IJiraService {
 
   export interface __IGetProjectAssignableInput
     extends ICommonPaginationInput,
-      BasicAuthorization {
+      IBasicAuthorization {
     /**
      * @title key of project
      *
      * It refers to the key of the project to search for the user to be assigned.
      */
-    project_key: Project["key"];
+    project_key: IProject["key"];
   }
 
   export interface IGetIssueOutput extends ICommonPaginationOutput {
@@ -1929,14 +1923,14 @@ export namespace IJiraService {
        * @title Link of issue
        */
       link: string & tags.Format<"iri">;
-    } & MyPick<Issue, "fields" | "id" | "key">)[];
+    } & MyPick<IIssue, "fields" | "id" | "key">)[];
   }
 
   export interface IGetIssueTypeOutput {
     /**
      * @title issue types in this projects
      */
-    issuetypes: IssueType[];
+    issuetypes: IIssueType[];
   }
 
   export interface IGetIssueTypeInput
@@ -1945,11 +1939,11 @@ export namespace IJiraService {
       "domain" | "email" | "token"
     > {}
 
-  export interface __IGetIssueTypeInput extends BasicAuthorization {
+  export interface __IGetIssueTypeInput extends IBasicAuthorization {
     /**
      * @title id of project
      */
-    projectId: Project["id"];
+    projectId: IProject["id"];
   }
 
   export interface IGetProjectInputByBasicAuth
@@ -1959,7 +1953,7 @@ export namespace IJiraService {
     > {}
 
   export interface __IGetProjectInputByBasicAuth
-    extends BasicAuthorization,
+    extends IBasicAuthorization,
       ICommonPaginationInput {
     /**
      * Order the results by a field.
@@ -2029,7 +2023,7 @@ export namespace IJiraService {
     /**
      * @title Jira project list
      */
-    values: IJiraService.Project[];
+    values: IJiraService.IProject[];
   }
 
   // OAuth 연동 시에 필요한 타입이기 때문에 주석 생략
@@ -2041,7 +2035,7 @@ export namespace IJiraService {
     avartarUrl: string;
   }
 
-  export interface IssueType {
+  export interface IIssueType {
     /**
      * @title issuetype's id
      */
@@ -2065,7 +2059,7 @@ export namespace IJiraService {
     subtask: boolean;
   }
 
-  export interface Issue {
+  export interface IIssue {
     /**
      * @title The ID of the issue
      */
@@ -2079,10 +2073,10 @@ export namespace IJiraService {
     /**
      * @title fields
      */
-    fields: IssueField;
+    fields: IIssueField;
   }
 
-  export interface DetailedIssueField extends IssueField {
+  export interface IDetailedIssueField extends IIssueField {
     /**
      * @title comment infomation
      */
@@ -2107,7 +2101,7 @@ export namespace IJiraService {
       /**
        * @title list of comments
        */
-      comments: Comment[];
+      comments: IComment[];
     };
 
     /**
@@ -2121,7 +2115,7 @@ export namespace IJiraService {
     };
   }
 
-  export interface Comment {
+  export interface IComment {
     /**
      * @title id of comment
      */
@@ -2130,12 +2124,12 @@ export namespace IJiraService {
     /**
      * @title author of this comment
      */
-    author: MyPick<User, "accountId" | "active" | "displayName">;
+    author: MyPick<IUser, "accountId" | "active" | "displayName">;
 
     /**
      * @title who updates this comment
      */
-    updateAuthor: MyPick<User, "accountId" | "active" | "displayName">;
+    updateAuthor: MyPick<IUser, "accountId" | "active" | "displayName">;
 
     /**
      * @title body of comment
@@ -2169,7 +2163,7 @@ export namespace IJiraService {
     updated: string;
   }
 
-  export interface IssueField {
+  export interface IIssueField {
     /**
      * The date and time when the status category of the issue was last changed.
      *
@@ -2187,17 +2181,17 @@ export namespace IJiraService {
     /**
      * @title reporter
      */
-    reporter?: User | null;
+    reporter?: IUser | null;
 
     /**
      * @title creator
      */
-    creator?: User | null;
+    creator?: IUser | null;
 
     /**
      * @title assignee
      */
-    assignee?: User | null;
+    assignee?: IUser | null;
 
     /**
      * @title summary
@@ -2207,28 +2201,28 @@ export namespace IJiraService {
     /**
      * @title issue type
      */
-    issuetype?: MyPick<IssueType, "id" | "name">;
+    issuetype?: MyPick<IIssueType, "id" | "name">;
 
     /**
      * @title status
      */
     status: MyPick<
-      Status,
+      IStatus,
       "id" | "name" | "description" | "statusCategory" | "untranslatedName"
     >;
 
     /**
      * @title priority
      */
-    priority: MyPick<Priority, "id" | "name">;
+    priority: MyPick<IPriority, "id" | "name">;
 
     /**
      * @title parent of this issue
      */
-    parent?: Parent;
+    parent?: IParent;
   }
 
-  export interface Parent {
+  export interface IParent {
     /**
      * @title The ID of the parent issue
      */
@@ -2250,7 +2244,7 @@ export namespace IJiraService {
     };
   }
 
-  export interface User {
+  export interface IUser {
     /**
      * @title id of this user account
      */
@@ -2272,7 +2266,7 @@ export namespace IJiraService {
     active: boolean;
   }
 
-  export interface Project {
+  export interface IProject {
     /**
      * @title images of this project
      */
@@ -2316,7 +2310,7 @@ export namespace IJiraService {
     };
   }
 
-  export interface AvartarUrls {
+  export interface IAvartarUrls {
     /**
      * @title "16x16" size image
      */
@@ -2341,7 +2335,7 @@ export namespace IJiraService {
   /**
    * @title priority
    */
-  export interface Priority {
+  export interface IPriority {
     /**
      * @title url of icon
      */
@@ -2465,7 +2459,7 @@ export namespace IJiraService {
         type: "underline";
       };
 
-  export interface StatusCategory {
+  export interface IStatusCategory {
     /**
      * @title name of color
      */
