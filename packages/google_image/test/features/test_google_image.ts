@@ -7,7 +7,7 @@ import { TestGlobal } from "../TestGlobal";
 
 export const test_google_image = async () => {
   const googleImageService = new GoogleImageService({
-    apiKey: TestGlobal.env.SERP_API_KEY,
+    serpApiKey: TestGlobal.env.SERP_API_KEY,
   });
 
   const results = await googleImageService.search({

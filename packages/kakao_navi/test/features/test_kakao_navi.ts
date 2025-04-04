@@ -4,7 +4,7 @@ import { TestGlobal } from "../TestGlobal";
 
 export const test_kakao_navi_get_future_directions = async () => {
   const kakaoNaviService = new KakaoNaviService({
-    clientId: TestGlobal.env.KAKAO_TALK_CLIENT_ID,
+    kakaoNaviClientId: TestGlobal.env.KAKAO_TALK_CLIENT_ID,
   });
 
   const first = await kakaoNaviService.getFutureDirections({

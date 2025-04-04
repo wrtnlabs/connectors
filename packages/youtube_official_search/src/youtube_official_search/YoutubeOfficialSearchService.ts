@@ -52,7 +52,7 @@ export class YoutubeOfficialSearchService {
         "https://www.googleapis.com/youtube/v3/search",
         {
           params: {
-            key: this.props.googleApiKey,
+            key: this.props.youtubeOfficialSearchGoogleApiKey,
             part: "snippet",
             q: query,
             order: "viewCount",

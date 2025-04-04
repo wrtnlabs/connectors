@@ -5,8 +5,8 @@ import { TestGlobal } from "../TestGlobal";
 
 export const test_open_data_get_get_building_info = async () => {
   const openDataService = new OpenDataService({
-    apiKey: TestGlobal.env.OPEN_DATA_API_KEY,
-    weatherApiKey: TestGlobal.env.OPEN_WEATHER_API_KEY,
+    openDataApiKey: TestGlobal.env.OPEN_DATA_API_KEY,
+    openDataWeatherApiKey: TestGlobal.env.OPEN_WEATHER_API_KEY,
   });
 
   const res = await openDataService.getBuildingInfo({
@@ -21,8 +21,8 @@ export const test_open_data_get_get_building_info = async () => {
 
 export const test_open_data_get_get_building_info_2 = async () => {
   const openDataService = new OpenDataService({
-    apiKey: TestGlobal.env.OPEN_DATA_API_KEY,
-    weatherApiKey: TestGlobal.env.OPEN_WEATHER_API_KEY,
+    openDataApiKey: TestGlobal.env.OPEN_DATA_API_KEY,
+    openDataWeatherApiKey: TestGlobal.env.OPEN_WEATHER_API_KEY,
   });
 
   const res = await openDataService.getBuildingInfo({
@@ -37,8 +37,8 @@ export const test_open_data_get_get_building_info_2 = async () => {
 
 export const test_open_data_get_get_parking_lot = async () => {
   const openDataService = new OpenDataService({
-    apiKey: TestGlobal.env.OPEN_DATA_API_KEY,
-    weatherApiKey: TestGlobal.env.OPEN_WEATHER_API_KEY,
+    openDataApiKey: TestGlobal.env.OPEN_DATA_API_KEY,
+    openDataWeatherApiKey: TestGlobal.env.OPEN_WEATHER_API_KEY,
   });
 
   const res = await openDataService.getParkingLot({
@@ -54,8 +54,8 @@ export const test_open_data_get_get_parking_lot = async () => {
 
 export const test_open_data_get_get_lh_lease_info_has_next_page = async () => {
   const openDataService = new OpenDataService({
-    apiKey: TestGlobal.env.OPEN_DATA_API_KEY,
-    weatherApiKey: TestGlobal.env.OPEN_WEATHER_API_KEY,
+    openDataApiKey: TestGlobal.env.OPEN_DATA_API_KEY,
+    openDataWeatherApiKey: TestGlobal.env.OPEN_WEATHER_API_KEY,
   });
 
   const res = await openDataService.getLHLeaseInfo({
@@ -71,8 +71,8 @@ export const test_open_data_get_get_lh_lease_info_has_next_page = async () => {
 
 export const test_open_data_get_get_lh_lease_info = async () => {
   const openDataService = new OpenDataService({
-    apiKey: TestGlobal.env.OPEN_DATA_API_KEY,
-    weatherApiKey: TestGlobal.env.OPEN_WEATHER_API_KEY,
+    openDataApiKey: TestGlobal.env.OPEN_DATA_API_KEY,
+    openDataWeatherApiKey: TestGlobal.env.OPEN_WEATHER_API_KEY,
   });
 
   const res = await openDataService.getLHLeaseInfo({
@@ -88,8 +88,8 @@ export const test_open_data_get_get_lh_lease_info = async () => {
 
 export const test_open_data_get_get_lh_lease_info_second_page = async () => {
   const openDataService = new OpenDataService({
-    apiKey: TestGlobal.env.OPEN_DATA_API_KEY,
-    weatherApiKey: TestGlobal.env.OPEN_WEATHER_API_KEY,
+    openDataApiKey: TestGlobal.env.OPEN_DATA_API_KEY,
+    openDataWeatherApiKey: TestGlobal.env.OPEN_WEATHER_API_KEY,
   });
 
   const res = await openDataService.getLHLeaseInfo({
@@ -104,8 +104,8 @@ export const test_open_data_get_get_lh_lease_info_second_page = async () => {
 
 export const test_open_data_get_get_lh_lease_info_third_page = async () => {
   const openDataService = new OpenDataService({
-    apiKey: TestGlobal.env.OPEN_DATA_API_KEY,
-    weatherApiKey: TestGlobal.env.OPEN_WEATHER_API_KEY,
+    openDataApiKey: TestGlobal.env.OPEN_DATA_API_KEY,
+    openDataWeatherApiKey: TestGlobal.env.OPEN_WEATHER_API_KEY,
   });
 
   const res = await openDataService.getLHLeaseInfo({
@@ -121,8 +121,8 @@ export const test_open_data_get_get_lh_lease_info_third_page = async () => {
 
 export const test_open_data_get_RTMS_Data_svc_offi_rent = async () => {
   const openDataService = new OpenDataService({
-    apiKey: TestGlobal.env.OPEN_DATA_API_KEY,
-    weatherApiKey: TestGlobal.env.OPEN_WEATHER_API_KEY,
+    openDataApiKey: TestGlobal.env.OPEN_DATA_API_KEY,
+    openDataWeatherApiKey: TestGlobal.env.OPEN_WEATHER_API_KEY,
   });
 
   const standardRegionCodeList =
@@ -147,8 +147,8 @@ export const test_open_data_get_RTMS_Data_svc_offi_rent = async () => {
 export const test_open_data_get_RTMS_Data_svc_offi_rent_with_pagination =
   async () => {
     const openDataService = new OpenDataService({
-      apiKey: TestGlobal.env.OPEN_DATA_API_KEY,
-      weatherApiKey: TestGlobal.env.OPEN_WEATHER_API_KEY,
+      openDataApiKey: TestGlobal.env.OPEN_DATA_API_KEY,
+      openDataWeatherApiKey: TestGlobal.env.OPEN_WEATHER_API_KEY,
     });
 
     const standardRegionCodeList =
@@ -183,8 +183,8 @@ export const test_open_data_get_RTMS_Data_svc_offi_rent_with_pagination =
 
 export const test_open_data_get_RTMS_Data_svc_apt_rent = async () => {
   const openDataService = new OpenDataService({
-    apiKey: TestGlobal.env.OPEN_DATA_API_KEY,
-    weatherApiKey: TestGlobal.env.OPEN_WEATHER_API_KEY,
+    openDataApiKey: TestGlobal.env.OPEN_DATA_API_KEY,
+    openDataWeatherApiKey: TestGlobal.env.OPEN_WEATHER_API_KEY,
   });
 
   const standardRegionCodeList =
@@ -209,8 +209,8 @@ export const test_open_data_get_RTMS_Data_svc_apt_rent = async () => {
 
 export const test_open_data_get_copy_right = async () => {
   const openDataService = new OpenDataService({
-    apiKey: TestGlobal.env.OPEN_DATA_API_KEY,
-    weatherApiKey: TestGlobal.env.OPEN_WEATHER_API_KEY,
+    openDataApiKey: TestGlobal.env.OPEN_DATA_API_KEY,
+    openDataWeatherApiKey: TestGlobal.env.OPEN_WEATHER_API_KEY,
   });
 
   const res = await openDataService.getCopyRight({});
@@ -220,8 +220,8 @@ export const test_open_data_get_copy_right = async () => {
 
 export const test_open_data_get_copy_right_with_author_name_1 = async () => {
   const openDataService = new OpenDataService({
-    apiKey: TestGlobal.env.OPEN_DATA_API_KEY,
-    weatherApiKey: TestGlobal.env.OPEN_WEATHER_API_KEY,
+    openDataApiKey: TestGlobal.env.OPEN_DATA_API_KEY,
+    openDataWeatherApiKey: TestGlobal.env.OPEN_WEATHER_API_KEY,
   });
 
   const res = await openDataService.getCopyRight({
@@ -235,8 +235,8 @@ export const test_open_data_get_copy_right_with_author_name_1 = async () => {
 
 export const test_open_data_get_copy_right_with_author_name_2 = async () => {
   const openDataService = new OpenDataService({
-    apiKey: TestGlobal.env.OPEN_DATA_API_KEY,
-    weatherApiKey: TestGlobal.env.OPEN_WEATHER_API_KEY,
+    openDataApiKey: TestGlobal.env.OPEN_DATA_API_KEY,
+    openDataWeatherApiKey: TestGlobal.env.OPEN_WEATHER_API_KEY,
   });
 
   const res = await openDataService.getCopyRight({
@@ -250,8 +250,8 @@ export const test_open_data_get_copy_right_with_author_name_2 = async () => {
 
 export const test_open_data_get_RTMS_Data_svc_sh_rent = async () => {
   const openDataService = new OpenDataService({
-    apiKey: TestGlobal.env.OPEN_DATA_API_KEY,
-    weatherApiKey: TestGlobal.env.OPEN_WEATHER_API_KEY,
+    openDataApiKey: TestGlobal.env.OPEN_DATA_API_KEY,
+    openDataWeatherApiKey: TestGlobal.env.OPEN_WEATHER_API_KEY,
   });
 
   const standardRegionCodeList =

@@ -313,7 +313,7 @@ export class RedditService {
 
   private async refresh(): Promise<string> {
     const Basic = Buffer.from(
-      `${this.props.clientId}:${this.props.clientSecret}`,
+      `${this.props.redditClientId}:${this.props.redditClientSecret}`,
       "utf8",
     ).toString("base64");
 
@@ -322,7 +322,7 @@ export class RedditService {
       url,
       {
         grant_type: "refresh_token",
-        refresh_token: this.props.refreshToken,
+        refresh_token: this.props.redditRefreshToken,
       },
       {
         headers: {

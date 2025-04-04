@@ -1,12 +1,12 @@
 import { tags } from "typia";
+import { SnakeToCamel } from "@wrtnlabs/connector-shared";
+
+export const ENV_LIST = ["SERP_API_KEY"] as const;
 
 export namespace IGoogleShoppingService {
-  export interface IProps {
-    /**
-     * Serp Api Key.
-     */
-    apiKey: string;
-  }
+  export type IProps = {
+    [key in SnakeToCamel<(typeof ENV_LIST)[number]>]: string;
+  };
 
   /**
    * @title Product search conditions

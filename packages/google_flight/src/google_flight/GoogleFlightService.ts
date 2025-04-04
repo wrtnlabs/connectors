@@ -13,7 +13,7 @@ export class GoogleFlightService {
   constructor(private readonly props: IGoogleFlightService.IProps) {
     this.defaultParams = {
       engine: "google_flights",
-      api_key: this.props.apiKey,
+      api_key: this.props.serpApiKey,
       hl: "ko",
       gl: "kr",
       currency: "KRW",

@@ -16,7 +16,7 @@ export class GoogleImageService {
       const params = {
         engine: "google_images",
         q: input.query,
-        api_key: this.props.apiKey,
+        api_key: this.props.serpApiKey,
         hl: input.lang,
         gl: input.lang === "ko" ? "kr" : input.lang === "en" ? "us" : "jp",
         imgar: input.ratio,

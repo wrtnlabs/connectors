@@ -20,7 +20,9 @@ export namespace IHancellService {
     /**
      * @title New Hansel File Link
      */
-    fileUrl: string & tags.Format<"iri">;
+    fileUrl: string &
+      tags.Format<"iri"> &
+      ContentMediaType<"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">;
   }
 
   /**

@@ -4,7 +4,7 @@ import { SnakeToCamel } from "@wrtnlabs/connector-shared";
 /**
  * Write the environment variables that are required for the AWS S3 service.
  */
-export const ENV_LIST = ["WEB_CRAWLER_ZENROWS_API_KEY"] as const;
+export const ENV_LIST = ["ZENROWS_API_KEY"] as const;
 
 export namespace IWebCrawlerService {
   export type IProps = {

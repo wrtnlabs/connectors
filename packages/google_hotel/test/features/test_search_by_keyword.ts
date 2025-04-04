@@ -7,7 +7,7 @@ import { TestGlobal } from "../TestGlobal";
 
 export const test_google_hotel = async () => {
   const googleHotelService = new GoogleHotelService({
-    apiKey: TestGlobal.env.SERP_API_KEY,
+    serpApiKey: TestGlobal.env.SERP_API_KEY,
   });
 
   const today = new Date();

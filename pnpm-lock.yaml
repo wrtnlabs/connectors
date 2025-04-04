@@ -657,6 +657,9 @@ importers:
       '@types/stream-buffers':
         specifier: ^3.0.7
         version: 3.0.7
+      '@wrtnlabs/connector-aws-s3':
+        specifier: workspace:^
+        version: link:../aws_s3
       chalk:
         specifier: ^4.1.2
         version: 4.1.2
@@ -730,6 +733,9 @@ importers:
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
+      '@wrtnlabs/connector-aws-s3':
+        specifier: workspace:^
+        version: link:../aws_s3
       chalk:
         specifier: ^4.1.2
         version: 4.1.2
@@ -1016,6 +1022,9 @@ importers:
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
+      '@wrtnlabs/connector-aws-s3':
+        specifier: workspace:^
+        version: link:../aws_s3
       assert:
         specifier: ^2.1.0
         version: 2.1.0
@@ -1137,9 +1146,6 @@ importers:
 
   packages/github:
     dependencies:
-      '@wrtnlabs/connector-aws-s3':
-        specifier: workspace:^
-        version: link:../aws_s3
       '@wrtnlabs/connector-shared':
         specifier: workspace:^
         version: link:../shared
@@ -2341,6 +2347,9 @@ importers:
 
   packages/hancell:
     dependencies:
+      '@wrtnlabs/connector-aws-s3':
+        specifier: workspace:^
+        version: link:../aws_s3
       '@wrtnlabs/connector-shared':
         specifier: workspace:^
         version: link:../shared
@@ -2916,6 +2925,9 @@ importers:
 
   packages/marp:
     dependencies:
+      '@wrtnlabs/connector-aws-s3':
+        specifier: workspace:^
+        version: link:../aws_s3
       '@wrtnlabs/connector-shared':
         specifier: workspace:^
         version: link:../shared
@@ -3494,6 +3506,9 @@ importers:
       rollup:
         specifier: ^4.34.8
         version: 4.37.0
+      sharp:
+        specifier: ^0.33.5
+        version: 0.33.5
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@18.19.83)(typescript@5.7.3)
@@ -3591,9 +3606,6 @@ importers:
 
   packages/sort:
     dependencies:
-      '@wrtnlabs/connector-shared':
-        specifier: workspace:^
-        version: link:../shared
       typia:
         specifier: ^8.0.1
         version: 8.0.3(@samchon/openapi@3.1.0)(typescript@5.7.3)
@@ -3658,6 +3670,9 @@ importers:
 
   packages/stable_diffusion_beta:
     dependencies:
+      '@wrtnlabs/connector-aws-s3':
+        specifier: workspace:^
+        version: link:../aws_s3
       '@wrtnlabs/connector-shared':
         specifier: workspace:^
         version: link:../shared

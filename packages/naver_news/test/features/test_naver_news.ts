@@ -8,8 +8,8 @@ import { TestGlobal } from "../TestGlobal";
 export const test_read_news_naver =
   async (): Promise<INaverNewsService.INewsNaverOutput> => {
     const naverNewsService = new NaverNewsService({
-      clientId: TestGlobal.env.NAVER_CLIENT_ID,
-      clientSecret: TestGlobal.env.NAVER_CLIENT_SECRET,
+      naverNewsClientId: TestGlobal.env.NAVER_CLIENT_ID,
+      naverNewsClientSecret: TestGlobal.env.NAVER_CLIENT_SECRET,
     });
 
     const input: INaverNewsService.INaverKeywordInput = {

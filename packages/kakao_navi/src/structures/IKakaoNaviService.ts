@@ -1,7 +1,7 @@
 import { tags } from "typia";
 import { MyPick, SnakeToCamel } from "@wrtnlabs/connector-shared";
 
-export const ENV_LIST = ["KAKAO_NATIVE_CLIENT_ID"] as const;
+export const ENV_LIST = ["KAKAO_NAVI_CLIENT_ID"] as const;
 
 export namespace IKakaoNaviService {
   export type IProps = {

@@ -4,9 +4,9 @@ import { TestGlobal } from "../TestGlobal";
 
 export const test_kakao_talk_text_memo = async () => {
   const kakaoTalkService = new KakaoTalkService({
-    clientId: TestGlobal.env.KAKAO_TALK_CLIENT_ID,
-    clientSecret: TestGlobal.env.KAKAO_TALK_CLIENT_SECRET,
-    secret: TestGlobal.env.KAKAO_TALK_TEST_REFRESH_TOKEN,
+    kakaoTalkClientId: TestGlobal.env.KAKAO_TALK_CLIENT_ID,
+    kakaoTalkClientSecret: TestGlobal.env.KAKAO_TALK_CLIENT_SECRET,
+    kakaoTalkRefreshToken: TestGlobal.env.KAKAO_TALK_TEST_REFRESH_TOKEN,
   });
 
   /**
@@ -30,9 +30,9 @@ export const test_kakao_talk_text_memo = async () => {
 
 export const test_kakao_talk_feed_memo = async () => {
   const kakaoTalkService = new KakaoTalkService({
-    clientId: TestGlobal.env.KAKAO_TALK_CLIENT_ID,
-    clientSecret: TestGlobal.env.KAKAO_TALK_CLIENT_SECRET,
-    secret: TestGlobal.env.KAKAO_TALK_TEST_REFRESH_TOKEN,
+    kakaoTalkClientId: TestGlobal.env.KAKAO_TALK_CLIENT_ID,
+    kakaoTalkClientSecret: TestGlobal.env.KAKAO_TALK_CLIENT_SECRET,
+    kakaoTalkRefreshToken: TestGlobal.env.KAKAO_TALK_TEST_REFRESH_TOKEN,
   });
 
   /**
@@ -121,9 +121,9 @@ export const test_kakao_talk_feed_memo = async () => {
 
 export const test_kakao_talk_get_calendars = async () => {
   const kakaoTalkService = new KakaoTalkService({
-    clientId: TestGlobal.env.KAKAO_TALK_CLIENT_ID,
-    clientSecret: TestGlobal.env.KAKAO_TALK_CLIENT_SECRET,
-    secret: TestGlobal.env.KAKAO_TALK_TEST_REFRESH_TOKEN,
+    kakaoTalkClientId: TestGlobal.env.KAKAO_TALK_CLIENT_ID,
+    kakaoTalkClientSecret: TestGlobal.env.KAKAO_TALK_CLIENT_SECRET,
+    kakaoTalkRefreshToken: TestGlobal.env.KAKAO_TALK_TEST_REFRESH_TOKEN,
   });
 
   const calendarInfo = await kakaoTalkService.getCalendars();
@@ -133,9 +133,9 @@ export const test_kakao_talk_get_calendars = async () => {
 
 export const test_kakao_talk_get_calendar_events = async () => {
   const kakaoTalkService = new KakaoTalkService({
-    clientId: TestGlobal.env.KAKAO_TALK_CLIENT_ID,
-    clientSecret: TestGlobal.env.KAKAO_TALK_CLIENT_SECRET,
-    secret: TestGlobal.env.KAKAO_TALK_TEST_REFRESH_TOKEN,
+    kakaoTalkClientId: TestGlobal.env.KAKAO_TALK_CLIENT_ID,
+    kakaoTalkClientSecret: TestGlobal.env.KAKAO_TALK_CLIENT_SECRET,
+    kakaoTalkRefreshToken: TestGlobal.env.KAKAO_TALK_TEST_REFRESH_TOKEN,
   });
 
   /**
@@ -155,9 +155,9 @@ export const test_kakao_talk_get_calendar_events = async () => {
 
 export const test_kakao_talk_create_event = async () => {
   const kakaoTalkService = new KakaoTalkService({
-    clientId: TestGlobal.env.KAKAO_TALK_CLIENT_ID,
-    clientSecret: TestGlobal.env.KAKAO_TALK_CLIENT_SECRET,
-    secret: TestGlobal.env.KAKAO_TALK_TEST_REFRESH_TOKEN,
+    kakaoTalkClientId: TestGlobal.env.KAKAO_TALK_CLIENT_ID,
+    kakaoTalkClientSecret: TestGlobal.env.KAKAO_TALK_CLIENT_SECRET,
+    kakaoTalkRefreshToken: TestGlobal.env.KAKAO_TALK_TEST_REFRESH_TOKEN,
   });
 
   /**
@@ -234,9 +234,9 @@ export const test_kakao_talk_create_event = async () => {
 
 export const test_kakao_talk_list_memo = async () => {
   const kakaoTalkService = new KakaoTalkService({
-    clientId: TestGlobal.env.KAKAO_TALK_CLIENT_ID,
-    clientSecret: TestGlobal.env.KAKAO_TALK_CLIENT_SECRET,
-    secret: TestGlobal.env.KAKAO_TALK_TEST_REFRESH_TOKEN,
+    kakaoTalkClientId: TestGlobal.env.KAKAO_TALK_CLIENT_ID,
+    kakaoTalkClientSecret: TestGlobal.env.KAKAO_TALK_CLIENT_SECRET,
+    kakaoTalkRefreshToken: TestGlobal.env.KAKAO_TALK_TEST_REFRESH_TOKEN,
   });
 
   /**
@@ -322,9 +322,9 @@ export const test_kakao_talk_list_memo = async () => {
 
 export const test_kakao_talk_location_memo = async () => {
   const kakaoTalkService = new KakaoTalkService({
-    clientId: TestGlobal.env.KAKAO_TALK_CLIENT_ID,
-    clientSecret: TestGlobal.env.KAKAO_TALK_CLIENT_SECRET,
-    secret: TestGlobal.env.KAKAO_TALK_TEST_REFRESH_TOKEN,
+    kakaoTalkClientId: TestGlobal.env.KAKAO_TALK_CLIENT_ID,
+    kakaoTalkClientSecret: TestGlobal.env.KAKAO_TALK_CLIENT_SECRET,
+    kakaoTalkRefreshToken: TestGlobal.env.KAKAO_TALK_TEST_REFRESH_TOKEN,
   });
 
   /**
@@ -368,9 +368,9 @@ export const test_kakao_talk_location_memo = async () => {
 
 export const test_kakao_talk_commerce_memo = async () => {
   const kakaoTalkService = new KakaoTalkService({
-    clientId: TestGlobal.env.KAKAO_TALK_CLIENT_ID,
-    clientSecret: TestGlobal.env.KAKAO_TALK_CLIENT_SECRET,
-    secret: TestGlobal.env.KAKAO_TALK_TEST_REFRESH_TOKEN,
+    kakaoTalkClientId: TestGlobal.env.KAKAO_TALK_CLIENT_ID,
+    kakaoTalkClientSecret: TestGlobal.env.KAKAO_TALK_CLIENT_SECRET,
+    kakaoTalkRefreshToken: TestGlobal.env.KAKAO_TALK_TEST_REFRESH_TOKEN,
   });
 
   /**
@@ -427,9 +427,9 @@ export const test_kakao_talk_commerce_memo = async () => {
 
 export const test_kakao_talk_commerce_memo_with_redirect_url = async () => {
   const kakaoTalkService = new KakaoTalkService({
-    clientId: TestGlobal.env.KAKAO_TALK_CLIENT_ID,
-    clientSecret: TestGlobal.env.KAKAO_TALK_CLIENT_SECRET,
-    secret: TestGlobal.env.KAKAO_TALK_TEST_REFRESH_TOKEN,
+    kakaoTalkClientId: TestGlobal.env.KAKAO_TALK_CLIENT_ID,
+    kakaoTalkClientSecret: TestGlobal.env.KAKAO_TALK_CLIENT_SECRET,
+    kakaoTalkRefreshToken: TestGlobal.env.KAKAO_TALK_TEST_REFRESH_TOKEN,
   });
 
   /**

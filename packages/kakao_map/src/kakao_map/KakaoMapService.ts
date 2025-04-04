@@ -24,7 +24,7 @@ export class KakaoMapService {
 
       const res = await axios.get(url, {
         headers: {
-          Authorization: `KakaoAK ${this.props.clientId}`,
+          Authorization: `KakaoAK ${this.props.kakaoMapClientId}`,
         },
       });
       return res.data;

@@ -4,7 +4,11 @@ import { SnakeToCamel } from "@wrtnlabs/connector-shared";
 /**
  * Write the environment variables that are required for the AWS S3 service.
  */
-export const ENV_LIST = ["X_CLIENT_ID", "X_CLIENT_SECRET", "X_BEARER_TOKEN"];
+export const ENV_LIST = [
+  "X_CLIENT_ID",
+  "X_CLIENT_SECRET",
+  "X_BEARER_TOKEN",
+] as const;
 
 export namespace IXService {
   export type IProps = {

@@ -592,12 +592,12 @@ export class GmailService {
    */
   private async refreshAccessToken(): Promise<string> {
     const client = new google.auth.OAuth2(
-      this.props.clientId,
-      this.props.clientSecret,
+      this.props.googleClientId,
+      this.props.googleClientSecret,
     );
 
     client.setCredentials({
-      refresh_token: decodeURIComponent(this.props.refreshToken),
+      refresh_token: decodeURIComponent(this.props.googleRefreshToken),
     });
     const { credentials } = await client.refreshAccessToken();
     const accessToken = credentials.access_token;

@@ -472,10 +472,10 @@ export class JiraService {
         url,
         {
           grant_type: "refresh_token",
-          client_id: this.props.clientId,
-          client_secret: this.props.clientSecret,
-          redirect_uri: this.props.redirectUri,
-          refresh_token: this.props.secret,
+          client_id: this.props.jiraClientId,
+          client_secret: this.props.jiraClientSecret,
+          redirect_uri: this.props.jiraRedirectUri,
+          refresh_token: this.props.jiraClientSecret,
         },
         {
           headers: {

@@ -8,9 +8,9 @@ import { TestGlobal } from "../TestGlobal";
 
 export const test_append_google_sheet = async (): Promise<void> => {
   const googleSheetService = new GoogleSheetService({
-    clientId: TestGlobal.env.GOOGLE_CLIENT_ID,
-    clientSecret: TestGlobal.env.GOOGLE_CLIENT_SECRET,
-    secret: TestGlobal.env.GOOGLE_TEST_SECRET,
+    googleClientId: TestGlobal.env.GOOGLE_CLIENT_ID,
+    googleClientSecret: TestGlobal.env.GOOGLE_CLIENT_SECRET,
+    googleRefreshToken: TestGlobal.env.GOOGLE_TEST_SECRET,
   });
 
   const spreadsheetId = (await test_create_google_sheet()).spreadsheetId;

@@ -5,7 +5,7 @@ import assert from "assert";
 
 export const test_slack_get_all_private_channels = async () => {
   const slackService = new SlackService({
-    secretKey: TestGlobal.env.SLACK_TEST_SECRET,
+    slackToken: TestGlobal.env.SLACK_TEST_SECRET,
   });
   const res = await slackService.getAllPrivateChannels();
 
@@ -15,7 +15,7 @@ export const test_slack_get_all_private_channels = async () => {
 
 export const test_slack_get_all_public_channels = async () => {
   const slackService = new SlackService({
-    secretKey: TestGlobal.env.SLACK_TEST_SECRET,
+    slackToken: TestGlobal.env.SLACK_TEST_SECRET,
   });
   const res = await slackService.getAllPublicChannels();
 
@@ -25,7 +25,7 @@ export const test_slack_get_all_public_channels = async () => {
 
 export const test_slack_get_all_im_channels = async () => {
   const slackService = new SlackService({
-    secretKey: TestGlobal.env.SLACK_TEST_SECRET,
+    slackToken: TestGlobal.env.SLACK_TEST_SECRET,
   });
   const res = await slackService.getAllImChannels();
 
@@ -37,7 +37,7 @@ export const test_slack_get_all_im_channels = async () => {
 
 export const test_slack_get_channel_histories = async () => {
   const slackService = new SlackService({
-    secretKey: TestGlobal.env.SLACK_TEST_SECRET,
+    slackToken: TestGlobal.env.SLACK_TEST_SECRET,
   });
 
   const channels = await test_slack_get_all_public_channels();
@@ -61,7 +61,7 @@ export const test_slack_get_channel_histories = async () => {
 
 export const test_slack_get_channel_histories_with_date_time = async () => {
   const slackService = new SlackService({
-    secretKey: TestGlobal.env.SLACK_TEST_SECRET,
+    slackToken: TestGlobal.env.SLACK_TEST_SECRET,
   });
 
   const channels = await test_slack_get_all_public_channels();
@@ -78,7 +78,7 @@ export const test_slack_get_channel_histories_with_date_time = async () => {
 
 export const test_slack_send_text_message_to_im = async () => {
   const slackService = new SlackService({
-    secretKey: TestGlobal.env.SLACK_TEST_SECRET,
+    slackToken: TestGlobal.env.SLACK_TEST_SECRET,
   });
 
   const [imchannel] = await test_slack_get_all_im_channels();

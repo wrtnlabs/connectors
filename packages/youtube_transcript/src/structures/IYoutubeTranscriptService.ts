@@ -5,7 +5,7 @@ import { SnakeToCamel } from "@wrtnlabs/connector-shared";
 /**
  * Write the environment variables that are required for the AWS S3 service.
  */
-export const ENV_LIST = ["YOUTUBE_TRANSCRIPT_SEARCH_API_KEY"] as const;
+export const ENV_LIST = ["SEARCH_API_KEY"] as const;
 
 export namespace IYoutubeTranscriptService {
   export type IProps = {

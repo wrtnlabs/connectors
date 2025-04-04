@@ -1,22 +1,16 @@
 import { tags } from "typia";
+import { SnakeToCamel } from "@wrtnlabs/connector-shared";
+
+export const ENV_LIST = [
+  "GOOGLE_CLIENT_ID",
+  "GOOGLE_CLIENT_SECRET",
+  "GOOGLE_REFRESH_TOKEN",
+] as const;
 
 export namespace IGmailService {
-  export interface IProps {
-    /**
-     * Google Client ID.
-     */
-    clientId: string;
-
-    /**
-     * Google Client Secret.
-     */
-    clientSecret: string;
-
-    /**
-     * Google Refresh Token.
-     */
-    refreshToken: string;
-  }
+  export type IProps = {
+    [key in SnakeToCamel<(typeof ENV_LIST)[number]>]: string;
+  };
 
   export interface IDeleteMailListInput {
     /**

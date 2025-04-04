@@ -35,7 +35,7 @@ export class MarpService {
 
       const upload = await this.fileManager.upload({
         props: {
-          path: `${input.filePath ?? "/marp"}/${v4()}`,
+          path: `${input.filePath ?? "marp"}/${v4()}`,
           data: data,
           contentType: "text/html; charset=UTF-8",
           type: "object",

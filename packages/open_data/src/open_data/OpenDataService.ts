@@ -46,7 +46,7 @@ export class OpenDataService {
     input: IMSIT.IGetAddressInput,
   ): Promise<IMSIT.IGetAddressOutput> {
     const baseUrl = `http://openapi.epost.go.kr/postal/retrieveNewAdressAreaCdService/retrieveNewAdressAreaCdService/getNewAddressListAreaCd`;
-    const serviceKey = `${this.props.apiKey}`;
+    const serviceKey = `${this.props.openDataApiKey}`;
     const queryString = createQueryParameter({
       ...input,
       searchSe: "post",
@@ -76,7 +76,7 @@ export class OpenDataService {
   ): Promise<IMOLIT.IgetRTMSDataSvcSHRentOutput> {
     try {
       const baseUrl = `https://apis.data.go.kr/1613000/RTMSDataSvcSHRent/getRTMSDataSvcSHRent`;
-      const serviceKey = `${this.props.apiKey}`;
+      const serviceKey = `${this.props.openDataApiKey}`;
       const queryString = createQueryParameter({
         numOfRows: input.limit,
         pageNo: input.page,
@@ -124,7 +124,7 @@ export class OpenDataService {
   ): Promise<IMOLIT.IGetRTMSDataSvcOffiRentOutput> {
     try {
       const baseUrl = `https://apis.data.go.kr/1613000/RTMSDataSvcOffiRent/getRTMSDataSvcOffiRent`;
-      const serviceKey = `${this.props.apiKey}`;
+      const serviceKey = `${this.props.openDataApiKey}`;
       const queryString = Object.entries({
         numOfRows: input.limit,
         pageNo: input.page,
@@ -175,7 +175,7 @@ export class OpenDataService {
   ): Promise<IMOLIT.IGetRTMSDataSvcAptRentOutput> {
     try {
       const baseUrl = `https://apis.data.go.kr/1613000/RTMSDataSvcAptTradeDev/getRTMSDataSvcAptTradeDev`;
-      const serviceKey = `${this.props.apiKey}`;
+      const serviceKey = `${this.props.openDataApiKey}`;
       const queryString = createQueryParameter({
         ...input,
         pageNo: input.page,
@@ -224,7 +224,7 @@ export class OpenDataService {
   ): Promise<ILH.IGetLHLeaseInfoOutput> {
     try {
       const baseUrl = `http://apis.data.go.kr/B552555/lhLeaseInfo1/lhLeaseInfo1`;
-      const serviceKey = `${this.props.apiKey}`;
+      const serviceKey = `${this.props.openDataApiKey}`;
 
       const queryString = Object.entries({
         PG_SZ: (input.numOfRows ? Number(input.numOfRows) : 10) + 1,
@@ -273,7 +273,7 @@ export class OpenDataService {
   }): Promise<INIA.IGetParkingLotOutput> {
     try {
       const baseUrl = `http://api.data.go.kr/openapi/tn_pubr_prkplce_info_api`;
-      const serviceKey = `${this.props.apiKey}`;
+      const serviceKey = `${this.props.openDataApiKey}`;
 
       const queryString = Object.entries({
         ...input.props,
@@ -317,7 +317,7 @@ export class OpenDataService {
     input: IMOLIT.GetBuildingInfoInput,
   ): Promise<IMOLIT.GetBuildingInfoOutput> {
     const baseUrl = `http://apis.data.go.kr/1613000/BldRgstService_v2/getBrTitleInfo`;
-    const serviceKey = `${this.props.apiKey}`;
+    const serviceKey = `${this.props.openDataApiKey}`;
     const queryString = Object.entries({
       ...input,
       serviceKey,
@@ -371,7 +371,7 @@ export class OpenDataService {
   ): Promise<IOpenDataService.MinistryOfTheInteriorAndSafety.IGetStandardRegionCodeListOutput> {
     try {
       const baseUrl = `http://apis.data.go.kr/1741000/StanReginCd/getStanReginCdList`;
-      const serviceKey = `${this.props.apiKey}`;
+      const serviceKey = `${this.props.openDataApiKey}`;
 
       const queryString = Object.entries({
         ...input,
@@ -424,7 +424,7 @@ export class OpenDataService {
   }): Promise<IOpenDataService.FinancialServicesCommission.IGetStockPriceInfoOutput> {
     try {
       const baseUrl = `https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo`;
-      const serviceKey = `${this.props.apiKey}`;
+      const serviceKey = `${this.props.openDataApiKey}`;
 
       // 형식에 안맞는 date format일 경우 공공 데이터 포맷에 맞게 변형
       const is = typia.createIs<string & tags.Format<"date">>();
@@ -484,7 +484,7 @@ export class OpenDataService {
 
     try {
       const baseUrl = `http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst`;
-      const serviceKey = `${this.props.apiKey}`;
+      const serviceKey = `${this.props.openDataApiKey}`;
 
       const koreanTimeString = new Date().toLocaleString("en-US", {
         timeZone: "Asia/Seoul",
@@ -560,7 +560,7 @@ export class OpenDataService {
   ): Promise<KoreaCopyrightCommission.IGetCopyRightOutput> {
     try {
       const baseUrl = `https://api.odcloud.kr/api/CpyrRegInforService/v1/getCpyrRegInforUniList`;
-      const serviceKey = `${this.props.apiKey}`;
+      const serviceKey = `${this.props.openDataApiKey}`;
 
       const decoded = decodeURIComponent(serviceKey);
       const queryString = createQueryParameter({
@@ -587,7 +587,7 @@ export class OpenDataService {
   private async getShortTermForecastByOpenWeatherMap(
     input: IKoreaMeteorologicalAdministration.IGetVillageForecastInformationInput,
   ) {
-    if (!this.props.weatherApiKey) {
+    if (!this.props.openDataWeatherApiKey) {
       throw new Error("weatherApiKey is not set");
     }
 
@@ -596,7 +596,7 @@ export class OpenDataService {
         "https://api.openweathermap.org/data/2.5/weather",
         {
           params: {
-            appid: this.props.weatherApiKey,
+            appid: this.props.openDataWeatherApiKey,
             lat: input.ny,
             lon: input.nx,
           },

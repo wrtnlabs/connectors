@@ -1,4 +1,5 @@
 import { tags } from "typia";
+import { SnakeToCamel } from "@wrtnlabs/connector-shared";
 
 /**
  * owner: Grants owner permissions. Users with this permission can delete files or folders or grant permissions to other users.
@@ -28,23 +29,17 @@ export type PermissionRoles =
  */
 type PermissionTypes = "user" | "group" | "domain" | "anyone";
 
+export const ENV_LIST = [
+  "GOOGLE_CLIENT_ID",
+  "GOOGLE_CLIENT_SECRET",
+  "GOOGLE_REFRESH_TOKEN",
+] as const;
+
 export namespace IGoogleDriveService {
-  export interface IProps {
-    /**
-     * Google Client ID.
-     */
-    clientId: string;
+  export type IProps = {
+    [key in SnakeToCamel<(typeof ENV_LIST)[number]>]: string;
+  };
 
-    /**
-     * Google Client Secret.
-     */
-    clientSecret: string;
-
-    /**
-     * Google Refresh Token.
-     */
-    refreshToken: string;
-  }
   /**
    * @title Information required to create a Google Drive folder
    */

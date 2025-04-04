@@ -3,45 +3,23 @@ import {
   DeepStrictMerge,
   MyPartial,
   MyPick,
+  SnakeToCamel,
   StrictOmit,
 } from "@wrtnlabs/connector-shared";
 
+export const ENV_LIST = [
+  "GOOGLE_ADS_PARENT_SECRET",
+  "GOOGLE_ADS_ACCOUNT_ID",
+  "GOOGLE_ADS_DEVELOPER_TOKEN",
+  "GOOGLE_CLIENT_ID",
+  "GOOGLE_CLIENT_SECRET",
+  "GOOGLE_REFRESH_TOKEN",
+] as const;
+
 export namespace IGoogleAdsService {
-  export interface IProps {
-    googleAds: {
-      /**
-       * @title Google Ads Parent Secret
-       */
-      parentSecret: string;
-
-      /**
-       * @title Google Ads Account ID
-       */
-      accountId: string;
-
-      /**
-       * @title Google Ads Developer Token
-       */
-      developerToken: string;
-    };
-
-    google: {
-      /**
-       * @title Google Client ID
-       */
-      clientId: string;
-
-      /**
-       * @title Google Client Secret
-       */
-      clientSecret: string;
-
-      /**
-       * @title Google Refresh Token
-       */
-      refreshToken: string;
-    };
-  }
+  export type IProps = {
+    [key in SnakeToCamel<(typeof ENV_LIST)[number]>]: string;
+  };
 
   export interface IGetTargetCustomerIdInput {
     /**

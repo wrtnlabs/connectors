@@ -2,6 +2,8 @@ import xlsx from "xlsx";
 import { IHancellService } from "../structures/IHancellService";
 import { FileManager } from "@wrtnlabs/connector-shared";
 import { v4 } from "uuid";
+import typia from "typia";
+import IUpsertSheetOutput = IHancellService.IUpsertSheetOutput;
 
 export class HancellService {
   constructor(private readonly fileManager: FileManager) {}
@@ -38,14 +40,16 @@ export class HancellService {
 
       const upload = await this.fileManager.upload({
         props: {
-          path: `${input.filePath ?? "/hancell"}/${v4()}`,
+          path: `${input.filePath ?? "hancell"}/${v4()}`,
           type: "object",
           data: buffer,
           contentType: `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet`,
         },
       });
 
-      return { fileUrl: upload.uri };
+      return typia.assert<IUpsertSheetOutput>({
+        fileUrl: upload.uri,
+      });
     } catch (error) {
       console.error(JSON.stringify(error));
       throw error;

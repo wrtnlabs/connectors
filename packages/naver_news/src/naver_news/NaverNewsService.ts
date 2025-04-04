@@ -13,8 +13,8 @@ export class NaverNewsService {
     input: INaverNewsService.INaverKeywordInput,
   ): Promise<INaverNewsService.INewsNaverOutput> {
     const headers = {
-      "X-Naver-Client-Id": this.props.clientId,
-      "X-Naver-Client-Secret": this.props.clientSecret,
+      "X-Naver-Client-Id": this.props.naverNewsClientId,
+      "X-Naver-Client-Secret": this.props.naverNewsClientSecret,
     };
 
     try {

@@ -1071,7 +1071,7 @@ export class GoogleAdsService {
    */
   async createAccount(input: { descriptive_name: string }) {
     const headers = await this.getHeaders();
-    const parentId = this.props.googleAds.accountId;
+    const parentId = this.props.googleAdsAccountId;
     const endPoint = `${this.baseUrl}/customers/${parentId}/:createCustomerClient`;
     const res = await axios.post(
       endPoint,
@@ -1101,7 +1101,7 @@ export class GoogleAdsService {
    */
   async getCustomerClient() {
     const res = await this.searchStream(
-      this.props.googleAds.accountId,
+      this.props.googleAdsAccountId,
       `SELECT customer_client.resource_name, customer_client.id, customer_client.descriptive_name, customer_client.currency_code FROM customer_client`,
     );
 
@@ -1323,7 +1323,7 @@ export class GoogleAdsService {
     resourceName: IGoogleAdsService.ICustomer["resourceName"];
   }): Promise<void> {
     try {
-      const parentId = this.props.googleAds.accountId;
+      const parentId = this.props.googleAdsAccountId;
       const url = `${this.baseUrl}/customers/${parentId}/customerClientLinks:mutate`;
       const headers = await this.getHeaders();
       await axios.post(
@@ -1395,13 +1395,13 @@ export class GoogleAdsService {
   }
 
   private async getHeaders() {
-    const secret = this.props.googleAds.parentSecret; // refresh token of parent account.
+    const secret = this.props.googleAdsParentSecret; // refresh token of parent account.
 
     return {
       "Content-Type": "application/json",
       Authorization: `Bearer ${secret}`,
-      "developer-token": this.props.googleAds.developerToken, // developer token of parent account.
-      "login-customer-id": this.props.googleAds.accountId, // parent account id.
+      "developer-token": this.props.googleAdsDeveloperToken, // developer token of parent account.
+      "login-customer-id": this.props.googleAdsAccountId, // parent account id.
     };
   }
 
@@ -1412,12 +1412,12 @@ export class GoogleAdsService {
    */
   private async refreshAccessToken(): Promise<string> {
     const client = new google.auth.OAuth2(
-      this.props.google.clientId,
-      this.props.google.clientSecret,
+      this.props.googleClientId,
+      this.props.googleClientSecret,
     );
 
     client.setCredentials({
-      refresh_token: decodeURIComponent(this.props.google.refreshToken),
+      refresh_token: decodeURIComponent(this.props.googleRefreshToken),
     });
     const { credentials } = await client.refreshAccessToken();
     const accessToken = credentials.access_token;

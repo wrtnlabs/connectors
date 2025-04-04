@@ -4,6 +4,7 @@ import {
   GoogleSlidesService,
   IGoogleSlidesService,
 } from "@wrtnlabs/connector-google-slides";
+import { AwsS3Service } from "@wrtnlabs/connector-aws-s3";
 
 // const createPresentationName = () => {
 //   // 현재 시간을 나타내는 Date 객체 생성
@@ -36,19 +37,19 @@ import {
  */
 export const test_api_connector_google_slides_create_presentation =
   async () => {
-    const googleSlideService = new GoogleSlidesService({
-      clientId: TestGlobal.env.GOOGLE_CLIENT_ID,
-      clientSecret: TestGlobal.env.GOOGLE_CLIENT_SECRET,
-      secret: TestGlobal.env.GOOGLE_TEST_SECRET,
-      aws: {
-        s3: {
-          accessKeyId: TestGlobal.env.AWS_ACCESS_KEY_ID,
-          bucket: TestGlobal.env.AWS_S3_BUCKET,
-          region: "ap-northeast-2",
-          secretAccessKey: TestGlobal.env.AWS_SECRET_ACCESS_KEY,
-        },
+    const googleSlideService = new GoogleSlidesService(
+      {
+        googleClientId: TestGlobal.env.GOOGLE_CLIENT_ID,
+        googleClientSecret: TestGlobal.env.GOOGLE_CLIENT_SECRET,
+        googleRefreshToken: TestGlobal.env.GOOGLE_TEST_SECRET,
       },
-    });
+      new AwsS3Service({
+        awsAccessKeyId: TestGlobal.env.AWS_ACCESS_KEY_ID!,
+        awsSecretAccessKey: TestGlobal.env.AWS_SECRET_ACCESS_KEY!,
+        awsS3Bucket: TestGlobal.env.AWS_S3_BUCKET!,
+        awsS3Region: "ap-northeast-2",
+      }),
+    );
 
     /**
      * create a new Google Slides Presentation.
@@ -67,19 +68,19 @@ export const test_api_connector_google_slides_create_presentation_with_one_slide
   async () => {
     // const PresentationName = `${createPresentationName()} - with one slide`;
 
-    const googleSlideService = new GoogleSlidesService({
-      clientId: TestGlobal.env.GOOGLE_CLIENT_ID,
-      clientSecret: TestGlobal.env.GOOGLE_CLIENT_SECRET,
-      secret: TestGlobal.env.GOOGLE_TEST_SECRET,
-      aws: {
-        s3: {
-          accessKeyId: TestGlobal.env.AWS_ACCESS_KEY_ID,
-          bucket: TestGlobal.env.AWS_S3_BUCKET,
-          region: "ap-northeast-2",
-          secretAccessKey: TestGlobal.env.AWS_SECRET_ACCESS_KEY,
-        },
+    const googleSlideService = new GoogleSlidesService(
+      {
+        googleClientId: TestGlobal.env.GOOGLE_CLIENT_ID,
+        googleClientSecret: TestGlobal.env.GOOGLE_CLIENT_SECRET,
+        googleRefreshToken: TestGlobal.env.GOOGLE_TEST_SECRET,
       },
-    });
+      new AwsS3Service({
+        awsAccessKeyId: TestGlobal.env.AWS_ACCESS_KEY_ID!,
+        awsSecretAccessKey: TestGlobal.env.AWS_SECRET_ACCESS_KEY!,
+        awsS3Bucket: TestGlobal.env.AWS_S3_BUCKET!,
+        awsS3Region: "ap-northeast-2",
+      }),
+    );
 
     /**
      * create a new Google Slides Presentation.
@@ -95,19 +96,19 @@ export const test_api_connector_google_slides_create_presentation_with_one_slide
  */
 export const test_api_connector_google_slides_create_random_presentation =
   async () => {
-    const googleSlideService = new GoogleSlidesService({
-      clientId: TestGlobal.env.GOOGLE_CLIENT_ID,
-      clientSecret: TestGlobal.env.GOOGLE_CLIENT_SECRET,
-      secret: TestGlobal.env.GOOGLE_TEST_SECRET,
-      aws: {
-        s3: {
-          accessKeyId: TestGlobal.env.AWS_ACCESS_KEY_ID,
-          bucket: TestGlobal.env.AWS_S3_BUCKET,
-          region: "ap-northeast-2",
-          secretAccessKey: TestGlobal.env.AWS_SECRET_ACCESS_KEY,
-        },
+    const googleSlideService = new GoogleSlidesService(
+      {
+        googleClientId: TestGlobal.env.GOOGLE_CLIENT_ID,
+        googleClientSecret: TestGlobal.env.GOOGLE_CLIENT_SECRET,
+        googleRefreshToken: TestGlobal.env.GOOGLE_TEST_SECRET,
       },
-    });
+      new AwsS3Service({
+        awsAccessKeyId: TestGlobal.env.AWS_ACCESS_KEY_ID!,
+        awsSecretAccessKey: TestGlobal.env.AWS_SECRET_ACCESS_KEY!,
+        awsS3Bucket: TestGlobal.env.AWS_S3_BUCKET!,
+        awsS3Region: "ap-northeast-2",
+      }),
+    );
 
     /**
      * create a new Google Slides Presentation.
@@ -128,19 +129,19 @@ export const test_api_connector_google_slides_get_one_presentation =
       throw new Error("생성 단계에서 실패하여 조회 로직 실패");
     }
 
-    const googleSlideService = new GoogleSlidesService({
-      clientId: TestGlobal.env.GOOGLE_CLIENT_ID,
-      clientSecret: TestGlobal.env.GOOGLE_CLIENT_SECRET,
-      secret: TestGlobal.env.GOOGLE_TEST_SECRET,
-      aws: {
-        s3: {
-          accessKeyId: TestGlobal.env.AWS_ACCESS_KEY_ID,
-          bucket: TestGlobal.env.AWS_S3_BUCKET,
-          region: "ap-northeast-2",
-          secretAccessKey: TestGlobal.env.AWS_SECRET_ACCESS_KEY,
-        },
+    const googleSlideService = new GoogleSlidesService(
+      {
+        googleClientId: TestGlobal.env.GOOGLE_CLIENT_ID,
+        googleClientSecret: TestGlobal.env.GOOGLE_CLIENT_SECRET,
+        googleRefreshToken: TestGlobal.env.GOOGLE_TEST_SECRET,
       },
-    });
+      new AwsS3Service({
+        awsAccessKeyId: TestGlobal.env.AWS_ACCESS_KEY_ID!,
+        awsSecretAccessKey: TestGlobal.env.AWS_SECRET_ACCESS_KEY!,
+        awsS3Bucket: TestGlobal.env.AWS_S3_BUCKET!,
+        awsS3Region: "ap-northeast-2",
+      }),
+    );
 
     const presentation = await googleSlideService.getPresentation({
       presentationId: createdPresentation.presentationId,
@@ -153,19 +154,19 @@ export const test_api_connector_google_slides_append_image_slide = async () => {
   const presentation =
     await test_api_connector_google_slides_create_random_presentation();
 
-  const googleSlideService = new GoogleSlidesService({
-    clientId: TestGlobal.env.GOOGLE_CLIENT_ID,
-    clientSecret: TestGlobal.env.GOOGLE_CLIENT_SECRET,
-    secret: TestGlobal.env.GOOGLE_TEST_SECRET,
-    aws: {
-      s3: {
-        accessKeyId: TestGlobal.env.AWS_ACCESS_KEY_ID,
-        bucket: TestGlobal.env.AWS_S3_BUCKET,
-        region: "ap-northeast-2",
-        secretAccessKey: TestGlobal.env.AWS_SECRET_ACCESS_KEY,
-      },
+  const googleSlideService = new GoogleSlidesService(
+    {
+      googleClientId: TestGlobal.env.GOOGLE_CLIENT_ID,
+      googleClientSecret: TestGlobal.env.GOOGLE_CLIENT_SECRET,
+      googleRefreshToken: TestGlobal.env.GOOGLE_TEST_SECRET,
     },
-  });
+    new AwsS3Service({
+      awsAccessKeyId: TestGlobal.env.AWS_ACCESS_KEY_ID!,
+      awsSecretAccessKey: TestGlobal.env.AWS_SECRET_ACCESS_KEY!,
+      awsS3Bucket: TestGlobal.env.AWS_S3_BUCKET!,
+      awsS3Region: "ap-northeast-2",
+    }),
+  );
 
   const testImage = `https://dev-studio-pro.s3.amazonaws.com/connector/generate-story-copy/f42e4450-3064-43d1-b973-2c913f08581a`;
   await googleSlideService.appendImageSlide({

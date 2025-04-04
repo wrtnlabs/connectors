@@ -5,7 +5,7 @@ import typia from "typia";
 
 export const test_notion_transform_markdown_to_page = async () => {
   const notionService = new NotionService({
-    secret: TestGlobal.env.NOTION_TEST_SECRET,
+    notionApiKey: TestGlobal.env.NOTION_TEST_SECRET,
   });
 
   const res = await notionService.createPageByMarkdown({
@@ -28,7 +28,7 @@ export const test_notion_transform_markdown_to_page = async () => {
 export const test_api_connector_notion_transform_markdown_to_page_without_non_existant_parent_page_id =
   async () => {
     const notionService = new NotionService({
-      secret: TestGlobal.env.NOTION_TEST_SECRET,
+      notionApiKey: TestGlobal.env.NOTION_TEST_SECRET,
     });
 
     const res = await notionService.createPageByMarkdown({
