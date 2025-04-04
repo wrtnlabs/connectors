@@ -1,11 +1,8 @@
 import axios from "axios";
 import { IDallE3Service } from "../structures/IDallE3Service";
-import { FileManager } from "@wrtnlabs/connector-shared";
+
 export class DallE3Service {
-  constructor(
-    private readonly props: IDallE3Service.IProps,
-    private readonly fileManager: FileManager,
-  ) {}
+  constructor(private readonly props: IDallE3Service.IProps) {}
 
   /**
    * DallE3 Service.
@@ -44,23 +41,31 @@ export class DallE3Service {
 
       const data = await axios.get(res?.url!, { responseType: "arraybuffer" });
 
-      const img: Buffer = data.data;
+      if (this.props.fileManager) {
+        const img: Buffer = data.data;
 
-      const { uri } = await this.uploadDallE3ToS3({
-        img,
-        path: input.path,
-      });
+        const { uri } = await this.uploadDallE3ToS3({
+          img,
+          path: input.path,
+        });
 
-      return { uri };
-    } catch (error) {
-      console.error(JSON.stringify(error));
-      throw error;
+        return { uri, expiringUrl: res?.url };
+      }
+
+      return { expiringUrl: res?.url };
+    } catch (err) {
+      console.error(JSON.stringify(err));
+      throw err;
     }
   }
 
   private async uploadDallE3ToS3(input: { img: Buffer; path: string }) {
+    if (!this.props.fileManager) {
+      throw new Error("FileManager is not set");
+    }
+
     try {
-      const res = await this.fileManager.upload({
+      const res = await this.props.fileManager.upload({
         props: {
           type: "object",
           path: input.path,

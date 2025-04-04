@@ -16,12 +16,10 @@ export const test_dall_e_3 = async () => {
     awsS3Region: "ap-northeast-2",
   });
 
-  const dalleService = new DallE3Service(
-    {
-      openai,
-    },
-    awsS3Service,
-  );
+  const dalleService = new DallE3Service({
+    openai,
+    fileManager: awsS3Service,
+  });
 
   const requestBody: IDallE3Service.IRequest = {
     path: "dall_e_3/test.png",

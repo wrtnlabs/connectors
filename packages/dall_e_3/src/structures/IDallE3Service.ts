@@ -1,5 +1,6 @@
 import { tags } from "typia";
 import { OpenAI } from "openai";
+import { FileManager } from "@wrtnlabs/connector-shared";
 
 export namespace IDallE3Service {
   export interface IProps {
@@ -7,6 +8,11 @@ export namespace IDallE3Service {
      * OpenAI.
      */
     openai: OpenAI;
+
+    /**
+     * FileManager.
+     */
+    fileManager?: FileManager;
   }
 
   /**
@@ -49,6 +55,15 @@ export namespace IDallE3Service {
      *
      * @title Generated image URI
      */
-    uri: string & tags.Format<"iri">;
+    uri?: string & tags.Format<"iri">;
+
+    /**
+     * Generated image URL in OpenAI.
+     *
+     * This URL will be expired within some hours.
+     *
+     * @title Generated image URL in OpenAI
+     */
+    expiringUrl?: string & tags.Format<"iri">;
   }
 }
