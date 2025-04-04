@@ -1,9 +1,9 @@
 import * as Excel from "exceljs";
 import { IExcelService } from "../structures/IExcelService";
-import { FileManager, ISpreadsheetCell } from "@wrtnlabs/connector-shared";
+import { ISpreadsheetCell } from "@wrtnlabs/connector-shared";
 
 export class ExcelService {
-  constructor(private readonly fileManager: FileManager) {}
+  constructor(private readonly props: IExcelService.IProps) {}
 
   /**
    * Excel Service.
@@ -15,7 +15,7 @@ export class ExcelService {
   ): Promise<IExcelService.IWorksheetListOutput> {
     try {
       const { uri } = input;
-      const file = await this.fileManager.read({
+      const file = await this.props.fileManager.read({
         props: { type: "url", url: uri },
       });
 
@@ -154,8 +154,6 @@ export class ExcelService {
     try {
       const { sheetName, data, uri } = input;
 
-      console.log(`uri: ${uri}`);
-
       const filepath = uri?.split("//").at(1)?.split("/").slice(1).join("/");
 
       if (!filepath) {
@@ -174,8 +172,6 @@ export class ExcelService {
         workbook.addWorksheet(sheetName ?? "Sheet1");
       }
 
-      console.log("hello");
-
       // 0번 인덱스는 우리가 생성한 적 없는 시트이므로 패스한다.
       const CREATED_SHEET = 1 as const;
       const sheet = workbook.getWorksheet(sheetName ?? CREATED_SHEET);
@@ -183,19 +179,15 @@ export class ExcelService {
         throw new Error("Not existing sheet");
       }
 
-      console.log("hello2");
-
       data.forEach((data) => {
         const column = this.columnNumberToLetter(data.column);
         const position = `${column}${data.row}`; // A1, A2, ... 와 같은 형식
         sheet.getCell(position).value = data.snapshot.value;
       });
 
-      console.log("hello3");
-
       const modifiedBuffer = await workbook.xlsx.writeBuffer();
 
-      const file = await this.fileManager.upload({
+      const file = await this.props.fileManager.upload({
         props: {
           type: "object",
           data: Buffer.from(modifiedBuffer),
@@ -204,8 +196,6 @@ export class ExcelService {
           path: filepath,
         },
       });
-
-      console.log("hello4");
 
       return { uri: file.uri };
     } catch (error) {
@@ -242,7 +232,7 @@ export class ExcelService {
 
     const modifiedBuffer = await workbook.xlsx.writeBuffer();
 
-    const file = await this.fileManager.upload({
+    const file = await this.props.fileManager.upload({
       props: {
         type: "object",
         path: input.path,

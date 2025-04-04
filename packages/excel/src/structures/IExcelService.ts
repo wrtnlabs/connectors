@@ -1,7 +1,11 @@
 import { tags } from "typia";
-import { ISpreadsheetCell } from "@wrtnlabs/connector-shared";
+import { FileManager, ISpreadsheetCell } from "@wrtnlabs/connector-shared";
 
 export namespace IExcelService {
+  export type IProps = {
+    fileManager: FileManager;
+  };
+
   /**
    * @title file information
    */

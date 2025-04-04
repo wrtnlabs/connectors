@@ -12,7 +12,9 @@ export const test_excel_create_file_witnout_sheet_name = async () => {
     awsS3Region: "ap-northeast-2",
   });
 
-  const excelService = new ExcelService(awsS3Service);
+  const excelService = new ExcelService({
+    fileManager: awsS3Service,
+  });
   const file = await excelService.createSheets({
     path: "connector-test-create-file-without-sheet-name.xlsx",
   });
@@ -28,7 +30,9 @@ export const test_excel_create_file_with_sheet_name = async () => {
     awsS3Region: "ap-northeast-2",
   });
 
-  const excelService = new ExcelService(awsS3Service);
+  const excelService = new ExcelService({
+    fileManager: awsS3Service,
+  });
   const file = await excelService.createSheets({
     path: "connector-test-create-file-with-sheet-name.xlsx",
     sheetName: "TEST",
@@ -54,7 +58,9 @@ export const test_excel_insert_rows_without_file_url = async () => {
     awsS3Region: "ap-northeast-2",
   });
 
-  const excelService = new ExcelService(awsS3Service);
+  const excelService = new ExcelService({
+    fileManager: awsS3Service,
+  });
 
   const file = await excelService.createSheets({
     path: "connector-test-insert-rows-without-file-url.xlsx",
@@ -126,7 +132,9 @@ export const test_excel_insert_rows_with_file_url = async () => {
     awsS3Region: "ap-northeast-2",
   });
 
-  const excelService = new ExcelService(awsS3Service);
+  const excelService = new ExcelService({
+    fileManager: awsS3Service,
+  });
   const file = await excelService.createSheets({
     path: "connector-test-insert-rows-with-file-url.xlsx",
     sheetName: "TEST",
@@ -201,7 +209,9 @@ export const test_excel_insert_row_fail_case_1 = async () => {
     awsS3Region: "ap-northeast-2",
   });
 
-  const excelService = new ExcelService(awsS3Service);
+  const excelService = new ExcelService({
+    fileManager: awsS3Service,
+  });
   const file = await excelService.createSheets({
     path: "connector-test-insert-rows-with-file-url-1.xlsx",
     sheetName: "TEST",
@@ -299,7 +309,9 @@ export const test_excel_insert_row_fail_case_2 = async () => {
     awsS3Region: "ap-northeast-2",
   });
 
-  const excelService = new ExcelService(awsS3Service);
+  const excelService = new ExcelService({
+    fileManager: awsS3Service,
+  });
 
   const file = await excelService.createSheets({
     path: "connector-test-insert-rows-with-file-url-2.xlsx",
@@ -362,7 +374,9 @@ export const test_excel_insert_row_fail_case_3 = async () => {
     awsS3Region: "ap-northeast-2",
   });
 
-  const excelService = new ExcelService(awsS3Service);
+  const excelService = new ExcelService({
+    fileManager: awsS3Service,
+  });
 
   const file = await excelService.createSheets({
     path: "connector-test-insert-rows-with-file-url-3.xlsx",
@@ -534,10 +548,6 @@ export const test_excel_insert_row_fail_case_3 = async () => {
     ],
   };
 
-  console.log(JSON.stringify(res));
-  console.log("--------------------------------");
-  console.log(JSON.stringify(answer));
-
   deepStrictEqual(JSON.stringify(res), JSON.stringify(answer));
 };
 
@@ -550,7 +560,9 @@ export const test_excel_insert_row_to_empty_excel_file = async () => {
     awsS3Region: "ap-northeast-2",
   });
 
-  const excelService = new ExcelService(awsS3Service);
+  const excelService = new ExcelService({
+    fileManager: awsS3Service,
+  });
 
   const file = await excelService.createSheets({
     path: "connector-test-insert-rows-to-empty-excel-file.xlsx",
@@ -588,7 +600,9 @@ export const test_excel = async () => {
     awsS3Region: "ap-northeast-2",
   });
 
-  const excelService = new ExcelService(awsS3Service);
+  const excelService = new ExcelService({
+    fileManager: awsS3Service,
+  });
 
   const file = await excelService.createSheets({
     path: "connector-test-excel.xlsx",
