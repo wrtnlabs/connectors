@@ -1,7 +1,12 @@
+import { FileManager } from "@wrtnlabs/connector-shared";
 import { tags } from "typia";
 import { ContentMediaType } from "typia/lib/tags";
 
 export namespace ICsvService {
+  export type IProps = {
+    fileManager: FileManager;
+  };
+
   /**
    * @title Csv file information
    */

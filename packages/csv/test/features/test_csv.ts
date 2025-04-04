@@ -12,7 +12,9 @@ export const test_csv = async () => {
     awsS3Region: "ap-northeast-2",
   });
 
-  const csvService = new CsvService(awsS3Service);
+  const csvService = new CsvService({
+    fileManager: awsS3Service,
+  });
 
   /**
    * read csv file from s3

@@ -5,10 +5,9 @@ import { WritableStreamBuffer } from "stream-buffers";
 
 import { Readable } from "stream";
 import { ICsvService } from "../structures/ICsvService";
-import { FileManager } from "@wrtnlabs/connector-shared";
 
 export class CsvService {
-  constructor(private readonly fileManager: FileManager) {}
+  constructor(private readonly props: ICsvService.IProps) {}
   /**
    * Csv Service.
    *
@@ -19,11 +18,13 @@ export class CsvService {
       const { uri, delimiter } = input;
 
       const body: string = await (async (): Promise<string> => {
-        const isMatch = this.fileManager.isMatch({ uri });
+        const isMatch = this.props.fileManager.isMatch({ uri });
 
         if (isMatch) {
           return (
-            await this.fileManager.read({ props: { type: "url", url: uri } })
+            await this.props.fileManager.read({
+              props: { type: "url", url: uri },
+            })
           ).data.toString("utf-8");
         } else {
           const response: Response = await fetch(uri);
@@ -54,12 +55,12 @@ export class CsvService {
   ): Promise<ICsvService.ICsvToExcelOutput> {
     const { uri, delimiter } = input;
 
-    const isMatch = this.fileManager.isMatch({ uri });
+    const isMatch = this.props.fileManager.isMatch({ uri });
     if (!isMatch) {
       throw new Error("Invalid File URL");
     }
 
-    const csvData = await this.fileManager.read({
+    const csvData = await this.props.fileManager.read({
       props: { type: "url", url: uri },
     });
 
@@ -99,7 +100,7 @@ export class CsvService {
           .on("end", async () => {
             await workbook.commit();
 
-            const response = await this.fileManager.upload({
+            const response = await this.props.fileManager.upload({
               props: {
                 type: "object",
                 path: excelFilename,
