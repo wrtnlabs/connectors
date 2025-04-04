@@ -316,6 +316,7 @@ export class GoogleSheetService {
 
   private async refreshAccessToken(): Promise<string> {
     const client = new google.auth.OAuth2(
+      this.props.googleClientId,
       this.props.googleClientSecret,
       this.props.googleRefreshToken,
     );
