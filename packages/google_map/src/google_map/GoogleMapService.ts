@@ -99,7 +99,6 @@ export class GoogleMapService {
                 .filter((photo) => photo.name)
                 .slice(0, 1) // 썸네일 용도로 사용할 것이기 때문에 1장만 제공되게 한다.
                 .map(async (photo) => {
-                  console.log(`name: ${photo.name}`);
                   const name = `${photo.name}`;
                   const { photoUri } = await this.getPhoto({
                     photoResourceName: name as any,
