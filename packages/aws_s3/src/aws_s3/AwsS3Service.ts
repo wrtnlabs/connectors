@@ -50,7 +50,6 @@ export class AwsS3Service implements FileManager {
   ): Promise<IFileManager.IUploadOutput> {
     const { data, contentType } = input;
 
-    console.log(input);
     const putObjectConfig = new PutObjectCommand({
       Bucket: this.props.awsS3Bucket,
       Key: input.path,

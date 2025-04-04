@@ -4,6 +4,7 @@ import { HancellService } from "@wrtnlabs/connector-hancell/lib/hancell/HancellS
 import { v4 } from "uuid";
 import { TestGlobal } from "../TestGlobal";
 import { AwsS3Service } from "@wrtnlabs/connector-aws-s3";
+import { TestValidator } from "@nestia/e2e";
 
 const exampleFile = `https://studio-api-bucket.s3.ap-northeast-2.amazonaws.com/example.cell`;
 
@@ -75,8 +76,15 @@ export const test_hancell_insert_rows = async () => {
 
   const afterData = after["Sheet1"]?.[targetCell];
 
-  typia.assert<false>(beforeData === afterData);
-  typia.assert<true>(afterData === testValue);
+  console.log("beforeData", beforeData);
+  console.log("afterData", afterData);
+
+  TestValidator.equals("beforeData === afterData")(false)(
+    beforeData === afterData,
+  );
+  TestValidator.equals("afterData === testValue")(true)(
+    afterData === testValue,
+  );
 };
 
 export const test_hancell_insert_rows_outside_of_start_point = async () => {
@@ -117,8 +125,12 @@ export const test_hancell_insert_rows_outside_of_start_point = async () => {
 
   const afterData = after["Sheet1"]?.[targetCell];
 
-  typia.assert<false>(beforeData === afterData);
-  typia.assert<true>(afterData === testValue);
+  TestValidator.equals("beforeData === afterData")(false)(
+    beforeData === afterData,
+  );
+  TestValidator.equals("afterData === testValue")(true)(
+    afterData === testValue,
+  );
 };
 
 export const test_hancell_insert_rows_outside_of_end_point = async () => {
@@ -160,6 +172,10 @@ export const test_hancell_insert_rows_outside_of_end_point = async () => {
 
   const afterData = after["Sheet1"]?.[targetCell];
 
-  typia.assert<false>(beforeData === afterData);
-  typia.assert<true>(afterData === testValue);
+  TestValidator.equals("beforeData === afterData")(false)(
+    beforeData === afterData,
+  );
+  TestValidator.equals("afterData === testValue")(true)(
+    afterData === testValue,
+  );
 };
