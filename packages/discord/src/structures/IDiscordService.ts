@@ -6,12 +6,25 @@ export const ENV_LIST = ["DISCORD_TOKEN"] as const;
 export namespace IDiscordService {
   export type IProps = {
     [key in SnakeToCamel<(typeof ENV_LIST)[number]>]: string;
-  } & {
+  };
+
+  export interface IGetListGuildMembersInput {
     /**
      * Discord Guild ID.
+     *
+     * @title Guild ID
      */
     guildId: string;
-  };
+  }
+
+  export interface IGetGuildChannelsInput {
+    /**
+     * Discord Guild ID.
+     *
+     * @title Guild ID
+     */
+    guildId: string;
+  }
 
   /**
    * @title 서버 정보
@@ -710,6 +723,12 @@ export namespace IDiscordService {
    */
   export interface IModifyGuildRequest {
     /**
+     * Discord Guild ID.
+     *
+     * @title Guild ID
+     */
+    guildId: string;
+    /**
      * 수정할 서버 이름을 입력해주세요.
      *
      * @title 수정할 이름
@@ -721,6 +740,13 @@ export namespace IDiscordService {
    * @title 채널을 생성하기 위해 필요한 정보
    */
   export interface ICreateGuildChannelRequest {
+    /**
+     * Discord Guild ID.
+     *
+     * @title Guild ID
+     */
+    guildId: string;
+
     /**
      * 생성할 서버 이름을 입력해주세요.
      *
@@ -754,6 +780,13 @@ export namespace IDiscordService {
    * @title 멤버를 차단 하기 위해 필요한 정보
    */
   export interface IRemoveGuildMember {
+    /**
+     * Discord Guild ID.
+     *
+     * @title Guild ID
+     */
+    guildId: string;
+
     /**
      * 차단할 멤버를 선택해주세요.
      *

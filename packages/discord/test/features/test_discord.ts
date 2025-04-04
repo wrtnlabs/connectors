@@ -2,10 +2,11 @@ import { DiscordService } from "@wrtnlabs/connector-discord";
 import typia from "typia";
 import { TestGlobal } from "../TestGlobal";
 
+const guildId = "1260868337467129989";
+
 export const test_discord = async () => {
   const discordService = new DiscordService({
     discordToken: TestGlobal.env.DISCORD_BOT_TOKEN,
-    guildId: "1260868337467129989",
   });
 
   const guildIds = await discordService.getGuildIds();
@@ -17,6 +18,7 @@ export const test_discord = async () => {
    */
   try {
     const modifyGuild = await discordService.modifyGuild({
+      guildId: guildId,
       name: "뤼튼 스튜디오 길드",
     });
     typia.assert(modifyGuild);
@@ -28,7 +30,9 @@ export const test_discord = async () => {
   /**
    * Get Guild Channels
    */
-  const channels = await discordService.getGuildChannels();
+  const channels = await discordService.getGuildChannels({
+    guildId: guildId,
+  });
   typia.assert(channels);
 
   // /**
@@ -75,6 +79,7 @@ export const test_discord = async () => {
    * Create Guild Channel
    */
   const createChannel = await discordService.createGuildChannel({
+    guildId: guildId,
     name: "스튜디오 채널",
     type: 0,
   });
