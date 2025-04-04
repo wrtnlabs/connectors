@@ -39,7 +39,7 @@ The Connector packages are the individual export of the Connector server's servi
 When you use Connector packages, you can use Connector packages using `@agentica/core` packages. Alternatively, you can use 'typia.llm.application' to convert it to OpenAI function scheme.
 Consequently, the connector package can be used as an agent development tool.
 
-If you want to know the details of `@agentica` pacakge, please refer to this [document](https://github.com/wrtnlabs/agentica/blob/main/packages/core/README.md).
+If you want to know the details of `@agentica` package, please refer to this [document](https://github.com/wrtnlabs/agentica/blob/main/packages/core/README.md).
 
 ### 2.1. How to use
 ---
