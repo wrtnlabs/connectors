@@ -3,6 +3,7 @@ import {
   MyPartial,
   MyPick,
   NTpule,
+  SnakeToCamel,
   StrictOmit,
 } from "@wrtnlabs/connector-shared";
 
@@ -10,44 +11,37 @@ type OneOf<T extends object, K extends keyof T = keyof T> = K extends any
   ? Record<K, T[K]>
   : never;
 
+export const ENV_LIST = [
+  "GOOGLE_CLIENT_ID",
+  "GOOGLE_CLIENT_SECRET",
+  "GOOGLE_REFRESH_TOKEN",
+] as const;
+
 export namespace IGoogleSlidesService {
-  export interface IProps {
-    /**
-     * Google Client ID.
-     */
-    clientId: string;
-
-    /**
-     * Google Client Secret.
-     */
-    clientSecret: string;
-
-    /**
-     * Google Refresh Token.
-     */
-    refreshToken: string;
-  }
+  export type IProps = {
+    [key in SnakeToCamel<(typeof ENV_LIST)[number]>]: string;
+  };
 
   export type ISimplePresentationIdOutput = MyPick<
-    Presentation,
+    IPresentation,
     "presentationId" | "pageSize" | "title"
   >;
 
   export interface IExportHanshowOutput {
     /**
-     * @title Base64 encoded Hanshow file
+     * @title File download link
      */
-    hanshowBase64: string;
+    hanshowUrl: string & tags.Format<"iri">;
   }
 
   export interface IExportPresentationOutput {
     /**
-     * @title Base64 encoded PowerPoint file
+     * @title File download link
      */
-    powerPointBase64: string;
+    powerPointUrl: string & tags.Format<"iri">;
   }
 
-  export interface AppendQuarterDivisionSlideInput {
+  export interface IAppendQuarterDivisionSlideInput {
     /**
      * As a slide to add, this template arrangement consists of the same type of template.
      * Templates have unconditional text except for the Entire type, and the image and text are paired.
@@ -62,7 +56,7 @@ export namespace IGoogleSlidesService {
     >[];
   }
 
-  export interface AppendEntireSlideInput {
+  export interface IAppendEntireSlideInput {
     /**
      * As a slide to add, this template arrangement consists of the same type of template.
      * Templates have unconditional text except for the Entire type, and the image and text are paired.
@@ -74,7 +68,7 @@ export namespace IGoogleSlidesService {
     templates: StrictOmit<IGoogleSlidesService.Template.Entire, "type">[];
   }
 
-  export interface AppendLandscapeSlideInput {
+  export interface IAppendLandscapeSlideInput {
     /**
      * As a slide to add, this template arrangement consists of the same type of template.
      * Templates have unconditional text except for the Entire type, and the image and text are paired.
@@ -86,7 +80,7 @@ export namespace IGoogleSlidesService {
     templates: StrictOmit<IGoogleSlidesService.Template.Landscape, "type">[];
   }
 
-  export interface AppendVerticalSlideInput {
+  export interface IAppendVerticalSlideInput {
     /**
      * As a slide to add, this template arrangement consists of the same type of template.
      * Templates have unconditional text except for the Entire type, and the image and text are paired.
@@ -98,7 +92,7 @@ export namespace IGoogleSlidesService {
     templates: StrictOmit<IGoogleSlidesService.Template.Vertical, "type">[];
   }
 
-  export interface AppendSquareSlideInput {
+  export interface IAppendSquareSlideInput {
     /**
      * As a slide to add, this template arrangement consists of the same type of template.
      * Templates have unconditional text except for the Entire type, and the image and text are paired.
@@ -113,7 +107,7 @@ export namespace IGoogleSlidesService {
   /**
    * @title Request DTO for pasting slides
    */
-  export interface AppendSlideInput {
+  export interface IAppendSlideInput {
     /**
      * @title Presentation ID
      */
@@ -494,28 +488,28 @@ export namespace IGoogleSlidesService {
         /**
          * @title Information about the new slide to be created
          */
-        createSlide: CreateSlideRequest;
+        createSlide: ICreateSlideRequest;
       }
     | {
-        createImage: CreateImageRequest;
+        createImage: ICreateImageRequest;
       }
     | {
         insertText: InsertText;
       }
     | {
-        createShape: CreateShape;
+        createShape: ICreateShape;
       }
     | {
-        replaceAllText: ReplaceAllText;
+        replaceAllText: IReplaceAllText;
       }
     | {
-        updateTextStyle: UpdateTextStyle;
+        updateTextStyle: IUpdateTextStyle;
       }
     | {
-        updateShapeProperties: UpdateShapeProperties;
+        updateShapeProperties: IUpdateShapeProperties;
       };
 
-  export interface UpdateShapeProperties {
+  export interface IUpdateShapeProperties {
     /**
      * The fields that should be updated. At least one field must be specified. The root `shapeProperties` is implied and should not be specified. A single `"*"` can be used as short-hand for listing every field. For example to update the shape background solid fill color, set `fields` to `"shapeBackgroundFill.solidFill.color"`. To reset a property to its default value, include its field name in the field mask but leave the field itself unset.
      */
@@ -527,10 +521,10 @@ export namespace IGoogleSlidesService {
     /**
      * The shape properties to update.
      */
-    shapeProperties: ShapeProperties;
+    shapeProperties: IShapeProperties;
   }
 
-  export interface UpdateTextStyle {
+  export interface IUpdateTextStyle {
     /**
      * The fields that should be updated. At least one field must be specified. The root `style` is implied and should not be specified. A single `"*"` can be used as short-hand for listing every field. For example, to update the text style to bold, set `fields` to `"bold"`. To reset a property to its default value, include its field name in the field mask but leave the field itself unset.
      */
@@ -544,10 +538,10 @@ export namespace IGoogleSlidesService {
     /**
      * The style(s) to set on the text. If the value for a particular style matches that of the parent, that style will be set to inherit. Certain text style changes may cause other changes meant to mirror the behavior of the Slides editor. See the documentation of TextStyle for more information.
      */
-    style: TextStyle;
+    style: ITextStyle;
   }
 
-  export interface ReplaceAllText {
+  export interface IReplaceAllText {
     /**
      * If non-empty, limits the matches to page elements only on the given pages. Returns a 400 bad request error if given the page object ID of a notes master, or if a page with that object ID doesn't exist in the presentation.
      */
@@ -558,11 +552,11 @@ export namespace IGoogleSlidesService {
     replaceText?: string | null;
   }
 
-  export interface CreateShape {
+  export interface ICreateShape {
     /**
      * The element properties for the shape.
      */
-    elementProperties?: PageElementProperties;
+    elementProperties?: IPageElementProperties;
 
     /**
      * A user-supplied object ID. If you specify an ID, it must be unique among all pages and page elements in the presentation. The ID must start with an alphanumeric character or an underscore (matches regex `[a-zA-Z0-9_]`); remaining characters may include those as well as a hyphen or colon (matches regex `[a-zA-Z0-9_-:]`). The length of the ID must not be less than 5 or greater than 50. If empty, a unique identifier will be generated.
@@ -587,11 +581,11 @@ export namespace IGoogleSlidesService {
     objectId?: string | null;
   }
 
-  export interface CreateImageRequest {
+  export interface ICreateImageRequest {
     /**
      * The element properties for the image. When the aspect ratio of the provided size does not match the image aspect ratio, the image is scaled and centered with respect to the size in order to maintain the aspect ratio. The provided transform is applied after this operation. The PageElementProperties.size property is optional. If you don't specify the size, the default size of the image is used. The PageElementProperties.transform property is optional. If you don't specify a transform, the image will be placed at the top-left corner of the page.
      */
-    elementProperties?: PageElementProperties;
+    elementProperties?: IPageElementProperties;
 
     /**
      * A user-supplied object ID. If you specify an ID, it must be unique among all pages and page elements in the presentation. The ID must start with an alphanumeric character or an underscore (matches regex `[a-zA-Z0-9_]`); remaining characters may include those as well as a hyphen or colon (matches regex `[a-zA-Z0-9_-:]`). The length of the ID must not be less than 5 or greater than 50. If you don't specify an ID, a unique one is generated.
@@ -607,7 +601,7 @@ export namespace IGoogleSlidesService {
   /**
    * Common properties for a page element. Note: When you initially create a PageElement, the API may modify the values of both `size` and `transform`, but the visual size will be unchanged.
    */
-  export interface PageElementProperties {
+  export interface IPageElementProperties {
     /**
      * The object ID of the page where the element is located.
      */
@@ -616,15 +610,15 @@ export namespace IGoogleSlidesService {
     /**
      * The size of the element.
      */
-    size?: Size;
+    size?: ISize;
 
     /**
      * The transform for the element.
      */
-    transform?: Transform;
+    transform?: ITransform;
   }
 
-  export interface CreateSlideRequest {
+  export interface ICreateSlideRequest {
     /**
      * The optional zero-based index indicating where to insert the slides. If you don't specify an index, the slide is created at the end.
      */
@@ -639,15 +633,15 @@ export namespace IGoogleSlidesService {
     /**
      * An optional list of object ID mappings from the placeholder(s) on the layout to the placeholders that are created on the slide from the specified layout. Can only be used when `slide_layout_reference` is specified.
      */
-    placeholderIdMappings?: LayoutPlaceholderIdMapping[];
+    placeholderIdMappings?: ILayoutPlaceholderIdMapping[];
 
     /**
      * Layout reference of the slide to be inserted, based on the *current master*, which is one of the following: - The master of the previous slide index. - The master of the first slide, if the insertion_index is zero. - The first master in the presentation, if there are no slides. If the LayoutReference is not found in the current master, a 400 bad request error is returned. If you don't specify a layout reference, the slide uses the predefined `BLANK` layout.
      */
-    slideLayoutReference?: LayoutReference;
+    slideLayoutReference?: ILayoutReference;
   }
 
-  export interface LayoutReference {
+  export interface ILayoutReference {
     /**
      * Layout ID: the object ID of one of the layouts in the presentation.
      */
@@ -662,11 +656,11 @@ export namespace IGoogleSlidesService {
   /**
    * The user-specified ID mapping for a placeholder that will be created on a slide from a specified layout.
    */
-  export interface LayoutPlaceholderIdMapping {
+  export interface ILayoutPlaceholderIdMapping {
     /**
      * The placeholder on a layout that will be applied to a slide. Only type and index are needed. For example, a predefined `TITLE_AND_BODY` layout may usually have a TITLE placeholder with index 0 and a BODY placeholder with index 0.
      */
-    layoutPlaceholder?: Placeholder;
+    layoutPlaceholder?: IPlaceholder;
     /**
      * The object ID of the placeholder on a layout that will be applied to a slide.
      */
@@ -690,12 +684,12 @@ export namespace IGoogleSlidesService {
   /**
    * @title Request DTO for generating a presentation in Google Slides
    */
-  export type ICreatePresentationInput = MyPick<Presentation, "title">;
+  export type ICreatePresentationInput = MyPick<IPresentation, "title">;
 
   /**
    * @title Google Slides의 Presentation resource
    */
-  export interface Presentation {
+  export interface IPresentation {
     /**
      * @title Presentation ID
      */
@@ -704,7 +698,7 @@ export namespace IGoogleSlidesService {
     /**
      * @title The page size of the presentation
      */
-    pageSize?: Size;
+    pageSize?: ISize;
 
     /**
      * @@title A slide in a presentation
@@ -773,19 +767,19 @@ export namespace IGoogleSlidesService {
     notesMaster?: Page;
   }
 
-  export interface Size {
+  export interface ISize {
     /**
      * @title Width of the object
      */
-    width?: Dimension;
+    width?: IDimension;
 
     /**
      * @title The height of the object
      */
-    height?: Dimension;
+    height?: IDimension;
   }
 
-  export interface Dimension {
+  export interface IDimension {
     /**
      * @title scale
      */
@@ -812,47 +806,48 @@ export namespace IGoogleSlidesService {
     | tags.Constant<"PT", { title: "포인트"; description: "1/72인치입니다." }>;
 
   export type Page =
-    | SlidePage
-    | LayoutPage
-    | NotesPage
-    | MasterPage
-    | NoteMasterPage;
+    | ISlidePage
+    | ILayoutPage
+    | INotesPage
+    | IMasterPage
+    | INoteMasterPage;
 
-  export interface SlidePage extends PageBase {
+  export interface ISlidePage extends PageBase {
     pageType?: "SLIDE";
 
     /**
      * @title Slides a specific property
      */
-    slideProperties: SlideProperties;
+    slideProperties: ISlideProperties;
   }
 
-  export interface LayoutPage extends PageBase {
+  export interface ILayoutPage extends PageBase {
     pageType?: "LAYOUT";
 
     /**
      * @title layout property
      */
-    layoutProperties: LayoutProperties;
+    layoutProperties: ILayoutProperties;
   }
 
-  export interface NotesPage extends PageBase {
+  export interface INotesPage extends PageBase {
     pageType?: "NOTES";
 
     /**
      * @title memo attribute
      */
-    notesProperties: NotesProperties;
+    notesProperties: INotesProperties;
   }
 
-  export interface MasterPage extends PageBase {
+  export interface IMasterPage extends PageBase {
     pageType?: "MASTER";
     /**
      * @title Master specific attributes
      */
-    masterProperties: MasterProperties;
+    masterProperties: IMasterProperties;
   }
-  export interface NoteMasterPage extends PageBase {
+
+  export interface INoteMasterPage extends PageBase {
     pageType: "NOTES_MASTER";
   }
 
@@ -877,10 +872,10 @@ export namespace IGoogleSlidesService {
     /**
      * @title Attributes of the page
      */
-    pageProperties?: PageProperties;
+    pageProperties?: IPageProperties;
   };
 
-  export interface MasterProperties {
+  export interface IMasterProperties {
     /**
      * @title Human-readable master name
      */
@@ -890,14 +885,14 @@ export namespace IGoogleSlidesService {
   /**
    * @title pageType A Page property that is relevant only to pages that have NOTES
    */
-  export interface NotesProperties {
+  export interface INotesProperties {
     /**
      * @title The object ID of the shape on this notes page that contains the presenter notes for that slide
      */
     speakerNotesObjectId?: string | null;
   }
 
-  export interface LayoutProperties {
+  export interface ILayoutProperties {
     /**
      * @title The object ID of the master on which this layout is based
      */
@@ -914,7 +909,7 @@ export namespace IGoogleSlidesService {
     displayName?: string | null;
   }
 
-  export interface SlideProperties {
+  export interface ISlideProperties {
     /**
      * @title The object ID of the layout that this slide is based on
      */
@@ -945,7 +940,7 @@ export namespace IGoogleSlidesService {
     isSkipped?: (boolean & tags.Default<false>) | null;
   }
 
-  export interface PageProperties {
+  export interface IPageProperties {
     /**
      * The background fill for the page.
      *
@@ -958,20 +953,20 @@ export namespace IGoogleSlidesService {
     /**
      * @title Color scheme of the page
      */
-    colorScheme?: ColorScheme;
+    colorScheme?: IColorScheme;
   }
 
   /**
    * @title Predefined color palette for the page
    */
-  export interface ColorScheme {
+  export interface IColorScheme {
     /**
      * @title ThemeColorType and its corresponding concrete color pair
      */
-    colors?: ThemeColorPair[];
+    colors?: IThemeColorPair[];
   }
 
-  export interface ThemeColorPair {
+  export interface IThemeColorPair {
     /**
      * @title is the theme color type
      */
@@ -980,7 +975,7 @@ export namespace IGoogleSlidesService {
     /**
      * @title A specific color corresponding to the theme color type above
      */
-    color?: RgbColor;
+    color?: IRgbColor;
   }
 
   /**
@@ -1030,12 +1025,12 @@ export namespace IGoogleSlidesService {
     /**
      * @title Solid color fill
      */
-    solidFill?: SolidFill;
+    solidFill?: ISolidFill;
 
     /**
      * @title Fill in the enlarged photo
      */
-    stretchedPictureFill?: StretchedPictureFill;
+    stretchedPictureFill?: IStretchedPictureFill;
   }>;
 
   /**
@@ -1047,7 +1042,7 @@ export namespace IGoogleSlidesService {
    *
    * @title Fill stretched image
    */
-  export interface StretchedPictureFill {
+  export interface IStretchedPictureFill {
     /**
      * This URL is tagged with the requester account.
      *
@@ -1068,7 +1063,7 @@ export namespace IGoogleSlidesService {
     /**
      * @title Original size of the photo fill
      */
-    readonly size?: Size;
+    readonly size?: ISize;
   }
 
   /**
@@ -1095,7 +1090,7 @@ export namespace IGoogleSlidesService {
     /**
      * @ttitle The size of the page element.
      */
-    size?: Size;
+    size?: ISize;
 
     /**
      * The visual appearance of the page element is determined by its absolute transformation.
@@ -1108,7 +1103,7 @@ export namespace IGoogleSlidesService {
      *
      * @title The transformation of the page element
      */
-    transform?: Transform;
+    transform?: ITransform;
 
     /**
      * @title The title of the page element
@@ -1126,32 +1121,32 @@ export namespace IGoogleSlidesService {
   };
 
   export type PageElement =
-    | ShapePageElement
-    | ImagePageElement
-    | LinePageElement;
+    | IShapePageElement
+    | IImagePageElement
+    | ILinePageElement;
 
-  export interface ShapePageElement extends PageElementBase {
+  export interface IShapePageElement extends PageElementBase {
     /**
      * @title General shape
      */
-    shape: Shape;
+    shape: IShape;
   }
 
-  export interface ImagePageElement extends PageElementBase {
+  export interface IImagePageElement extends PageElementBase {
     /**
      * @title image page element
      */
-    image: Image;
+    image: IImage;
   }
 
-  export interface LinePageElement extends PageElementBase {
+  export interface ILinePageElement extends PageElementBase {
     /**
      * @title line page element
      */
-    line: Line;
+    line: ILine;
   }
 
-  export interface Shape {
+  export interface IShape {
     /**
      * @title Type of shape
      */
@@ -1160,22 +1155,22 @@ export namespace IGoogleSlidesService {
     /**
      * @title Text content of the shape
      */
-    text?: TextContent;
+    text?: ITextContent;
 
     /**
      * @title Shape properties
      */
-    shapeProperties?: ShapeProperties;
+    shapeProperties?: IShapeProperties;
 
     /**
      * @title Placeholder is a page element that inherits from its placeholder in the layout and master
      *
      * If set, the shape is a placeholder shape and the inherited properties can be determined by checking the parent placeholder identified by the Placeholder.parent_object_id field.
      */
-    placeholder?: Placeholder;
+    placeholder?: IPlaceholder;
   }
 
-  export interface Placeholder {
+  export interface IPlaceholder {
     /**
      * @title Type of placeholder
      */
@@ -1228,7 +1223,7 @@ export namespace IGoogleSlidesService {
    *
    * @title Shape properties
    */
-  export interface ShapeProperties {
+  export interface IShapeProperties {
     /**
      * If the background fill for the shape is not set, the parent placeholder inherits the background fill.
      *
@@ -1236,7 +1231,7 @@ export namespace IGoogleSlidesService {
      *
      * @title Background fill for the shape
      */
-    shapeBackgroundFill?: ShapeBackgroundFill;
+    shapeBackgroundFill?: IShapeBackgroundFill;
 
     /**
      * If not set, the outline is inherited from the parent placeholder.
@@ -1254,7 +1249,7 @@ export namespace IGoogleSlidesService {
      *
      * @title Shadow property of the shape
      */
-    readonly shadow?: Shadow;
+    readonly shadow?: IShadow;
 
     /**
      * If not set, the link will not be displayed.
@@ -1279,13 +1274,13 @@ export namespace IGoogleSlidesService {
      *
      * This property is only set on shapes that accept text.
      */
-    autofit?: AutoFit;
+    autofit?: IAutoFit;
   }
 
   /**
    * @title Autofit property of `Shape`
    */
-  export interface AutoFit {
+  export interface IAutoFit {
     /**
      * The autofit type of the shape.
      *
@@ -1419,7 +1414,7 @@ export namespace IGoogleSlidesService {
   /**
    * @title Shadow
    */
-  export interface Shadow {
+  export interface IShadow {
     readonly type?:
       | tags.Constant<
           "SHADOW_TYPE_UNSPECIFIED",
@@ -1436,14 +1431,14 @@ export namespace IGoogleSlidesService {
     /**
      * The alignment point of the shadow, which sets the shadow's transformation point, scale, and distortion direction.
      */
-    readonly alignment?: RectanglePosition | null;
+    readonly alignment?: IRectanglePosition | null;
 
     /**
      * @title Radius of the shadow blur
      *
      * The larger the radius, the more diffuse the shadow.
      */
-    blurRadius?: Dimension;
+    blurRadius?: IDimension;
 
     /**
      * @title Shadow color value
@@ -1472,7 +1467,7 @@ export namespace IGoogleSlidesService {
     propertyState?: PropertyState | null;
   }
 
-  export type RectanglePosition =
+  export type IRectanglePosition =
     | tags.Constant<
         "RECTANGLE_POSITION_UNSPECIFIED",
         { title: "지정되지 않았습니다." }
@@ -1487,7 +1482,7 @@ export namespace IGoogleSlidesService {
     | tags.Constant<"BOTTOM_CENTER", { title: "하단 중앙" }>
     | tags.Constant<"BOTTOM_RIGHT", { title: "오른쪽 하단" }>;
 
-  export type AffineTransform = Transform;
+  export type AffineTransform = ITransform;
 
   export interface Outline {
     /**
@@ -1503,7 +1498,7 @@ export namespace IGoogleSlidesService {
     /**
      * @title Thickness of the outline
      */
-    weight?: Dimension;
+    weight?: IDimension;
 
     /**
      * @title Dash style for outline
@@ -1518,7 +1513,7 @@ export namespace IGoogleSlidesService {
     /**
      * @title Solid fill
      */
-    solidFill?: SolidFill;
+    solidFill?: ISolidFill;
   }
 
   /**
@@ -1528,7 +1523,7 @@ export namespace IGoogleSlidesService {
    *
    * @title Solid Fill
    */
-  export interface SolidFill {
+  export interface ISolidFill {
     /**
      * @title Color value of a single color
      */
@@ -1549,20 +1544,20 @@ export namespace IGoogleSlidesService {
   /**
    * @title A solid color value with a theme
    */
-  export type OpaqueColor = RgbColorMap | ThemeColorMap;
+  export type OpaqueColor = IRgbColorMap | IThemeColorMap;
 
-  export interface ThemeColorMap {
+  export interface IThemeColorMap {
     /**
      * @title Theme color type
      */
     themeColor?: ThemeColor;
   }
 
-  export interface RgbColorMap {
+  export interface IRgbColorMap {
     /**
      * @title RGB color type
      */
-    rgbColor?: RgbColor;
+    rgbColor?: IRgbColor;
   }
 
   type ThemeColor =
@@ -1596,7 +1591,7 @@ export namespace IGoogleSlidesService {
         { title: "두 번째 배경 색상을 나타냅니다." }
       >;
 
-  export interface RgbColor {
+  export interface IRgbColor {
     /**
      * @title The red component of the color
      */
@@ -1616,7 +1611,7 @@ export namespace IGoogleSlidesService {
   /**
    * @title Fill shape background
    */
-  export interface ShapeBackgroundFill {
+  export interface IShapeBackgroundFill {
     /**
      * Possible states of the `@title` property
      */
@@ -1625,7 +1620,7 @@ export namespace IGoogleSlidesService {
     /**
      * @title Solid fill
      */
-    solidFill?: SolidFill;
+    solidFill?: ISolidFill;
   }
 
   export type PropertyState = (
@@ -1653,7 +1648,7 @@ export namespace IGoogleSlidesService {
   ) &
     tags.Default<"RENDERED">;
 
-  export interface TextContent {
+  export interface ITextContent {
     /**
      * @title Text content categorized as a component, including styling information
      */
@@ -1665,7 +1660,7 @@ export namespace IGoogleSlidesService {
      * Keyed by list ID.
      */
     lists?: {
-      [Key: string]: List;
+      [Key: string]: IList;
     } | null;
   }
 
@@ -1674,7 +1669,7 @@ export namespace IGoogleSlidesService {
    *
    * A paragraph that is part of a list has an implicit reference to the ID of that list.
    */
-  export interface List {
+  export interface IList {
     /**
      * @title The ID of the list
      */
@@ -1690,7 +1685,7 @@ export namespace IGoogleSlidesService {
     nestingLevel?:
       | {
           [Key in 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8]: {
-            bulletStyle: TextStyle;
+            bulletStyle: ITextStyle;
           };
         }
       | null;
@@ -1712,7 +1707,7 @@ export namespace IGoogleSlidesService {
      *
      * A kind of TextElement that indicates the start of a new paragraph.
      */
-    paragraphMarker?: ParagraphMarker;
+    paragraphMarker?: IParagraphMarker;
 
     /**
      * The startIndex and endIndex of a TextRun are always entirely within the index range of a single paragraphMarker TextElement.
@@ -1721,15 +1716,15 @@ export namespace IGoogleSlidesService {
      *
      * @title A TextElement representing a text run where all characters in the run have the same TextStyle
      */
-    textRun?: TextRun;
+    textRun?: ITextRun;
 
     /**
      * @title A TextElement representing a point of text that can be dynamically replaced with content that can change over time
      */
-    autoText?: AutoText;
+    autoText?: IAutoText;
   }>;
 
-  export interface AutoText {
+  export interface IAutoText {
     /**
      * @title The type of this autotext
      */
@@ -1751,7 +1746,7 @@ export namespace IGoogleSlidesService {
     /**
      * @title Style applied to this autotext
      */
-    style?: TextStyle;
+    style?: ITextStyle;
   }
 
   /**
@@ -1759,7 +1754,7 @@ export namespace IGoogleSlidesService {
    *
    * A kind of TextElement that represents a RON with all styles identical.
    */
-  export interface TextRun {
+  export interface ITextRun {
     /**
      * @title The text of this execution
      */
@@ -1768,52 +1763,27 @@ export namespace IGoogleSlidesService {
     /**
      * @title Specifies the style applied to this run
      */
-    style?: TextStyle;
+    style?: ITextStyle;
   }
 
-  export interface AutoText {
-    /**
-     * @title The type of this autotext
-     */
-    type:
-      | tags.Constant<
-          "TYPE_UNSPECIFIED",
-          { title: "지정되지 않은 자동 텍스트 유형" }
-        >
-      | tags.Constant<
-          "SLIDE_NUMBER",
-          { title: "현재 슬라이드 번호를 나타내는 자동 텍스트." }
-        >;
-
-    /**
-     * @title The rendered content of this autotext (if any)
-     */
-    content: string;
-
-    /**
-     * @title Style applied to this autotext
-     */
-    style?: TextStyle;
-  }
-
-  export interface ParagraphMarker {
+  export interface IParagraphMarker {
     /**
      * @title Paragraph style
      */
-    style?: ParagraphStyle;
+    style?: IParagraphStyle;
 
     /**
      * @title The bullet point for this paragraph
      *
      * If not present, the paragraph does not belong in the list.
      */
-    bullet?: Bullet;
+    bullet?: IBullet;
   }
 
   /**
    * @title The bullets in the paragraph
    */
-  export interface Bullet {
+  export interface IBullet {
     /**
      * @title The ID of the list this paragraph belongs to
      */
@@ -1832,7 +1802,7 @@ export namespace IGoogleSlidesService {
     /**
      * @title Paragraph text style applied to this bullet
      */
-    bulletStyle: TextStyle;
+    bulletStyle: ITextStyle;
   }
 
   /**
@@ -1849,20 +1819,20 @@ export namespace IGoogleSlidesService {
    *
    * If the text is contained in a shape without a parent placeholder, unsetting this field causes the style to revert to a value that matches the default in the Slides editor.
    */
-  export interface TextStyle {
+  export interface ITextStyle {
     /**
      * @title The background color of the text
      *
      * Setting this property will make the color opaque or transparent, depending on whether the opaqueColor field of the color is set.
      */
-    backgroundColor?: OptionalColor;
+    backgroundColor?: IOptionalColor;
 
     /**
      * @title The color of the text itself
      *
      * Setting this property will make the color opaque or transparent, depending on whether the opaqueColor field of the color is set.
      */
-    foregroundColor?: OptionalColor;
+    foregroundColor?: IOptionalColor;
 
     /**
      * @title Whether the text is rendered bold
@@ -1892,7 +1862,7 @@ export namespace IGoogleSlidesService {
      *
      * When reading, `fontSize` is specified in points.
      */
-    fontSize?: Dimension;
+    fontSize?: IDimension;
 
     /**
      * If not set, the link will not be displayed.
@@ -1946,7 +1916,7 @@ export namespace IGoogleSlidesService {
     /**
      * @title Font family and rendered thickness of text
      */
-    weightedFontFamily?: WeightedFontFamily;
+    weightedFontFamily?: IWeightedFontFamily;
   }
 
   /**
@@ -1972,7 +1942,7 @@ export namespace IGoogleSlidesService {
   /**
    * @title A collection of weighted fonts
    */
-  export interface WeightedFontFamily {
+  export interface IWeightedFontFamily {
     /**
      * The font family can be from the font menu in Slides or from Google Fonts.
      *
@@ -1999,7 +1969,7 @@ export namespace IGoogleSlidesService {
    *
    * A color that can be completely opaque or completely transparent.
    */
-  export interface OptionalColor {
+  export interface IOptionalColor {
     /**
      * If set, it is used as an opaque color.
      *
@@ -2020,7 +1990,7 @@ export namespace IGoogleSlidesService {
    *
    * @title Style applied to the entire paragraph
    */
-  export interface ParagraphStyle {
+  export interface IParagraphStyle {
     lineSpacing?: number | null;
 
     /**
@@ -2031,33 +2001,33 @@ export namespace IGoogleSlidesService {
     /**
      * @title The indentation distance for the paragraph corresponding to the beginning of the text based on the current text direction
      */
-    indentStart?: Dimension;
+    indentStart?: IDimension;
 
     /**
      * @title The indentation distance of the paragraph corresponding to the end of the text based on the current text direction
      */
-    indentEnd?: Dimension;
+    indentEnd?: IDimension;
 
     /**
      * @title Extra space above the paragraph
      *
      * If not set, the value is inherited from the parent element.
      */
-    spaceAbove?: Dimension;
+    spaceAbove?: IDimension;
 
     /**
      * @title Extra space is displayed below the paragraph
      *
      * If not set, the value is inherited from the parent element.
      */
-    spaceBelow?: Dimension;
+    spaceBelow?: IDimension;
 
     /**
      * @title Indents the beginning of the first line of a paragraph
      *
      * If not set, the value is inherited from the parent element.
      */
-    indentFirstLine?: Dimension;
+    indentFirstLine?: IDimension;
 
     /**
      * @title The text direction of this paragraph
@@ -2918,7 +2888,7 @@ export namespace IGoogleSlidesService {
    *
    * A type of `PageElement` representing an image.
    */
-  export interface Image {
+  export interface IImage {
     /**
      * This URL is tagged with the requester's account.
      *
@@ -2933,7 +2903,7 @@ export namespace IGoogleSlidesService {
     /**
      * @title Image properties
      */
-    imageProperties: ImageProperties;
+    imageProperties: IImageProperties;
 
     /**
      * @title Source URL is the URL used to embed the image
@@ -2949,19 +2919,19 @@ export namespace IGoogleSlidesService {
      *
      * @title The page element that inherits from the corresponding placeholder in the layout and master
      */
-    placeholder?: Placeholder;
+    placeholder?: IPlaceholder;
   }
 
   /**
    * @title Image properties
    */
-  export interface ImageProperties {
+  export interface IImageProperties {
     /**
      * @title The cropping property of the image
      *
      * If not set, the image will not be cropped.
      */
-    readonly cropProperties?: CropProperties;
+    readonly cropProperties?: ICropProperties;
 
     /**
      * @title The transparency effect of the image
@@ -2987,7 +2957,7 @@ export namespace IGoogleSlidesService {
      *
      * If not set, the image will have no outline.
      */
-    readonly recolor?: Recolor;
+    readonly recolor?: IRecolor;
 
     /**
      * @title The outline of the image
@@ -2999,7 +2969,7 @@ export namespace IGoogleSlidesService {
     /**
      * @title This is the shadow of the image
      */
-    readonly shadow?: Shadow;
+    readonly shadow?: IShadow;
 
     /**
      * @title Hyperlink target of the image
@@ -3009,7 +2979,7 @@ export namespace IGoogleSlidesService {
     link?: Link;
   }
 
-  export interface CropProperties {
+  export interface ICropProperties {
     /**
      * The offset specifies the left edge of the crop rectangle relative to the left edge of the original bounding rectangle, relative to the original width of the object.
      */
@@ -3041,13 +3011,13 @@ export namespace IGoogleSlidesService {
    *
    * Color reset effect applied to the image.
    */
-  export interface Recolor {
+  export interface IRecolor {
     /**
      * @title Recolor effect
      *
      * Represented as a gradient, a list of color stops.
      */
-    recolorStops?: ColorStop[];
+    recolorStops?: IColorStop[];
 
     /**
      * @title The name of the color change effect
@@ -3202,7 +3172,7 @@ export namespace IGoogleSlidesService {
         { title: "맞춤 색상 효과. 구체적인 경사는 recolorStops를 참고하세요." }
       >;
 
-  export interface ColorStop {
+  export interface IColorStop {
     /**
      * @title Color of gradient color
      */
@@ -3232,11 +3202,11 @@ export namespace IGoogleSlidesService {
   /**
    * @title A type of PageElement that represents non-connector lines, straight connectors, bent connectors, bent connectors, etc
    */
-  export interface Line {
+  export interface ILine {
     /**
      * @title is a line property
      */
-    lineProperties?: LineProperties;
+    lineProperties?: ILineProperties;
 
     /**
      * @title Type of line
@@ -3330,16 +3300,16 @@ export namespace IGoogleSlidesService {
         }
       >;
 
-  export interface LineProperties {
+  export interface ILineProperties {
     /**
      * @title Filling the line
      */
-    lineFill?: LineFill;
+    lineFill?: ILineFill;
 
     /**
      * @title Line thickness
      */
-    weight?: Dimension;
+    weight?: IDimension;
 
     /**
      * @title dashed line style
@@ -3366,17 +3336,17 @@ export namespace IGoogleSlidesService {
      *
      * Only exists for connector types.
      */
-    startConnection?: LineConnection;
+    startConnection?: ILineConnection;
 
     /**
      * @title A connection at the end of a line
      *
      * Only present in connector type.
      */
-    endConnection?: LineConnection;
+    endConnection?: ILineConnection;
   }
 
-  export interface LineConnection {
+  export interface ILineConnection {
     /**
      * @title The object ID of the linked page element
      */
@@ -3462,13 +3432,13 @@ export namespace IGoogleSlidesService {
         }
       >;
 
-  export interface LineFill {
+  export interface ILineFill {
     /**
      * @title Solid Fill
      *
      * The default line fill matches the default for new lines created in the Slides editor.
      */
-    solidFill?: SolidFill;
+    solidFill?: ISolidFill;
   }
 
   // export interface Table {}
@@ -3478,7 +3448,7 @@ export namespace IGoogleSlidesService {
   /**
    * @title Transformation of the page element
    */
-  export interface Transform {
+  export interface ITransform {
     /**
      * @title X-coordinate scale factor
      */

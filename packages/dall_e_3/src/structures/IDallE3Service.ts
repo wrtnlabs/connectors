@@ -1,6 +1,6 @@
-import { IAwsS3Service } from "@wrtnlabs/connector-aws-s3";
 import { tags } from "typia";
 import { OpenAI } from "openai";
+import { FileManager } from "@wrtnlabs/connector-shared";
 
 export namespace IDallE3Service {
   export interface IProps {
@@ -10,14 +10,9 @@ export namespace IDallE3Service {
     openai: OpenAI;
 
     /**
-     * AWS
+     * FileManager.
      */
-    aws: {
-      /**
-       * S3
-       */
-      s3: IAwsS3Service.IProps;
-    };
+    fileManager?: FileManager;
   }
 
   /**
@@ -43,19 +38,12 @@ export namespace IDallE3Service {
       | tags.Constant<"landscape", { title: "풍경"; description: "1792x1024" }>
       | tags.Constant<"portrait", { title: "인물"; description: "1024x1792" }>;
 
-    s3: {
-      /**
-       * S3 Bucket Key(path).
-       */
-      key: string;
-
-      /**
-       * Content Type.
-       *
-       * @default "image/png"
-       */
-      contentType?: string;
-    };
+    /**
+     * Path to save the image including the file name.
+     *
+     * @title File Path with File Name
+     */
+    path: string;
   }
 
   /**
@@ -63,10 +51,19 @@ export namespace IDallE3Service {
    */
   export interface IResponse {
     /**
-     * Generated image url
+     * Generated image URI.
      *
-     * @title Generated image Url
+     * @title Generated image URI
      */
-    imgUrl: string & tags.Format<"iri"> & tags.ContentMediaType<"image/*">;
+    uri?: string & tags.Format<"iri">;
+
+    /**
+     * Generated image URL in OpenAI.
+     *
+     * This URL will be expired within some hours.
+     *
+     * @title Generated image URL in OpenAI
+     */
+    expiringUrl?: string & tags.Format<"iri">;
   }
 }

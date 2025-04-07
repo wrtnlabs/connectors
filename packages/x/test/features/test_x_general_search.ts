@@ -4,9 +4,9 @@ import { TestGlobal } from "../TestGlobal";
 
 export const test_x_general_search = async () => {
   const xService = new XService({
-    clientId: TestGlobal.env.X_CLIENT_ID,
-    clientSecret: TestGlobal.env.X_CLIENT_SECRET,
-    bearerToken: TestGlobal.env.X_TEST_SECRET,
+    xClientId: TestGlobal.env.X_CLIENT_ID,
+    xClientSecret: TestGlobal.env.X_CLIENT_SECRET,
+    xBearerToken: TestGlobal.env.X_TEST_SECRET,
   });
 
   const res = await xService.generalSearch({

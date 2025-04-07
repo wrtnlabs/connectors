@@ -7,9 +7,9 @@ import typia from "typia";
 
 export const test_google_docs = async () => {
   const googleDocsService = new GoogleDocsService({
-    clientId: TestGlobal.env.GOOGLE_CLIENT_ID,
-    clientSecret: TestGlobal.env.GOOGLE_CLIENT_SECRET,
-    secret: TestGlobal.env.GOOGLE_TEST_SECRET,
+    googleClientId: TestGlobal.env.GOOGLE_CLIENT_ID,
+    googleClientSecret: TestGlobal.env.GOOGLE_CLIENT_SECRET,
+    googleRefreshToken: TestGlobal.env.GOOGLE_TEST_SECRET,
   });
   /**
    * create a new Google Docs.

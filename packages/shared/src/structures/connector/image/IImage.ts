@@ -1,5 +1,5 @@
 export namespace IImage {
-  export interface GetImageFileInput {
+  export interface IGetImageFileInput {
     /**
      * @title Image url.
      */
@@ -11,7 +11,7 @@ export namespace IImage {
     ratio: 1.91 | 1 | 0.8;
   }
 
-  export interface GetImageFileOutput {
+  export interface IGetImageFileOutput {
     /**
      * Encoded image in base64 format.
      */
@@ -20,10 +20,10 @@ export namespace IImage {
     /**
      * Size of image after cropping.
      */
-    size: Size;
+    size: ISize;
   }
 
-  export interface Size {
+  export interface ISize {
     /**
      * @title The y-axis coordinate that becomes the starting point of the image crop
      */
@@ -45,7 +45,7 @@ export namespace IImage {
     height: number;
   }
 
-  export interface GetSizeInput extends Size {
+  export interface IGetSizeInput extends ISize {
     /**
      * @title Target Ratio of image
      */

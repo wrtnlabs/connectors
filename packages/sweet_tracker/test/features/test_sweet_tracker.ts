@@ -4,7 +4,7 @@ import { TestGlobal } from "../TestGlobal";
 
 export const test_sweet_tracker_get_companies = async () => {
   const sweetTrackerService = new SweetTrackerService({
-    secret: TestGlobal.env.TEST_SWEET_TRACKER_KEY,
+    sweetTrackerApiKey: TestGlobal.env.TEST_SWEET_TRACKER_KEY,
   });
 
   const res = await sweetTrackerService.getCompanyList();
@@ -15,7 +15,7 @@ export const test_sweet_tracker_get_companies = async () => {
 
 export const test_sweet_tracker_get_recommended_companies = async () => {
   const sweetTrackerService = new SweetTrackerService({
-    secret: TestGlobal.env.TEST_SWEET_TRACKER_KEY,
+    sweetTrackerApiKey: TestGlobal.env.TEST_SWEET_TRACKER_KEY,
   });
 
   const res = await sweetTrackerService.getRecommendedCompanyList({
@@ -30,7 +30,7 @@ export const test_sweet_tracker_get_tracking_info = async () => {
   const companies = await test_sweet_tracker_get_recommended_companies();
 
   const sweetTrackerService = new SweetTrackerService({
-    secret: TestGlobal.env.TEST_SWEET_TRACKER_KEY,
+    sweetTrackerApiKey: TestGlobal.env.TEST_SWEET_TRACKER_KEY,
   });
 
   const res = await sweetTrackerService.getTrackingInfo({
@@ -44,7 +44,7 @@ export const test_sweet_tracker_get_tracking_info = async () => {
 
 export const test_sweet_tracker_get_tracking_info_2 = async () => {
   const sweetTrackerService = new SweetTrackerService({
-    secret: TestGlobal.env.TEST_SWEET_TRACKER_KEY,
+    sweetTrackerApiKey: TestGlobal.env.TEST_SWEET_TRACKER_KEY,
   });
 
   const res = await sweetTrackerService.getTrackingInfo({

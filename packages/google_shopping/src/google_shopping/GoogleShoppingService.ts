@@ -16,7 +16,7 @@ export class GoogleShoppingService {
   constructor(private readonly props: IGoogleShoppingService.IProps) {
     this.defaultParams = {
       engine: "google_shopping",
-      api_key: this.props.apiKey,
+      api_key: this.props.serpApiKey,
       google_domain: "google.com",
       location_requested: "South Korea",
       location_used: "South Korea",

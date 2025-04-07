@@ -4,9 +4,9 @@ import { TestGlobal } from "../TestGlobal";
 
 export const test_api_kakao_talk_send_message = async () => {
   const kakaoTalkService = new KakaoTalkService({
-    clientId: TestGlobal.env.KAKAO_TALK_CLIENT_ID,
-    clientSecret: TestGlobal.env.KAKAO_TALK_CLIENT_SECRET,
-    secret: TestGlobal.env.KAKAO_TALK_TEST_REFRESH_TOKEN,
+    kakaoTalkClientId: TestGlobal.env.KAKAO_TALK_CLIENT_ID,
+    kakaoTalkClientSecret: TestGlobal.env.KAKAO_TALK_CLIENT_SECRET,
+    kakaoTalkRefreshToken: TestGlobal.env.KAKAO_TALK_TEST_REFRESH_TOKEN,
   });
 
   /**

@@ -16,7 +16,7 @@ export class GoogleTrendService {
       const date = this.parsingDate(input.date ?? this.formatCurrentDate());
       const res = await getJson({
         engine: "google_trends_trending_now",
-        api_key: this.props.apiKey,
+        api_key: this.props.googleTrendApiKey,
         hl: "en",
         geo: "KR",
         frequency: "daily",

@@ -469,7 +469,7 @@ export class XService {
             ...(input.end_time && { end_time: input.end_time }),
           },
           headers: {
-            Authorization: `Bearer ${this.props.bearerToken}`,
+            Authorization: `Bearer ${this.props.xBearerToken}`,
           },
         },
       );
@@ -572,10 +572,10 @@ export class XService {
     try {
       const params = new URLSearchParams();
       params.append("grant_type", "refresh_token");
-      params.append("refresh_token", this.props.bearerToken);
-      params.append("client_id", this.props.clientId);
+      params.append("refresh_token", this.props.xBearerToken);
+      params.append("client_id", this.props.xClientId);
       const BasicAuthToken = Buffer.from(
-        `${this.props.clientId}:${this.props.clientSecret}`,
+        `${this.props.xClientId}:${this.props.xClientSecret}`,
         "utf8",
       ).toString("base64");
       const res = await axios.post("https://api.x.com/2/oauth2/token", params, {
@@ -593,7 +593,7 @@ export class XService {
       //     X_TEST_SECRET: res.data.refresh_token,
       //   });
       // }
-      this.props.bearerToken = res.data.refresh_token;
+      this.props.xBearerToken = res.data.refresh_token;
       return res.data.access_token;
     } catch (err) {
       console.error(JSON.stringify(err));

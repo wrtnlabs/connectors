@@ -8,7 +8,7 @@ By installing the package, you can use functions for `Google shopping`.
 
 install the packages related with `@agentica/core`
 
-- `@agentica` : [README.md](https://github.com/wrtnlabs/agentica).
+- `@agentica` : [README](https://github.com/wrtnlabs/agentica)
 - `@samchon/openapi` : [README](https://github.com/samchon/openapi)
 - `typia` : [Homepage](https://typia.io/)
 

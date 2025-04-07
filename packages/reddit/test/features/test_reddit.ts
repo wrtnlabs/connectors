@@ -5,9 +5,9 @@ import { TestGlobal } from "../TestGlobal";
 
 export const test_reddit_get_hot_posts = async () => {
   const redditService = new RedditService({
-    clientId: TestGlobal.env.REDDIT_CLIENT_ID,
-    clientSecret: TestGlobal.env.REDDIT_CLIENT_SECRET,
-    secret: TestGlobal.env.REDDIT_TEST_SECRET,
+    redditClientId: TestGlobal.env.REDDIT_CLIENT_ID,
+    redditClientSecret: TestGlobal.env.REDDIT_CLIENT_SECRET,
+    redditRefreshToken: TestGlobal.env.REDDIT_TEST_SECRET,
   });
 
   const firstPage = await redditService.getHotPosts({
@@ -27,9 +27,9 @@ export const test_reddit_get_hot_posts = async () => {
 
 export const test_reddit_get_new_posts = async () => {
   const redditService = new RedditService({
-    clientId: TestGlobal.env.REDDIT_CLIENT_ID,
-    clientSecret: TestGlobal.env.REDDIT_CLIENT_SECRET,
-    secret: TestGlobal.env.REDDIT_TEST_SECRET,
+    redditClientId: TestGlobal.env.REDDIT_CLIENT_ID,
+    redditClientSecret: TestGlobal.env.REDDIT_CLIENT_SECRET,
+    redditRefreshToken: TestGlobal.env.REDDIT_TEST_SECRET,
   });
 
   const firstPage = await redditService.getNewPosts({
@@ -49,9 +49,9 @@ export const test_reddit_get_new_posts = async () => {
 
 export const test_reddit_get_top_posts = async () => {
   const redditService = new RedditService({
-    clientId: TestGlobal.env.REDDIT_CLIENT_ID,
-    clientSecret: TestGlobal.env.REDDIT_CLIENT_SECRET,
-    secret: TestGlobal.env.REDDIT_TEST_SECRET,
+    redditClientId: TestGlobal.env.REDDIT_CLIENT_ID,
+    redditClientSecret: TestGlobal.env.REDDIT_CLIENT_SECRET,
+    redditRefreshToken: TestGlobal.env.REDDIT_TEST_SECRET,
   });
 
   const firstPage = await redditService.getTopPosts({
@@ -72,9 +72,9 @@ export const test_reddit_get_top_posts = async () => {
 export const test_reddit_get_comments_of_top_posts_about_programming =
   async () => {
     const redditService = new RedditService({
-      clientId: TestGlobal.env.REDDIT_CLIENT_ID,
-      clientSecret: TestGlobal.env.REDDIT_CLIENT_SECRET,
-      secret: TestGlobal.env.REDDIT_TEST_SECRET,
+      redditClientId: TestGlobal.env.REDDIT_CLIENT_ID,
+      redditClientSecret: TestGlobal.env.REDDIT_CLIENT_SECRET,
+      redditRefreshToken: TestGlobal.env.REDDIT_TEST_SECRET,
     });
 
     const topPost = await redditService.getTopPosts({
@@ -94,9 +94,9 @@ export const test_reddit_get_comments_of_top_posts_about_programming =
 
 export const test_reddit_get_comments_of_top_posts_about_korean = async () => {
   const redditService = new RedditService({
-    clientId: TestGlobal.env.REDDIT_CLIENT_ID,
-    clientSecret: TestGlobal.env.REDDIT_CLIENT_SECRET,
-    secret: TestGlobal.env.REDDIT_TEST_SECRET,
+    redditClientId: TestGlobal.env.REDDIT_CLIENT_ID,
+    redditClientSecret: TestGlobal.env.REDDIT_CLIENT_SECRET,
+    redditRefreshToken: TestGlobal.env.REDDIT_TEST_SECRET,
   });
 
   const topPost = await redditService.getTopPosts({
@@ -116,9 +116,9 @@ export const test_reddit_get_comments_of_top_posts_about_korean = async () => {
 
 export const test_reddit_get_comments_of_top_posts_about_gaming = async () => {
   const redditService = new RedditService({
-    clientId: TestGlobal.env.REDDIT_CLIENT_ID,
-    clientSecret: TestGlobal.env.REDDIT_CLIENT_SECRET,
-    secret: TestGlobal.env.REDDIT_TEST_SECRET,
+    redditClientId: TestGlobal.env.REDDIT_CLIENT_ID,
+    redditClientSecret: TestGlobal.env.REDDIT_CLIENT_SECRET,
+    redditRefreshToken: TestGlobal.env.REDDIT_TEST_SECRET,
   });
 
   const topPost = await redditService.getTopPosts({
@@ -139,9 +139,9 @@ export const test_reddit_get_comments_of_top_posts_about_gaming = async () => {
 
 export const test_reddit_get_user_about = async () => {
   const redditService = new RedditService({
-    clientId: TestGlobal.env.REDDIT_CLIENT_ID,
-    clientSecret: TestGlobal.env.REDDIT_CLIENT_SECRET,
-    secret: TestGlobal.env.REDDIT_TEST_SECRET,
+    redditClientId: TestGlobal.env.REDDIT_CLIENT_ID,
+    redditClientSecret: TestGlobal.env.REDDIT_CLIENT_SECRET,
+    redditRefreshToken: TestGlobal.env.REDDIT_TEST_SECRET,
   });
 
   const res = await redditService.getUserAbout({
@@ -153,9 +153,9 @@ export const test_reddit_get_user_about = async () => {
 
 export const test_reddit_get_multiple_user_about = async () => {
   const redditService = new RedditService({
-    clientId: TestGlobal.env.REDDIT_CLIENT_ID,
-    clientSecret: TestGlobal.env.REDDIT_CLIENT_SECRET,
-    secret: TestGlobal.env.REDDIT_TEST_SECRET,
+    redditClientId: TestGlobal.env.REDDIT_CLIENT_ID,
+    redditClientSecret: TestGlobal.env.REDDIT_CLIENT_SECRET,
+    redditRefreshToken: TestGlobal.env.REDDIT_TEST_SECRET,
   });
 
   const topPost = await redditService.getTopPosts({
@@ -185,9 +185,9 @@ export const test_reddit_get_multiple_user_about = async () => {
 
 export const test_reddit_get_user_submmited = async () => {
   const redditService = new RedditService({
-    clientId: TestGlobal.env.REDDIT_CLIENT_ID,
-    clientSecret: TestGlobal.env.REDDIT_CLIENT_SECRET,
-    secret: TestGlobal.env.REDDIT_TEST_SECRET,
+    redditClientId: TestGlobal.env.REDDIT_CLIENT_ID,
+    redditClientSecret: TestGlobal.env.REDDIT_CLIENT_SECRET,
+    redditRefreshToken: TestGlobal.env.REDDIT_TEST_SECRET,
   });
 
   const topPost = await redditService.getTopPosts({
@@ -207,9 +207,9 @@ export const test_reddit_get_user_submmited = async () => {
 
 export const test_reddit_get_user_comments = async () => {
   const redditService = new RedditService({
-    clientId: TestGlobal.env.REDDIT_CLIENT_ID,
-    clientSecret: TestGlobal.env.REDDIT_CLIENT_SECRET,
-    secret: TestGlobal.env.REDDIT_TEST_SECRET,
+    redditClientId: TestGlobal.env.REDDIT_CLIENT_ID,
+    redditClientSecret: TestGlobal.env.REDDIT_CLIENT_SECRET,
+    redditRefreshToken: TestGlobal.env.REDDIT_TEST_SECRET,
   });
 
   const topPost = await redditService.getTopPosts({
@@ -229,9 +229,9 @@ export const test_reddit_get_user_comments = async () => {
 
 export const test_reddit_search_subreddits = async () => {
   const redditService = new RedditService({
-    clientId: TestGlobal.env.REDDIT_CLIENT_ID,
-    clientSecret: TestGlobal.env.REDDIT_CLIENT_SECRET,
-    secret: TestGlobal.env.REDDIT_TEST_SECRET,
+    redditClientId: TestGlobal.env.REDDIT_CLIENT_ID,
+    redditClientSecret: TestGlobal.env.REDDIT_CLIENT_SECRET,
+    redditRefreshToken: TestGlobal.env.REDDIT_TEST_SECRET,
   });
 
   const res = await redditService.searchSubreddits({
@@ -243,9 +243,9 @@ export const test_reddit_search_subreddits = async () => {
 
 export const test_reddit_get_popular_subreddits = async () => {
   const redditService = new RedditService({
-    clientId: TestGlobal.env.REDDIT_CLIENT_ID,
-    clientSecret: TestGlobal.env.REDDIT_CLIENT_SECRET,
-    secret: TestGlobal.env.REDDIT_TEST_SECRET,
+    redditClientId: TestGlobal.env.REDDIT_CLIENT_ID,
+    redditClientSecret: TestGlobal.env.REDDIT_CLIENT_SECRET,
+    redditRefreshToken: TestGlobal.env.REDDIT_TEST_SECRET,
   });
 
   const res = await redditService.getPopularSubreddits({
@@ -257,9 +257,9 @@ export const test_reddit_get_popular_subreddits = async () => {
 
 export const test_reddit_get_subreddit_about = async () => {
   const redditService = new RedditService({
-    clientId: TestGlobal.env.REDDIT_CLIENT_ID,
-    clientSecret: TestGlobal.env.REDDIT_CLIENT_SECRET,
-    secret: TestGlobal.env.REDDIT_TEST_SECRET,
+    redditClientId: TestGlobal.env.REDDIT_CLIENT_ID,
+    redditClientSecret: TestGlobal.env.REDDIT_CLIENT_SECRET,
+    redditRefreshToken: TestGlobal.env.REDDIT_TEST_SECRET,
   });
 
   const res = await redditService.getSubredditAbout({
@@ -271,9 +271,9 @@ export const test_reddit_get_subreddit_about = async () => {
 
 export const test_reddit_get_best_content = async () => {
   const redditService = new RedditService({
-    clientId: TestGlobal.env.REDDIT_CLIENT_ID,
-    clientSecret: TestGlobal.env.REDDIT_CLIENT_SECRET,
-    secret: TestGlobal.env.REDDIT_TEST_SECRET,
+    redditClientId: TestGlobal.env.REDDIT_CLIENT_ID,
+    redditClientSecret: TestGlobal.env.REDDIT_CLIENT_SECRET,
+    redditRefreshToken: TestGlobal.env.REDDIT_TEST_SECRET,
   });
 
   const firstPage = await redditService.getBestContent({
@@ -291,9 +291,9 @@ export const test_reddit_get_best_content = async () => {
 
 export const test_reddit_get_comments_are_flatten = async () => {
   const redditService = new RedditService({
-    clientId: TestGlobal.env.REDDIT_CLIENT_ID,
-    clientSecret: TestGlobal.env.REDDIT_CLIENT_SECRET,
-    secret: TestGlobal.env.REDDIT_TEST_SECRET,
+    redditClientId: TestGlobal.env.REDDIT_CLIENT_ID,
+    redditClientSecret: TestGlobal.env.REDDIT_CLIENT_SECRET,
+    redditRefreshToken: TestGlobal.env.REDDIT_TEST_SECRET,
   });
 
   const topPost = await redditService.getTopPosts({

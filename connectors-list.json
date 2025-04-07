@@ -28,7 +28,6 @@
     "@wrtnlabs/connector-google-slides",
     "@wrtnlabs/connector-google-trend",
     "@wrtnlabs/connector-hancell",
-    "@wrtnlabs/connector-hwp",
     "@wrtnlabs/connector-imweb",
     "@wrtnlabs/connector-jira",
     "@wrtnlabs/connector-kakao-map",
@@ -40,7 +39,6 @@
     "@wrtnlabs/connector-naver-cafe",
     "@wrtnlabs/connector-naver-news",
     "@wrtnlabs/connector-notion",
-    "@wrtnlabs/connector-open-data",
     "@wrtnlabs/connector-reddit",
     "@wrtnlabs/connector-slack",
     "@wrtnlabs/connector-sort",
@@ -54,5 +52,5 @@
     "@wrtnlabs/connector-youtube-transcript",
     "@wrtnlabs/connector-zoom"
   ],
-  "version": "0.1.484"
+  "version": "0.1.485"
 }

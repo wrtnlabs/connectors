@@ -29,8 +29,8 @@ export class TestGlobal {
 
 interface IEnvironments {
   // AWS
-  AWS_ACCESS_KEY_ID: string;
   AWS_S3_BUCKET: string;
+  AWS_ACCESS_KEY_ID: string;
   AWS_SECRET_ACCESS_KEY: string;
 }
 

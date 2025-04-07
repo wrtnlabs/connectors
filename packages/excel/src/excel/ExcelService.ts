@@ -1,33 +1,26 @@
 import * as Excel from "exceljs";
-import { v4 } from "uuid";
 import { IExcelService } from "../structures/IExcelService";
-import { AwsS3Service } from "@wrtnlabs/connector-aws-s3";
-import axios from "axios";
 import { ISpreadsheetCell } from "@wrtnlabs/connector-shared";
 
 export class ExcelService {
-  private readonly s3: AwsS3Service;
-
-  constructor(private readonly props: IExcelService.IProps) {
-    this.s3 = new AwsS3Service({
-      ...this.props.aws.s3,
-    });
-  }
+  constructor(private readonly props: IExcelService.IProps) {}
 
   /**
    * Excel Service.
    *
-   * Get a list of Excel worksheets that exist in the input file url
+   * Get a list of Excel worksheets that exist in the input file.
    */
   async readSheets(
     input: IExcelService.IGetWorksheetListInput,
   ): Promise<IExcelService.IWorksheetListOutput> {
     try {
-      const { fileUrl } = input;
-      const buffer = await this.s3.getObject({ fileUrl }); // AWS Provider를 사용해 S3에서 파일 읽기
+      const { uri } = input;
+      const file = await this.props.fileManager.read({
+        props: { type: "url", url: uri },
+      });
 
       const workbook = new Excel.Workbook();
-      await workbook.xlsx.load(buffer);
+      await workbook.xlsx.load(file.data);
 
       const result: { id: number; sheetName: string }[] = [];
       workbook.eachSheet((sheet, id) => {
@@ -52,7 +45,7 @@ export class ExcelService {
   async getExcelData(
     input: IExcelService.IReadExcelInput,
   ): Promise<IExcelService.IReadExcelOutput> {
-    const workbook = await this.getExcelFile({ fileUrl: input.fileUrl });
+    const workbook = await this.getExcelFile({ uri: input.uri });
 
     try {
       const sheet = workbook.getWorksheet(input.sheetName ?? 1);
@@ -99,8 +92,8 @@ export class ExcelService {
    * Based on the input file information, the headers of the corresponding Excel file are retrieved
    */
   async readHeaders(input: IExcelService.IReadExcelInput): Promise<string[]> {
-    const { fileUrl, sheetName } = input;
-    const workbook = await this.getExcelFile({ fileUrl });
+    const { uri, sheetName } = input;
+    const workbook = await this.getExcelFile({ uri });
     return this.readExcelHeaders({ workbook, sheetName });
   }
 
@@ -148,7 +141,7 @@ export class ExcelService {
    *
    * Add data to the Excel file with an Excel file link
    *
-   * If the sheet doesn’t exist, it will be created, allowing both sheet creation and data addition.
+   * If the sheet doesn't exist, it will be created, allowing both sheet creation and data addition.
    * To create an empty sheet, specify only the sheet name without data.
    * Rows added to an existing sheet will appear on the next line; verify data before adding.
    * If you provide a file URL, modifications are saved, and a new link is issued.
@@ -159,16 +152,23 @@ export class ExcelService {
     input: IExcelService.IInsertExcelRowInput,
   ): Promise<IExcelService.IExportExcelFileOutput> {
     try {
-      const { sheetName, data, fileUrl } = input;
-      const workbook = await this.getExcelFile({ fileUrl });
+      const { sheetName, data, uri } = input;
+
+      const filepath = uri?.split("//").at(1)?.split("/").slice(1).join("/");
+
+      if (!filepath) {
+        throw new Error("Invalid File URL");
+      }
+
+      const workbook = await this.getExcelFile({ uri });
       if (
         typeof sheetName === "string" &&
         workbook.worksheets.every((worksheet) => worksheet.name !== sheetName)
       ) {
-        // 유저가 제시한 시트 이름으로 아직까지 워크 시트가 만들어진 적이 없다면 우선 생성한다.
+        // If worksheet hasn't been created with the user-provided sheet name yet, create it first
         workbook.addWorksheet(sheetName ?? "Sheet1");
       } else if (!sheetName && workbook.worksheets.length === 0) {
-        // 워크 시트가 만들어진 적이 한 번도 없다면 우선 생성한다.
+        // If worksheet hasn't been created at all, create it first
         workbook.addWorksheet(sheetName ?? "Sheet1");
       }
 
@@ -186,30 +186,31 @@ export class ExcelService {
       });
 
       const modifiedBuffer = await workbook.xlsx.writeBuffer();
-      const key = `excel-connector/${v4()}`;
-      const url = await this.s3.uploadObject({
-        key,
-        data: Buffer.from(modifiedBuffer),
-        contentType:
-          "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+
+      const file = await this.props.fileManager.upload({
+        props: {
+          type: "object",
+          data: Buffer.from(modifiedBuffer),
+          contentType:
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          path: filepath,
+        },
       });
-      return { fileId: key, fileUrl: url };
+
+      return { uri: file.uri };
     } catch (error) {
       console.error(JSON.stringify(error));
       throw error;
     }
   }
 
-  private async getExcelFile(input: {
-    fileUrl?: string;
-  }): Promise<Excel.Workbook> {
-    if (input.fileUrl) {
-      const response = await axios.get(input.fileUrl, {
-        responseType: "arraybuffer",
-      });
+  private async getExcelFile(input: { uri?: string }): Promise<Excel.Workbook> {
+    if (input.uri) {
+      const res = await fetch(input.uri);
+      const buffer = await res.arrayBuffer();
 
       // 워크북 로드
-      return new Excel.Workbook().xlsx.load(response.data);
+      return new Excel.Workbook().xlsx.load(buffer);
     }
     return new Excel.Workbook();
   }
@@ -229,16 +230,19 @@ export class ExcelService {
     const workbook = new Excel.Workbook();
     workbook.addWorksheet(input.sheetName ?? "Sheet1");
 
-    const modifiedBuffer: ArrayBuffer = await workbook.xlsx.writeBuffer();
-    const key = `excel-connector/${v4()}`;
-    const fileUrl = await this.s3.uploadObject({
-      key,
-      data: Buffer.from(modifiedBuffer),
-      contentType:
-        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    const modifiedBuffer = await workbook.xlsx.writeBuffer();
+
+    const file = await this.props.fileManager.upload({
+      props: {
+        type: "object",
+        path: input.path,
+        data: Buffer.from(modifiedBuffer),
+        contentType:
+          "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      },
     });
 
-    return { fileId: key, fileUrl };
+    return { uri: file.uri };
   }
 
   private columnNumberToLetter(column: number): string {

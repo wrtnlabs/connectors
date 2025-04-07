@@ -4,7 +4,7 @@ import { randomUUID } from "crypto";
 
 export const test_notion_create_page = async () => {
   const notionService = new NotionService({
-    secret: TestGlobal.env.NOTION_TEST_SECRET,
+    notionApiKey: TestGlobal.env.NOTION_TEST_SECRET,
   });
 
   const page = await notionService.createPageByMarkdown({

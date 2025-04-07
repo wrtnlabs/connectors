@@ -97,11 +97,11 @@ export class RedditService {
   ): IRedditService.IFlattenCommentsOutput {
     const idx = input.children.findIndex((el) => el.kind === "more");
     const more = idx === -1 ? null : input.children.splice(idx, 1)[0];
-    typia.assertGuard<IRedditService.ChildMore | null>(more);
+    typia.assertGuard<IRedditService.IChildMore | null>(more);
 
     function flat(
-      children?: (IRedditService.ChildComment | IRedditService.ChildMore)[],
-    ): IRedditService.ChildComment[] {
+      children?: (IRedditService.IChildComment | IRedditService.IChildMore)[],
+    ): IRedditService.IChildComment[] {
       if (!children) {
         return [];
       }
@@ -313,7 +313,7 @@ export class RedditService {
 
   private async refresh(): Promise<string> {
     const Basic = Buffer.from(
-      `${this.props.clientId}:${this.props.clientSecret}`,
+      `${this.props.redditClientId}:${this.props.redditClientSecret}`,
       "utf8",
     ).toString("base64");
 
@@ -322,7 +322,7 @@ export class RedditService {
       url,
       {
         grant_type: "refresh_token",
-        refresh_token: this.props.refreshToken,
+        refresh_token: this.props.redditRefreshToken,
       },
       {
         headers: {

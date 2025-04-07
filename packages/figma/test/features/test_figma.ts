@@ -4,9 +4,9 @@ import { TestGlobal } from "../TestGlobal";
 
 export const test_figma_read_file = async () => {
   const figmaService = new FigmaService({
-    clientId: TestGlobal.env.FIGMA_CLIENT_ID,
-    clientSecret: TestGlobal.env.FIGMA_CLIENT_SECRET,
-    secret: TestGlobal.env.FIGMA_TEST_SECRET,
+    figmaClientId: TestGlobal.env.FIGMA_CLIENT_ID,
+    figmaClientSecret: TestGlobal.env.FIGMA_CLIENT_SECRET,
+    figmaRefreshToken: TestGlobal.env.FIGMA_TEST_SECRET,
   });
 
   /**
@@ -21,9 +21,9 @@ export const test_figma_read_file = async () => {
 
 export const test_figma_read_comment = async () => {
   const figmaService = new FigmaService({
-    clientId: TestGlobal.env.FIGMA_CLIENT_ID,
-    clientSecret: TestGlobal.env.FIGMA_CLIENT_SECRET,
-    secret: TestGlobal.env.FIGMA_TEST_SECRET,
+    figmaClientId: TestGlobal.env.FIGMA_CLIENT_ID,
+    figmaClientSecret: TestGlobal.env.FIGMA_CLIENT_SECRET,
+    figmaRefreshToken: TestGlobal.env.FIGMA_TEST_SECRET,
   });
 
   /**
@@ -40,9 +40,9 @@ export const test_figma_read_comment = async () => {
 
 export const test_figma_add_comment = async () => {
   const figmaService = new FigmaService({
-    clientId: TestGlobal.env.FIGMA_CLIENT_ID,
-    clientSecret: TestGlobal.env.FIGMA_CLIENT_SECRET,
-    secret: TestGlobal.env.FIGMA_TEST_SECRET,
+    figmaClientId: TestGlobal.env.FIGMA_CLIENT_ID,
+    figmaClientSecret: TestGlobal.env.FIGMA_CLIENT_SECRET,
+    figmaRefreshToken: TestGlobal.env.FIGMA_TEST_SECRET,
   });
 
   /**
@@ -66,9 +66,9 @@ export const test_figma_add_comment = async () => {
 
 export const test_figma_get_projects = async () => {
   const figmaService = new FigmaService({
-    clientId: TestGlobal.env.FIGMA_CLIENT_ID,
-    clientSecret: TestGlobal.env.FIGMA_CLIENT_SECRET,
-    secret: TestGlobal.env.FIGMA_TEST_SECRET,
+    figmaClientId: TestGlobal.env.FIGMA_CLIENT_ID,
+    figmaClientSecret: TestGlobal.env.FIGMA_CLIENT_SECRET,
+    figmaRefreshToken: TestGlobal.env.FIGMA_TEST_SECRET,
   });
 
   const team = await figmaService.getProjects({
@@ -81,9 +81,9 @@ export const test_figma_get_projects = async () => {
 
 export const test_figma_get_project_files = async () => {
   const figmaService = new FigmaService({
-    clientId: TestGlobal.env.FIGMA_CLIENT_ID,
-    clientSecret: TestGlobal.env.FIGMA_CLIENT_SECRET,
-    secret: TestGlobal.env.FIGMA_TEST_SECRET,
+    figmaClientId: TestGlobal.env.FIGMA_CLIENT_ID,
+    figmaClientSecret: TestGlobal.env.FIGMA_CLIENT_SECRET,
+    figmaRefreshToken: TestGlobal.env.FIGMA_TEST_SECRET,
   });
 
   const team = await test_figma_get_projects();
@@ -99,9 +99,9 @@ export const test_figma_get_project_files = async () => {
 
 export const test_get_statistics = async () => {
   const figmaService = new FigmaService({
-    clientId: TestGlobal.env.FIGMA_CLIENT_ID,
-    clientSecret: TestGlobal.env.FIGMA_CLIENT_SECRET,
-    secret: TestGlobal.env.FIGMA_TEST_SECRET,
+    figmaClientId: TestGlobal.env.FIGMA_CLIENT_ID,
+    figmaClientSecret: TestGlobal.env.FIGMA_CLIENT_SECRET,
+    figmaRefreshToken: TestGlobal.env.FIGMA_TEST_SECRET,
   });
 
   const team = await figmaService.getProjects({

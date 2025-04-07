@@ -1593,13 +1593,13 @@ export class NotionService {
   }
 
   private async createClient() {
-    return new Client({ auth: this.props.secret });
+    return new Client({ auth: this.props.notionApiKey });
   }
 
   private async getHeaders() {
     return {
       "content-type": "application/json",
-      Authorization: `Bearer ${this.props.secret}`,
+      Authorization: `Bearer ${this.props.notionApiKey}`,
       "Notion-Version": "2022-06-28",
       accept: "application/json",
     };

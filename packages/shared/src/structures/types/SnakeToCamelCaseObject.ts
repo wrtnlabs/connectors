@@ -1,10 +1,10 @@
 import { ElementOf } from "./ElementOf";
 
-type SnakeToCamel<
+export type SnakeToCamel<
   S extends string,
   Cap extends boolean = false,
 > = S extends `${infer Head}_${infer Tail}`
-  ? `${Cap extends true ? Capitalize<Head> : Head}${SnakeToCamel<Tail, true>}`
+  ? `${Cap extends true ? Capitalize<Head> : Lowercase<Head>}${SnakeToCamel<Lowercase<Tail>, true>}`
   : Cap extends true
     ? Capitalize<S>
     : S;

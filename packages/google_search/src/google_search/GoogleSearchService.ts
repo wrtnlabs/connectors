@@ -14,7 +14,7 @@ export class GoogleSearchService {
   constructor(private readonly props: IGoogleSearchService.IProps) {
     this.defaultParams = {
       engine: "google",
-      api_key: this.props.apiKey,
+      api_key: this.props.serpApiKey,
       safe: "active",
       hl: "ko",
       gl: "kr",

@@ -1,33 +1,27 @@
+import { FileManager } from "@wrtnlabs/connector-shared";
 import { tags } from "typia";
 import { ContentMediaType } from "typia/lib/tags";
-import { IAwsS3Service } from "@wrtnlabs/connector-aws-s3";
 
 export namespace ICsvService {
-  export interface IProps {
-    /**
-     * AWS
-     */
-    aws: {
-      /**
-       * S3.
-       */
-      s3: IAwsS3Service.IProps;
-    };
-  }
+  export type IProps = {
+    fileManager: FileManager;
+  };
 
   /**
    * @title Csv file information
    */
   export interface IReadInput {
     /**
-     * This is the Csv file to read.
+     * This is the uri of Csv file to read.
      *
-     * @title file
+     * @title file uri
      */
-    s3Url: string & tags.Format<"iri"> & ContentMediaType<"text/csv">;
+    uri: string & tags.Format<"iri"> & ContentMediaType<"text/csv">;
 
     /**
      * This is the CSV file delimiter to read.
+     *
+     * Default is ","
      *
      * @title delimiter
      */
@@ -53,11 +47,11 @@ export namespace ICsvService {
    */
   export interface IWriteInput {
     /**
-     * The name of the Csv file to be created.
+     * The path of the Csv file to be created, including the file name.
      *
-     * @title File name
+     * @title File path
      */
-    fileName: string;
+    path: string;
 
     /**
      * The Csv file delimiter to be generated.
@@ -81,11 +75,11 @@ export namespace ICsvService {
    */
   export interface IWriteOutput {
     /**
-     * This is the s3 url of the csv file that was created.
+     * This is the uri of the csv file that was created.
      *
-     * @title csv file
+     * @title csv file uri
      */
-    s3Url: string & tags.Format<"iri"> & ContentMediaType<"text/csv">;
+    uri: string & tags.Format<"iri"> & ContentMediaType<"text/csv">;
   }
 
   /**
@@ -93,14 +87,16 @@ export namespace ICsvService {
    */
   export interface ICsvToExcelInput {
     /**
-     * This is the file to convert from csv to excel.
+     * This is the uri of Csv file to read.
      *
-     * @title file
+     * @title file uri
      */
-    s3Url: string & tags.Format<"iri"> & ContentMediaType<"text/csv">;
+    uri: string & tags.Format<"iri"> & ContentMediaType<"text/csv">;
 
     /**
      * This is the file delimiter to convert from csv to excel.
+     *
+     * Default is ","
      *
      * @title delimiter
      */
@@ -112,10 +108,10 @@ export namespace ICsvService {
    */
   export interface ICsvToExcelOutput {
     /**
-     * Here is the s3 url of the converted excel file.
+     * Here is the uri of converted excel file.
      *
-     * @title s3 url
+     * @title uri
      */
-    url: string & tags.Format<"iri"> & ContentMediaType<"text/csv">;
+    uri: string & tags.Format<"iri"> & ContentMediaType<"text/csv">;
   }
 }

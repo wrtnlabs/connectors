@@ -4,7 +4,7 @@ import { TestGlobal } from "../TestGlobal";
 
 export const test_github_get_commit_list = async () => {
   const githubService = new GithubService({
-    secret: TestGlobal.env.G_GITHUB_TEST_SECRET,
+    githubRefreshToken: TestGlobal.env.G_GITHUB_TEST_SECRET,
   });
 
   const res = await githubService.getCommitList({
@@ -19,7 +19,7 @@ export const test_github_get_commit_list = async () => {
 
 export const test_github_get_commit = async () => {
   const githubService = new GithubService({
-    secret: TestGlobal.env.G_GITHUB_TEST_SECRET,
+    githubRefreshToken: TestGlobal.env.G_GITHUB_TEST_SECRET,
   });
 
   const list = await test_github_get_commit_list();
@@ -37,7 +37,7 @@ export const test_github_get_commit = async () => {
 
 export const test_github_get_commit_without_ref = async () => {
   const githubService = new GithubService({
-    secret: TestGlobal.env.G_GITHUB_TEST_SECRET,
+    githubRefreshToken: TestGlobal.env.G_GITHUB_TEST_SECRET,
   });
 
   const res = await githubService.getCommit({
@@ -52,7 +52,7 @@ export const test_github_get_commit_without_ref = async () => {
 
 export const test_github_get_commit_diff = async () => {
   const githubService = new GithubService({
-    secret: TestGlobal.env.G_GITHUB_TEST_SECRET,
+    githubRefreshToken: TestGlobal.env.G_GITHUB_TEST_SECRET,
   });
 
   const list = await test_github_get_commit_list();
@@ -71,7 +71,7 @@ export const test_github_get_commit_diff = async () => {
 export const test_github_get_pull_requests_associated_with_a_commit =
   async () => {
     const githubService = new GithubService({
-      secret: TestGlobal.env.G_GITHUB_TEST_SECRET,
+      githubRefreshToken: TestGlobal.env.G_GITHUB_TEST_SECRET,
     });
 
     const list = await test_github_get_commit_list();
@@ -89,7 +89,7 @@ export const test_github_get_pull_requests_associated_with_a_commit =
 
 export const test_github_get_commit_heads = async () => {
   const githubService = new GithubService({
-    secret: TestGlobal.env.G_GITHUB_TEST_SECRET,
+    githubRefreshToken: TestGlobal.env.G_GITHUB_TEST_SECRET,
   });
 
   const list = await test_github_get_commit_list();

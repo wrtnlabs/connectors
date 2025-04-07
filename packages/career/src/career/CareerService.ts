@@ -17,7 +17,7 @@ export class CareerService {
     input: IGoogleSearchService.IRequest,
   ): Promise<IGoogleSearchService.IResponse[]> {
     const googleSearchService = new GoogleSearchService({
-      apiKey: this.props.apiKey,
+      serpApiKey: this.props.serpApiKey,
     });
 
     return await googleSearchService.searchResult({
@@ -36,7 +36,7 @@ export class CareerService {
     input: IGoogleSearchService.IRequest,
   ): Promise<IGoogleSearchService.IResponse[]> {
     const googleSearchService = new GoogleSearchService({
-      apiKey: this.props.apiKey,
+      serpApiKey: this.props.serpApiKey,
     });
 
     return await googleSearchService.searchResult({
@@ -55,7 +55,7 @@ export class CareerService {
     input: IGoogleSearchService.IRequest,
   ): Promise<IGoogleSearchService.IResponse[]> {
     const googleSearchService = new GoogleSearchService({
-      apiKey: this.props.apiKey,
+      serpApiKey: this.props.serpApiKey,
     });
 
     return await googleSearchService.searchResult({
@@ -74,7 +74,7 @@ export class CareerService {
     input: IGoogleSearchService.IRequest,
   ): Promise<IGoogleSearchService.IResponse[]> {
     const googleSearchService = new GoogleSearchService({
-      apiKey: this.props.apiKey,
+      serpApiKey: this.props.serpApiKey,
     });
 
     return await googleSearchService.searchResult({

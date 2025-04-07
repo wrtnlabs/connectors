@@ -4,7 +4,7 @@ import { TestGlobal } from "../TestGlobal";
 
 export const test_google_shopping = async () => {
   const googleShoppingService = new GoogleShoppingService({
-    apiKey: TestGlobal.env.SERP_API_KEY,
+    serpApiKey: TestGlobal.env.SERP_API_KEY,
   });
 
   const musinsa_result = await googleShoppingService.musinsa({

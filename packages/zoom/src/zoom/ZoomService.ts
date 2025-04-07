@@ -2,7 +2,7 @@ import axios from "axios";
 import { IZoomService } from "../structures/IZoomService";
 
 export class ZoomService {
-  constructor(private readonly props: IZoomService.Iprops) {}
+  constructor(private readonly props: IZoomService.IProps) {}
 
   /**
    * Zoom Service.
@@ -15,7 +15,7 @@ export class ZoomService {
     const baseUrl = "https://api.zoom.us/v2" as const;
     const encodedUserId = input.userId;
     const apiUrl = `${baseUrl}/users/${encodedUserId}/meetings` as const;
-    const token = this.props.secretKey;
+    const token = this.props.zoomSecretKey;
 
     try {
       const res = await axios.post(

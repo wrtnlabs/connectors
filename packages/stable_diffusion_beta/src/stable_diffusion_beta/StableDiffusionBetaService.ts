@@ -1,9 +1,14 @@
 import axios from "axios";
 import { IStableDiffusionBetaService } from "../structures/IStableDiffusionBetaService";
-import { bufferToBase64 } from "@wrtnlabs/connector-shared";
+import { FileManager } from "@wrtnlabs/connector-shared";
+import { v4 } from "uuid";
+import typia from "typia";
 
 export class StableDiffusionBetaService {
-  constructor(private readonly props: IStableDiffusionBetaService.IProps) {}
+  constructor(
+    private readonly props: IStableDiffusionBetaService.IProps,
+    private readonly fileManager: FileManager,
+  ) {}
 
   /**
    * Stable Diffusion Beta Service.
@@ -25,11 +30,18 @@ export class StableDiffusionBetaService {
         input.style_preset,
       );
 
-      const imageBase64List: string[] = img.map((img) => {
-        return bufferToBase64(img);
+      const imageUrl = await this.fileManager.upload({
+        props: {
+          path: `${input.file.path ?? "/stablediffusion"}/${v4()}`,
+          type: "object",
+          data: img[0]!,
+          contentType: input.file.contentType ?? "image/png",
+        },
       });
 
-      return { imgBase64: imageBase64List[0]! };
+      return typia.assert<IStableDiffusionBetaService.IResponse>({
+        imgUrl: imageUrl.uri,
+      });
     } catch (error) {
       console.error(JSON.stringify(error));
       throw error;
@@ -66,13 +78,13 @@ export class StableDiffusionBetaService {
     const { width, height } = imageDimensions[image_ratio]!;
     try {
       const response = await axios.post(
-        `${this.props.host}/v1/generation/${this.props.engineId}/text-to-image`,
+        `${this.props.stableDiffusionHost}/v1/generation/${this.props.stableDiffusionEngineId}/text-to-image`,
         {
           text_prompts: prompts,
-          cfg_scale: Number(this.props.cfgScale),
+          cfg_scale: Number(this.props.stableDiffusionCfgScale),
           height: height,
           width: width,
-          steps: Number(this.props.defaultStep),
+          steps: Number(this.props.stableDiffusionDefaultStep),
           samples: 1,
           ...(style_preset && { style_preset: style_preset }),
         },
@@ -80,7 +92,7 @@ export class StableDiffusionBetaService {
           headers: {
             "Content-Type": "application/json",
             Accept: "application/json",
-            Authorization: `Bearer ${this.props.apiKey}`,
+            Authorization: `Bearer ${this.props.stableDiffusionApiKey}`,
           },
         },
       );

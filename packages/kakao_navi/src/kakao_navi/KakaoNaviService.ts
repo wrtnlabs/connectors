@@ -21,7 +21,7 @@ export class KakaoNaviService {
 
       const res = await axios.get(url, {
         headers: {
-          Authorization: `KakaoAK ${this.props.clientId}`,
+          Authorization: `KakaoAK ${this.props.kakaoNaviClientId}`,
           "Content-Type": "application/json",
         },
       });

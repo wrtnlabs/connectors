@@ -1,18 +1,13 @@
 import { tags } from "typia";
 import { ContentMediaType } from "typia/lib/tags";
+import { SnakeToCamel } from "@wrtnlabs/connector-shared";
+
+export const ENV_LIST = ["GOOGLE_API_KEY", "SERP_API_KEY"] as const;
 
 export namespace IGoogleMapService {
-  export interface IProps {
-    /**
-     * Google API Key.
-     */
-    googleApiKey: string;
-
-    /**
-     * Serp API Key.
-     */
-    serpApiKey: string;
-  }
+  export type IProps = {
+    [key in SnakeToCamel<(typeof ENV_LIST)[number]>]: string;
+  };
 
   /**
    * @title Information for searching restaurants on Google Maps
@@ -26,7 +21,7 @@ export namespace IGoogleMapService {
     keyword: string & tags.MinLength<1>;
   }
 
-  export interface Place {
+  export interface IPlace {
     /**
      * @title name
      */
@@ -433,7 +428,7 @@ export namespace IGoogleMapService {
     /**
      * @title Places
      */
-    places: Place[];
+    places: IPlace[];
 
     /**
      * @title Page Token For Next Page
@@ -456,7 +451,7 @@ export namespace IGoogleMapService {
   /**
    * @title Place Prediction
    */
-  export interface PlacePrediction {
+  export interface IPlacePrediction {
     /**
      * Place ID of Google map
      *
@@ -492,7 +487,7 @@ export namespace IGoogleMapService {
        *
        * @title Place Prediction
        */
-      placePrediction: PlacePrediction | null;
+      placePrediction: IPlacePrediction | null;
     } | null)[];
   }
 

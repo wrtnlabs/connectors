@@ -7,16 +7,12 @@ import { test_google_ads_get_ads_by_campaign_id } from "./test_google_ads_get_ad
 
 export const test_google_ads_add_keyword = async () => {
   const googleAdsService = new GoogleAdsService({
-    googleAds: {
-      parentSecret: TestGlobal.env.GOOGLE_ADS_PARENT_SECRET,
-      accountId: TestGlobal.env.GOOGLE_ADS_ACCOUNT_ID,
-      developerToken: TestGlobal.env.GOOGLE_ADS_DEVELOPER_TOKEN,
-    },
-    google: {
-      clientId: TestGlobal.env.GOOGLE_CLIENT_ID,
-      clientSecret: TestGlobal.env.GOOGLE_CLIENT_SECRET,
-      refreshToken: TestGlobal.env.GOOGLE_TEST_SECRET,
-    },
+    googleAdsAccountId: TestGlobal.env.GOOGLE_ADS_ACCOUNT_ID,
+    googleAdsParentSecret: TestGlobal.env.GOOGLE_ADS_PARENT_SECRET,
+    googleAdsDeveloperToken: TestGlobal.env.GOOGLE_ADS_DEVELOPER_TOKEN,
+    googleClientId: TestGlobal.env.GOOGLE_CLIENT_ID,
+    googleClientSecret: TestGlobal.env.GOOGLE_CLIENT_SECRET,
+    googleRefreshToken: TestGlobal.env.GOOGLE_TEST_SECRET,
   });
 
   /**
@@ -52,16 +48,12 @@ export const test_google_ads_add_keyword = async () => {
 
 export const test_google_ads_add_duplicated_keyword = async () => {
   const googleAdsService = new GoogleAdsService({
-    googleAds: {
-      parentSecret: TestGlobal.env.GOOGLE_ADS_PARENT_SECRET,
-      accountId: TestGlobal.env.GOOGLE_ADS_ACCOUNT_ID,
-      developerToken: TestGlobal.env.GOOGLE_ADS_DEVELOPER_TOKEN,
-    },
-    google: {
-      clientId: TestGlobal.env.GOOGLE_CLIENT_ID,
-      clientSecret: TestGlobal.env.GOOGLE_CLIENT_SECRET,
-      refreshToken: TestGlobal.env.GOOGLE_TEST_SECRET,
-    },
+    googleAdsAccountId: TestGlobal.env.GOOGLE_ADS_ACCOUNT_ID,
+    googleAdsParentSecret: TestGlobal.env.GOOGLE_ADS_PARENT_SECRET,
+    googleAdsDeveloperToken: TestGlobal.env.GOOGLE_ADS_DEVELOPER_TOKEN,
+    googleClientId: TestGlobal.env.GOOGLE_CLIENT_ID,
+    googleClientSecret: TestGlobal.env.GOOGLE_CLIENT_SECRET,
+    googleRefreshToken: TestGlobal.env.GOOGLE_TEST_SECRET,
   });
 
   /**

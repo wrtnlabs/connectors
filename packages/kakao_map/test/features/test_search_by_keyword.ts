@@ -4,7 +4,7 @@ import typia from "typia";
 
 export const test_search_by_keyword = async () => {
   const kakaoMapService = new KakaoMapService({
-    clientId: TestGlobal.env.KAKAO_TALK_CLIENT_ID,
+    kakaoMapClientId: TestGlobal.env.KAKAO_TALK_CLIENT_ID,
   });
 
   const res = await kakaoMapService.searchByKeyword({

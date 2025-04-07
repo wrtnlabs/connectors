@@ -413,9 +413,9 @@ export class TypeformService {
         "https://api.typeform.com/oauth/token",
         qs.stringify({
           grant_type: "refresh_token",
-          refresh_token: this.props.secret,
-          client_id: this.props.clientId,
-          client_secret: this.props.clientSecret,
+          refresh_token: this.props.typeformRefreshToken,
+          client_id: this.props.typeformClientId,
+          client_secret: this.props.typeformClientSecret,
           scope:
             "accounts:read forms:read forms:write images:read images:write responses:read responses:write themes:read themes:write workspaces:read workspaces:write",
         }),
@@ -429,7 +429,7 @@ export class TypeformService {
       /**
        * Refresh Token이 일회용이므로 값 업데이트
        */
-      this.props.secret = res.data.refresh_token;
+      this.props.typeformRefreshToken = res.data.refresh_token;
 
       /**
        * 테스트 환경에서만 사용

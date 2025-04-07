@@ -9,25 +9,20 @@ import {
   Style,
 } from "@figma/rest-api-spec";
 import { tags } from "typia";
-import { MyPick } from "@wrtnlabs/connector-shared";
+import { MyPick, SnakeToCamel } from "@wrtnlabs/connector-shared";
+
+export const ENV_LIST = [
+  "FIGMA_CLIENT_ID",
+  "FIGMA_CLIENT_SECRET",
+  "FIGMA_REFRESH_TOKEN",
+] as const;
+
+export type Env = (typeof ENV_LIST)[number];
 
 export namespace IFigmaService {
-  export interface IProps {
-    /**
-     * Figma Client ID.
-     */
-    clientId: string;
-
-    /**
-     * Figma Client Secret.
-     */
-    clientSecret: string;
-
-    /**
-     * Figma Refresh Token.
-     */
-    secret: string;
-  }
+  export type IProps = {
+    [Key in SnakeToCamel<(typeof ENV_LIST)[number]>]: string;
+  };
 
   /**
    * A DTO that retrieves files from a specific Figma frame.

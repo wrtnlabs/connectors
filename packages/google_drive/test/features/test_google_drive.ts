@@ -8,9 +8,9 @@ import {
 
 export const test_api_connector_google_drive_create_folder = async () => {
   const googleDriveService = new GoogleDriveService({
-    clientId: TestGlobal.env.GOOGLE_CLIENT_ID,
-    clientSecret: TestGlobal.env.GOOGLE_CLIENT_SECRET,
-    refreshToken: TestGlobal.env.GOOGLE_TEST_SECRET,
+    googleClientId: TestGlobal.env.GOOGLE_CLIENT_ID,
+    googleClientSecret: TestGlobal.env.GOOGLE_CLIENT_SECRET,
+    googleRefreshToken: TestGlobal.env.GOOGLE_TEST_SECRET,
   });
 
   const res = await googleDriveService.createFolder({
@@ -24,9 +24,9 @@ export const test_api_connector_google_drive_create_folder = async () => {
 
 export const test_api_connector_google_drive_get_folder_list = async () => {
   const googleDriveService = new GoogleDriveService({
-    clientId: TestGlobal.env.GOOGLE_CLIENT_ID,
-    clientSecret: TestGlobal.env.GOOGLE_CLIENT_SECRET,
-    refreshToken: TestGlobal.env.GOOGLE_TEST_SECRET,
+    googleClientId: TestGlobal.env.GOOGLE_CLIENT_ID,
+    googleClientSecret: TestGlobal.env.GOOGLE_CLIENT_SECRET,
+    googleRefreshToken: TestGlobal.env.GOOGLE_TEST_SECRET,
   });
 
   const res = await googleDriveService.folderList();
@@ -35,9 +35,9 @@ export const test_api_connector_google_drive_get_folder_list = async () => {
 
 export const test_api_connector_google_drive = async () => {
   const googleDriveService = new GoogleDriveService({
-    clientId: TestGlobal.env.GOOGLE_CLIENT_ID,
-    clientSecret: TestGlobal.env.GOOGLE_CLIENT_SECRET,
-    refreshToken: TestGlobal.env.GOOGLE_TEST_SECRET,
+    googleClientId: TestGlobal.env.GOOGLE_CLIENT_ID,
+    googleClientSecret: TestGlobal.env.GOOGLE_CLIENT_SECRET,
+    googleRefreshToken: TestGlobal.env.GOOGLE_TEST_SECRET,
   });
 
   const createdFolder = await googleDriveService.createFolder({

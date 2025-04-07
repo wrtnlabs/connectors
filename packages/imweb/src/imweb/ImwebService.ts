@@ -18,7 +18,7 @@ export class ImwebService {
    */
   async getProducts(
     input: IImwebService.IGetProductInput,
-  ): Promise<IImwebService.Product[]> {
+  ): Promise<IImwebService.IProduct[]> {
     try {
       const { access_token } = await this.getAccessToken();
       const queryParameter = Object.entries({
@@ -62,7 +62,7 @@ export class ImwebService {
   async getAccessToken(): Promise<IImwebService.IGetAccessTokenOutput> {
     try {
       const res = await axios.get(
-        `https://api.imweb.me/v2/auth?key=${this.props.key}&secret=${this.props.secret}`,
+        `https://api.imweb.me/v2/auth?key=${this.props.imwebApiKey}&secret=${this.props.imwebSecretKey}`,
       );
 
       return res.data;

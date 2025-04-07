@@ -1,6 +1,5 @@
 import axios from "axios";
 import { IDallE3Service } from "../structures/IDallE3Service";
-import { AwsS3Service } from "@wrtnlabs/connector-aws-s3";
 
 export class DallE3Service {
   constructor(private readonly props: IDallE3Service.IProps) {}
@@ -28,7 +27,7 @@ export class DallE3Service {
         size = imageDimensions[input.image_ratio]!;
       }
 
-      //TODO: 현재 분당 200회 생성 제한. 처리 로직 필요.
+      //TODO: Currently limited to 200 generations per minute. Need to implement handling logic.
       const response = await this.props.openai.images.generate({
         prompt: input.prompt,
         // TODO: different models have different options
@@ -42,41 +41,44 @@ export class DallE3Service {
 
       const data = await axios.get(res?.url!, { responseType: "arraybuffer" });
 
-      const { imgUrl } = await this.uploadDallE3ToS3(data.data, {
-        ...input.s3,
-      });
+      if (this.props.fileManager) {
+        const img: Buffer = data.data;
 
-      return { imgUrl };
-    } catch (error) {
-      console.error(JSON.stringify(error));
-      throw error;
+        const { uri } = await this.uploadDallE3ToS3({
+          img,
+          path: input.path,
+        });
+
+        return { uri, expiringUrl: res?.url };
+      }
+
+      return { expiringUrl: res?.url };
+    } catch (err) {
+      console.error(JSON.stringify(err));
+      throw err;
     }
   }
 
-  private async uploadDallE3ToS3(
-    img: Buffer,
-    input: IDallE3Service.IRequest["s3"],
-  ) {
-    if (!this.props.aws?.s3) {
-      throw new Error("AWS S3 Not Applied.");
+  private async uploadDallE3ToS3(input: { img: Buffer; path: string }) {
+    if (!this.props.fileManager) {
+      throw new Error("FileManager is not set");
     }
 
     try {
-      const s3 = new AwsS3Service({
-        ...this.props.aws.s3,
-      });
-
-      const imgUrl = await s3.uploadObject({
-        key: input.key,
-        data: img,
-        contentType: input.contentType ?? "image/png",
+      const res = await this.props.fileManager.upload({
+        props: {
+          type: "object",
+          path: input.path,
+          data: input.img,
+          contentType: "image/png",
+        },
       });
 
       return {
-        imgUrl: imgUrl,
+        uri: res.uri,
       };
     } catch (err) {
-      console.log("err", err);
+      console.log(err);
       throw err;
     }
   }

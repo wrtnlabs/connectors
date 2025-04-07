@@ -37,7 +37,7 @@ export class SlackService {
         },
         {
           headers: {
-            Authorization: `Bearer ${this.props.secretKey}`,
+            Authorization: `Bearer ${this.props.slackToken}`,
             "Content-Type": "application/json; charset=utf-8;",
           },
         },
@@ -73,7 +73,7 @@ export class SlackService {
         {},
         {
           headers: {
-            Authorization: `Bearer ${this.props.secretKey}`,
+            Authorization: `Bearer ${this.props.slackToken}`,
             "Content-Type": "application/json; charset=utf-8;",
           },
         },
@@ -128,7 +128,7 @@ export class SlackService {
    */
   async sendScheduleMessage(
     input: ISlackService.ISCheduleMessageInput,
-  ): Promise<Pick<ISlackService.ScheduledMessage, "post_at">> {
+  ): Promise<Pick<ISlackService.IScheduledMessage, "post_at">> {
     const url = `https://slack.com/api/chat.scheduleMessage`;
 
     try {
@@ -142,7 +142,7 @@ export class SlackService {
         },
         {
           headers: {
-            Authorization: `Bearer ${this.props.secretKey}`,
+            Authorization: `Bearer ${this.props.slackToken}`,
           },
         },
       );
@@ -170,7 +170,7 @@ export class SlackService {
         (block) => block.block_id === block_id,
       );
 
-      // const [_, secretKey] = value.split("/");
+      // const [_, slackToken] = value.split("/");
 
       const users = await this.getAllUsers();
       const userDetail = users.find((el) => el.id === user.id);
@@ -218,7 +218,7 @@ export class SlackService {
         }
       }
 
-      await new WebClient(this.props.secretKey).chat.update({
+      await new WebClient(this.props.slackToken).chat.update({
         channel: channel.id,
         blocks: blocks,
         ts: message.ts,
@@ -247,7 +247,7 @@ export class SlackService {
         },
         {
           headers: {
-            Authorization: `Bearer ${this.props.secretKey}`,
+            Authorization: `Bearer ${this.props.slackToken}`,
           },
         },
       );
@@ -275,7 +275,7 @@ export class SlackService {
   ): Promise<Pick<ISlackService.Message, "ts">> {
     return this.sendMessage({
       channel: input.channel,
-      secretKey: this.props.secretKey,
+      slackToken: this.props.slackToken,
       text: input.text,
       thread_ts: input.ts,
     });
@@ -308,7 +308,7 @@ export class SlackService {
         this.getUserGroups(),
         axios.get(`${url}&${queryParameter}`, {
           headers: {
-            Authorization: `Bearer ${this.props.secretKey}`,
+            Authorization: `Bearer ${this.props.slackToken}`,
             "Content-Type": "application/json; charset=utf-8;",
           },
         }),
@@ -317,7 +317,7 @@ export class SlackService {
     const link_count = 0;
     const next_cursor = res.data.response_metadata?.next_cursor;
     const replies: ISlackService.ChannelHistory[] = res.data.messages.map(
-      (message: ISlackService.Reply): ISlackService.ChannelHistory =>
+      (message: ISlackService.IReply): ISlackService.ChannelHistory =>
         this.convertMessageFormat({
           message: { ...message, channel: input.channel },
           channel: input.channel,
@@ -379,7 +379,7 @@ export class SlackService {
         this.getUserGroups(),
         axios.get(`${url}&${queryParameter}`, {
           headers: {
-            Authorization: `Bearer ${this.props.secretKey}`,
+            Authorization: `Bearer ${this.props.slackToken}`,
             "Content-Type": "application/json; charset=utf-8;",
           },
         }),
@@ -390,7 +390,7 @@ export class SlackService {
     const replies: ISlackService.ChannelHistory[] = res.data.messages
       .slice(0, 1) // 0번째 인덱스는 부모 스레드가 나오기 때문
       .map(
-        (message: ISlackService.Reply): ISlackService.ChannelHistory =>
+        (message: ISlackService.IReply): ISlackService.ChannelHistory =>
           this.convertMessageFormat({
             message: { ...message, channel: input.channel },
             channel: input.channel,
@@ -449,7 +449,7 @@ export class SlackService {
       try {
         const res = await axios.get(url, {
           headers: {
-            Authorization: `Bearer ${this.props.secretKey}`,
+            Authorization: `Bearer ${this.props.slackToken}`,
             "Content-Type": "application/x-www-form-urlencoded; charset=utf-8;",
           },
         });
@@ -512,7 +512,7 @@ export class SlackService {
 
     const res = await axios.get(`${url}&${queryParameter}`, {
       headers: {
-        Authorization: `Bearer ${this.props.secretKey}`,
+        Authorization: `Bearer ${this.props.slackToken}`,
         "Content-Type": "application/json; charset=utf-8;",
       },
     });
@@ -520,7 +520,7 @@ export class SlackService {
     const next_cursor = res.data.response_metadata?.next_cursor;
     type User = StrictOmit<ISlackService.IGetUserOutput, "fields">;
     const users: User[] = res.data.members.map(
-      (el: ISlackService.User): User => {
+      (el: ISlackService.IUser): User => {
         const im_channel = im_channels.find(
           (channel) => channel.user === el.id,
         );
@@ -561,7 +561,7 @@ export class SlackService {
     const channel = channels.find((el) => el.user === auth.user_id);
     return this.sendMessage({
       channel: channel?.id as string,
-      secretKey: this.props.secretKey,
+      slackToken: this.props.slackToken,
       text: input.text,
     });
   }
@@ -577,11 +577,11 @@ export class SlackService {
   async updateMessage(
     input: ISlackService.IUpdateMessageInput,
   ): Promise<ISlackService.IUpdateMessageOutput> {
-    const client = new WebClient(this.props.secretKey);
+    const client = new WebClient(this.props.slackToken);
     const res = await client.chat.update({
       channel: input.channel,
       text: input.text.replaceAll("\\n", "\n"), // 줄바꿈 문자를 잘못 입력했을 경우에 대비한다.
-      token: this.props.secretKey,
+      token: this.props.slackToken,
       ts: input.thread_ts,
       attachments: [],
     });
@@ -605,7 +605,7 @@ export class SlackService {
 
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.secretKey}`,
+        Authorization: `Bearer ${this.props.slackToken}`,
       },
     });
 
@@ -615,7 +615,7 @@ export class SlackService {
   private async sendMessage(input: {
     channel: string;
     text: string;
-    secretKey: string;
+    slackToken: string;
     thread_ts?: string;
   }): Promise<Pick<ISlackService.Message, "ts">> {
     const url = `https://slack.com/api/chat.postMessage`;
@@ -630,7 +630,7 @@ export class SlackService {
         },
         {
           headers: {
-            Authorization: `Bearer ${this.props.secretKey}`,
+            Authorization: `Bearer ${this.props.slackToken}`,
           },
         },
       );
@@ -650,7 +650,7 @@ export class SlackService {
   async authTest(): Promise<ISlackService.IAuthTestOutput> {
     const res = await axios.get("https://slack.com/api/auth.test", {
       headers: {
-        Authorization: `Bearer ${this.props.secretKey}`,
+        Authorization: `Bearer ${this.props.slackToken}`,
       },
     });
 
@@ -676,7 +676,7 @@ export class SlackService {
   ): Promise<Pick<ISlackService.Message, "ts">> {
     return this.sendMessage({
       channel: input.channel,
-      secretKey: this.props.secretKey,
+      slackToken: this.props.slackToken,
       text: input.text,
     });
   }
@@ -716,7 +716,7 @@ export class SlackService {
         this.getUserGroups(),
         axios.get(`${url}&${queryParameter}`, {
           headers: {
-            Authorization: `Bearer ${this.props.secretKey}`,
+            Authorization: `Bearer ${this.props.slackToken}`,
             "Content-Type": "application/json; charset=utf-8;",
           },
         }),
@@ -828,7 +828,7 @@ export class SlackService {
         this.getUserGroups(),
         axios.get(`${url}&${queryParameter}`, {
           headers: {
-            Authorization: `Bearer ${this.props.secretKey}`,
+            Authorization: `Bearer ${this.props.slackToken}`,
             "Content-Type": "application/json; charset=utf-8;",
           },
         }),
@@ -941,14 +941,14 @@ export class SlackService {
 
     const res = await axios.get(`${url}&${queryParameter}`, {
       headers: {
-        Authorization: `Bearer ${this.props.secretKey}`,
+        Authorization: `Bearer ${this.props.slackToken}`,
         "Content-Type": "application/json; charset=utf-8;",
       },
     });
 
     const next_cursor = res.data.response_metadata?.next_cursor;
     const channels = res.data.channels.map(
-      (channel: ISlackService.PrivateChannel) => {
+      (channel: ISlackService.IPrivateChannel) => {
         return {
           id: channel.id,
           name: channel.name,
@@ -998,14 +998,14 @@ export class SlackService {
 
     const res = await axios.get(`${url}&${queryParameter}`, {
       headers: {
-        Authorization: `Bearer ${this.props.secretKey}`,
+        Authorization: `Bearer ${this.props.slackToken}`,
         "Content-Type": "application/json; charset=utf-8;",
       },
     });
 
     const next_cursor = res.data.response_metadata?.next_cursor;
     const channels = res.data.channels.map(
-      (channel: ISlackService.PublicChannel) => {
+      (channel: ISlackService.IPublicChannel) => {
         return {
           id: channel.id,
           name: channel.name,
@@ -1064,13 +1064,13 @@ export class SlackService {
 
   private async getImChannels(): Promise<ISlackService.IGetImChannelOutput> {
     const url = `https://slack.com/api/conversations.list?pretty=1`;
-    const secretKey = this.props.secretKey;
+    const slackToken = this.props.slackToken;
 
-    const queryParameter = createQueryParameter({ secretKey, types: "im" });
+    const queryParameter = createQueryParameter({ slackToken, types: "im" });
 
     const res = await axios.get(`${url}&${queryParameter}`, {
       headers: {
-        Authorization: `Bearer ${this.props.secretKey}`,
+        Authorization: `Bearer ${this.props.slackToken}`,
         "Content-Type": "application/json; charset=utf-8;",
       },
     });
@@ -1114,7 +1114,7 @@ export class SlackService {
 
     const res = await axios.get(`${url}?${queryParameters}`, {
       headers: {
-        Authorization: `Bearer ${this.props.secretKey}`,
+        Authorization: `Bearer ${this.props.slackToken}`,
         "Content-Type": "application/json; charset=utf-8;",
       },
     });
@@ -1130,7 +1130,7 @@ export class SlackService {
   async vote(
     input: ISlackService.IHoldVoteInput,
   ): Promise<ISlackService.IHoldVoteOutput> {
-    const client = new WebClient(this.props.secretKey);
+    const client = new WebClient(this.props.slackToken);
     const auth = await client.auth.test();
     const user = await client.users.profile.get({ user: auth.user_id });
 
@@ -1139,7 +1139,7 @@ export class SlackService {
       : (user.profile?.real_name ?? "");
 
     const slackTemplateService = new SlackTemplateService({
-      secretKey: this.props.secretKey,
+      slackToken: this.props.slackToken,
     });
 
     const res = await client.chat.postMessage({
@@ -1175,7 +1175,7 @@ export class SlackService {
 
       const res = await axios.get(url, {
         headers: {
-          Authorization: `Bearer ${this.props.secretKey}`,
+          Authorization: `Bearer ${this.props.slackToken}`,
           "Content-Type": "application/json; charset=utf-8;",
         },
       });
@@ -1225,10 +1225,10 @@ export class SlackService {
       ISlackService.Message,
       "reply_count" | "reply_users_count"
     >;
-    channel: ISlackService.Channel["id"];
+    channel: ISlackService.IChannel["id"];
     link_count: number;
     allMembers: StrictOmit<ISlackService.IGetUserOutput, "fields">[];
-    allUsergroups: ISlackService.UserGroup[];
+    allUsergroups: ISlackService.IUserGroup[];
     workspaceUrl: string & tags.Format<"uri">;
   }): ISlackService.ChannelHistory {
     function extractLinks(text: string): string[] {
@@ -1288,7 +1288,7 @@ export class SlackService {
     try {
       const res = await axios.get(url, {
         headers: {
-          Authorization: `Bearer ${this.props.secretKey}`,
+          Authorization: `Bearer ${this.props.slackToken}`,
           "Content-Type": "application/x-www-form-urlencoded; charset=utf-8;",
         },
       });
@@ -1328,7 +1328,7 @@ export class SlackService {
         {},
         {
           headers: {
-            Authorization: `Bearer ${this.props.secretKey}`,
+            Authorization: `Bearer ${this.props.slackToken}`,
             "Content-Type": "application/json; charset=utf-8",
           },
         },
@@ -1389,7 +1389,7 @@ export class SlackService {
           },
           {
             headers: {
-              Authorization: `Bearer ${this.props.secretKey}`,
+              Authorization: `Bearer ${this.props.slackToken}`,
               "Content-Type": "application/json; charset=utf-8;",
             },
           },
@@ -1415,8 +1415,8 @@ export class SlackService {
     if (target === "usergroup") {
       return function (input: {
         response: Pick<ISlackService.Message, "text">[];
-        allUserGroup: ISlackService.UserGroup[];
-      }): ISlackService.UserGroup[] {
+        allUserGroup: ISlackService.IUserGroup[];
+      }): ISlackService.IUserGroup[] {
         const refinedTags = Array.from(
           new Set(
             ...input.response.flatMap((message) => {

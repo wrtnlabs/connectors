@@ -5,9 +5,9 @@ import { test_typeform_create_empty_form } from "./test_typeform_create_empty_fo
 
 export const test_typeform_delete_form = async () => {
   const typeformService = new TypeformService({
-    clientId: TestGlobal.env.TYPEFORM_CLIENT_ID,
-    clientSecret: TestGlobal.env.TYPEFORM_CLIENT_SECRET,
-    secret: TestGlobal.env.TYPEFORM_TEST_SECRET,
+    typeformClientId: TestGlobal.env.TYPEFORM_CLIENT_ID,
+    typeformClientSecret: TestGlobal.env.TYPEFORM_CLIENT_SECRET,
+    typeformRefreshToken: TestGlobal.env.TYPEFORM_TEST_SECRET,
   });
 
   const form = await test_typeform_create_empty_form();

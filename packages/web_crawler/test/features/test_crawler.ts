@@ -7,7 +7,7 @@ import { TestGlobal } from "../TestGlobal";
 
 export const test_web_crawler_get_content = async () => {
   const webCrawlerService = new WebCrawlerService({
-    zenRowsApiKey: TestGlobal.env.ZENROWS_API_KEY,
+    zenrowsApiKey: TestGlobal.env.ZENROWS_API_KEY,
   });
 
   const URL = "https://i.clarity.ms/";

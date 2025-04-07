@@ -4,7 +4,7 @@ import { TestGlobal } from "../TestGlobal";
 
 export const test_google_search = async () => {
   const googleSearchService = new GoogleSearchService({
-    apiKey: TestGlobal.env.SERP_API_KEY,
+    serpApiKey: TestGlobal.env.SERP_API_KEY,
   });
 
   const search_result = await googleSearchService.searchResult({

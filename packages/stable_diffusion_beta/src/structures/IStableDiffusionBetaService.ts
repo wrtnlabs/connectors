@@ -1,32 +1,18 @@
 import { tags } from "typia";
+import { SnakeToCamel } from "@wrtnlabs/connector-shared";
+
+export const ENV_LIST = [
+  "STABLE_DIFFUSION_ENGINE_ID",
+  "STABLE_DIFFUSION_HOST",
+  "STABLE_DIFFUSION_API_KEY",
+  "STABLE_DIFFUSION_DEFAULT_STEP",
+  "STABLE_DIFFUSION_CFG_SCALE",
+] as const;
 
 export namespace IStableDiffusionBetaService {
-  export interface IProps {
-    /**
-     * Stable Diffusion Engine ID.
-     */
-    engineId: string;
-
-    /**
-     * Stable Diffusion Host.
-     */
-    host: string;
-
-    /**
-     * Stable Diffusion API Key.
-     */
-    apiKey: string;
-
-    /**
-     * Default Step.
-     */
-    defaultStep: number;
-
-    /**
-     * CFG Scale.
-     */
-    cfgScale: number;
-  }
+  export type IProps = {
+    [key in SnakeToCamel<(typeof ENV_LIST)[number]>]: string;
+  };
 
   /**
    * @title Image Generator Settings
@@ -77,11 +63,11 @@ export namespace IStableDiffusionBetaService {
       | tags.Constant<"pixel-art", { title: "픽셀 아트" }>
       | tags.Constant<"tile-texture", { title: "타일 텍스쳐" }>;
 
-    s3: {
+    file: {
       /**
-       * S3 Bucket Key(path).
+       * S3 object path.
        */
-      key: string;
+      path?: string;
 
       /**
        * Content Type.
@@ -97,11 +83,11 @@ export namespace IStableDiffusionBetaService {
    */
   export interface IResponse {
     /**
-     * Generated image base64
+     * Generated image url
      *
-     * @title Generated image Base64
+     * @title Generated image Url
      */
-    imgBase64: string;
+    imgUrl: string & tags.Format<"iri"> & tags.ContentMediaType<"image/*">;
   }
 
   /**

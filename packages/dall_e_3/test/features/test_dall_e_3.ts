@@ -1,27 +1,28 @@
 import { DallE3Service, IDallE3Service } from "@wrtnlabs/connector-dall-e-3";
+import { AwsS3Service } from "@wrtnlabs/connector-aws-s3";
 import OpenAI from "openai";
 import typia from "typia";
 import { TestGlobal } from "../TestGlobal";
-import { v4 } from "uuid";
 
 export const test_dall_e_3 = async () => {
   const openai = new OpenAI({
     apiKey: TestGlobal.env.OPENAI_API_KEY,
   });
 
+  const awsS3Service = new AwsS3Service({
+    awsAccessKeyId: TestGlobal.env.AWS_ACCESS_KEY_ID,
+    awsSecretAccessKey: TestGlobal.env.AWS_SECRET_ACCESS_KEY,
+    awsS3Bucket: TestGlobal.env.AWS_S3_BUCKET,
+    awsS3Region: "ap-northeast-2",
+  });
+
   const dalleService = new DallE3Service({
     openai,
-    aws: {
-      s3: {
-        accessKeyId: TestGlobal.env.AWS_ACCESS_KEY_ID,
-        bucket: TestGlobal.env.AWS_S3_BUCKET,
-        region: "ap-northeast-2",
-        secretAccessKey: TestGlobal.env.AWS_SECRET_ACCESS_KEY,
-      },
-    },
+    fileManager: awsS3Service,
   });
 
   const requestBody: IDallE3Service.IRequest = {
+    path: "dall_e_3/test.png",
     prompt: `You are a marketing copywriter, given the task of writing a marketing copy.
 You are given the marketing purpose, the distribution channel and the reference content, from which you should use the keyword to generate the marketing copy.
 The marketing purpose is the following: {
@@ -57,12 +58,9 @@ Unless specified by the user, always create the marketing copy in Korean.
 I REPEAT: unless the user said otherwise, always use Korean.
 Generate the marketing copy.`,
     image_ratio: "square",
-
-    s3: {
-      key: `connector/generate-DallE3-node/dall-e-3/${v4()}`,
-    },
   };
 
   const output = await dalleService.generateImage(requestBody);
+
   typia.assert<IDallE3Service.IResponse>(output);
 };

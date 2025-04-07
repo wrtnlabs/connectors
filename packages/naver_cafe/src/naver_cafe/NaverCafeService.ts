@@ -26,8 +26,8 @@ export class NaverCafeService {
     );
     try {
       const headers = {
-        "X-Naver-Client-Id": this.props.clientId,
-        "X-Naver-Client-Secret": this.props.clientSecret,
+        "X-Naver-Client-Id": this.props.naverCafeClientId,
+        "X-Naver-Client-Secret": this.props.naverCafeClientSecret,
       };
 
       const res = await axios.get(

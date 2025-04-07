@@ -1,20 +1,15 @@
+import { SnakeToCamel } from "@wrtnlabs/connector-shared";
+
+export const ENV_LIST = [
+  "TYPEFORM_CLIENT_ID",
+  "TYPEFORM_CLIENT_SECRET",
+  "TYPEFORM_REFRESH_TOKEN",
+] as const;
+
 export namespace ITypeformService {
-  export interface IProps {
-    /**
-     * Typeform Client ID
-     */
-    clientId: string;
-
-    /**
-     * Typeform Client Secret
-     */
-    clientSecret: string;
-
-    /**
-     * Typeform Refresh Token.
-     */
-    secret: string;
-  }
+  export type IProps = {
+    [key in SnakeToCamel<(typeof ENV_LIST)[number]>]: string;
+  };
 
   export interface IGetFieldForUpdateFieldValueInput {
     /**

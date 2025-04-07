@@ -14,8 +14,8 @@ export class KakaoMapService {
    * It can be used with public data or other address-based connectors.
    */
   async searchByKeyword(
-    input: IKakaoMapService.SearchByKeywordInput,
-  ): Promise<IKakaoMapService.SearchByKeywordOutput> {
+    input: IKakaoMapService.ISearchByKeywordInput,
+  ): Promise<IKakaoMapService.ISearchByKeywordOutput> {
     try {
       const queryString = Object.entries(input)
         .map(([key, value]) => `${key}=${value}`)
@@ -24,7 +24,7 @@ export class KakaoMapService {
 
       const res = await axios.get(url, {
         headers: {
-          Authorization: `KakaoAK ${this.props.clientId}`,
+          Authorization: `KakaoAK ${this.props.kakaoMapClientId}`,
         },
       });
       return res.data;

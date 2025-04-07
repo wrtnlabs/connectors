@@ -409,29 +409,29 @@ export class GoogleDocsService {
     }
   }
 
-  // async getDocuments(input: IGoogleDocsService.IAppendTextGoogleDocsInput) {
-  //   const { documentId } = input;
-  //   const accessToken = await this.refreshAccessToken();
-  //   const authClient = new google.auth.OAuth2();
-  //   authClient.setCredentials({ access_token: accessToken });
-  //   const docs = google.docs({ version: "v1", auth: authClient });
-  //   const document = await docs.documents.get({ documentId });
-  //   return document.data;
-  // }
+  async getDocuments(input: IGoogleDocsService.IAppendTextGoogleDocsInput) {
+    const { documentId } = input;
+    const accessToken = await this.refreshAccessToken();
+    const authClient = new google.auth.OAuth2();
+    authClient.setCredentials({ access_token: accessToken });
+    const docs = google.docs({ version: "v1", auth: authClient });
+    const document = await docs.documents.get({ documentId });
+    return document.data;
+  }
 
-  // getEndIndex(document: { data: docs_v1.Schema$Document }) {
-  //   console.log(JSON.stringify(document.data.body?.content, null, 2));
-  //   // 문서의 끝 인덱스 반환
-  //   const weight =
-  //     (document.data.body?.content?.reduce<number>((acc, element) => {
-  //       if (typeof element.endIndex === "number") {
-  //         return Math.max(acc, element.endIndex);
-  //       }
-  //       return acc;
-  //     }, 0) ?? 2) - 2; // 빈 문서는 줄바꿈 문자를 포함하여 최소 index가 2부터 시작한다.
+  getEndIndex(document: { data: docs_v1.Schema$Document }) {
+    console.log(JSON.stringify(document.data.body?.content, null, 2));
+    // 문서의 끝 인덱스 반환
+    const weight =
+      (document.data.body?.content?.reduce<number>((acc, element) => {
+        if (typeof element.endIndex === "number") {
+          return Math.max(acc, element.endIndex);
+        }
+        return acc;
+      }, 0) ?? 2) - 2; // 빈 문서는 줄바꿈 문자를 포함하여 최소 index가 2부터 시작한다.
 
-  //   return weight;
-  // }
+    return weight;
+  }
 
   /**
    * Google Docs Service.
@@ -515,12 +515,12 @@ export class GoogleDocsService {
    */
   private async refreshAccessToken(): Promise<string> {
     const client = new google.auth.OAuth2(
-      this.props.clientId,
-      this.props.clientSecret,
+      this.props.googleClientId,
+      this.props.googleClientSecret,
     );
 
     client.setCredentials({
-      refresh_token: decodeURIComponent(this.props.secret),
+      refresh_token: decodeURIComponent(this.props.googleRefreshToken),
     });
     const { credentials } = await client.refreshAccessToken();
     const accessToken = credentials.access_token;

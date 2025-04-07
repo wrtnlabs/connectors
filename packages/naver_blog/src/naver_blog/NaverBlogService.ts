@@ -27,8 +27,8 @@ export class NaverBlogService {
       );
 
       const headers = {
-        "X-Naver-Client-Id": this.props.clientId,
-        "X-Naver-Client-Secret": this.props.clientSecret,
+        "X-Naver-Client-Id": this.props.naverBlogClientId,
+        "X-Naver-Client-Secret": this.props.naverBlogClientSecret,
       };
 
       const res = await axios.get(

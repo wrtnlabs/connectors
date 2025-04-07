@@ -1,20 +1,17 @@
 import { tags } from "typia";
+import { SnakeToCamel } from "@wrtnlabs/connector-shared";
+
+export const ENV_LIST = ["KAKAO_MAP_CLIENT_ID"] as const;
 
 export namespace IKakaoMapService {
-  /**
-   * Constructor props of KakaoMapService.
-   */
-  export interface IProps {
-    /**
-     * Kakao Talk Client ID.
-     */
-    clientId: string;
-  }
+  export type IProps = {
+    [key in SnakeToCamel<(typeof ENV_LIST)[number]>]: string;
+  };
 
   /**
    * @title Search Conditions
    */
-  export interface SearchByKeywordInput {
+  export interface ISearchByKeywordInput {
     /**
      * Search Keyword
      *
@@ -55,22 +52,22 @@ export namespace IKakaoMapService {
   /**
    * @title Search Results
    */
-  export interface SearchByKeywordOutput {
+  export interface ISearchByKeywordOutput {
     /**
      * @title Search Results List
      */
-    documents: Document[];
+    documents: IDocument[];
 
     /**
      * @title meta information
      */
-    meta: Meta;
+    meta: IMeta;
   }
 
   /**
    * @title Search Results
    */
-  export interface Document {
+  export interface IDocument {
     /**
      * @title Location ID
      */
@@ -138,7 +135,7 @@ export namespace IKakaoMapService {
   /**
    * @title meta information
    */
-  export interface Meta {
+  export interface IMeta {
     /**
      * @title Number of documents found for search term
      */

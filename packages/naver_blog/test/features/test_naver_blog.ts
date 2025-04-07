@@ -16,8 +16,8 @@ export const test_read_blog_naver =
     };
 
     const naverBlogService = new NaverBlogService({
-      clientId: TestGlobal.env.NAVER_CLIENT_ID,
-      clientSecret: TestGlobal.env.NAVER_CLIENT_SECRET,
+      naverBlogClientId: TestGlobal.env.NAVER_CLIENT_ID,
+      naverBlogClientSecret: TestGlobal.env.NAVER_CLIENT_SECRET,
     });
 
     const result = await naverBlogService.getBlog(input);

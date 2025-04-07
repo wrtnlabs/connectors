@@ -3,51 +3,29 @@ import {
   DeepStrictMerge,
   MyPartial,
   MyPick,
+  SnakeToCamel,
   StrictOmit,
 } from "@wrtnlabs/connector-shared";
 
+export const ENV_LIST = [
+  "GOOGLE_ADS_PARENT_SECRET",
+  "GOOGLE_ADS_ACCOUNT_ID",
+  "GOOGLE_ADS_DEVELOPER_TOKEN",
+  "GOOGLE_CLIENT_ID",
+  "GOOGLE_CLIENT_SECRET",
+  "GOOGLE_REFRESH_TOKEN",
+] as const;
+
 export namespace IGoogleAdsService {
-  export interface IProps {
-    googleAds: {
-      /**
-       * @title Google Ads Parent Secret
-       */
-      parentSecret: string;
-
-      /**
-       * @title Google Ads Account ID
-       */
-      accountId: string;
-
-      /**
-       * @title Google Ads Developer Token
-       */
-      developerToken: string;
-    };
-
-    google: {
-      /**
-       * @title Google Client ID
-       */
-      clientId: string;
-
-      /**
-       * @title Google Client Secret
-       */
-      clientSecret: string;
-
-      /**
-       * @title Google Refresh Token
-       */
-      refreshToken: string;
-    };
-  }
+  export type IProps = {
+    [key in SnakeToCamel<(typeof ENV_LIST)[number]>]: string;
+  };
 
   export interface IGetTargetCustomerIdInput {
     /**
      * @title Customer ID
      */
-    customerId?: CustomerClient["id"];
+    customerId?: ICustomerClient["id"];
   }
 
   export interface IGetMetricInput {
@@ -59,7 +37,7 @@ export namespace IGoogleAdsService {
     /**
      * @title Customer ID
      */
-    customerId: CustomerClient["id"];
+    customerId: ICustomerClient["id"];
   }
 
   export interface IGetMetricOutputResult {
@@ -111,18 +89,18 @@ export namespace IGoogleAdsService {
       videoQuartileP100Rate?: `${number & tags.Type<"int64">}`;
     };
 
-    adGroupAd: MyPick<AdGroupAd, "resourceName">;
+    adGroupAd: MyPick<IAdGroupAd, "resourceName">;
   }
 
   export interface IGetAdGroupAdInput {
     /**
      * @title Resource name of the ad group ad
      */
-    adGroupAdResourceName?: IGoogleAdsService.AdGroupAd["resourceName"];
+    adGroupAdResourceName?: IGoogleAdsService.IAdGroupAd["resourceName"];
   }
 
   export type IGetAdGroupAdOutput = MyPick<
-    AdGroupAd,
+    IAdGroupAd,
     "resourceName" | "policySummary" | "status"
   >[];
 
@@ -130,7 +108,7 @@ export namespace IGoogleAdsService {
     /**
      * @title Resource name of the ad group ad
      */
-    adGroupAdResourceName: IGoogleAdsService.AdGroupAd["resourceName"];
+    adGroupAdResourceName: IGoogleAdsService.IAdGroupAd["resourceName"];
   }
 
   export interface Ad {
@@ -143,7 +121,7 @@ export namespace IGoogleAdsService {
     /**
      * @title Resource name of the ad group ad
      */
-    resourceName: AdGroupAd["resourceName"];
+    resourceName: IAdGroupAd["resourceName"];
 
     /**
      * @title Current status of advertising
@@ -162,11 +140,11 @@ export namespace IGoogleAdsService {
       /**
        * @title Advertising material information
        */
-      detail: ResponsiveSearchAd | ResponsiveDisplayAd;
+      detail: IResponsiveSearchAd | IResponsiveDisplayAd;
     };
   }
 
-  export interface ResponsiveSearchAd {
+  export interface IResponsiveSearchAd {
     /**
      * @title Description List
      */
@@ -188,7 +166,7 @@ export namespace IGoogleAdsService {
     }[];
   }
 
-  export interface ResponsiveDisplayAd extends ResponsiveSearchAd {
+  export interface IResponsiveDisplayAd extends IResponsiveSearchAd {
     /**
      * @title long title
      */
@@ -207,14 +185,14 @@ export namespace IGoogleAdsService {
     /**
      * @title Resource name of the ad group ad
      */
-    adGroupAdResourceName: IGoogleAdsService.AdGroupAd["resourceName"];
+    adGroupAdResourceName: IGoogleAdsService.IAdGroupAd["resourceName"];
   }
 
   export interface ISetOnOffInput {
     /**
      * @title Resource name of the ad group ad
      */
-    adGroupAdResourceName: AdGroupAd["resourceName"];
+    adGroupAdResourceName: IAdGroupAd["resourceName"];
 
     /**
      * @title Ad Status
@@ -226,7 +204,7 @@ export namespace IGoogleAdsService {
     /**
      * @title Customer ID
      */
-    customerId: CustomerClient["id"];
+    customerId: ICustomerClient["id"];
   }
 
   /**
@@ -241,7 +219,7 @@ export namespace IGoogleAdsService {
     /**
      * @title Customer ID
      */
-    customerId: CustomerClient["id"];
+    customerId: ICustomerClient["id"];
   }
 
   /**
@@ -256,10 +234,10 @@ export namespace IGoogleAdsService {
     /**
      * @title Resource name of the ad group to which you want to add the keyword
      */
-    adGroupResourceName: AdGroup["resourceName"];
+    adGroupResourceName: IAdGroup["resourceName"];
   }
 
-  export interface Keyword {
+  export interface IKeyword {
     /**
      * @title Keyword Text
      */
@@ -302,7 +280,7 @@ export namespace IGoogleAdsService {
     /**
      * @title keyword
      */
-    keyword: Keyword;
+    keyword: IKeyword;
 
     /**
      * @title Ad Group Standard Status
@@ -320,7 +298,7 @@ export namespace IGoogleAdsService {
       | "keyword"
       | "status"
     > &
-      Keyword;
+      IKeyword;
   }
 
   /**
@@ -337,7 +315,7 @@ export namespace IGoogleAdsService {
      *
      * @title Ad Group Resource Name
      */
-    adGroupResourceName: AdGroup["resourceName"];
+    adGroupResourceName: IAdGroup["resourceName"];
   }
 
   /**
@@ -347,7 +325,7 @@ export namespace IGoogleAdsService {
     /**
      * @title Customer ID
      */
-    customerId: CustomerClient["id"];
+    customerId: ICustomerClient["id"];
 
     /**
      * @title Keyword to generate
@@ -355,7 +333,7 @@ export namespace IGoogleAdsService {
     keywords: string[];
   }
 
-  export interface AdGroup {
+  export interface IAdGroup {
     /**
      * @title ID of the advertising group
      */
@@ -386,19 +364,19 @@ export namespace IGoogleAdsService {
     /**
      * @title Customer ID
      */
-    customerId: CustomerClient["id"];
+    customerId: ICustomerClient["id"];
 
     /**
      * @title ID of the parent campaign
      * @description If you only want to search for the ID of the campaign
      */
-    campaignId?: Campaign["id"];
+    campaignId?: ICampaign["id"];
 
     /**
      * @title Resource name of the ad group
      * @description If you want to search only by the ad group resource name
      */
-    adGroupResourceName?: AdGroup["resourceName"];
+    adGroupResourceName?: IAdGroup["resourceName"];
   }
 
   export interface IGetGoogleAdGroupOutput {
@@ -406,12 +384,12 @@ export namespace IGoogleAdsService {
   }
 
   export interface IGetAdGroupOutputResult {
-    campaign: MyPick<Campaign, "id" | "resourceName" | "status">;
+    campaign: MyPick<ICampaign, "id" | "resourceName" | "status">;
 
-    adGroup: MyPick<AdGroup, "id" | "type" | "name" | "resourceName">;
+    adGroup: MyPick<IAdGroup, "id" | "type" | "name" | "resourceName">;
   }
 
-  export interface AdGroupAd {
+  export interface IAdGroupAd {
     /**
      * `customers/${number}/adGroupAds/${number}~${number}` format
      *
@@ -472,12 +450,12 @@ export namespace IGoogleAdsService {
     /**
      * @title Customer ID
      */
-    customerId: CustomerClient["id"];
+    customerId: ICustomerClient["id"];
 
     /**
      * @title Campaign Resource Name
      */
-    campaignResourceName: Campaign["resourceName"];
+    campaignResourceName: ICampaign["resourceName"];
   }
 
   /**
@@ -487,7 +465,7 @@ export namespace IGoogleAdsService {
     /**
      * @title Ad Group Type
      */
-    type: Extract<AdGroup["type"], "SEARCH_STANDARD">;
+    type: Extract<IAdGroup["type"], "SEARCH_STANDARD">;
   }
 
   /**
@@ -497,7 +475,7 @@ export namespace IGoogleAdsService {
     /**
      * @title Ad Group Type
      */
-    type: Extract<AdGroup["type"], "DISPLAY_STANDARD">;
+    type: Extract<IAdGroup["type"], "DISPLAY_STANDARD">;
   }
 
   export type ICreateAdGroupAdAtOnceInput =
@@ -542,7 +520,7 @@ export namespace IGoogleAdsService {
   /**
    * @title Advertisement Information
    */
-  export interface AdWrapper {
+  export interface IAdWrapper {
     /**
      * This refers to an advertisement within the generated ad group.
      *
@@ -555,7 +533,7 @@ export namespace IGoogleAdsService {
    */
   export type ICreateAdGroupAdAtOnceOutput = DeepStrictMerge<
     IGoogleAdsService.ICreateCampaignsOutput,
-    AdWrapper
+    IAdWrapper
   >;
 
   /**
@@ -564,7 +542,7 @@ export namespace IGoogleAdsService {
   export type ICreateAdGroupAdInput = ICreateAdGroupAdInputCommon;
 
   export type IUpdateAdGroupAdInput = MyPick<
-    AdGroupAd,
+    IAdGroupAd,
     "resourceName" | "status"
   > &
     ICreateAdGroupAdInputCommon;
@@ -585,7 +563,7 @@ export namespace IGoogleAdsService {
     /**
      * @title Customer ID
      */
-    customerId: CustomerClient["id"];
+    customerId: ICustomerClient["id"];
 
     /**
      * @title Homepage that is the target of the advertisement
@@ -616,7 +594,7 @@ export namespace IGoogleAdsService {
     /**
      * @title Customer ID
      */
-    customerId: CustomerClient["id"];
+    customerId: ICustomerClient["id"];
 
     /**
      * @title Homepage that is the target of the advertisement
@@ -691,7 +669,7 @@ export namespace IGoogleAdsService {
     /**
      * @title Resource ID of the campaign to be modified
      */
-    campaignResourceName: Campaign["resourceName"];
+    campaignResourceName: ICampaign["resourceName"];
   }
 
   export interface ICreateCampaignInput
@@ -699,7 +677,7 @@ export namespace IGoogleAdsService {
     /**
      * @title Customer ID
      */
-    customerId?: CustomerClient["id"];
+    customerId?: ICustomerClient["id"];
 
     /**
      * @title Campaign Type
@@ -743,7 +721,7 @@ export namespace IGoogleAdsService {
     /**
      * @title Customer ID
      */
-    customerId: CustomerClient["id"];
+    customerId: ICustomerClient["id"];
 
     /**
      * @title Advertising Budget
@@ -767,7 +745,7 @@ export namespace IGoogleAdsService {
   /**
    * @title Google Ads Campaign
    */
-  export interface Campaign {
+  export interface ICampaign {
     /**
      * @title Campaign Resource Name
      */
@@ -843,12 +821,12 @@ export namespace IGoogleAdsService {
     /**
      * @title Customer ID
      */
-    customerId: CustomerClient["id"];
+    customerId: ICustomerClient["id"];
 
     /**
      * @title Resource Name of the Campaign
      */
-    resourceName?: Campaign["resourceName"];
+    resourceName?: ICampaign["resourceName"];
   }
 
   /**
@@ -865,7 +843,7 @@ export namespace IGoogleAdsService {
      *
      * @title Campaign Information
      */
-    campaign: Campaign;
+    campaign: ICampaign;
 
     /**
      * This refers to a campaign budget infomation.
@@ -885,25 +863,25 @@ export namespace IGoogleAdsService {
      * @title campaign
      */
     campaign: MyPick<
-      IGoogleAdsService.Campaign,
+      IGoogleAdsService.ICampaign,
       "resourceName" | "id" | "status"
     >;
 
     /**
      * @title Ad Group
      */
-    adGroup: MyPick<AdGroup, "id" | "resourceName" | "type">;
+    adGroup: MyPick<IAdGroup, "id" | "resourceName" | "type">;
 
     /**
      * @title List of ads in ad group
      */
-    adGroupAds: MyPick<AdGroupAd, "resourceName" | "policySummary">[];
+    adGroupAds: MyPick<IAdGroupAd, "resourceName" | "policySummary">[];
 
     /**
      * @title Keyword List
      */
     keywords: DeepStrictMerge<
-      Keyword,
+      IKeyword,
       MyPick<AdGroupCriterion, "criterionId" | "resourceName">
     >[];
   }
@@ -921,7 +899,7 @@ export namespace IGoogleAdsService {
    * @title Google Ads Error Object
    * @description The minimum object structure for determining errors.
    */
-  export interface GoogleAdsError {
+  export interface IGoogleAdsError {
     error: {
       code: number;
       message: string;
@@ -956,13 +934,13 @@ export namespace IGoogleAdsService {
     };
   }
 
-  export interface Customer {
+  export interface ICustomer {
     id: string;
 
     resourceName: `customers/${number}`;
   }
 
-  export interface CustomerClient {
+  export interface ICustomerClient {
     /**
      * @title Customer ID
      * @description Each customer has a unique value.
@@ -989,7 +967,7 @@ export namespace IGoogleAdsService {
   /**
    * @title Customer Inquiry Results
    */
-  export type IGetCustomerOutput = CustomerClient[];
+  export type IGetCustomerOutput = ICustomerClient[];
 
   export interface IGetlistAccessibleCustomersOutput {
     /**
@@ -1026,7 +1004,7 @@ export namespace IGoogleAdsService {
     /**
      * @title Customer ID
      */
-    customerId?: CustomerClient["id"];
+    customerId?: ICustomerClient["id"];
   }
 
   export interface IGenerateKeywordIdeaByURLInput extends ICommonInput {
@@ -1038,14 +1016,14 @@ export namespace IGoogleAdsService {
     /**
      * @title Customer ID
      */
-    customerId?: CustomerClient["id"];
+    customerId?: ICustomerClient["id"];
   }
 
   export interface IGenerateKeywordIdeaOutput {
     /**
      * @title Results List
      */
-    results: GeneratedKeyword[];
+    results: IGeneratedKeyword[];
 
     /**
      * @title Total number of results
@@ -1059,11 +1037,11 @@ export namespace IGoogleAdsService {
     nextPageToken?: string | null;
   }
 
-  export interface GeneratedKeyword {
+  export interface IGeneratedKeyword {
     /**
      * @title Keyword metrics
      */
-    keywordIdeaMetrics: KeywordIdeaMetrics;
+    keywordIdeaMetrics: IKeywordIdeaMetrics;
 
     /**
      * @title keyword
@@ -1071,7 +1049,7 @@ export namespace IGoogleAdsService {
     text: string;
   }
 
-  export interface KeywordIdeaMetrics {
+  export interface IKeywordIdeaMetrics {
     /**
      * @title Competition level for search terms
      */
@@ -1101,7 +1079,7 @@ export namespace IGoogleAdsService {
     /**
      * @title Approximate number of searches this search term has been run on in the last 12 months
      */
-    monthlySearchVolumes: MonthlySearchVolumes[];
+    monthlySearchVolumes: IMonthlySearchVolumes[];
 
     /**
      * @title Approximate monthly searches for this search term over the past 12 months
@@ -1127,7 +1105,7 @@ export namespace IGoogleAdsService {
     highTopOfPageBidMicros?: `${number & tags.Type<"int64"> & tags.Minimum<0>}`;
   }
 
-  export interface MonthlySearchVolumes {
+  export interface IMonthlySearchVolumes {
     /**
      * @title The month in which the search volume occurred
      */

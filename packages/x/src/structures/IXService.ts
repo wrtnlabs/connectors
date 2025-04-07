@@ -1,22 +1,19 @@
 import { tags } from "typia";
+import { SnakeToCamel } from "@wrtnlabs/connector-shared";
+
+/**
+ * Write the environment variables that are required for the AWS S3 service.
+ */
+export const ENV_LIST = [
+  "X_CLIENT_ID",
+  "X_CLIENT_SECRET",
+  "X_BEARER_TOKEN",
+] as const;
 
 export namespace IXService {
-  export interface IProps {
-    /**
-     * X Client ID.
-     */
-    clientId: string;
-
-    /**
-     * X Client Secret.
-     */
-    clientSecret: string;
-
-    /**
-     * X User Bearer Token.
-     */
-    bearerToken: string;
-  }
+  export type IProps = {
+    [key in SnakeToCamel<(typeof ENV_LIST)[number]>]: string;
+  };
 
   /**
    * @title User Search Condition

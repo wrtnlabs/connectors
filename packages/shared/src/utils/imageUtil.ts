@@ -11,8 +11,8 @@ import sharp from "sharp";
  * @returns Base64 image.
  */
 export async function getCroppedImage(
-  input: IImage.GetImageFileInput,
-): Promise<IImage.GetImageFileOutput> {
+  input: IImage.IGetImageFileInput,
+): Promise<IImage.IGetImageFileOutput> {
   const { data } = await axios.get(input.imageUrl, {
     responseType: "arraybuffer",
   });
@@ -20,7 +20,7 @@ export async function getCroppedImage(
 
   const metadata = await image.metadata();
 
-  const size: IImage.Size = {
+  const size: IImage.ISize = {
     left: 0,
     top: 0,
     width: metadata.width ?? 0,
@@ -45,7 +45,7 @@ export async function getCroppedImage(
  * @param input - Original size of image and target ratio.
  * @returns Size of image.
  */
-export function changeImageSize(input: IImage.GetSizeInput): IImage.Size {
+export function changeImageSize(input: IImage.IGetSizeInput): IImage.ISize {
   let maxWidth: number;
   let maxHeight: number;
 

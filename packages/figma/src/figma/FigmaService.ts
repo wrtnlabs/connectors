@@ -198,13 +198,13 @@ export class FigmaService {
   }
 
   private async refresh(): Promise<string> {
-    const url = `https://www.figma.com/api/oauth/refresh`;
+    const url = `https://api.figma.com/v1/oauth/refresh`;
     const res = await axios.post(
       url,
       {
-        client_id: this.props.clientId,
-        client_secret: this.props.clientSecret,
-        refresh_token: this.props.secret,
+        client_id: this.props.figmaClientId,
+        client_secret: this.props.figmaClientSecret,
+        refresh_token: this.props.figmaRefreshToken,
       },
       {
         headers: {

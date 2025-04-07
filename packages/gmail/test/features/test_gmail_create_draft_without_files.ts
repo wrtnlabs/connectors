@@ -3,9 +3,9 @@ import { TestGlobal } from "../TestGlobal";
 
 export const test_gmail_create_draft_without_files = async () => {
   const gmailService = new GmailService({
-    clientId: TestGlobal.env.GOOGLE_CLIENT_ID,
-    clientSecret: TestGlobal.env.GOOGLE_CLIENT_SECRET,
-    refreshToken: TestGlobal.env.GOOGLE_TEST_SECRET,
+    googleClientId: TestGlobal.env.GOOGLE_CLIENT_ID,
+    googleClientSecret: TestGlobal.env.GOOGLE_CLIENT_SECRET,
+    googleRefreshToken: TestGlobal.env.GOOGLE_TEST_SECRET,
   });
 
   await gmailService.createDraft({

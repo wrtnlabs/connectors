@@ -159,9 +159,9 @@ export class KakaoTalkService {
         url,
         {
           grant_type: "refresh_token",
-          client_id: this.props.clientId,
-          refresh_token: this.props.secret,
-          client_secret: this.props.clientSecret,
+          client_id: this.props.kakaoTalkClientId,
+          refresh_token: this.props.kakaoTalkRefreshToken,
+          client_secret: this.props.kakaoTalkClientSecret,
         },
         {
           headers: {
@@ -170,7 +170,7 @@ export class KakaoTalkService {
         },
       );
 
-      this.props.secret = res.data.refresh_token;
+      this.props.kakaoTalkClientSecret = res.data.refresh_token;
 
       const data: IKakaoTalkService.IRefreshAccessTokenOutput = res.data;
 

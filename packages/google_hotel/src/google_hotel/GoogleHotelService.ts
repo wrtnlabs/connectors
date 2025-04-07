@@ -13,7 +13,7 @@ export class GoogleHotelService {
   constructor(private readonly props: IGoogleHotelService.IProps) {
     this.defaultParams = {
       engine: "google_hotels",
-      api_key: this.props.apiKey,
+      api_key: this.props.serpApiKey,
       hl: "ko",
       gl: "kr",
       currency: "KRW",

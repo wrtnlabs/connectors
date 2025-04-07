@@ -3,9 +3,12 @@ import { execSync } from "child_process";
 import { randomUUID } from "crypto";
 import path from "path";
 import { IMarpService } from "../structures/IMarpService";
-import { bufferToBase64 } from "@wrtnlabs/connector-shared";
+import { FileManager } from "@wrtnlabs/connector-shared";
+import { v4 } from "uuid";
 
 export class MarpService {
+  constructor(private readonly fileManager: FileManager) {}
+
   /**
    * Marp Service.
    *
@@ -30,7 +33,16 @@ export class MarpService {
 
       const data = await fs.readFile(pptFilePath);
 
-      return { pptBase64: bufferToBase64(data) };
+      const upload = await this.fileManager.upload({
+        props: {
+          path: `${input.filePath ?? "marp"}/${v4()}`,
+          data: data,
+          contentType: "text/html; charset=UTF-8",
+          type: "object",
+        },
+      });
+
+      return { s3Link: upload.uri };
     } catch (error) {
       throw new Error(
         `Failed to convert Marp markdown to PPT: ${error instanceof Error ? error.message : String(error)}`,

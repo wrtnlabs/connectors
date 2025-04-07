@@ -1,13 +1,12 @@
 import { tags } from "typia";
-import { StrictOmit } from "@wrtnlabs/connector-shared";
+import { SnakeToCamel, StrictOmit } from "@wrtnlabs/connector-shared";
+
+export const ENV_LIST = ["SWEET_TRACKER_API_KEY"] as const;
 
 export namespace ISweetTrackerService {
-  export interface IProps {
-    /**
-     * SweetTracker API Key.
-     */
-    secret: string;
-  }
+  export type IProps = {
+    [key in SnakeToCamel<(typeof ENV_LIST)[number]>]: string;
+  };
 
   export interface IGetRecommendedCompanyListInput {
     /**
@@ -23,7 +22,7 @@ export namespace ISweetTrackerService {
     /**
      * @title Courier list
      */
-    Recommend: StrictOmit<ISweetTrackerService.Company, "International">[];
+    Recommend: StrictOmit<ISweetTrackerService.ICompany, "International">[];
   }
 
   /**
@@ -33,7 +32,7 @@ export namespace ISweetTrackerService {
     /**
      * @title Courier list
      */
-    Company: ISweetTrackerService.Company[];
+    Company: ISweetTrackerService.ICompany[];
   }
 
   export interface IGetTrackingInfoInput {
@@ -65,7 +64,7 @@ export namespace ISweetTrackerService {
     /**
      * It means the first path among the paths, and corresponds to the 0th index of the `trackingDetails` array.
      */
-    firstDetail?: TrackingDetail | null;
+    firstDetail?: ITrackingDetail | null;
 
     /**
      * @title Progress stage
@@ -75,7 +74,7 @@ export namespace ISweetTrackerService {
     /**
      * It means the last path among the paths, and corresponds to the last index of the `trackingDetails` array.
      */
-    lastDetail?: TrackingDetail | null;
+    lastDetail?: ITrackingDetail | null;
 
     /**
      * Text in the format '15:00~17:00'
@@ -97,7 +96,7 @@ export namespace ISweetTrackerService {
     /**
      * @title lastStateDetail
      */
-    lastStateDetail?: ISweetTrackerService.TrackingDetail | null;
+    lastStateDetail?: ISweetTrackerService.ITrackingDetail | null;
 
     /**
      * @title Postal address
@@ -165,7 +164,7 @@ export namespace ISweetTrackerService {
     itemName?: string | null;
   }
 
-  export interface Company {
+  export interface ICompany {
     /**
      * @title Unique code value of the courier company
      */
@@ -182,7 +181,7 @@ export namespace ISweetTrackerService {
     Name: string;
   }
 
-  export interface TrackingDetail {
+  export interface ITrackingDetail {
     /**
      * @title Delivery Status Code
      */

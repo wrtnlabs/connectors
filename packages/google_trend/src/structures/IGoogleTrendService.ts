@@ -1,12 +1,13 @@
 import { tags } from "typia";
+import { SnakeToCamel } from "@wrtnlabs/connector-shared";
+
+export const ENV_LIST = ["GOOGLE_TREND_API_KEY"] as const;
 
 export namespace IGoogleTrendService {
-  export interface IProps {
-    /**
-     * Serp API Key.
-     */
-    apiKey: string;
-  }
+  export type IProps = {
+    [key in SnakeToCamel<(typeof ENV_LIST)[number]>]: string;
+  };
+
   /**
    * 입력한 날짜의 트렌드를 조회합니다.
    *

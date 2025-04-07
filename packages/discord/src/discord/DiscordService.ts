@@ -10,14 +10,15 @@ export class DiscordService {
    * Get a list of members on the server
    *
    */
-  async getListGuildMembers(): Promise<IDiscordService.IGuildMember[]> {
+  async getListGuildMembers(
+    input: IDiscordService.IGetListGuildMembersInput,
+  ): Promise<IDiscordService.IGuildMember[]> {
     try {
-      const guildId = this.getGuildInfo();
       const res = await axios.get(
-        `https://discord.com/api/v10/guilds/${guildId}/members`,
+        `https://discord.com/api/v10/guilds/${input.guildId}/members`,
         {
           headers: {
-            Authorization: `Bot ${this.props.secret}`,
+            Authorization: `Bot ${this.props.discordToken}`,
           },
         },
       );
@@ -45,7 +46,7 @@ export class DiscordService {
         },
         {
           headers: {
-            Authorization: `Bot ${this.props.secret}`,
+            Authorization: `Bot ${this.props.discordToken}`,
           },
         },
       );
@@ -67,15 +68,14 @@ export class DiscordService {
     input: IDiscordService.IModifyGuildRequest,
   ): Promise<IDiscordService.IGuild> {
     try {
-      const guildId = this.getGuildInfo();
       const res = await axios.patch(
-        `https://discord.com/api/v10/guilds/${guildId}`,
+        `https://discord.com/api/v10/guilds/${input.guildId}`,
         {
           name: input.name,
         },
         {
           headers: {
-            Authorization: `Bot ${this.props.secret}`,
+            Authorization: `Bot ${this.props.discordToken}`,
           },
         },
       );
@@ -92,14 +92,15 @@ export class DiscordService {
    * Get a list of channels on the server
    *
    */
-  async getGuildChannels(): Promise<IDiscordService.IChannel[]> {
+  async getGuildChannels(
+    input: IDiscordService.IGetGuildChannelsInput,
+  ): Promise<IDiscordService.IChannel[]> {
     try {
-      const guildId = this.getGuildInfo();
       const res = await axios.get(
-        `https://discord.com/api/v10/guilds/${guildId}/channels`,
+        `https://discord.com/api/v10/guilds/${input.guildId}/channels`,
         {
           headers: {
-            Authorization: `Bot ${this.props.secret}`,
+            Authorization: `Bot ${this.props.discordToken}`,
           },
         },
       );
@@ -120,9 +121,8 @@ export class DiscordService {
     input: IDiscordService.ICreateGuildChannelRequest,
   ): Promise<IDiscordService.IChannel> {
     try {
-      const guildId = this.getGuildInfo();
       const res = await axios.post(
-        `https://discord.com/api/v10/guilds/${guildId}/channels`,
+        `https://discord.com/api/v10/guilds/${input.guildId}/channels`,
         {
           name: input.name,
           type: input.type,
@@ -130,7 +130,7 @@ export class DiscordService {
         },
         {
           headers: {
-            Authorization: `Bot ${this.props.secret}`,
+            Authorization: `Bot ${this.props.discordToken}`,
           },
         },
       );
@@ -151,12 +151,11 @@ export class DiscordService {
     input: IDiscordService.IRemoveGuildMember,
   ): Promise<void> {
     try {
-      const guildId = this.getGuildInfo();
       await axios.delete(
-        `https://discord.com/api/v10/guilds/${guildId}/members/${input.userId}`,
+        `https://discord.com/api/v10/guilds/${input.guildId}/members/${input.userId}`,
         {
           headers: {
-            Authorization: `Bot ${this.props.secret}`,
+            Authorization: `Bot ${this.props.discordToken}`,
           },
         },
       );
@@ -182,7 +181,7 @@ export class DiscordService {
         },
         {
           headers: {
-            Authorization: `Bot ${this.props.secret}`,
+            Authorization: `Bot ${this.props.discordToken}`,
           },
         },
       );
@@ -206,7 +205,7 @@ export class DiscordService {
         `https://discord.com/api/v10/channels/${input.channelId}`,
         {
           headers: {
-            Authorization: `Bot ${this.props.secret}`,
+            Authorization: `Bot ${this.props.discordToken}`,
           },
         },
       );
@@ -229,7 +228,7 @@ export class DiscordService {
         `https://discord.com/api/v10/channels/${input.channelId}/pins`,
         {
           headers: {
-            Authorization: `Bot ${this.props.secret}`,
+            Authorization: `Bot ${this.props.discordToken}`,
           },
         },
       );
@@ -255,7 +254,7 @@ export class DiscordService {
         {},
         {
           headers: {
-            Authorization: `Bot ${this.props.secret}`,
+            Authorization: `Bot ${this.props.discordToken}`,
           },
         },
       );
@@ -278,7 +277,7 @@ export class DiscordService {
         `https://discord.com/api/v10/channels/${input.channelId}/pins/${input.messageId}`,
         {
           headers: {
-            Authorization: `Bot ${this.props.secret}`,
+            Authorization: `Bot ${this.props.discordToken}`,
           },
         },
       );
@@ -309,7 +308,7 @@ export class DiscordService {
           `https://discord.com/api/v10/channels/${input.channelId}/messages`,
           {
             headers: {
-              Authorization: `Bot ${this.props.secret}`,
+              Authorization: `Bot ${this.props.discordToken}`,
             },
             params: {
               limit,
@@ -350,7 +349,7 @@ export class DiscordService {
         },
         {
           headers: {
-            Authorization: `Bot ${this.props.secret}`,
+            Authorization: `Bot ${this.props.discordToken}`,
           },
         },
       );
@@ -377,7 +376,7 @@ export class DiscordService {
         },
         {
           headers: {
-            Authorization: `Bot ${this.props.secret}`,
+            Authorization: `Bot ${this.props.discordToken}`,
           },
         },
       );
@@ -401,7 +400,7 @@ export class DiscordService {
         `https://discord.com/api/v10/channels/${input.channelId}/messages/${input.messageId}`,
         {
           headers: {
-            Authorization: `Bot ${this.props.secret}`,
+            Authorization: `Bot ${this.props.discordToken}`,
           },
         },
       );
@@ -427,7 +426,7 @@ export class DiscordService {
         },
         {
           headers: {
-            Authorization: `Bot ${this.props.secret}`,
+            Authorization: `Bot ${this.props.discordToken}`,
           },
         },
       );
@@ -447,7 +446,7 @@ export class DiscordService {
       `https://discord.com/api/v10/users/@me/guilds`,
       {
         headers: {
-          Authorization: `Bot ${this.props.secret}`,
+          Authorization: `Bot ${this.props.discordToken}`,
         },
       },
     );
@@ -455,13 +454,5 @@ export class DiscordService {
     return {
       guildIds: res.data,
     };
-  }
-
-  /**
-   * Discord's OAuth Bot user 사용.
-   * guild 정보를 secret으로 받아옴.
-   */
-  private getGuildInfo(): string {
-    return this.props.guildId;
   }
 }

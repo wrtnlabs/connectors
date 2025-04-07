@@ -29,7 +29,7 @@ export const test_zoom_create_meeting = async () => {
   const access_token = refreshResponse.data.access_token;
 
   const zoomService = new ZoomService({
-    secretKey: access_token,
+    zoomSecretKey: access_token,
   });
 
   const requestBody: IZoomService.ICreateMeetingInput = {

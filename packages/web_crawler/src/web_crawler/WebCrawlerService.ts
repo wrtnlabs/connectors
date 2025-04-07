@@ -8,7 +8,7 @@ export class WebCrawlerService {
   private readonly arxivBaseUrl = "https://arxiv.org";
 
   constructor(private readonly props: IWebCrawlerService.IProps) {
-    this.zenRowsClient = new ZenRows(this.props.zenRowsApiKey);
+    this.zenRowsClient = new ZenRows(this.props.zenrowsApiKey);
   }
 
   /**

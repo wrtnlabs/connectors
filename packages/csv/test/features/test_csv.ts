@@ -1,58 +1,40 @@
-// import { CsvService } from "@wrtnlabs/connector-csv/lib/csv/CsvService";
-// import { ICsvService } from "@wrtnlabs/connector-csv/lib/structures/ICsvService";
-// import typia from "typia";
-// import { TestGlobal } from "../TestGlobal";
+import { CsvService } from "@wrtnlabs/connector-csv/lib/csv/CsvService";
+import { ICsvService } from "@wrtnlabs/connector-csv/lib/structures/ICsvService";
+import typia from "typia";
+import { TestGlobal } from "../TestGlobal";
+import { AwsS3Service } from "@wrtnlabs/connector-aws-s3";
 
-// export const test_csv = async () => {
-//   const csvService = new CsvService({
-//     aws: {
-//       s3: {
-//         accessKeyId: TestGlobal.env.AWS_ACCESS_KEY_ID,
-//         bucket: TestGlobal.env.AWS_S3_BUCKET,
-//         region: "ap-northeast-2",
-//         secretAccessKey: TestGlobal.env.AWS_SECRET_ACCESS_KEY,
-//       },
-//     },
-//   });
+export const test_csv = async () => {
+  const awsS3Service = new AwsS3Service({
+    awsAccessKeyId: TestGlobal.env.AWS_ACCESS_KEY_ID,
+    awsSecretAccessKey: TestGlobal.env.AWS_SECRET_ACCESS_KEY,
+    awsS3Bucket: TestGlobal.env.AWS_S3_BUCKET,
+    awsS3Region: "ap-northeast-2",
+  });
 
-//   /**
-//    * read csv file from s3
-//    */
-//   const readCsvInput = {
-//     s3Url: `https://${TestGlobal.env.AWS_S3_BUCKET}.s3.ap-northeast-2.amazonaws.com/a.csv`,
-//     delimiter: ",",
-//   };
-//   const result = await csvService.read(readCsvInput);
-//   typia.assert<ICsvService.IReadOutput>(result);
+  const csvService = new CsvService({
+    fileManager: awsS3Service,
+  });
 
-//   /**
-//    * write csv file to s3
-//    */
-//   const headers = Object.keys(result.data[0]!);
-//   const values = headers.reduce((obj: { [key: string]: string }, header) => {
-//     obj[header] = "connector-test";
-//     return obj;
-//   }, {});
-//   const writeCsvInput = {
-//     fileName: "connector-test.csv",
-//     delimiter: ";",
-//     values: [values],
-//   };
+  /**
+   * read csv file from s3
+   */
+  const readCsvInput = {
+    s3Url: `https://${TestGlobal.env.AWS_S3_BUCKET}.s3.ap-northeast-2.amazonaws.com/a.csv`,
+    delimiter: ",",
+  };
 
-//   const writeResult = await csvService.write(writeCsvInput);
-//   typia.assert(writeResult);
+  const result = await csvService.read({
+    uri: readCsvInput.s3Url,
+    delimiter: readCsvInput.delimiter,
+  });
 
-//   // /**
-//   //  * convert csv to excel
-//   //  */
-//   // const csvToExcelInput = {
-//   //   s3Url: `https://${ConnectorGlobal.env.AWS_S3_BUCKET}.s3.ap-northeast-2.amazonaws.com/a.csv`,
-//   //   delimiter: ";",
-//   // };
-//   // const csvToExcelResult =
-//   //   await csvService.csv_to_excel.csvToExcel(
-//   //
-//   //     csvToExcelInput,
-//   //   );
-//   // typia.assert<ICsvService.ICsvToExcelOutput>(csvToExcelResult);
-// };
+  typia.assert<ICsvService.IReadOutput>(result);
+
+  const csvToExcelResult = await csvService.convertCsvToExcel({
+    uri: readCsvInput.s3Url,
+    delimiter: readCsvInput.delimiter,
+  });
+
+  typia.assert<ICsvService.ICsvToExcelOutput>(csvToExcelResult);
+};

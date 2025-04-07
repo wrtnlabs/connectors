@@ -37,7 +37,7 @@ export class SlackTemplateService {
           accessory: {
             type: "button",
             text: { type: "plain_text", emoji: true, text: "Vote" },
-            value: `pick_${i}/${this.props_.secretKey}`,
+            value: `pick_${i}/${this.props_.slackToken}`,
           },
         },
         NoVoted,

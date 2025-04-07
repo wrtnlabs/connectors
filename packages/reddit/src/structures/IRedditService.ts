@@ -1,23 +1,21 @@
 import { tags } from "typia";
-import { Limit, MyPick, StrictOmit } from "@wrtnlabs/connector-shared";
+import {
+  Limit,
+  MyPick,
+  SnakeToCamel,
+  StrictOmit,
+} from "@wrtnlabs/connector-shared";
+
+export const ENV_LIST = [
+  "REDDIT_REFRESH_TOKEN",
+  "REDDIT_CLIENT_ID",
+  "REDDIT_CLIENT_SECRET",
+] as const;
 
 export namespace IRedditService {
-  export interface IProps {
-    /**
-     * Reddit Refresh Token.
-     */
-    refreshToken: string;
-
-    /**
-     * Reddit Client ID.
-     */
-    clientId: string;
-
-    /**
-     * Reddit Client Secret.
-     */
-    clientSecret: string;
-  }
+  export type IProps = {
+    [key in SnakeToCamel<(typeof ENV_LIST)[number]>]: string;
+  };
 
   /**
    * When the value of the 'after' parameter that came in response to the previous request is substituted,
@@ -92,7 +90,7 @@ export namespace IRedditService {
     subreddit?: `r/${string}`;
   }
 
-  export interface Children {
+  export interface IChildren {
     /**
      * @title The kind of the child
      **/
@@ -101,10 +99,10 @@ export namespace IRedditService {
     /**
      * @title The data of the child
      **/
-    data: Child;
+    data: IChild;
   }
 
-  export interface Child {
+  export interface IChild {
     /**
      * @title Approval time in UTC
      **/
@@ -153,7 +151,7 @@ export namespace IRedditService {
     /**
      * @title Rich text for link flair
      **/
-    link_flair_richtext?: LinkFlairRichtext[];
+    link_flair_richtext?: ILinkFlairRichtext[];
 
     /**
      * @title Prefixed subreddit name
@@ -233,7 +231,7 @@ export namespace IRedditService {
     /**
      * @title Media embed information
      **/
-    media_embed?: MediaEmbed;
+    media_embed?: IMediaEmbed;
 
     /**
      * @title Width of the thumbnail
@@ -258,7 +256,7 @@ export namespace IRedditService {
     /**
      * @title Secure media information
      **/
-    secure_media?: SecureMedia | null;
+    secure_media?: ISecureMedia | null;
 
     /**
      * @title Whether it's a Reddit media domain
@@ -278,7 +276,7 @@ export namespace IRedditService {
     /**
      * @title Secure media embed information
      **/
-    secure_media_embed?: SecureMediaEmbed;
+    secure_media_embed?: ISecureMediaEmbed;
 
     /**
      * @title Text for link flair
@@ -328,7 +326,7 @@ export namespace IRedditService {
     /**
      * @title Rich text for author flair
      **/
-    author_flair_richtext?: AuthorFlairRichtext[];
+    author_flair_richtext?: IAuthorFlairRichtext[];
 
     /**
      * @title Gildings information
@@ -453,7 +451,7 @@ export namespace IRedditService {
     /**
      * @title Preview information
      **/
-    preview?: Preview | null;
+    preview?: IPreview | null;
 
     /**
      * @title All awardings
@@ -658,7 +656,7 @@ export namespace IRedditService {
     /**
      * @title Gallery data
      **/
-    gallery_data?: GalleryData | null;
+    gallery_data?: IGalleryData | null;
 
     /**
      * @title List of crosspost parents
@@ -676,7 +674,7 @@ export namespace IRedditService {
     author_cakeday?: boolean | null;
   }
 
-  export interface LinkFlairRichtext {
+  export interface ILinkFlairRichtext {
     /**
      * @title The type of the element
      **/
@@ -698,7 +696,7 @@ export namespace IRedditService {
     t?: string;
   }
 
-  export interface MediaEmbed {
+  export interface IMediaEmbed {
     /**
      * @title The content of the media
      **/
@@ -720,7 +718,7 @@ export namespace IRedditService {
     height?: number;
   }
 
-  export interface SecureMedia {
+  export interface ISecureMedia {
     /**
      * @title The type of the media
      **/
@@ -729,10 +727,10 @@ export namespace IRedditService {
     /**
      * @title Oembed information
      **/
-    oembed?: Oembed;
+    oembed?: IOembed;
   }
 
-  export interface Oembed {
+  export interface IOembed {
     /**
      * @title The provider URL
      **/
@@ -809,7 +807,7 @@ export namespace IRedditService {
     url?: string | null;
   }
 
-  export interface SecureMediaEmbed {
+  export interface ISecureMediaEmbed {
     /**
      * @title The content of the media
      **/
@@ -836,7 +834,7 @@ export namespace IRedditService {
     height?: number;
   }
 
-  export interface AuthorFlairRichtext {
+  export interface IAuthorFlairRichtext {
     /**
      * @title The type of the element
      **/
@@ -850,7 +848,7 @@ export namespace IRedditService {
 
   export type Gildings = any;
 
-  export interface Preview {
+  export interface IPreview {
     /**
      * @title The images in the preview
      **/
@@ -866,12 +864,12 @@ export namespace IRedditService {
     /**
      * @title The source of the image
      **/
-    source: Source;
+    source: ISource;
 
     /**
      * @title The resolutions of the image
      **/
-    resolutions: Resolution[];
+    resolutions: IResolution[];
 
     /**
      * @title The variants of the image
@@ -884,7 +882,7 @@ export namespace IRedditService {
     id: string;
   }
 
-  export interface Source {
+  export interface ISource {
     /**
      * @title The URL of the source
      **/
@@ -901,7 +899,7 @@ export namespace IRedditService {
     height: number;
   }
 
-  export interface Resolution {
+  export interface IResolution {
     /**
      * @title The URL of the resolution
      **/
@@ -929,12 +927,12 @@ export namespace IRedditService {
     /**
      * @title Oembed information
      **/
-    oembed?: Oembed;
+    oembed?: IOembed;
   }
 
-  export type MediaMetadata = Record<string, Metadata>;
+  export type MediaMetadata = Record<string, IMetadata>;
 
-  export interface Metadata {
+  export interface IMetadata {
     /**
      * @title The status of the metadata
      **/
@@ -953,12 +951,12 @@ export namespace IRedditService {
     /**
      * @title The positions
      **/
-    p?: Position[];
+    p?: IPosition[];
 
     /**
      * @title The position
      **/
-    s?: Position;
+    s?: IPosition;
 
     /**
      * @title The ID of the metadata
@@ -966,7 +964,7 @@ export namespace IRedditService {
     id?: string;
   }
 
-  export interface GalleryData {
+  export interface IGalleryData {
     /**
      * @title The items in the gallery
      **/
@@ -991,7 +989,7 @@ export namespace IRedditService {
   }
 
   export type CrosspostParentList = MyPick<
-    IRedditService.Child,
+    IRedditService.IChild,
     | "approved_at_utc"
     | "subreddit"
     | "selftext"
@@ -1104,7 +1102,7 @@ export namespace IRedditService {
     | "link_flair_template_id"
   >;
 
-  export interface Position {
+  export interface IPosition {
     /**
      * @title The y-coordinate
      **/
@@ -1145,7 +1143,7 @@ export namespace IRedditService {
     /**
      * @title The list of children posts
      **/
-    children: Children[];
+    children: IChildren[];
 
     /**
      * @title The before cursor for pagination
@@ -1185,7 +1183,7 @@ export namespace IRedditService {
     /**
      * @title The list of children posts
      **/
-    children: Children[];
+    children: IChildren[];
 
     /**
      * @title The before cursor for pagination
@@ -1230,7 +1228,7 @@ export namespace IRedditService {
     /**
      * @title The list of children posts
      **/
-    children: Children[];
+    children: IChildren[];
 
     /**
      * @title The before cursor for pagination
@@ -1267,7 +1265,7 @@ export namespace IRedditService {
 
   export interface Comment
     extends MyPick<
-      Child,
+      IChild,
       | "approved_at_utc"
       | "author_is_blocked"
       | "subreddit_id"
@@ -1521,8 +1519,8 @@ export namespace IRedditService {
   }
 
   export interface IFlattenCommentsOutput {
-    more: IRedditService.ChildMore | null;
-    flatComments: IRedditService.ChildComment[];
+    more: IRedditService.IChildMore | null;
+    flatComments: IRedditService.IChildComment[];
   }
 
   export interface IGetArticleAndCommentsOutput
@@ -1554,7 +1552,7 @@ export namespace IRedditService {
       /**
        * @title The list of children posts
        **/
-      children: Children[];
+      children: IChildren[];
 
       /**
        * @title The before cursor for pagination
@@ -1586,7 +1584,7 @@ export namespace IRedditService {
       /**
        * @title The list of children posts
        **/
-      children: (ChildComment | ChildMore)[];
+      children: (IChildComment | IChildMore)[];
 
       /**
        * @title The before cursor for pagination
@@ -1595,7 +1593,7 @@ export namespace IRedditService {
     };
   }
 
-  export interface ChildComment {
+  export interface IChildComment {
     /**
      * @title kind
      */
@@ -1607,7 +1605,7 @@ export namespace IRedditService {
     data: Comment;
   }
 
-  export interface ChildMore {
+  export interface IChildMore {
     /**
      * @title kind
      */
@@ -2349,7 +2347,7 @@ export namespace IRedditService {
     /**
      * @title The list of children posts
      **/
-    children: Children[];
+    children: IChildren[];
 
     /**
      * @title The before cursor for pagination
@@ -2474,7 +2472,7 @@ export namespace IRedditService {
       /**
        * @title data
        */
-      data: IRedditService.SubReddit;
+      data: IRedditService.ISubReddit;
     }[];
 
     /**
@@ -2483,7 +2481,7 @@ export namespace IRedditService {
     before: FullNames | null;
   }
 
-  export interface SubReddit {
+  export interface ISubReddit {
     /**
      * @title restrict_posting
      */
@@ -2902,7 +2900,7 @@ export namespace IRedditService {
     subreddit: `r/${string}`;
   }
 
-  export interface IGetSubredditAboutOutput extends SubReddit {
+  export interface IGetSubredditAboutOutput extends ISubReddit {
     /**
      * @title header_img
      */
@@ -2969,7 +2967,7 @@ export namespace IRedditService {
       /**
        * @title data
        */
-      data: IRedditService.SubReddit;
+      data: IRedditService.ISubReddit;
     }[];
 
     /**
@@ -3010,7 +3008,7 @@ export namespace IRedditService {
     /**
      * @title The list of children posts
      **/
-    children: Children[];
+    children: IChildren[];
 
     /**
      * @title The before cursor for pagination

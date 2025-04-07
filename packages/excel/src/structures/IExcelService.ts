@@ -1,20 +1,10 @@
 import { tags } from "typia";
-import { ContentMediaType } from "typia/lib/tags/ContentMediaType";
-import { IAwsS3Service } from "@wrtnlabs/connector-aws-s3";
-import { ISpreadsheetCell } from "@wrtnlabs/connector-shared";
+import { FileManager, ISpreadsheetCell } from "@wrtnlabs/connector-shared";
 
 export namespace IExcelService {
-  export interface IProps {
-    /**
-     * AWS
-     */
-    aws: {
-      /**
-       * S3.
-       */
-      s3: IAwsS3Service.IProps;
-    };
-  }
+  export type IProps = {
+    fileManager: FileManager;
+  };
 
   /**
    * @title file information
@@ -23,12 +13,9 @@ export namespace IExcelService {
     /**
      * Excel file to read
      *
-     * @title Excel file
+     * @title Excel file URI
      */
-    fileUrl: string &
-      tags.Format<"uri"> &
-      ContentMediaType<"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">;
-
+    uri: string & tags.Format<"iri">;
     /**
      * Sheet name to read
      *
@@ -69,13 +56,11 @@ export namespace IExcelService {
    */
   export interface IGetWorksheetListInput {
     /**
-     * File to import list of Excel worksheets
+     * The URI of the file to import list of Excel worksheets
      *
-     * @title Excel file
+     * @title Excel file URI
      */
-    fileUrl: string &
-      tags.Format<"uri"> &
-      ContentMediaType<"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">;
+    uri: string & tags.Format<"iri">;
   }
 
   /**
@@ -107,17 +92,15 @@ export namespace IExcelService {
    */
   export interface IInsertExcelRowByUploadInput extends ICreateSheetInput {
     /**
-     * 엑셀 행을 추가할 파일
+     * Excel file to add rows to
      *
      * If you have this address, take an Excel file from that path and modify it.
      * The modified file is saved as a new link and does not modify the original file in this path.
      * If this address does not exist, create a new file immediately.
      *
-     * @title 엑셀 파일
+     * @title Excel file URI
      */
-    fileUrl?: string &
-      tags.Format<"uri"> &
-      ContentMediaType<"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">;
+    uri?: string & tags.Format<"iri">;
 
     /**
      * The type of data and coordinates of each row and column
@@ -125,22 +108,30 @@ export namespace IExcelService {
      * @title Cell informations
      */
     data: ISpreadsheetCell.ICreate[];
+
+    /**
+     * Sheet name to add Excel rows to
+     * If no input is entered, the first sheet is used as the default.
+     *
+     * @title Excel sheet name
+     */
+    sheetName?: (string & tags.MaxLength<31>) | null;
   }
 
   /**
    * @title Information for adding data
    */
-  export interface IInsertExcelRowInput extends ICreateSheetInput {
+  export interface IInsertExcelRowInput {
     /**
-     * 엑셀 행을 추가할 파일
+     * Excel file to add rows to
      *
      * If you have this address, take an Excel file from that path and modify it.
      * The modified file is saved as a new link and does not modify the original file in this path.
      * If this address does not exist, create a new file immediately.
      *
-     * @title 엑셀 파일
+     * @title Excel file URI
      */
-    fileUrl?: string & tags.Format<"iri">;
+    uri?: string & tags.Format<"iri">;
 
     /**
      * The type of data and coordinates of each row and column
@@ -148,9 +139,25 @@ export namespace IExcelService {
      * @title Cell informations
      */
     data: ISpreadsheetCell.ICreate[];
+
+    /**
+     * Sheet name to add Excel rows to
+     * If no input is entered, the first sheet is used as the default.
+     *
+     * @title Excel sheet name
+     */
+    sheetName?: (string & tags.MaxLength<31>) | null;
   }
 
   export interface ICreateSheetInput {
+    /**
+     * The Path of the Excel file including the file name.
+     * The File Path that you want to save the Excel file.
+     *
+     * @title Excel file path
+     */
+    path: string & tags.Format<"iri">;
+
     /**
      * Sheet name to add Excel rows to
      * If no input is entered, the first sheet is used as the default.
@@ -165,15 +172,8 @@ export namespace IExcelService {
    */
   export interface IExportExcelFileOutput {
     /**
-     * @title S3 path of file
+     * @title Generated Excel file URI
      */
-    fileId: string;
-
-    /**
-     * @title Generated Excel file url
-     */
-    fileUrl: string &
-      tags.Format<"uri"> &
-      ContentMediaType<"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">;
+    uri: string & tags.Format<"iri">;
   }
 }

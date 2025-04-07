@@ -16,8 +16,8 @@ export const test_read_cafe_naver =
     };
 
     const naverCafeService = new NaverCafeService({
-      clientId: TestGlobal.env.NAVER_CLIENT_ID,
-      clientSecret: TestGlobal.env.NAVER_CLIENT_SECRET,
+      naverCafeClientId: TestGlobal.env.NAVER_CLIENT_ID,
+      naverCafeClientSecret: TestGlobal.env.NAVER_CLIENT_SECRET,
     });
 
     const result = await naverCafeService.getCafe(input);

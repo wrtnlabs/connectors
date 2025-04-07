@@ -1,8 +1,12 @@
 import xlsx from "xlsx";
 import { IHancellService } from "../structures/IHancellService";
-import { base64ToBuffer, bufferToBase64 } from "@wrtnlabs/connector-shared";
+import { FileManager } from "@wrtnlabs/connector-shared";
+import { v4 } from "uuid";
+import typia from "typia";
+import IUpsertSheetOutput = IHancellService.IUpsertSheetOutput;
 
 export class HancellService {
+  constructor(private readonly fileManager: FileManager) {}
   /**
    * Hancell Service.
    *
@@ -14,7 +18,7 @@ export class HancellService {
     input: IHancellService.IUpsertSheetInput,
   ): Promise<IHancellService.IUpsertSheetOutput> {
     try {
-      const workbook = await this.getWorkboot(input);
+      const workbook = await this.getWorkbook(input);
       const sheet = workbook.Sheets[input.sheetName]!;
 
       /**
@@ -34,7 +38,18 @@ export class HancellService {
       xlsx.utils.book_append_sheet(workbook, updatedSheet, input.sheetName);
       const buffer = xlsx.write(workbook, { bookType: "xlsx", type: "buffer" });
 
-      return { fileBase64: bufferToBase64(buffer) };
+      const upload = await this.fileManager.upload({
+        props: {
+          path: `${input.filePath ?? "hancell"}/${v4()}`,
+          type: "object",
+          data: buffer,
+          contentType: `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet`,
+        },
+      });
+
+      return typia.assert<IUpsertSheetOutput>({
+        fileUrl: upload.uri,
+      });
     } catch (error) {
       console.error(JSON.stringify(error));
       throw error;
@@ -50,7 +65,7 @@ export class HancellService {
     input: IHancellService.IReadHancellInput,
   ): Promise<IHancellService.IReadHancellOutput> {
     try {
-      const workbook = await this.getWorkboot(input);
+      const workbook = await this.getWorkbook(input);
 
       const data = Object.entries(workbook.Sheets)
         .map(([sheetName, sheet]) => {
@@ -79,10 +94,15 @@ export class HancellService {
     }
   }
 
-  private async getWorkboot(input: IHancellService.IReadHancellInput) {
-    const buffer = base64ToBuffer(input.fileBase64);
+  private async getWorkbook(input: IHancellService.IReadHancellInput) {
+    const buffer = await this.fileManager.read({
+      props: {
+        type: "url",
+        url: input.fileUrl,
+      },
+    });
 
-    const workbook = xlsx.read(buffer, { type: "buffer" });
+    const workbook = xlsx.read(buffer.data, { type: "buffer" });
 
     return workbook;
   }

@@ -2,37 +2,41 @@ import typia from "typia";
 import { deepStrictEqual } from "assert";
 import { ExcelService, IExcelService } from "@wrtnlabs/connector-excel";
 import { TestGlobal } from "../TestGlobal";
+import { AwsS3Service } from "@wrtnlabs/connector-aws-s3";
 
 export const test_excel_create_file_witnout_sheet_name = async () => {
+  const awsS3Service = new AwsS3Service({
+    awsAccessKeyId: TestGlobal.env.AWS_ACCESS_KEY_ID,
+    awsSecretAccessKey: TestGlobal.env.AWS_SECRET_ACCESS_KEY,
+    awsS3Bucket: TestGlobal.env.AWS_S3_BUCKET,
+    awsS3Region: "ap-northeast-2",
+  });
+
   const excelService = new ExcelService({
-    aws: {
-      s3: {
-        accessKeyId: TestGlobal.env.AWS_ACCESS_KEY_ID,
-        bucket: TestGlobal.env.AWS_S3_BUCKET,
-        region: "ap-northeast-2",
-        secretAccessKey: TestGlobal.env.AWS_SECRET_ACCESS_KEY,
-      },
-    },
+    fileManager: awsS3Service,
   });
   const file = await excelService.createSheets({
-    sheetName: "TEST",
+    path: "connector-test-create-file-without-sheet-name.xlsx",
   });
 
   typia.assert(file);
 };
 
 export const test_excel_create_file_with_sheet_name = async () => {
-  const excelService = new ExcelService({
-    aws: {
-      s3: {
-        accessKeyId: TestGlobal.env.AWS_ACCESS_KEY_ID,
-        bucket: TestGlobal.env.AWS_S3_BUCKET,
-        region: "ap-northeast-2",
-        secretAccessKey: TestGlobal.env.AWS_SECRET_ACCESS_KEY,
-      },
-    },
+  const awsS3Service = new AwsS3Service({
+    awsAccessKeyId: TestGlobal.env.AWS_ACCESS_KEY_ID,
+    awsSecretAccessKey: TestGlobal.env.AWS_SECRET_ACCESS_KEY,
+    awsS3Bucket: TestGlobal.env.AWS_S3_BUCKET,
+    awsS3Region: "ap-northeast-2",
   });
-  const file = await excelService.createSheets({});
+
+  const excelService = new ExcelService({
+    fileManager: awsS3Service,
+  });
+  const file = await excelService.createSheets({
+    path: "connector-test-create-file-with-sheet-name.xlsx",
+    sheetName: "TEST",
+  });
 
   typia.assert(file);
 };
@@ -47,17 +51,24 @@ export const test_excel_insert_rows_without_file_url = async () => {
   //   "Last name": typia.random<string>(),
   // };
 
-  const excelService = new ExcelService({
-    aws: {
-      s3: {
-        accessKeyId: TestGlobal.env.AWS_ACCESS_KEY_ID,
-        bucket: TestGlobal.env.AWS_S3_BUCKET,
-        region: "ap-northeast-2",
-        secretAccessKey: TestGlobal.env.AWS_SECRET_ACCESS_KEY,
-      },
-    },
+  const awsS3Service = new AwsS3Service({
+    awsAccessKeyId: TestGlobal.env.AWS_ACCESS_KEY_ID,
+    awsSecretAccessKey: TestGlobal.env.AWS_SECRET_ACCESS_KEY,
+    awsS3Bucket: TestGlobal.env.AWS_S3_BUCKET,
+    awsS3Region: "ap-northeast-2",
   });
+
+  const excelService = new ExcelService({
+    fileManager: awsS3Service,
+  });
+
+  const file = await excelService.createSheets({
+    path: "connector-test-insert-rows-without-file-url.xlsx",
+    sheetName: "TEST",
+  });
+
   const res = await excelService.insertRows({
+    uri: file.uri,
     data: [
       {
         row: 1,
@@ -114,17 +125,18 @@ export const test_excel_insert_rows_without_file_url = async () => {
 };
 
 export const test_excel_insert_rows_with_file_url = async () => {
+  const awsS3Service = new AwsS3Service({
+    awsAccessKeyId: TestGlobal.env.AWS_ACCESS_KEY_ID,
+    awsSecretAccessKey: TestGlobal.env.AWS_SECRET_ACCESS_KEY,
+    awsS3Bucket: TestGlobal.env.AWS_S3_BUCKET,
+    awsS3Region: "ap-northeast-2",
+  });
+
   const excelService = new ExcelService({
-    aws: {
-      s3: {
-        accessKeyId: TestGlobal.env.AWS_ACCESS_KEY_ID,
-        bucket: TestGlobal.env.AWS_S3_BUCKET,
-        region: "ap-northeast-2",
-        secretAccessKey: TestGlobal.env.AWS_SECRET_ACCESS_KEY,
-      },
-    },
+    fileManager: awsS3Service,
   });
   const file = await excelService.createSheets({
+    path: "connector-test-insert-rows-with-file-url.xlsx",
     sheetName: "TEST",
   });
 
@@ -132,7 +144,7 @@ export const test_excel_insert_rows_with_file_url = async () => {
    * insert rows
    */
   const res = await excelService.insertRows({
-    fileUrl: file.fileUrl,
+    uri: file.uri,
     data: [
       {
         row: 1,
@@ -190,17 +202,18 @@ export const test_excel_insert_rows_with_file_url = async () => {
 
 // 이전 실패 케이스에 대한 테스트 코드 추가
 export const test_excel_insert_row_fail_case_1 = async () => {
+  const awsS3Service = new AwsS3Service({
+    awsAccessKeyId: TestGlobal.env.AWS_ACCESS_KEY_ID,
+    awsSecretAccessKey: TestGlobal.env.AWS_SECRET_ACCESS_KEY,
+    awsS3Bucket: TestGlobal.env.AWS_S3_BUCKET,
+    awsS3Region: "ap-northeast-2",
+  });
+
   const excelService = new ExcelService({
-    aws: {
-      s3: {
-        accessKeyId: TestGlobal.env.AWS_ACCESS_KEY_ID,
-        bucket: TestGlobal.env.AWS_S3_BUCKET,
-        region: "ap-northeast-2",
-        secretAccessKey: TestGlobal.env.AWS_SECRET_ACCESS_KEY,
-      },
-    },
+    fileManager: awsS3Service,
   });
   const file = await excelService.createSheets({
+    path: "connector-test-insert-rows-with-file-url-1.xlsx",
     sheetName: "TEST",
   });
 
@@ -214,7 +227,7 @@ export const test_excel_insert_row_fail_case_1 = async () => {
   // ];
 
   const res = await excelService.insertRows({
-    fileUrl: file.fileUrl,
+    uri: file.uri,
     sheetName: "TEST",
     data: [
       {
@@ -289,18 +302,25 @@ export const test_excel_insert_row_fail_case_1 = async () => {
 
 // 이전 실패 케이스에 대한 테스트 코드 추가
 export const test_excel_insert_row_fail_case_2 = async () => {
-  const excelService = new ExcelService({
-    aws: {
-      s3: {
-        accessKeyId: TestGlobal.env.AWS_ACCESS_KEY_ID,
-        bucket: TestGlobal.env.AWS_S3_BUCKET,
-        region: "ap-northeast-2",
-        secretAccessKey: TestGlobal.env.AWS_SECRET_ACCESS_KEY,
-      },
-    },
+  const awsS3Service = new AwsS3Service({
+    awsAccessKeyId: TestGlobal.env.AWS_ACCESS_KEY_ID,
+    awsSecretAccessKey: TestGlobal.env.AWS_SECRET_ACCESS_KEY,
+    awsS3Bucket: TestGlobal.env.AWS_S3_BUCKET,
+    awsS3Region: "ap-northeast-2",
   });
+
+  const excelService = new ExcelService({
+    fileManager: awsS3Service,
+  });
+
+  const file = await excelService.createSheets({
+    path: "connector-test-insert-rows-with-file-url-2.xlsx",
+    sheetName: "TEST",
+  });
+
   const res = await excelService.insertRows({
-    sheetName: "Sheet1",
+    uri: file.uri,
+    sheetName: "TEST",
     data: excelService.transform({
       data: [
         {
@@ -347,18 +367,25 @@ export const test_excel_insert_row_fail_case_2 = async () => {
 
 // 이전 실패 케이스에 대한 테스트 코드 추가, 2번에 나눠서 저장한 경우 누적이 잘 되는지를 검증
 export const test_excel_insert_row_fail_case_3 = async () => {
-  const excelService = new ExcelService({
-    aws: {
-      s3: {
-        accessKeyId: TestGlobal.env.AWS_ACCESS_KEY_ID,
-        bucket: TestGlobal.env.AWS_S3_BUCKET,
-        region: "ap-northeast-2",
-        secretAccessKey: TestGlobal.env.AWS_SECRET_ACCESS_KEY,
-      },
-    },
+  const awsS3Service = new AwsS3Service({
+    awsAccessKeyId: TestGlobal.env.AWS_ACCESS_KEY_ID,
+    awsSecretAccessKey: TestGlobal.env.AWS_SECRET_ACCESS_KEY,
+    awsS3Bucket: TestGlobal.env.AWS_S3_BUCKET,
+    awsS3Region: "ap-northeast-2",
   });
+
+  const excelService = new ExcelService({
+    fileManager: awsS3Service,
+  });
+
+  const file = await excelService.createSheets({
+    path: "connector-test-insert-rows-with-file-url-3.xlsx",
+    sheetName: "TEST",
+  });
+
   const first = await excelService.insertRows({
-    sheetName: "Sheet1",
+    uri: file.uri,
+    sheetName: "TEST",
     data: [
       {
         row: 1,
@@ -444,8 +471,8 @@ export const test_excel_insert_row_fail_case_3 = async () => {
   });
 
   const second = await excelService.insertRows({
-    fileUrl: first.fileUrl,
-    sheetName: "Sheet1",
+    uri: first.uri,
+    sheetName: "TEST",
     data: [
       {
         row: 3,
@@ -490,9 +517,9 @@ export const test_excel_insert_row_fail_case_3 = async () => {
     ],
   });
 
-  const res = excelService.getExcelData({
-    fileUrl: second.fileUrl,
-    sheetName: "Sheet1",
+  const res = await excelService.getExcelData({
+    uri: second.uri,
+    sheetName: "TEST",
   });
 
   const answer = {
@@ -526,22 +553,24 @@ export const test_excel_insert_row_fail_case_3 = async () => {
 
 // 빈 엑셀 파일에 데이터를 넣을 때에는 헤더가 추가되어야 한다.
 export const test_excel_insert_row_to_empty_excel_file = async () => {
-  const excelService = new ExcelService({
-    aws: {
-      s3: {
-        accessKeyId: TestGlobal.env.AWS_ACCESS_KEY_ID,
-        bucket: TestGlobal.env.AWS_S3_BUCKET,
-        region: "ap-northeast-2",
-        secretAccessKey: TestGlobal.env.AWS_SECRET_ACCESS_KEY,
-      },
-    },
+  const awsS3Service = new AwsS3Service({
+    awsAccessKeyId: TestGlobal.env.AWS_ACCESS_KEY_ID,
+    awsSecretAccessKey: TestGlobal.env.AWS_SECRET_ACCESS_KEY,
+    awsS3Bucket: TestGlobal.env.AWS_S3_BUCKET,
+    awsS3Region: "ap-northeast-2",
   });
+
+  const excelService = new ExcelService({
+    fileManager: awsS3Service,
+  });
+
   const file = await excelService.createSheets({
+    path: "connector-test-insert-rows-to-empty-excel-file.xlsx",
     sheetName: "TEST",
   });
 
   const res = await excelService.insertRows({
-    fileUrl: file.fileUrl,
+    uri: file.uri,
     sheetName: "TEST",
     data: excelService.transform({
       data: [
@@ -564,31 +593,35 @@ export const test_excel_insert_row_to_empty_excel_file = async () => {
  * @param connection
  */
 export const test_excel = async () => {
+  const awsS3Service = new AwsS3Service({
+    awsAccessKeyId: TestGlobal.env.AWS_ACCESS_KEY_ID,
+    awsSecretAccessKey: TestGlobal.env.AWS_SECRET_ACCESS_KEY,
+    awsS3Bucket: TestGlobal.env.AWS_S3_BUCKET,
+    awsS3Region: "ap-northeast-2",
+  });
+
   const excelService = new ExcelService({
-    aws: {
-      s3: {
-        accessKeyId: TestGlobal.env.AWS_ACCESS_KEY_ID,
-        bucket: TestGlobal.env.AWS_S3_BUCKET,
-        region: "ap-northeast-2",
-        secretAccessKey: TestGlobal.env.AWS_SECRET_ACCESS_KEY,
-      },
-    },
+    fileManager: awsS3Service,
+  });
+
+  const file = await excelService.createSheets({
+    path: "connector-test-excel.xlsx",
+    sheetName: "TEST",
   });
 
   /**
    * read worksheet list
    */
-  const worksheetListInput: IExcelService.IGetWorksheetListInput = {
-    fileUrl: `https://${TestGlobal.env.AWS_S3_BUCKET}.s3.ap-northeast-2.amazonaws.com/connector-test.xlsx`,
-  };
-  const worksheetListOutput = await excelService.readSheets(worksheetListInput);
+  const worksheetListOutput = await excelService.readSheets({
+    uri: file.uri,
+  });
   typia.assert<IExcelService.IWorksheetListOutput>(worksheetListOutput);
 
   /**
    * insert rows
    */
-
   const insertRowsInput: IExcelService.IInsertExcelRowInput = {
+    uri: file.uri,
     data: excelService.transform({
       data: [
         {
@@ -600,13 +633,14 @@ export const test_excel = async () => {
     }),
   };
   const insertRowsOutput = await excelService.insertRows(insertRowsInput);
+
   typia.assert(insertRowsOutput);
 
   /**
    * read rows data
    */
   const readExcelInput = {
-    fileUrl: `https://${TestGlobal.env.AWS_S3_BUCKET}.s3.ap-northeast-2.amazonaws.com/connector-test.xlsx`,
+    uri: insertRowsOutput.uri,
     sheetName: worksheetListOutput.data[0]?.sheetName,
   };
 
