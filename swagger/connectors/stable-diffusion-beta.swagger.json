@@ -16,7 +16,7 @@
   ],
   "info": {
     "title": "stable-diffusion-beta",
-    "version": "0.1.484",
+    "version": "0.1.485",
     "description": "wrtn-ecosystem connectors and sdk",
     "license": {
       "name": "AGPL-3.0-only"
