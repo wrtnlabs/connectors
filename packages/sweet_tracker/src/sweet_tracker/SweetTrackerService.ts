@@ -23,7 +23,7 @@ export class SweetTrackerService {
       const queryParams =
         Object.entries({
           ...input,
-          t_key: this.props.secret,
+          t_key: this.props.sweetTrackerApiKey,
         })
           .map(([key, value]) => `${key}=${value}`)
           .join("&") ?? "";
@@ -79,7 +79,7 @@ export class SweetTrackerService {
       const queryParams =
         Object.entries({
           ...input,
-          t_key: this.props.secret,
+          t_key: this.props.sweetTrackerApiKey,
         })
           .map(([key, value]) => `${key}=${value}`)
           .join("&") ?? "";

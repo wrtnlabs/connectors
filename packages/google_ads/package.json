@@ -18,7 +18,20 @@
     "eslint": "eslint ./**/*.ts",
     "test": "node bin/test"
   },
-  "keywords": [],
+  "keywords": [
+    "openai",
+    "chatgpt",
+    "anthropic",
+    "claude",
+    "ai",
+    "chatbot",
+    "nestia",
+    "swagger",
+    "openapi",
+    "connector",
+    "tool",
+    "mcp"
+  ],
   "author": "",
   "license": "MIT",
   "devDependencies": {
@@ -50,5 +63,19 @@
     "crypto": "^1.0.1",
     "typia": "^8.0.1",
     "uuid": "^10.0.0"
-  }
+  },
+  "homepage": "https://wrtnlabs.io/agentica",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wrtnlabs/connectors"
+  },
+  "bugs": {
+    "url": "https://github.com/wrtnlabs/connectors/issues"
+  },
+  "files": [
+    "LICENSE",
+    "README.md",
+    "lib",
+    "package.json"
+  ]
 }
