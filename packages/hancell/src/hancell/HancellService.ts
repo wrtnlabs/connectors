@@ -18,7 +18,7 @@ export class HancellService {
     input: IHancellService.IUpsertSheetInput,
   ): Promise<IHancellService.IUpsertSheetOutput> {
     try {
-      const workbook = await this.getWorkboot(input);
+      const workbook = await this.getWorkbook(input);
       const sheet = workbook.Sheets[input.sheetName]!;
 
       /**
@@ -65,7 +65,7 @@ export class HancellService {
     input: IHancellService.IReadHancellInput,
   ): Promise<IHancellService.IReadHancellOutput> {
     try {
-      const workbook = await this.getWorkboot(input);
+      const workbook = await this.getWorkbook(input);
 
       const data = Object.entries(workbook.Sheets)
         .map(([sheetName, sheet]) => {
@@ -94,7 +94,7 @@ export class HancellService {
     }
   }
 
-  private async getWorkboot(input: IHancellService.IReadHancellInput) {
+  private async getWorkbook(input: IHancellService.IReadHancellInput) {
     const buffer = await this.fileManager.read({
       props: {
         type: "url",
@@ -102,7 +102,7 @@ export class HancellService {
       },
     });
 
-    const workbook = xlsx.read(buffer, { type: "buffer" });
+    const workbook = xlsx.read(buffer.data, { type: "buffer" });
 
     return workbook;
   }

@@ -76,9 +76,6 @@ export const test_hancell_insert_rows = async () => {
 
   const afterData = after["Sheet1"]?.[targetCell];
 
-  console.log("beforeData", beforeData);
-  console.log("afterData", afterData);
-
   TestValidator.equals("beforeData === afterData")(false)(
     beforeData === afterData,
   );
