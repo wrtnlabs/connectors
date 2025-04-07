@@ -39,7 +39,9 @@ export class StableDiffusionBetaService {
         },
       });
 
-      return typia.assert<IStableDiffusionBetaService.IResponse>(imageUrl.uri);
+      return typia.assert<IStableDiffusionBetaService.IResponse>({
+        imgUrl: imageUrl.uri,
+      });
     } catch (error) {
       console.error(JSON.stringify(error));
       throw error;
@@ -76,13 +78,13 @@ export class StableDiffusionBetaService {
     const { width, height } = imageDimensions[image_ratio]!;
     try {
       const response = await axios.post(
-        `${this.props.host}/v1/generation/${this.props.engineId}/text-to-image`,
+        `${this.props.stableDiffusionHost}/v1/generation/${this.props.stableDiffusionEngineId}/text-to-image`,
         {
           text_prompts: prompts,
-          cfg_scale: Number(this.props.cfgScale),
+          cfg_scale: Number(this.props.stableDiffusionCfgScale),
           height: height,
           width: width,
-          steps: Number(this.props.defaultStep),
+          steps: Number(this.props.stableDiffusionDefaultStep),
           samples: 1,
           ...(style_preset && { style_preset: style_preset }),
         },
@@ -90,7 +92,7 @@ export class StableDiffusionBetaService {
           headers: {
             "Content-Type": "application/json",
             Accept: "application/json",
-            Authorization: `Bearer ${this.props.apiKey}`,
+            Authorization: `Bearer ${this.props.stableDiffusionApiKey}`,
           },
         },
       );
