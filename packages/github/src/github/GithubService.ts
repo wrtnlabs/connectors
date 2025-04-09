@@ -30,7 +30,7 @@ export class GithubService {
     const url = `https://api.github.com/users/${username}/orgs?${queryParameters}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.githubRefreshToken}`,
+        Authorization: `Bearer ${this.props.githubAccessToken}`,
       },
     });
 
@@ -56,8 +56,8 @@ export class GithubService {
     const url = `https://api.github.com/user/orgs?${queryParameters}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: this.props.githubRefreshToken
-          ? `Bearer ${this.props.githubRefreshToken}`
+        Authorization: this.props.githubAccessToken
+          ? `Bearer ${this.props.githubAccessToken}`
           : undefined,
       },
     });
@@ -73,7 +73,7 @@ export class GithubService {
     const url = `https://api.github.com/repos/${input.owner}/${input.repo}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.githubRefreshToken}`,
+        Authorization: `Bearer ${this.props.githubAccessToken}`,
       },
     });
     return res.data;
@@ -82,7 +82,7 @@ export class GithubService {
   // async call(input: IGithubService.ICallInput) {
   //   const res = await axios.get(input.url, {
   //     headers: {
-  //       Authorization: `Bearer ${this.props.githubRefreshToken}`,
+  //       Authorization: `Bearer ${this.props.githubAccessToken}`,
   //     },
   //   });
   //   return res.data;
@@ -105,7 +105,7 @@ export class GithubService {
     const url = `https://api.github.com/repos/${owner}/${repo}/commits/${commit_sha}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.githubRefreshToken}`,
+        Authorization: `Bearer ${this.props.githubAccessToken}`,
       },
     });
     return res.data;
@@ -131,7 +131,7 @@ export class GithubService {
     const url = `https://api.github.com/users/${username}/received_events?${queryParameters}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.githubRefreshToken}`,
+        Authorization: `Bearer ${this.props.githubAccessToken}`,
       },
     });
 
@@ -163,7 +163,7 @@ export class GithubService {
     const url = `https://api.github.com/users/${login}/events/orgs/${organization}?${queryParameters}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.githubRefreshToken}`,
+        Authorization: `Bearer ${this.props.githubAccessToken}`,
       },
     });
 
@@ -192,7 +192,7 @@ export class GithubService {
     const url = `https://api.github.com/repos/${owner}/${repo}/pulls/${pull_number}/requested_reviewers`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.githubRefreshToken}`,
+        Authorization: `Bearer ${this.props.githubAccessToken}`,
       },
     });
 
@@ -215,7 +215,7 @@ export class GithubService {
     await axios.delete(url, {
       data: { ...rest },
       headers: {
-        Authorization: `Bearer ${this.props.githubRefreshToken}`,
+        Authorization: `Bearer ${this.props.githubAccessToken}`,
       },
     });
   }
@@ -240,7 +240,7 @@ export class GithubService {
       },
       {
         headers: {
-          Authorization: `Bearer ${this.props.githubRefreshToken}`,
+          Authorization: `Bearer ${this.props.githubAccessToken}`,
         },
       },
     );
@@ -261,7 +261,7 @@ export class GithubService {
     const url = `https://api.github.com/repos/${owner}/${repo}/pulls/${pull_number}/reviews/${review_id}/comments?${queryParameter}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.githubRefreshToken}`,
+        Authorization: `Bearer ${this.props.githubAccessToken}`,
       },
     });
 
@@ -287,7 +287,7 @@ export class GithubService {
     const url = `https://api.github.com/repos/${owner}/${repo}/pulls/${pull_number}/reviews?${queryParameter}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.githubRefreshToken}`,
+        Authorization: `Bearer ${this.props.githubAccessToken}`,
       },
     });
 
@@ -318,7 +318,7 @@ export class GithubService {
         },
         {
           headers: {
-            Authorization: `Bearer ${this.props.githubRefreshToken}`,
+            Authorization: `Bearer ${this.props.githubAccessToken}`,
           },
         },
       );
@@ -349,7 +349,7 @@ export class GithubService {
     const url = `https://api.github.com/repos/${owner}/${repo}/pulls/${pull_number}/files?${queryParameter}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.githubRefreshToken}`,
+        Authorization: `Bearer ${this.props.githubAccessToken}`,
       },
     });
 
@@ -375,7 +375,7 @@ export class GithubService {
     const url = `https://api.github.com/repos/${owner}/${repo}/pulls/${pull_number}/commits?${queryParameter}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.githubRefreshToken}`,
+        Authorization: `Bearer ${this.props.githubAccessToken}`,
       },
     });
 
@@ -411,7 +411,7 @@ export class GithubService {
       const url = `https://api.github.com/repos/${owner}/${repo}/pulls/${pull_number}`;
       const res = await axios.get(url, {
         headers: {
-          Authorization: `Bearer ${this.props.githubRefreshToken}`,
+          Authorization: `Bearer ${this.props.githubAccessToken}`,
           Accept: "application/vnd.github.diff",
         },
       });
@@ -448,7 +448,7 @@ export class GithubService {
     const url = `https://api.github.com/repos/${owner}/${repo}/pulls/${pull_number}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.githubRefreshToken}`,
+        Authorization: `Bearer ${this.props.githubAccessToken}`,
       },
     });
 
@@ -548,7 +548,7 @@ export class GithubService {
       },
       {
         headers: {
-          Authorization: `Bearer ${this.props.githubRefreshToken}`,
+          Authorization: `Bearer ${this.props.githubAccessToken}`,
         },
       },
     );
@@ -659,7 +659,7 @@ export class GithubService {
       },
       {
         headers: {
-          Authorization: `Bearer ${this.props.githubRefreshToken}`,
+          Authorization: `Bearer ${this.props.githubAccessToken}`,
         },
       },
     );
@@ -704,7 +704,7 @@ export class GithubService {
   //   const url = `https://api.github.com/repos/${owner}/${repo}/issues?${queryParameter}`;
   //   const res = await axios.get(url, {
   //     headers: {
-  //       Authorization: `Bearer ${this.props.githubRefreshToken}`,
+  //       Authorization: `Bearer ${this.props.githubAccessToken}`,
   //       Accept: "application/vnd.github+json",
   //     },
   //   });
@@ -733,7 +733,7 @@ export class GithubService {
     const url = `https://api.github.com/orgs/${organization}/issues?${queryParameter}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.githubRefreshToken}`,
+        Authorization: `Bearer ${this.props.githubAccessToken}`,
         Accept: "application/vnd.github+json",
       },
     });
@@ -769,7 +769,7 @@ export class GithubService {
     const url = `https://api.github.com/orgs/${organization}/events?${queryParameters}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.githubRefreshToken}`,
+        Authorization: `Bearer ${this.props.githubAccessToken}`,
       },
     });
 
@@ -797,7 +797,7 @@ export class GithubService {
     const url = `https://api.github.com/repos/${owner}/${repo}/collaborators`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.githubRefreshToken}`,
+        Authorization: `Bearer ${this.props.githubAccessToken}`,
       },
     });
 
@@ -870,7 +870,7 @@ export class GithubService {
       },
       {
         headers: {
-          Authorization: `Bearer ${this.props.githubRefreshToken}`,
+          Authorization: `Bearer ${this.props.githubAccessToken}`,
         },
       },
     );
@@ -900,7 +900,7 @@ export class GithubService {
     await axios.delete(url, {
       data: { ...rest },
       headers: {
-        Authorization: `Bearer ${this.props.githubRefreshToken}`,
+        Authorization: `Bearer ${this.props.githubAccessToken}`,
       },
     });
   }
@@ -995,7 +995,7 @@ export class GithubService {
           ref: branch,
         },
         headers: {
-          Authorization: `Bearer ${this.props.githubRefreshToken}`,
+          Authorization: `Bearer ${this.props.githubAccessToken}`,
           "Content-Type": "application/vnd.github.object+json",
         },
       });
@@ -1049,7 +1049,7 @@ export class GithubService {
       const url = `https://api.github.com/repos/${owner}/${repo}/readme`;
       const res = await axios.get(url, {
         headers: {
-          Authorization: `Bearer ${this.props.githubRefreshToken}`,
+          Authorization: `Bearer ${this.props.githubAccessToken}`,
           "Content-Type": "application/vnd.github.object+json",
         },
       });
@@ -1084,7 +1084,7 @@ export class GithubService {
     const url = `https://api.github.com/repos/${username}/${repo}/events?${queryParameters}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.githubRefreshToken}`,
+        Authorization: `Bearer ${this.props.githubAccessToken}`,
       },
     });
 
@@ -1118,7 +1118,7 @@ export class GithubService {
     const url = `https://api.github.com/networks/${username}/${repo}/events?${queryParameters}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.githubRefreshToken}`,
+        Authorization: `Bearer ${this.props.githubAccessToken}`,
       },
     });
 
@@ -1154,7 +1154,7 @@ export class GithubService {
     const url = `https://api.github.com/users/${username}/events?${queryParameters}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.githubRefreshToken}`,
+        Authorization: `Bearer ${this.props.githubAccessToken}`,
       },
     });
 
@@ -1183,7 +1183,7 @@ export class GithubService {
     const url = `https://api.github.com/events?${queryParameters}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.githubRefreshToken}`,
+        Authorization: `Bearer ${this.props.githubAccessToken}`,
       },
     });
 
@@ -1195,7 +1195,7 @@ export class GithubService {
     const url = `https://api.github.com/user`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.githubRefreshToken}`,
+        Authorization: `Bearer ${this.props.githubAccessToken}`,
         Accept: "application/vnd.github+json",
       },
     });
@@ -1230,7 +1230,7 @@ export class GithubService {
       },
       {
         headers: {
-          Authorization: `Bearer ${this.props.githubRefreshToken}`,
+          Authorization: `Bearer ${this.props.githubAccessToken}`,
         },
       },
     );
@@ -1265,7 +1265,7 @@ export class GithubService {
       },
       {
         headers: {
-          Authorization: `Bearer ${this.props.githubRefreshToken}`,
+          Authorization: `Bearer ${this.props.githubAccessToken}`,
         },
       },
     );
@@ -1297,7 +1297,7 @@ export class GithubService {
     const url = `https://api.github.com/repos/${owner}/${repo}/activity?${queryParameters}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.githubRefreshToken}`,
+        Authorization: `Bearer ${this.props.githubAccessToken}`,
       },
     });
 
@@ -1327,7 +1327,7 @@ export class GithubService {
       },
       {
         headers: {
-          Authorization: `Bearer ${this.props.githubRefreshToken}`,
+          Authorization: `Bearer ${this.props.githubAccessToken}`,
         },
       },
     );
@@ -1375,7 +1375,7 @@ export class GithubService {
         },
         {
           headers: {
-            Authorization: `Bearer ${this.props.githubRefreshToken}`,
+            Authorization: `Bearer ${this.props.githubAccessToken}`,
           },
         },
       );
@@ -1404,7 +1404,7 @@ export class GithubService {
     const url = `https://api.github.com/search/users?${queryParameters}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.githubRefreshToken}`,
+        Authorization: `Bearer ${this.props.githubAccessToken}`,
         Accept: "application/vnd.github+json",
       },
     });
@@ -1431,7 +1431,7 @@ export class GithubService {
     const url = `https://api.github.com/users/${input.username}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.githubRefreshToken}`,
+        Authorization: `Bearer ${this.props.githubAccessToken}`,
         Accept: "application/vnd.github+json",
       },
     });
@@ -1454,7 +1454,7 @@ export class GithubService {
     const url = `https://api.github.com/issues?${queryParameter}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.githubRefreshToken}`,
+        Authorization: `Bearer ${this.props.githubAccessToken}`,
         Accept: "application/vnd.github+json",
       },
     });
@@ -1478,7 +1478,7 @@ export class GithubService {
     const url = `https://api.github.com/repos/${owner}/${repo}/issues/${issue_number}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.githubRefreshToken}`,
+        Authorization: `Bearer ${this.props.githubAccessToken}`,
         Accept: "application/vnd.github+json",
       },
     });
@@ -1506,7 +1506,7 @@ export class GithubService {
     const url = `https://api.github.com/repos/${owner}/${repo}/issues/${pull_number}/comments?${queryParameter}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.githubRefreshToken}`,
+        Authorization: `Bearer ${this.props.githubAccessToken}`,
       },
     });
 
@@ -1531,7 +1531,7 @@ export class GithubService {
     const url = `https://api.github.com/repos/${owner}/${repo}/issues/${issue_number}/comments?${queryParameter}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.githubRefreshToken}`,
+        Authorization: `Bearer ${this.props.githubAccessToken}`,
       },
     });
 
@@ -1571,7 +1571,7 @@ export class GithubService {
         },
         {
           headers: {
-            Authorization: `Bearer ${this.props.githubRefreshToken}`,
+            Authorization: `Bearer ${this.props.githubAccessToken}`,
           },
         },
       );
@@ -1600,7 +1600,7 @@ export class GithubService {
     const url = `https://api.github.com/orgs/${organization}/repos?${queryParameter}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.githubRefreshToken}`,
+        Authorization: `Bearer ${this.props.githubAccessToken}`,
         Accept: "application/vnd.github+json",
       },
     });
@@ -1643,7 +1643,7 @@ export class GithubService {
       },
       {
         headers: {
-          Authorization: `Bearer ${this.props.githubRefreshToken}`,
+          Authorization: `Bearer ${this.props.githubAccessToken}`,
         },
       },
     );
@@ -1670,7 +1670,7 @@ export class GithubService {
     const url = `https://api.github.com/users/${username}/repos?${queryParameter}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.githubRefreshToken}`,
+        Authorization: `Bearer ${this.props.githubAccessToken}`,
         Accept: "application/vnd.github+json",
       },
     });
@@ -1710,7 +1710,7 @@ export class GithubService {
     const url = `https://api.github.com/repos/${owner}/${repo}/branches?${queryParameter}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.githubRefreshToken}`,
+        Authorization: `Bearer ${this.props.githubAccessToken}`,
         Accept: "application/vnd.github+json",
       },
     });
@@ -1752,7 +1752,7 @@ export class GithubService {
       },
       {
         headers: {
-          Authorization: `Bearer ${this.props.githubRefreshToken}`,
+          Authorization: `Bearer ${this.props.githubAccessToken}`,
         },
       },
     );
@@ -1775,7 +1775,7 @@ export class GithubService {
     const url = `https://api.github.com/repos/${owner}/${repo}/commits/${commit_sha}/pulls`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.githubRefreshToken}`,
+        Authorization: `Bearer ${this.props.githubAccessToken}`,
       },
     });
 
@@ -1803,7 +1803,7 @@ export class GithubService {
     const url = `https://api.github.com/repos/${owner}/${repo}/commits/${branch}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.githubRefreshToken}`,
+        Authorization: `Bearer ${this.props.githubAccessToken}`,
         Accept: "application/vnd.github+json",
       },
     });
@@ -1829,7 +1829,7 @@ export class GithubService {
     const url = `https://api.github.com/repos/${owner}/${repo}/commits/${branch}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.githubRefreshToken}`,
+        Authorization: `Bearer ${this.props.githubAccessToken}`,
         Accept: "application/vnd.github.diff",
       },
     });
@@ -1853,7 +1853,7 @@ export class GithubService {
     const url = `https://api.github.com/repos/${owner}/${repo}/commits?${queryParameter}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.githubRefreshToken}`,
+        Authorization: `Bearer ${this.props.githubAccessToken}`,
         Accept: "application/vnd.github.json",
       },
     });
@@ -1879,7 +1879,7 @@ export class GithubService {
     const url = `https://api.github.com/users/${username}/followers?${queryParameter}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.githubRefreshToken}`,
+        Authorization: `Bearer ${this.props.githubAccessToken}`,
         Accept: "application/vnd.github+json",
       },
     });
@@ -1905,7 +1905,7 @@ export class GithubService {
     const url = `https://api.github.com/users/${username}/following?${queryParameter}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.githubRefreshToken}`,
+        Authorization: `Bearer ${this.props.githubAccessToken}`,
         Accept: "application/vnd.github+json",
       },
     });
@@ -1934,7 +1934,7 @@ export class GithubService {
 
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.githubRefreshToken}`,
+        Authorization: `Bearer ${this.props.githubAccessToken}`,
       },
     });
 
@@ -2200,7 +2200,7 @@ export class GithubService {
     const url = `https://api.github.com/repos/${owner}/${repo}/branches/${name}`;
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${this.props.githubRefreshToken}`,
+        Authorization: `Bearer ${this.props.githubAccessToken}`,
         Accept: "application/vnd.github+json",
       },
     });
