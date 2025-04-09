@@ -1,4 +1,4 @@
 packages:
   - "packages/*"
-  - '!packages/api'
-  - '!packages/backend'
+  - "!packages/api"
+  - "!packages/backend"

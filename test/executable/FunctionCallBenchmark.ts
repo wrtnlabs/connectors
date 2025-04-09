@@ -4,46 +4,10 @@ import OpenAI from "openai";
 import path from "path";
 import { AgenticaSelectBenchmark } from "@agentica/benchmark";
 import { IAgenticaSelectBenchmarkScenario } from "@agentica/benchmark/src/structures/IAgenticaSelectBenchmarkScenario";
-import typia from "typia";
 
-// --- Import all your services (make sure paths are correct) ---
-import { GmailService } from "../../packages/gmail";
-import { ZoomService } from "../../packages/zoom";
-import { ArxivSearchService } from "../../packages/arxiv_search";
-import { AwsS3Service } from "../../packages/aws_s3";
-import { CalendlyService } from "../../packages/calendly";
-import { CsvService } from "../../packages/csv";
-import { DallE3Service } from "../../packages/dall_e_3";
-import { DiscordService } from "../../packages/discord";
-import { ExcelService } from "../../packages/excel";
-import { FigmaService } from "../../packages/figma";
-import { GithubService } from "../../packages/github";
-import { GoogleAdsService } from "../../packages/google_ads";
-import { GoogleCalendarService } from "../../packages/google_calendar";
-import { GoogleDocsService } from "../../packages/google_docs";
-import { GoogleFlightService } from "../../packages/google_flight";
-import { GoogleHotelService } from "../../packages/google_hotel";
-import { GoogleImageService } from "../../packages/google_image";
-import { GoogleMapService } from "../../packages/google_map";
-import { GoogleScholarService } from "../../packages/google_scholar";
-import { GoogleSearchService } from "../../packages/google_search";
-import { GoogleSheetService } from "../../packages/google_sheet";
-import { GoogleShoppingService } from "../../packages/google_shopping";
-import { GoogleSlidesService } from "../../packages/google_slides";
-import { GoogleTrendService } from "../../packages/google_trend";
-import { JiraService } from "../../packages/jira";
-import { MarpService } from "../../packages/marp";
-import { NotionService } from "../../packages/notion";
-import { RedditService } from "../../packages/reddit";
-import { SlackService } from "../../packages/slack";
-import { StableDiffusionBetaService } from "../../packages/stable_diffusion_beta";
-import { TypeformService } from "../../packages/typeform";
-import { WebCrawlerService } from "../../packages/web_crawler";
-import { XService } from "../../packages/x";
-import { YoutubeOfficialSearchService } from "../../packages/youtube_official_search";
-import { YoutubeSearchService } from "../../packages/youtube_search";
-import { YoutubeTranscriptService } from "../../packages/youtube_transcript";
-import { ConnectorGlobal } from "../../src/ConnectorGlobal"; // Adjust path if needed
+// --- Assume these are correctly imported ---
+import { ConnectorGlobal } from "../../src/ConnectorGlobal";
+import { allControllerConfigs } from "./ConnectorList"; // Adjust path if needed
 
 // --- Helper Functions (mkdir, rmdir - unchanged) ---
 const mkdir = async (str: string) => {
@@ -57,390 +21,151 @@ const rmdir = async (str: string) => {
   } catch {}
 };
 
-// Define the type for a single controller configuration
-type ControllerConfig = {
-  name: string;
-  protocol: "class";
-  application: any; // Adjust type if possible, but `any` works for flexibility
-  execute: object;
+// --- Scenario Generation Function (Modified) ---
+/**
+ * Generates a multi-step scenario text using the provided Agentica instance
+ * based on the controller's functions.
+ * Also extracts the expected first function call.
+ */
+const generateScenarioText = async (
+  controllerName: string,
+  operations: AgenticaOperation<"chatgpt">[],
+  agentica: Agentica<"chatgpt">, // Accept the Agentica instance
+): Promise<{ scenarioText: string; firstFunctionName: string } | null> => {
+  // Format the list of functions for the prompt (unchanged)
+  const functionListString = operations
+    .map(
+      (op) =>
+        `    *   Function Name: ${op.function.name}\n        Description: ${op.function.description || "No description available."}`,
+    )
+    .join("\n");
+
+  // --- Enhanced Prompt (unchanged) ---
+  const generationPrompt = [
+    "# Role:",
+    "You are an expert in creating **multi-step workflow scenarios** to test the capabilities of an AI agent. Your role is to creatively combine the various functions provided by a given service (controller) and craft a **single cohesive story** that guides the user toward achieving a **meaningful final goal**.",
+    "",
+    "# Goal:",
+    `For the **${controllerName}** service below, create **one integrated user scenario** in **multi-line text** that utilizes **at least three different functions**. This scenario should realistically depict the process of a user interacting with the AI agent to progressively complete a task. The result must be presented as a **single text block**, with each line representing a user request, thought, or instruction.`,
+    "",
+    "# Input Information:",
+    `*   **Service Name:** ${controllerName}`,
+    "*   **List of Available Functions (Name, Description):**",
+    functionListString,
+    "",
+    "# Output Format Requirements:",
+    "*   **One Complete Story:** Must be written as a **single text block** spanning multiple lines.",
+    "*   **Natural Flow:** Each line should logically connect to the previous one, following the user’s journey toward their goal.",
+    "*   **Command/Request Style:** Written in a natural, conversational tone or as instructions, as if the user is speaking to the AI.",
+    "*   **Diverse Function Usage:** The scenario must imply the use of **at least three different functions** from the list provided.",
+    '*   **Shopping Example Style:** Follow a structure and flow similar to the shopping scenario provided below, without individual prefixes like "User Request:", making it feel like one continuous user narrative.',
+    "",
+    "# Output Restrictions:",
+    '*   Do not add prefixes like "User Request:" to each step.',
+    "*   Do not invent content unrelated to the provided list of functions.",
+    "*   Ensure the scenario clearly implies the use of at least three *different* functions.",
+    "",
+    "# Additional Output Requirement:",
+    "After generating the scenario text block, add **exactly one blank line**, followed by a single line formatted precisely as:",
+    "FIRST_FUNCTION_EXPECTED: [Function Name]",
+    "(Replace [Function Name] with the **exact name** of the function from the provided list that the scenario would most logically trigger *first*.)",
+  ].join("\n");
+
+  // Use agent's configured model for logging purposes if needed
+  console.log(
+    `  Requesting scenario generation for ${controllerName} using agent's model (gpt-4o-mini)...`,
+  );
+
+  try {
+    // --- Call agentica.conversate ---
+    const responseHistory = await agentica.conversate(generationPrompt);
+
+    // --- Parse the response history ---
+    if (!Array.isArray(responseHistory) || responseHistory.length === 0) {
+      console.warn(
+        `  Scenario generation for ${controllerName} returned an unexpected response structure (empty or not an array).`,
+      );
+      return null;
+    }
+
+    const assistantResponse = responseHistory
+      .filter(
+        (history) =>
+          history.type === "text" &&
+          history.text &&
+          history.role === "assistant",
+      )
+      .map((history) => history.type === "text" && history.text)
+      .join("\n");
+
+    // --- Extract the generated text content ---
+    const content = assistantResponse.trim();
+
+    // --- Apply existing parsing logic to the extracted content ---
+    const lines = content.split("\n");
+    if (lines.length < 3) {
+      // Needs at least the scenario text, a blank line, and the FIRST_FUNCTION line
+      console.warn(
+        `  Scenario generation for ${controllerName} produced insufficient lines. Content:\n${content}`,
+      );
+      return null;
+    }
+
+    const lastLine = lines[lines.length - 1];
+    const secondLastLine = lines[lines.length - 2]; // Expected blank line
+
+    if (
+      lastLine.startsWith("FIRST_FUNCTION_EXPECTED:") &&
+      secondLastLine === ""
+    ) {
+      const firstFunctionName = lastLine
+        .replace("FIRST_FUNCTION_EXPECTED:", "")
+        .trim();
+
+      // Check if the function name actually exists in the *current agent's* operations
+      if (!operations.some((op) => op.function.name === firstFunctionName)) {
+        console.warn(
+          `  LLM suggested first function "${firstFunctionName}" for ${controllerName}, but it was not found in the available operations for this agent. Content:\n${content}`,
+        );
+        return null; // Function name mismatch
+      }
+
+      const scenarioText = lines.slice(0, -2).join("\n").trim(); // Remove the last two lines
+      if (!scenarioText) {
+        console.warn(
+          `  Scenario generation for ${controllerName} resulted in an empty scenario text after parsing. Content:\n${content}`,
+        );
+        return null;
+      }
+
+      console.log(
+        `  Scenario generated successfully via agent conversation for ${controllerName}. First expected function: ${firstFunctionName}`,
+      );
+      return { scenarioText, firstFunctionName };
+    } else {
+      console.warn(
+        `  Scenario generation output for ${controllerName} did not follow the expected format (missing blank line or FIRST_FUNCTION_EXPECTED line). Content:\n${content}`,
+      );
+      return null;
+    }
+  } catch (error) {
+    console.error(
+      `  Error during scenario generation conversation for ${controllerName}:`,
+      error instanceof Error ? error.message : String(error),
+    );
+    // Log the agent's history if available and an error occurred
+    if (agentica.getHistories().length > 0) {
+      console.error(
+        "  Agent history at time of error:",
+        JSON.stringify(agentica.getHistories(), null, 2),
+      );
+    }
+    return null;
+  }
 };
 
-// --- Main Benchmark Function ---
+// --- Main Benchmark Function (Modified Call to generateScenarioText) ---
 const startBenchMark = async (): Promise<void> => {
-  // --- Static list of all controller configurations ---
-  // (Ensure ConnectorGlobal.env properties are loaded correctly before this point)
-  const allControllerConfigs: ControllerConfig[] = [
-    {
-      name: "Arxiv Connector",
-      protocol: "class",
-      application: typia.llm.application<ArxivSearchService, "chatgpt">(),
-      execute: new ArxivSearchService(),
-    },
-    {
-      name: "Aws s3 Connector",
-      protocol: "class",
-      application: typia.llm.application<AwsS3Service, "chatgpt">(),
-      execute: new AwsS3Service({
-        awsAccessKeyId: ConnectorGlobal.env.AWS_ACCESS_KEY_ID,
-        awsSecretAccessKey: ConnectorGlobal.env.AWS_SECRET_ACCESS_KEY,
-        awsS3Bucket: ConnectorGlobal.env.AWS_S3_BUCKET,
-        awsS3Region: "ap-northeast-2",
-      }),
-    },
-    {
-      name: "Calendly Connector",
-      protocol: "class",
-      application: typia.llm.application<CalendlyService, "chatgpt">(),
-      execute: new CalendlyService({
-        calendlyClientId: ConnectorGlobal.env.CALENDLY_CLIENT_ID,
-        calendlyClientSecret: ConnectorGlobal.env.CALENDLY_CLIENT_SECRET,
-        calendlyRefreshToken: ConnectorGlobal.env.CALENDLY_TEST_SECRET,
-      }),
-    },
-    {
-      name: "CSV Connector",
-      protocol: "class",
-      application: typia.llm.application<CsvService, "chatgpt">(),
-      execute: new CsvService({
-        fileManager: new AwsS3Service({
-          awsAccessKeyId: ConnectorGlobal.env.AWS_ACCESS_KEY_ID,
-          awsSecretAccessKey: ConnectorGlobal.env.AWS_SECRET_ACCESS_KEY,
-          awsS3Bucket: ConnectorGlobal.env.AWS_S3_BUCKET,
-          awsS3Region: "ap-northeast-2",
-        }),
-      }),
-    },
-    {
-      name: "Dalle3 Connector",
-      protocol: "class",
-      application: typia.llm.application<DallE3Service, "chatgpt">(),
-      execute: new DallE3Service({
-        openai: new OpenAI({
-          apiKey: ConnectorGlobal.env.OPENAI_API_KEY,
-        }),
-        fileManager: new AwsS3Service({
-          awsAccessKeyId: ConnectorGlobal.env.AWS_ACCESS_KEY_ID,
-          awsSecretAccessKey: ConnectorGlobal.env.AWS_SECRET_ACCESS_KEY,
-          awsS3Bucket: ConnectorGlobal.env.AWS_S3_BUCKET,
-          awsS3Region: "ap-northeast-2",
-        }),
-      }),
-    },
-    {
-      name: "Discord Connector",
-      protocol: "class",
-      application: typia.llm.application<DiscordService, "chatgpt">(),
-      execute: new DiscordService({
-        discordToken: ConnectorGlobal.env.DISCORD_BOT_TOKEN,
-      }),
-    },
-    {
-      name: "Excel Connector",
-      protocol: "class",
-      application: typia.llm.application<ExcelService, "chatgpt">(),
-      execute: new ExcelService({
-        fileManager: new AwsS3Service({
-          awsAccessKeyId: ConnectorGlobal.env.AWS_ACCESS_KEY_ID,
-          awsSecretAccessKey: ConnectorGlobal.env.AWS_SECRET_ACCESS_KEY,
-          awsS3Bucket: ConnectorGlobal.env.AWS_S3_BUCKET,
-          awsS3Region: "ap-northeast-2",
-        }),
-      }),
-    },
-    {
-      name: "Figma Connector",
-      protocol: "class",
-      application: typia.llm.application<FigmaService, "chatgpt">(),
-      execute: new FigmaService({
-        figmaClientId: ConnectorGlobal.env.FIGMA_CLIENT_ID,
-        figmaClientSecret: ConnectorGlobal.env.FIGMA_CLIENT_SECRET,
-        figmaRefreshToken: ConnectorGlobal.env.FIGMA_TEST_SECRET,
-      }),
-    },
-    {
-      name: "Github Connector",
-      protocol: "class",
-      application: typia.llm.application<GithubService, "chatgpt">(),
-      execute: new GithubService({
-        // Assuming G_GITHUB_TEST_SECRET is the correct refresh token
-        githubRefreshToken: ConnectorGlobal.env.G_GITHUB_TEST_SECRET,
-      }),
-    },
-    {
-      name: "Gmail Connector",
-      protocol: "class",
-      application: typia.llm.application<GmailService, "chatgpt">(),
-      execute: new GmailService({
-        googleClientId: ConnectorGlobal.env.GOOGLE_CLIENT_ID,
-        googleClientSecret: ConnectorGlobal.env.GOOGLE_CLIENT_SECRET,
-        googleRefreshToken: ConnectorGlobal.env.GOOGLE_TEST_SECRET,
-      }),
-    },
-    {
-      name: "Google ads Connector",
-      protocol: "class",
-      application: typia.llm.application<GoogleAdsService, "chatgpt">(),
-      execute: new GoogleAdsService({
-        googleAdsAccountId: ConnectorGlobal.env.GOOGLE_ADS_ACCOUNT_ID,
-        googleAdsParentSecret: ConnectorGlobal.env.GOOGLE_ADS_PARENT_SECRET,
-        googleAdsDeveloperToken: ConnectorGlobal.env.GOOGLE_ADS_DEVELOPER_TOKEN,
-        googleClientId: ConnectorGlobal.env.GOOGLE_CLIENT_ID,
-        googleClientSecret: ConnectorGlobal.env.GOOGLE_CLIENT_SECRET,
-        googleRefreshToken: ConnectorGlobal.env.GOOGLE_TEST_SECRET,
-      }),
-    },
-    {
-      name: "Google Calendar Connector",
-      protocol: "class",
-      application: typia.llm.application<GoogleCalendarService, "chatgpt">(),
-      execute: new GoogleCalendarService({
-        googleClientId: ConnectorGlobal.env.GOOGLE_CLIENT_ID,
-        googleClientSecret: ConnectorGlobal.env.GOOGLE_CLIENT_SECRET,
-        googleRefreshToken: ConnectorGlobal.env.GOOGLE_TEST_SECRET,
-      }),
-    },
-    // Corrected Google Docs entry (removed `void`)
-    {
-      name: "Google Docs Connector",
-      protocol: "class",
-      application: typia.llm.application<GoogleDocsService, "chatgpt">(),
-      execute: new GoogleDocsService({
-        googleClientId: ConnectorGlobal.env.GOOGLE_CLIENT_ID,
-        googleClientSecret: ConnectorGlobal.env.GOOGLE_CLIENT_SECRET,
-        googleRefreshToken: ConnectorGlobal.env.GOOGLE_TEST_SECRET,
-      }),
-    },
-    {
-      name: "Google Flight Connector",
-      protocol: "class",
-      application: typia.llm.application<GoogleFlightService, "chatgpt">(),
-      execute: new GoogleFlightService({
-        serpApiKey: ConnectorGlobal.env.SERP_API_KEY,
-      }),
-    },
-    {
-      name: "Google Hotel Connector",
-      protocol: "class",
-      application: typia.llm.application<GoogleHotelService, "chatgpt">(),
-      execute: new GoogleHotelService({
-        serpApiKey: ConnectorGlobal.env.SERP_API_KEY,
-      }),
-    },
-    {
-      name: "Google Image Connector",
-      protocol: "class",
-      application: typia.llm.application<GoogleImageService, "chatgpt">(),
-      execute: new GoogleImageService({
-        serpApiKey: ConnectorGlobal.env.SERP_API_KEY,
-      }),
-    },
-    {
-      name: "Google Map Connector",
-      protocol: "class",
-      application: typia.llm.application<GoogleMapService, "chatgpt">(),
-      execute: new GoogleMapService({
-        googleApiKey: ConnectorGlobal.env.GOOGLE_API_KEY,
-        serpApiKey: ConnectorGlobal.env.SERP_API_KEY,
-      }),
-    },
-    {
-      name: "Google Scholar Connector",
-      protocol: "class",
-      application: typia.llm.application<GoogleScholarService, "chatgpt">(),
-      execute: new GoogleScholarService({
-        serpApiKey: ConnectorGlobal.env.SERP_API_KEY,
-      }),
-    },
-    {
-      name: "Google Search Connector",
-      protocol: "class",
-      application: typia.llm.application<GoogleSearchService, "chatgpt">(),
-      execute: new GoogleSearchService({
-        serpApiKey: ConnectorGlobal.env.SERP_API_KEY,
-      }),
-    },
-    {
-      name: "Google Sheet Connector",
-      protocol: "class",
-      application: typia.llm.application<GoogleSheetService, "chatgpt">(),
-      execute: new GoogleSheetService({
-        googleClientId: ConnectorGlobal.env.GOOGLE_CLIENT_ID,
-        googleClientSecret: ConnectorGlobal.env.GOOGLE_CLIENT_SECRET,
-        googleRefreshToken: ConnectorGlobal.env.GOOGLE_TEST_SECRET,
-      }),
-    },
-    {
-      name: "Google Shopping Connector",
-      protocol: "class",
-      application: typia.llm.application<GoogleShoppingService, "chatgpt">(),
-      execute: new GoogleShoppingService({
-        serpApiKey: ConnectorGlobal.env.SERP_API_KEY,
-      }),
-    },
-    {
-      name: "Google Slide Connector",
-      protocol: "class",
-      application: typia.llm.application<GoogleSlidesService, "chatgpt">(),
-      execute: new GoogleSlidesService({
-        googleClientId: ConnectorGlobal.env.GOOGLE_CLIENT_ID,
-        googleClientSecret: ConnectorGlobal.env.GOOGLE_CLIENT_SECRET,
-        googleRefreshToken: ConnectorGlobal.env.GOOGLE_TEST_SECRET,
-        fileManager: new AwsS3Service({
-          awsAccessKeyId: ConnectorGlobal.env.AWS_ACCESS_KEY_ID,
-          awsSecretAccessKey: ConnectorGlobal.env.AWS_SECRET_ACCESS_KEY,
-          awsS3Bucket: ConnectorGlobal.env.AWS_S3_BUCKET,
-          awsS3Region: "ap-northeast-2",
-        }),
-      }),
-    },
-    {
-      name: "Google Trend Connector",
-      protocol: "class",
-      application: typia.llm.application<GoogleTrendService, "chatgpt">(),
-      execute: new GoogleTrendService({
-        // Assuming SERP_API_KEY is used for trends as well
-        googleTrendApiKey: ConnectorGlobal.env.SERP_API_KEY,
-      }),
-    },
-    {
-      name: "Jira Connector",
-      protocol: "class",
-      application: typia.llm.application<JiraService, "chatgpt">(),
-      execute: new JiraService({
-        jiraRedirectUri: ConnectorGlobal.env.JIRA_REFRESH_URI,
-        jiraClientId: ConnectorGlobal.env.JIRA_CLIENT_ID,
-        jiraClientSecret: ConnectorGlobal.env.JIRA_CLIENT_SECRET,
-        jiraRefreshToken: ConnectorGlobal.env.JIRA_TEST_SECRET,
-      }),
-    },
-    {
-      name: "Marp Connector",
-      protocol: "class",
-      application: typia.llm.application<MarpService, "chatgpt">(),
-      execute: new MarpService({
-        fileManager: new AwsS3Service({
-          awsAccessKeyId: ConnectorGlobal.env.AWS_ACCESS_KEY_ID,
-          awsSecretAccessKey: ConnectorGlobal.env.AWS_SECRET_ACCESS_KEY,
-          awsS3Bucket: ConnectorGlobal.env.AWS_S3_BUCKET,
-          awsS3Region: "ap-northeast-2",
-        }),
-      }),
-    },
-    {
-      name: "Notion Connector",
-      protocol: "class",
-      application: typia.llm.application<NotionService, "chatgpt">(),
-      execute: new NotionService({
-        notionApiKey: ConnectorGlobal.env.NOTION_TEST_SECRET,
-      }),
-    },
-    {
-      name: "Reddit Connector",
-      protocol: "class",
-      application: typia.llm.application<RedditService, "chatgpt">(),
-      execute: new RedditService({
-        redditClientId: ConnectorGlobal.env.REDDIT_CLIENT_ID,
-        redditClientSecret: ConnectorGlobal.env.REDDIT_CLIENT_SECRET,
-        redditRefreshToken: ConnectorGlobal.env.REDDIT_TEST_SECRET,
-      }),
-    },
-    {
-      name: "Slack Connector",
-      protocol: "class",
-      application: typia.llm.application<SlackService, "chatgpt">(),
-      execute: new SlackService({
-        slackToken: ConnectorGlobal.env.SLACK_TEST_SECRET,
-      }),
-    },
-    {
-      name: "Stable diffusion Connector",
-      protocol: "class",
-      application: typia.llm.application<
-        StableDiffusionBetaService,
-        "chatgpt"
-      >(),
-      execute: new StableDiffusionBetaService({
-        stableDiffusionApiKey: ConnectorGlobal.env.STABILITY_AI_API_KEY,
-        stableDiffusionCfgScale: ConnectorGlobal.env.STABILITY_AI_CFG_SCALE,
-        stableDiffusionDefaultStep:
-          ConnectorGlobal.env.STABILITY_AI_DEFAULT_STEP,
-        stableDiffusionEngineId: ConnectorGlobal.env.STABILITY_AI_ENGINE_ID,
-        stableDiffusionHost: ConnectorGlobal.env.STABILITY_AI_HOST,
-        fileManager: new AwsS3Service({
-          awsAccessKeyId: ConnectorGlobal.env.AWS_ACCESS_KEY_ID,
-          awsSecretAccessKey: ConnectorGlobal.env.AWS_SECRET_ACCESS_KEY,
-          awsS3Bucket: ConnectorGlobal.env.AWS_S3_BUCKET,
-          awsS3Region: "ap-northeast-2",
-        }),
-      }),
-    },
-    {
-      name: "TypeForm Connector",
-      protocol: "class",
-      application: typia.llm.application<TypeformService, "chatgpt">(),
-      execute: new TypeformService({
-        typeformClientId: ConnectorGlobal.env.TYPEFORM_CLIENT_ID,
-        typeformClientSecret: ConnectorGlobal.env.TYPEFORM_CLIENT_SECRET,
-        typeformRefreshToken: ConnectorGlobal.env.TYPEFORM_TEST_SECRET,
-      }),
-    },
-    {
-      name: "Web Crawler Connector",
-      protocol: "class",
-      application: typia.llm.application<WebCrawlerService, "chatgpt">(),
-      execute: new WebCrawlerService({
-        zenrowsApiKey: ConnectorGlobal.env.ZENROWS_API_KEY,
-      }),
-    },
-    {
-      name: "X Connector",
-      protocol: "class",
-      application: typia.llm.application<XService, "chatgpt">(),
-      execute: new XService({
-        xClientId: ConnectorGlobal.env.X_CLIENT_ID,
-        xClientSecret: ConnectorGlobal.env.X_CLIENT_SECRET,
-        xBearerToken: ConnectorGlobal.env.X_TEST_SECRET,
-      }),
-    },
-    {
-      name: "Youtube Official Search Connector",
-      protocol: "class",
-      application: typia.llm.application<
-        YoutubeOfficialSearchService,
-        "chatgpt"
-      >(),
-      execute: new YoutubeOfficialSearchService({
-        youtubeOfficialSearchGoogleApiKey: ConnectorGlobal.env.GOOGLE_API_KEY,
-      }),
-    },
-    {
-      name: "Youtube Search Connector",
-      protocol: "class",
-      application: typia.llm.application<YoutubeSearchService, "chatgpt">(),
-      execute: new YoutubeSearchService({
-        serpApiKey: ConnectorGlobal.env.SERP_API_KEY,
-      }),
-    },
-    {
-      name: "Youtube Transcript Connector",
-      protocol: "class",
-      application: typia.llm.application<YoutubeTranscriptService, "chatgpt">(),
-      execute: new YoutubeTranscriptService({
-        // Assuming SEARCH_API_KEY is correct for transcripts
-        searchApiKey: ConnectorGlobal.env.SEARCH_API_KEY,
-      }),
-    },
-    {
-      name: "Zoom Connector",
-      protocol: "class",
-      application: typia.llm.application<ZoomService, "chatgpt">(),
-      execute: new ZoomService({
-        // Ensure this is the correct way to authenticate Zoom service
-        zoomSecretKey: ConnectorGlobal.env.ZOOM_TEST_AUTHORIZATION_CODE,
-      }),
-    },
-  ];
-
   console.log(
     `Found ${allControllerConfigs.length} controller configurations to benchmark individually.`,
   );
@@ -451,7 +176,7 @@ const startBenchMark = async (): Promise<void> => {
     "..",
     "docs",
     "benchmarks",
-    "call_individual", // Changed directory name
+    "call_individual_generated", // Directory name is fine
   );
 
   // --- Clear overall report directory ---
@@ -467,10 +192,11 @@ const startBenchMark = async (): Promise<void> => {
     const agent = new Agentica({
       model: "chatgpt",
       vendor: {
-        api: new OpenAI({ apiKey: "********" }),
-        model: "gpt-4o-mini", // or your preferred model
+        api: new OpenAI({ apiKey: ConnectorGlobal.env.OPENAI_API_KEY }),
+        model: "gpt-4o-mini", // Use a capable model
       },
-      controllers: [controllerConfig], // Pass only the current controller config
+      controllers: [controllerConfig],
+      // Consider adding options like `stream: false` if streaming causes issues here
     });
     console.log(`Agent created for ${controllerConfig.name}.`);
 
@@ -482,15 +208,13 @@ const startBenchMark = async (): Promise<void> => {
       console.warn(
         `No class operations found for ${controllerConfig.name}. Skipping benchmark.`,
       );
-      continue; // Skip to the next controller
+      allBenchmarkResults[controllerConfig.name] = {
+        error: "No class operations found.",
+      };
+      continue;
     }
 
-    console.log(
-      `Registered class operations for ${controllerConfig.name}:`,
-      availableOperations.map((op) => op.function.name).join(", "),
-    );
-
-    // --- Define find function specific to this agent instance ---
+    // --- Define find function specific to this agent instance (unchanged) ---
     const find = (functionName: string): AgenticaOperation<"chatgpt"> => {
       const found = availableOperations.find(
         (op) => op.function.name === functionName,
@@ -502,111 +226,138 @@ const startBenchMark = async (): Promise<void> => {
           }: ${availableOperations.map((op) => op.function.name).join(", ") || "None"}`,
         );
         throw new Error(
-          `Operation not found via find() for ${controllerConfig.name}: "${functionName}". Check controller's service method names.`,
+          `Operation "${functionName}" not found via find() for ${controllerConfig.name}. Check LLM output or controller's service method names.`,
         );
       }
       return found;
     };
 
-    await agent.conversate("");
-
-    // --- Define Scenarios SPECIFICALLY for THIS controller ---
-    // !! IMPORTANT !!
-    // You MUST define scenarios that ONLY use functions from the CURRENT controller (`controllerConfig.name`).
-    // The example below creates a *generic* scenario using the *first* available function.
-    // Replace this with your actual, meaningful scenarios for each controller.
-
+    // --- Generate Scenario using Agentica ---
     let scenarios: IAgenticaSelectBenchmarkScenario<"chatgpt">[] = [];
+    if (availableOperations.length < 3) {
+      console.warn(
+        `Skipping scenario generation for ${controllerConfig.name}: Requires at least 3 functions, found ${availableOperations.length}.`,
+      );
+      allBenchmarkResults[controllerConfig.name] = {
+        error: `Skipped: Requires >= 3 functions, found ${availableOperations.length}.`,
+      };
+      continue;
+    }
+
     try {
-      // Example: Create a basic scenario using the first function found
-      const firstOp = availableOperations[0];
-      if (firstOp) {
+      // --- UPDATED CALL: Pass the agent instance ---
+      const generationResult = await generateScenarioText(
+        controllerConfig.name,
+        availableOperations,
+        agent, // Pass the agent instance here
+      );
+
+      if (generationResult) {
+        const { scenarioText, firstFunctionName } = generationResult;
+        const expectedOperation = find(firstFunctionName); // Find the operation specified by the LLM
+
         scenarios.push({
-          name: `${controllerConfig.name} - Basic Execution`,
-          text: `Please execute the ${firstOp.function.name} function from the ${controllerConfig.name}.`,
+          name: `${controllerConfig.name} - Generated Multi-Step Scenario`,
+          text: scenarioText, // Use the LLM-generated text
           expected: {
             type: "standalone",
-            operation: find(firstOp.function.name), // Use the find function defined above
+            operation: expectedOperation, // Use the operation identified by the LLM
           },
         });
-      }
-
-      if (scenarios.length === 0) {
+        console.log(`  Using generated scenario for ${controllerConfig.name}.`);
+      } else {
         console.warn(
-          `No specific scenarios defined or generated for ${controllerConfig.name}. Skipping benchmark.`,
+          `  Failed to generate a valid scenario via agent conversation for ${controllerConfig.name}. Skipping benchmark.`,
         );
-        continue;
+        allBenchmarkResults[controllerConfig.name] = {
+          error:
+            "Scenario generation via agent conversation failed or produced invalid output.",
+        };
+        continue; // Skip if scenario couldn't be generated
       }
-
-      console.log(
-        `Using ${scenarios.length} scenarios for ${controllerConfig.name}.`,
-      );
     } catch (error) {
+      // Catch errors from find() or other preparation steps
       console.error(
-        `Error preparing scenarios or finding operations for ${controllerConfig.name}:`,
+        `  Error during scenario preparation/finding operation for ${controllerConfig.name}:`,
         error,
       );
+      allBenchmarkResults[controllerConfig.name] = {
+        error: `Scenario preparation failed: ${error instanceof Error ? error.message : String(error)}`,
+      };
       continue; // Skip to next controller
     }
 
-    // --- Benchmark Execution ---
-    try {
-      const benchmark: AgenticaSelectBenchmark<"chatgpt"> =
-        new AgenticaSelectBenchmark({
-          agent: agent,
-          config: {
-            repeat: 2, // Reduced repeat for faster individual tests initially
-            simultaneous: 1, // Reduced concurrency for potentially clearer results/debugging
-          },
-          scenarios: scenarios, // Use the scenarios specific to this controller
-        });
+    // --- Benchmark Execution (unchanged) ---
+    if (scenarios.length > 0) {
+      try {
+        // Make sure the agent's history is clear before the actual benchmark run
+        // agent.clearHistory(); // Optional: uncomment if leftover generation history might interfere
 
-      console.log(`Executing benchmark for ${controllerConfig.name}...`);
-      await benchmark.execute();
-      console.log(`Benchmark execution finished for ${controllerConfig.name}.`);
+        const benchmark: AgenticaSelectBenchmark<"chatgpt"> =
+          new AgenticaSelectBenchmark({
+            agent: agent,
+            config: {
+              repeat: 2,
+              simultaneous: 1,
+            },
+            scenarios: scenarios,
+          });
 
-      // --- Store Report ---
-      allBenchmarkResults[controllerConfig.name] = benchmark.report();
-    } catch (error) {
-      console.error(
-        `Benchmark execution failed for ${controllerConfig.name}:`,
-        error,
+        console.log(`  Executing benchmark for ${controllerConfig.name}...`);
+        await benchmark.execute();
+        console.log(
+          `  Benchmark execution finished for ${controllerConfig.name}.`,
+        );
+
+        // --- Store Report ---
+        allBenchmarkResults[controllerConfig.name] = benchmark.report();
+      } catch (error) {
+        console.error(
+          `  Benchmark execution failed for ${controllerConfig.name}:`,
+          error,
+        );
+        allBenchmarkResults[controllerConfig.name] = {
+          error: `Benchmark failed: ${error instanceof Error ? error.message : String(error)}`,
+        };
+      }
+    } else {
+      console.warn(
+        `  No scenarios were available to run the benchmark for ${controllerConfig.name}.`,
       );
-      // Optionally store an error marker instead of results
-      allBenchmarkResults[controllerConfig.name] = {
-        error: `Benchmark failed: ${error instanceof Error ? error.message : String(error)}`,
-      };
+      if (!allBenchmarkResults[controllerConfig.name]) {
+        allBenchmarkResults[controllerConfig.name] = {
+          error: "No scenarios available for benchmark.",
+        };
+      }
     }
   } // End of loop through controllers
 
-  // --- Generate All Reports ---
+  // --- Generate All Reports (unchanged) ---
   console.log("\n--- Generating Reports ---");
   for (const [controllerName, reportDocs] of Object.entries(
     allBenchmarkResults,
   )) {
     const controllerReportDir = path.join(
       baseReportDir,
-      controllerName.replace(/[^a-zA-Z0-9_-]/g, "_"), // Sanitize name for directory
+      controllerName.replace(/[^a-zA-Z0-9_-]/g, "_"), // Sanitize name
     );
     console.log(`Generating report files in: ${controllerReportDir}`);
-    await mkdir(controllerReportDir); // Create specific directory for this controller
+    await mkdir(controllerReportDir);
 
     if (reportDocs.error) {
-      // Handle cases where the benchmark failed
-      const errorFilePath = path.join(controllerReportDir, "ERROR.md");
+      const errorFilePath = path.join(
+        controllerReportDir,
+        "BENCHMARK_ERROR.md",
+      );
       await fs.promises.writeFile(
         errorFilePath,
-        `# Benchmark Error for ${controllerName}\n\n${reportDocs.error}`,
+        `# Benchmark Error/Skip for ${controllerName}\n\n${reportDocs.error}`,
         "utf8",
       );
-      console.warn(
-        `Wrote error file for ${controllerName} due to benchmark failure.`,
-      );
+      console.warn(`Wrote error/skip file for ${controllerName}.`);
     } else {
-      // Write normal report files
       for (const [key, value] of Object.entries(reportDocs)) {
         const filePath = path.join(controllerReportDir, key);
-        // Ensure subdirectory for the file itself exists (though unlikely needed if key is just filename)
         await mkdir(path.dirname(filePath));
         await fs.promises.writeFile(filePath, value, "utf8");
       }

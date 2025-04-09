@@ -98,6 +98,8 @@
     "write-file-webpack-plugin": "^4.5.1"
   },
   "dependencies": {
+    "@agentica/benchmark": "^0.16.3",
+    "@agentica/core": "^0.16.3",
     "@aws-sdk/client-s3": "^3.658.1",
     "@aws-sdk/s3-request-presigner": "^3.658.1",
     "@kakasoo/sortable": "^1.0.4",
@@ -113,7 +115,7 @@
     "@nestjs/testing": "^11.0.4",
     "@notionhq/client": "^2.2.16",
     "@prisma/client": "^5.21.1",
-    "@samchon/openapi": "^2.3.3",
+    "@samchon/openapi": "^4.0.0",
     "@slack/web-api": "^7.6.0",
     "@tryfabric/mack": "^1.2.1",
     "@tryfabric/martian": "^1.2.4",
@@ -152,7 +154,7 @@
     "stream-buffers": "^3.0.2",
     "tstl": "^3.0.0",
     "twitter-api-v2": "^1.17.2",
-    "typia": "^8.0.1",
+    "typia": "^9.0.1",
     "uuid": "^10.0.0",
     "xlsx": "^0.18.5",
     "xml2js": "^0.6.2",

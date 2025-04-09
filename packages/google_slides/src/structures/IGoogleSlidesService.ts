@@ -1,5 +1,6 @@
 import { tags } from "typia";
 import {
+  FileManager,
   MyPartial,
   MyPick,
   NTpule,
@@ -20,7 +21,7 @@ export const ENV_LIST = [
 export namespace IGoogleSlidesService {
   export type IProps = {
     [key in SnakeToCamel<(typeof ENV_LIST)[number]>]: string;
-  };
+  } & { fileManager: FileManager };
 
   export type ISimplePresentationIdOutput = MyPick<
     IPresentation,

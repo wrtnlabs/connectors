@@ -1,5 +1,5 @@
 import { tags } from "typia";
-import { SnakeToCamel } from "@wrtnlabs/connector-shared";
+import { FileManager, SnakeToCamel } from "@wrtnlabs/connector-shared";
 
 export const ENV_LIST = [
   "STABLE_DIFFUSION_ENGINE_ID",
@@ -12,6 +12,8 @@ export const ENV_LIST = [
 export namespace IStableDiffusionBetaService {
   export type IProps = {
     [key in SnakeToCamel<(typeof ENV_LIST)[number]>]: string;
+  } & {
+    fileManager: FileManager;
   };
 
   /**
