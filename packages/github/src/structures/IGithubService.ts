@@ -6,7 +6,7 @@ import {
   StrictOmit,
 } from "@wrtnlabs/connector-shared";
 
-export const ENV_LIST = ["GITHUB_REFRESH_TOKEN"] as const;
+export const ENV_LIST = ["GITHUB_ACCESS_TOKEN"] as const;
 
 export namespace IGithubService {
   export type IProps = {

@@ -60,7 +60,7 @@
   "dependencies": {
     "@nestia/e2e": "^0.7.0",
     "marked": "^14.1.2",
-    "typia": "^8.0.1",
+    "typia": "^9.1.0",
     "xml2js": "^0.6.2"
   },
   "homepage": "https://wrtnlabs.io/agentica",

@@ -63,7 +63,7 @@
     "googleapis": "^144.0.0",
     "mime-types": "^2.1.35",
     "stream": "^0.0.3",
-    "typia": "^8.0.1",
+    "typia": "^9.1.0",
     "@wrtnlabs/connector-shared": "workspace:^"
   },
   "homepage": "https://wrtnlabs.io/agentica",

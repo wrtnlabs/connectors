@@ -58,7 +58,7 @@
   "dependencies": {
     "@wrtnlabs/connector-shared": "workspace:^",
     "axios": "^1.8.1",
-    "typia": "^8.0.1"
+    "typia": "^9.1.0"
   },
   "homepage": "https://wrtnlabs.io/agentica",
   "repository": {

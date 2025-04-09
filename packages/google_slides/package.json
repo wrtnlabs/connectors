@@ -65,7 +65,7 @@
     "axios": "^1.7.9",
     "googleapis": "^144.0.0",
     "sharp": "^0.33.5",
-    "typia": "^8.0.1",
+    "typia": "^9.1.0",
     "uuid": "^10.0.0"
   },
   "homepage": "https://wrtnlabs.io/agentica",

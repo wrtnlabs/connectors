@@ -59,7 +59,7 @@
     "@figma/rest-api-spec": "^0.18.0",
     "@wrtnlabs/connector-shared": "workspace:^",
     "axios": "^1.7.9",
-    "typia": "^8.0.1"
+    "typia": "^9.1.0"
   },
   "homepage": "https://wrtnlabs.io/agentica",
   "repository": {
