@@ -9,39 +9,6 @@ export type LookUp<U extends { type: string }, T> = U extends { type: T }
 export namespace IJiraService {
   export interface IProps {
     /**
-     * Jira Client ID.
-     */
-    clientId: string;
-
-    /**
-     * Jira Client Secret.
-     */
-    clientSecret: string;
-
-    /**
-     * Jira Redirect URI.
-     */
-    redirectUri: string;
-
-    /**
-     * Jira Refresh Token.
-     */
-    secret: string;
-  }
-
-  /**
-   * To call the API in Jira, you must have API Token,
-   * the domain address that will be the user's Jira workspace,
-   * and the user's email address that the user is currently using in Jira.
-   * This object contains this information.
-   * If the user did not provide these values at the time of the connector call,
-   * you should ask the user to give them.
-   * There is no point in substituting any value here.
-   *
-   * @title BasicAuthorization
-   */
-  export interface BasicAuthorization {
-    /**
      * Indicates the email address that the user is using in the Jira workspace.
      * It must be an email address that Jira is using, not any email address of the user.
      * This email is used for Basic Authentication with API Token.
@@ -62,7 +29,7 @@ export namespace IJiraService {
     token: string;
 
     /**
-     * Address in the form of 'https://*.atlassian.net '.
+     * Address in the form of 'https://*.atlassian.net'.
      * It always starts with https:// and the string in the middle can vary from team to team.
      * Therefore, you must receive this address directly from the user.
      * All authentication is available only when you know both the user's email and API token for each workspace URL address.
@@ -159,15 +126,9 @@ export namespace IJiraService {
     })[];
   }
 
-  export interface IGetCommentInput
-    extends StrictOmit<
-      IJiraService.__IGetCommentInput,
-      "domain" | "email" | "token"
-    > {}
+  export interface IGetCommentInput extends IJiraService.__IGetCommentInput {}
 
-  export interface __IGetCommentInput
-    extends BasicAuthorization,
-      ICommonPaginationInput {
+  export interface __IGetCommentInput extends ICommonPaginationInput {
     /**
      * This connector doesn't matter the key or ID of the issue.
      * If you hand over one of them, you can use it to look up.
@@ -178,12 +139,9 @@ export namespace IJiraService {
   }
 
   export interface IDeleteCommentInput
-    extends StrictOmit<
-      IJiraService.__IDeleteCommentInput,
-      "domain" | "email" | "token"
-    > {}
+    extends IJiraService.__IDeleteCommentInput {}
 
-  export interface __IDeleteCommentInput extends BasicAuthorization {
+  export interface __IDeleteCommentInput {
     /**
      * This connector doesn't matter the key or ID of the issue.
      * If you hand over one of them, you can use it to look up.
@@ -206,10 +164,7 @@ export namespace IJiraService {
   }
 
   export interface ICreateCommentByMarkdownInput
-    extends StrictOmit<
-      ICreateCommentInput,
-      "body" | "domain" | "email" | "token"
-    > {
+    extends StrictOmit<ICreateCommentInput, "body"> {
     /**
      * @title body of comment
      */
@@ -244,7 +199,7 @@ export namespace IJiraService {
     };
   }
 
-  export interface ICreateCommentInput extends BasicAuthorization {
+  export interface ICreateCommentInput {
     /**
      * This connector doesn't matter the key or ID of the issue.
      * If you hand over one of them, you can use it to look up.
@@ -295,12 +250,9 @@ export namespace IJiraService {
   }
 
   export interface IUpdateStatusInput
-    extends StrictOmit<
-      IJiraService.__IUpdateStatusInput,
-      "domain" | "email" | "token"
-    > {}
+    extends IJiraService.__IUpdateStatusInput {}
 
-  export interface __IUpdateStatusInput extends BasicAuthorization {
+  export interface __IUpdateStatusInput {
     /**
      * This connector doesn't matter the key or ID of the issue.
      * If you hand over one of them, you can use it to look up.
@@ -316,11 +268,8 @@ export namespace IJiraService {
   }
 
   export interface IGetTransitionInput
-    extends StrictOmit<
-      IJiraService.__IGetTransitionInput,
-      "domain" | "email" | "token"
-    > {}
-  export interface __IGetTransitionInput extends BasicAuthorization {
+    extends IJiraService.__IGetTransitionInput {}
+  export interface __IGetTransitionInput {
     /**
      * This connector doesn't matter the key or ID of the issue.
      * If you hand over one of them, you can use it to look up.
@@ -330,21 +279,13 @@ export namespace IJiraService {
     issueIdOrKey: Issue["id"];
   }
 
-  export interface IUnAssignInput
-    extends StrictOmit<
-      IJiraService.__IUnAssignInput,
-      "domain" | "email" | "token"
-    > {}
+  export interface IUnAssignInput extends IJiraService.__IUnAssignInput {}
 
   export type __IUnAssignInput = StrictOmit<__IAssignInput, "asigneeId">;
 
-  export interface IAssignInput
-    extends StrictOmit<
-      IJiraService.__IAssignInput,
-      "domain" | "email" | "token"
-    > {}
+  export interface IAssignInput extends IJiraService.__IAssignInput {}
 
-  export interface __IAssignInput extends BasicAuthorization {
+  export interface __IAssignInput {
     /**
      * @title ID of issue
      */
@@ -360,10 +301,7 @@ export namespace IJiraService {
   }
 
   export interface IUpdateCommentByMarkdownInput
-    extends StrictOmit<
-      IUpdateCommentInput,
-      "body" | "domain" | "email" | "token"
-    > {
+    extends StrictOmit<IUpdateCommentInput, "body"> {
     /**
      * @title body of comment
      */
@@ -381,10 +319,7 @@ export namespace IJiraService {
   }
 
   export interface IUpdateCommentInput
-    extends BasicAuthorization,
-      MyPartial<
-        StrictOmit<ICreateCommentInput, keyof BasicAuthorization | "body">
-      > {
+    extends MyPartial<StrictOmit<ICreateCommentInput, "body">> {
     /**
      * This connector doesn't matter the key or ID of the issue.
      * If you hand over one of them, you can use it to look up.
@@ -404,20 +339,13 @@ export namespace IJiraService {
     body: Comment["body"];
   }
 
-  export interface IUpdateIssueInput
-    extends StrictOmit<
-      IJiraService.__IUpdateIssueInput,
-      "domain" | "email" | "token"
-    > {}
+  export interface IUpdateIssueInput extends IJiraService.__IUpdateIssueInput {}
 
   /**
    * @title Issue update Conditions
    */
   export interface __IUpdateIssueInput
-    extends BasicAuthorization,
-      MyPartial<
-        StrictOmit<ICreateIssueInput, keyof BasicAuthorization | "fields">
-      > {
+    extends MyPartial<StrictOmit<ICreateIssueInput, "fields">> {
     /**
      * @title fields to update
      */
@@ -720,15 +648,12 @@ export namespace IJiraService {
     };
   }
 
-  export type ICreateIssueInputWithBasicAuth = StrictOmit<
-    IJiraService.ICreateIssueInput,
-    "domain" | "email" | "token"
-  >;
+  export type ICreateIssueInputWithBasicAuth = IJiraService.ICreateIssueInput;
 
   /**
    * @title Issue Creation Conditions
    */
-  export interface ICreateIssueInput extends BasicAuthorization {
+  export interface ICreateIssueInput {
     /**
      * Indicates the fields that you need to fill in when you want to create an issue.
      *
@@ -880,24 +805,16 @@ export namespace IJiraService {
   }
 
   export interface IGetIssueLabelInput
-    extends StrictOmit<
-      IJiraService.__IGetIssueLabelInput,
-      "domain" | "email" | "token"
-    > {}
+    extends IJiraService.__IGetIssueLabelInput {}
 
-  export interface __IGetIssueLabelInput
-    extends BasicAuthorization,
-      ICommonPaginationInput {}
+  export interface __IGetIssueLabelInput extends ICommonPaginationInput {}
 
   export type IGetIssuePriorityOutput = MyPick<Priority, "id" | "name">[];
 
   export interface IGetIssuePriorityInput
-    extends StrictOmit<
-      IJiraService.__IGetIssuePriorityInput,
-      "domain" | "email" | "token"
-    > {}
+    extends IJiraService.__IGetIssuePriorityInput {}
 
-  export type __IGetIssuePriorityInput = BasicAuthorization;
+  export interface __IGetIssuePriorityInput {}
 
   export interface IGetIssueStatusOutput {
     /**
@@ -912,12 +829,9 @@ export namespace IJiraService {
   }
 
   export interface IGetIssueStatusInput
-    extends StrictOmit<
-      IJiraService.__IGetIssueStatusInput,
-      "domain" | "email" | "token"
-    > {}
+    extends IJiraService.__IGetIssueStatusInput {}
 
-  export interface __IGetIssueStatusInput extends BasicAuthorization {
+  export interface __IGetIssueStatusInput {
     /**
      * If the status does not have the project ID,
      * it means this status is beyond the scope of the project and can be selected by the entire team.
@@ -1820,12 +1734,9 @@ export namespace IJiraService {
     | TextContent;
 
   export interface IGetIssueDetailInput
-    extends StrictOmit<
-      IJiraService.__IGetIssueDetailInput,
-      "domain" | "email" | "token"
-    > {}
+    extends IJiraService.__IGetIssueDetailInput {}
 
-  export interface __IGetIssueDetailInput extends BasicAuthorization {
+  export interface __IGetIssueDetailInput {
     /**
      * This connector doesn't matter the key or ID of the issue.
      * If you hand over one of them, you can use it to look up.
@@ -1836,14 +1747,10 @@ export namespace IJiraService {
   }
 
   export interface IGetIssueInputByBasicAuth
-    extends StrictOmit<
-      IJiraService.__IGetIssueInputByBasicAuth,
-      "domain" | "email" | "token"
-    > {}
+    extends IJiraService.__IGetIssueInputByBasicAuth {}
 
   export interface __IGetIssueInputByBasicAuth
-    extends BasicAuthorization,
-      ICommonPaginationInput,
+    extends ICommonPaginationInput,
       IGetIssueCommonRequestInput {}
 
   export interface IGetIssueInputBySecretKey
@@ -1856,14 +1763,9 @@ export namespace IJiraService {
   >[];
 
   export interface IGetIssueAssignableInput
-    extends StrictOmit<
-      IJiraService.__IGetIssueAssignableInput,
-      "domain" | "email" | "token"
-    > {}
+    extends IJiraService.__IGetIssueAssignableInput {}
 
-  export interface __IGetIssueAssignableInput
-    extends ICommonPaginationInput,
-      BasicAuthorization {
+  export interface __IGetIssueAssignableInput extends ICommonPaginationInput {
     /**
      * @title key of project
      *
@@ -1889,27 +1791,12 @@ export namespace IJiraService {
     "id" | "name" | "statusCategory" | "description" | "untranslatedName"
   >[];
 
-  export type IGetStatusInput = BasicAuthorization;
-
   export type IGetStatusCategoryOutput = StatusCategory[];
 
-  export interface IGetStatusCategoryInput
-    extends StrictOmit<
-      IJiraService.__IGetStatusCategoryInput,
-      "domain" | "email" | "token"
-    > {}
-
-  export type __IGetStatusCategoryInput = BasicAuthorization;
-
   export interface IGetProjectAssignableInput
-    extends StrictOmit<
-      IJiraService.__IGetProjectAssignableInput,
-      "domain" | "email" | "token"
-    > {}
+    extends IJiraService.__IGetProjectAssignableInput {}
 
-  export interface __IGetProjectAssignableInput
-    extends ICommonPaginationInput,
-      BasicAuthorization {
+  export interface __IGetProjectAssignableInput extends ICommonPaginationInput {
     /**
      * @title key of project
      *
@@ -1940,12 +1827,9 @@ export namespace IJiraService {
   }
 
   export interface IGetIssueTypeInput
-    extends StrictOmit<
-      IJiraService.__IGetIssueTypeInput,
-      "domain" | "email" | "token"
-    > {}
+    extends IJiraService.__IGetIssueTypeInput {}
 
-  export interface __IGetIssueTypeInput extends BasicAuthorization {
+  export interface __IGetIssueTypeInput {
     /**
      * @title id of project
      */
@@ -1953,14 +1837,10 @@ export namespace IJiraService {
   }
 
   export interface IGetProjectInputByBasicAuth
-    extends StrictOmit<
-      IJiraService.__IGetProjectInputByBasicAuth,
-      "domain" | "email" | "token"
-    > {}
+    extends IJiraService.__IGetProjectInputByBasicAuth {}
 
   export interface __IGetProjectInputByBasicAuth
-    extends BasicAuthorization,
-      ICommonPaginationInput {
+    extends ICommonPaginationInput {
     /**
      * Order the results by a field.
      *

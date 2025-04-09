@@ -1,7 +1,7 @@
 import { lexer, MarkedToken, Token } from "marked";
 import typia from "typia";
-import { ListItemNode_1, ListNode } from "../structures/ListNode";
 import { IJiraService } from "../structures/IJiraService";
+import { ListItemNode_1, ListNode } from "../structures/ListNode";
 
 type JiraContentNode =
   | IJiraService.TopLevelBlockNode
