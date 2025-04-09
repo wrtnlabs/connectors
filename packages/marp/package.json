@@ -61,7 +61,7 @@
     "crypto": "^1.0.1",
     "fs": "0.0.1-security",
     "path": "^0.12.7",
-    "typia": "^8.0.1"
+    "typia": "^9.1.0"
   },
   "homepage": "https://wrtnlabs.io/agentica",
   "repository": {

@@ -60,7 +60,7 @@
     "googleapis": "^144.0.0",
     "he": "^1.2.0",
     "marked": "^14.1.2",
-    "typia": "^8.0.1"
+    "typia": "^9.1.0"
   },
   "homepage": "https://wrtnlabs.io/agentica",
   "repository": {
