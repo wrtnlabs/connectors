@@ -46,16 +46,11 @@ async function main() {
     const { ENV_LIST = [] }: { ENV_LIST: string[] } = await import(
       `../packages/${directory}/src/index`
     );
-    console.log(directory);
-    console.log(ENV_LIST);
+
     return ENV_LIST;
   };
 
-  console.log("Get Env List");
-
   await Promise.all(packages.map(getEnvList));
-
-  console.log("ENV Fin");
 
   const connectors = await Promise.all(packages.map(extractPackageInfo));
 
