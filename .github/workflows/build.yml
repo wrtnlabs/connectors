@@ -1,43 +1,39 @@
-name: Selective Build and Test
+name: Selective Build and Test in Package Dirs
 
 on:
   push:
-    branches: [main] # 필요에 따라 브랜치 조정
+    branches: [ main ]
     paths:
       - "packages/**"
       - "package.json"
       - "pnpm-lock.yaml"
-      - "pnpm-workspace.yaml" # 워크스페이스 설정 파일도 포함
-
+      - "pnpm-workspace.yaml"
   pull_request:
     paths:
       - "packages/**"
       - "package.json"
       - "pnpm-lock.yaml"
       - "pnpm-workspace.yaml"
-      - ".github/workflows/build.yml" # 워크플로우 파일 자신
-      # PR에서는 워크플로우 파일 변경 시 실행 안 함 (보안상 권장)
+      - ".github/workflows/build.yml.yml"
 
 jobs:
-  build-test-changed:
+  build-test-changed-in-dirs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          # pnpm filter가 변경사항을 비교하기 위해 전체 Git 히스토리가 필요할 수 있음
-          # 또는 최소한 비교 대상 브랜치(base ref)까지의 히스토리가 필요
-          fetch-depth: 0
+          fetch-depth: 0 # 변경사항 비교 위해 전체 Git 히스토리 필요
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20.x # Node.js 버전 지정
+          node-version: 20.x
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 10 # pnpm 버전 지정
+          version: 10
 
       # pnpm 캐시 설정 (이전과 동일)
       - name: Get pnpm store directory
@@ -53,47 +49,38 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
-      # 비교 대상 브랜치/커밋 결정
-      # PR의 경우 대상 브랜치(base ref), push의 경우 기본 브랜치(예: main) 또는 이전 커밋
       - name: Determine Base Ref
         id: vars
         shell: bash
         run: |
           if [[ "${{ github.event_name }}" == "pull_request" ]]; then
-            # PR의 경우, 비교 대상은 PR이 merge될 브랜치(base ref)
             echo "base_ref=origin/${{ github.base_ref }}" >> $GITHUB_OUTPUT
           else
-            # Push의 경우, main 브랜치와 비교 (또는 필요시 HEAD~1 등 다른 기준 사용)
-            # git rev-parse HEAD~1 를 사용하면 직전 커밋과 비교 가능
-            echo "base_ref=origin/main" >> $GITHUB_OUTPUT # 기본 브랜치를 main으로 가정
+            # Push의 경우, main 브랜치와 비교 (필요시 수정)
+            echo "base_ref=origin/main" >> $GITHUB_OUTPUT
           fi
           echo "Calculated base ref: ${{ steps.vars.outputs.base_ref }}"
 
-      # # (선택사항) 비교 대상 base ref를 로컬에 확실히 가져오기
-      # - name: Fetch Base Ref
-      #   run: git fetch --depth=1 origin ${{ github.base_ref }}:${{ steps.vars.outputs.base_ref }}
-      #   if: github.event_name == 'pull_request' # PR일 때만 base ref를 명시적으로 가져옴
-
       - name: Install Root Dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --frozen-lockfile # 루트 의존성 및 워크스페이스 링크 설치
 
-      # --filter 옵션을 사용하여 변경된 패키지 + 의존성 있는 패키지만 빌드
-      # "...[<ref>]" 구문: ref 이후 변경된 패키지 + 해당 패키지에 의존하는 모든 패키지 선택
-      # --filter '!./packages/api' --filter '!./packages/backend' 와 같이 제외 필터 추가 가능
-      - name: Build Changed Packages & Dependents
+      # 변경된 패키지 + 의존성 있는 패키지 내부에서 'build' 스크립트 실행
+      # -r 옵션: 필터링된 각 패키지에서 명령 실행
+      # run build: 각 패키지의 package.json에 있는 'build' 스크립트 실행
+      # --if-present: 해당 스크립트가 없을 경우 에러 없이 건너뜀
+      - name: Build Changed Packages & Dependents (in their dirs)
         run: |
-          echo "Running build for packages changed since ${{ steps.vars.outputs.base_ref }}"
-          # '--' 뒤에 나오는 것은 pnpm run 명령의 인수가 아니라, pnpm 자체의 옵션으로 해석되도록 함 (필요시)
-          # 명시적으로 api, backend 제외: --filter=!./packages/api --filter=!./packages/backend
-          pnpm run build --filter "...[${{ steps.vars.outputs.base_ref }}]" \
-                         --filter=!./packages/api \
-                         --filter=!./packages/backend
+          echo "Running build script within packages changed since ${{ steps.vars.outputs.base_ref }}"
+          pnpm -r --filter "...[${{ steps.vars.outputs.base_ref }}]" \
+                  --filter=!./packages/api \
+                  --filter=!./packages/backend \
+                  run --if-present build
 
-      # 변경된 패키지 + 의존성 있는 패키지만 테스트
-      - name: Test Changed Packages & Dependents
+      # 변경된 패키지 + 의존성 있는 패키지 내부에서 'test' 스크립트 실행
+      - name: Test Changed Packages & Dependents (in their dirs)
         run: |
-          echo "Running tests for packages changed since ${{ steps.vars.outputs.base_ref }}"
-          # 명시적으로 api, backend 제외
-          pnpm run test --filter "...[${{ steps.vars.outputs.base_ref }}]" \
-                        --filter=!./packages/api \
-                        --filter=!./packages/backend
+          echo "Running test script within packages changed since ${{ steps.vars.outputs.base_ref }}"
+          pnpm -r --filter "...[${{ steps.vars.outputs.base_ref }}]" \
+                  --filter=!./packages/api \
+                  --filter=!./packages/backend \
+                  run --if-present test
