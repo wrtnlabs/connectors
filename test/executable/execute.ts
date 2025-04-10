@@ -14,6 +14,8 @@ interface ConnectorEnvMapping {
   };
 }
 
+const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
+
 function getAvailableConnectors(
   packagesPath: string,
   ignoreList: string[] = [],
@@ -43,14 +45,11 @@ async function automateAgenticaStart(
   connectorIndex: number,
 ): Promise<void> {
   return new Promise((resolve, reject) => {
-    const projectPath = `./test-${connectorName}`;
+    const projectPath = `./agentica-test/test-${connectorName}`;
     const agentica = spawn("npx", ["agentica", "start"], {
       stdio: ["pipe", "pipe", "pipe"],
       shell: true,
     });
-
-    const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
-
     const sendKey = async (key: string, label?: string, ms = 800) => {
       await delay(ms);
       agentica.stdin.write(key);
@@ -69,6 +68,7 @@ async function automateAgenticaStart(
     const runSequence = async () => {
       console.log(`🚀 자동화 시작: ${connectorName}`);
 
+      await delay(3000);
       await sendKey(`${projectPath}`, "프로젝트 경로 입력", 2000);
       await sendKey(`\r`, "Enter 입력", 1000);
       await sendKey("\r", "npm 선택", 2000);
@@ -149,89 +149,126 @@ function extractServiceInfo(
   sourceDir: string,
 ): { envList: string[]; hasFileManager: boolean } {
   try {
-    const srcDir = path.join(sourceDir, connectorName, "src"); // 예: ../../packages/my-connector/src
-    if (!fs.existsSync(srcDir)) {
-      console.warn(`⚠️ 소스 디렉토리를 찾을 수 없습니다: ${srcDir}`);
+    // 1. 경로 설정
+    const connectorPackageDir = path.join(sourceDir, connectorName);
+    const srcDir = path.join(connectorPackageDir, "src");
+    const structuresDir = path.join(srcDir, "structures");
+
+    // 2. structures 디렉토리 존재 확인
+    if (!fs.existsSync(structuresDir)) {
+      console.log(
+        `[${connectorName}] structures 디렉토리가 없습니다: ${structuresDir}. ENV_LIST 및 FileManager 확인 불가.`,
+      );
       return { envList: [], hasFileManager: false };
     }
 
     let envList: string[] = [];
     let hasFileManager = false;
+    let foundEnvList = false;
+    let alreadyCheckedFileManager = false;
 
-    // 1. ENV_LIST 찾기 (기존 로직 유지 - src/structures 에서 찾음)
-    const structuresDir = path.join(srcDir, "structures");
-    if (fs.existsSync(structuresDir)) {
-      const structureFiles = fs
-        .readdirSync(structuresDir)
-        .filter((file) => file.endsWith(".ts"));
+    // 3. structures 디렉토리 내의 .ts 파일 탐색
+    const structureFiles = fs
+      .readdirSync(structuresDir)
+      .filter((file) => file.endsWith(".ts"));
 
-      for (const file of structureFiles) {
-        const filePath = path.join(structuresDir, file);
-        const content = fs.readFileSync(filePath, "utf8");
-        const envListMatch = content.match(
-          /export\s+const\s+ENV_LIST\s*=\s*\[([\s\S]*?)\]/,
+    console.log(
+      `[${connectorName}] Searching in ${structuresDir} for ENV_LIST and IProps...`,
+    );
+
+    for (const file of structureFiles) {
+      // 최적화: 모든 정보를 이미 찾았으면 루프 종료
+      if (foundEnvList && alreadyCheckedFileManager) {
+        console.log(
+          `[${connectorName}] Found both ENV_LIST and confirmed FileManager status. Stopping search.`,
         );
-        if (envListMatch) {
-          const envListStr = envListMatch[1];
-          const envVarMatches = envListStr.match(/'([^']+)'|"([^"]+)"/g);
-          if (envVarMatches) {
-            envList = envVarMatches.map((match) => match.replace(/['"]/g, ""));
-            console.log(
-              `[${connectorName}] Found ENV_LIST in ${filePath}:`,
-              envList,
-            );
-            break;
+        break;
+      }
+
+      const filePath = path.join(structuresDir, file);
+      try {
+        const content = fs.readFileSync(filePath, "utf8");
+
+        // 3.1 ENV_LIST 찾기 (아직 못 찾은 경우)
+        if (!foundEnvList) {
+          const envListMatch = content.match(
+            /export\s+const\s+ENV_LIST\s*=\s*\[([\s\S]*?)\]/,
+          );
+          if (envListMatch) {
+            const envListStr = envListMatch[1];
+            const envVarMatches = envListStr.match(/'([^']+)'|"([^"]+)"/g);
+            if (envVarMatches) {
+              envList = envVarMatches.map((match) =>
+                match.replace(/['"]/g, ""),
+              );
+              console.log(
+                `[${connectorName}] Found ENV_LIST in ${filePath}:`,
+                envList,
+              );
+              foundEnvList = true; // 찾았음을 표시
+            }
           }
         }
-      }
-    } else {
-      console.log(
-        `[${connectorName}] structures 디렉토리가 없습니다: ${structuresDir}`,
-      );
-    }
 
-    // 2. 서비스 클래스에서 fileManager 확인 (경로 수정됨)
-    // 예: ../../packages/my-connector/src/my-connector
-    const connectorSpecificSourceDir = path.join(srcDir, connectorName);
-
-    if (!fs.existsSync(connectorSpecificSourceDir)) {
-      console.warn(
-        `⚠️ 커넥터별 소스 디렉토리를 찾을 수 없습니다: ${connectorSpecificSourceDir}`,
-      );
-      // ENV_LIST는 찾았을 수 있으므로, 현재까지 찾은 정보 반환
-      return { envList, hasFileManager };
-    }
-
-    // connectorSpecificSourceDir 안에서 *Service.ts 파일을 찾음
-    const serviceFiles = fs
-      .readdirSync(connectorSpecificSourceDir)
-      .filter((file) => file.endsWith(".ts") && file.includes("Service"));
-
-    for (const file of serviceFiles) {
-      const filePath = path.join(connectorSpecificSourceDir, file); // 경로 수정
-      const content = fs.readFileSync(filePath, "utf8");
-
-      const constructorMatch = content.match(/constructor\s*\([^{]*\)/s);
-      if (constructorMatch) {
-        if (connectorName.includes("s3")) return { envList, hasFileManager }; // S3 커넥터는 FileManager 필요 없음
-
-        const constructorParams = constructorMatch[0];
-        console.log(
-          `[${connectorName}] Found constructor in ${filePath}: ${constructorParams}`,
-        );
-
-        if (
-          /fileManager\s*:/i.test(constructorParams) ||
-          /FileManager\b/.test(constructorParams) ||
-          /AwsS3Service\b/.test(constructorParams)
-        ) {
-          hasFileManager = true;
-          console.log(
-            `[${connectorName}] Found fileManager in constructor: ${filePath}`,
+        // 3.2 IProps 정의 및 내부 FileManager 타입 확인 (아직 확인 안 한 경우)
+        if (!alreadyCheckedFileManager) {
+          // *** 수정된 정규식 ***
+          // 'export type IProps =' 다음부터 세미콜론(;)까지의 모든 내용을 캡처
+          // 여러 줄에 걸쳐 정의될 수 있으므로 [\s\S]+ 사용
+          const iPropsMatch = content.match(
+            /export\s+type\s+IProps\s*=\s*([\s\S]+?);/,
           );
-          break; // FileManager를 찾으면 더 이상 다른 서비스 파일은 볼 필요 없음
+
+          if (iPropsMatch) {
+            console.log(
+              `[${connectorName}] Found IProps definition in ${filePath}`,
+            );
+            const propsDefinition = iPropsMatch[1].trim(); // 타입 정의 전체 내용 (캡처 그룹 1)
+
+            // 타입 정의 전체 내용에서 'FileManager' 라는 단어(타입)가 있는지 확인
+            if (/\bFileManager\b/.test(propsDefinition)) {
+              if (connectorName.includes("s3")) {
+                console.log(
+                  `[${connectorName}] Ignoring FileManager found in IProps for s3 connector itself.`,
+                );
+                // S3 자체는 FileManager를 사용하지 않는 것으로 간주하므로, hasFileManager는 false 유지
+              } else {
+                console.log(
+                  `[${connectorName}] Found 'FileManager' type within IProps definition in ${filePath}`,
+                );
+                hasFileManager = true; // FileManager 사용 확인됨
+              }
+            } else {
+              console.log(
+                `[${connectorName}] IProps found in ${filePath}, but 'FileManager' type was not detected within the definition.`,
+              );
+            }
+            // IProps 정의를 찾아서 FileManager 사용 여부를 판단했으므로, 더 이상 IProps를 찾을 필요 없음
+            alreadyCheckedFileManager = true;
+          }
         }
+      } catch (readError) {
+        console.error(
+          `[${connectorName}] 파일 읽기 오류 ${filePath}:`,
+          readError,
+        );
       }
+    } // end of for loop
+
+    // 4. 결과 반환 전 최종 로그
+    if (!foundEnvList) {
+      console.log(`[${connectorName}] ENV_LIST not found in ${structuresDir}`);
+    }
+    if (!alreadyCheckedFileManager) {
+      // IProps 정의 자체를 못 찾은 경우
+      console.log(
+        `[${connectorName}] IProps definition not found in any file within ${structuresDir}`,
+      );
+    } else if (!hasFileManager && !connectorName.includes("s3")) {
+      // IProps는 찾았지만 FileManager가 없는 경우 (s3 제외)
+      console.log(
+        `[${connectorName}] FileManager type was not found within the IProps definition.`,
+      );
     }
 
     return { envList, hasFileManager };
@@ -240,6 +277,8 @@ function extractServiceInfo(
     return { envList: [], hasFileManager: false };
   }
 }
+
+// --- 이전에 Service 파일 생성자를 확인하던 로직은 제거됨 ---
 
 // Helper function to convert SNAKE_CASE to camelCase
 function toCamelCase(str: string): string {
@@ -262,119 +301,141 @@ async function updateServiceFileWithEnvVars(
     let content = fs.readFileSync(indexPath, "utf8");
     let serviceName = ""; // 찾은 서비스 클래스 이름 저장
 
-    // 정규 표현식 수정: execute: new ServiceName() 부분을 찾고 ServiceName을 캡처
+    // 정규 표현식 수정: execute: new ServiceName(...) 부분을 찾고 ServiceName을 캡처
+    // 생성자 인자가 없거나, 하나 이상 있는 경우 모두 포함
     const constructorRegex =
-      /(\bexecute\s*:\s*new\s+)(\w+Service)(\s*\(\s*\))/g;
-    const match = constructorRegex.exec(content);
+      /(\bexecute\s*:\s*new\s+)(\w+Service)(\s*\([^)]*\))/g; // global flag 유지
+    const match = constructorRegex.exec(content); // 첫 번째 매치 찾기
 
     if (!match) {
       console.warn(
-        `⚠️ ${indexPath} 파일에서 'execute: new ...Service()' 패턴을 찾을 수 없습니다.`,
+        `⚠️ ${indexPath} 파일에서 'execute: new ...Service(...)' 패턴을 찾을 수 없습니다.`,
       );
-      // 파일 구조가 예상과 다를 수 있음. 추가적인 패턴 검색이나 로직 필요 가능성.
-      // 예를 들어, 생성자가 이미 인자를 가지고 있을 경우를 대비한 다른 정규식
-      const existingArgsRegex =
-        /(\bexecute\s*:\s*new\s+)(\w+Service)(\s*\([^)]*\))/g;
-      const existingMatch = existingArgsRegex.exec(content);
-      if (existingMatch) {
-        console.log(
-          "ℹ️ 이미 인자가 있는 생성자 패턴이 발견되었습니다. 업데이트를 시도합니다.",
-        );
-        serviceName = existingMatch[2]; // 서비스 이름 추출
-        // 이미 인자가 있는 경우, 덮어쓰기 또는 병합 로직 필요 (여기서는 덮어쓰기로 가정)
-        // 이 부분은 더 복잡한 로직이 필요할 수 있습니다. 일단 간단한 케이스만 처리
-      } else {
-        return; // 일치하는 패턴 없음
-      }
-    } else {
-      serviceName = match[2]; // 매치된 그룹에서 서비스 이름 추출 (예: "ArxivSearchService")
+      return; // 일치하는 패턴 없음
     }
 
+    serviceName = match[2]; // 매치된 그룹에서 서비스 이름 추출 (예: "StableDiffusionBetaService")
+    const originalConstructorCall = match[0]; // 원본 생성자 호출 부분 저장 (예: "execute: new StableDiffusionBetaService()")
     console.log(`ℹ️ 대상 서비스 감지: ${serviceName}`);
+    console.log(`ℹ️ 원본 생성자 호출: ${originalConstructorCall}`);
 
-    // 1. 기본 서비스의 props 객체 생성
-    let servicePropsStr = ""; // 기본값: 환경변수 없을 시 공백
-    if (envVars.length > 0) {
-      servicePropsStr = "{\n";
-      envVars.forEach((envVar) => {
-        const camelCaseKey = toCamelCase(envVar);
-        // process.env 값이 없을 경우를 대비해 undefined 또는 '' 처리 추가 가능
-        servicePropsStr += `      ${camelCaseKey}: process.env.${envVar}!,\n`;
-      });
-      servicePropsStr += "    }";
-    }
-
-    // 2. 최종 생성자 문자열 조합
-    let newConstructorArgs = "";
+    // --- AWS S3 Service 처리 (필요한 경우) ---
+    let awsPropsStr = "";
     if (hasFileManager) {
-      // AwsS3Service에 필요한 환경 변수 정의 (표준 AWS SDK 변수 사용 가정)
       const awsEnvVars = [
         "AWS_ACCESS_KEY_ID",
         "AWS_SECRET_ACCESS_KEY",
         "AWS_S3_BUCKET",
-        "AWS_S3_REGION", // 필요에 따라 추가/제외
+        "AWS_S3_REGION",
       ];
-      let awsPropsStr = "{\n";
+      awsPropsStr = "{\n"; // 여기서 awsPropsStr 초기화
       awsEnvVars.forEach((envVar) => {
         const camelCaseKey = toCamelCase(envVar);
-        // 실제로는 process.env 값 확인 및 기본값 설정 등이 필요할 수 있음
-        awsPropsStr += `      ${camelCaseKey}: process.env.${envVar}!,\n`;
+        awsPropsStr += `        ${camelCaseKey}: process.env.${envVar}!,\n`;
       });
-      awsPropsStr += "    }";
+      awsPropsStr += "      }"; // 들여쓰기 조정
 
-      newConstructorArgs = `(${servicePropsStr}, new AwsS3Service(${awsPropsStr}))`; // 인자 2개
-
-      // AwsS3Service import 추가 (이미 있는지 확인)
+      // AwsS3Service import 및 패키지 설치 확인
       if (!content.includes("AwsS3Service")) {
-        // @wrtnlabs/connector-aws-s3 설치
         console.log(
           `🛠️  ${projectDir} 에 @wrtnlabs/connector-aws-s3 설치 중...`,
         );
         try {
           await runNpmCommand("install @wrtnlabs/connector-aws-s3", projectDir);
           console.log("✅ @wrtnlabs/connector-aws-s3 설치 완료");
+
+          const importLine = `import { AwsS3Service } from "@wrtnlabs/connector-aws-s3";\n`;
+          if (!content.includes(importLine)) {
+            const importMatches = content.match(/^import\s+.*;?$/gm);
+            if (importMatches && importMatches.length > 0) {
+              const lastImportStatement =
+                importMatches[importMatches.length - 1];
+              const lastImportEndIndex =
+                content.lastIndexOf(lastImportStatement) +
+                lastImportStatement.length;
+              content =
+                content.slice(0, lastImportEndIndex) +
+                "\n" +
+                importLine +
+                content.slice(lastImportEndIndex);
+              console.log(
+                `ℹ️ ${indexPath}에 AwsS3Service import 구문 추가됨 (기존 import 뒤).`,
+              );
+            } else {
+              content = importLine + content;
+              console.log(
+                `ℹ️ ${indexPath}에 AwsS3Service import 구문 추가됨 (파일 상단).`,
+              );
+            }
+          }
         } catch (installError) {
           console.error(
             "❌ @wrtnlabs/connector-aws-s3 설치 실패:",
             installError,
           );
-          // 설치 실패 시 진행이 어려울 수 있으므로 에러 throw 또는 반환 고려
-          throw installError;
-        }
-
-        // import 구문 추가 (파일 상단에 추가하는 것이 일반적)
-        const importLine = `import { AwsS3Service } from "@wrtnlabs/connector-aws-s3";\n`;
-        // 기존 import 구문들 아래에 추가하거나, 파일 최상단에 추가
-        // 간단하게 파일 시작 부분에 추가
-        if (!content.startsWith(importLine)) {
-          content = importLine + content;
+          throw installError; // 설치 실패 시 중단
         }
       }
-    } else {
-      // FileManager가 없을 경우, 서비스 props만 인자로 전달
-      newConstructorArgs = `(${servicePropsStr})`;
     }
+    // --- AWS S3 Service 처리 끝 ---
+
+    // *** 수정된 로직: 생성자 인자 결정 ***
+    let newConstructorArgs: string;
+    const needsProps = envVars.length > 0 || hasFileManager; // props 객체가 필요한지 여부 결정
+
+    if (needsProps) {
+      // 환경 변수나 파일 매니저가 필요하면 props 객체 생성
+      let servicePropsStr = "{\n"; // 객체 시작
+
+      // 1.1 기본 환경 변수 추가
+      envVars.forEach((envVar) => {
+        const camelCaseKey = toCamelCase(envVar);
+        servicePropsStr += `      ${camelCaseKey}: process.env.${envVar}!,\n`;
+      });
+
+      // 1.2 FileManager 추가 (필요한 경우)
+      if (hasFileManager) {
+        servicePropsStr += `      fileManager: new AwsS3Service(${awsPropsStr}),\n`;
+      }
+
+      servicePropsStr += "    }"; // props 객체 닫기
+      newConstructorArgs = `(${servicePropsStr})`; // 최종 생성자 인자 문자열 (괄호 포함)
+    } else {
+      // 환경 변수도 없고 파일 매니저도 필요 없으면 빈 괄호 사용
+      newConstructorArgs = "()";
+    }
+    // *** 생성자 인자 결정 로직 끝 ***
 
     // 3. 파일 내용 교체
-    // 기존 정규식을 사용하여 교체 (match가 null 이 아닐 때)
-    // 또는 existingMatch가 null이 아닐 때 해당 패턴으로 교체
-    const regexToUse = match
-      ? constructorRegex
-      : /(\bexecute\s*:\s*new\s+)(\w+Service)(\s*\([^)]*\))/g;
-    const replacementString = `$1${serviceName}${newConstructorArgs}`; // 그룹 참조 사용
+    // 원본 생성자 호출 부분을 정확히 타겟하여 교체 (정규식 재사용 대신 문자열 교체)
+    // 주의: 이 방식은 해당 라인에 동일한 new ServiceName(...) 호출이 여러 번 있으면 문제가 될 수 있음
+    // 하지만 execute: new ... 형태는 보통 하나만 존재하므로 괜찮을 가능성이 높음
+    const replacementString = `execute: new ${serviceName}${newConstructorArgs}`; // 교체될 전체 문자열 생성
 
-    // 정규식의 global flag(g) 때문에 exec 후 lastIndex가 변경되므로, replace 전에 reset 또는 새로 생성
-    const finalRegex = new RegExp(regexToUse.source, "g"); // global flag 유지하며 재생성
-
-    content = content.replace(finalRegex, replacementString);
+    // 정규 표현식을 다시 사용하여 정확한 위치를 찾아 교체 (더 안전한 방법)
+    // global flag(g) 때문에 lastIndex가 변경되었으므로 새로 생성하거나 lastIndex 리셋 필요
+    constructorRegex.lastIndex = 0; // lastIndex 리셋
+    content = content.replace(
+      constructorRegex,
+      (fullMatch, prefix, svcName, oldArgs) => {
+        // 정규식으로 찾은 서비스 이름이 현재 처리 중인 서비스 이름과 같은지 확인
+        if (svcName === serviceName) {
+          // 동일하면 계산된 newConstructorArgs로 교체
+          return `${prefix}${svcName}${newConstructorArgs}`;
+        }
+        // 다른 서비스 생성자 호출이면 그대로 둠
+        return fullMatch;
+      },
+    );
 
     // 4. 수정된 내용 파일에 쓰기
     fs.writeFileSync(indexPath, content, "utf8");
-    console.log(`✅ ${indexPath} 파일 업데이트 완료.`);
+    console.log(
+      `✅ ${indexPath} 파일 업데이트 완료. 생성자 호출: ${replacementString}`,
+    );
   } catch (error) {
     console.error(`❌ ${indexPath} 파일 업데이트 중 오류 발생:`, error);
-    // 오류 발생 시 re-throw 하여 main 함수에서 인지하도록 할 수 있음
-    throw error;
+    throw error; // 오류 발생 시 re-throw
   }
 }
 
@@ -397,17 +458,62 @@ async function validateNpmStart(
   console.log(`npm run start 출력: ${startOutput}`);
 }
 
+const rmdir = async (str: string) => {
+  try {
+    await fs.promises.rm(str, { recursive: true });
+  } catch {}
+};
+
 async function main() {
+  await rmdir(path.resolve("./agentica-test"));
+  console.log("agentica-test 디렉토리 삭제 완료");
+
   const args = process.argv.slice(2);
   const ignoreList = args[1]
-    ? args[1].split(",").concat(["api", "shared", "backend"])
-    : ["api", "shared", "backend"];
+    ? args[1]
+        .split(",")
+        .concat([
+          "api",
+          "shared",
+          "backend",
+          "dall_e_3",
+          "daum_blog",
+          "daum_cafe",
+          "hancell",
+          "imweb",
+          "kakao_map",
+          "kakao_navi",
+          "kakao_talk",
+          "korea_eximbank",
+          "naver_blog",
+          "naver_cafe",
+          "naver_news",
+          "sweet_tracker",
+        ])
+    : [
+        "api",
+        "shared",
+        "backend",
+        "dall_e_3",
+        "daum_blog",
+        "daum_cafe",
+        "hancell",
+        "imweb",
+        "kakao_map",
+        "kakao_navi",
+        "kakao_talk",
+        "korea_eximbank",
+        "naver_blog",
+        "naver_cafe",
+        "naver_news",
+        "sweet_tracker",
+      ];
 
   const config: AutomationConfig = {
     ignoreList,
   };
 
-  const packagesPath = path.resolve("../../packages");
+  const packagesPath = path.resolve(__dirname, "../../packages");
   const availableConnectors = getAvailableConnectors(
     packagesPath,
     config.ignoreList,
@@ -437,12 +543,12 @@ async function main() {
       // 커넥터별로 프로젝트 생성
       await automateAgenticaStart(
         connector,
-        process.env.OPENAI_API_KEY || "",
+        process.env.OPENAI_API_KEY ?? "",
         i,
       );
       console.log(`✅ ${connector} 프로젝트 생성 완료`);
 
-      const projectDir = path.resolve(`./test-${connector}`);
+      const projectDir = path.resolve(`./agentica-test/test-${connector}`);
       const envFilePath = path.join(projectDir, ".env"); // .env 파일 경로
 
       // 필요한 환경 변수와 FileManager 정보 가져오기
@@ -523,6 +629,7 @@ async function main() {
       await updateServiceFileWithEnvVars(projectDir, envList, hasFileManager);
 
       // 실제 실행 테스트
+      await delay(2000);
       await validateNpmStart(connector, projectDir);
     } catch (error) {
       console.error(`⚠️ ${connector} 테스트 중 오류 발생:`, error);
