@@ -5,11 +5,9 @@ import path from "path";
 import { AgenticaSelectBenchmark } from "@agentica/benchmark";
 import { IAgenticaSelectBenchmarkScenario } from "@agentica/benchmark/src/structures/IAgenticaSelectBenchmarkScenario";
 
-// --- Assume these are correctly imported ---
 import { ConnectorGlobal } from "../../src/ConnectorGlobal";
 import { allControllerConfigs } from "./ConnectorList"; // Adjust path if needed
 
-// --- Helper Functions (mkdir, rmdir - unchanged) ---
 const mkdir = async (str: string) => {
   try {
     await fs.promises.mkdir(str, { recursive: true });
@@ -21,7 +19,6 @@ const rmdir = async (str: string) => {
   } catch {}
 };
 
-// --- Scenario Generation Function (Modified) ---
 /**
  * Generates a multi-step scenario text using the provided Agentica instance
  * based on the controller's functions.
@@ -40,7 +37,6 @@ const generateScenarioText = async (
     )
     .join("\n");
 
-  // --- Enhanced Prompt (unchanged) ---
   const generationPrompt = [
     "# Role:",
     "You are an expert in creating **multi-step workflow scenarios** to test the capabilities of an AI agent. Your role is to creatively combine the various functions provided by a given service (controller) and craft a **single cohesive story** that guides the user toward achieving a **meaningful final goal**.",
@@ -71,16 +67,13 @@ const generateScenarioText = async (
     "(Replace [Function Name] with the **exact name** of the function from the provided list that the scenario would most logically trigger *first*.)",
   ].join("\n");
 
-  // Use agent's configured model for logging purposes if needed
   console.log(
     `  Requesting scenario generation for ${controllerName} using agent's model (gpt-4o-mini)...`,
   );
 
   try {
-    // --- Call agentica.conversate ---
     const responseHistory = await agentica.conversate(generationPrompt);
 
-    // --- Parse the response history ---
     if (!Array.isArray(responseHistory) || responseHistory.length === 0) {
       console.warn(
         `  Scenario generation for ${controllerName} returned an unexpected response structure (empty or not an array).`,
@@ -98,13 +91,10 @@ const generateScenarioText = async (
       .map((history) => history.type === "text" && history.text)
       .join("\n");
 
-    // --- Extract the generated text content ---
     const content = assistantResponse.trim();
 
-    // --- Apply existing parsing logic to the extracted content ---
     const lines = content.split("\n");
     if (lines.length < 3) {
-      // Needs at least the scenario text, a blank line, and the FIRST_FUNCTION line
       console.warn(
         `  Scenario generation for ${controllerName} produced insufficient lines. Content:\n${content}`,
       );
@@ -112,7 +102,7 @@ const generateScenarioText = async (
     }
 
     const lastLine = lines[lines.length - 1];
-    const secondLastLine = lines[lines.length - 2]; // Expected blank line
+    const secondLastLine = lines[lines.length - 2];
 
     if (
       lastLine.startsWith("FIRST_FUNCTION_EXPECTED:") &&
@@ -165,7 +155,7 @@ const generateScenarioText = async (
 };
 
 // --- Main Benchmark Function (Modified Call to generateScenarioText) ---
-const startBenchMark = async (): Promise<void> => {
+const main = async (): Promise<void> => {
   console.log(
     `Found ${allControllerConfigs.length} controller configurations to benchmark individually.`,
   );
@@ -174,29 +164,26 @@ const startBenchMark = async (): Promise<void> => {
   const baseReportDir: string = path.resolve(
     __dirname,
     "..",
+    "..",
     "docs",
     "benchmarks",
-    "call_individual_generated", // Directory name is fine
+    "select",
   );
 
-  // --- Clear overall report directory ---
   console.log(`Cleaning base report directory: ${baseReportDir}`);
   await rmdir(baseReportDir);
   await mkdir(baseReportDir); // Recreate base directory
 
-  // --- Loop through each controller configuration ---
   for (const controllerConfig of allControllerConfigs) {
     console.log(`\n--- Benchmarking Controller: ${controllerConfig.name} ---`);
 
-    // --- CREATE AI AGENT with only ONE controller ---
     const agent = new Agentica({
       model: "chatgpt",
       vendor: {
         api: new OpenAI({ apiKey: ConnectorGlobal.env.OPENAI_API_KEY }),
-        model: "gpt-4o-mini", // Use a capable model
+        model: "gpt-4o-mini",
       },
       controllers: [controllerConfig],
-      // Consider adding options like `stream: false` if streaming causes issues here
     });
     console.log(`Agent created for ${controllerConfig.name}.`);
 
@@ -214,7 +201,6 @@ const startBenchMark = async (): Promise<void> => {
       continue;
     }
 
-    // --- Define find function specific to this agent instance (unchanged) ---
     const find = (functionName: string): AgenticaOperation<"chatgpt"> => {
       const found = availableOperations.find(
         (op) => op.function.name === functionName,
@@ -234,34 +220,23 @@ const startBenchMark = async (): Promise<void> => {
 
     // --- Generate Scenario using Agentica ---
     let scenarios: IAgenticaSelectBenchmarkScenario<"chatgpt">[] = [];
-    if (availableOperations.length < 3) {
-      console.warn(
-        `Skipping scenario generation for ${controllerConfig.name}: Requires at least 3 functions, found ${availableOperations.length}.`,
-      );
-      allBenchmarkResults[controllerConfig.name] = {
-        error: `Skipped: Requires >= 3 functions, found ${availableOperations.length}.`,
-      };
-      continue;
-    }
-
     try {
-      // --- UPDATED CALL: Pass the agent instance ---
       const generationResult = await generateScenarioText(
         controllerConfig.name,
         availableOperations,
-        agent, // Pass the agent instance here
+        agent,
       );
 
       if (generationResult) {
         const { scenarioText, firstFunctionName } = generationResult;
-        const expectedOperation = find(firstFunctionName); // Find the operation specified by the LLM
+        const expectedOperation = find(firstFunctionName);
 
         scenarios.push({
           name: `${controllerConfig.name} - Generated Multi-Step Scenario`,
-          text: scenarioText, // Use the LLM-generated text
+          text: scenarioText,
           expected: {
             type: "standalone",
-            operation: expectedOperation, // Use the operation identified by the LLM
+            operation: expectedOperation,
           },
         });
         console.log(`  Using generated scenario for ${controllerConfig.name}.`);
@@ -276,7 +251,6 @@ const startBenchMark = async (): Promise<void> => {
         continue; // Skip if scenario couldn't be generated
       }
     } catch (error) {
-      // Catch errors from find() or other preparation steps
       console.error(
         `  Error during scenario preparation/finding operation for ${controllerConfig.name}:`,
         error,
@@ -287,12 +261,8 @@ const startBenchMark = async (): Promise<void> => {
       continue; // Skip to next controller
     }
 
-    // --- Benchmark Execution (unchanged) ---
     if (scenarios.length > 0) {
       try {
-        // Make sure the agent's history is clear before the actual benchmark run
-        // agent.clearHistory(); // Optional: uncomment if leftover generation history might interfere
-
         const benchmark: AgenticaSelectBenchmark<"chatgpt"> =
           new AgenticaSelectBenchmark({
             agent: agent,
@@ -332,7 +302,7 @@ const startBenchMark = async (): Promise<void> => {
     }
   } // End of loop through controllers
 
-  // --- Generate All Reports (unchanged) ---
+  // --- Generate All Reports ---
   console.log("\n--- Generating Reports ---");
   for (const [controllerName, reportDocs] of Object.entries(
     allBenchmarkResults,
@@ -366,8 +336,7 @@ const startBenchMark = async (): Promise<void> => {
   console.log("All reports generated successfully.");
 };
 
-// --- Run the Benchmark ---
-startBenchMark().catch((error) => {
+main().catch((error) => {
   console.error("Benchmark process failed with an error:", error);
   process.exit(1);
 });

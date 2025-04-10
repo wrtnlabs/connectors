@@ -51,15 +51,12 @@ import { MarpModule } from "./marp/MarpModule";
 import { NaverBlogModule } from "./naver_blog/NaverBlogModule";
 import { NotionModule } from "./notion/NotionModule";
 import { OpenDataModule } from "./open_data/OpenDataModule";
-import { PromptModule } from "./prompts/PromptModule";
 import { RagModule } from "./rag/RagModule";
 import { RedditModule } from "./reddit/RedditModule";
 import { ShortLinkModule } from "./short_link/ShortLinkModule";
 import { SimilarwebModule } from "./similarweb/SimilarwebModule";
 import { SlackModule } from "./slack/SlackModule";
 import { StableDiffusionBetaModule } from "./stable_diffustion_beta/StableDiffusionBetaModule";
-import { StoryGeneratorModule } from "./story_generator/StoryGeneratorModule";
-import { StoryImageGeneratorModule } from "./story_image_generator/StoryImageGeneratorModule";
 import { SweetTrackerModule } from "./sweet_tracker/SweetTrackerModule";
 import { TypeformModule } from "./typeform/TypeformModule";
 import { WebCrawlerModule } from "./web_crawler/WebCrawlerModule";
@@ -111,10 +108,7 @@ import { DallEModule } from "./dall_e/DallEModule";
     GoogleSlidesModule,
     ImwebModule,
     OpenDataModule,
-    PromptModule,
     KoreaEximbankModule,
-    StoryGeneratorModule,
-    StoryImageGeneratorModule,
     StableDiffusionBetaModule,
     DallEModule,
     GoogleSearchModule,
