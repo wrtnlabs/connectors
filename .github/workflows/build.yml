@@ -2,19 +2,20 @@ name: Selective Build and Test
 
 on:
   push:
-    branches: [ main ] # 필요에 따라 브랜치 조정
+    branches: [main] # 필요에 따라 브랜치 조정
     paths:
       - "packages/**"
       - "package.json"
       - "pnpm-lock.yaml"
       - "pnpm-workspace.yaml" # 워크스페이스 설정 파일도 포함
-      - ".github/workflows/selective-build.yml" # 워크플로우 파일 자신
+
   pull_request:
     paths:
       - "packages/**"
       - "package.json"
       - "pnpm-lock.yaml"
       - "pnpm-workspace.yaml"
+      - ".github/workflows/build.yml" # 워크플로우 파일 자신
       # PR에서는 워크플로우 파일 변경 시 실행 안 함 (보안상 권장)
 
 jobs:
