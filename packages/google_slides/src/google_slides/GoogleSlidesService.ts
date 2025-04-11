@@ -2,16 +2,13 @@ import axios from "axios";
 import { v4 } from "uuid";
 import sharp from "sharp";
 import typia from "typia";
-import { FileManager, imageExtensions } from "@wrtnlabs/connector-shared";
+import { imageExtensions } from "@wrtnlabs/connector-shared";
 import { GoogleDriveService } from "@wrtnlabs/connector-google-drive";
 import { IGoogleSlidesService } from "../structures/IGoogleSlidesService";
 import { google } from "googleapis";
 
 export class GoogleSlidesService {
-  constructor(
-    private readonly props: IGoogleSlidesService.IProps,
-    private readonly fileManager: FileManager,
-  ) {}
+  constructor(private readonly props: IGoogleSlidesService.IProps) {}
 
   uploadPrefix: string = "google-slides-connector";
 
@@ -35,7 +32,7 @@ export class GoogleSlidesService {
         responseType: "arraybuffer",
       });
 
-      const upload = await this.fileManager.upload({
+      const upload = await this.props.fileManager.upload({
         props: {
           type: "object",
           data: res.data,
@@ -73,7 +70,7 @@ export class GoogleSlidesService {
         responseType: "arraybuffer",
       });
 
-      const upload = await this.fileManager.upload({
+      const upload = await this.props.fileManager.upload({
         props: {
           type: "object",
           data: res.data,
@@ -1174,7 +1171,7 @@ export class GoogleSlidesService {
             const format = (await originalImage.metadata()).format;
             if (imageExtensions.some((ext) => ext === format)) {
               const jpg = await originalImage.jpeg({ quality: 100 }).toBuffer();
-              const saved = await this.fileManager.upload({
+              const saved = await this.props.fileManager.upload({
                 props: {
                   contentType: "image/jpg",
                   data: jpg,

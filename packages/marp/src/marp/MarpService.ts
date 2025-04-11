@@ -3,11 +3,10 @@ import { execSync } from "child_process";
 import { randomUUID } from "crypto";
 import path from "path";
 import { IMarpService } from "../structures/IMarpService";
-import { FileManager } from "@wrtnlabs/connector-shared";
 import { v4 } from "uuid";
 
 export class MarpService {
-  constructor(private readonly fileManager: FileManager) {}
+  constructor(private readonly props: IMarpService.IProps) {}
 
   /**
    * Marp Service.
@@ -33,7 +32,7 @@ export class MarpService {
 
       const data = await fs.readFile(pptFilePath);
 
-      const upload = await this.fileManager.upload({
+      const upload = await this.props.fileManager.upload({
         props: {
           path: `${input.filePath ?? "marp"}/${v4()}`,
           data: data,

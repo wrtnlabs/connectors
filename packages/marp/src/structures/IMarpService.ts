@@ -1,4 +1,10 @@
+import { FileManager } from "@wrtnlabs/connector-shared/lib";
+
 export namespace IMarpService {
+  export type IProps = {
+    fileManager: FileManager;
+  };
+
   /**
    * @title Parameters for Marp conversion
    */

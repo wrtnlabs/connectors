@@ -1,14 +1,10 @@
 import axios from "axios";
 import { IStableDiffusionBetaService } from "../structures/IStableDiffusionBetaService";
-import { FileManager } from "@wrtnlabs/connector-shared";
 import { v4 } from "uuid";
 import typia from "typia";
 
 export class StableDiffusionBetaService {
-  constructor(
-    private readonly props: IStableDiffusionBetaService.IProps,
-    private readonly fileManager: FileManager,
-  ) {}
+  constructor(private readonly props: IStableDiffusionBetaService.IProps) {}
 
   /**
    * Stable Diffusion Beta Service.
@@ -30,7 +26,7 @@ export class StableDiffusionBetaService {
         input.style_preset,
       );
 
-      const imageUrl = await this.fileManager.upload({
+      const imageUrl = await this.props.fileManager.upload({
         props: {
           path: `${input.file.path ?? "/stablediffusion"}/${v4()}`,
           type: "object",
