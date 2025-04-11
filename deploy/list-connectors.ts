@@ -1,7 +1,9 @@
 import { glob } from "tinyglobby";
-import fs from "node:fs/promises";
 import { join } from "node:path";
 import Module from 'node:module';
+import fs from 'fs-extra'
+import type { PackageJson, RequiredDeep } from 'type-fest'
+import { version } from '../package.json'
 
 const ROOT_DIR = join(__dirname, "..");
 
@@ -54,11 +56,7 @@ async function main() {
       join(packagePath, "src", "index.ts")
     );
 
-    const packageJson = await fs.readFile(
-        join(packagePath, "package.json"),
-      "utf8",
-    );
-    const { name }: { name: string } = JSON.parse(packageJson);
+    const { name } = await fs.readJSON(join(packagePath, "package.json")) as RequiredDeep<Pick<PackageJson,'name'>>;
     return { name, envList: ENV_LIST };
   };
 
@@ -66,12 +64,7 @@ async function main() {
   console.log(packages);
   const connectors = await Promise.all(packages.map(extractPackageInfo));
 
-
   connectors.sort((a, b) => a.name.localeCompare(b.name));
-
-  /** get version from root package.json */
-  const rootPackageJson = await fs.readFile(`${ROOT_DIR}/package.json`, "utf8");
-  const { version } = JSON.parse(rootPackageJson);
 
   const connectorsListData = {
     connectors,
@@ -79,10 +72,7 @@ async function main() {
   };
 
   /** write package list to file */
-  await fs.writeFile(
-    `${ROOT_DIR}/connectors-list.json`,
-    JSON.stringify(connectorsListData, null, 2),
-  );
-}
+  await fs.outputJson(join(ROOT_DIR, "connectors-list.json"), connectorsListData, { spaces: 2 });
+ }
 
 main();
