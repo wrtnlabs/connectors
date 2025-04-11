@@ -62,7 +62,8 @@
     "googleapis": "^144.0.0",
     "crypto": "^1.0.1",
     "typia": "^9.1.0",
-    "uuid": "^10.0.0"
+    "uuid": "^10.0.0",
+    "sharp": "^0.33.5"
   },
   "homepage": "https://wrtnlabs.io/agentica",
   "repository": {
