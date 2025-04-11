@@ -1,4 +1,5 @@
 // TYPES
+export * from "./structures/IJiraService";
 export * from "./structures/ListNode";
 
 // CLASS
