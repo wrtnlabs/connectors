@@ -1,518 +1,79 @@
-name: build
+name: Selective Build and Test in Package Dirs
+
 on:
   push:
+    branches: [main]
     paths:
-      - "src/**"
-      - "test/**"
+      - "packages/**"
       - "package.json"
-      - ".github/workflows/build.yml"
-  pull_request_target:
+      - "pnpm-lock.yaml"
+      - "pnpm-workspace.yaml"
+  pull_request:
     paths:
-      - "src/**"
-      - "test/**"
+      - "packages/**"
       - "package.json"
+      - "pnpm-lock.yaml"
+      - "pnpm-workspace.yaml"
+
 jobs:
-  check-list-updated:
+  build-test-changed-in-dirs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
         with:
-          version: 10
-      - name: install dependencies
-        run: |
-          pnpm install --frozen-lockfile
-          pnpm prepare
-      - name: check-list-updated
-        run: git diff --exit-code
+          fetch-depth: 0
 
-  build:
-    runs-on: ubuntu-latest
-    services:
-      postgres:
-        image: postgres
-        env:
-          POSTGRES_PASSWORD: root
-        ports:
-          - 5432:5432
-        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
-    steps:
-      - uses: actions/setup-node@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 20.x
-      - uses: actions/checkout@v4
+
       - name: Setup pnpm
-        run: npm install -g pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_OUTPUT
+        id: pnpmcache
       - uses: actions/cache@v4
+        name: Setup pnpm cache
         with:
-          path: ~/.pnpm-store
-          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+          path: ${{ steps.pnpmcache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
-            ${{ runner.os }}-pnpm-
-      - name: Install
-        run: pnpm install
-      - name: Secrets to Env
-        run: |
-          rm .env
-          jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]' <<< "$SECRETS_CONTEXT" > .env
-        env:
-          SECRETS_CONTEXT: ${{ toJson(secrets) }}
-      - name: Build Test Program
-        run: |
-          pnpm build:prisma
-          pnpm build:sdk
-          pnpm build:test
-      - name: Upload build artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: build
-          path: |
-            ./bin
+            ${{ runner.os }}-pnpm-store-
 
-  test:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4 # 코드 재체크아웃하여 package.json 확보
-      - name: Download build artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: build
-          path: |
-            ./bin
-      - name: Setup pnpm
-        run: npm install -g pnpm
-      - name: install dependencies
-        run: pnpm install && pnpm build:prisma
-      - name: Secrets to Env
+      - name: Determine Base Ref
+        id: vars
+        shell: bash
         run: |
-          rm .env
-          jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]' <<< "$SECRETS_CONTEXT" > .env
-        env:
-          SECRETS_CONTEXT: ${{ toJson(secrets) }}
-      - name: Set up Docker Compose
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y docker-compose
-      - name: Start Docker Compose
-        run: |
-          docker compose -f docker-compose-test.yml up -d
-          sleep 5;
-          npx prisma db push
-      - name: test
-        run: | # sweet_tracker, google_ads는 현재 테스트 대상이 아님
-          pnpm test \
-            --exclude sweet_tracker korea_exim kakao jira slack github figma discord similarweb crunchbase \
-            google_ads google_slides google_calendar google_docs google_drive google_flight \
-            open_data calendly notion naver typeform x_summarize x_prepare_summarize x_get_pre_defined_influencers x_get_users airport youtube_official innoforest
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            echo "base_ref=origin/${{ github.base_ref }}" >> $GITHUB_OUTPUT
+          else
+            # Push의 경우, main 브랜치와 비교 (필요시 수정)
+            echo "base_ref=origin/main" >> $GITHUB_OUTPUT
+          fi
+          echo "Calculated base ref: ${{ steps.vars.outputs.base_ref }}"
 
-  test-innoforest:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4 # 코드 재체크아웃하여 package.json 확보
-      - name: Download build artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: build
-          path: |
-            ./bin
-      - name: Setup pnpm
-        run: npm install -g pnpm
-      - name: install dependencies
-        run: pnpm install && pnpm build:prisma
-      - name: Secrets to Env
-        run: |
-          rm .env
-          jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]' <<< "$SECRETS_CONTEXT" > .env
-        env:
-          SECRETS_CONTEXT: ${{ toJson(secrets) }}
-      - name: test
-        run: pnpm test --include innoforest
+      - name: Install Root Dependencies
+        run: pnpm install --frozen-lockfile
 
-  test-kakao:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4 # 코드 재체크아웃하여 package.json 확보
-      - name: Download build artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: build
-          path: |
-            ./bin
-      - name: Setup pnpm
-        run: npm install -g pnpm
-      - name: install dependencies
-        run: pnpm install && pnpm build:prisma
-      - name: Secrets to Env
+      - name: Build Changed Packages & Dependents (in their dirs)
         run: |
-          rm .env
-          jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]' <<< "$SECRETS_CONTEXT" > .env
-        env:
-          SECRETS_CONTEXT: ${{ toJson(secrets) }}
-      - name: test
-        run: pnpm test --include kakao
+          echo "Running build script within packages changed since ${{ steps.vars.outputs.base_ref }}"
+          pnpm -r --filter "...[${{ steps.vars.outputs.base_ref }}]" \
+                  --filter=!./packages/api \
+                  --filter=!./packages/backend \
+                  run --if-present build
 
-  # test-jira:
-  #   runs-on: ubuntu-latest
-  #   needs: build
-  #   steps:
-  #     - name: Checkout code
-  #       uses: actions/checkout@v4 # 코드 재체크아웃하여 package.json 확보
-  #     - name: Download build artifact
-  #       uses: actions/download-artifact@v4
-  #       with:
-  #         name: build
-  #         path: |
-  #           ./bin
-  #     - name: Setup pnpm
-  #       run: npm install -g pnpm
-  #     - name: install dependencies
-  #       run: pnpm install && pnpm build:prisma
-  #     - name: Secrets to Env
-  #       run: |
-  #         rm .env
-  #         jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]' <<< "$SECRETS_CONTEXT" > .env
-  #       env:
-  #         SECRETS_CONTEXT: ${{ toJson(secrets) }}
-  #     - name: test
-  #       run: pnpm test --include jira
-
-  test-slack:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4 # 코드 재체크아웃하여 package.json 확보
-      - name: Download build artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: build
-          path: |
-            ./bin
-      - name: Setup pnpm
-        run: npm install -g pnpm
-      - name: install dependencies
-        run: pnpm install && pnpm build:prisma
-      - name: Secrets to Env
+      - name: Test Changed Packages & Dependents (in their dirs)
         run: |
-          rm .env
-          jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]' <<< "$SECRETS_CONTEXT" > .env
-        env:
-          SECRETS_CONTEXT: ${{ toJson(secrets) }}
-      - name: Set up Docker Compose
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y docker-compose
-      - name: Start Docker Compose
-        run: |
-          docker compose -f docker-compose-test.yml up -d
-          sleep 5;
-          npx prisma db push
-      - name: test
-        run: pnpm test --include slack
-
-  test-open_data:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4 # 코드 재체크아웃하여 package.json 확보
-      - name: Download build artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: build
-          path: |
-            ./bin
-      - name: Setup pnpm
-        run: npm install -g pnpm
-      - name: install dependencies
-        run: pnpm install && pnpm build:prisma
-      - name: Secrets to Env
-        run: |
-          rm .env
-          jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]' <<< "$SECRETS_CONTEXT" > .env
-        env:
-          SECRETS_CONTEXT: ${{ toJson(secrets) }}
-      - name: test
-        run: pnpm test --include open_data --exclude get_short_term open_data_get_address # 기상청은 따로 테스트 코드가 돌게 수정, 주소 조회는 서버 IP 제한이 있는 것으로 보여 제외
-
-  test-get_short_term: # 기상청 테스트 코드
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4 # 코드 재체크아웃하여 package.json 확보
-      - name: Download build artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: build
-          path: |
-            ./bin
-      - name: Setup pnpm
-        run: npm install -g pnpm
-      - name: install dependencies
-        run: pnpm install && pnpm build:prisma
-      - name: Secrets to Env
-        run: |
-          rm .env
-          jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]' <<< "$SECRETS_CONTEXT" > .env
-        env:
-          SECRETS_CONTEXT: ${{ toJson(secrets) }}
-      - name: test
-        run: pnpm test --include get_short_term
-
-  test-github:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4 # 코드 재체크아웃하여 package.json 확보
-      - name: Download build artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: build
-          path: |
-            ./bin
-      - name: Setup pnpm
-        run: npm install -g pnpm
-      - name: install dependencies
-        run: pnpm install && pnpm build:prisma
-      - name: Secrets to Env
-        run: |
-          rm .env
-          jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]' <<< "$SECRETS_CONTEXT" > .env
-        env:
-          SECRETS_CONTEXT: ${{ toJson(secrets) }}
-      - name: test
-        run: pnpm test --include github
-
-  test-figma:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4 # 코드 재체크아웃하여 package.json 확보
-      - name: Download build artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: build
-          path: |
-            ./bin
-      - name: Setup pnpm
-        run: npm install -g pnpm
-      - name: install dependencies
-        run: pnpm install && pnpm build:prisma
-      - name: Secrets to Env
-        run: |
-          rm .env
-          jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]' <<< "$SECRETS_CONTEXT" > .env
-        env:
-          SECRETS_CONTEXT: ${{ toJson(secrets) }}
-      - name: test
-        run: pnpm test --include figma
-
-  # test-discord:
-  #   runs-on: ubuntu-latest
-  #   needs: build
-  #   steps:
-  #     - name: Checkout code
-  #       uses: actions/checkout@v4 # 코드 재체크아웃하여 package.json 확보
-  #     - name: Download build artifact
-  #       uses: actions/download-artifact@v4
-  #       with:
-  #         name: build
-  #         path: |
-  #           ./bin
-  #     - name: Setup pnpm
-  #     run: npm install -g pnpm
-  #     - name: install dependencies
-  #       run: pnpm install && pnpm build:prisma
-  #     - name: Secrets to Env
-  #       run: |
-  #         rm .env
-  #         jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]' <<< "$SECRETS_CONTEXT" > .env
-  #       env:
-  #         SECRETS_CONTEXT: ${{ toJson(secrets) }}
-  #     - name: test
-  #       run: pnpm test --include discord
-
-  test-google_slides:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4 # 코드 재체크아웃하여 package.json 확보
-      - name: Download build artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: build
-          path: |
-            ./bin
-      - name: Setup pnpm
-        run: npm install -g pnpm
-      - name: install dependencies
-        run: pnpm install && pnpm build:prisma
-      - name: Secrets to Env
-        run: |
-          rm .env
-          jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]' <<< "$SECRETS_CONTEXT" > .env
-        env:
-          SECRETS_CONTEXT: ${{ toJson(secrets) }}
-      - name: test
-        run: pnpm test --include google_slides
-
-  test-google_calendar:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4 # 코드 재체크아웃하여 package.json 확보
-      - name: Download build artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: build
-          path: |
-            ./bin
-      - name: Setup pnpm
-        run: npm install -g pnpm
-      - name: install dependencies
-        run: pnpm install && pnpm build:prisma
-      - name: Secrets to Env
-        run: |
-          rm .env
-          jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]' <<< "$SECRETS_CONTEXT" > .env
-        env:
-          SECRETS_CONTEXT: ${{ toJson(secrets) }}
-      - name: test
-        run: pnpm test --include google_calendar
-
-  test-google_docs:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4 # 코드 재체크아웃하여 package.json 확보
-      - name: Download build artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: build
-          path: |
-            ./bin
-      - name: Setup pnpm
-        run: npm install -g pnpm
-      - name: install dependencies
-        run: pnpm install && pnpm build:prisma
-      - name: Secrets to Env
-        run: |
-          rm .env
-          jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]' <<< "$SECRETS_CONTEXT" > .env
-        env:
-          SECRETS_CONTEXT: ${{ toJson(secrets) }}
-      - name: test
-        run: pnpm test --include google_docs
-
-  test-google_drive:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4 # 코드 재체크아웃하여 package.json 확보
-      - name: Download build artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: build
-          path: |
-            ./bin
-      - name: Setup pnpm
-        run: npm install -g pnpm
-      - name: install dependencies
-        run: pnpm install && pnpm build:prisma
-      - name: Secrets to Env
-        run: |
-          rm .env
-          jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]' <<< "$SECRETS_CONTEXT" > .env
-        env:
-          SECRETS_CONTEXT: ${{ toJson(secrets) }}
-      - name: test
-        run: pnpm test --include google_drive
-
-  test-calendly:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4 # 코드 재체크아웃하여 package.json 확보
-      - name: Download build artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: build
-          path: |
-            ./bin
-      - name: Setup pnpm
-        run: npm install -g pnpm
-      - name: install dependencies
-        run: pnpm install && pnpm build:prisma
-      - name: Secrets to Env
-        run: |
-          rm .env
-          jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]' <<< "$SECRETS_CONTEXT" > .env
-        env:
-          SECRETS_CONTEXT: ${{ toJson(secrets) }}
-      - name: test
-        run: pnpm test --include calendly
-
-  test-notion:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4 # 코드 재체크아웃하여 package.json 확보
-      - name: Download build artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: build
-          path: |
-            ./bin
-      - name: Setup pnpm
-        run: npm install -g pnpm
-      - name: install dependencies
-        run: pnpm install && pnpm build:prisma
-      - name: Secrets to Env
-        run: |
-          rm .env
-          jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]' <<< "$SECRETS_CONTEXT" > .env
-        env:
-          SECRETS_CONTEXT: ${{ toJson(secrets) }}
-      - name: test
-        run: pnpm test --include notion
-
-  test-naver:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4 # 코드 재체크아웃하여 package.json 확보
-      - name: Download build artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: build
-          path: |
-            ./bin
-      - name: Setup pnpm
-        run: npm install -g pnpm
-      - name: install dependencies
-        run: pnpm install && pnpm build:prisma
-      - name: Secrets to Env
-        run: |
-          rm .env
-          jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]' <<< "$SECRETS_CONTEXT" > .env
-        env:
-          SECRETS_CONTEXT: ${{ toJson(secrets) }}
-      - name: test
-        run: pnpm test --include naver
+          echo "Running test script within packages changed since ${{ steps.vars.outputs.base_ref }}"
+          pnpm -r --filter "...[${{ steps.vars.outputs.base_ref }}]" \
+                  --filter=!./packages/api \
+                  --filter=!./packages/backend \
+                  run --if-present test

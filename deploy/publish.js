@@ -21,7 +21,6 @@ const build = ({ version, tag, name }) => {
       cwd: location,
       stdio: "inherit",
     });
-  execute(`pnpm install --filter .`);
   execute("pnpm run build:main");
 
   // PACKAGE MAIN INFO
@@ -66,6 +65,7 @@ const main = () => {
     fs.readFileSync(`${__dirname}/../package.json`, "utf8"),
   );
   const dev = version.includes("-dev.");
+
   const tag = (() => {
     const index = process.argv.indexOf("--tag");
     const value = index === -1 ? undefined : process.argv[index + 1];
@@ -78,10 +78,11 @@ const main = () => {
   else if (tag === "latest" && dev === true)
     throw new Error(`latest tag can only be used for non-dev versions.`);
 
-  // cp.execSync("pnpm install", {
-  //   cwd: `${__dirname}/../`,
-  //   stdio: "inherit",
-  // });
+  cp.execSync("pnpm install", {
+    cwd: `${__dirname}/../`,
+    stdio: "inherit",
+  });
+
   loadPackages().forEach((name) =>
     build({
       name,
