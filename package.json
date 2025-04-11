@@ -36,7 +36,7 @@
     "translate": "ts-node src/executable/translate.ts",
     "swagger:update": "node lib/UpdateSwaggerJson.js",
     "google-sheets": "ts-node src/executable/swagger-to-google-sheets.ts",
-    "list-connectors": "ts-node ./deploy/list-connectors.ts"
+    "list-connectors": "ts-node --transpile-only ./deploy/list-connectors.ts"
   },
   "repository": {
     "type": "git",
