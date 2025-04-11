@@ -17,15 +17,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 20.x
-          registry-url: "https://registry.npmjs.org/"
-
-      # - name: Authenticate to npm registry
-      #   run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
-
       - name: Secrets to Env
         run: |
           rm .env
@@ -34,7 +25,7 @@ jobs:
           SECRETS_CONTEXT: ${{ toJson(secrets) }}
 
       - name: Setup pnpm
-        run: npm install -g pnpm
+        uses: pnpm/action-setup@v4
 
       - name: Root Install
         run: pnpm install && pnpm build:prisma
