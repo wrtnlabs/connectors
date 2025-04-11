@@ -36,7 +36,7 @@
   "license": "MIT",
   "devDependencies": {
     "@eslint/js": "^9.20.0",
-    "@nestia/e2e": "^0.7.0",
+    "@nestia/e2e": "^6.0.1",
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^12.1.1",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
@@ -59,7 +59,7 @@
     "@wrtnlabs/connector-shared": "workspace:^",
     "axios": "^1.7.9",
     "marked": "^14.1.2",
-    "typia": "^9.1.0"
+    "typia": "^9.1.1"
   },
   "homepage": "https://wrtnlabs.io/agentica",
   "repository": {
