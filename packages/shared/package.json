@@ -54,14 +54,16 @@
     "tstl": "^3.0.0",
     "typescript": "~5.7.3",
     "typescript-eslint": "^8.24.1",
-    "typescript-transform-paths": "^3.5.1",
-    "sharp": "^0.33.5"
+    "typescript-transform-paths": "^3.5.1"
   },
   "dependencies": {
     "@nestia/e2e": "^0.7.0",
     "marked": "^14.1.2",
     "typia": "^9.1.0",
     "xml2js": "^0.6.2"
+  },
+  "optionalDependencies": {
+    "sharp": "^0.33.5"
   },
   "homepage": "https://wrtnlabs.io/agentica",
   "repository": {
