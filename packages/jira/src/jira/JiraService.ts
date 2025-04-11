@@ -767,7 +767,6 @@ export class JiraService {
         },
       );
 
-      console.log(0, JSON.stringify(res.data, null, 2));
       return res.data;
     } catch (err) {
       if (err instanceof AxiosError) {
