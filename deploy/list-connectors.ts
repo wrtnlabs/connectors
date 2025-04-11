@@ -50,17 +50,12 @@ async function main() {
 
   /** extract package name from package.json */
   const extractPackageInfo = async (packagePath: string) => {
-    const directory = packagePath.split("/").at(-2);
-    if (!directory) {
-      throw new Error("Invalid package path");
-    }
-
     const { ENV_LIST = [] }: { ENV_LIST: string[] } = await import(
-      `../packages/${directory}/src/index`
+      join(packagePath, "src", "index.ts")
     );
 
     const packageJson = await fs.readFile(
-      `${packagePath}/package.json`,
+        join(packagePath, "package.json"),
       "utf8",
     );
     const { name }: { name: string } = JSON.parse(packageJson);
@@ -69,23 +64,8 @@ async function main() {
 
   console.log("Packages");
   console.log(packages);
-
-  const getEnvList = async (packagePath: string): Promise<string[]> => {
-    const directory = packagePath.split("/").at(-2);
-    if (!directory) {
-      throw new Error("Invalid package path");
-    }
-
-    const { ENV_LIST = [] }: { ENV_LIST: string[] } = await import(
-      `../packages/${directory}/src/index`
-    );
-
-    return ENV_LIST;
-  };
-
-  await Promise.all(packages.map(getEnvList));
-
   const connectors = await Promise.all(packages.map(extractPackageInfo));
+
 
   connectors.sort((a, b) => a.name.localeCompare(b.name));
 
