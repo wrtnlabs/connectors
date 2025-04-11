@@ -2,7 +2,7 @@ name: Selective Build and Test in Package Dirs
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
     paths:
       - "packages/**"
       - "package.json"
@@ -14,7 +14,6 @@ on:
       - "package.json"
       - "pnpm-lock.yaml"
       - "pnpm-workspace.yaml"
-      - ".github/workflows/build.yml"
 
 jobs:
   build-test-changed-in-dirs:
@@ -23,7 +22,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # 변경사항 비교 위해 전체 Git 히스토리 필요
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -35,7 +34,6 @@ jobs:
         with:
           version: 10
 
-      # pnpm 캐시 설정 (이전과 동일)
       - name: Get pnpm store directory
         shell: bash
         run: |
@@ -62,12 +60,8 @@ jobs:
           echo "Calculated base ref: ${{ steps.vars.outputs.base_ref }}"
 
       - name: Install Root Dependencies
-        run: pnpm install --frozen-lockfile # 루트 의존성 및 워크스페이스 링크 설치
+        run: pnpm install --frozen-lockfile
 
-      # 변경된 패키지 + 의존성 있는 패키지 내부에서 'build' 스크립트 실행
-      # -r 옵션: 필터링된 각 패키지에서 명령 실행
-      # run build: 각 패키지의 package.json에 있는 'build' 스크립트 실행
-      # --if-present: 해당 스크립트가 없을 경우 에러 없이 건너뜀
       - name: Build Changed Packages & Dependents (in their dirs)
         run: |
           echo "Running build script within packages changed since ${{ steps.vars.outputs.base_ref }}"
@@ -76,7 +70,6 @@ jobs:
                   --filter=!./packages/backend \
                   run --if-present build
 
-      # 변경된 패키지 + 의존성 있는 패키지 내부에서 'test' 스크립트 실행
       - name: Test Changed Packages & Dependents (in their dirs)
         run: |
           echo "Running test script within packages changed since ${{ steps.vars.outputs.base_ref }}"
