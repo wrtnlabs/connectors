@@ -57,6 +57,7 @@ async function main() {
 
     const { name } = (await fs.readJSON(
       join(packagePath, "package.json"),
+      // @TODO: fix unsafe type assertion
     )) as RequiredDeep<Pick<PackageJson, "name">>;
     return { name, envList: ENV_LIST };
   };
