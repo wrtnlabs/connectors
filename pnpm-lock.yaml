@@ -1316,6 +1316,9 @@ importers:
       googleapis:
         specifier: ^144.0.0
         version: 144.0.0
+      sharp:
+        specifier: ^0.33.5
+        version: 0.33.5
       typia:
         specifier: ^9.1.0
         version: 9.1.0(@samchon/openapi@4.0.0)(typescript@5.7.3)
@@ -3366,9 +3369,6 @@ importers:
       rollup:
         specifier: ^4.34.8
         version: 4.39.0
-      sharp:
-        specifier: ^0.33.5
-        version: 0.33.5
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.17.30)(typescript@5.7.3)
@@ -3387,6 +3387,10 @@ importers:
       typescript-transform-paths:
         specifier: ^3.5.1
         version: 3.5.5(typescript@5.7.3)
+    optionalDependencies:
+      sharp:
+        specifier: ^0.33.5
+        version: 0.33.5
 
   packages/slack:
     dependencies:
