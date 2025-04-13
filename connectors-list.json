@@ -1,56 +1,335 @@
 {
   "connectors": [
-    "@wrtnlabs/connector-arxiv-search",
-    "@wrtnlabs/connector-aws-s3",
-    "@wrtnlabs/connector-calendly",
-    "@wrtnlabs/connector-career",
-    "@wrtnlabs/connector-csv",
-    "@wrtnlabs/connector-dall-e-3",
-    "@wrtnlabs/connector-daum-blog",
-    "@wrtnlabs/connector-daum-cafe",
-    "@wrtnlabs/connector-discord",
-    "@wrtnlabs/connector-excel",
-    "@wrtnlabs/connector-figma",
-    "@wrtnlabs/connector-github",
-    "@wrtnlabs/connector-gmail",
-    "@wrtnlabs/connector-google-ads",
-    "@wrtnlabs/connector-google-calendar",
-    "@wrtnlabs/connector-google-docs",
-    "@wrtnlabs/connector-google-drive",
-    "@wrtnlabs/connector-google-flight",
-    "@wrtnlabs/connector-google-hotel",
-    "@wrtnlabs/connector-google-image",
-    "@wrtnlabs/connector-google-map",
-    "@wrtnlabs/connector-google-scholar",
-    "@wrtnlabs/connector-google-search",
-    "@wrtnlabs/connector-google-sheet",
-    "@wrtnlabs/connector-google-shopping",
-    "@wrtnlabs/connector-google-slides",
-    "@wrtnlabs/connector-google-trend",
-    "@wrtnlabs/connector-hancell",
-    "@wrtnlabs/connector-imweb",
-    "@wrtnlabs/connector-jira",
-    "@wrtnlabs/connector-kakao-map",
-    "@wrtnlabs/connector-kakao-navi",
-    "@wrtnlabs/connector-kakao-talk",
-    "@wrtnlabs/connector-korea-eximbank",
-    "@wrtnlabs/connector-marp",
-    "@wrtnlabs/connector-naver-blog",
-    "@wrtnlabs/connector-naver-cafe",
-    "@wrtnlabs/connector-naver-news",
-    "@wrtnlabs/connector-notion",
-    "@wrtnlabs/connector-reddit",
-    "@wrtnlabs/connector-slack",
-    "@wrtnlabs/connector-sort",
-    "@wrtnlabs/connector-stable-diffusion-beta",
-    "@wrtnlabs/connector-sweet-tracker",
-    "@wrtnlabs/connector-typeform",
-    "@wrtnlabs/connector-web-crawler",
-    "@wrtnlabs/connector-x",
-    "@wrtnlabs/connector-youtube-official-search",
-    "@wrtnlabs/connector-youtube-search",
-    "@wrtnlabs/connector-youtube-transcript",
-    "@wrtnlabs/connector-zoom"
+    {
+      "name": "@wrtnlabs/connector-arxiv-search",
+      "envList": []
+    },
+    {
+      "name": "@wrtnlabs/connector-aws-s3",
+      "envList": [
+        "AWS_ACCESS_KEY_ID",
+        "AWS_SECRET_ACCESS_KEY",
+        "AWS_S3_BUCKET",
+        "AWS_S3_REGION"
+      ]
+    },
+    {
+      "name": "@wrtnlabs/connector-calendly",
+      "envList": [
+        "CALENDLY_CLIENT_ID",
+        "CALENDLY_CLIENT_SECRET",
+        "CALENDLY_REFRESH_TOKEN"
+      ]
+    },
+    {
+      "name": "@wrtnlabs/connector-career",
+      "envList": []
+    },
+    {
+      "name": "@wrtnlabs/connector-csv",
+      "envList": []
+    },
+    {
+      "name": "@wrtnlabs/connector-dall-e-3",
+      "envList": []
+    },
+    {
+      "name": "@wrtnlabs/connector-daum-blog",
+      "envList": [
+        "DAUM_API_KEY"
+      ]
+    },
+    {
+      "name": "@wrtnlabs/connector-daum-cafe",
+      "envList": [
+        "DAUM_API_KEY"
+      ]
+    },
+    {
+      "name": "@wrtnlabs/connector-discord",
+      "envList": [
+        "DISCORD_TOKEN"
+      ]
+    },
+    {
+      "name": "@wrtnlabs/connector-excel",
+      "envList": []
+    },
+    {
+      "name": "@wrtnlabs/connector-figma",
+      "envList": [
+        "FIGMA_CLIENT_ID",
+        "FIGMA_CLIENT_SECRET",
+        "FIGMA_REFRESH_TOKEN"
+      ]
+    },
+    {
+      "name": "@wrtnlabs/connector-github",
+      "envList": [
+        "GITHUB_ACCESS_TOKEN"
+      ]
+    },
+    {
+      "name": "@wrtnlabs/connector-gmail",
+      "envList": [
+        "GOOGLE_CLIENT_ID",
+        "GOOGLE_CLIENT_SECRET",
+        "GOOGLE_REFRESH_TOKEN"
+      ]
+    },
+    {
+      "name": "@wrtnlabs/connector-google-ads",
+      "envList": [
+        "GOOGLE_ADS_PARENT_SECRET",
+        "GOOGLE_ADS_ACCOUNT_ID",
+        "GOOGLE_ADS_DEVELOPER_TOKEN",
+        "GOOGLE_CLIENT_ID",
+        "GOOGLE_CLIENT_SECRET",
+        "GOOGLE_REFRESH_TOKEN"
+      ]
+    },
+    {
+      "name": "@wrtnlabs/connector-google-calendar",
+      "envList": [
+        "GOOGLE_CLIENT_ID",
+        "GOOGLE_CLIENT_SECRET",
+        "GOOGLE_REFRESH_TOKEN"
+      ]
+    },
+    {
+      "name": "@wrtnlabs/connector-google-docs",
+      "envList": [
+        "GOOGLE_CLIENT_ID",
+        "GOOGLE_CLIENT_SECRET",
+        "GOOGLE_REFRESH_TOKEN"
+      ]
+    },
+    {
+      "name": "@wrtnlabs/connector-google-drive",
+      "envList": [
+        "GOOGLE_CLIENT_ID",
+        "GOOGLE_CLIENT_SECRET",
+        "GOOGLE_REFRESH_TOKEN"
+      ]
+    },
+    {
+      "name": "@wrtnlabs/connector-google-flight",
+      "envList": [
+        "SERP_API_KEY"
+      ]
+    },
+    {
+      "name": "@wrtnlabs/connector-google-hotel",
+      "envList": [
+        "SERP_API_KEY"
+      ]
+    },
+    {
+      "name": "@wrtnlabs/connector-google-image",
+      "envList": [
+        "SERP_API_KEY"
+      ]
+    },
+    {
+      "name": "@wrtnlabs/connector-google-map",
+      "envList": [
+        "GOOGLE_API_KEY",
+        "SERP_API_KEY"
+      ]
+    },
+    {
+      "name": "@wrtnlabs/connector-google-scholar",
+      "envList": [
+        "SERP_API_KEY"
+      ]
+    },
+    {
+      "name": "@wrtnlabs/connector-google-search",
+      "envList": [
+        "SERP_API_KEY"
+      ]
+    },
+    {
+      "name": "@wrtnlabs/connector-google-sheet",
+      "envList": [
+        "GOOGLE_CLIENT_ID",
+        "GOOGLE_CLIENT_SECRET",
+        "GOOGLE_REFRESH_TOKEN"
+      ]
+    },
+    {
+      "name": "@wrtnlabs/connector-google-shopping",
+      "envList": [
+        "SERP_API_KEY"
+      ]
+    },
+    {
+      "name": "@wrtnlabs/connector-google-slides",
+      "envList": [
+        "GOOGLE_CLIENT_ID",
+        "GOOGLE_CLIENT_SECRET",
+        "GOOGLE_REFRESH_TOKEN"
+      ]
+    },
+    {
+      "name": "@wrtnlabs/connector-google-trend",
+      "envList": [
+        "GOOGLE_TREND_API_KEY"
+      ]
+    },
+    {
+      "name": "@wrtnlabs/connector-hancell",
+      "envList": []
+    },
+    {
+      "name": "@wrtnlabs/connector-imweb",
+      "envList": [
+        "IMWEB_API_KEY",
+        "IMWEB_SECRET_KEY"
+      ]
+    },
+    {
+      "name": "@wrtnlabs/connector-jira",
+      "envList": [
+        "JIRA_CLIENT_ID",
+        "JIRA_CLIENT_SECRET",
+        "JIRA_REDIRECT_URI",
+        "JIRA_REFRESH_TOKEN"
+      ]
+    },
+    {
+      "name": "@wrtnlabs/connector-kakao-map",
+      "envList": [
+        "KAKAO_MAP_CLIENT_ID"
+      ]
+    },
+    {
+      "name": "@wrtnlabs/connector-kakao-navi",
+      "envList": [
+        "KAKAO_NAVI_CLIENT_ID"
+      ]
+    },
+    {
+      "name": "@wrtnlabs/connector-kakao-talk",
+      "envList": [
+        "KAKAO_TALK_CLIENT_ID",
+        "KAKAO_TALK_CLIENT_SECRET",
+        "KAKAO_TALK_REFRESH_TOKEN"
+      ]
+    },
+    {
+      "name": "@wrtnlabs/connector-korea-eximbank",
+      "envList": []
+    },
+    {
+      "name": "@wrtnlabs/connector-marp",
+      "envList": []
+    },
+    {
+      "name": "@wrtnlabs/connector-naver-blog",
+      "envList": [
+        "NAVER_BLOG_CLIENT_ID",
+        "NAVER_BLOG_CLIENT_SECRET"
+      ]
+    },
+    {
+      "name": "@wrtnlabs/connector-naver-cafe",
+      "envList": [
+        "NAVER_CAFE_CLIENT_ID",
+        "NAVER_CAFE_CLIENT_SECRET"
+      ]
+    },
+    {
+      "name": "@wrtnlabs/connector-naver-news",
+      "envList": [
+        "NAVER_NEWS_CLIENT_ID",
+        "NAVER_NEWS_CLIENT_SECRET"
+      ]
+    },
+    {
+      "name": "@wrtnlabs/connector-notion",
+      "envList": [
+        "NOTION_API_KEY"
+      ]
+    },
+    {
+      "name": "@wrtnlabs/connector-reddit",
+      "envList": [
+        "REDDIT_REFRESH_TOKEN",
+        "REDDIT_CLIENT_ID",
+        "REDDIT_CLIENT_SECRET"
+      ]
+    },
+    {
+      "name": "@wrtnlabs/connector-slack",
+      "envList": [
+        "SLACK_TOKEN"
+      ]
+    },
+    {
+      "name": "@wrtnlabs/connector-sort",
+      "envList": []
+    },
+    {
+      "name": "@wrtnlabs/connector-stable-diffusion-beta",
+      "envList": [
+        "STABLE_DIFFUSION_ENGINE_ID",
+        "STABLE_DIFFUSION_HOST",
+        "STABLE_DIFFUSION_API_KEY",
+        "STABLE_DIFFUSION_DEFAULT_STEP",
+        "STABLE_DIFFUSION_CFG_SCALE"
+      ]
+    },
+    {
+      "name": "@wrtnlabs/connector-sweet-tracker",
+      "envList": [
+        "SWEET_TRACKER_API_KEY"
+      ]
+    },
+    {
+      "name": "@wrtnlabs/connector-typeform",
+      "envList": [
+        "TYPEFORM_CLIENT_ID",
+        "TYPEFORM_CLIENT_SECRET",
+        "TYPEFORM_REFRESH_TOKEN"
+      ]
+    },
+    {
+      "name": "@wrtnlabs/connector-web-crawler",
+      "envList": [
+        "ZENROWS_API_KEY"
+      ]
+    },
+    {
+      "name": "@wrtnlabs/connector-x",
+      "envList": [
+        "X_CLIENT_ID",
+        "X_CLIENT_SECRET",
+        "X_BEARER_TOKEN"
+      ]
+    },
+    {
+      "name": "@wrtnlabs/connector-youtube-official-search",
+      "envList": []
+    },
+    {
+      "name": "@wrtnlabs/connector-youtube-search",
+      "envList": [
+        "SERP_API_KEY"
+      ]
+    },
+    {
+      "name": "@wrtnlabs/connector-youtube-transcript",
+      "envList": [
+        "SEARCH_API_KEY"
+      ]
+    },
+    {
+      "name": "@wrtnlabs/connector-zoom",
+      "envList": [
+        "ZOOM_SECRET_KEY"
+      ]
+    }
   ],
-  "version": "0.1.488"
+  "version": "0.1.489"
 }

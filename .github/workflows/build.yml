@@ -6,11 +6,13 @@ on:
       - "test/**"
       - "package.json"
       - ".github/workflows/build.yml"
+      - "connectors-list.json"
   pull_request_target:
     paths:
       - "src/**"
       - "test/**"
       - "package.json"
+      - "connectors-list.json"
 jobs:
   check-list-updated:
     runs-on: ubuntu-latest
