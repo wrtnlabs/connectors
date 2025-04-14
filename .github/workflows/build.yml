@@ -9,13 +9,15 @@ on:
       - "pnpm-lock.yaml"
       - "pnpm-workspace.yaml"
       - ".github/workflows/build.yml"
+      
   pull_request:
     paths:
       - "packages/**"
       - "package.json"
       - "pnpm-lock.yaml"
       - "pnpm-workspace.yaml"
-
+      - "connectors-list.json"
+      
 jobs:
   check-list-updated:
     runs-on: ubuntu-latest
