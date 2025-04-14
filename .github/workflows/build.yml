@@ -8,6 +8,7 @@ on:
       - "package.json"
       - "pnpm-lock.yaml"
       - "pnpm-workspace.yaml"
+      - ".github/workflows/build.yml"
   pull_request:
     paths:
       - "packages/**"
@@ -28,11 +29,14 @@ jobs:
         run: |
           pnpm install --frozen-lockfile
           pnpm prepare
-      - name: check-list-updated
+      - name: check-list-updated (or similar check)
         run: git diff --exit-code
 
-  build-test-changed-in-dirs:
+  determine-changed-packages:
     runs-on: ubuntu-latest
+    needs: check-list-updated
+    outputs:
+      changed_packages: ${{ steps.list-packages.outputs.packages }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -50,10 +54,11 @@ jobs:
           version: 10
 
       - name: Get pnpm store directory
+        id: pnpmcache
         shell: bash
         run: |
           echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_OUTPUT
-        id: pnpmcache
+
       - uses: actions/cache@v4
         name: Setup pnpm cache
         with:
@@ -69,26 +74,67 @@ jobs:
           if [[ "${{ github.event_name }}" == "pull_request" ]]; then
             echo "base_ref=origin/${{ github.base_ref }}" >> $GITHUB_OUTPUT
           else
-            # Push의 경우, main 브랜치와 비교 (필요시 수정)
-            echo "base_ref=origin/main" >> $GITHUB_OUTPUT
+            echo "base_ref=origin/main^" >> $GITHUB_OUTPUT
           fi
-          echo "Calculated base ref: ${{ steps.vars.outputs.base_ref }}"
+          echo "Determined base ref: $(cat $GITHUB_OUTPUT | grep base_ref)"
 
       - name: Install Root Dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build Changed Packages & Dependents (in their dirs)
+      - name: List Changed Packages (incl. dependents, excl. specific ones)
+        id: list-packages
         run: |
-          echo "Running build script within packages changed since ${{ steps.vars.outputs.base_ref }}"
-          pnpm -r --filter "...[${{ steps.vars.outputs.base_ref }}]" \
-                  --filter=!./packages/api \
-                  --filter=!./packages/backend \
-                  run --if-present build
+          sudo apt-get update && sudo apt-get install -y jq
+          echo "Base ref for diff: ${{ steps.vars.outputs.base_ref }}"
+          CHANGED_PACKAGES_JSON=$(pnpm ls -r --depth -1 --json --filter "...[${{ steps.vars.outputs.base_ref }}]" --filter=!./packages/api --filter=!./packages/backend | jq -c 'map(.path)')
+          echo "Raw changed packages JSON: $CHANGED_PACKAGES_JSON"
+          echo "packages=${CHANGED_PACKAGES_JSON}" >> $GITHUB_OUTPUT
 
-      - name: Test Changed Packages & Dependents (in their dirs)
+  build-and-test-package:
+    runs-on: ubuntu-latest
+    needs: determine-changed-packages
+    if: needs.determine-changed-packages.outputs.changed_packages != '[]'
+    strategy:
+      fail-fast: false
+      matrix:
+        package_path: ${{ fromJson(needs.determine-changed-packages.outputs.changed_packages) }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Get pnpm store directory
+        id: pnpmcache
+        shell: bash
         run: |
-          echo "Running test script within packages changed since ${{ steps.vars.outputs.base_ref }}"
-          pnpm -r --filter "...[${{ steps.vars.outputs.base_ref }}]" \
-                  --filter=!./packages/api \
-                  --filter=!./packages/backend \
-                  run --if-present test
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_OUTPUT
+
+      - uses: actions/cache@v4
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpmcache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install All Dependencies (Needed for isolated package build/test)
+        run: pnpm install --frozen-lockfile
+
+      - name: Build Package & Dependencies
+        run: |
+          echo "Building package ${{ matrix.package_path }} and its dependencies"
+          pnpm --filter "${{ matrix.package_path }}..." run --if-present build
+
+      - name: Test Package
+        run: |
+          echo "Testing package ${{ matrix.package_path }}"
+          pnpm --filter "${{ matrix.package_path }}" run --if-present test
