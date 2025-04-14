@@ -24,7 +24,6 @@ import { GoogleSheetService } from "../../packages/google_sheet";
 import { GoogleShoppingService } from "../../packages/google_shopping";
 import { GoogleSlidesService } from "../../packages/google_slides";
 import { GoogleTrendService } from "../../packages/google_trend";
-import { JiraService } from "../../packages/jira";
 import { MarpService } from "../../packages/marp";
 import { NotionService } from "../../packages/notion";
 import { RedditService } from "../../packages/reddit";
@@ -38,16 +37,14 @@ import { YoutubeSearchService } from "../../packages/youtube_search";
 import { YoutubeTranscriptService } from "../../packages/youtube_transcript";
 import { ZoomService } from "../../packages/zoom";
 
-// Define the type for a single controller configuration
 type ControllerConfig = {
   name: string;
   protocol: "class";
-  application: any; // Adjust type if possible, but `any` works for flexibility
+  application: any;
   execute: object;
 };
 
 export const allControllerConfigs: ControllerConfig[] = [
-  // ... (Your existing controller configurations remain unchanged here) ...
   {
     name: "Arxiv Connector",
     protocol: "class",
@@ -275,7 +272,7 @@ export const allControllerConfigs: ControllerConfig[] = [
     protocol: "class",
     application: typia.llm.application<GoogleTrendService, "chatgpt">(),
     execute: new GoogleTrendService({
-      googleTrendApiKey: ConnectorGlobal.env.SERP_API_KEY, // Assuming SERP API key
+      googleTrendApiKey: ConnectorGlobal.env.SERP_API_KEY,
     }),
   },
   // {
@@ -398,7 +395,7 @@ export const allControllerConfigs: ControllerConfig[] = [
     protocol: "class",
     application: typia.llm.application<YoutubeTranscriptService, "chatgpt">(),
     execute: new YoutubeTranscriptService({
-      searchApiKey: ConnectorGlobal.env.SEARCH_API_KEY, // Verify this key
+      searchApiKey: ConnectorGlobal.env.SEARCH_API_KEY,
     }),
   },
   {
@@ -406,7 +403,7 @@ export const allControllerConfigs: ControllerConfig[] = [
     protocol: "class",
     application: typia.llm.application<ZoomService, "chatgpt">(),
     execute: new ZoomService({
-      zoomSecretKey: ConnectorGlobal.env.ZOOM_TEST_AUTHORIZATION_CODE, // Verify this credential type
+      zoomSecretKey: ConnectorGlobal.env.ZOOM_TEST_AUTHORIZATION_CODE,
     }),
   },
 ];

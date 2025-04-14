@@ -6,7 +6,7 @@ import { AgenticaSelectBenchmark } from "@agentica/benchmark";
 import { IAgenticaSelectBenchmarkScenario } from "@agentica/benchmark/src/structures/IAgenticaSelectBenchmarkScenario";
 
 import { ConnectorGlobal } from "../../src/ConnectorGlobal";
-import { allControllerConfigs } from "./ConnectorList"; // Adjust path if needed
+import { allControllerConfigs } from "./ConnectorList";
 
 const mkdir = async (str: string) => {
   try {
