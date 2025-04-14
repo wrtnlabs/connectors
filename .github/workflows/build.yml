@@ -16,6 +16,21 @@ on:
       - "pnpm-workspace.yaml"
 
 jobs:
+  check-list-updated:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - name: install dependencies
+        run: |
+          pnpm install --frozen-lockfile
+          pnpm prepare
+      - name: check-list-updated
+        run: git diff --exit-code
+
   build-test-changed-in-dirs:
     runs-on: ubuntu-latest
     steps:
