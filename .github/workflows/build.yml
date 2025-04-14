@@ -31,7 +31,7 @@ jobs:
         run: |
           pnpm install --frozen-lockfile
           pnpm prepare
-      - name: check-list-updated (or similar check)
+      - name: check-list-updated
         run: git diff --exit-code
 
   determine-changed-packages:
