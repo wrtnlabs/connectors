@@ -22,7 +22,7 @@
     "dev": "pnpm run build:test --watch",
     "eslint": "eslint src && eslint test",
     "eslint:fix": "eslint --fix src && eslint --fix test",
-    "prepare": "ts-patch install && typia patch && git update-index --assume-unchanged .env && npm run list-connectors",
+    "prepare": "ts-patch install && typia patch && git update-index --assume-unchanged .env",
     "prettier": "prettier src --write && prettier test --write",
     "------------------------WEBPACK------------------------": "",
     "webpack": "rimraf dist && webpack",
