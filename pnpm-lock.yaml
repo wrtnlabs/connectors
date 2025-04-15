@@ -9,55 +9,55 @@ importers:
   .:
     dependencies:
       '@aws-sdk/client-s3':
-        specifier: ^3.658.1
+        specifier: ^3.782.0
         version: 3.787.0
       '@aws-sdk/s3-request-presigner':
-        specifier: ^3.658.1
+        specifier: ^3.782.0
         version: 3.787.0
       '@kakasoo/sortable':
-        specifier: ^1.0.4
+        specifier: ^1.0.8
         version: 1.0.8
       '@marp-team/marp-cli':
         specifier: 0.0.12
         version: 0.0.12
       '@nestia/core':
-        specifier: ^4.6.1
-        version: 4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))
+        specifier: ^6.0.1
+        version: 6.0.1(@nestia/fetcher@6.0.1(@samchon/openapi@4.1.0)(typia@9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typescript@5.7.3)
       '@nestia/fetcher':
-        specifier: ^4.5.1
-        version: 4.6.2(typescript@5.7.3)
+        specifier: ^6.0.1
+        version: 6.0.1(@samchon/openapi@4.1.0)(typia@9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3))
       '@nestjs/axios':
         specifier: ^4.0.0
         version: 4.0.0(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(axios@1.8.4)(rxjs@7.8.2)
       '@nestjs/common':
-        specifier: ^11.0.4
+        specifier: ^11.0.14
         version: 11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2)
       '@nestjs/config':
-        specifier: ^4.0.0
+        specifier: ^4.0.2
         version: 4.0.2(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(rxjs@7.8.2)
       '@nestjs/core':
-        specifier: ^11.0.4
+        specifier: ^11.0.14
         version: 11.0.17(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)
       '@nestjs/platform-express':
-        specifier: ^11.0.4
+        specifier: ^11.0.14
         version: 11.0.17(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)
       '@nestjs/swagger':
-        specifier: ^11.0.2
-        version: 11.1.2(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)
+        specifier: ^11.1.1
+        version: 11.1.3(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)
       '@nestjs/testing':
-        specifier: ^11.0.4
+        specifier: ^11.0.14
         version: 11.0.17(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(@nestjs/platform-express@11.0.17)
       '@notionhq/client':
-        specifier: ^2.2.16
+        specifier: ^2.3.0
         version: 2.3.0
       '@prisma/client':
-        specifier: ^5.21.1
+        specifier: ^5.22.0
         version: 5.22.0(prisma@5.22.0)
       '@samchon/openapi':
-        specifier: ^2.3.3
-        version: 2.5.3
+        specifier: ^4.0.0
+        version: 4.1.0
       '@slack/web-api':
-        specifier: ^7.6.0
+        specifier: ^7.9.1
         version: 7.9.1
       '@tryfabric/mack':
         specifier: ^1.2.1
@@ -70,15 +70,15 @@ importers:
         version: 1.2.3
       '@wrtnio/decorators':
         specifier: ^1.6.0
-        version: 1.6.0(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)))(@nestia/sdk@4.6.2(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)))(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.86)(typescript@5.7.3))(typescript@5.7.3)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)))(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))
+        version: 1.6.0(@nestia/core@6.0.1(@nestia/fetcher@6.0.1(@samchon/openapi@4.1.0)(typia@9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typescript@5.7.3))(@nestia/sdk@6.0.1(@nestia/core@6.0.1(@nestia/fetcher@6.0.1(@samchon/openapi@4.1.0)(typia@9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typescript@5.7.3))(@nestia/fetcher@6.0.1(@samchon/openapi@4.1.0)(typia@9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.86)(typescript@5.7.3))(typescript@5.7.3))(typia@9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3))
       '@wrtnio/schema':
         specifier: ^3.2.1
         version: 3.2.1
       aws-sdk:
-        specifier: ^2.1691.0
+        specifier: ^2.1692.0
         version: 2.1692.0
       axios:
-        specifier: ^1.7.7
+        specifier: ^1.8.4
         version: 1.8.4
       cheerio:
         specifier: ^1.0.0
@@ -90,13 +90,13 @@ importers:
         specifier: ^7.0.3
         version: 7.0.3
       csv-parse:
-        specifier: ^5.5.5
+        specifier: ^5.6.0
         version: 5.6.0
       dd-trace:
-        specifier: ^5.35.0
-        version: 5.47.0
+        specifier: ^5.46.0
+        version: 5.48.0
       dotenv:
-        specifier: ^16.3.1
+        specifier: ^16.4.7
         version: 16.5.0
       dotenv-expand:
         specifier: ^10.0.0
@@ -105,13 +105,13 @@ importers:
         specifier: ^4.4.0
         version: 4.4.0
       fast-csv:
-        specifier: ^5.0.0
+        specifier: ^5.0.2
         version: 5.0.2
       file-type:
-        specifier: ^16.5.3
+        specifier: ^16.5.4
         version: 16.5.4
       google-spreadsheet:
-        specifier: ^4.1.1
+        specifier: ^4.1.4
         version: 4.1.4(google-auth-library@9.15.1)
       googleapis:
         specifier: ^144.0.0
@@ -120,28 +120,28 @@ importers:
         specifier: ^1.2.0
         version: 1.2.0
       json-schema-faker:
-        specifier: ^0.5.5
+        specifier: ^0.5.9
         version: 0.5.9
       marked:
-        specifier: ^14.1.2
+        specifier: ^14.1.4
         version: 14.1.4
       mdast-util-from-markdown:
-        specifier: ^2.0.1
+        specifier: ^2.0.2
         version: 2.0.2
       mime-types:
         specifier: ^2.1.35
         version: 2.1.35
       nestjs-pino:
-        specifier: ^4.3.0
+        specifier: ^4.4.0
         version: 4.4.0(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(pino-http@10.4.0)(pino@9.6.0)(rxjs@7.8.2)
       notion-to-md:
-        specifier: ^3.1.1
+        specifier: ^3.1.7
         version: 3.1.7
       openai:
-        specifier: ^4.24.1
-        version: 4.93.0
+        specifier: ^4.93.0
+        version: 4.94.0
       pino:
-        specifier: ^9.5.0
+        specifier: ^9.6.0
         version: 9.6.0
       prisma:
         specifier: ^5.22.0
@@ -156,23 +156,23 @@ importers:
         specifier: ^4.1.0
         version: 4.1.0
       serpapi:
-        specifier: ^2.0.0
+        specifier: ^2.1.0
         version: 2.1.0
       slackify-markdown:
         specifier: ^4.4.0
         version: 4.4.0
       stream-buffers:
-        specifier: ^3.0.2
+        specifier: ^3.0.3
         version: 3.0.3
       tstl:
         specifier: ^3.0.0
         version: 3.0.0
       twitter-api-v2:
-        specifier: ^1.17.2
+        specifier: ^1.22.0
         version: 1.22.0
       typia:
-        specifier: ^8.0.1
-        version: 8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)
+        specifier: ^9.1.0
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
       uuid:
         specifier: ^10.0.0
         version: 10.0.0
@@ -187,26 +187,26 @@ importers:
         version: 2.0.1
     devDependencies:
       '@commitlint/cli':
-        specifier: ^19.3.0
+        specifier: ^19.8.0
         version: 19.8.0(@types/node@18.19.86)(typescript@5.7.3)
       '@commitlint/config-conventional':
-        specifier: ^19.2.2
+        specifier: ^19.8.0
         version: 19.8.0
       '@figma/rest-api-spec':
         specifier: ^0.18.0
         version: 0.18.0
       '@nestia/agent':
-        specifier: ^0.3.7
-        version: 0.3.12(@samchon/openapi@2.5.3)(openai@4.93.0)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))
+        specifier: ^0.3.12
+        version: 0.3.12(@samchon/openapi@4.1.0)(openai@4.94.0)(typia@9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3))
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       '@nestia/sdk':
-        specifier: ^4.6.1
-        version: 4.6.2(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)))(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.86)(typescript@5.7.3))(typescript@5.7.3)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))
+        specifier: ^6.0.1
+        version: 6.0.1(@nestia/core@6.0.1(@nestia/fetcher@6.0.1(@samchon/openapi@4.1.0)(typia@9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typescript@5.7.3))(@nestia/fetcher@6.0.1(@samchon/openapi@4.1.0)(typia@9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.86)(typescript@5.7.3))(typescript@5.7.3)
       '@ryoppippi/unplugin-typia':
-        specifier: ^1.1.0
-        version: 1.2.0(@samchon/openapi@2.5.3)(@types/node@18.19.86)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)
+        specifier: ^2.2.0
+        version: 2.2.0(rollup@4.40.0)(typescript@5.7.3)(typia@9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3))(vite@5.4.18(@types/node@18.19.86)(terser@5.39.0))
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -214,7 +214,7 @@ importers:
         specifier: ^2.1.4
         version: 2.1.4
       '@types/cli':
-        specifier: ^0.11.21
+        specifier: ^0.11.25
         version: 0.11.25
       '@types/express':
         specifier: ^4.17.21
@@ -223,13 +223,13 @@ importers:
         specifier: ^11.0.4
         version: 11.0.4
       '@types/inquirer':
-        specifier: ^8.2.5
+        specifier: ^8.2.10
         version: 8.2.10
       '@types/mime-types':
         specifier: ^2.1.4
         version: 2.1.4
       '@types/node':
-        specifier: ^18.11.0
+        specifier: ^18.19.86
         version: 18.19.86
       '@types/qs':
         specifier: ^6.9.18
@@ -244,13 +244,13 @@ importers:
         specifier: ^0.4.14
         version: 0.4.14
       '@typescript-eslint/eslint-plugin':
-        specifier: ^5.40.0
+        specifier: ^5.62.0
         version: 5.62.0(@typescript-eslint/parser@5.62.0(eslint@9.24.0(jiti@2.4.2))(typescript@5.7.3))(eslint@9.24.0(jiti@2.4.2))(typescript@5.7.3)
       '@typescript-eslint/parser':
-        specifier: ^5.40.0
+        specifier: ^5.62.0
         version: 5.62.0(eslint@9.24.0(jiti@2.4.2))(typescript@5.7.3)
       '@vitest/coverage-istanbul':
-        specifier: ^2.1.8
+        specifier: ^2.1.9
         version: 2.1.9(vitest@2.1.9(@types/node@18.19.86)(terser@5.39.0))
       chalk:
         specifier: ^4.1.2
@@ -259,19 +259,19 @@ importers:
         specifier: ^11.0.0
         version: 11.0.0(webpack@5.99.5)
       eslint-plugin-deprecation:
-        specifier: ^1.4.1
-        version: 1.6.0(eslint@9.24.0(jiti@2.4.2))(typescript@5.7.3)
+        specifier: ^1.5.0
+        version: 1.5.0(eslint@9.24.0(jiti@2.4.2))(typescript@5.7.3)
       express:
-        specifier: ^4.18.2
+        specifier: ^4.21.2
         version: 4.21.2
       fs-extra:
         specifier: ^11.3.0
         version: 11.3.0
       nestia:
-        specifier: ^6.3.1
+        specifier: ^6.4.0
         version: 6.4.0
       prettier:
-        specifier: ^3.3.2
+        specifier: ^3.5.3
         version: 3.5.3
       prisma-markdown:
         specifier: ^1.0.9
@@ -286,16 +286,16 @@ importers:
         specifier: ^0.5.21
         version: 0.5.21
       swagger-ui-express:
-        specifier: ^5.0.0
+        specifier: ^5.0.1
         version: 5.0.1(express@4.21.2)
       tinyglobby:
         specifier: ^0.2.12
         version: 0.2.12
       ts-loader:
-        specifier: ^9.5.1
+        specifier: ^9.5.2
         version: 9.5.2(typescript@5.7.3)(webpack@5.99.5)
       ts-node:
-        specifier: ^10.9.1
+        specifier: ^10.9.2
         version: 10.9.2(@types/node@18.19.86)(typescript@5.7.3)
       ts-patch:
         specifier: ^3.3.0
@@ -307,13 +307,13 @@ importers:
         specifier: ~5.7.3
         version: 5.7.3
       typescript-transform-paths:
-        specifier: ^3.5.1
+        specifier: ^3.5.5
         version: 3.5.5(typescript@5.7.3)
       vitest:
-        specifier: ^2.1.8
+        specifier: ^2.1.9
         version: 2.1.9(@types/node@18.19.86)(terser@5.39.0)
       webpack:
-        specifier: ^5.89.0
+        specifier: ^5.99.5
         version: 5.99.5(webpack-cli@5.1.4)
       webpack-cli:
         specifier: ^5.1.4
@@ -336,7 +336,7 @@ importers:
         version: 1.8.4
       typia:
         specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@2.5.3)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
       xml2js:
         specifier: ^0.6.2
         version: 0.6.2
@@ -421,7 +421,7 @@ importers:
         version: 0.0.3
       typia:
         specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@2.5.3)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -491,7 +491,7 @@ importers:
         version: 1.8.4
       typia:
         specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@2.5.3)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -564,7 +564,7 @@ importers:
         version: link:../shared
       typia:
         specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@2.5.3)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -646,7 +646,7 @@ importers:
         version: 3.0.3
       typia:
         specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@2.5.3)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -725,7 +725,7 @@ importers:
         version: 4.93.0
       typia:
         specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@2.5.3)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -798,7 +798,7 @@ importers:
         version: 1.8.4
       typia:
         specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@2.5.3)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -871,7 +871,7 @@ importers:
         version: 1.8.4
       typia:
         specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@2.5.3)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -944,7 +944,7 @@ importers:
         version: 1.8.4
       typia:
         specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@2.5.3)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -1014,7 +1014,7 @@ importers:
         version: link:../shared
       typia:
         specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@2.5.3)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -1093,7 +1093,7 @@ importers:
         version: 1.8.4
       typia:
         specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@2.5.3)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -1163,7 +1163,7 @@ importers:
         version: 1.8.4
       typia:
         specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@2.5.3)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -1239,7 +1239,7 @@ importers:
         version: 144.0.0
       typia:
         specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@2.5.3)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -1321,7 +1321,7 @@ importers:
         version: 0.33.5
       typia:
         specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@2.5.3)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
       uuid:
         specifier: ^10.0.0
         version: 10.0.0
@@ -1397,7 +1397,7 @@ importers:
         version: 144.0.0
       typia:
         specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@2.5.3)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -1473,7 +1473,7 @@ importers:
         version: 14.1.4
       typia:
         specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@2.5.3)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -1552,7 +1552,7 @@ importers:
         version: 0.0.3
       typia:
         specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@2.5.3)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -1631,7 +1631,7 @@ importers:
         version: 2.1.0
       typia:
         specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@2.5.3)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -1698,7 +1698,7 @@ importers:
         version: link:../shared
       typia:
         specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@2.5.3)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -1841,7 +1841,7 @@ importers:
         version: 2.1.0
       typia:
         specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@2.5.3)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -1911,7 +1911,7 @@ importers:
         version: 2.1.0
       typia:
         specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@2.5.3)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -1981,7 +1981,7 @@ importers:
         version: 2.1.0
       typia:
         specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@2.5.3)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -2057,7 +2057,7 @@ importers:
         version: 144.0.0
       typia:
         specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@2.5.3)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -2130,7 +2130,7 @@ importers:
         version: 2.1.0
       typia:
         specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@2.5.3)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -2212,7 +2212,7 @@ importers:
         version: 0.33.5
       typia:
         specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@2.5.3)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
       uuid:
         specifier: ^10.0.0
         version: 10.0.0
@@ -2294,7 +2294,7 @@ importers:
         version: 2.1.0
       typia:
         specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@2.5.3)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -2370,7 +2370,7 @@ importers:
         version: 1.8.4
       typia:
         specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@2.5.3)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
       uuid:
         specifier: ^10.0.0
         version: 10.0.0
@@ -2455,7 +2455,7 @@ importers:
         version: 1.8.4
       typia:
         specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@2.5.3)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -2528,7 +2528,7 @@ importers:
         version: 14.1.4
       typia:
         specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@2.5.3)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -2595,7 +2595,7 @@ importers:
         version: link:../shared
       typia:
         specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@2.5.3)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -2662,7 +2662,7 @@ importers:
         version: link:../shared
       typia:
         specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@2.5.3)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -2732,7 +2732,7 @@ importers:
         version: 1.8.4
       typia:
         specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@2.5.3)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -2802,7 +2802,7 @@ importers:
         version: link:../shared
       typia:
         specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@2.5.3)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -2884,7 +2884,7 @@ importers:
         version: 0.12.7
       typia:
         specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@2.5.3)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -2951,7 +2951,7 @@ importers:
         version: 1.8.4
       typia:
         specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@2.5.3)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -3024,7 +3024,7 @@ importers:
         version: 1.8.4
       typia:
         specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@2.5.3)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -3097,7 +3097,7 @@ importers:
         version: 1.8.4
       typia:
         specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@2.5.3)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -3176,7 +3176,7 @@ importers:
         version: 3.1.7
       typia:
         specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@2.5.3)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -3249,7 +3249,7 @@ importers:
         version: 1.8.4
       typia:
         specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@2.5.3)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -3325,7 +3325,7 @@ importers:
         version: 14.1.4
       typia:
         specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@2.5.3)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
       xml2js:
         specifier: ^0.6.2
         version: 0.6.2
@@ -3408,7 +3408,7 @@ importers:
         version: 4.4.0
       typia:
         specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@2.5.3)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -3472,7 +3472,7 @@ importers:
     dependencies:
       typia:
         specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@2.5.3)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -3545,7 +3545,7 @@ importers:
         version: 1.8.4
       typia:
         specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@2.5.3)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -3615,7 +3615,7 @@ importers:
         version: 1.8.4
       typia:
         specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@2.5.3)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -3691,7 +3691,7 @@ importers:
         version: 6.14.0
       typia:
         specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@2.5.3)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -3767,7 +3767,7 @@ importers:
         version: 1.0.0
       typia:
         specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@2.5.3)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
       zenrows:
         specifier: ^2.0.1
         version: 2.0.1
@@ -3840,7 +3840,7 @@ importers:
         version: 1.8.4
       typia:
         specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@2.5.3)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -3916,7 +3916,7 @@ importers:
         version: 2.1.0
       typia:
         specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@2.5.3)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -3992,7 +3992,7 @@ importers:
         version: 2.1.0
       typia:
         specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@2.5.3)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -4068,7 +4068,7 @@ importers:
         version: 2.1.0
       typia:
         specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@2.5.3)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -4141,7 +4141,7 @@ importers:
         version: 1.8.4
       typia:
         specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@2.5.3)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -4568,21 +4568,9 @@ packages:
     cpu: [ppc64]
     os: [aix]
 
-  '@esbuild/aix-ppc64@0.25.2':
-    resolution: {integrity: sha512-wCIboOL2yXZym2cgm6mlA742s9QeJ8DjGVaL39dLN4rRwrOgOyYSnOaFPhKZGLb2ngj4EyfAFjsNJwPXZvseag==}
-    engines: {node: '>=18'}
-    cpu: [ppc64]
-    os: [aix]
-
   '@esbuild/android-arm64@0.21.5':
     resolution: {integrity: sha512-c0uX9VAUBQ7dTDCjq+wdyGLowMdtR/GoC2U5IYk/7D1H1JYC0qseD7+11iMP2mRLN9RcCMRcjC4YMclCzGwS/A==}
     engines: {node: '>=12'}
-    cpu: [arm64]
-    os: [android]
-
-  '@esbuild/android-arm64@0.25.2':
-    resolution: {integrity: sha512-5ZAX5xOmTligeBaeNEPnPaeEuah53Id2tX4c2CVP3JaROTH+j4fnfHCkr1PjXMd78hMst+TlkfKcW/DlTq0i4w==}
-    engines: {node: '>=18'}
     cpu: [arm64]
     os: [android]
 
@@ -4592,21 +4580,9 @@ packages:
     cpu: [arm]
     os: [android]
 
-  '@esbuild/android-arm@0.25.2':
-    resolution: {integrity: sha512-NQhH7jFstVY5x8CKbcfa166GoV0EFkaPkCKBQkdPJFvo5u+nGXLEH/ooniLb3QI8Fk58YAx7nsPLozUWfCBOJA==}
-    engines: {node: '>=18'}
-    cpu: [arm]
-    os: [android]
-
   '@esbuild/android-x64@0.21.5':
     resolution: {integrity: sha512-D7aPRUUNHRBwHxzxRvp856rjUHRFW1SdQATKXH2hqA0kAZb1hKmi02OpYRacl0TxIGz/ZmXWlbZgjwWYaCakTA==}
     engines: {node: '>=12'}
-    cpu: [x64]
-    os: [android]
-
-  '@esbuild/android-x64@0.25.2':
-    resolution: {integrity: sha512-Ffcx+nnma8Sge4jzddPHCZVRvIfQ0kMsUsCMcJRHkGJ1cDmhe4SsrYIjLUKn1xpHZybmOqCWwB0zQvsjdEHtkg==}
-    engines: {node: '>=18'}
     cpu: [x64]
     os: [android]
 
@@ -4616,21 +4592,9 @@ packages:
     cpu: [arm64]
     os: [darwin]
 
-  '@esbuild/darwin-arm64@0.25.2':
-    resolution: {integrity: sha512-MpM6LUVTXAzOvN4KbjzU/q5smzryuoNjlriAIx+06RpecwCkL9JpenNzpKd2YMzLJFOdPqBpuub6eVRP5IgiSA==}
-    engines: {node: '>=18'}
-    cpu: [arm64]
-    os: [darwin]
-
   '@esbuild/darwin-x64@0.21.5':
     resolution: {integrity: sha512-se/JjF8NlmKVG4kNIuyWMV/22ZaerB+qaSi5MdrXtd6R08kvs2qCN4C09miupktDitvh8jRFflwGFBQcxZRjbw==}
     engines: {node: '>=12'}
-    cpu: [x64]
-    os: [darwin]
-
-  '@esbuild/darwin-x64@0.25.2':
-    resolution: {integrity: sha512-5eRPrTX7wFyuWe8FqEFPG2cU0+butQQVNcT4sVipqjLYQjjh8a8+vUTfgBKM88ObB85ahsnTwF7PSIt6PG+QkA==}
-    engines: {node: '>=18'}
     cpu: [x64]
     os: [darwin]
 
@@ -4640,21 +4604,9 @@ packages:
     cpu: [arm64]
     os: [freebsd]
 
-  '@esbuild/freebsd-arm64@0.25.2':
-    resolution: {integrity: sha512-mLwm4vXKiQ2UTSX4+ImyiPdiHjiZhIaE9QvC7sw0tZ6HoNMjYAqQpGyui5VRIi5sGd+uWq940gdCbY3VLvsO1w==}
-    engines: {node: '>=18'}
-    cpu: [arm64]
-    os: [freebsd]
-
   '@esbuild/freebsd-x64@0.21.5':
     resolution: {integrity: sha512-J95kNBj1zkbMXtHVH29bBriQygMXqoVQOQYA+ISs0/2l3T9/kj42ow2mpqerRBxDJnmkUDCaQT/dfNXWX/ZZCQ==}
     engines: {node: '>=12'}
-    cpu: [x64]
-    os: [freebsd]
-
-  '@esbuild/freebsd-x64@0.25.2':
-    resolution: {integrity: sha512-6qyyn6TjayJSwGpm8J9QYYGQcRgc90nmfdUb0O7pp1s4lTY+9D0H9O02v5JqGApUyiHOtkz6+1hZNvNtEhbwRQ==}
-    engines: {node: '>=18'}
     cpu: [x64]
     os: [freebsd]
 
@@ -4664,21 +4616,9 @@ packages:
     cpu: [arm64]
     os: [linux]
 
-  '@esbuild/linux-arm64@0.25.2':
-    resolution: {integrity: sha512-gq/sjLsOyMT19I8obBISvhoYiZIAaGF8JpeXu1u8yPv8BE5HlWYobmlsfijFIZ9hIVGYkbdFhEqC0NvM4kNO0g==}
-    engines: {node: '>=18'}
-    cpu: [arm64]
-    os: [linux]
-
   '@esbuild/linux-arm@0.21.5':
     resolution: {integrity: sha512-bPb5AHZtbeNGjCKVZ9UGqGwo8EUu4cLq68E95A53KlxAPRmUyYv2D6F0uUI65XisGOL1hBP5mTronbgo+0bFcA==}
     engines: {node: '>=12'}
-    cpu: [arm]
-    os: [linux]
-
-  '@esbuild/linux-arm@0.25.2':
-    resolution: {integrity: sha512-UHBRgJcmjJv5oeQF8EpTRZs/1knq6loLxTsjc3nxO9eXAPDLcWW55flrMVc97qFPbmZP31ta1AZVUKQzKTzb0g==}
-    engines: {node: '>=18'}
     cpu: [arm]
     os: [linux]
 
@@ -4688,21 +4628,9 @@ packages:
     cpu: [ia32]
     os: [linux]
 
-  '@esbuild/linux-ia32@0.25.2':
-    resolution: {integrity: sha512-bBYCv9obgW2cBP+2ZWfjYTU+f5cxRoGGQ5SeDbYdFCAZpYWrfjjfYwvUpP8MlKbP0nwZ5gyOU/0aUzZ5HWPuvQ==}
-    engines: {node: '>=18'}
-    cpu: [ia32]
-    os: [linux]
-
   '@esbuild/linux-loong64@0.21.5':
     resolution: {integrity: sha512-uHf1BmMG8qEvzdrzAqg2SIG/02+4/DHB6a9Kbya0XDvwDEKCoC8ZRWI5JJvNdUjtciBGFQ5PuBlpEOXQj+JQSg==}
     engines: {node: '>=12'}
-    cpu: [loong64]
-    os: [linux]
-
-  '@esbuild/linux-loong64@0.25.2':
-    resolution: {integrity: sha512-SHNGiKtvnU2dBlM5D8CXRFdd+6etgZ9dXfaPCeJtz+37PIUlixvlIhI23L5khKXs3DIzAn9V8v+qb1TRKrgT5w==}
-    engines: {node: '>=18'}
     cpu: [loong64]
     os: [linux]
 
@@ -4712,21 +4640,9 @@ packages:
     cpu: [mips64el]
     os: [linux]
 
-  '@esbuild/linux-mips64el@0.25.2':
-    resolution: {integrity: sha512-hDDRlzE6rPeoj+5fsADqdUZl1OzqDYow4TB4Y/3PlKBD0ph1e6uPHzIQcv2Z65u2K0kpeByIyAjCmjn1hJgG0Q==}
-    engines: {node: '>=18'}
-    cpu: [mips64el]
-    os: [linux]
-
   '@esbuild/linux-ppc64@0.21.5':
     resolution: {integrity: sha512-1hHV/Z4OEfMwpLO8rp7CvlhBDnjsC3CttJXIhBi+5Aj5r+MBvy4egg7wCbe//hSsT+RvDAG7s81tAvpL2XAE4w==}
     engines: {node: '>=12'}
-    cpu: [ppc64]
-    os: [linux]
-
-  '@esbuild/linux-ppc64@0.25.2':
-    resolution: {integrity: sha512-tsHu2RRSWzipmUi9UBDEzc0nLc4HtpZEI5Ba+Omms5456x5WaNuiG3u7xh5AO6sipnJ9r4cRWQB2tUjPyIkc6g==}
-    engines: {node: '>=18'}
     cpu: [ppc64]
     os: [linux]
 
@@ -4736,21 +4652,9 @@ packages:
     cpu: [riscv64]
     os: [linux]
 
-  '@esbuild/linux-riscv64@0.25.2':
-    resolution: {integrity: sha512-k4LtpgV7NJQOml/10uPU0s4SAXGnowi5qBSjaLWMojNCUICNu7TshqHLAEbkBdAszL5TabfvQ48kK84hyFzjnw==}
-    engines: {node: '>=18'}
-    cpu: [riscv64]
-    os: [linux]
-
   '@esbuild/linux-s390x@0.21.5':
     resolution: {integrity: sha512-zus5sxzqBJD3eXxwvjN1yQkRepANgxE9lgOW2qLnmr8ikMTphkjgXu1HR01K4FJg8h1kEEDAqDcZQtbrRnB41A==}
     engines: {node: '>=12'}
-    cpu: [s390x]
-    os: [linux]
-
-  '@esbuild/linux-s390x@0.25.2':
-    resolution: {integrity: sha512-GRa4IshOdvKY7M/rDpRR3gkiTNp34M0eLTaC1a08gNrh4u488aPhuZOCpkF6+2wl3zAN7L7XIpOFBhnaE3/Q8Q==}
-    engines: {node: '>=18'}
     cpu: [s390x]
     os: [linux]
 
@@ -4760,45 +4664,15 @@ packages:
     cpu: [x64]
     os: [linux]
 
-  '@esbuild/linux-x64@0.25.2':
-    resolution: {integrity: sha512-QInHERlqpTTZ4FRB0fROQWXcYRD64lAoiegezDunLpalZMjcUcld3YzZmVJ2H/Cp0wJRZ8Xtjtj0cEHhYc/uUg==}
-    engines: {node: '>=18'}
-    cpu: [x64]
-    os: [linux]
-
-  '@esbuild/netbsd-arm64@0.25.2':
-    resolution: {integrity: sha512-talAIBoY5M8vHc6EeI2WW9d/CkiO9MQJ0IOWX8hrLhxGbro/vBXJvaQXefW2cP0z0nQVTdQ/eNyGFV1GSKrxfw==}
-    engines: {node: '>=18'}
-    cpu: [arm64]
-    os: [netbsd]
-
   '@esbuild/netbsd-x64@0.21.5':
     resolution: {integrity: sha512-Woi2MXzXjMULccIwMnLciyZH4nCIMpWQAs049KEeMvOcNADVxo0UBIQPfSmxB3CWKedngg7sWZdLvLczpe0tLg==}
     engines: {node: '>=12'}
     cpu: [x64]
     os: [netbsd]
 
-  '@esbuild/netbsd-x64@0.25.2':
-    resolution: {integrity: sha512-voZT9Z+tpOxrvfKFyfDYPc4DO4rk06qamv1a/fkuzHpiVBMOhpjK+vBmWM8J1eiB3OLSMFYNaOaBNLXGChf5tg==}
-    engines: {node: '>=18'}
-    cpu: [x64]
-    os: [netbsd]
-
-  '@esbuild/openbsd-arm64@0.25.2':
-    resolution: {integrity: sha512-dcXYOC6NXOqcykeDlwId9kB6OkPUxOEqU+rkrYVqJbK2hagWOMrsTGsMr8+rW02M+d5Op5NNlgMmjzecaRf7Tg==}
-    engines: {node: '>=18'}
-    cpu: [arm64]
-    os: [openbsd]
-
   '@esbuild/openbsd-x64@0.21.5':
     resolution: {integrity: sha512-HLNNw99xsvx12lFBUwoT8EVCsSvRNDVxNpjZ7bPn947b8gJPzeHWyNVhFsaerc0n3TsbOINvRP2byTZ5LKezow==}
     engines: {node: '>=12'}
-    cpu: [x64]
-    os: [openbsd]
-
-  '@esbuild/openbsd-x64@0.25.2':
-    resolution: {integrity: sha512-t/TkWwahkH0Tsgoq1Ju7QfgGhArkGLkF1uYz8nQS/PPFlXbP5YgRpqQR3ARRiC2iXoLTWFxc6DJMSK10dVXluw==}
-    engines: {node: '>=18'}
     cpu: [x64]
     os: [openbsd]
 
@@ -4808,21 +4682,9 @@ packages:
     cpu: [x64]
     os: [sunos]
 
-  '@esbuild/sunos-x64@0.25.2':
-    resolution: {integrity: sha512-cfZH1co2+imVdWCjd+D1gf9NjkchVhhdpgb1q5y6Hcv9TP6Zi9ZG/beI3ig8TvwT9lH9dlxLq5MQBBgwuj4xvA==}
-    engines: {node: '>=18'}
-    cpu: [x64]
-    os: [sunos]
-
   '@esbuild/win32-arm64@0.21.5':
     resolution: {integrity: sha512-Z0gOTd75VvXqyq7nsl93zwahcTROgqvuAcYDUr+vOv8uHhNSKROyU961kgtCD1e95IqPKSQKH7tBTslnS3tA8A==}
     engines: {node: '>=12'}
-    cpu: [arm64]
-    os: [win32]
-
-  '@esbuild/win32-arm64@0.25.2':
-    resolution: {integrity: sha512-7Loyjh+D/Nx/sOTzV8vfbB3GJuHdOQyrOryFdZvPHLf42Tk9ivBU5Aedi7iyX+x6rbn2Mh68T4qq1SDqJBQO5Q==}
-    engines: {node: '>=18'}
     cpu: [arm64]
     os: [win32]
 
@@ -4832,21 +4694,9 @@ packages:
     cpu: [ia32]
     os: [win32]
 
-  '@esbuild/win32-ia32@0.25.2':
-    resolution: {integrity: sha512-WRJgsz9un0nqZJ4MfhabxaD9Ft8KioqU3JMinOTvobbX6MOSUigSBlogP8QB3uxpJDsFS6yN+3FDBdqE5lg9kg==}
-    engines: {node: '>=18'}
-    cpu: [ia32]
-    os: [win32]
-
   '@esbuild/win32-x64@0.21.5':
     resolution: {integrity: sha512-tQd/1efJuzPC6rCFwEvLtci/xNFcTZknmXs98FYDfGE4wP9ClFV98nyKrzJKVPMhdDnjzLhdUyMX4PsQAPjwIw==}
     engines: {node: '>=12'}
-    cpu: [x64]
-    os: [win32]
-
-  '@esbuild/win32-x64@0.25.2':
-    resolution: {integrity: sha512-kM3HKb16VIXZyIeVrM1ygYmZBKybX8N4p754bw390wGO3Tf2j4L2/WYL+4suWujpgf6GBYs3jv7TyUivdd05JA==}
-    engines: {node: '>=18'}
     cpu: [x64]
     os: [win32]
 
@@ -5120,35 +4970,37 @@ packages:
       openai: '>=4.0.0'
       typia: '>=7.6.3'
 
-  '@nestia/core@4.6.2':
-    resolution: {integrity: sha512-tpZk2L7XuN3TTy1K5VDE2k1RUfWPrhFImrVAp6kpeEXgWIPRN4I56DBxTKL05VQox0ME4tC6jsFUFOHtLAUq3g==}
+  '@nestia/core@6.0.1':
+    resolution: {integrity: sha512-CiZUtNHMH5MFC3M6vy2cz1sG7j8ZfzmPMWrAQplCJur62SUi4CXSblITby3U0MwRHyhbz0Lnzv21bWVt70jPrQ==}
     peerDependencies:
-      '@nestia/fetcher': '>=4.6.2'
+      '@nestia/fetcher': '>=6.0.1'
       '@nestjs/common': '>=7.0.1'
       '@nestjs/core': '>=7.0.1'
       reflect-metadata: '>=0.1.12'
       rxjs: '>=6.0.3'
-      typia: '>=7.6.0 <8.0.0'
 
   '@nestia/e2e@0.7.0':
     resolution: {integrity: sha512-h/uV6OhFlgmoLgmc82i12iGkWhaXdW9CCkWtpppmBrxOmmYo3FNI47iauy7je5/q1HKCiOlamiJGx/Q9ArVBNQ==}
 
-  '@nestia/fetcher@4.6.2':
-    resolution: {integrity: sha512-ofaSgZpgrBFoFGeWnJXhoQPjKZac/z2BTlXtWIwjhWpfUUhrpHdz/vSb9VQzNww+suwU40MZUc5INy1d4ENLbA==}
-    peerDependencies:
-      typescript: '>= 4.8.0'
+  '@nestia/e2e@6.0.1':
+    resolution: {integrity: sha512-eFvAxzgEmS3TpQhOWgfA7KWTCzPRZNLwmvFlblnRkJG3zenETYq7D/NBk3AFq0AlBVdnEQWTf0B/87hbancEsQ==}
 
-  '@nestia/sdk@4.6.2':
-    resolution: {integrity: sha512-827lBPAQBfiV5j4npr3geRA/qE5mURz83RVQMSEXtCWQ1PFWoBeO0nV87pShrbk1+/orozhL73Ey14ejBT8Prg==}
+  '@nestia/fetcher@6.0.1':
+    resolution: {integrity: sha512-Xver4EOwnGXnJngKFeyedmkn0vYBZQ02rIbSGeT+WIbas06G13wyH+8u6CXJmtE6aQ/0xjo/XprDv7unu4iOfg==}
+    peerDependencies:
+      '@samchon/openapi': '>=4.0.0 <5.0.0'
+      typia: '>=9.0.1 <10.0.0'
+
+  '@nestia/sdk@6.0.1':
+    resolution: {integrity: sha512-4EoEAdk2DNJ9u0c1Vkr+/2NG9nt8twNQZ+tyGPqhuycgySY22mGz3Xa9yoJ+m5YVMBFu2pxUIsl933sgxwQRRQ==}
     hasBin: true
     peerDependencies:
-      '@nestia/core': '>=4.6.2'
-      '@nestia/fetcher': '>=4.6.2'
+      '@nestia/core': '>=6.0.1'
+      '@nestia/fetcher': '>=6.0.1'
       '@nestjs/common': '>=7.0.1'
       '@nestjs/core': '>=7.0.1'
       reflect-metadata: '>=0.1.12'
       ts-node: '>=10.6.0'
-      typia: '>=7.6.0 <8.0.0'
 
   '@nestjs/axios@4.0.0':
     resolution: {integrity: sha512-1cB+Jyltu/uUPNQrpUimRHEQHrnQrpLzVj6dU3dgn6iDDDdahr10TgHFGTmw5VuJ9GzKZsCLDL78VSwJAs/9JQ==}
@@ -5216,8 +5068,8 @@ packages:
       '@nestjs/common': ^11.0.0
       '@nestjs/core': ^11.0.0
 
-  '@nestjs/swagger@11.1.2':
-    resolution: {integrity: sha512-WY++rP4478AWAlv+fIQYovH8NheyKKbkLKUXwIqdLG0ejjOo6KzrtjAiJIFkzdpNs96MzgShmmDPFgnc54OMKA==}
+  '@nestjs/swagger@11.1.3':
+    resolution: {integrity: sha512-vhbW/Xu05Diti/EwYQp3Ea7Hj2M++wiakCcxqUUDA2n7NvCZC8LKsrcGynw6/x/lugdXyklYS+s2FhdAfeAikg==}
     peerDependencies:
       '@fastify/static': ^8.0.0
       '@nestjs/common': ^11.0.1
@@ -5481,11 +5333,24 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@ryoppippi/unplugin-typia@1.2.0':
-    resolution: {integrity: sha512-TlrqL2WQie2HvSqJpmKPXrFsNPbMwU5Jw2Asx+E3E3Fuyya5mN1lqaeILwSZLmkCOMTQLazIrTWNOGs0V6XL6A==}
+  '@ryoppippi/unplugin-typia@2.2.0':
+    resolution: {integrity: sha512-Qv3g1PNi/0XVx2v6I0NdtvNmqkVAmtDELXvL7KEULp/1AR7Lvo7zTRpd9FScJsnuupZxr7C9O+309V2Wx2/FvQ==}
+    peerDependencies:
+      svelte: ^5.25.2
+      typescript: '>=4.8.0 <5.9.0'
+      typia: '>=8.0.0'
+      vite: '>=3.0.0'
+    peerDependenciesMeta:
+      svelte:
+        optional: true
+      vite:
+        optional: true
 
   '@samchon/openapi@2.5.3':
     resolution: {integrity: sha512-gLcGqPGsr/V43yNrhC+5E8ZR8y1JdLZDgkC6ULg+B03uvmdS2C7qIXpIWUe19MUPvXt5SCpjhvOykomEspinaw==}
+
+  '@samchon/openapi@4.1.0':
+    resolution: {integrity: sha512-UUFBI6n8R9+V0xt4scGEaQ0rib04cOVARhu7DXBZuEG0ExiTFPoiW49+qYFwE44LjYpfxBIlNkd+rcpiRGhsNA==}
 
   '@scarf/scarf@1.4.0':
     resolution: {integrity: sha512-xxeapPiUXdZAE3che6f3xogoJPeZgig6omHEy1rIY5WVsB3H2BHNnZH+gHG6x91SCWyQCzWGsuL2Hh3ClO5/qQ==}
@@ -5917,10 +5782,6 @@ packages:
     resolution: {integrity: sha512-VXuvVvZeQCQb5Zgf4HAxc04q5j+WrNAtNh9OwCsCgpKqESMTu3tF/jhZ3xG6T4NZwWl65Bg8KuS2uEvhSfLl0w==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
 
-  '@typescript-eslint/scope-manager@6.21.0':
-    resolution: {integrity: sha512-OwLUIWZJry80O99zvqXVEioyniJMa+d2GrqpUTqi5/v5D5rOrppJVBPa0yKCblcigC0/aYAzxxqQ1B+DS2RYsg==}
-    engines: {node: ^16.0.0 || >=18.0.0}
-
   '@typescript-eslint/scope-manager@8.29.1':
     resolution: {integrity: sha512-2nggXGX5F3YrsGN08pw4XpMLO1Rgtnn4AzTegC2MDesv6q3QaTU5yU7IbS1tf1IwCR0Hv/1EFygLn9ms6LIpDA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
@@ -5946,10 +5807,6 @@ packages:
     resolution: {integrity: sha512-87NVngcbVXUahrRTqIK27gD2t5Cu1yuCXxbLcFtCzZGlfyVWWh8mLHkoxzjsB6DDNnvdL+fW8MiwPEJyGJQDgQ==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
 
-  '@typescript-eslint/types@6.21.0':
-    resolution: {integrity: sha512-1kFmZ1rOm5epu9NZEZm1kckCDGj5UJEf7P1kliH4LKu/RkwpsfqqGmY2OOcUs18lSlQBKLDYBOGxRVtrMN5lpg==}
-    engines: {node: ^16.0.0 || >=18.0.0}
-
   '@typescript-eslint/types@8.29.1':
     resolution: {integrity: sha512-VT7T1PuJF1hpYC3AGm2rCgJBjHL3nc+A/bhOp9sGMKfi5v0WufsX/sHCFBfNTx2F+zA6qBc/PD0/kLRLjdt8mQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
@@ -5957,15 +5814,6 @@ packages:
   '@typescript-eslint/typescript-estree@5.62.0':
     resolution: {integrity: sha512-CmcQ6uY7b9y694lKdRB8FEel7JbU/40iSAPomu++SjLMntB+2Leay2LO6i8VnJk58MtE9/nQSFIH6jpyRWyYzA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
-    peerDependencies:
-      typescript: '*'
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-
-  '@typescript-eslint/typescript-estree@6.21.0':
-    resolution: {integrity: sha512-6npJTkZcO+y2/kr+z0hc4HwNfrrP4kNYh57ek7yCNlrBjWQ1Y0OS7jiZTkgumrvkX5HkEKXFZkkdFNkaW2wmUQ==}
-    engines: {node: ^16.0.0 || >=18.0.0}
     peerDependencies:
       typescript: '*'
     peerDependenciesMeta:
@@ -5984,12 +5832,6 @@ packages:
     peerDependencies:
       eslint: ^6.0.0 || ^7.0.0 || ^8.0.0
 
-  '@typescript-eslint/utils@6.21.0':
-    resolution: {integrity: sha512-NfWVaC8HP9T8cbKQxHcsJBY5YE1O33+jpMwN45qzWWaPDZgLIbo12toGMWnmhvCpd3sIxkpDw3Wv1B3dYrbDQQ==}
-    engines: {node: ^16.0.0 || >=18.0.0}
-    peerDependencies:
-      eslint: ^7.0.0 || ^8.0.0
-
   '@typescript-eslint/utils@8.29.1':
     resolution: {integrity: sha512-QAkFEbytSaB8wnmB+DflhUPz6CLbFWE2SnSCrRMEa+KnXIzDYbpsn++1HGvnfAsUY44doDXmvRkO5shlM/3UfA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
@@ -6000,10 +5842,6 @@ packages:
   '@typescript-eslint/visitor-keys@5.62.0':
     resolution: {integrity: sha512-07ny+LHRzQXepkGg6w0mFY41fVUNBrL2Roj/++7V1txKugfjm/Ci/qSND03r2RhlJhJYMcTn9AhhSSqQp0Ysyw==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
-
-  '@typescript-eslint/visitor-keys@6.21.0':
-    resolution: {integrity: sha512-JJtkDduxLi9bivAB+cYOVMtbkqdPOhZ+ZI5LC47MIRrDV4Yn2o+ZnW10Nkmr28xRpSpdJ6Sm42Hjf2+REYXm0A==}
-    engines: {node: ^16.0.0 || >=18.0.0}
 
   '@typescript-eslint/visitor-keys@8.29.1':
     resolution: {integrity: sha512-RGLh5CRaUEf02viP5c1Vh1cMGffQscyHe7HPAzGpfmfflFg1wUz2rYxd+OZqwpeypYvZ8UxSxuIpF++fmOzEcg==}
@@ -6672,8 +6510,8 @@ packages:
     resolution: {integrity: sha512-27HBghJxjiZtIk3Ycvn/4kbJk/1uZuJFfuPEns6LaEvpvG1f0hTea8lilrouyo9mVc2GWdcEZ8OLoGmSADlrCw==}
     engines: {'0': node >= 0.8}
 
-  confbox@0.1.8:
-    resolution: {integrity: sha512-RMtmw0iFkeR4YV+fUOSucriAQNb9g8zFR52MWCtl+cCZOFRNL6zeB395vPzFhEjjn4fMxXudmELnl/KF/WrK6w==}
+  confbox@0.2.2:
+    resolution: {integrity: sha512-1NB+BKqhtNipMsov4xI/NnhCKp9XG9NamYp5PVm9klAT0fsrNPjaFICsCFhNhwZJKNh7zB/3q8qXz0E9oaMNtQ==}
 
   consola@3.4.2:
     resolution: {integrity: sha512-5IKcdX0nnYavi6G7TtOhwkYzyjfJlatbjMjuLSfE2kYT5pMDOilZ4OvMhi637CcDICTmz3wARPoyhqyX1Y+XvA==}
@@ -6816,8 +6654,8 @@ packages:
     resolution: {integrity: sha512-F9+06papa9GOFUMjxGiqM1bS98pOkinZpBF3Sygb46owrXaHdR2uLkftE6nygrqNcAurdwKjLAtX+0GJkSwIFQ==}
     engines: {node: '>=12.17'}
 
-  dd-trace@5.47.0:
-    resolution: {integrity: sha512-1IrJ3LYPS/ylQdeOKpc8VscshgfngK1Ht7ZWJpNI6KlSZ6JB1rQmuDdGmhUYt7tXTTKRStTmaC4uSMJKADu8Xg==}
+  dd-trace@5.48.0:
+    resolution: {integrity: sha512-H/pMcwQ8iM7WtJQPpDHq0u5NsXUNH7GKpMUFVjoUulxoSAH0tdlYmFPNkUgbgi2rfKzyXgTELXTznvnQJGgXYQ==}
     engines: {node: '>=18'}
 
   debug@2.6.9:
@@ -6923,8 +6761,8 @@ packages:
   devlop@1.1.0:
     resolution: {integrity: sha512-RWmIqhcFf1lRYBvNmr7qTNuyCt/7/ns2jbpp1+PalgE/rDQcBT0fioSMUpJ93irlUhC5hrg4cYqe6U+0ImW0rA==}
 
-  diff-match-patch@1.0.5:
-    resolution: {integrity: sha512-IayShXAgj/QMXgB0IWmKx+rOPuGMhqm5w6jvFxmVenXKIzRqTAAsbBPT3kWQeGANj3jGgvcvv4yK6SxqYmikgw==}
+  diff-match-patch-es@1.0.1:
+    resolution: {integrity: sha512-KhSofrZDERg/NE6Nd+TK53knp2qz0o2Ix8rhkXd3Chfm7Wlo58Eq/juNmkyS6bS+3xS26L3Pstz3BdY/q+e9UQ==}
 
   diff@4.0.2:
     resolution: {integrity: sha512-58lmxKSA4BNyLz+HHMUzlOEpg09FV+ev6ZMe3vJihgdxzgcwZ8VoEEPmALCZG9LmqfVoNMMKpttIYTVG6uDY7A==}
@@ -6991,8 +6829,8 @@ packages:
   ee-first@1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
 
-  electron-to-chromium@1.5.136:
-    resolution: {integrity: sha512-kL4+wUTD7RSA5FHx5YwWtjDnEEkIIikFgWHR4P6fqjw1PPLlqYkxeOb++wAauAssat0YClCy8Y3C5SxgSkjibQ==}
+  electron-to-chromium@1.5.137:
+    resolution: {integrity: sha512-/QSJaU2JyIuTbbABAo/crOs+SuAZLS+fVVS10PVrIT9hrRkmZl8Hb0xPSkKRUUWHQtYzXHpQUW3Dy5hwMzGZkA==}
 
   emoji-regex@7.0.3:
     resolution: {integrity: sha512-CwBLREIQ7LvYFB0WyRvwhq5N5qPhc6PMjD6bYggFlI5YyDgl+0vxq5VHbMOFqLg7hfWzmu8T5Z1QofhmTIhItA==}
@@ -7070,11 +6908,6 @@ packages:
     engines: {node: '>=12'}
     hasBin: true
 
-  esbuild@0.25.2:
-    resolution: {integrity: sha512-16854zccKPnC+toMywC+uKNeYSv+/eXkevRAfwRD/G9Cleq66m8XFIrigkbvauLLlCfDL45Q2cWegSg53gGBnQ==}
-    engines: {node: '>=18'}
-    hasBin: true
-
   escalade@3.2.0:
     resolution: {integrity: sha512-WUj2qlxaQtO4g6Pq5c29GTcWGDyd8itL8zTlipgECz3JesAiiOKotd8JU6otB3PACgG6xkJUyVhboMS+bje/jA==}
     engines: {node: '>=6'}
@@ -7090,12 +6923,11 @@ packages:
     resolution: {integrity: sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==}
     engines: {node: '>=10'}
 
-  eslint-plugin-deprecation@1.6.0:
-    resolution: {integrity: sha512-rld+Vrneh/NXRtDB0vQifOvgUy0HJYoejaxWlVnsk/LK7iij2tCWQIFcCKG4uzQb+Ef86bDke39w1lh4wnon4Q==}
-    deprecated: this package has been deprecated, please use v2.0.0
+  eslint-plugin-deprecation@1.5.0:
+    resolution: {integrity: sha512-mRcssI/tLROueBQ6yf4LnnGTijbMsTCPIpbRbPj5R5wGYVCpk1zDmAS0SEkgcUDXOPc22qMNFR24Qw7vSPrlTA==}
     peerDependencies:
-      eslint: ^7.0.0 || ^8.0.0
-      typescript: ^4.2.4 || ^5.0.0
+      eslint: ^6.0.0 || ^7.0.0 || ^8.0.0
+      typescript: ^3.7.5 || ^4.0.0 || ^5.0.0
 
   eslint-scope@5.1.1:
     resolution: {integrity: sha512-2NxwbF/hZ0KpepYN0cNbo+FN6XoK7GaHlQhgx/hIZl6Va0bF45RQOOwhLIy8lQDbuCiadSLCBnH2CFYquit5bw==}
@@ -7207,6 +7039,9 @@ packages:
   express@5.1.0:
     resolution: {integrity: sha512-DT9ck5YIRU+8GYzzU5kT3eHGA5iL+1Zd0EutOmTE9Dtk+Tvuzd23VBU+ec7HPNSTxXYO55gPV/hq4pSBJDjFpA==}
     engines: {node: '>= 18'}
+
+  exsolve@1.0.4:
+    resolution: {integrity: sha512-xsZH6PXaER4XoV+NiT7JHp1bJodJVT+cxeSH1G0f0tlT0lJqYuHUP3bUx2HtfTDvOagMINYp8rsqusxud3RXhw==}
 
   extend-shallow@2.0.1:
     resolution: {integrity: sha512-zCnTtlxNoAiDc3gqY2aYAWFx7XWWiasuF2K8Me5WbN8otHKTUKBwjPtNpRs/rbUZm7KxWAaNj7P1a/p52GbVug==}
@@ -8527,10 +8362,6 @@ packages:
     resolution: {integrity: sha512-lKwV/1brpG6mBUFHtb7NUmtABCb2WZZmm2wNiOA5hAb8VdCS4B3dtMWyvcoViccwAW/COERjXLt0zP1zXUN26g==}
     engines: {node: '>=10'}
 
-  minimatch@9.0.3:
-    resolution: {integrity: sha512-RHiac9mvaRw0x3AYRgDC1CxAP7HTcNrrECeA8YYJeWnpo+2Q5CegtZjaotWTWxDG3UeGA1coE05iH1mPjT/2mg==}
-    engines: {node: '>=16 || 14 >=14.17'}
-
   minimatch@9.0.5:
     resolution: {integrity: sha512-G6T0ZX48xgozx7587koeX9Ys2NYy6Gmv//P89sEte9V9whIapMNF4idKxnW2QtCcLiTWlb/wfCabAtAFWhhBow==}
     engines: {node: '>=16 || 14 >=14.17'}
@@ -8557,9 +8388,6 @@ packages:
   mkdirp@0.5.6:
     resolution: {integrity: sha512-FP+p8RB8OWpF3YZBCrP5gtADmtXApB5AMLn+vdyA+PyxCjrCs00mjyUozssO33cwDeT3wNGdLxJ5M//YqtHAJw==}
     hasBin: true
-
-  mlly@1.7.4:
-    resolution: {integrity: sha512-qmdSIPC4bDJXgZTCR7XosJiNKySV7O215tsPtDN9iEO/7q/76b/ijtgRu/+epFXSJhijtTCCGp3DWS549P3xKw==}
 
   module-details-from-path@1.0.3:
     resolution: {integrity: sha512-ySViT69/76t8VhE1xXHK6Ch4NcDd26gx0MzKXLO+F7NOtnqH68d9zF94nT8ZWSxXh8ELOERsnJO/sWt1xZYw5A==}
@@ -8727,6 +8555,18 @@ packages:
 
   openai@4.93.0:
     resolution: {integrity: sha512-2kONcISbThKLfm7T9paVzg+QCE1FOZtNMMUfXyXckUAoXRRS/mTP89JSDHPMp8uM5s0bz28RISbvQjArD6mgUQ==}
+    hasBin: true
+    peerDependencies:
+      ws: ^8.18.0
+      zod: ^3.23.8
+    peerDependenciesMeta:
+      ws:
+        optional: true
+      zod:
+        optional: true
+
+  openai@4.94.0:
+    resolution: {integrity: sha512-WVmr9HWcwfouLJ7R3UHd2A93ClezTPuJljQxkCYQAL15Sjyt+FBNoqEz5MHSdH/ebQrVyvRhFyn/bvdqtSPyIA==}
     hasBin: true
     peerDependencies:
       ws: ^8.18.0
@@ -8984,15 +8824,15 @@ packages:
     resolution: {integrity: sha512-Ie9z/WINcxxLp27BKOCHGde4ITq9UklYKDzVo1nhk5sqGEXU3FpkwP5GM2voTGJkGd9B3Otl+Q4uwSOeSUtOBA==}
     engines: {node: '>=14.16'}
 
-  pkg-types@1.3.1:
-    resolution: {integrity: sha512-/Jm5M4RvtBFVkKWRu2BLUTNP8/M2a+UwuAX+ae4770q1qVGtfjG+WTCupoZixokjmHiry8uI+dlY8KXYV5HVVQ==}
+  pkg-types@2.1.0:
+    resolution: {integrity: sha512-wmJwA+8ihJixSoHKxZJRBQG1oY8Yr9pGLzRmSsNms0iNWyHHAlZCa7mmKiFR10YPZuz/2k169JiS/inOjBCZ2A==}
 
   pkg-up@2.0.0:
     resolution: {integrity: sha512-fjAPuiws93rm7mPUu21RdBnkeZNrbfCFCwfAhPWY+rR3zG0ubpe5cEReHOw5fIbfmsxEV/g2kSxGTATY3Bpnwg==}
     engines: {node: '>=4'}
 
-  portfinder@1.0.35:
-    resolution: {integrity: sha512-73JaFg4NwYNAufDtS5FsFu/PdM49ahJrO1i44aCRsDWju1z5wuGDaqyFUQWR6aJoK2JPDWlaYYAGFNIGTSUHSw==}
+  portfinder@1.0.36:
+    resolution: {integrity: sha512-gMKUzCoP+feA7t45moaSx7UniU7PgGN3hA8acAB+3Qn7/js0/lJ07fYZlxt9riE9S3myyxDCyAFzSrLlta0c9g==}
     engines: {node: '>= 10.12'}
 
   posix-character-classes@0.1.1:
@@ -9589,9 +9429,6 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
 
-  swagger-ui-dist@5.20.8:
-    resolution: {integrity: sha512-VXVhdRh5vuKVpkegw0n0wCXuFFG+pxNmXa0vDcf76r1yP2cYKqcpOE5g8l5crbtLGx+j2EiDnG4/EU5T0jyN1w==}
-
   swagger-ui-dist@5.21.0:
     resolution: {integrity: sha512-E0K3AB6HvQd8yQNSMR7eE5bk+323AUxjtCz/4ZNKiahOlPhPJxqn3UPIGs00cyY/dhrTDJ61L7C/a8u6zhGrZg==}
 
@@ -9717,12 +9554,6 @@ packages:
   trough@1.0.5:
     resolution: {integrity: sha512-rvuRbTarPXmMb79SmzEp8aqXNKcK+y0XaB298IXueQ8I2PsrATcPBCSPyK/dDNa2iWOhKlfNnOjdAOTBU/nkFA==}
 
-  ts-api-utils@1.4.3:
-    resolution: {integrity: sha512-i3eMG77UTMD0hZhgRS562pv83RC6ukSAC2GMNWc+9dieh/+jDM5u5YG+NHX6VNDRHQcHwmsTHctP9LhbC3WxVw==}
-    engines: {node: '>=16'}
-    peerDependencies:
-      typescript: '>=4.2.0'
-
   ts-api-utils@2.1.0:
     resolution: {integrity: sha512-CUgTZL1irw8u29bzrOD/nH85jqyc74D6SshFgujOIA7osm2Rz7dYH77agkx7H4FBNxDq7Cjf+IjaX/8zwFW+ZQ==}
     engines: {node: '>=18.12'}
@@ -9831,29 +9662,10 @@ packages:
     peerDependencies:
       typescript: '>=3.6.5'
 
-  typescript@5.6.3:
-    resolution: {integrity: sha512-hjcS1mhfuyi4WW8IWtjP7brDrG2cuDZukyrYrSauoXGNgx0S7zceP07adYkJycEr56BOUTNPzbInooiN3fn1qw==}
-    engines: {node: '>=14.17'}
-    hasBin: true
-
   typescript@5.7.3:
     resolution: {integrity: sha512-84MVSjMEHP+FQRPy3pX9sTVV/INIex71s9TL2Gm5FG/WG1SqXeKyZ0k7/blY/4FdOzI12CBy1vGc4og/eus0fw==}
     engines: {node: '>=14.17'}
     hasBin: true
-
-  typia@7.6.4:
-    resolution: {integrity: sha512-Z3AcvGBjS7Dc7+iAG2VhsT0NIv3HMoXVTJ3F7Pgth8z7rhQu1JnyS8GGqqWdKk5ROvOgALEVEWmWv3Lym2eBIg==}
-    hasBin: true
-    peerDependencies:
-      '@samchon/openapi': '>=2.4.2 <3.0.0'
-      typescript: '>=4.8.0 <5.8.0'
-
-  typia@8.2.0:
-    resolution: {integrity: sha512-DAQl9CLItDwMd4k4HnaExxv6wjBFLW04WqGBQEnOpylq2YmZsM6HTj4Bfxxp3wtgAsMXZTugAdQRPsFOxMiRrQ==}
-    hasBin: true
-    peerDependencies:
-      '@samchon/openapi': '>=3.3.0 <4.0.0'
-      typescript: '>=4.8.0 <5.9.0'
 
   typia@9.1.1:
     resolution: {integrity: sha512-fMgrd2VLGZoDjZZwWlgriotUiG38UEzcMD0ToJOhQ0bPr966mit0ZEy5TnDhm2RidXfejZOqHb7iOoTG3VHd4w==}
@@ -9864,9 +9676,6 @@ packages:
 
   uc.micro@1.0.6:
     resolution: {integrity: sha512-8Y75pvTYkLJW2hWQHXxoqRgV7qb9B+9vFEtidML+7koHUFapnVJAZ6cKs+Qjz5Aw3aZWHMC6u0wJE3At+nSGwA==}
-
-  ufo@1.6.1:
-    resolution: {integrity: sha512-9a4/uxlTWJ4+a5i0ooc1rU7C7YOw3wT+UGqdeNNHWnOF9qcMBgLRS+4IYUqbczewFx4mLEig6gawh7X6mFlEkA==}
 
   uid@2.0.2:
     resolution: {integrity: sha512-u3xV3X7uzvi5b1MncmZo3i2Aw222Zk1keqLA1YkHldREkAhAqi65wuPfe7lHx8H/Wzy+8CE7S7uS3jekIM5s8g==}
@@ -9919,9 +9728,9 @@ packages:
     resolution: {integrity: sha512-pjy2bYhSsufwWlKwPc+l3cN7+wuJlK6uz0YdJEOlQDbl6jo/YlPi4mb8agUkVC8BF7V8NuzeyPNqRksA3hztKQ==}
     engines: {node: '>= 0.8'}
 
-  unplugin@1.16.1:
-    resolution: {integrity: sha512-4/u/j4FrCKdi17jaxuJA0jClGxB1AvU2hw/IuayPc4ay1XGaJs/rbb4v5WKwAjNifjmXK9PIFyuPiaK8azyR9w==}
-    engines: {node: '>=14.0.0'}
+  unplugin@2.3.2:
+    resolution: {integrity: sha512-3n7YA46rROb3zSj8fFxtxC/PqoyvYQ0llwz9wtUPUutr9ig09C8gGo5CWCwHrUzlqC1LLR43kxp5vEIyH1ac1w==}
+    engines: {node: '>=18.12.0'}
 
   unset-value@1.0.0:
     resolution: {integrity: sha512-PcA2tsuGSF9cnySLHTLSh2qrQiJ70mn+r+Glzxv2TWZblxsxCC52BDlZoPCsz7STd9pN7EZetkWZBAvk4cgZdQ==}
@@ -10037,46 +9846,6 @@ packages:
       sugarss:
         optional: true
       terser:
-        optional: true
-
-  vite@6.2.6:
-    resolution: {integrity: sha512-9xpjNl3kR4rVDZgPNdTL0/c6ao4km69a/2ihNQbcANz8RuCOK3hQBmLSJf3bRKVQjVMda+YvizNE8AwvogcPbw==}
-    engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
-    hasBin: true
-    peerDependencies:
-      '@types/node': ^18.0.0 || ^20.0.0 || >=22.0.0
-      jiti: '>=1.21.0'
-      less: '*'
-      lightningcss: ^1.21.0
-      sass: '*'
-      sass-embedded: '*'
-      stylus: '*'
-      sugarss: '*'
-      terser: ^5.16.0
-      tsx: ^4.8.1
-      yaml: ^2.4.2
-    peerDependenciesMeta:
-      '@types/node':
-        optional: true
-      jiti:
-        optional: true
-      less:
-        optional: true
-      lightningcss:
-        optional: true
-      sass:
-        optional: true
-      sass-embedded:
-        optional: true
-      stylus:
-        optional: true
-      sugarss:
-        optional: true
-      terser:
-        optional: true
-      tsx:
-        optional: true
-      yaml:
         optional: true
 
   vitest@2.1.9:
@@ -11112,145 +10881,70 @@ snapshots:
   '@esbuild/aix-ppc64@0.21.5':
     optional: true
 
-  '@esbuild/aix-ppc64@0.25.2':
-    optional: true
-
   '@esbuild/android-arm64@0.21.5':
-    optional: true
-
-  '@esbuild/android-arm64@0.25.2':
     optional: true
 
   '@esbuild/android-arm@0.21.5':
     optional: true
 
-  '@esbuild/android-arm@0.25.2':
-    optional: true
-
   '@esbuild/android-x64@0.21.5':
-    optional: true
-
-  '@esbuild/android-x64@0.25.2':
     optional: true
 
   '@esbuild/darwin-arm64@0.21.5':
     optional: true
 
-  '@esbuild/darwin-arm64@0.25.2':
-    optional: true
-
   '@esbuild/darwin-x64@0.21.5':
-    optional: true
-
-  '@esbuild/darwin-x64@0.25.2':
     optional: true
 
   '@esbuild/freebsd-arm64@0.21.5':
     optional: true
 
-  '@esbuild/freebsd-arm64@0.25.2':
-    optional: true
-
   '@esbuild/freebsd-x64@0.21.5':
-    optional: true
-
-  '@esbuild/freebsd-x64@0.25.2':
     optional: true
 
   '@esbuild/linux-arm64@0.21.5':
     optional: true
 
-  '@esbuild/linux-arm64@0.25.2':
-    optional: true
-
   '@esbuild/linux-arm@0.21.5':
-    optional: true
-
-  '@esbuild/linux-arm@0.25.2':
     optional: true
 
   '@esbuild/linux-ia32@0.21.5':
     optional: true
 
-  '@esbuild/linux-ia32@0.25.2':
-    optional: true
-
   '@esbuild/linux-loong64@0.21.5':
-    optional: true
-
-  '@esbuild/linux-loong64@0.25.2':
     optional: true
 
   '@esbuild/linux-mips64el@0.21.5':
     optional: true
 
-  '@esbuild/linux-mips64el@0.25.2':
-    optional: true
-
   '@esbuild/linux-ppc64@0.21.5':
-    optional: true
-
-  '@esbuild/linux-ppc64@0.25.2':
     optional: true
 
   '@esbuild/linux-riscv64@0.21.5':
     optional: true
 
-  '@esbuild/linux-riscv64@0.25.2':
-    optional: true
-
   '@esbuild/linux-s390x@0.21.5':
-    optional: true
-
-  '@esbuild/linux-s390x@0.25.2':
     optional: true
 
   '@esbuild/linux-x64@0.21.5':
     optional: true
 
-  '@esbuild/linux-x64@0.25.2':
-    optional: true
-
-  '@esbuild/netbsd-arm64@0.25.2':
-    optional: true
-
   '@esbuild/netbsd-x64@0.21.5':
-    optional: true
-
-  '@esbuild/netbsd-x64@0.25.2':
-    optional: true
-
-  '@esbuild/openbsd-arm64@0.25.2':
     optional: true
 
   '@esbuild/openbsd-x64@0.21.5':
     optional: true
 
-  '@esbuild/openbsd-x64@0.25.2':
-    optional: true
-
   '@esbuild/sunos-x64@0.21.5':
-    optional: true
-
-  '@esbuild/sunos-x64@0.25.2':
     optional: true
 
   '@esbuild/win32-arm64@0.21.5':
     optional: true
 
-  '@esbuild/win32-arm64@0.25.2':
-    optional: true
-
   '@esbuild/win32-ia32@0.21.5':
     optional: true
 
-  '@esbuild/win32-ia32@0.25.2':
-    optional: true
-
   '@esbuild/win32-x64@0.21.5':
-    optional: true
-
-  '@esbuild/win32-x64@0.25.2':
     optional: true
 
   '@eslint-community/eslint-utils@4.6.0(eslint@9.24.0(jiti@2.4.2))':
@@ -11504,7 +11198,7 @@ snapshots:
       mkdirp: 0.5.6
       os-locale: 3.1.0
       pkg-up: 2.0.0
-      portfinder: 1.0.35
+      portfinder: 1.0.36
       puppeteer-core: 1.20.0
       tmp: 0.0.33
       ws: 6.2.3
@@ -11542,19 +11236,19 @@ snapshots:
       call-me-maybe: 1.0.2
       glob-to-regexp: 0.3.0
 
-  '@nestia/agent@0.3.12(@samchon/openapi@2.5.3)(openai@4.93.0)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))':
+  '@nestia/agent@0.3.12(@samchon/openapi@4.1.0)(openai@4.94.0)(typia@9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3))':
     dependencies:
-      '@samchon/openapi': 2.5.3
-      openai: 4.93.0
-      typia: 8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)
+      '@samchon/openapi': 4.1.0
+      openai: 4.94.0
+      typia: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
       uuid: 11.1.0
 
-  '@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))':
+  '@nestia/core@6.0.1(@nestia/fetcher@6.0.1(@samchon/openapi@4.1.0)(typia@9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typescript@5.7.3)':
     dependencies:
-      '@nestia/fetcher': 4.6.2(typescript@5.7.3)
+      '@nestia/fetcher': 6.0.1(@samchon/openapi@4.1.0)(typia@9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3))
       '@nestjs/common': 11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2)
       '@nestjs/core': 11.0.17(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)
-      '@samchon/openapi': 2.5.3
+      '@samchon/openapi': 4.1.0
       detect-ts-node: 1.0.5
       get-function-location: 2.0.0
       glob: 7.2.3
@@ -11563,27 +11257,29 @@ snapshots:
       reflect-metadata: 0.2.2
       rxjs: 7.8.2
       tgrid: 1.1.0
-      typia: 8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)
+      typia: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
       ws: 7.5.10
     transitivePeerDependencies:
       - bufferutil
+      - typescript
       - utf-8-validate
 
   '@nestia/e2e@0.7.0': {}
 
-  '@nestia/fetcher@4.6.2(typescript@5.7.3)':
-    dependencies:
-      '@samchon/openapi': 2.5.3
-      typescript: 5.7.3
-      typia: 7.6.4(@samchon/openapi@2.5.3)(typescript@5.7.3)
+  '@nestia/e2e@6.0.1': {}
 
-  '@nestia/sdk@4.6.2(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)))(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.86)(typescript@5.7.3))(typescript@5.7.3)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))':
+  '@nestia/fetcher@6.0.1(@samchon/openapi@4.1.0)(typia@9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3))':
     dependencies:
-      '@nestia/core': 4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))
-      '@nestia/fetcher': 4.6.2(typescript@5.7.3)
+      '@samchon/openapi': 4.1.0
+      typia: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
+
+  '@nestia/sdk@6.0.1(@nestia/core@6.0.1(@nestia/fetcher@6.0.1(@samchon/openapi@4.1.0)(typia@9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typescript@5.7.3))(@nestia/fetcher@6.0.1(@samchon/openapi@4.1.0)(typia@9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.86)(typescript@5.7.3))(typescript@5.7.3)':
+    dependencies:
+      '@nestia/core': 6.0.1(@nestia/fetcher@6.0.1(@samchon/openapi@4.1.0)(typia@9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typescript@5.7.3)
+      '@nestia/fetcher': 6.0.1(@samchon/openapi@4.1.0)(typia@9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3))
       '@nestjs/common': 11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2)
       '@nestjs/core': 11.0.17(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)
-      '@samchon/openapi': 2.5.3
+      '@samchon/openapi': 4.1.0
       cli: 1.0.1
       get-function-location: 2.0.0
       glob: 7.2.3
@@ -11594,7 +11290,7 @@ snapshots:
       tsconfck: 2.1.2(typescript@5.7.3)
       tsconfig-paths: 4.2.0
       tstl: 3.0.0
-      typia: 8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)
+      typia: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     transitivePeerDependencies:
       - typescript
 
@@ -11653,7 +11349,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@nestjs/swagger@11.1.2(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)':
+  '@nestjs/swagger@11.1.3(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)':
     dependencies:
       '@microsoft/tsdoc': 0.15.1
       '@nestjs/common': 11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2)
@@ -11663,7 +11359,7 @@ snapshots:
       lodash: 4.17.21
       path-to-regexp: 8.2.0
       reflect-metadata: 0.2.2
-      swagger-ui-dist: 5.20.8
+      swagger-ui-dist: 5.21.0
 
   '@nestjs/testing@11.0.17(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(@nestjs/platform-express@11.0.17)':
     dependencies:
@@ -11854,37 +11550,28 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.40.0':
     optional: true
 
-  '@ryoppippi/unplugin-typia@1.2.0(@samchon/openapi@2.5.3)(@types/node@18.19.86)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)':
+  '@ryoppippi/unplugin-typia@2.2.0(rollup@4.40.0)(typescript@5.7.3)(typia@9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3))(vite@5.4.18(@types/node@18.19.86)(terser@5.39.0))':
     dependencies:
       '@rollup/pluginutils': 5.1.4(rollup@4.40.0)
       consola: 3.4.2
       defu: 6.1.4
-      diff-match-patch: 1.0.5
+      diff-match-patch-es: 1.0.1
       find-cache-dir: 5.0.0
       magic-string: 0.30.17
-      pathe: 1.1.2
-      pkg-types: 1.3.1
+      pathe: 2.0.3
+      pkg-types: 2.1.0
       type-fest: 4.39.1
-      typescript: 5.6.3
-      typia: 7.6.4(@samchon/openapi@2.5.3)(typescript@5.6.3)
-      unplugin: 1.16.1
-      vite: 6.2.6(@types/node@18.19.86)(jiti@2.4.2)(terser@5.39.0)
+      typescript: 5.7.3
+      typia: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
+      unplugin: 2.3.2
+    optionalDependencies:
+      vite: 5.4.18(@types/node@18.19.86)(terser@5.39.0)
     transitivePeerDependencies:
-      - '@samchon/openapi'
-      - '@types/node'
-      - jiti
-      - less
-      - lightningcss
       - rollup
-      - sass
-      - sass-embedded
-      - stylus
-      - sugarss
-      - terser
-      - tsx
-      - yaml
 
   '@samchon/openapi@2.5.3': {}
+
+  '@samchon/openapi@4.1.0': {}
 
   '@scarf/scarf@1.4.0': {}
 
@@ -12503,11 +12190,6 @@ snapshots:
       '@typescript-eslint/types': 5.62.0
       '@typescript-eslint/visitor-keys': 5.62.0
 
-  '@typescript-eslint/scope-manager@6.21.0':
-    dependencies:
-      '@typescript-eslint/types': 6.21.0
-      '@typescript-eslint/visitor-keys': 6.21.0
-
   '@typescript-eslint/scope-manager@8.29.1':
     dependencies:
       '@typescript-eslint/types': 8.29.1
@@ -12538,8 +12220,6 @@ snapshots:
 
   '@typescript-eslint/types@5.62.0': {}
 
-  '@typescript-eslint/types@6.21.0': {}
-
   '@typescript-eslint/types@8.29.1': {}
 
   '@typescript-eslint/typescript-estree@5.62.0(typescript@5.7.3)':
@@ -12551,21 +12231,6 @@ snapshots:
       is-glob: 4.0.3
       semver: 7.7.1
       tsutils: 3.21.0(typescript@5.7.3)
-    optionalDependencies:
-      typescript: 5.7.3
-    transitivePeerDependencies:
-      - supports-color
-
-  '@typescript-eslint/typescript-estree@6.21.0(typescript@5.7.3)':
-    dependencies:
-      '@typescript-eslint/types': 6.21.0
-      '@typescript-eslint/visitor-keys': 6.21.0
-      debug: 4.4.0
-      globby: 11.1.0
-      is-glob: 4.0.3
-      minimatch: 9.0.3
-      semver: 7.7.1
-      ts-api-utils: 1.4.3(typescript@5.7.3)
     optionalDependencies:
       typescript: 5.7.3
     transitivePeerDependencies:
@@ -12600,20 +12265,6 @@ snapshots:
       - supports-color
       - typescript
 
-  '@typescript-eslint/utils@6.21.0(eslint@9.24.0(jiti@2.4.2))(typescript@5.7.3)':
-    dependencies:
-      '@eslint-community/eslint-utils': 4.6.0(eslint@9.24.0(jiti@2.4.2))
-      '@types/json-schema': 7.0.15
-      '@types/semver': 7.7.0
-      '@typescript-eslint/scope-manager': 6.21.0
-      '@typescript-eslint/types': 6.21.0
-      '@typescript-eslint/typescript-estree': 6.21.0(typescript@5.7.3)
-      eslint: 9.24.0(jiti@2.4.2)
-      semver: 7.7.1
-    transitivePeerDependencies:
-      - supports-color
-      - typescript
-
   '@typescript-eslint/utils@8.29.1(eslint@9.24.0(jiti@2.4.2))(typescript@5.7.3)':
     dependencies:
       '@eslint-community/eslint-utils': 4.6.0(eslint@9.24.0(jiti@2.4.2))
@@ -12628,11 +12279,6 @@ snapshots:
   '@typescript-eslint/visitor-keys@5.62.0':
     dependencies:
       '@typescript-eslint/types': 5.62.0
-      eslint-visitor-keys: 3.4.3
-
-  '@typescript-eslint/visitor-keys@6.21.0':
-    dependencies:
-      '@typescript-eslint/types': 6.21.0
       eslint-visitor-keys: 3.4.3
 
   '@typescript-eslint/visitor-keys@8.29.1':
@@ -12787,11 +12433,11 @@ snapshots:
       webpack: 5.99.5(webpack-cli@5.1.4)
       webpack-cli: 5.1.4(webpack@5.99.5)
 
-  '@wrtnio/decorators@1.6.0(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)))(@nestia/sdk@4.6.2(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)))(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.86)(typescript@5.7.3))(typescript@5.7.3)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)))(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))':
+  '@wrtnio/decorators@1.6.0(@nestia/core@6.0.1(@nestia/fetcher@6.0.1(@samchon/openapi@4.1.0)(typia@9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typescript@5.7.3))(@nestia/sdk@6.0.1(@nestia/core@6.0.1(@nestia/fetcher@6.0.1(@samchon/openapi@4.1.0)(typia@9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typescript@5.7.3))(@nestia/fetcher@6.0.1(@samchon/openapi@4.1.0)(typia@9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.86)(typescript@5.7.3))(typescript@5.7.3))(typia@9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3))':
     dependencies:
-      '@nestia/core': 4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))
-      '@nestia/sdk': 4.6.2(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)))(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.86)(typescript@5.7.3))(typescript@5.7.3)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))
-      typia: 8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)
+      '@nestia/core': 6.0.1(@nestia/fetcher@6.0.1(@samchon/openapi@4.1.0)(typia@9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typescript@5.7.3)
+      '@nestia/sdk': 6.0.1(@nestia/core@6.0.1(@nestia/fetcher@6.0.1(@samchon/openapi@4.1.0)(typia@9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typescript@5.7.3))(@nestia/fetcher@6.0.1(@samchon/openapi@4.1.0)(typia@9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.86)(typescript@5.7.3))(typescript@5.7.3)
+      typia: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
 
   '@wrtnio/schema@3.2.1':
     dependencies:
@@ -13123,7 +12769,7 @@ snapshots:
   browserslist@4.24.4:
     dependencies:
       caniuse-lite: 1.0.30001713
-      electron-to-chromium: 1.5.136
+      electron-to-chromium: 1.5.137
       node-releases: 2.0.19
       update-browserslist-db: 1.1.3(browserslist@4.24.4)
 
@@ -13138,7 +12784,7 @@ snapshots:
   buffer@4.9.2:
     dependencies:
       base64-js: 1.5.1
-      ieee754: 1.1.13
+      ieee754: 1.2.1
       isarray: 1.0.0
 
   buffer@5.7.1:
@@ -13427,7 +13073,7 @@ snapshots:
       readable-stream: 2.3.8
       typedarray: 0.0.6
 
-  confbox@0.1.8: {}
+  confbox@0.2.2: {}
 
   consola@3.4.2: {}
 
@@ -13559,7 +13205,7 @@ snapshots:
 
   dc-polyfill@0.1.8: {}
 
-  dd-trace@5.47.0:
+  dd-trace@5.48.0:
     dependencies:
       '@datadog/libdatadog': 0.5.1
       '@datadog/native-appsec': 8.5.2
@@ -13669,7 +13315,7 @@ snapshots:
     dependencies:
       dequal: 2.0.3
 
-  diff-match-patch@1.0.5: {}
+  diff-match-patch-es@1.0.1: {}
 
   diff@4.0.2: {}
 
@@ -13734,7 +13380,7 @@ snapshots:
 
   ee-first@1.1.1: {}
 
-  electron-to-chromium@1.5.136: {}
+  electron-to-chromium@1.5.137: {}
 
   emoji-regex@7.0.3: {}
 
@@ -13821,34 +13467,6 @@ snapshots:
       '@esbuild/win32-ia32': 0.21.5
       '@esbuild/win32-x64': 0.21.5
 
-  esbuild@0.25.2:
-    optionalDependencies:
-      '@esbuild/aix-ppc64': 0.25.2
-      '@esbuild/android-arm': 0.25.2
-      '@esbuild/android-arm64': 0.25.2
-      '@esbuild/android-x64': 0.25.2
-      '@esbuild/darwin-arm64': 0.25.2
-      '@esbuild/darwin-x64': 0.25.2
-      '@esbuild/freebsd-arm64': 0.25.2
-      '@esbuild/freebsd-x64': 0.25.2
-      '@esbuild/linux-arm': 0.25.2
-      '@esbuild/linux-arm64': 0.25.2
-      '@esbuild/linux-ia32': 0.25.2
-      '@esbuild/linux-loong64': 0.25.2
-      '@esbuild/linux-mips64el': 0.25.2
-      '@esbuild/linux-ppc64': 0.25.2
-      '@esbuild/linux-riscv64': 0.25.2
-      '@esbuild/linux-s390x': 0.25.2
-      '@esbuild/linux-x64': 0.25.2
-      '@esbuild/netbsd-arm64': 0.25.2
-      '@esbuild/netbsd-x64': 0.25.2
-      '@esbuild/openbsd-arm64': 0.25.2
-      '@esbuild/openbsd-x64': 0.25.2
-      '@esbuild/sunos-x64': 0.25.2
-      '@esbuild/win32-arm64': 0.25.2
-      '@esbuild/win32-ia32': 0.25.2
-      '@esbuild/win32-x64': 0.25.2
-
   escalade@3.2.0: {}
 
   escape-html@1.0.3: {}
@@ -13857,9 +13475,9 @@ snapshots:
 
   escape-string-regexp@4.0.0: {}
 
-  eslint-plugin-deprecation@1.6.0(eslint@9.24.0(jiti@2.4.2))(typescript@5.7.3):
+  eslint-plugin-deprecation@1.5.0(eslint@9.24.0(jiti@2.4.2))(typescript@5.7.3):
     dependencies:
-      '@typescript-eslint/utils': 6.21.0(eslint@9.24.0(jiti@2.4.2))(typescript@5.7.3)
+      '@typescript-eslint/utils': 5.62.0(eslint@9.24.0(jiti@2.4.2))(typescript@5.7.3)
       eslint: 9.24.0(jiti@2.4.2)
       tslib: 2.8.1
       tsutils: 3.21.0(typescript@5.7.3)
@@ -14068,6 +13686,8 @@ snapshots:
       vary: 1.1.2
     transitivePeerDependencies:
       - supports-color
+
+  exsolve@1.0.4: {}
 
   extend-shallow@2.0.1:
     dependencies:
@@ -15552,10 +15172,6 @@ snapshots:
     dependencies:
       brace-expansion: 2.0.1
 
-  minimatch@9.0.3:
-    dependencies:
-      brace-expansion: 2.0.1
-
   minimatch@9.0.5:
     dependencies:
       brace-expansion: 2.0.1
@@ -15578,13 +15194,6 @@ snapshots:
   mkdirp@0.5.6:
     dependencies:
       minimist: 1.2.8
-
-  mlly@1.7.4:
-    dependencies:
-      acorn: 8.14.1
-      pathe: 2.0.3
-      pkg-types: 1.3.1
-      ufo: 1.6.1
 
   module-details-from-path@1.0.3: {}
 
@@ -15743,6 +15352,18 @@ snapshots:
       format-util: 1.0.5
 
   openai@4.93.0:
+    dependencies:
+      '@types/node': 18.19.86
+      '@types/node-fetch': 2.6.12
+      abort-controller: 3.0.0
+      agentkeepalive: 4.6.0
+      form-data-encoder: 1.7.2
+      formdata-node: 4.4.1
+      node-fetch: 2.7.0
+    transitivePeerDependencies:
+      - encoding
+
+  openai@4.94.0:
     dependencies:
       '@types/node': 18.19.86
       '@types/node-fetch': 2.6.12
@@ -15998,17 +15619,17 @@ snapshots:
     dependencies:
       find-up: 6.3.0
 
-  pkg-types@1.3.1:
+  pkg-types@2.1.0:
     dependencies:
-      confbox: 0.1.8
-      mlly: 1.7.4
+      confbox: 0.2.2
+      exsolve: 1.0.4
       pathe: 2.0.3
 
   pkg-up@2.0.0:
     dependencies:
       find-up: 2.1.0
 
-  portfinder@1.0.35:
+  portfinder@1.0.36:
     dependencies:
       async: 3.2.6
       debug: 4.4.0
@@ -16704,10 +16325,6 @@ snapshots:
 
   supports-preserve-symlinks-flag@1.0.0: {}
 
-  swagger-ui-dist@5.20.8:
-    dependencies:
-      '@scarf/scarf': 1.4.0
-
   swagger-ui-dist@5.21.0:
     dependencies:
       '@scarf/scarf': 1.4.0
@@ -16826,10 +16443,6 @@ snapshots:
   traverse@0.3.9: {}
 
   trough@1.0.5: {}
-
-  ts-api-utils@1.4.3(typescript@5.7.3):
-    dependencies:
-      typescript: 5.7.3
 
   ts-api-utils@2.1.0(typescript@5.7.3):
     dependencies:
@@ -16957,43 +16570,11 @@ snapshots:
       minimatch: 9.0.5
       typescript: 5.7.3
 
-  typescript@5.6.3: {}
-
   typescript@5.7.3: {}
 
-  typia@7.6.4(@samchon/openapi@2.5.3)(typescript@5.6.3):
+  typia@9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3):
     dependencies:
-      '@samchon/openapi': 2.5.3
-      commander: 10.0.1
-      comment-json: 4.2.5
-      inquirer: 8.2.6
-      package-manager-detector: 0.2.11
-      randexp: 0.5.3
-      typescript: 5.6.3
-
-  typia@7.6.4(@samchon/openapi@2.5.3)(typescript@5.7.3):
-    dependencies:
-      '@samchon/openapi': 2.5.3
-      commander: 10.0.1
-      comment-json: 4.2.5
-      inquirer: 8.2.6
-      package-manager-detector: 0.2.11
-      randexp: 0.5.3
-      typescript: 5.7.3
-
-  typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3):
-    dependencies:
-      '@samchon/openapi': 2.5.3
-      commander: 10.0.1
-      comment-json: 4.2.5
-      inquirer: 8.2.6
-      package-manager-detector: 0.2.11
-      randexp: 0.5.3
-      typescript: 5.7.3
-
-  typia@9.1.1(@samchon/openapi@2.5.3)(typescript@5.7.3):
-    dependencies:
-      '@samchon/openapi': 2.5.3
+      '@samchon/openapi': 4.1.0
       commander: 10.0.1
       comment-json: 4.2.5
       inquirer: 8.2.6
@@ -17002,8 +16583,6 @@ snapshots:
       typescript: 5.7.3
 
   uc.micro@1.0.6: {}
-
-  ufo@1.6.1: {}
 
   uid@2.0.2:
     dependencies:
@@ -17063,9 +16642,10 @@ snapshots:
 
   unpipe@1.0.0: {}
 
-  unplugin@1.16.1:
+  unplugin@2.3.2:
     dependencies:
       acorn: 8.14.1
+      picomatch: 4.0.2
       webpack-virtual-modules: 0.6.2
 
   unset-value@1.0.0:
@@ -17177,17 +16757,6 @@ snapshots:
     optionalDependencies:
       '@types/node': 18.19.86
       fsevents: 2.3.3
-      terser: 5.39.0
-
-  vite@6.2.6(@types/node@18.19.86)(jiti@2.4.2)(terser@5.39.0):
-    dependencies:
-      esbuild: 0.25.2
-      postcss: 8.5.3
-      rollup: 4.40.0
-    optionalDependencies:
-      '@types/node': 18.19.86
-      fsevents: 2.3.3
-      jiti: 2.4.2
       terser: 5.39.0
 
   vitest@2.1.9(@types/node@18.19.86)(terser@5.39.0):
