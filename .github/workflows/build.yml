@@ -16,7 +16,6 @@ on:
       - "pnpm-lock.yaml"
       - "pnpm-workspace.yaml"
       - "connectors-list.json"
-      - ".github/workflows/build.yml"
 
 jobs:
   check-list-updated:
@@ -41,7 +40,7 @@ jobs:
       changed_packages: ${{ steps.list-packages.outputs.packages }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           fetch-depth: 0
 
