@@ -80,20 +80,23 @@ jobs:
           fi
           echo "Determined base ref: $(cat $GITHUB_OUTPUT | grep base_ref)"
 
-      - name: Install Root Dependencies
+      - name: Install Root Dependencies (for pnpm ls)
         run: pnpm install --frozen-lockfile
 
       - name: List Changed Packages (incl. dependents, excl. specific ones)
         id: list-packages
         run: |
-          sudo apt-get update && sudo apt-get install -y jq
+          if ! command -v jq &> /dev/null; then
+            sudo apt-get update && sudo apt-get install -y jq
+          fi
           echo "Base ref for diff: ${{ steps.vars.outputs.base_ref }}"
           CHANGED_PACKAGES_JSON=$(pnpm ls -r --depth -1 --json \
             --filter "...[${{ steps.vars.outputs.base_ref }}]" \
             --filter=!./packages/api \
             --filter=!./packages/backend \
-            | jq -c 'map(.name) | map(select(. != "@wrtn/connector"))')
-          echo "Raw changed packages JSON (names): $CHANGED_PACKAGES_JSON"
+            --filter=!@wrtn/connector \
+            | jq -c '[.[] | {full_name: .name, short_name: (.path | split("/")[-1])}]')
+          echo "Raw changed packages JSON (objects): $CHANGED_PACKAGES_JSON"
           echo "packages=${CHANGED_PACKAGES_JSON}" >> $GITHUB_OUTPUT
 
   build-and-test-package:
@@ -101,12 +104,12 @@ jobs:
     needs: determine-changed-packages
     if: needs.determine-changed-packages.outputs.changed_packages != '[]'
 
-    name: Test ${{ matrix.package_path }}
+    name: Test ${{ matrix.package.short_name }}
 
     strategy:
       fail-fast: false
       matrix:
-        package_path: ${{ fromJson(needs.determine-changed-packages.outputs.changed_packages) }}
+        package: ${{ fromJson(needs.determine-changed-packages.outputs.changed_packages) }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -135,12 +138,17 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
+      - name: Install All Dependencies
+        run: pnpm install --frozen-lockfile
+
       - name: Build Package & Dependencies
         run: |
-          echo "Building package ${{ matrix.package_path }} and its dependencies"
-          pnpm --filter "${{ matrix.package_path }}..." run --if-present build
+          # pnpm filter에 패키지의 전체 이름 사용
+          echo "Building package ${{ matrix.package.full_name }} and its dependencies"
+          pnpm --filter "${{ matrix.package.full_name }}..." run --if-present build
 
       - name: Test Package
         run: |
-          echo "Testing package ${{ matrix.package_path }}"
-          pnpm --filter "${{ matrix.package_path }}" run --if-present test
+          # pnpm filter에 패키지의 전체 이름 사용
+          echo "Testing package ${{ matrix.package.full_name }}"
+          pnpm --filter "${{ matrix.package.full_name }}" run --if-present test
