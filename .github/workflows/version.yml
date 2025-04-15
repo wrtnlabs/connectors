@@ -15,16 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 20.x
-          registry-url: "https://registry.npmjs.org/"
-
-      # - name: Authenticate to npm registry
-      #   run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
       - name: Secrets to Env
         run: |
@@ -34,7 +25,7 @@ jobs:
           SECRETS_CONTEXT: ${{ toJson(secrets) }}
 
       - name: Setup pnpm
-        run: npm install -g pnpm
+        uses: pnpm/action-setup@a7487c7e89a18df4991f7f222e4898a00d66ddda # v4.1.0
 
       - name: Root Install
         run: pnpm install && pnpm build:prisma
@@ -44,13 +35,13 @@ jobs:
         run: pnpm install && pnpm build
 
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@v4
+        uses: JamesIves/github-pages-deploy-action@6c2d9db40f9296374acc17b90404b6e8864128c8 # v4.7.3
         with:
           branch: gh-pages
           folder: ./website/out
 
       - name: Checkout repository for versioning
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           branch: main
 
