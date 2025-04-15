@@ -83,12 +83,16 @@ jobs:
       - name: Install Root Dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: List Changed Packages
+      - name: List Changed Packages (incl. dependents, excl. specific ones)
         id: list-packages
         run: |
           sudo apt-get update && sudo apt-get install -y jq
           echo "Base ref for diff: ${{ steps.vars.outputs.base_ref }}"
-          CHANGED_PACKAGES_JSON=$(pnpm ls -r --depth -1 --json --filter "...[${{ steps.vars.outputs.base_ref }}]" --filter=!./packages/api --filter=!./packages/backend | jq -c 'map(.name)')
+          CHANGED_PACKAGES_JSON=$(pnpm ls -r --depth -1 --json \
+            --filter "...[${{ steps.vars.outputs.base_ref }}]" \
+            --filter=!./packages/api \
+            --filter=!./packages/backend \
+            | jq -c 'map(.name) | map(select(. != "@wrtn/connector"))')
           echo "Raw changed packages JSON (names): $CHANGED_PACKAGES_JSON"
           echo "packages=${CHANGED_PACKAGES_JSON}" >> $GITHUB_OUTPUT
 
