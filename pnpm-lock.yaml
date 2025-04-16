@@ -10,10 +10,10 @@ importers:
     dependencies:
       '@aws-sdk/client-s3':
         specifier: ^3.658.1
-        version: 3.782.0
+        version: 3.787.0
       '@aws-sdk/s3-request-presigner':
         specifier: ^3.658.1
-        version: 3.782.0
+        version: 3.787.0
       '@kakasoo/sortable':
         specifier: ^1.0.4
         version: 1.0.8
@@ -22,31 +22,31 @@ importers:
         version: 0.0.12
       '@nestia/core':
         specifier: ^4.6.1
-        version: 4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.13(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.13)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))
+        version: 4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))
       '@nestia/fetcher':
         specifier: ^4.5.1
         version: 4.6.2(typescript@5.7.3)
       '@nestjs/axios':
         specifier: ^4.0.0
-        version: 4.0.0(@nestjs/common@11.0.13(reflect-metadata@0.2.2)(rxjs@7.8.2))(axios@1.8.4)(rxjs@7.8.2)
+        version: 4.0.0(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(axios@1.8.4)(rxjs@7.8.2)
       '@nestjs/common':
         specifier: ^11.0.4
-        version: 11.0.13(reflect-metadata@0.2.2)(rxjs@7.8.2)
+        version: 11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2)
       '@nestjs/config':
         specifier: ^4.0.0
-        version: 4.0.2(@nestjs/common@11.0.13(reflect-metadata@0.2.2)(rxjs@7.8.2))(rxjs@7.8.2)
+        version: 4.0.2(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(rxjs@7.8.2)
       '@nestjs/core':
         specifier: ^11.0.4
-        version: 11.0.13(@nestjs/common@11.0.13(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.0.13)(reflect-metadata@0.2.2)(rxjs@7.8.2)
+        version: 11.0.17(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)
       '@nestjs/platform-express':
         specifier: ^11.0.4
-        version: 11.0.13(@nestjs/common@11.0.13(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.13)
+        version: 11.0.17(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)
       '@nestjs/swagger':
         specifier: ^11.0.2
-        version: 11.1.1(@nestjs/common@11.0.13(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.13)(reflect-metadata@0.2.2)
+        version: 11.1.3(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)
       '@nestjs/testing':
         specifier: ^11.0.4
-        version: 11.0.13(@nestjs/common@11.0.13(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.13)(@nestjs/platform-express@11.0.13)
+        version: 11.0.17(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(@nestjs/platform-express@11.0.17)
       '@notionhq/client':
         specifier: ^2.2.16
         version: 2.3.0
@@ -70,7 +70,7 @@ importers:
         version: 1.2.3
       '@wrtnio/decorators':
         specifier: ^1.6.0
-        version: 1.6.0(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.13(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.13)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)))(@nestia/sdk@4.6.2(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.13(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.13)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)))(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.13(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.13)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.86)(typescript@5.7.3))(typescript@5.7.3)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)))(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))
+        version: 1.6.0(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)))(@nestia/sdk@4.6.2(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)))(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.86)(typescript@5.7.3))(typescript@5.7.3)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)))(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))
       '@wrtnio/schema':
         specifier: ^3.2.1
         version: 3.2.1
@@ -94,10 +94,10 @@ importers:
         version: 5.6.0
       dd-trace:
         specifier: ^5.35.0
-        version: 5.45.0
+        version: 5.48.0
       dotenv:
         specifier: ^16.3.1
-        version: 16.4.7
+        version: 16.5.0
       dotenv-expand:
         specifier: ^10.0.0
         version: 10.0.0
@@ -133,13 +133,13 @@ importers:
         version: 2.1.35
       nestjs-pino:
         specifier: ^4.3.0
-        version: 4.4.0(@nestjs/common@11.0.13(reflect-metadata@0.2.2)(rxjs@7.8.2))(pino-http@10.4.0)(pino@9.6.0)(rxjs@7.8.2)
+        version: 4.4.0(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(pino-http@10.4.0)(pino@9.6.0)(rxjs@7.8.2)
       notion-to-md:
         specifier: ^3.1.1
         version: 3.1.7
       openai:
         specifier: ^4.24.1
-        version: 4.93.0
+        version: 4.94.0
       pino:
         specifier: ^9.5.0
         version: 9.6.0
@@ -197,16 +197,16 @@ importers:
         version: 0.18.0
       '@nestia/agent':
         specifier: ^0.3.7
-        version: 0.3.12(@samchon/openapi@2.5.3)(openai@4.93.0)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))
+        version: 0.3.12(@samchon/openapi@2.5.3)(openai@4.94.0)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))
       '@nestia/e2e':
         specifier: ^0.7.0
         version: 0.7.0
       '@nestia/sdk':
         specifier: ^4.6.1
-        version: 4.6.2(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.13(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.13)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)))(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.13(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.13)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.86)(typescript@5.7.3))(typescript@5.7.3)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))
+        version: 4.6.2(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)))(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.86)(typescript@5.7.3))(typescript@5.7.3)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))
       '@ryoppippi/unplugin-typia':
         specifier: ^1.1.0
-        version: 1.2.0(@samchon/openapi@2.5.3)(@types/node@18.19.86)(jiti@2.4.2)(rollup@4.39.0)(terser@5.39.0)
+        version: 1.2.0(@samchon/openapi@2.5.3)(@types/node@18.19.86)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -260,7 +260,7 @@ importers:
         version: 11.0.0(webpack@5.99.5)
       eslint-plugin-deprecation:
         specifier: ^1.4.1
-        version: 1.6.0(eslint@9.24.0(jiti@2.4.2))(typescript@5.7.3)
+        version: 1.5.0(eslint@9.24.0(jiti@2.4.2))(typescript@5.7.3)
       express:
         specifier: ^4.18.2
         version: 4.21.2
@@ -336,7 +336,7 @@ importers:
         version: 1.8.4
       typia:
         specifier: ^9.1.0
-        version: 9.1.0(@samchon/openapi@4.0.0)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
       xml2js:
         specifier: ^0.6.2
         version: 0.6.2
@@ -349,10 +349,10 @@ importers:
         version: 0.7.0
       '@rollup/plugin-terser':
         specifier: ^0.4.4
-        version: 0.4.4(rollup@4.39.0)
+        version: 0.4.4(rollup@4.40.0)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.40.0)(tslib@2.8.1)(typescript@5.7.3)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -364,7 +364,7 @@ importers:
         version: 4.1.2
       dotenv:
         specifier: ^16.3.1
-        version: 16.4.7
+        version: 16.5.0
       dotenv-expand:
         specifier: ^10.0.0
         version: 10.0.0
@@ -382,7 +382,7 @@ importers:
         version: 6.0.1
       rollup:
         specifier: ^4.34.8
-        version: 4.39.0
+        version: 4.40.0
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.17.30)(typescript@5.7.3)
@@ -406,10 +406,10 @@ importers:
     dependencies:
       '@aws-sdk/client-s3':
         specifier: ^3.658.1
-        version: 3.782.0
+        version: 3.787.0
       '@aws-sdk/s3-request-presigner':
         specifier: ^3.658.1
-        version: 3.782.0
+        version: 3.787.0
       '@wrtnlabs/connector-shared':
         specifier: workspace:^
         version: link:../shared
@@ -421,7 +421,7 @@ importers:
         version: 0.0.3
       typia:
         specifier: ^9.1.0
-        version: 9.1.0(@samchon/openapi@4.0.0)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -431,10 +431,10 @@ importers:
         version: 0.7.0
       '@rollup/plugin-terser':
         specifier: ^0.4.4
-        version: 0.4.4(rollup@4.39.0)
+        version: 0.4.4(rollup@4.40.0)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.40.0)(tslib@2.8.1)(typescript@5.7.3)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -443,7 +443,7 @@ importers:
         version: 4.1.2
       dotenv:
         specifier: ^16.3.1
-        version: 16.4.7
+        version: 16.5.0
       dotenv-expand:
         specifier: ^10.0.0
         version: 10.0.0
@@ -461,7 +461,7 @@ importers:
         version: 6.0.1
       rollup:
         specifier: ^4.34.8
-        version: 4.39.0
+        version: 4.40.0
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.17.30)(typescript@5.7.3)
@@ -491,7 +491,7 @@ importers:
         version: 1.8.4
       typia:
         specifier: ^9.1.0
-        version: 9.1.0(@samchon/openapi@4.0.0)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -501,10 +501,10 @@ importers:
         version: 0.7.0
       '@rollup/plugin-terser':
         specifier: ^0.4.4
-        version: 0.4.4(rollup@4.39.0)
+        version: 0.4.4(rollup@4.40.0)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.40.0)(tslib@2.8.1)(typescript@5.7.3)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -516,7 +516,7 @@ importers:
         version: 7.0.3
       dotenv:
         specifier: ^16.3.1
-        version: 16.4.7
+        version: 16.5.0
       dotenv-expand:
         specifier: ^10.0.0
         version: 10.0.0
@@ -534,7 +534,7 @@ importers:
         version: 6.0.1
       rollup:
         specifier: ^4.34.8
-        version: 4.39.0
+        version: 4.40.0
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.17.30)(typescript@5.7.3)
@@ -564,7 +564,7 @@ importers:
         version: link:../shared
       typia:
         specifier: ^9.1.0
-        version: 9.1.0(@samchon/openapi@4.0.0)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -574,10 +574,10 @@ importers:
         version: 0.7.0
       '@rollup/plugin-terser':
         specifier: ^0.4.4
-        version: 0.4.4(rollup@4.39.0)
+        version: 0.4.4(rollup@4.40.0)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.40.0)(tslib@2.8.1)(typescript@5.7.3)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -586,7 +586,7 @@ importers:
         version: 4.1.2
       dotenv:
         specifier: ^16.3.1
-        version: 16.4.7
+        version: 16.5.0
       dotenv-expand:
         specifier: ^10.0.0
         version: 10.0.0
@@ -604,7 +604,7 @@ importers:
         version: 6.0.1
       rollup:
         specifier: ^4.34.8
-        version: 4.39.0
+        version: 4.40.0
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.17.30)(typescript@5.7.3)
@@ -646,7 +646,7 @@ importers:
         version: 3.0.3
       typia:
         specifier: ^9.1.0
-        version: 9.1.0(@samchon/openapi@4.0.0)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -656,10 +656,10 @@ importers:
         version: 0.7.0
       '@rollup/plugin-terser':
         specifier: ^0.4.4
-        version: 0.4.4(rollup@4.39.0)
+        version: 0.4.4(rollup@4.40.0)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.40.0)(tslib@2.8.1)(typescript@5.7.3)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -674,7 +674,7 @@ importers:
         version: 4.1.2
       dotenv:
         specifier: ^16.3.1
-        version: 16.4.7
+        version: 16.5.0
       dotenv-expand:
         specifier: ^10.0.0
         version: 10.0.0
@@ -692,7 +692,7 @@ importers:
         version: 6.0.1
       rollup:
         specifier: ^4.34.8
-        version: 4.39.0
+        version: 4.40.0
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.17.30)(typescript@5.7.3)
@@ -725,7 +725,7 @@ importers:
         version: 4.93.0
       typia:
         specifier: ^9.1.0
-        version: 9.1.0(@samchon/openapi@4.0.0)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -735,10 +735,10 @@ importers:
         version: 0.7.0
       '@rollup/plugin-terser':
         specifier: ^0.4.4
-        version: 0.4.4(rollup@4.39.0)
+        version: 0.4.4(rollup@4.40.0)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.40.0)(tslib@2.8.1)(typescript@5.7.3)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -750,7 +750,7 @@ importers:
         version: 4.1.2
       dotenv:
         specifier: ^16.3.1
-        version: 16.4.7
+        version: 16.5.0
       dotenv-expand:
         specifier: ^10.0.0
         version: 10.0.0
@@ -768,7 +768,7 @@ importers:
         version: 6.0.1
       rollup:
         specifier: ^4.34.8
-        version: 4.39.0
+        version: 4.40.0
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.17.30)(typescript@5.7.3)
@@ -798,7 +798,7 @@ importers:
         version: 1.8.4
       typia:
         specifier: ^9.1.0
-        version: 9.1.0(@samchon/openapi@4.0.0)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -808,10 +808,10 @@ importers:
         version: 0.7.0
       '@rollup/plugin-terser':
         specifier: ^0.4.4
-        version: 0.4.4(rollup@4.39.0)
+        version: 0.4.4(rollup@4.40.0)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.40.0)(tslib@2.8.1)(typescript@5.7.3)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -823,7 +823,7 @@ importers:
         version: 4.1.2
       dotenv:
         specifier: ^16.3.1
-        version: 16.4.7
+        version: 16.5.0
       dotenv-expand:
         specifier: ^10.0.0
         version: 10.0.0
@@ -841,7 +841,7 @@ importers:
         version: 6.0.1
       rollup:
         specifier: ^4.34.8
-        version: 4.39.0
+        version: 4.40.0
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.17.30)(typescript@5.7.3)
@@ -871,7 +871,7 @@ importers:
         version: 1.8.4
       typia:
         specifier: ^9.1.0
-        version: 9.1.0(@samchon/openapi@4.0.0)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -881,10 +881,10 @@ importers:
         version: 0.7.0
       '@rollup/plugin-terser':
         specifier: ^0.4.4
-        version: 0.4.4(rollup@4.39.0)
+        version: 0.4.4(rollup@4.40.0)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.40.0)(tslib@2.8.1)(typescript@5.7.3)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -896,7 +896,7 @@ importers:
         version: 4.1.2
       dotenv:
         specifier: ^16.3.1
-        version: 16.4.7
+        version: 16.5.0
       dotenv-expand:
         specifier: ^10.0.0
         version: 10.0.0
@@ -914,7 +914,7 @@ importers:
         version: 6.0.1
       rollup:
         specifier: ^4.34.8
-        version: 4.39.0
+        version: 4.40.0
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.17.30)(typescript@5.7.3)
@@ -944,7 +944,7 @@ importers:
         version: 1.8.4
       typia:
         specifier: ^9.1.0
-        version: 9.1.0(@samchon/openapi@4.0.0)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -954,10 +954,10 @@ importers:
         version: 0.7.0
       '@rollup/plugin-terser':
         specifier: ^0.4.4
-        version: 0.4.4(rollup@4.39.0)
+        version: 0.4.4(rollup@4.40.0)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.40.0)(tslib@2.8.1)(typescript@5.7.3)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -969,7 +969,7 @@ importers:
         version: 4.1.2
       dotenv:
         specifier: ^16.3.1
-        version: 16.4.7
+        version: 16.5.0
       dotenv-expand:
         specifier: ^10.0.0
         version: 10.0.0
@@ -987,7 +987,7 @@ importers:
         version: 6.0.1
       rollup:
         specifier: ^4.34.8
-        version: 4.39.0
+        version: 4.40.0
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.17.30)(typescript@5.7.3)
@@ -1014,7 +1014,7 @@ importers:
         version: link:../shared
       typia:
         specifier: ^9.1.0
-        version: 9.1.0(@samchon/openapi@4.0.0)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -1024,10 +1024,10 @@ importers:
         version: 0.7.0
       '@rollup/plugin-terser':
         specifier: ^0.4.4
-        version: 0.4.4(rollup@4.39.0)
+        version: 0.4.4(rollup@4.40.0)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.40.0)(tslib@2.8.1)(typescript@5.7.3)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -1042,7 +1042,7 @@ importers:
         version: 4.1.2
       dotenv:
         specifier: ^16.3.1
-        version: 16.4.7
+        version: 16.5.0
       dotenv-expand:
         specifier: ^10.0.0
         version: 10.0.0
@@ -1060,7 +1060,7 @@ importers:
         version: 6.0.1
       rollup:
         specifier: ^4.34.8
-        version: 4.39.0
+        version: 4.40.0
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.17.30)(typescript@5.7.3)
@@ -1093,7 +1093,7 @@ importers:
         version: 1.8.4
       typia:
         specifier: ^9.1.0
-        version: 9.1.0(@samchon/openapi@4.0.0)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -1103,10 +1103,10 @@ importers:
         version: 0.7.0
       '@rollup/plugin-terser':
         specifier: ^0.4.4
-        version: 0.4.4(rollup@4.39.0)
+        version: 0.4.4(rollup@4.40.0)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.40.0)(tslib@2.8.1)(typescript@5.7.3)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -1115,7 +1115,7 @@ importers:
         version: 4.1.2
       dotenv:
         specifier: ^16.3.1
-        version: 16.4.7
+        version: 16.5.0
       dotenv-expand:
         specifier: ^10.0.0
         version: 10.0.0
@@ -1133,7 +1133,7 @@ importers:
         version: 6.0.1
       rollup:
         specifier: ^4.34.8
-        version: 4.39.0
+        version: 4.40.0
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.17.30)(typescript@5.7.3)
@@ -1163,7 +1163,7 @@ importers:
         version: 1.8.4
       typia:
         specifier: ^9.1.0
-        version: 9.1.0(@samchon/openapi@4.0.0)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -1173,10 +1173,10 @@ importers:
         version: 0.7.0
       '@rollup/plugin-terser':
         specifier: ^0.4.4
-        version: 0.4.4(rollup@4.39.0)
+        version: 0.4.4(rollup@4.40.0)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.40.0)(tslib@2.8.1)(typescript@5.7.3)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -1188,7 +1188,7 @@ importers:
         version: 4.1.2
       dotenv:
         specifier: ^16.3.1
-        version: 16.4.7
+        version: 16.5.0
       dotenv-expand:
         specifier: ^10.0.0
         version: 10.0.0
@@ -1206,7 +1206,7 @@ importers:
         version: 6.0.1
       rollup:
         specifier: ^4.34.8
-        version: 4.39.0
+        version: 4.40.0
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.17.30)(typescript@5.7.3)
@@ -1239,7 +1239,7 @@ importers:
         version: 144.0.0
       typia:
         specifier: ^9.1.0
-        version: 9.1.0(@samchon/openapi@4.0.0)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -1249,10 +1249,10 @@ importers:
         version: 0.7.0
       '@rollup/plugin-terser':
         specifier: ^0.4.4
-        version: 0.4.4(rollup@4.39.0)
+        version: 0.4.4(rollup@4.40.0)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.40.0)(tslib@2.8.1)(typescript@5.7.3)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -1264,7 +1264,7 @@ importers:
         version: 4.1.2
       dotenv:
         specifier: ^16.3.1
-        version: 16.4.7
+        version: 16.5.0
       dotenv-expand:
         specifier: ^10.0.0
         version: 10.0.0
@@ -1282,7 +1282,7 @@ importers:
         version: 6.0.1
       rollup:
         specifier: ^4.34.8
-        version: 4.39.0
+        version: 4.40.0
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.17.30)(typescript@5.7.3)
@@ -1321,7 +1321,7 @@ importers:
         version: 0.33.5
       typia:
         specifier: ^9.1.0
-        version: 9.1.0(@samchon/openapi@4.0.0)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
       uuid:
         specifier: ^10.0.0
         version: 10.0.0
@@ -1334,10 +1334,10 @@ importers:
         version: 0.7.0
       '@rollup/plugin-terser':
         specifier: ^0.4.4
-        version: 0.4.4(rollup@4.39.0)
+        version: 0.4.4(rollup@4.40.0)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.40.0)(tslib@2.8.1)(typescript@5.7.3)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -1349,7 +1349,7 @@ importers:
         version: 4.1.2
       dotenv:
         specifier: ^16.3.1
-        version: 16.4.7
+        version: 16.5.0
       dotenv-expand:
         specifier: ^10.0.0
         version: 10.0.0
@@ -1367,7 +1367,7 @@ importers:
         version: 6.0.1
       rollup:
         specifier: ^4.34.8
-        version: 4.39.0
+        version: 4.40.0
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.17.30)(typescript@5.7.3)
@@ -1397,7 +1397,7 @@ importers:
         version: 144.0.0
       typia:
         specifier: ^9.1.0
-        version: 9.1.0(@samchon/openapi@4.0.0)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -1407,10 +1407,10 @@ importers:
         version: 0.7.0
       '@rollup/plugin-terser':
         specifier: ^0.4.4
-        version: 0.4.4(rollup@4.39.0)
+        version: 0.4.4(rollup@4.40.0)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.40.0)(tslib@2.8.1)(typescript@5.7.3)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -1419,7 +1419,7 @@ importers:
         version: 4.1.2
       dotenv:
         specifier: ^16.3.1
-        version: 16.4.7
+        version: 16.5.0
       dotenv-expand:
         specifier: ^10.0.0
         version: 10.0.0
@@ -1437,7 +1437,7 @@ importers:
         version: 6.0.1
       rollup:
         specifier: ^4.34.8
-        version: 4.39.0
+        version: 4.40.0
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.17.30)(typescript@5.7.3)
@@ -1473,7 +1473,7 @@ importers:
         version: 14.1.4
       typia:
         specifier: ^9.1.0
-        version: 9.1.0(@samchon/openapi@4.0.0)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -1483,10 +1483,10 @@ importers:
         version: 0.7.0
       '@rollup/plugin-terser':
         specifier: ^0.4.4
-        version: 0.4.4(rollup@4.39.0)
+        version: 0.4.4(rollup@4.40.0)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.40.0)(tslib@2.8.1)(typescript@5.7.3)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -1495,7 +1495,7 @@ importers:
         version: 4.1.2
       dotenv:
         specifier: ^16.3.1
-        version: 16.4.7
+        version: 16.5.0
       dotenv-expand:
         specifier: ^10.0.0
         version: 10.0.0
@@ -1513,7 +1513,7 @@ importers:
         version: 6.0.1
       rollup:
         specifier: ^4.34.8
-        version: 4.39.0
+        version: 4.40.0
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.17.30)(typescript@5.7.3)
@@ -1552,7 +1552,7 @@ importers:
         version: 0.0.3
       typia:
         specifier: ^9.1.0
-        version: 9.1.0(@samchon/openapi@4.0.0)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -1562,10 +1562,10 @@ importers:
         version: 0.7.0
       '@rollup/plugin-terser':
         specifier: ^0.4.4
-        version: 0.4.4(rollup@4.39.0)
+        version: 0.4.4(rollup@4.40.0)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.40.0)(tslib@2.8.1)(typescript@5.7.3)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -1583,7 +1583,7 @@ importers:
         version: 4.1.2
       dotenv:
         specifier: ^16.3.1
-        version: 16.4.7
+        version: 16.5.0
       dotenv-expand:
         specifier: ^10.0.0
         version: 10.0.0
@@ -1601,7 +1601,7 @@ importers:
         version: 6.0.1
       rollup:
         specifier: ^4.34.8
-        version: 4.39.0
+        version: 4.40.0
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.17.30)(typescript@5.7.3)
@@ -1631,7 +1631,7 @@ importers:
         version: 2.1.0
       typia:
         specifier: ^9.1.0
-        version: 9.1.0(@samchon/openapi@4.0.0)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -1641,10 +1641,10 @@ importers:
         version: 0.7.0
       '@rollup/plugin-terser':
         specifier: ^0.4.4
-        version: 0.4.4(rollup@4.39.0)
+        version: 0.4.4(rollup@4.40.0)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.40.0)(tslib@2.8.1)(typescript@5.7.3)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -1653,7 +1653,7 @@ importers:
         version: 4.1.2
       dotenv:
         specifier: ^16.3.1
-        version: 16.4.7
+        version: 16.5.0
       dotenv-expand:
         specifier: ^10.0.0
         version: 10.0.0
@@ -1671,7 +1671,7 @@ importers:
         version: 6.0.1
       rollup:
         specifier: ^4.34.8
-        version: 4.39.0
+        version: 4.40.0
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.17.30)(typescript@5.7.3)
@@ -1698,7 +1698,7 @@ importers:
         version: link:../shared
       typia:
         specifier: ^9.1.0
-        version: 9.1.0(@samchon/openapi@4.0.0)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -1708,10 +1708,10 @@ importers:
         version: 0.7.0
       '@rollup/plugin-terser':
         specifier: ^0.4.4
-        version: 0.4.4(rollup@4.39.0)
+        version: 0.4.4(rollup@4.40.0)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.40.0)(tslib@2.8.1)(typescript@5.7.3)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -1720,7 +1720,7 @@ importers:
         version: 4.1.2
       dotenv:
         specifier: ^16.3.1
-        version: 16.4.7
+        version: 16.5.0
       dotenv-expand:
         specifier: ^10.0.0
         version: 10.0.0
@@ -1738,7 +1738,7 @@ importers:
         version: 6.0.1
       rollup:
         specifier: ^4.34.8
-        version: 4.39.0
+        version: 4.40.0
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.17.30)(typescript@5.7.3)
@@ -1775,10 +1775,10 @@ importers:
         version: 0.7.0
       '@rollup/plugin-terser':
         specifier: ^0.4.4
-        version: 0.4.4(rollup@4.39.0)
+        version: 0.4.4(rollup@4.40.0)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.40.0)(tslib@2.8.1)(typescript@5.7.3)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -1787,7 +1787,7 @@ importers:
         version: 4.1.2
       dotenv:
         specifier: ^16.3.1
-        version: 16.4.7
+        version: 16.5.0
       dotenv-expand:
         specifier: ^10.0.0
         version: 10.0.0
@@ -1805,7 +1805,7 @@ importers:
         version: 6.0.1
       rollup:
         specifier: ^4.34.8
-        version: 4.39.0
+        version: 4.40.0
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.17.30)(typescript@5.7.3)
@@ -1841,7 +1841,7 @@ importers:
         version: 2.1.0
       typia:
         specifier: ^9.1.0
-        version: 9.1.0(@samchon/openapi@4.0.0)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -1851,10 +1851,10 @@ importers:
         version: 0.7.0
       '@rollup/plugin-terser':
         specifier: ^0.4.4
-        version: 0.4.4(rollup@4.39.0)
+        version: 0.4.4(rollup@4.40.0)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.40.0)(tslib@2.8.1)(typescript@5.7.3)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -1863,7 +1863,7 @@ importers:
         version: 4.1.2
       dotenv:
         specifier: ^16.3.1
-        version: 16.4.7
+        version: 16.5.0
       dotenv-expand:
         specifier: ^10.0.0
         version: 10.0.0
@@ -1881,7 +1881,7 @@ importers:
         version: 6.0.1
       rollup:
         specifier: ^4.34.8
-        version: 4.39.0
+        version: 4.40.0
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.17.30)(typescript@5.7.3)
@@ -1911,7 +1911,7 @@ importers:
         version: 2.1.0
       typia:
         specifier: ^9.1.0
-        version: 9.1.0(@samchon/openapi@4.0.0)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -1921,10 +1921,10 @@ importers:
         version: 0.7.0
       '@rollup/plugin-terser':
         specifier: ^0.4.4
-        version: 0.4.4(rollup@4.39.0)
+        version: 0.4.4(rollup@4.40.0)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.40.0)(tslib@2.8.1)(typescript@5.7.3)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -1933,7 +1933,7 @@ importers:
         version: 4.1.2
       dotenv:
         specifier: ^16.3.1
-        version: 16.4.7
+        version: 16.5.0
       dotenv-expand:
         specifier: ^10.0.0
         version: 10.0.0
@@ -1951,7 +1951,7 @@ importers:
         version: 6.0.1
       rollup:
         specifier: ^4.34.8
-        version: 4.39.0
+        version: 4.40.0
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.17.30)(typescript@5.7.3)
@@ -1981,7 +1981,7 @@ importers:
         version: 2.1.0
       typia:
         specifier: ^9.1.0
-        version: 9.1.0(@samchon/openapi@4.0.0)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -1991,10 +1991,10 @@ importers:
         version: 0.7.0
       '@rollup/plugin-terser':
         specifier: ^0.4.4
-        version: 0.4.4(rollup@4.39.0)
+        version: 0.4.4(rollup@4.40.0)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.40.0)(tslib@2.8.1)(typescript@5.7.3)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -2003,7 +2003,7 @@ importers:
         version: 4.1.2
       dotenv:
         specifier: ^16.3.1
-        version: 16.4.7
+        version: 16.5.0
       dotenv-expand:
         specifier: ^10.0.0
         version: 10.0.0
@@ -2021,7 +2021,7 @@ importers:
         version: 6.0.1
       rollup:
         specifier: ^4.34.8
-        version: 4.39.0
+        version: 4.40.0
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.17.30)(typescript@5.7.3)
@@ -2057,7 +2057,7 @@ importers:
         version: 144.0.0
       typia:
         specifier: ^9.1.0
-        version: 9.1.0(@samchon/openapi@4.0.0)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -2067,10 +2067,10 @@ importers:
         version: 0.7.0
       '@rollup/plugin-terser':
         specifier: ^0.4.4
-        version: 0.4.4(rollup@4.39.0)
+        version: 0.4.4(rollup@4.40.0)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.40.0)(tslib@2.8.1)(typescript@5.7.3)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -2082,7 +2082,7 @@ importers:
         version: 4.1.2
       dotenv:
         specifier: ^16.3.1
-        version: 16.4.7
+        version: 16.5.0
       dotenv-expand:
         specifier: ^10.0.0
         version: 10.0.0
@@ -2100,7 +2100,7 @@ importers:
         version: 6.0.1
       rollup:
         specifier: ^4.34.8
-        version: 4.39.0
+        version: 4.40.0
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.17.30)(typescript@5.7.3)
@@ -2130,7 +2130,7 @@ importers:
         version: 2.1.0
       typia:
         specifier: ^9.1.0
-        version: 9.1.0(@samchon/openapi@4.0.0)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -2140,10 +2140,10 @@ importers:
         version: 0.7.0
       '@rollup/plugin-terser':
         specifier: ^0.4.4
-        version: 0.4.4(rollup@4.39.0)
+        version: 0.4.4(rollup@4.40.0)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.40.0)(tslib@2.8.1)(typescript@5.7.3)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -2152,7 +2152,7 @@ importers:
         version: 4.1.2
       dotenv:
         specifier: ^16.3.1
-        version: 16.4.7
+        version: 16.5.0
       dotenv-expand:
         specifier: ^10.0.0
         version: 10.0.0
@@ -2170,7 +2170,7 @@ importers:
         version: 6.0.1
       rollup:
         specifier: ^4.34.8
-        version: 4.39.0
+        version: 4.40.0
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.17.30)(typescript@5.7.3)
@@ -2212,7 +2212,7 @@ importers:
         version: 0.33.5
       typia:
         specifier: ^9.1.0
-        version: 9.1.0(@samchon/openapi@4.0.0)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
       uuid:
         specifier: ^10.0.0
         version: 10.0.0
@@ -2225,10 +2225,10 @@ importers:
         version: 0.7.0
       '@rollup/plugin-terser':
         specifier: ^0.4.4
-        version: 0.4.4(rollup@4.39.0)
+        version: 0.4.4(rollup@4.40.0)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.40.0)(tslib@2.8.1)(typescript@5.7.3)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -2246,7 +2246,7 @@ importers:
         version: 4.1.2
       dotenv:
         specifier: ^16.3.1
-        version: 16.4.7
+        version: 16.5.0
       dotenv-expand:
         specifier: ^10.0.0
         version: 10.0.0
@@ -2264,7 +2264,7 @@ importers:
         version: 6.0.1
       rollup:
         specifier: ^4.34.8
-        version: 4.39.0
+        version: 4.40.0
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.17.30)(typescript@5.7.3)
@@ -2294,7 +2294,7 @@ importers:
         version: 2.1.0
       typia:
         specifier: ^9.1.0
-        version: 9.1.0(@samchon/openapi@4.0.0)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -2304,10 +2304,10 @@ importers:
         version: 0.7.0
       '@rollup/plugin-terser':
         specifier: ^0.4.4
-        version: 0.4.4(rollup@4.39.0)
+        version: 0.4.4(rollup@4.40.0)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.40.0)(tslib@2.8.1)(typescript@5.7.3)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -2319,7 +2319,7 @@ importers:
         version: 7.0.3
       dotenv:
         specifier: ^16.3.1
-        version: 16.4.7
+        version: 16.5.0
       dotenv-expand:
         specifier: ^10.0.0
         version: 10.0.0
@@ -2337,7 +2337,7 @@ importers:
         version: 6.0.1
       rollup:
         specifier: ^4.34.8
-        version: 4.39.0
+        version: 4.40.0
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.17.30)(typescript@5.7.3)
@@ -2370,7 +2370,7 @@ importers:
         version: 1.8.4
       typia:
         specifier: ^9.1.0
-        version: 9.1.0(@samchon/openapi@4.0.0)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
       uuid:
         specifier: ^10.0.0
         version: 10.0.0
@@ -2386,10 +2386,10 @@ importers:
         version: 0.7.0
       '@rollup/plugin-terser':
         specifier: ^0.4.4
-        version: 0.4.4(rollup@4.39.0)
+        version: 0.4.4(rollup@4.40.0)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.40.0)(tslib@2.8.1)(typescript@5.7.3)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -2407,7 +2407,7 @@ importers:
         version: 4.1.2
       dotenv:
         specifier: ^16.3.1
-        version: 16.4.7
+        version: 16.5.0
       dotenv-expand:
         specifier: ^10.0.0
         version: 10.0.0
@@ -2425,7 +2425,7 @@ importers:
         version: 6.0.1
       rollup:
         specifier: ^4.34.8
-        version: 4.39.0
+        version: 4.40.0
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.17.30)(typescript@5.7.3)
@@ -2455,7 +2455,7 @@ importers:
         version: 1.8.4
       typia:
         specifier: ^9.1.0
-        version: 9.1.0(@samchon/openapi@4.0.0)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -2465,10 +2465,10 @@ importers:
         version: 0.7.0
       '@rollup/plugin-terser':
         specifier: ^0.4.4
-        version: 0.4.4(rollup@4.39.0)
+        version: 0.4.4(rollup@4.40.0)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.40.0)(tslib@2.8.1)(typescript@5.7.3)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -2477,7 +2477,7 @@ importers:
         version: 4.1.2
       dotenv:
         specifier: ^16.3.1
-        version: 16.4.7
+        version: 16.5.0
       dotenv-expand:
         specifier: ^10.0.0
         version: 10.0.0
@@ -2495,7 +2495,7 @@ importers:
         version: 6.0.1
       rollup:
         specifier: ^4.34.8
-        version: 4.39.0
+        version: 4.40.0
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.17.30)(typescript@5.7.3)
@@ -2528,7 +2528,7 @@ importers:
         version: 14.1.4
       typia:
         specifier: ^9.1.0
-        version: 9.1.0(@samchon/openapi@4.0.0)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -2538,10 +2538,10 @@ importers:
         version: 0.7.0
       '@rollup/plugin-terser':
         specifier: ^0.4.4
-        version: 0.4.4(rollup@4.39.0)
+        version: 0.4.4(rollup@4.40.0)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.40.0)(tslib@2.8.1)(typescript@5.7.3)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -2550,7 +2550,7 @@ importers:
         version: 4.1.2
       dotenv:
         specifier: ^16.3.1
-        version: 16.4.7
+        version: 16.5.0
       dotenv-expand:
         specifier: ^10.0.0
         version: 10.0.0
@@ -2568,7 +2568,7 @@ importers:
         version: 6.0.1
       rollup:
         specifier: ^4.34.8
-        version: 4.39.0
+        version: 4.40.0
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.17.30)(typescript@5.7.3)
@@ -2595,7 +2595,7 @@ importers:
         version: link:../shared
       typia:
         specifier: ^9.1.0
-        version: 9.1.0(@samchon/openapi@4.0.0)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -2605,10 +2605,10 @@ importers:
         version: 0.7.0
       '@rollup/plugin-terser':
         specifier: ^0.4.4
-        version: 0.4.4(rollup@4.39.0)
+        version: 0.4.4(rollup@4.40.0)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.40.0)(tslib@2.8.1)(typescript@5.7.3)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -2617,7 +2617,7 @@ importers:
         version: 4.1.2
       dotenv:
         specifier: ^16.3.1
-        version: 16.4.7
+        version: 16.5.0
       dotenv-expand:
         specifier: ^10.0.0
         version: 10.0.0
@@ -2635,7 +2635,7 @@ importers:
         version: 6.0.1
       rollup:
         specifier: ^4.34.8
-        version: 4.39.0
+        version: 4.40.0
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.17.30)(typescript@5.7.3)
@@ -2662,7 +2662,7 @@ importers:
         version: link:../shared
       typia:
         specifier: ^9.1.0
-        version: 9.1.0(@samchon/openapi@4.0.0)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -2672,10 +2672,10 @@ importers:
         version: 0.7.0
       '@rollup/plugin-terser':
         specifier: ^0.4.4
-        version: 0.4.4(rollup@4.39.0)
+        version: 0.4.4(rollup@4.40.0)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.40.0)(tslib@2.8.1)(typescript@5.7.3)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -2684,7 +2684,7 @@ importers:
         version: 4.1.2
       dotenv:
         specifier: ^16.3.1
-        version: 16.4.7
+        version: 16.5.0
       dotenv-expand:
         specifier: ^10.0.0
         version: 10.0.0
@@ -2702,7 +2702,7 @@ importers:
         version: 6.0.1
       rollup:
         specifier: ^4.34.8
-        version: 4.39.0
+        version: 4.40.0
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.17.30)(typescript@5.7.3)
@@ -2732,7 +2732,7 @@ importers:
         version: 1.8.4
       typia:
         specifier: ^9.1.0
-        version: 9.1.0(@samchon/openapi@4.0.0)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -2742,10 +2742,10 @@ importers:
         version: 0.7.0
       '@rollup/plugin-terser':
         specifier: ^0.4.4
-        version: 0.4.4(rollup@4.39.0)
+        version: 0.4.4(rollup@4.40.0)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.40.0)(tslib@2.8.1)(typescript@5.7.3)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -2757,7 +2757,7 @@ importers:
         version: 4.1.2
       dotenv:
         specifier: ^16.3.1
-        version: 16.4.7
+        version: 16.5.0
       dotenv-expand:
         specifier: ^10.0.0
         version: 10.0.0
@@ -2775,7 +2775,7 @@ importers:
         version: 6.0.1
       rollup:
         specifier: ^4.34.8
-        version: 4.39.0
+        version: 4.40.0
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.17.30)(typescript@5.7.3)
@@ -2802,7 +2802,7 @@ importers:
         version: link:../shared
       typia:
         specifier: ^9.1.0
-        version: 9.1.0(@samchon/openapi@4.0.0)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -2812,10 +2812,10 @@ importers:
         version: 0.7.0
       '@rollup/plugin-terser':
         specifier: ^0.4.4
-        version: 0.4.4(rollup@4.39.0)
+        version: 0.4.4(rollup@4.40.0)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.40.0)(tslib@2.8.1)(typescript@5.7.3)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -2824,7 +2824,7 @@ importers:
         version: 4.1.2
       dotenv:
         specifier: ^16.3.1
-        version: 16.4.7
+        version: 16.5.0
       dotenv-expand:
         specifier: ^10.0.0
         version: 10.0.0
@@ -2842,7 +2842,7 @@ importers:
         version: 6.0.1
       rollup:
         specifier: ^4.34.8
-        version: 4.39.0
+        version: 4.40.0
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.17.30)(typescript@5.7.3)
@@ -2884,7 +2884,7 @@ importers:
         version: 0.12.7
       typia:
         specifier: ^9.1.0
-        version: 9.1.0(@samchon/openapi@4.0.0)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -2894,10 +2894,10 @@ importers:
         version: 0.7.0
       '@rollup/plugin-terser':
         specifier: ^0.4.4
-        version: 0.4.4(rollup@4.39.0)
+        version: 0.4.4(rollup@4.40.0)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.40.0)(tslib@2.8.1)(typescript@5.7.3)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -2906,7 +2906,7 @@ importers:
         version: 4.1.2
       dotenv:
         specifier: ^16.3.1
-        version: 16.4.7
+        version: 16.5.0
       dotenv-expand:
         specifier: ^10.0.0
         version: 10.0.0
@@ -2921,7 +2921,7 @@ importers:
         version: 6.0.1
       rollup:
         specifier: ^4.34.8
-        version: 4.39.0
+        version: 4.40.0
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.17.30)(typescript@5.7.3)
@@ -2951,7 +2951,7 @@ importers:
         version: 1.8.4
       typia:
         specifier: ^9.1.0
-        version: 9.1.0(@samchon/openapi@4.0.0)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -2961,10 +2961,10 @@ importers:
         version: 0.7.0
       '@rollup/plugin-terser':
         specifier: ^0.4.4
-        version: 0.4.4(rollup@4.39.0)
+        version: 0.4.4(rollup@4.40.0)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.40.0)(tslib@2.8.1)(typescript@5.7.3)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -2976,7 +2976,7 @@ importers:
         version: 4.1.2
       dotenv:
         specifier: ^16.3.1
-        version: 16.4.7
+        version: 16.5.0
       dotenv-expand:
         specifier: ^10.0.0
         version: 10.0.0
@@ -2994,7 +2994,7 @@ importers:
         version: 6.0.1
       rollup:
         specifier: ^4.34.8
-        version: 4.39.0
+        version: 4.40.0
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.17.30)(typescript@5.7.3)
@@ -3024,7 +3024,7 @@ importers:
         version: 1.8.4
       typia:
         specifier: ^9.1.0
-        version: 9.1.0(@samchon/openapi@4.0.0)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -3034,10 +3034,10 @@ importers:
         version: 0.7.0
       '@rollup/plugin-terser':
         specifier: ^0.4.4
-        version: 0.4.4(rollup@4.39.0)
+        version: 0.4.4(rollup@4.40.0)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.40.0)(tslib@2.8.1)(typescript@5.7.3)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -3049,7 +3049,7 @@ importers:
         version: 4.1.2
       dotenv:
         specifier: ^16.3.1
-        version: 16.4.7
+        version: 16.5.0
       dotenv-expand:
         specifier: ^10.0.0
         version: 10.0.0
@@ -3067,7 +3067,7 @@ importers:
         version: 6.0.1
       rollup:
         specifier: ^4.34.8
-        version: 4.39.0
+        version: 4.40.0
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.17.30)(typescript@5.7.3)
@@ -3097,7 +3097,7 @@ importers:
         version: 1.8.4
       typia:
         specifier: ^9.1.0
-        version: 9.1.0(@samchon/openapi@4.0.0)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -3107,10 +3107,10 @@ importers:
         version: 0.7.0
       '@rollup/plugin-terser':
         specifier: ^0.4.4
-        version: 0.4.4(rollup@4.39.0)
+        version: 0.4.4(rollup@4.40.0)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.40.0)(tslib@2.8.1)(typescript@5.7.3)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -3119,7 +3119,7 @@ importers:
         version: 4.1.2
       dotenv:
         specifier: ^16.3.1
-        version: 16.4.7
+        version: 16.5.0
       dotenv-expand:
         specifier: ^10.0.0
         version: 10.0.0
@@ -3137,7 +3137,7 @@ importers:
         version: 6.0.1
       rollup:
         specifier: ^4.34.8
-        version: 4.39.0
+        version: 4.40.0
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.17.30)(typescript@5.7.3)
@@ -3176,7 +3176,7 @@ importers:
         version: 3.1.7
       typia:
         specifier: ^9.1.0
-        version: 9.1.0(@samchon/openapi@4.0.0)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -3186,10 +3186,10 @@ importers:
         version: 0.7.0
       '@rollup/plugin-terser':
         specifier: ^0.4.4
-        version: 0.4.4(rollup@4.39.0)
+        version: 0.4.4(rollup@4.40.0)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.40.0)(tslib@2.8.1)(typescript@5.7.3)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -3201,7 +3201,7 @@ importers:
         version: 1.0.1
       dotenv:
         specifier: ^16.3.1
-        version: 16.4.7
+        version: 16.5.0
       dotenv-expand:
         specifier: ^10.0.0
         version: 10.0.0
@@ -3219,7 +3219,7 @@ importers:
         version: 6.0.1
       rollup:
         specifier: ^4.34.8
-        version: 4.39.0
+        version: 4.40.0
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.17.30)(typescript@5.7.3)
@@ -3249,7 +3249,7 @@ importers:
         version: 1.8.4
       typia:
         specifier: ^9.1.0
-        version: 9.1.0(@samchon/openapi@4.0.0)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -3259,10 +3259,10 @@ importers:
         version: 0.7.0
       '@rollup/plugin-terser':
         specifier: ^0.4.4
-        version: 0.4.4(rollup@4.39.0)
+        version: 0.4.4(rollup@4.40.0)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.40.0)(tslib@2.8.1)(typescript@5.7.3)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -3277,7 +3277,7 @@ importers:
         version: 4.1.2
       dotenv:
         specifier: ^16.3.1
-        version: 16.4.7
+        version: 16.5.0
       dotenv-expand:
         specifier: ^10.0.0
         version: 10.0.0
@@ -3295,7 +3295,7 @@ importers:
         version: 6.0.1
       rollup:
         specifier: ^4.34.8
-        version: 4.39.0
+        version: 4.40.0
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.17.30)(typescript@5.7.3)
@@ -3325,7 +3325,7 @@ importers:
         version: 14.1.4
       typia:
         specifier: ^9.1.0
-        version: 9.1.0(@samchon/openapi@4.0.0)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
       xml2js:
         specifier: ^0.6.2
         version: 0.6.2
@@ -3335,10 +3335,10 @@ importers:
         version: 9.24.0
       '@rollup/plugin-terser':
         specifier: ^0.4.4
-        version: 0.4.4(rollup@4.39.0)
+        version: 0.4.4(rollup@4.40.0)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.40.0)(tslib@2.8.1)(typescript@5.7.3)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -3350,7 +3350,7 @@ importers:
         version: 4.1.2
       dotenv:
         specifier: ^16.3.1
-        version: 16.4.7
+        version: 16.5.0
       dotenv-expand:
         specifier: ^10.0.0
         version: 10.0.0
@@ -3368,7 +3368,7 @@ importers:
         version: 6.0.1
       rollup:
         specifier: ^4.34.8
-        version: 4.39.0
+        version: 4.40.0
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.17.30)(typescript@5.7.3)
@@ -3475,7 +3475,7 @@ importers:
         version: 4.4.0
       typia:
         specifier: ^9.1.0
-        version: 9.1.0(@samchon/openapi@4.0.0)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -3485,10 +3485,10 @@ importers:
         version: 0.7.0
       '@rollup/plugin-terser':
         specifier: ^0.4.4
-        version: 0.4.4(rollup@4.39.0)
+        version: 0.4.4(rollup@4.40.0)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.40.0)(tslib@2.8.1)(typescript@5.7.3)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -3497,7 +3497,7 @@ importers:
         version: 4.1.2
       dotenv:
         specifier: ^16.3.1
-        version: 16.4.7
+        version: 16.5.0
       dotenv-expand:
         specifier: ^10.0.0
         version: 10.0.0
@@ -3515,7 +3515,7 @@ importers:
         version: 6.0.1
       rollup:
         specifier: ^4.34.8
-        version: 4.39.0
+        version: 4.40.0
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.17.30)(typescript@5.7.3)
@@ -3539,7 +3539,7 @@ importers:
     dependencies:
       typia:
         specifier: ^9.1.0
-        version: 9.1.0(@samchon/openapi@4.0.0)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -3549,10 +3549,10 @@ importers:
         version: 0.7.0
       '@rollup/plugin-terser':
         specifier: ^0.4.4
-        version: 0.4.4(rollup@4.39.0)
+        version: 0.4.4(rollup@4.40.0)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.40.0)(tslib@2.8.1)(typescript@5.7.3)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -3561,7 +3561,7 @@ importers:
         version: 4.1.2
       dotenv:
         specifier: ^16.3.1
-        version: 16.4.7
+        version: 16.5.0
       dotenv-expand:
         specifier: ^10.0.0
         version: 10.0.0
@@ -3579,7 +3579,7 @@ importers:
         version: 6.0.1
       rollup:
         specifier: ^4.34.8
-        version: 4.39.0
+        version: 4.40.0
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.17.30)(typescript@5.7.3)
@@ -3612,7 +3612,7 @@ importers:
         version: 1.8.4
       typia:
         specifier: ^9.1.0
-        version: 9.1.0(@samchon/openapi@4.0.0)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -3622,10 +3622,10 @@ importers:
         version: 0.7.0
       '@rollup/plugin-terser':
         specifier: ^0.4.4
-        version: 0.4.4(rollup@4.39.0)
+        version: 0.4.4(rollup@4.40.0)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.40.0)(tslib@2.8.1)(typescript@5.7.3)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -3634,7 +3634,7 @@ importers:
         version: 4.1.2
       dotenv:
         specifier: ^16.3.1
-        version: 16.4.7
+        version: 16.5.0
       dotenv-expand:
         specifier: ^10.0.0
         version: 10.0.0
@@ -3652,7 +3652,7 @@ importers:
         version: 6.0.1
       rollup:
         specifier: ^4.34.8
-        version: 4.39.0
+        version: 4.40.0
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.17.30)(typescript@5.7.3)
@@ -3682,7 +3682,7 @@ importers:
         version: 1.8.4
       typia:
         specifier: ^9.1.0
-        version: 9.1.0(@samchon/openapi@4.0.0)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -3692,10 +3692,10 @@ importers:
         version: 0.7.0
       '@rollup/plugin-terser':
         specifier: ^0.4.4
-        version: 0.4.4(rollup@4.39.0)
+        version: 0.4.4(rollup@4.40.0)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.40.0)(tslib@2.8.1)(typescript@5.7.3)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -3707,7 +3707,7 @@ importers:
         version: 4.1.2
       dotenv:
         specifier: ^16.3.1
-        version: 16.4.7
+        version: 16.5.0
       dotenv-expand:
         specifier: ^10.0.0
         version: 10.0.0
@@ -3725,7 +3725,7 @@ importers:
         version: 6.0.1
       rollup:
         specifier: ^4.34.8
-        version: 4.39.0
+        version: 4.40.0
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.17.30)(typescript@5.7.3)
@@ -3758,7 +3758,7 @@ importers:
         version: 6.14.0
       typia:
         specifier: ^9.1.0
-        version: 9.1.0(@samchon/openapi@4.0.0)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -3768,10 +3768,10 @@ importers:
         version: 0.7.0
       '@rollup/plugin-terser':
         specifier: ^0.4.4
-        version: 0.4.4(rollup@4.39.0)
+        version: 0.4.4(rollup@4.40.0)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.40.0)(tslib@2.8.1)(typescript@5.7.3)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -3786,7 +3786,7 @@ importers:
         version: 4.1.2
       dotenv:
         specifier: ^16.3.1
-        version: 16.4.7
+        version: 16.5.0
       dotenv-expand:
         specifier: ^10.0.0
         version: 10.0.0
@@ -3804,7 +3804,7 @@ importers:
         version: 6.0.1
       rollup:
         specifier: ^4.34.8
-        version: 4.39.0
+        version: 4.40.0
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.17.30)(typescript@5.7.3)
@@ -3834,7 +3834,7 @@ importers:
         version: 1.0.0
       typia:
         specifier: ^9.1.0
-        version: 9.1.0(@samchon/openapi@4.0.0)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
       zenrows:
         specifier: ^2.0.1
         version: 2.0.1
@@ -3847,10 +3847,10 @@ importers:
         version: 0.7.0
       '@rollup/plugin-terser':
         specifier: ^0.4.4
-        version: 0.4.4(rollup@4.39.0)
+        version: 0.4.4(rollup@4.40.0)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.40.0)(tslib@2.8.1)(typescript@5.7.3)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -3859,7 +3859,7 @@ importers:
         version: 4.1.2
       dotenv:
         specifier: ^16.3.1
-        version: 16.4.7
+        version: 16.5.0
       dotenv-expand:
         specifier: ^10.0.0
         version: 10.0.0
@@ -3877,7 +3877,7 @@ importers:
         version: 6.0.1
       rollup:
         specifier: ^4.34.8
-        version: 4.39.0
+        version: 4.40.0
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.17.30)(typescript@5.7.3)
@@ -3907,7 +3907,7 @@ importers:
         version: 1.8.4
       typia:
         specifier: ^9.1.0
-        version: 9.1.0(@samchon/openapi@4.0.0)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -3917,10 +3917,10 @@ importers:
         version: 0.7.0
       '@rollup/plugin-terser':
         specifier: ^0.4.4
-        version: 0.4.4(rollup@4.39.0)
+        version: 0.4.4(rollup@4.40.0)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.40.0)(tslib@2.8.1)(typescript@5.7.3)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -3932,7 +3932,7 @@ importers:
         version: 4.1.2
       dotenv:
         specifier: ^16.3.1
-        version: 16.4.7
+        version: 16.5.0
       dotenv-expand:
         specifier: ^10.0.0
         version: 10.0.0
@@ -3950,7 +3950,7 @@ importers:
         version: 6.0.1
       rollup:
         specifier: ^4.34.8
-        version: 4.39.0
+        version: 4.40.0
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.17.30)(typescript@5.7.3)
@@ -3983,7 +3983,7 @@ importers:
         version: 2.1.0
       typia:
         specifier: ^9.1.0
-        version: 9.1.0(@samchon/openapi@4.0.0)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -3993,10 +3993,10 @@ importers:
         version: 0.7.0
       '@rollup/plugin-terser':
         specifier: ^0.4.4
-        version: 0.4.4(rollup@4.39.0)
+        version: 0.4.4(rollup@4.40.0)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.40.0)(tslib@2.8.1)(typescript@5.7.3)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -4008,7 +4008,7 @@ importers:
         version: 4.1.2
       dotenv:
         specifier: ^16.3.1
-        version: 16.4.7
+        version: 16.5.0
       dotenv-expand:
         specifier: ^10.0.0
         version: 10.0.0
@@ -4026,7 +4026,7 @@ importers:
         version: 6.0.1
       rollup:
         specifier: ^4.34.8
-        version: 4.39.0
+        version: 4.40.0
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.17.30)(typescript@5.7.3)
@@ -4059,7 +4059,7 @@ importers:
         version: 2.1.0
       typia:
         specifier: ^9.1.0
-        version: 9.1.0(@samchon/openapi@4.0.0)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -4069,10 +4069,10 @@ importers:
         version: 0.7.0
       '@rollup/plugin-terser':
         specifier: ^0.4.4
-        version: 0.4.4(rollup@4.39.0)
+        version: 0.4.4(rollup@4.40.0)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.40.0)(tslib@2.8.1)(typescript@5.7.3)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -4084,7 +4084,7 @@ importers:
         version: 4.1.2
       dotenv:
         specifier: ^16.3.1
-        version: 16.4.7
+        version: 16.5.0
       dotenv-expand:
         specifier: ^10.0.0
         version: 10.0.0
@@ -4102,7 +4102,7 @@ importers:
         version: 6.0.1
       rollup:
         specifier: ^4.34.8
-        version: 4.39.0
+        version: 4.40.0
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.17.30)(typescript@5.7.3)
@@ -4135,7 +4135,7 @@ importers:
         version: 2.1.0
       typia:
         specifier: ^9.1.0
-        version: 9.1.0(@samchon/openapi@4.0.0)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -4145,10 +4145,10 @@ importers:
         version: 0.7.0
       '@rollup/plugin-terser':
         specifier: ^0.4.4
-        version: 0.4.4(rollup@4.39.0)
+        version: 0.4.4(rollup@4.40.0)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.40.0)(tslib@2.8.1)(typescript@5.7.3)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -4160,7 +4160,7 @@ importers:
         version: 4.1.2
       dotenv:
         specifier: ^16.3.1
-        version: 16.4.7
+        version: 16.5.0
       dotenv-expand:
         specifier: ^10.0.0
         version: 10.0.0
@@ -4178,7 +4178,7 @@ importers:
         version: 6.0.1
       rollup:
         specifier: ^4.34.8
-        version: 4.39.0
+        version: 4.40.0
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.17.30)(typescript@5.7.3)
@@ -4208,7 +4208,7 @@ importers:
         version: 1.8.4
       typia:
         specifier: ^9.1.0
-        version: 9.1.0(@samchon/openapi@4.0.0)(typescript@5.7.3)
+        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -4218,10 +4218,10 @@ importers:
         version: 0.7.0
       '@rollup/plugin-terser':
         specifier: ^0.4.4
-        version: 0.4.4(rollup@4.39.0)
+        version: 0.4.4(rollup@4.40.0)
       '@rollup/plugin-typescript':
         specifier: ^12.1.1
-        version: 12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.7.3)
+        version: 12.1.2(rollup@4.40.0)(tslib@2.8.1)(typescript@5.7.3)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -4230,7 +4230,7 @@ importers:
         version: 4.1.2
       dotenv:
         specifier: ^16.3.1
-        version: 16.4.7
+        version: 16.5.0
       dotenv-expand:
         specifier: ^10.0.0
         version: 10.0.0
@@ -4248,7 +4248,7 @@ importers:
         version: 6.0.1
       rollup:
         specifier: ^4.34.8
-        version: 4.39.0
+        version: 4.40.0
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.17.30)(typescript@5.7.3)
@@ -4297,12 +4297,12 @@ packages:
   '@aws-crypto/util@5.2.0':
     resolution: {integrity: sha512-4RkU9EsI6ZpBve5fseQlGNUWKMa1RLPQ1dnjnQoe07ldfIzcsGb5hC5W0Dm7u423KWzawlrpbjXBrXCEv9zazQ==}
 
-  '@aws-sdk/client-s3@3.782.0':
-    resolution: {integrity: sha512-V6JR2JAGYQY7J8wk5un5n/ja2nfCUyyoRCF8Du8JL91NGI8i41Mdr/TzuOGwTgFl6RSXb/ge1K1jk30OH4MugQ==}
+  '@aws-sdk/client-s3@3.787.0':
+    resolution: {integrity: sha512-eGLCWkN0NlntJ9yPU6OKUggVS4cFvuZJog+cFg1KD5hniLqz7Y0YRtB4uBxW212fK3XCfddgyscEOEeHaTQQTw==}
     engines: {node: '>=18.0.0'}
 
-  '@aws-sdk/client-sso@3.782.0':
-    resolution: {integrity: sha512-5GlJBejo8wqMpSSEKb45WE82YxI2k73YuebjLH/eWDNQeE6VI5Bh9lA1YQ7xNkLLH8hIsb0pSfKVuwh0VEzVrg==}
+  '@aws-sdk/client-sso@3.787.0':
+    resolution: {integrity: sha512-L8R+Mh258G0DC73ktpSVrG4TT9i2vmDLecARTDR/4q5sRivdDQSL5bUp3LKcK80Bx+FRw3UETIlX6mYMLL9PJQ==}
     engines: {node: '>=18.0.0'}
 
   '@aws-sdk/core@3.775.0':
@@ -4317,24 +4317,24 @@ packages:
     resolution: {integrity: sha512-PjDQeDH/J1S0yWV32wCj2k5liRo0ssXMseCBEkCsD3SqsU8o5cU82b0hMX4sAib/RkglCSZqGO0xMiN0/7ndww==}
     engines: {node: '>=18.0.0'}
 
-  '@aws-sdk/credential-provider-ini@3.782.0':
-    resolution: {integrity: sha512-wd4KdRy2YjLsE4Y7pz00470Iip06GlRHkG4dyLW7/hFMzEO2o7ixswCWp6J2VGZVAX64acknlv2Q0z02ebjmhw==}
+  '@aws-sdk/credential-provider-ini@3.787.0':
+    resolution: {integrity: sha512-hc2taRoDlXn2uuNuHWDJljVWYrp3r9JF1a/8XmOAZhVUNY+ImeeStylHXhXXKEA4JOjW+5PdJj0f1UDkVCHJiQ==}
     engines: {node: '>=18.0.0'}
 
-  '@aws-sdk/credential-provider-node@3.782.0':
-    resolution: {integrity: sha512-HZiAF+TCEyKjju9dgysjiPIWgt/+VerGaeEp18mvKLNfgKz1d+/82A2USEpNKTze7v3cMFASx3CvL8yYyF7mJw==}
+  '@aws-sdk/credential-provider-node@3.787.0':
+    resolution: {integrity: sha512-JioVi44B1vDMaK2CdzqimwvJD3uzvzbQhaEWXsGMBcMcNHajXAXf08EF50JG3ZhLrhhUsT1ObXpbTaPINOhh+g==}
     engines: {node: '>=18.0.0'}
 
   '@aws-sdk/credential-provider-process@3.775.0':
     resolution: {integrity: sha512-A6k68H9rQp+2+7P7SGO90Csw6nrUEm0Qfjpn9Etc4EboZhhCLs9b66umUsTsSBHus4FDIe5JQxfCUyt1wgNogg==}
     engines: {node: '>=18.0.0'}
 
-  '@aws-sdk/credential-provider-sso@3.782.0':
-    resolution: {integrity: sha512-1y1ucxTtTIGDSNSNxriQY8msinilhe9gGvQpUDYW9gboyC7WQJPDw66imy258V6osdtdi+xoHzVCbCz3WhosMQ==}
+  '@aws-sdk/credential-provider-sso@3.787.0':
+    resolution: {integrity: sha512-fHc08bsvwm4+dEMEQKnQ7c1irEQmmxbgS+Fq41y09pPvPh31nAhoMcjBSTWAaPHvvsRbTYvmP4Mf12ZGr8/nfg==}
     engines: {node: '>=18.0.0'}
 
-  '@aws-sdk/credential-provider-web-identity@3.782.0':
-    resolution: {integrity: sha512-xCna0opVPaueEbJoclj5C6OpDNi0Gynj+4d7tnuXGgQhTHPyAz8ZyClkVqpi5qvHTgxROdUEDxWqEO5jqRHZHQ==}
+  '@aws-sdk/credential-provider-web-identity@3.787.0':
+    resolution: {integrity: sha512-SobmCwNbk6TfEsF283mZPQEI5vV2j6eY5tOCj8Er4Lzraxu9fBPADV+Bib2A8F6jlB1lMPJzOuDCbEasSt/RIw==}
     engines: {node: '>=18.0.0'}
 
   '@aws-sdk/middleware-bucket-endpoint@3.775.0':
@@ -4345,8 +4345,8 @@ packages:
     resolution: {integrity: sha512-Apd3owkIeUW5dnk3au9np2IdW2N0zc9NjTjHiH+Mx3zqwSrc+m+ANgJVgk9mnQjMzU/vb7VuxJ0eqdEbp5gYsg==}
     engines: {node: '>=18.0.0'}
 
-  '@aws-sdk/middleware-flexible-checksums@3.775.0':
-    resolution: {integrity: sha512-OmHLfRIb7IIXsf9/X/pMOlcSV3gzW/MmtPSZTkrz5jCTKzWXd7eRoyOJqewjsaC6KMAxIpNU77FoAd16jOZ21A==}
+  '@aws-sdk/middleware-flexible-checksums@3.787.0':
+    resolution: {integrity: sha512-X71qEwWoixFmwowWzlPoZUR3u1CWJ7iAzU0EzIxqmPhQpQJLFmdL1+SRjqATynDPZQzLs1a5HBtPT++EnZ+Quw==}
     engines: {node: '>=18.0.0'}
 
   '@aws-sdk/middleware-host-header@3.775.0':
@@ -4373,28 +4373,28 @@ packages:
     resolution: {integrity: sha512-Iw1RHD8vfAWWPzBBIKaojO4GAvQkHOYIpKdAfis/EUSUmSa79QsnXnRqsdcE0mCB0Ylj23yi+ah4/0wh9FsekA==}
     engines: {node: '>=18.0.0'}
 
-  '@aws-sdk/middleware-user-agent@3.782.0':
-    resolution: {integrity: sha512-i32H2R6IItX+bQ2p4+v2gGO2jA80jQoJO2m1xjU9rYWQW3+ErWy4I5YIuQHTBfb6hSdAHbaRfqPDgbv9J2rjEg==}
+  '@aws-sdk/middleware-user-agent@3.787.0':
+    resolution: {integrity: sha512-Lnfj8SmPLYtrDFthNIaNj66zZsBCam+E4XiUDr55DIHTGstH6qZ/q6vg0GfbukxwSmUcGMwSR4Qbn8rb8yd77g==}
     engines: {node: '>=18.0.0'}
 
-  '@aws-sdk/nested-clients@3.782.0':
-    resolution: {integrity: sha512-QOYC8q7luzHFXrP0xYAqBctoPkynjfV0r9dqntFu4/IWMTyC1vlo1UTxFAjIPyclYw92XJyEkVCVg9v/nQnsUA==}
+  '@aws-sdk/nested-clients@3.787.0':
+    resolution: {integrity: sha512-xk03q1xpKNHgbuo+trEf1dFrI239kuMmjKKsqLEsHlAZbuFq4yRGMlHBrVMnKYOPBhVFDS/VineM991XI52fKg==}
     engines: {node: '>=18.0.0'}
 
   '@aws-sdk/region-config-resolver@3.775.0':
     resolution: {integrity: sha512-40iH3LJjrQS3LKUJAl7Wj0bln7RFPEvUYKFxtP8a+oKFDO0F65F52xZxIJbPn6sHkxWDAnZlGgdjZXM3p2g5wQ==}
     engines: {node: '>=18.0.0'}
 
-  '@aws-sdk/s3-request-presigner@3.782.0':
-    resolution: {integrity: sha512-Er8hdjc9zkxTh15MjdnMYggtUrGknDiuD1FwdW035kn/kwWop587G9rnRa1crhmyKRjLMn0Ki3fsyFUm/943XA==}
+  '@aws-sdk/s3-request-presigner@3.787.0':
+    resolution: {integrity: sha512-WBm0AS3RRURNN0yjYXHaiI692boVwWXGt3RLdI7tYBX58E1Zb5nzC8rlk81O9Xe7ZTgTC1KCr8y4+jcBD+zwJg==}
     engines: {node: '>=18.0.0'}
 
   '@aws-sdk/signature-v4-multi-region@3.775.0':
     resolution: {integrity: sha512-cnGk8GDfTMJ8p7+qSk92QlIk2bmTmFJqhYxcXZ9PysjZtx0xmfCMxnG3Hjy1oU2mt5boPCVSOptqtWixayM17g==}
     engines: {node: '>=18.0.0'}
 
-  '@aws-sdk/token-providers@3.782.0':
-    resolution: {integrity: sha512-4tPuk/3+THPrzKaXW4jE2R67UyGwHLFizZ47pcjJWbhb78IIJAy94vbeqEQ+veS84KF5TXcU7g5jGTXC0D70Wg==}
+  '@aws-sdk/token-providers@3.787.0':
+    resolution: {integrity: sha512-d7/NIqxq308Zg0RPMNrmn0QvzniL4Hx8Qdwzr6YZWLYAbUSvZYS2ppLR3BFWSkV6SsTJUx8BuDaj3P8vttkrog==}
     engines: {node: '>=18.0.0'}
 
   '@aws-sdk/types@3.775.0':
@@ -4405,8 +4405,8 @@ packages:
     resolution: {integrity: sha512-ZhEfvUwNliOQROcAk34WJWVYTlTa4694kSVhDSjW6lE1bMataPnIN8A0ycukEzBXmd8ZSoBcQLn6lKGl7XIJ5w==}
     engines: {node: '>=18.0.0'}
 
-  '@aws-sdk/util-endpoints@3.782.0':
-    resolution: {integrity: sha512-/RJOAO7o7HI6lEa4ASbFFLHGU9iPK876BhsVfnl54MvApPVYWQ9sHO0anOUim2S5lQTwd/6ghuH3rFYSq/+rdw==}
+  '@aws-sdk/util-endpoints@3.787.0':
+    resolution: {integrity: sha512-fd3zkiOkwnbdbN0Xp9TsP5SWrmv0SpT70YEdbb8wAj2DWQwiCmFszaSs+YCvhoCdmlR3Wl9Spu0pGpSAGKeYvQ==}
     engines: {node: '>=18.0.0'}
 
   '@aws-sdk/util-format-url@3.775.0':
@@ -4420,8 +4420,8 @@ packages:
   '@aws-sdk/util-user-agent-browser@3.775.0':
     resolution: {integrity: sha512-txw2wkiJmZKVdDbscK7VBK+u+TJnRtlUjRTLei+elZg2ADhpQxfVAQl436FUeIv6AhB/oRHW6/K/EAGXUSWi0A==}
 
-  '@aws-sdk/util-user-agent-node@3.782.0':
-    resolution: {integrity: sha512-dMFkUBgh2Bxuw8fYZQoH/u3H4afQ12VSkzEi//qFiDTwbKYq+u+RYjc8GLDM6JSK1BShMu5AVR7HD4ap1TYUnA==}
+  '@aws-sdk/util-user-agent-node@3.787.0':
+    resolution: {integrity: sha512-mG7Lz8ydfG4SF9e8WSXiPQ/Lsn3n8A5B5jtPROidafi06I3ckV2WxyMLdwG14m919NoS6IOfWHyRGSqWIwbVKA==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       aws-crt: '>=1.0.0'
@@ -4597,37 +4597,37 @@ packages:
     resolution: {integrity: sha512-IchNf6dN4tHoMFIn/7OE8LWZ19Y6q/67Bmf6vnGREv8RSbBVb9LPJxEcnwrcwX6ixSvaiGoomAUvu4YSxXrVgw==}
     engines: {node: '>=12'}
 
-  '@datadog/libdatadog@0.5.0':
-    resolution: {integrity: sha512-YvLUVOhYVjJssm0f22/RnDQMc7ZZt/w1bA0nty1vvjyaDz5EWaHfWaaV4GYpCt5MRvnGjCBxIwwbRivmGseKeQ==}
+  '@datadog/libdatadog@0.5.1':
+    resolution: {integrity: sha512-KsdOxTUmtjoygaZInSS5U0+KnqoxPKGpcBjGgOHR9NDKfXzmbpy5AmoaPL7JxmMxQzwknpxSi7qzBOSB3yMoJg==}
 
-  '@datadog/native-appsec@8.5.1':
-    resolution: {integrity: sha512-g6cjIafeObxVV+zJ2U1TDWVBio+MC8/4QR0EmgZ9afvhgtXRXyth3/DUOBSLUoMvCbduHwl6CV9sBf+tbSksVg==}
+  '@datadog/native-appsec@8.5.2':
+    resolution: {integrity: sha512-lETBaVhBk+9o0pc+LDnXvp2ImDyT8K2deuqLf8A6q4/QjzCCXyR/yZO9R5+Kdoc93jZMRTWV9Pr4pBwHEdJSVA==}
     engines: {node: '>=16'}
 
-  '@datadog/native-iast-rewriter@2.8.0':
-    resolution: {integrity: sha512-DKmtvlmCld9RIJwDcPKWNkKYWYQyiuOrOtynmBppJiUv/yfCOuZtsQV4Zepj40H33sLiQyi5ct6dbWl53vxqkA==}
-    engines: {node: '>= 10'}
+  '@datadog/native-iast-taint-tracking@3.3.1':
+    resolution: {integrity: sha512-TgXpoX/CDgPfYAKu9qLmEyb9UXvRVC00D71islcSb70MCFmxQwkgXGl/gAk6YA6/NmZ4j8+cgY1lSNqStGvOMg==}
 
-  '@datadog/native-iast-taint-tracking@3.3.0':
-    resolution: {integrity: sha512-OzmjOncer199ATSYeCAwSACCRyQimo77LKadSHDUcxa/n9FYU+2U/bYQTYsK3vquSA2E47EbSVq9rytrlTdvnA==}
-
-  '@datadog/native-metrics@3.1.0':
-    resolution: {integrity: sha512-yOBi4x0OQRaGNPZ2bx9TGvDIgEdQ8fkudLTFAe7gEM1nAlvFmbE5YfpH8WenEtTSEBwojSau06m2q7axtEEmCg==}
+  '@datadog/native-metrics@3.1.1':
+    resolution: {integrity: sha512-MU1gHrolwryrU4X9g+fylA1KPH3S46oqJPEtVyrO+3Kh29z80fegmtyrU22bNt8LigPUK/EdPCnSbMe88QbnxQ==}
     engines: {node: '>=16'}
 
-  '@datadog/pprof@5.6.0':
-    resolution: {integrity: sha512-x7yN0s4wMnRqv3PWQ6eXKH5XE5qvCOwWbOsXqpT2Irbsc7Wcl5w5JrJUcbPCdSJGihpIh6kAeIrS6w/ZCcHy2Q==}
+  '@datadog/pprof@5.7.1':
+    resolution: {integrity: sha512-D5XTxsaPG36x41vZZn8hsAeC7QQDx0rv1a1Uhxo5xCXUB/9rc19+I7iCnjgJS5aH0ShXdPVOWRClo16hOSKKSw==}
     engines: {node: '>=16'}
 
   '@datadog/sketches-js@2.1.1':
     resolution: {integrity: sha512-d5RjycE+MObE/hU+8OM5Zp4VjTwiPLRa8299fj7muOmR16fb942z8byoMbCErnGh0lBevvgkGrLclQDvINbIyg==}
 
+  '@datadog/wasm-js-rewriter@4.0.0':
+    resolution: {integrity: sha512-atw1uocrNlG3Fi7usLG5irTpasoz519YTZUyAxp7ZCppDNA+iLHpK1NksV9E2uCGMzF6dGifGmDaui0nK12nYg==}
+    engines: {node: '>= 10'}
+
   '@discoveryjs/json-ext@0.5.7':
     resolution: {integrity: sha512-dBVuXR082gk3jsFp7Rd/JI4kytwGHecnCoTtXFb7DB6CNHp4rg5k1bhg0nWdLGLnOV71lmDzGQaLMy8iPLY0pw==}
     engines: {node: '>=10.0.0'}
 
-  '@emnapi/runtime@1.4.0':
-    resolution: {integrity: sha512-64WYIf4UYcdLnbKn/umDlNjQDSS8AgZrI/R9+x5ilkUVFxXcA1Ebl+gQLc/6mERA4407Xof0R7wEyEuj091CVw==}
+  '@emnapi/runtime@1.4.1':
+    resolution: {integrity: sha512-LMshMVP0ZhACNjQNYXiU1iZJ6QCcv0lUdPDPugqGvCGXt5xtRVBPdtA0qU12pEXZzpWAhWlZYptfdAFq10DOVQ==}
 
   '@esbuild/aix-ppc64@0.21.5':
     resolution: {integrity: sha512-1SDgH6ZSPTlggy1yI6+Dbkiz8xzpHJEVAlF/AM1tHPLsf5STom9rwtjE4hKAF20FfXXNTFqEYXyJNWh1GiZedQ==}
@@ -4917,8 +4917,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@eslint-community/eslint-utils@4.5.1':
-    resolution: {integrity: sha512-soEIOALTfTK6EjmKMMoLugwaP0rzkad90iIWd1hMO9ARkSAyjfMfkRRhLvD5qH7vvM0Cg72pieUfR6yh6XxC4w==}
+  '@eslint-community/eslint-utils@4.6.0':
+    resolution: {integrity: sha512-WhCn7Z7TauhBtmzhvKpoQs0Wwb/kBcy4CwpuI0/eEIr2Lx2auxmulAzLr91wVZJaz47iUZdkXOK7WlAfxGKCnA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     peerDependencies:
       eslint: ^6.0.0 || ^7.0.0 || >=8.0.0
@@ -5224,17 +5224,20 @@ packages:
       axios: ^1.3.1
       rxjs: ^7.0.0
 
-  '@nestjs/common@11.0.13':
-    resolution: {integrity: sha512-cXqXJPQTcJIYqT8GtBYqjYY9sklCBqp/rh9z1R40E60gWnsU598YIQWkojSFRI9G7lT/+uF+jqSrg/CMPBk7QQ==}
+  '@nestjs/common@11.0.17':
+    resolution: {integrity: sha512-FwKylI/hVxaNvzBJdWMMG1LH0cLKz4Oh4jKOHet2JUVMM9j6CuodRbrSnL++KL6PJY/b2E6AY58UDPLNeCqJWw==}
     peerDependencies:
       class-transformer: '*'
       class-validator: '*'
+      file-type: ^20.4.1
       reflect-metadata: ^0.1.12 || ^0.2.0
       rxjs: ^7.1.0
     peerDependenciesMeta:
       class-transformer:
         optional: true
       class-validator:
+        optional: true
+      file-type:
         optional: true
 
   '@nestjs/config@4.0.2':
@@ -5243,8 +5246,8 @@ packages:
       '@nestjs/common': ^10.0.0 || ^11.0.0
       rxjs: ^7.1.0
 
-  '@nestjs/core@11.0.13':
-    resolution: {integrity: sha512-1xjrsYjff4sg4MfvF+/NInOq+7oI1D1vK8Yj9wkrbBH1dM+h2At71tccbFfl/eJUt4ckZlH+XmROnt/T0daYcA==}
+  '@nestjs/core@11.0.17':
+    resolution: {integrity: sha512-ImK6qNxtegKqK7EJLGTBpP5Ild/DTpcduEtAOS+WLLjZOMjK1k214G9roXvlrNQwlVt9ALAY2jcqnsasdEd7Ow==}
     engines: {node: '>= 20'}
     peerDependencies:
       '@nestjs/common': ^11.0.0
@@ -5274,14 +5277,14 @@ packages:
       class-validator:
         optional: true
 
-  '@nestjs/platform-express@11.0.13':
-    resolution: {integrity: sha512-SaxfIDORX1oV8T6nxr/pltnW2g+3fCRPs5YwO0jBj2d8sC03Axjwlxp/ASg2mf6xvOSBD6ZbhjVLVVDZymyFXQ==}
+  '@nestjs/platform-express@11.0.17':
+    resolution: {integrity: sha512-et6Ydd6dR0FlcE/WR/9VRnQoTqEpDdzBgGK+aWadA0dFJ65wlN+snJRg/9JGP4ngj90S6xwe0VKD/BbfUGj9cw==}
     peerDependencies:
       '@nestjs/common': ^11.0.0
       '@nestjs/core': ^11.0.0
 
-  '@nestjs/swagger@11.1.1':
-    resolution: {integrity: sha512-k7jEiocSQ5bL6RSnEjQ1h4uT4fErgshWQIhaVjyvufIEyBfH0Fv0Q2lihH2QLqeDjBkrH5bW0Twbqf3SlLOwCw==}
+  '@nestjs/swagger@11.1.3':
+    resolution: {integrity: sha512-vhbW/Xu05Diti/EwYQp3Ea7Hj2M++wiakCcxqUUDA2n7NvCZC8LKsrcGynw6/x/lugdXyklYS+s2FhdAfeAikg==}
     peerDependencies:
       '@fastify/static': ^8.0.0
       '@nestjs/common': ^11.0.1
@@ -5297,8 +5300,8 @@ packages:
       class-validator:
         optional: true
 
-  '@nestjs/testing@11.0.13':
-    resolution: {integrity: sha512-9E9HxD3EmiQky+pqYvpV0cHKlxYJJqHm2GmXoKHF72Raa0JTfQpamnLl6TPjDy2XOqA7oSSBDnEwku8vZ46Cdw==}
+  '@nestjs/testing@11.0.17':
+    resolution: {integrity: sha512-ryEx6fCYZFCsjEBZo8jOVikQluEHMESocVqHdXWOkkG7UqMPMHimf9gT2qij0GpNnYeDAGw+i7FhSJN3Cajoug==}
     peerDependencies:
       '@nestjs/common': ^11.0.0
       '@nestjs/core': ^11.0.0
@@ -5445,103 +5448,103 @@ packages:
       rollup:
         optional: true
 
-  '@rollup/rollup-android-arm-eabi@4.39.0':
-    resolution: {integrity: sha512-lGVys55Qb00Wvh8DMAocp5kIcaNzEFTmGhfFd88LfaogYTRKrdxgtlO5H6S49v2Nd8R2C6wLOal0qv6/kCkOwA==}
+  '@rollup/rollup-android-arm-eabi@4.40.0':
+    resolution: {integrity: sha512-+Fbls/diZ0RDerhE8kyC6hjADCXA1K4yVNlH0EYfd2XjyH0UGgzaQ8MlT0pCXAThfxv3QUAczHaL+qSv1E4/Cg==}
     cpu: [arm]
     os: [android]
 
-  '@rollup/rollup-android-arm64@4.39.0':
-    resolution: {integrity: sha512-It9+M1zE31KWfqh/0cJLrrsCPiF72PoJjIChLX+rEcujVRCb4NLQ5QzFkzIZW8Kn8FTbvGQBY5TkKBau3S8cCQ==}
+  '@rollup/rollup-android-arm64@4.40.0':
+    resolution: {integrity: sha512-PPA6aEEsTPRz+/4xxAmaoWDqh67N7wFbgFUJGMnanCFs0TV99M0M8QhhaSCks+n6EbQoFvLQgYOGXxlMGQe/6w==}
     cpu: [arm64]
     os: [android]
 
-  '@rollup/rollup-darwin-arm64@4.39.0':
-    resolution: {integrity: sha512-lXQnhpFDOKDXiGxsU9/l8UEGGM65comrQuZ+lDcGUx+9YQ9dKpF3rSEGepyeR5AHZ0b5RgiligsBhWZfSSQh8Q==}
+  '@rollup/rollup-darwin-arm64@4.40.0':
+    resolution: {integrity: sha512-GwYOcOakYHdfnjjKwqpTGgn5a6cUX7+Ra2HeNj/GdXvO2VJOOXCiYYlRFU4CubFM67EhbmzLOmACKEfvp3J1kQ==}
     cpu: [arm64]
     os: [darwin]
 
-  '@rollup/rollup-darwin-x64@4.39.0':
-    resolution: {integrity: sha512-mKXpNZLvtEbgu6WCkNij7CGycdw9cJi2k9v0noMb++Vab12GZjFgUXD69ilAbBh034Zwn95c2PNSz9xM7KYEAQ==}
+  '@rollup/rollup-darwin-x64@4.40.0':
+    resolution: {integrity: sha512-CoLEGJ+2eheqD9KBSxmma6ld01czS52Iw0e2qMZNpPDlf7Z9mj8xmMemxEucinev4LgHalDPczMyxzbq+Q+EtA==}
     cpu: [x64]
     os: [darwin]
 
-  '@rollup/rollup-freebsd-arm64@4.39.0':
-    resolution: {integrity: sha512-jivRRlh2Lod/KvDZx2zUR+I4iBfHcu2V/BA2vasUtdtTN2Uk3jfcZczLa81ESHZHPHy4ih3T/W5rPFZ/hX7RtQ==}
+  '@rollup/rollup-freebsd-arm64@4.40.0':
+    resolution: {integrity: sha512-r7yGiS4HN/kibvESzmrOB/PxKMhPTlz+FcGvoUIKYoTyGd5toHp48g1uZy1o1xQvybwwpqpe010JrcGG2s5nkg==}
     cpu: [arm64]
     os: [freebsd]
 
-  '@rollup/rollup-freebsd-x64@4.39.0':
-    resolution: {integrity: sha512-8RXIWvYIRK9nO+bhVz8DwLBepcptw633gv/QT4015CpJ0Ht8punmoHU/DuEd3iw9Hr8UwUV+t+VNNuZIWYeY7Q==}
+  '@rollup/rollup-freebsd-x64@4.40.0':
+    resolution: {integrity: sha512-mVDxzlf0oLzV3oZOr0SMJ0lSDd3xC4CmnWJ8Val8isp9jRGl5Dq//LLDSPFrasS7pSm6m5xAcKaw3sHXhBjoRw==}
     cpu: [x64]
     os: [freebsd]
 
-  '@rollup/rollup-linux-arm-gnueabihf@4.39.0':
-    resolution: {integrity: sha512-mz5POx5Zu58f2xAG5RaRRhp3IZDK7zXGk5sdEDj4o96HeaXhlUwmLFzNlc4hCQi5sGdR12VDgEUqVSHer0lI9g==}
+  '@rollup/rollup-linux-arm-gnueabihf@4.40.0':
+    resolution: {integrity: sha512-y/qUMOpJxBMy8xCXD++jeu8t7kzjlOCkoxxajL58G62PJGBZVl/Gwpm7JK9+YvlB701rcQTzjUZ1JgUoPTnoQA==}
     cpu: [arm]
     os: [linux]
 
-  '@rollup/rollup-linux-arm-musleabihf@4.39.0':
-    resolution: {integrity: sha512-+YDwhM6gUAyakl0CD+bMFpdmwIoRDzZYaTWV3SDRBGkMU/VpIBYXXEvkEcTagw/7VVkL2vA29zU4UVy1mP0/Yw==}
+  '@rollup/rollup-linux-arm-musleabihf@4.40.0':
+    resolution: {integrity: sha512-GoCsPibtVdJFPv/BOIvBKO/XmwZLwaNWdyD8TKlXuqp0veo2sHE+A/vpMQ5iSArRUz/uaoj4h5S6Pn0+PdhRjg==}
     cpu: [arm]
     os: [linux]
 
-  '@rollup/rollup-linux-arm64-gnu@4.39.0':
-    resolution: {integrity: sha512-EKf7iF7aK36eEChvlgxGnk7pdJfzfQbNvGV/+l98iiMwU23MwvmV0Ty3pJ0p5WQfm3JRHOytSIqD9LB7Bq7xdQ==}
+  '@rollup/rollup-linux-arm64-gnu@4.40.0':
+    resolution: {integrity: sha512-L5ZLphTjjAD9leJzSLI7rr8fNqJMlGDKlazW2tX4IUF9P7R5TMQPElpH82Q7eNIDQnQlAyiNVfRPfP2vM5Avvg==}
     cpu: [arm64]
     os: [linux]
 
-  '@rollup/rollup-linux-arm64-musl@4.39.0':
-    resolution: {integrity: sha512-vYanR6MtqC7Z2SNr8gzVnzUul09Wi1kZqJaek3KcIlI/wq5Xtq4ZPIZ0Mr/st/sv/NnaPwy/D4yXg5x0B3aUUA==}
+  '@rollup/rollup-linux-arm64-musl@4.40.0':
+    resolution: {integrity: sha512-ATZvCRGCDtv1Y4gpDIXsS+wfFeFuLwVxyUBSLawjgXK2tRE6fnsQEkE4csQQYWlBlsFztRzCnBvWVfcae/1qxQ==}
     cpu: [arm64]
     os: [linux]
 
-  '@rollup/rollup-linux-loongarch64-gnu@4.39.0':
-    resolution: {integrity: sha512-NMRUT40+h0FBa5fb+cpxtZoGAggRem16ocVKIv5gDB5uLDgBIwrIsXlGqYbLwW8YyO3WVTk1FkFDjMETYlDqiw==}
+  '@rollup/rollup-linux-loongarch64-gnu@4.40.0':
+    resolution: {integrity: sha512-wG9e2XtIhd++QugU5MD9i7OnpaVb08ji3P1y/hNbxrQ3sYEelKJOq1UJ5dXczeo6Hj2rfDEL5GdtkMSVLa/AOg==}
     cpu: [loong64]
     os: [linux]
 
-  '@rollup/rollup-linux-powerpc64le-gnu@4.39.0':
-    resolution: {integrity: sha512-0pCNnmxgduJ3YRt+D+kJ6Ai/r+TaePu9ZLENl+ZDV/CdVczXl95CbIiwwswu4L+K7uOIGf6tMo2vm8uadRaICQ==}
+  '@rollup/rollup-linux-powerpc64le-gnu@4.40.0':
+    resolution: {integrity: sha512-vgXfWmj0f3jAUvC7TZSU/m/cOE558ILWDzS7jBhiCAFpY2WEBn5jqgbqvmzlMjtp8KlLcBlXVD2mkTSEQE6Ixw==}
     cpu: [ppc64]
     os: [linux]
 
-  '@rollup/rollup-linux-riscv64-gnu@4.39.0':
-    resolution: {integrity: sha512-t7j5Zhr7S4bBtksT73bO6c3Qa2AV/HqiGlj9+KB3gNF5upcVkx+HLgxTm8DK4OkzsOYqbdqbLKwvGMhylJCPhQ==}
+  '@rollup/rollup-linux-riscv64-gnu@4.40.0':
+    resolution: {integrity: sha512-uJkYTugqtPZBS3Z136arevt/FsKTF/J9dEMTX/cwR7lsAW4bShzI2R0pJVw+hcBTWF4dxVckYh72Hk3/hWNKvA==}
     cpu: [riscv64]
     os: [linux]
 
-  '@rollup/rollup-linux-riscv64-musl@4.39.0':
-    resolution: {integrity: sha512-m6cwI86IvQ7M93MQ2RF5SP8tUjD39Y7rjb1qjHgYh28uAPVU8+k/xYWvxRO3/tBN2pZkSMa5RjnPuUIbrwVxeA==}
+  '@rollup/rollup-linux-riscv64-musl@4.40.0':
+    resolution: {integrity: sha512-rKmSj6EXQRnhSkE22+WvrqOqRtk733x3p5sWpZilhmjnkHkpeCgWsFFo0dGnUGeA+OZjRl3+VYq+HyCOEuwcxQ==}
     cpu: [riscv64]
     os: [linux]
 
-  '@rollup/rollup-linux-s390x-gnu@4.39.0':
-    resolution: {integrity: sha512-iRDJd2ebMunnk2rsSBYlsptCyuINvxUfGwOUldjv5M4tpa93K8tFMeYGpNk2+Nxl+OBJnBzy2/JCscGeO507kA==}
+  '@rollup/rollup-linux-s390x-gnu@4.40.0':
+    resolution: {integrity: sha512-SpnYlAfKPOoVsQqmTFJ0usx0z84bzGOS9anAC0AZ3rdSo3snecihbhFTlJZ8XMwzqAcodjFU4+/SM311dqE5Sw==}
     cpu: [s390x]
     os: [linux]
 
-  '@rollup/rollup-linux-x64-gnu@4.39.0':
-    resolution: {integrity: sha512-t9jqYw27R6Lx0XKfEFe5vUeEJ5pF3SGIM6gTfONSMb7DuG6z6wfj2yjcoZxHg129veTqU7+wOhY6GX8wmf90dA==}
+  '@rollup/rollup-linux-x64-gnu@4.40.0':
+    resolution: {integrity: sha512-RcDGMtqF9EFN8i2RYN2W+64CdHruJ5rPqrlYw+cgM3uOVPSsnAQps7cpjXe9be/yDp8UC7VLoCoKC8J3Kn2FkQ==}
     cpu: [x64]
     os: [linux]
 
-  '@rollup/rollup-linux-x64-musl@4.39.0':
-    resolution: {integrity: sha512-ThFdkrFDP55AIsIZDKSBWEt/JcWlCzydbZHinZ0F/r1h83qbGeenCt/G/wG2O0reuENDD2tawfAj2s8VK7Bugg==}
+  '@rollup/rollup-linux-x64-musl@4.40.0':
+    resolution: {integrity: sha512-HZvjpiUmSNx5zFgwtQAV1GaGazT2RWvqeDi0hV+AtC8unqqDSsaFjPxfsO6qPtKRRg25SisACWnJ37Yio8ttaw==}
     cpu: [x64]
     os: [linux]
 
-  '@rollup/rollup-win32-arm64-msvc@4.39.0':
-    resolution: {integrity: sha512-jDrLm6yUtbOg2TYB3sBF3acUnAwsIksEYjLeHL+TJv9jg+TmTwdyjnDex27jqEMakNKf3RwwPahDIt7QXCSqRQ==}
+  '@rollup/rollup-win32-arm64-msvc@4.40.0':
+    resolution: {integrity: sha512-UtZQQI5k/b8d7d3i9AZmA/t+Q4tk3hOC0tMOMSq2GlMYOfxbesxG4mJSeDp0EHs30N9bsfwUvs3zF4v/RzOeTQ==}
     cpu: [arm64]
     os: [win32]
 
-  '@rollup/rollup-win32-ia32-msvc@4.39.0':
-    resolution: {integrity: sha512-6w9uMuza+LbLCVoNKL5FSLE7yvYkq9laSd09bwS0tMjkwXrmib/4KmoJcrKhLWHvw19mwU+33ndC69T7weNNjQ==}
+  '@rollup/rollup-win32-ia32-msvc@4.40.0':
+    resolution: {integrity: sha512-+m03kvI2f5syIqHXCZLPVYplP8pQch9JHyXKZ3AGMKlg8dCyr2PKHjwRLiW53LTrN/Nc3EqHOKxUxzoSPdKddA==}
     cpu: [ia32]
     os: [win32]
 
-  '@rollup/rollup-win32-x64-msvc@4.39.0':
-    resolution: {integrity: sha512-yAkUOkIKZlK5dl7u6dg897doBgLXmUHhIINM2c+sND3DZwnrdQkkSiDh7N75Ll4mM4dxSkYfXqU9fW3lLkMFug==}
+  '@rollup/rollup-win32-x64-msvc@4.40.0':
+    resolution: {integrity: sha512-lpPE1cLfP5oPzVjKMx10pgBmKELQnFJXHgvtHCtuJWOv8MxqdEIMNtgHgBFf7Ea2/7EuVwa9fodWUfXAlXZLZQ==}
     cpu: [x64]
     os: [win32]
 
@@ -5551,8 +5554,8 @@ packages:
   '@samchon/openapi@2.5.3':
     resolution: {integrity: sha512-gLcGqPGsr/V43yNrhC+5E8ZR8y1JdLZDgkC6ULg+B03uvmdS2C7qIXpIWUe19MUPvXt5SCpjhvOykomEspinaw==}
 
-  '@samchon/openapi@4.0.0':
-    resolution: {integrity: sha512-fzji+KTrLqb3rD6RZID7N1cTN7aDwd0KAq0fP4rl2p1dHEy3uybqS7bP9BjMWP10k0DvFaS+P+g8+a/PA0FyZw==}
+  '@samchon/openapi@4.1.0':
+    resolution: {integrity: sha512-UUFBI6n8R9+V0xt4scGEaQ0rib04cOVARhu7DXBZuEG0ExiTFPoiW49+qYFwE44LjYpfxBIlNkd+rcpiRGhsNA==}
 
   '@scarf/scarf@1.4.0':
     resolution: {integrity: sha512-xxeapPiUXdZAE3che6f3xogoJPeZgig6omHEy1rIY5WVsB3H2BHNnZH+gHG6x91SCWyQCzWGsuL2Hh3ClO5/qQ==}
@@ -5984,10 +5987,6 @@ packages:
     resolution: {integrity: sha512-VXuvVvZeQCQb5Zgf4HAxc04q5j+WrNAtNh9OwCsCgpKqESMTu3tF/jhZ3xG6T4NZwWl65Bg8KuS2uEvhSfLl0w==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
 
-  '@typescript-eslint/scope-manager@6.21.0':
-    resolution: {integrity: sha512-OwLUIWZJry80O99zvqXVEioyniJMa+d2GrqpUTqi5/v5D5rOrppJVBPa0yKCblcigC0/aYAzxxqQ1B+DS2RYsg==}
-    engines: {node: ^16.0.0 || >=18.0.0}
-
   '@typescript-eslint/scope-manager@8.29.1':
     resolution: {integrity: sha512-2nggXGX5F3YrsGN08pw4XpMLO1Rgtnn4AzTegC2MDesv6q3QaTU5yU7IbS1tf1IwCR0Hv/1EFygLn9ms6LIpDA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
@@ -6013,10 +6012,6 @@ packages:
     resolution: {integrity: sha512-87NVngcbVXUahrRTqIK27gD2t5Cu1yuCXxbLcFtCzZGlfyVWWh8mLHkoxzjsB6DDNnvdL+fW8MiwPEJyGJQDgQ==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
 
-  '@typescript-eslint/types@6.21.0':
-    resolution: {integrity: sha512-1kFmZ1rOm5epu9NZEZm1kckCDGj5UJEf7P1kliH4LKu/RkwpsfqqGmY2OOcUs18lSlQBKLDYBOGxRVtrMN5lpg==}
-    engines: {node: ^16.0.0 || >=18.0.0}
-
   '@typescript-eslint/types@8.29.1':
     resolution: {integrity: sha512-VT7T1PuJF1hpYC3AGm2rCgJBjHL3nc+A/bhOp9sGMKfi5v0WufsX/sHCFBfNTx2F+zA6qBc/PD0/kLRLjdt8mQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
@@ -6024,15 +6019,6 @@ packages:
   '@typescript-eslint/typescript-estree@5.62.0':
     resolution: {integrity: sha512-CmcQ6uY7b9y694lKdRB8FEel7JbU/40iSAPomu++SjLMntB+2Leay2LO6i8VnJk58MtE9/nQSFIH6jpyRWyYzA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
-    peerDependencies:
-      typescript: '*'
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-
-  '@typescript-eslint/typescript-estree@6.21.0':
-    resolution: {integrity: sha512-6npJTkZcO+y2/kr+z0hc4HwNfrrP4kNYh57ek7yCNlrBjWQ1Y0OS7jiZTkgumrvkX5HkEKXFZkkdFNkaW2wmUQ==}
-    engines: {node: ^16.0.0 || >=18.0.0}
     peerDependencies:
       typescript: '*'
     peerDependenciesMeta:
@@ -6051,12 +6037,6 @@ packages:
     peerDependencies:
       eslint: ^6.0.0 || ^7.0.0 || ^8.0.0
 
-  '@typescript-eslint/utils@6.21.0':
-    resolution: {integrity: sha512-NfWVaC8HP9T8cbKQxHcsJBY5YE1O33+jpMwN45qzWWaPDZgLIbo12toGMWnmhvCpd3sIxkpDw3Wv1B3dYrbDQQ==}
-    engines: {node: ^16.0.0 || >=18.0.0}
-    peerDependencies:
-      eslint: ^7.0.0 || ^8.0.0
-
   '@typescript-eslint/utils@8.29.1':
     resolution: {integrity: sha512-QAkFEbytSaB8wnmB+DflhUPz6CLbFWE2SnSCrRMEa+KnXIzDYbpsn++1HGvnfAsUY44doDXmvRkO5shlM/3UfA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
@@ -6067,10 +6047,6 @@ packages:
   '@typescript-eslint/visitor-keys@5.62.0':
     resolution: {integrity: sha512-07ny+LHRzQXepkGg6w0mFY41fVUNBrL2Roj/++7V1txKugfjm/Ci/qSND03r2RhlJhJYMcTn9AhhSSqQp0Ysyw==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
-
-  '@typescript-eslint/visitor-keys@6.21.0':
-    resolution: {integrity: sha512-JJtkDduxLi9bivAB+cYOVMtbkqdPOhZ+ZI5LC47MIRrDV4Yn2o+ZnW10Nkmr28xRpSpdJ6Sm42Hjf2+REYXm0A==}
-    engines: {node: ^16.0.0 || >=18.0.0}
 
   '@typescript-eslint/visitor-keys@8.29.1':
     resolution: {integrity: sha512-RGLh5CRaUEf02viP5c1Vh1cMGffQscyHe7HPAzGpfmfflFg1wUz2rYxd+OZqwpeypYvZ8UxSxuIpF++fmOzEcg==}
@@ -6555,8 +6531,8 @@ packages:
     resolution: {integrity: sha512-L28STB170nwWS63UjtlEOE3dldQApaJXZkOI1uMFfzf3rRuPegHaHesyee+YxQ+W6SvRDQV6UrdOdRiR153wJg==}
     engines: {node: '>=6'}
 
-  caniuse-lite@1.0.30001712:
-    resolution: {integrity: sha512-MBqPpGYYdQ7/hfKiet9SCI+nmN5/hp4ZzveOJubl5DTAMa5oggjAuoi0Z4onBpKPFI2ePGnQuQIzF3VxDjDJig==}
+  caniuse-lite@1.0.30001713:
+    resolution: {integrity: sha512-wCIWIg+A4Xr7NfhTuHdX+/FKh3+Op3LBbSp2N5Pfx6T/LhdQy3GTyoTg48BReaW/MyMNZAkTadsBtai3ldWK0Q==}
 
   ccount@1.1.0:
     resolution: {integrity: sha512-vlNK021QdI7PNeiUh/lKkC/mNHHfV0m/Ad5JoI0TYtlBnJAslM/JIkm/tGC88bkLIwO6OQ5uV6ztS6kVAtCDlg==}
@@ -6879,12 +6855,12 @@ packages:
   dayjs@1.11.13:
     resolution: {integrity: sha512-oaMBel6gjolK862uaPQOVTA7q3TZhuSvuMQAAglQDOWYO9A91IrAOUJEyKVlqJlHE0vq5p5UXxzdPfMH/x6xNg==}
 
-  dc-polyfill@0.1.6:
-    resolution: {integrity: sha512-UV33cugmCC49a5uWAApM+6Ev9ZdvIUMTrtCO9fj96TPGOQiea54oeO3tiEVdVeo3J9N2UdJEmbS4zOkkEA35uQ==}
+  dc-polyfill@0.1.8:
+    resolution: {integrity: sha512-F9+06papa9GOFUMjxGiqM1bS98pOkinZpBF3Sygb46owrXaHdR2uLkftE6nygrqNcAurdwKjLAtX+0GJkSwIFQ==}
     engines: {node: '>=12.17'}
 
-  dd-trace@5.45.0:
-    resolution: {integrity: sha512-LrojHQa/5b7vY+v222aAuLC9LgaTEos6byrzhZQ8frFi5b+WlyfBtdjo7lA050dvvxMAU7c+vl5jKHa3D8swbg==}
+  dd-trace@5.48.0:
+    resolution: {integrity: sha512-H/pMcwQ8iM7WtJQPpDHq0u5NsXUNH7GKpMUFVjoUulxoSAH0tdlYmFPNkUgbgi2rfKzyXgTELXTznvnQJGgXYQ==}
     engines: {node: '>=18'}
 
   debug@2.6.9:
@@ -7034,6 +7010,10 @@ packages:
     resolution: {integrity: sha512-47qPchRCykZC03FhkYAhrvwU4xDBFIj1QPqaarj6mdM/hgUzfPHcpkHJOn3mJAufFeeAxAzeGsr5X0M4k6fLZQ==}
     engines: {node: '>=12'}
 
+  dotenv@16.5.0:
+    resolution: {integrity: sha512-m/C+AwOAr9/W1UOIZUo232ejMNnJAJtYQjUbHoNTBNTJSvqzzDh7vnrei3o3r3m9blf6ZoDkvcw0VmozNRFJxg==}
+    engines: {node: '>=12'}
+
   drange@1.1.1:
     resolution: {integrity: sha512-pYxfDYpued//QpnLIm4Avk7rsNtAtQkUES2cwAYSvD/wd2pKD71gN2Ebj3e7klzXwjocvE8c5vx/1fxwpqmSxA==}
     engines: {node: '>=4'}
@@ -7054,8 +7034,8 @@ packages:
   ee-first@1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
 
-  electron-to-chromium@1.5.134:
-    resolution: {integrity: sha512-zSwzrLg3jNP3bwsLqWHmS5z2nIOQ5ngMnfMZOWWtXnqqQkPVyOipxK98w+1beLw1TB+EImPNcG8wVP/cLVs2Og==}
+  electron-to-chromium@1.5.137:
+    resolution: {integrity: sha512-/QSJaU2JyIuTbbABAo/crOs+SuAZLS+fVVS10PVrIT9hrRkmZl8Hb0xPSkKRUUWHQtYzXHpQUW3Dy5hwMzGZkA==}
 
   emoji-regex@7.0.3:
     resolution: {integrity: sha512-CwBLREIQ7LvYFB0WyRvwhq5N5qPhc6PMjD6bYggFlI5YyDgl+0vxq5VHbMOFqLg7hfWzmu8T5Z1QofhmTIhItA==}
@@ -7153,12 +7133,11 @@ packages:
     resolution: {integrity: sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==}
     engines: {node: '>=10'}
 
-  eslint-plugin-deprecation@1.6.0:
-    resolution: {integrity: sha512-rld+Vrneh/NXRtDB0vQifOvgUy0HJYoejaxWlVnsk/LK7iij2tCWQIFcCKG4uzQb+Ef86bDke39w1lh4wnon4Q==}
-    deprecated: this package has been deprecated, please use v2.0.0
+  eslint-plugin-deprecation@1.5.0:
+    resolution: {integrity: sha512-mRcssI/tLROueBQ6yf4LnnGTijbMsTCPIpbRbPj5R5wGYVCpk1zDmAS0SEkgcUDXOPc22qMNFR24Qw7vSPrlTA==}
     peerDependencies:
-      eslint: ^7.0.0 || ^8.0.0
-      typescript: ^4.2.4 || ^5.0.0
+      eslint: ^6.0.0 || ^7.0.0 || ^8.0.0
+      typescript: ^3.7.5 || ^4.0.0 || ^5.0.0
 
   eslint-scope@5.1.1:
     resolution: {integrity: sha512-2NxwbF/hZ0KpepYN0cNbo+FN6XoK7GaHlQhgx/hIZl6Va0bF45RQOOwhLIy8lQDbuCiadSLCBnH2CFYquit5bw==}
@@ -8371,8 +8350,8 @@ packages:
     engines: {node: '>= 12'}
     hasBin: true
 
-  marky@1.2.5:
-    resolution: {integrity: sha512-q9JtQJKjpsVxCRVgQ+WapguSbKC3SQ5HEzFGPAJMStgh3QjCawp00UKv3MTTAArTmGmmPUvllHZoNbZ3gs0I+Q==}
+  marky@1.3.0:
+    resolution: {integrity: sha512-ocnPZQLNpvbedwTy9kNrQEsknEfgvcLMvOtz3sFeWApDq1MXH1TqkCIx58xlpESsfwQOnuBO9beyQuNGzVvuhQ==}
 
   match-at@0.1.1:
     resolution: {integrity: sha512-h4Yd392z9mST+dzc+yjuybOGFNOZjmXIPKWjxBd1Bb23r4SmDOsk2NYCU2BMUBGbSpZqwVsZYNq26QS3xfaT3Q==}
@@ -8590,10 +8569,6 @@ packages:
     resolution: {integrity: sha512-lKwV/1brpG6mBUFHtb7NUmtABCb2WZZmm2wNiOA5hAb8VdCS4B3dtMWyvcoViccwAW/COERjXLt0zP1zXUN26g==}
     engines: {node: '>=10'}
 
-  minimatch@9.0.3:
-    resolution: {integrity: sha512-RHiac9mvaRw0x3AYRgDC1CxAP7HTcNrrECeA8YYJeWnpo+2Q5CegtZjaotWTWxDG3UeGA1coE05iH1mPjT/2mg==}
-    engines: {node: '>=16 || 14 >=14.17'}
-
   minimatch@9.0.5:
     resolution: {integrity: sha512-G6T0ZX48xgozx7587koeX9Ys2NYy6Gmv//P89sEte9V9whIapMNF4idKxnW2QtCcLiTWlb/wfCabAtAFWhhBow==}
     engines: {node: '>=16 || 14 >=14.17'}
@@ -8790,6 +8765,18 @@ packages:
 
   openai@4.93.0:
     resolution: {integrity: sha512-2kONcISbThKLfm7T9paVzg+QCE1FOZtNMMUfXyXckUAoXRRS/mTP89JSDHPMp8uM5s0bz28RISbvQjArD6mgUQ==}
+    hasBin: true
+    peerDependencies:
+      ws: ^8.18.0
+      zod: ^3.23.8
+    peerDependenciesMeta:
+      ws:
+        optional: true
+      zod:
+        optional: true
+
+  openai@4.94.0:
+    resolution: {integrity: sha512-WVmr9HWcwfouLJ7R3UHd2A93ClezTPuJljQxkCYQAL15Sjyt+FBNoqEz5MHSdH/ebQrVyvRhFyn/bvdqtSPyIA==}
     hasBin: true
     peerDependencies:
       ws: ^8.18.0
@@ -9054,8 +9041,8 @@ packages:
     resolution: {integrity: sha512-fjAPuiws93rm7mPUu21RdBnkeZNrbfCFCwfAhPWY+rR3zG0ubpe5cEReHOw5fIbfmsxEV/g2kSxGTATY3Bpnwg==}
     engines: {node: '>=4'}
 
-  portfinder@1.0.35:
-    resolution: {integrity: sha512-73JaFg4NwYNAufDtS5FsFu/PdM49ahJrO1i44aCRsDWju1z5wuGDaqyFUQWR6aJoK2JPDWlaYYAGFNIGTSUHSw==}
+  portfinder@1.0.36:
+    resolution: {integrity: sha512-gMKUzCoP+feA7t45moaSx7UniU7PgGN3hA8acAB+3Qn7/js0/lJ07fYZlxt9riE9S3myyxDCyAFzSrLlta0c9g==}
     engines: {node: '>= 10.12'}
 
   posix-character-classes@0.1.1:
@@ -9307,8 +9294,8 @@ packages:
     engines: {node: 20 || >=22}
     hasBin: true
 
-  rollup@4.39.0:
-    resolution: {integrity: sha512-thI8kNc02yNvnmJp8dr3fNWJ9tCONDhp6TV35X6HkKGGs9E6q7YWCHbe5vKiTa7TAiNcFEmXKj3X/pG2b3ci0g==}
+  rollup@4.40.0:
+    resolution: {integrity: sha512-Noe455xmA96nnqH5piFtLobsGbCij7Tu+tb3c1vYjNbTkfzGqXqQXG3wJaYXkRZuQ0vEYN4bhwg7QnIrqB5B+w==}
     engines: {node: '>=18.0.0', npm: '>=8.0.0'}
     hasBin: true
 
@@ -9652,11 +9639,8 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
 
-  swagger-ui-dist@5.20.5:
-    resolution: {integrity: sha512-7DqzFVHAW5MRhmWRDgd2Xr7RQUGaJv+7RfGmwChlOxz+tMLBmvHDz3vuVgaoj2CWNpTHxIm8aTsCBeJVxNrpjA==}
-
-  swagger-ui-dist@5.20.7:
-    resolution: {integrity: sha512-gLpb1wrWinUwMFKfSvDYsIlCyGQSryftzi6uWc9Qo98zO3mFT6oHOqmDUu5OoahvepuS6HGTe/3MsGUCVtpLig==}
+  swagger-ui-dist@5.21.0:
+    resolution: {integrity: sha512-E0K3AB6HvQd8yQNSMR7eE5bk+323AUxjtCz/4ZNKiahOlPhPJxqn3UPIGs00cyY/dhrTDJ61L7C/a8u6zhGrZg==}
 
   swagger-ui-express@5.0.1:
     resolution: {integrity: sha512-SrNU3RiBGTLLmFU8GIJdOdanJTl4TOmT27tt3bWWHppqYmAZ6IDuEuBvMU6nZq0zLEe6b/1rACXCgLZqO6ZfrA==}
@@ -9779,12 +9763,6 @@ packages:
 
   trough@1.0.5:
     resolution: {integrity: sha512-rvuRbTarPXmMb79SmzEp8aqXNKcK+y0XaB298IXueQ8I2PsrATcPBCSPyK/dDNa2iWOhKlfNnOjdAOTBU/nkFA==}
-
-  ts-api-utils@1.4.3:
-    resolution: {integrity: sha512-i3eMG77UTMD0hZhgRS562pv83RC6ukSAC2GMNWc+9dieh/+jDM5u5YG+NHX6VNDRHQcHwmsTHctP9LhbC3WxVw==}
-    engines: {node: '>=16'}
-    peerDependencies:
-      typescript: '>=4.2.0'
 
   ts-api-utils@2.1.0:
     resolution: {integrity: sha512-CUgTZL1irw8u29bzrOD/nH85jqyc74D6SshFgujOIA7osm2Rz7dYH77agkx7H4FBNxDq7Cjf+IjaX/8zwFW+ZQ==}
@@ -9918,8 +9896,8 @@ packages:
       '@samchon/openapi': '>=3.3.0 <4.0.0'
       typescript: '>=4.8.0 <5.9.0'
 
-  typia@9.1.0:
-    resolution: {integrity: sha512-cUMYicsrQ8UitYDHmoWKcUQYaNwzbj+SN57zSIkU1kpTQZeFcFdLXLIS+JIyrtqVVY7GiaDDA5t4lSqwhWw/Bg==}
+  typia@9.1.1:
+    resolution: {integrity: sha512-fMgrd2VLGZoDjZZwWlgriotUiG38UEzcMD0ToJOhQ0bPr966mit0ZEy5TnDhm2RidXfejZOqHb7iOoTG3VHd4w==}
     hasBin: true
     peerDependencies:
       '@samchon/openapi': '>=4.0.0 <5.0.0'
@@ -10071,8 +10049,8 @@ packages:
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
 
-  vite@5.4.17:
-    resolution: {integrity: sha512-5+VqZryDj4wgCs55o9Lp+p8GE78TLVg0lasCH5xFZ4jacZjtqZa6JUw9/p0WeAojaOfncSM6v77InkFPGnvPvg==}
+  vite@5.4.18:
+    resolution: {integrity: sha512-1oDcnEp3lVyHCuQ2YFelM4Alm2o91xNoMncRm1U7S+JdYfYOvbiGZ3/CxGttrOu2M/KcGz7cRC2DoNUA6urmMA==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     peerDependencies:
@@ -10102,8 +10080,8 @@ packages:
       terser:
         optional: true
 
-  vite@6.2.5:
-    resolution: {integrity: sha512-j023J/hCAa4pRIUH6J9HemwYfjB5llR2Ps0CWeikOtdR8+pAURAk0DoJC5/mm9kd+UgdnIy7d6HE4EAvlYhPhA==}
+  vite@6.2.6:
+    resolution: {integrity: sha512-9xpjNl3kR4rVDZgPNdTL0/c6ao4km69a/2ihNQbcANz8RuCOK3hQBmLSJf3bRKVQjVMda+YvizNE8AwvogcPbw==}
     engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
     hasBin: true
     peerDependencies:
@@ -10449,29 +10427,29 @@ snapshots:
       '@smithy/util-utf8': 2.3.0
       tslib: 2.8.1
 
-  '@aws-sdk/client-s3@3.782.0':
+  '@aws-sdk/client-s3@3.787.0':
     dependencies:
       '@aws-crypto/sha1-browser': 5.2.0
       '@aws-crypto/sha256-browser': 5.2.0
       '@aws-crypto/sha256-js': 5.2.0
       '@aws-sdk/core': 3.775.0
-      '@aws-sdk/credential-provider-node': 3.782.0
+      '@aws-sdk/credential-provider-node': 3.787.0
       '@aws-sdk/middleware-bucket-endpoint': 3.775.0
       '@aws-sdk/middleware-expect-continue': 3.775.0
-      '@aws-sdk/middleware-flexible-checksums': 3.775.0
+      '@aws-sdk/middleware-flexible-checksums': 3.787.0
       '@aws-sdk/middleware-host-header': 3.775.0
       '@aws-sdk/middleware-location-constraint': 3.775.0
       '@aws-sdk/middleware-logger': 3.775.0
       '@aws-sdk/middleware-recursion-detection': 3.775.0
       '@aws-sdk/middleware-sdk-s3': 3.775.0
       '@aws-sdk/middleware-ssec': 3.775.0
-      '@aws-sdk/middleware-user-agent': 3.782.0
+      '@aws-sdk/middleware-user-agent': 3.787.0
       '@aws-sdk/region-config-resolver': 3.775.0
       '@aws-sdk/signature-v4-multi-region': 3.775.0
       '@aws-sdk/types': 3.775.0
-      '@aws-sdk/util-endpoints': 3.782.0
+      '@aws-sdk/util-endpoints': 3.787.0
       '@aws-sdk/util-user-agent-browser': 3.775.0
-      '@aws-sdk/util-user-agent-node': 3.782.0
+      '@aws-sdk/util-user-agent-node': 3.787.0
       '@aws-sdk/xml-builder': 3.775.0
       '@smithy/config-resolver': 4.1.0
       '@smithy/core': 3.2.0
@@ -10510,7 +10488,7 @@ snapshots:
     transitivePeerDependencies:
       - aws-crt
 
-  '@aws-sdk/client-sso@3.782.0':
+  '@aws-sdk/client-sso@3.787.0':
     dependencies:
       '@aws-crypto/sha256-browser': 5.2.0
       '@aws-crypto/sha256-js': 5.2.0
@@ -10518,12 +10496,12 @@ snapshots:
       '@aws-sdk/middleware-host-header': 3.775.0
       '@aws-sdk/middleware-logger': 3.775.0
       '@aws-sdk/middleware-recursion-detection': 3.775.0
-      '@aws-sdk/middleware-user-agent': 3.782.0
+      '@aws-sdk/middleware-user-agent': 3.787.0
       '@aws-sdk/region-config-resolver': 3.775.0
       '@aws-sdk/types': 3.775.0
-      '@aws-sdk/util-endpoints': 3.782.0
+      '@aws-sdk/util-endpoints': 3.787.0
       '@aws-sdk/util-user-agent-browser': 3.775.0
-      '@aws-sdk/util-user-agent-node': 3.782.0
+      '@aws-sdk/util-user-agent-node': 3.787.0
       '@smithy/config-resolver': 4.1.0
       '@smithy/core': 3.2.0
       '@smithy/fetch-http-handler': 5.0.2
@@ -10588,15 +10566,15 @@ snapshots:
       '@smithy/util-stream': 4.2.0
       tslib: 2.8.1
 
-  '@aws-sdk/credential-provider-ini@3.782.0':
+  '@aws-sdk/credential-provider-ini@3.787.0':
     dependencies:
       '@aws-sdk/core': 3.775.0
       '@aws-sdk/credential-provider-env': 3.775.0
       '@aws-sdk/credential-provider-http': 3.775.0
       '@aws-sdk/credential-provider-process': 3.775.0
-      '@aws-sdk/credential-provider-sso': 3.782.0
-      '@aws-sdk/credential-provider-web-identity': 3.782.0
-      '@aws-sdk/nested-clients': 3.782.0
+      '@aws-sdk/credential-provider-sso': 3.787.0
+      '@aws-sdk/credential-provider-web-identity': 3.787.0
+      '@aws-sdk/nested-clients': 3.787.0
       '@aws-sdk/types': 3.775.0
       '@smithy/credential-provider-imds': 4.0.2
       '@smithy/property-provider': 4.0.2
@@ -10606,14 +10584,14 @@ snapshots:
     transitivePeerDependencies:
       - aws-crt
 
-  '@aws-sdk/credential-provider-node@3.782.0':
+  '@aws-sdk/credential-provider-node@3.787.0':
     dependencies:
       '@aws-sdk/credential-provider-env': 3.775.0
       '@aws-sdk/credential-provider-http': 3.775.0
-      '@aws-sdk/credential-provider-ini': 3.782.0
+      '@aws-sdk/credential-provider-ini': 3.787.0
       '@aws-sdk/credential-provider-process': 3.775.0
-      '@aws-sdk/credential-provider-sso': 3.782.0
-      '@aws-sdk/credential-provider-web-identity': 3.782.0
+      '@aws-sdk/credential-provider-sso': 3.787.0
+      '@aws-sdk/credential-provider-web-identity': 3.787.0
       '@aws-sdk/types': 3.775.0
       '@smithy/credential-provider-imds': 4.0.2
       '@smithy/property-provider': 4.0.2
@@ -10632,11 +10610,11 @@ snapshots:
       '@smithy/types': 4.2.0
       tslib: 2.8.1
 
-  '@aws-sdk/credential-provider-sso@3.782.0':
+  '@aws-sdk/credential-provider-sso@3.787.0':
     dependencies:
-      '@aws-sdk/client-sso': 3.782.0
+      '@aws-sdk/client-sso': 3.787.0
       '@aws-sdk/core': 3.775.0
-      '@aws-sdk/token-providers': 3.782.0
+      '@aws-sdk/token-providers': 3.787.0
       '@aws-sdk/types': 3.775.0
       '@smithy/property-provider': 4.0.2
       '@smithy/shared-ini-file-loader': 4.0.2
@@ -10645,10 +10623,10 @@ snapshots:
     transitivePeerDependencies:
       - aws-crt
 
-  '@aws-sdk/credential-provider-web-identity@3.782.0':
+  '@aws-sdk/credential-provider-web-identity@3.787.0':
     dependencies:
       '@aws-sdk/core': 3.775.0
-      '@aws-sdk/nested-clients': 3.782.0
+      '@aws-sdk/nested-clients': 3.787.0
       '@aws-sdk/types': 3.775.0
       '@smithy/property-provider': 4.0.2
       '@smithy/types': 4.2.0
@@ -10673,7 +10651,7 @@ snapshots:
       '@smithy/types': 4.2.0
       tslib: 2.8.1
 
-  '@aws-sdk/middleware-flexible-checksums@3.775.0':
+  '@aws-sdk/middleware-flexible-checksums@3.787.0':
     dependencies:
       '@aws-crypto/crc32': 5.2.0
       '@aws-crypto/crc32c': 5.2.0
@@ -10738,17 +10716,17 @@ snapshots:
       '@smithy/types': 4.2.0
       tslib: 2.8.1
 
-  '@aws-sdk/middleware-user-agent@3.782.0':
+  '@aws-sdk/middleware-user-agent@3.787.0':
     dependencies:
       '@aws-sdk/core': 3.775.0
       '@aws-sdk/types': 3.775.0
-      '@aws-sdk/util-endpoints': 3.782.0
+      '@aws-sdk/util-endpoints': 3.787.0
       '@smithy/core': 3.2.0
       '@smithy/protocol-http': 5.1.0
       '@smithy/types': 4.2.0
       tslib: 2.8.1
 
-  '@aws-sdk/nested-clients@3.782.0':
+  '@aws-sdk/nested-clients@3.787.0':
     dependencies:
       '@aws-crypto/sha256-browser': 5.2.0
       '@aws-crypto/sha256-js': 5.2.0
@@ -10756,12 +10734,12 @@ snapshots:
       '@aws-sdk/middleware-host-header': 3.775.0
       '@aws-sdk/middleware-logger': 3.775.0
       '@aws-sdk/middleware-recursion-detection': 3.775.0
-      '@aws-sdk/middleware-user-agent': 3.782.0
+      '@aws-sdk/middleware-user-agent': 3.787.0
       '@aws-sdk/region-config-resolver': 3.775.0
       '@aws-sdk/types': 3.775.0
-      '@aws-sdk/util-endpoints': 3.782.0
+      '@aws-sdk/util-endpoints': 3.787.0
       '@aws-sdk/util-user-agent-browser': 3.775.0
-      '@aws-sdk/util-user-agent-node': 3.782.0
+      '@aws-sdk/util-user-agent-node': 3.787.0
       '@smithy/config-resolver': 4.1.0
       '@smithy/core': 3.2.0
       '@smithy/fetch-http-handler': 5.0.2
@@ -10800,7 +10778,7 @@ snapshots:
       '@smithy/util-middleware': 4.0.2
       tslib: 2.8.1
 
-  '@aws-sdk/s3-request-presigner@3.782.0':
+  '@aws-sdk/s3-request-presigner@3.787.0':
     dependencies:
       '@aws-sdk/signature-v4-multi-region': 3.775.0
       '@aws-sdk/types': 3.775.0
@@ -10820,9 +10798,9 @@ snapshots:
       '@smithy/types': 4.2.0
       tslib: 2.8.1
 
-  '@aws-sdk/token-providers@3.782.0':
+  '@aws-sdk/token-providers@3.787.0':
     dependencies:
-      '@aws-sdk/nested-clients': 3.782.0
+      '@aws-sdk/nested-clients': 3.787.0
       '@aws-sdk/types': 3.775.0
       '@smithy/property-provider': 4.0.2
       '@smithy/shared-ini-file-loader': 4.0.2
@@ -10840,7 +10818,7 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  '@aws-sdk/util-endpoints@3.782.0':
+  '@aws-sdk/util-endpoints@3.787.0':
     dependencies:
       '@aws-sdk/types': 3.775.0
       '@smithy/types': 4.2.0
@@ -10865,9 +10843,9 @@ snapshots:
       bowser: 2.11.0
       tslib: 2.8.1
 
-  '@aws-sdk/util-user-agent-node@3.782.0':
+  '@aws-sdk/util-user-agent-node@3.787.0':
     dependencies:
-      '@aws-sdk/middleware-user-agent': 3.782.0
+      '@aws-sdk/middleware-user-agent': 3.787.0
       '@aws-sdk/types': 3.775.0
       '@smithy/node-config-provider': 4.0.2
       '@smithy/types': 4.2.0
@@ -11133,27 +11111,22 @@ snapshots:
     dependencies:
       '@jridgewell/trace-mapping': 0.3.9
 
-  '@datadog/libdatadog@0.5.0': {}
+  '@datadog/libdatadog@0.5.1': {}
 
-  '@datadog/native-appsec@8.5.1':
+  '@datadog/native-appsec@8.5.2':
     dependencies:
       node-gyp-build: 3.9.0
 
-  '@datadog/native-iast-rewriter@2.8.0':
-    dependencies:
-      lru-cache: 7.18.3
-      node-gyp-build: 4.8.4
-
-  '@datadog/native-iast-taint-tracking@3.3.0':
+  '@datadog/native-iast-taint-tracking@3.3.1':
     dependencies:
       node-gyp-build: 3.9.0
 
-  '@datadog/native-metrics@3.1.0':
+  '@datadog/native-metrics@3.1.1':
     dependencies:
       node-addon-api: 6.1.0
       node-gyp-build: 3.9.0
 
-  '@datadog/pprof@5.6.0':
+  '@datadog/pprof@5.7.1':
     dependencies:
       delay: 5.0.0
       node-gyp-build: 3.9.0
@@ -11163,9 +11136,16 @@ snapshots:
 
   '@datadog/sketches-js@2.1.1': {}
 
+  '@datadog/wasm-js-rewriter@4.0.0':
+    dependencies:
+      js-yaml: 4.1.0
+      lru-cache: 7.18.3
+      module-details-from-path: 1.0.3
+      node-gyp-build: 4.8.4
+
   '@discoveryjs/json-ext@0.5.7': {}
 
-  '@emnapi/runtime@1.4.0':
+  '@emnapi/runtime@1.4.1':
     dependencies:
       tslib: 2.8.1
     optional: true
@@ -11314,7 +11294,7 @@ snapshots:
   '@esbuild/win32-x64@0.25.2':
     optional: true
 
-  '@eslint-community/eslint-utils@4.5.1(eslint@9.24.0(jiti@2.4.2))':
+  '@eslint-community/eslint-utils@4.6.0(eslint@9.24.0(jiti@2.4.2))':
     dependencies:
       eslint: 9.24.0(jiti@2.4.2)
       eslint-visitor-keys: 3.4.3
@@ -11479,7 +11459,7 @@ snapshots:
 
   '@img/sharp-wasm32@0.33.5':
     dependencies:
-      '@emnapi/runtime': 1.4.0
+      '@emnapi/runtime': 1.4.1
     optional: true
 
   '@img/sharp-win32-ia32@0.33.5':
@@ -11565,7 +11545,7 @@ snapshots:
       mkdirp: 0.5.6
       os-locale: 3.1.0
       pkg-up: 2.0.0
-      portfinder: 1.0.35
+      portfinder: 1.0.36
       puppeteer-core: 1.20.0
       tmp: 0.0.33
       ws: 6.2.3
@@ -11603,18 +11583,18 @@ snapshots:
       call-me-maybe: 1.0.2
       glob-to-regexp: 0.3.0
 
-  '@nestia/agent@0.3.12(@samchon/openapi@2.5.3)(openai@4.93.0)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))':
+  '@nestia/agent@0.3.12(@samchon/openapi@2.5.3)(openai@4.94.0)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))':
     dependencies:
       '@samchon/openapi': 2.5.3
-      openai: 4.93.0
+      openai: 4.94.0
       typia: 8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)
       uuid: 11.1.0
 
-  '@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.13(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.13)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))':
+  '@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))':
     dependencies:
       '@nestia/fetcher': 4.6.2(typescript@5.7.3)
-      '@nestjs/common': 11.0.13(reflect-metadata@0.2.2)(rxjs@7.8.2)
-      '@nestjs/core': 11.0.13(@nestjs/common@11.0.13(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.0.13)(reflect-metadata@0.2.2)(rxjs@7.8.2)
+      '@nestjs/common': 11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2)
+      '@nestjs/core': 11.0.17(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)
       '@samchon/openapi': 2.5.3
       detect-ts-node: 1.0.5
       get-function-location: 2.0.0
@@ -11638,12 +11618,12 @@ snapshots:
       typescript: 5.7.3
       typia: 7.6.4(@samchon/openapi@2.5.3)(typescript@5.7.3)
 
-  '@nestia/sdk@4.6.2(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.13(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.13)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)))(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.13(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.13)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.86)(typescript@5.7.3))(typescript@5.7.3)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))':
+  '@nestia/sdk@4.6.2(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)))(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.86)(typescript@5.7.3))(typescript@5.7.3)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))':
     dependencies:
-      '@nestia/core': 4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.13(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.13)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))
+      '@nestia/core': 4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))
       '@nestia/fetcher': 4.6.2(typescript@5.7.3)
-      '@nestjs/common': 11.0.13(reflect-metadata@0.2.2)(rxjs@7.8.2)
-      '@nestjs/core': 11.0.13(@nestjs/common@11.0.13(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.0.13)(reflect-metadata@0.2.2)(rxjs@7.8.2)
+      '@nestjs/common': 11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2)
+      '@nestjs/core': 11.0.17(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)
       '@samchon/openapi': 2.5.3
       cli: 1.0.1
       get-function-location: 2.0.0
@@ -11659,31 +11639,33 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
-  '@nestjs/axios@4.0.0(@nestjs/common@11.0.13(reflect-metadata@0.2.2)(rxjs@7.8.2))(axios@1.8.4)(rxjs@7.8.2)':
+  '@nestjs/axios@4.0.0(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(axios@1.8.4)(rxjs@7.8.2)':
     dependencies:
-      '@nestjs/common': 11.0.13(reflect-metadata@0.2.2)(rxjs@7.8.2)
+      '@nestjs/common': 11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2)
       axios: 1.8.4
       rxjs: 7.8.2
 
-  '@nestjs/common@11.0.13(reflect-metadata@0.2.2)(rxjs@7.8.2)':
+  '@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2)':
     dependencies:
       iterare: 1.2.1
       reflect-metadata: 0.2.2
       rxjs: 7.8.2
       tslib: 2.8.1
       uid: 2.0.2
+    optionalDependencies:
+      file-type: 16.5.4
 
-  '@nestjs/config@4.0.2(@nestjs/common@11.0.13(reflect-metadata@0.2.2)(rxjs@7.8.2))(rxjs@7.8.2)':
+  '@nestjs/config@4.0.2(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(rxjs@7.8.2)':
     dependencies:
-      '@nestjs/common': 11.0.13(reflect-metadata@0.2.2)(rxjs@7.8.2)
+      '@nestjs/common': 11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2)
       dotenv: 16.4.7
       dotenv-expand: 12.0.1
       lodash: 4.17.21
       rxjs: 7.8.2
 
-  '@nestjs/core@11.0.13(@nestjs/common@11.0.13(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.0.13)(reflect-metadata@0.2.2)(rxjs@7.8.2)':
+  '@nestjs/core@11.0.17(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)':
     dependencies:
-      '@nestjs/common': 11.0.13(reflect-metadata@0.2.2)(rxjs@7.8.2)
+      '@nestjs/common': 11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2)
       '@nuxt/opencollective': 0.4.1
       fast-safe-stringify: 2.1.1
       iterare: 1.2.1
@@ -11693,17 +11675,17 @@ snapshots:
       tslib: 2.8.1
       uid: 2.0.2
     optionalDependencies:
-      '@nestjs/platform-express': 11.0.13(@nestjs/common@11.0.13(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.13)
+      '@nestjs/platform-express': 11.0.17(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)
 
-  '@nestjs/mapped-types@2.1.0(@nestjs/common@11.0.13(reflect-metadata@0.2.2)(rxjs@7.8.2))(reflect-metadata@0.2.2)':
+  '@nestjs/mapped-types@2.1.0(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(reflect-metadata@0.2.2)':
     dependencies:
-      '@nestjs/common': 11.0.13(reflect-metadata@0.2.2)(rxjs@7.8.2)
+      '@nestjs/common': 11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2)
       reflect-metadata: 0.2.2
 
-  '@nestjs/platform-express@11.0.13(@nestjs/common@11.0.13(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.13)':
+  '@nestjs/platform-express@11.0.17(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)':
     dependencies:
-      '@nestjs/common': 11.0.13(reflect-metadata@0.2.2)(rxjs@7.8.2)
-      '@nestjs/core': 11.0.13(@nestjs/common@11.0.13(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.0.13)(reflect-metadata@0.2.2)(rxjs@7.8.2)
+      '@nestjs/common': 11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2)
+      '@nestjs/core': 11.0.17(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)
       cors: 2.8.5
       express: 5.1.0
       multer: 1.4.5-lts.2
@@ -11712,25 +11694,25 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@nestjs/swagger@11.1.1(@nestjs/common@11.0.13(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.13)(reflect-metadata@0.2.2)':
+  '@nestjs/swagger@11.1.3(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)':
     dependencies:
       '@microsoft/tsdoc': 0.15.1
-      '@nestjs/common': 11.0.13(reflect-metadata@0.2.2)(rxjs@7.8.2)
-      '@nestjs/core': 11.0.13(@nestjs/common@11.0.13(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.0.13)(reflect-metadata@0.2.2)(rxjs@7.8.2)
-      '@nestjs/mapped-types': 2.1.0(@nestjs/common@11.0.13(reflect-metadata@0.2.2)(rxjs@7.8.2))(reflect-metadata@0.2.2)
+      '@nestjs/common': 11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2)
+      '@nestjs/core': 11.0.17(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)
+      '@nestjs/mapped-types': 2.1.0(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(reflect-metadata@0.2.2)
       js-yaml: 4.1.0
       lodash: 4.17.21
       path-to-regexp: 8.2.0
       reflect-metadata: 0.2.2
-      swagger-ui-dist: 5.20.5
+      swagger-ui-dist: 5.21.0
 
-  '@nestjs/testing@11.0.13(@nestjs/common@11.0.13(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.13)(@nestjs/platform-express@11.0.13)':
+  '@nestjs/testing@11.0.17(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(@nestjs/platform-express@11.0.17)':
     dependencies:
-      '@nestjs/common': 11.0.13(reflect-metadata@0.2.2)(rxjs@7.8.2)
-      '@nestjs/core': 11.0.13(@nestjs/common@11.0.13(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.0.13)(reflect-metadata@0.2.2)(rxjs@7.8.2)
+      '@nestjs/common': 11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2)
+      '@nestjs/core': 11.0.17(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)
       tslib: 2.8.1
     optionalDependencies:
-      '@nestjs/platform-express': 11.0.13(@nestjs/common@11.0.13(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.13)
+      '@nestjs/platform-express': 11.0.17(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
@@ -11828,94 +11810,94 @@ snapshots:
 
   '@protobufjs/utf8@1.1.0': {}
 
-  '@rollup/plugin-terser@0.4.4(rollup@4.39.0)':
+  '@rollup/plugin-terser@0.4.4(rollup@4.40.0)':
     dependencies:
       serialize-javascript: 6.0.2
       smob: 1.5.0
       terser: 5.39.0
     optionalDependencies:
-      rollup: 4.39.0
+      rollup: 4.40.0
 
-  '@rollup/plugin-typescript@12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.7.3)':
+  '@rollup/plugin-typescript@12.1.2(rollup@4.40.0)(tslib@2.8.1)(typescript@5.7.3)':
     dependencies:
-      '@rollup/pluginutils': 5.1.4(rollup@4.39.0)
+      '@rollup/pluginutils': 5.1.4(rollup@4.40.0)
       resolve: 1.22.10
       typescript: 5.7.3
     optionalDependencies:
-      rollup: 4.39.0
+      rollup: 4.40.0
       tslib: 2.8.1
 
-  '@rollup/pluginutils@5.1.4(rollup@4.39.0)':
+  '@rollup/pluginutils@5.1.4(rollup@4.40.0)':
     dependencies:
       '@types/estree': 1.0.7
       estree-walker: 2.0.2
       picomatch: 4.0.2
     optionalDependencies:
-      rollup: 4.39.0
+      rollup: 4.40.0
 
-  '@rollup/rollup-android-arm-eabi@4.39.0':
+  '@rollup/rollup-android-arm-eabi@4.40.0':
     optional: true
 
-  '@rollup/rollup-android-arm64@4.39.0':
+  '@rollup/rollup-android-arm64@4.40.0':
     optional: true
 
-  '@rollup/rollup-darwin-arm64@4.39.0':
+  '@rollup/rollup-darwin-arm64@4.40.0':
     optional: true
 
-  '@rollup/rollup-darwin-x64@4.39.0':
+  '@rollup/rollup-darwin-x64@4.40.0':
     optional: true
 
-  '@rollup/rollup-freebsd-arm64@4.39.0':
+  '@rollup/rollup-freebsd-arm64@4.40.0':
     optional: true
 
-  '@rollup/rollup-freebsd-x64@4.39.0':
+  '@rollup/rollup-freebsd-x64@4.40.0':
     optional: true
 
-  '@rollup/rollup-linux-arm-gnueabihf@4.39.0':
+  '@rollup/rollup-linux-arm-gnueabihf@4.40.0':
     optional: true
 
-  '@rollup/rollup-linux-arm-musleabihf@4.39.0':
+  '@rollup/rollup-linux-arm-musleabihf@4.40.0':
     optional: true
 
-  '@rollup/rollup-linux-arm64-gnu@4.39.0':
+  '@rollup/rollup-linux-arm64-gnu@4.40.0':
     optional: true
 
-  '@rollup/rollup-linux-arm64-musl@4.39.0':
+  '@rollup/rollup-linux-arm64-musl@4.40.0':
     optional: true
 
-  '@rollup/rollup-linux-loongarch64-gnu@4.39.0':
+  '@rollup/rollup-linux-loongarch64-gnu@4.40.0':
     optional: true
 
-  '@rollup/rollup-linux-powerpc64le-gnu@4.39.0':
+  '@rollup/rollup-linux-powerpc64le-gnu@4.40.0':
     optional: true
 
-  '@rollup/rollup-linux-riscv64-gnu@4.39.0':
+  '@rollup/rollup-linux-riscv64-gnu@4.40.0':
     optional: true
 
-  '@rollup/rollup-linux-riscv64-musl@4.39.0':
+  '@rollup/rollup-linux-riscv64-musl@4.40.0':
     optional: true
 
-  '@rollup/rollup-linux-s390x-gnu@4.39.0':
+  '@rollup/rollup-linux-s390x-gnu@4.40.0':
     optional: true
 
-  '@rollup/rollup-linux-x64-gnu@4.39.0':
+  '@rollup/rollup-linux-x64-gnu@4.40.0':
     optional: true
 
-  '@rollup/rollup-linux-x64-musl@4.39.0':
+  '@rollup/rollup-linux-x64-musl@4.40.0':
     optional: true
 
-  '@rollup/rollup-win32-arm64-msvc@4.39.0':
+  '@rollup/rollup-win32-arm64-msvc@4.40.0':
     optional: true
 
-  '@rollup/rollup-win32-ia32-msvc@4.39.0':
+  '@rollup/rollup-win32-ia32-msvc@4.40.0':
     optional: true
 
-  '@rollup/rollup-win32-x64-msvc@4.39.0':
+  '@rollup/rollup-win32-x64-msvc@4.40.0':
     optional: true
 
-  '@ryoppippi/unplugin-typia@1.2.0(@samchon/openapi@2.5.3)(@types/node@18.19.86)(jiti@2.4.2)(rollup@4.39.0)(terser@5.39.0)':
+  '@ryoppippi/unplugin-typia@1.2.0(@samchon/openapi@2.5.3)(@types/node@18.19.86)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)':
     dependencies:
-      '@rollup/pluginutils': 5.1.4(rollup@4.39.0)
+      '@rollup/pluginutils': 5.1.4(rollup@4.40.0)
       consola: 3.4.2
       defu: 6.1.4
       diff-match-patch: 1.0.5
@@ -11927,7 +11909,7 @@ snapshots:
       typescript: 5.6.3
       typia: 7.6.4(@samchon/openapi@2.5.3)(typescript@5.6.3)
       unplugin: 1.16.1
-      vite: 6.2.5(@types/node@18.19.86)(jiti@2.4.2)(terser@5.39.0)
+      vite: 6.2.6(@types/node@18.19.86)(jiti@2.4.2)(terser@5.39.0)
     transitivePeerDependencies:
       - '@samchon/openapi'
       - '@types/node'
@@ -11945,7 +11927,7 @@ snapshots:
 
   '@samchon/openapi@2.5.3': {}
 
-  '@samchon/openapi@4.0.0': {}
+  '@samchon/openapi@4.1.0': {}
 
   '@scarf/scarf@1.4.0': {}
 
@@ -12564,11 +12546,6 @@ snapshots:
       '@typescript-eslint/types': 5.62.0
       '@typescript-eslint/visitor-keys': 5.62.0
 
-  '@typescript-eslint/scope-manager@6.21.0':
-    dependencies:
-      '@typescript-eslint/types': 6.21.0
-      '@typescript-eslint/visitor-keys': 6.21.0
-
   '@typescript-eslint/scope-manager@8.29.1':
     dependencies:
       '@typescript-eslint/types': 8.29.1
@@ -12599,8 +12576,6 @@ snapshots:
 
   '@typescript-eslint/types@5.62.0': {}
 
-  '@typescript-eslint/types@6.21.0': {}
-
   '@typescript-eslint/types@8.29.1': {}
 
   '@typescript-eslint/typescript-estree@5.62.0(typescript@5.7.3)':
@@ -12612,21 +12587,6 @@ snapshots:
       is-glob: 4.0.3
       semver: 7.7.1
       tsutils: 3.21.0(typescript@5.7.3)
-    optionalDependencies:
-      typescript: 5.7.3
-    transitivePeerDependencies:
-      - supports-color
-
-  '@typescript-eslint/typescript-estree@6.21.0(typescript@5.7.3)':
-    dependencies:
-      '@typescript-eslint/types': 6.21.0
-      '@typescript-eslint/visitor-keys': 6.21.0
-      debug: 4.4.0
-      globby: 11.1.0
-      is-glob: 4.0.3
-      minimatch: 9.0.3
-      semver: 7.7.1
-      ts-api-utils: 1.4.3(typescript@5.7.3)
     optionalDependencies:
       typescript: 5.7.3
     transitivePeerDependencies:
@@ -12648,7 +12608,7 @@ snapshots:
 
   '@typescript-eslint/utils@5.62.0(eslint@9.24.0(jiti@2.4.2))(typescript@5.7.3)':
     dependencies:
-      '@eslint-community/eslint-utils': 4.5.1(eslint@9.24.0(jiti@2.4.2))
+      '@eslint-community/eslint-utils': 4.6.0(eslint@9.24.0(jiti@2.4.2))
       '@types/json-schema': 7.0.15
       '@types/semver': 7.7.0
       '@typescript-eslint/scope-manager': 5.62.0
@@ -12661,23 +12621,9 @@ snapshots:
       - supports-color
       - typescript
 
-  '@typescript-eslint/utils@6.21.0(eslint@9.24.0(jiti@2.4.2))(typescript@5.7.3)':
-    dependencies:
-      '@eslint-community/eslint-utils': 4.5.1(eslint@9.24.0(jiti@2.4.2))
-      '@types/json-schema': 7.0.15
-      '@types/semver': 7.7.0
-      '@typescript-eslint/scope-manager': 6.21.0
-      '@typescript-eslint/types': 6.21.0
-      '@typescript-eslint/typescript-estree': 6.21.0(typescript@5.7.3)
-      eslint: 9.24.0(jiti@2.4.2)
-      semver: 7.7.1
-    transitivePeerDependencies:
-      - supports-color
-      - typescript
-
   '@typescript-eslint/utils@8.29.1(eslint@9.24.0(jiti@2.4.2))(typescript@5.7.3)':
     dependencies:
-      '@eslint-community/eslint-utils': 4.5.1(eslint@9.24.0(jiti@2.4.2))
+      '@eslint-community/eslint-utils': 4.6.0(eslint@9.24.0(jiti@2.4.2))
       '@typescript-eslint/scope-manager': 8.29.1
       '@typescript-eslint/types': 8.29.1
       '@typescript-eslint/typescript-estree': 8.29.1(typescript@5.7.3)
@@ -12689,11 +12635,6 @@ snapshots:
   '@typescript-eslint/visitor-keys@5.62.0':
     dependencies:
       '@typescript-eslint/types': 5.62.0
-      eslint-visitor-keys: 3.4.3
-
-  '@typescript-eslint/visitor-keys@6.21.0':
-    dependencies:
-      '@typescript-eslint/types': 6.21.0
       eslint-visitor-keys: 3.4.3
 
   '@typescript-eslint/visitor-keys@8.29.1':
@@ -12724,13 +12665,13 @@ snapshots:
       chai: 5.2.0
       tinyrainbow: 1.2.0
 
-  '@vitest/mocker@2.1.9(vite@5.4.17(@types/node@18.19.86)(terser@5.39.0))':
+  '@vitest/mocker@2.1.9(vite@5.4.18(@types/node@18.19.86)(terser@5.39.0))':
     dependencies:
       '@vitest/spy': 2.1.9
       estree-walker: 3.0.3
       magic-string: 0.30.17
     optionalDependencies:
-      vite: 5.4.17(@types/node@18.19.86)(terser@5.39.0)
+      vite: 5.4.18(@types/node@18.19.86)(terser@5.39.0)
 
   '@vitest/pretty-format@2.1.9':
     dependencies:
@@ -12848,10 +12789,10 @@ snapshots:
       webpack: 5.99.5(webpack-cli@5.1.4)
       webpack-cli: 5.1.4(webpack@5.99.5)
 
-  '@wrtnio/decorators@1.6.0(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.13(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.13)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)))(@nestia/sdk@4.6.2(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.13(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.13)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)))(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.13(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.13)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.86)(typescript@5.7.3))(typescript@5.7.3)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)))(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))':
+  '@wrtnio/decorators@1.6.0(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)))(@nestia/sdk@4.6.2(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)))(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.86)(typescript@5.7.3))(typescript@5.7.3)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)))(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))':
     dependencies:
-      '@nestia/core': 4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.13(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.13)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))
-      '@nestia/sdk': 4.6.2(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.13(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.13)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)))(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.13(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.13)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.86)(typescript@5.7.3))(typescript@5.7.3)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))
+      '@nestia/core': 4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))
+      '@nestia/sdk': 4.6.2(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)))(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.86)(typescript@5.7.3))(typescript@5.7.3)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))
       typia: 8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)
 
   '@wrtnio/schema@3.2.1':
@@ -13183,8 +13124,8 @@ snapshots:
 
   browserslist@4.24.4:
     dependencies:
-      caniuse-lite: 1.0.30001712
-      electron-to-chromium: 1.5.134
+      caniuse-lite: 1.0.30001713
+      electron-to-chromium: 1.5.137
       node-releases: 2.0.19
       update-browserslist-db: 1.1.3(browserslist@4.24.4)
 
@@ -13199,7 +13140,7 @@ snapshots:
   buffer@4.9.2:
     dependencies:
       base64-js: 1.5.1
-      ieee754: 1.1.13
+      ieee754: 1.2.1
       isarray: 1.0.0
 
   buffer@5.7.1:
@@ -13267,7 +13208,7 @@ snapshots:
 
   camelcase@5.3.1: {}
 
-  caniuse-lite@1.0.30001712: {}
+  caniuse-lite@1.0.30001713: {}
 
   ccount@1.1.0: {}
 
@@ -13618,22 +13559,22 @@ snapshots:
 
   dayjs@1.11.13: {}
 
-  dc-polyfill@0.1.6: {}
+  dc-polyfill@0.1.8: {}
 
-  dd-trace@5.45.0:
+  dd-trace@5.48.0:
     dependencies:
-      '@datadog/libdatadog': 0.5.0
-      '@datadog/native-appsec': 8.5.1
-      '@datadog/native-iast-rewriter': 2.8.0
-      '@datadog/native-iast-taint-tracking': 3.3.0
-      '@datadog/native-metrics': 3.1.0
-      '@datadog/pprof': 5.6.0
+      '@datadog/libdatadog': 0.5.1
+      '@datadog/native-appsec': 8.5.2
+      '@datadog/native-iast-taint-tracking': 3.3.1
+      '@datadog/native-metrics': 3.1.1
+      '@datadog/pprof': 5.7.1
       '@datadog/sketches-js': 2.1.1
+      '@datadog/wasm-js-rewriter': 4.0.0
       '@isaacs/ttlcache': 1.4.1
       '@opentelemetry/api': 1.8.0
       '@opentelemetry/core': 1.30.1(@opentelemetry/api@1.8.0)
       crypto-randomuuid: 1.0.0
-      dc-polyfill: 0.1.6
+      dc-polyfill: 0.1.8
       ignore: 5.3.2
       import-in-the-middle: 1.13.1
       istanbul-lib-coverage: 3.2.0
@@ -13769,9 +13710,11 @@ snapshots:
 
   dotenv-expand@12.0.1:
     dependencies:
-      dotenv: 16.4.7
+      dotenv: 16.5.0
 
   dotenv@16.4.7: {}
+
+  dotenv@16.5.0: {}
 
   drange@1.1.1: {}
 
@@ -13793,7 +13736,7 @@ snapshots:
 
   ee-first@1.1.1: {}
 
-  electron-to-chromium@1.5.134: {}
+  electron-to-chromium@1.5.137: {}
 
   emoji-regex@7.0.3: {}
 
@@ -13916,9 +13859,9 @@ snapshots:
 
   escape-string-regexp@4.0.0: {}
 
-  eslint-plugin-deprecation@1.6.0(eslint@9.24.0(jiti@2.4.2))(typescript@5.7.3):
+  eslint-plugin-deprecation@1.5.0(eslint@9.24.0(jiti@2.4.2))(typescript@5.7.3):
     dependencies:
-      '@typescript-eslint/utils': 6.21.0(eslint@9.24.0(jiti@2.4.2))(typescript@5.7.3)
+      '@typescript-eslint/utils': 5.62.0(eslint@9.24.0(jiti@2.4.2))(typescript@5.7.3)
       eslint: 9.24.0(jiti@2.4.2)
       tslib: 2.8.1
       tsutils: 3.21.0(typescript@5.7.3)
@@ -13942,7 +13885,7 @@ snapshots:
 
   eslint@9.24.0(jiti@2.4.2):
     dependencies:
-      '@eslint-community/eslint-utils': 4.5.1(eslint@9.24.0(jiti@2.4.2))
+      '@eslint-community/eslint-utils': 4.6.0(eslint@9.24.0(jiti@2.4.2))
       '@eslint-community/regexpp': 4.12.1
       '@eslint/config-array': 0.20.0
       '@eslint/config-helpers': 0.2.1
@@ -15106,7 +15049,7 @@ snapshots:
   lighthouse-logger@1.4.2:
     dependencies:
       debug: 2.6.9
-      marky: 1.2.5
+      marky: 1.3.0
     transitivePeerDependencies:
       - supports-color
 
@@ -15259,7 +15202,7 @@ snapshots:
 
   marked@4.3.0: {}
 
-  marky@1.2.5: {}
+  marky@1.3.0: {}
 
   match-at@0.1.1: {}
 
@@ -15611,10 +15554,6 @@ snapshots:
     dependencies:
       brace-expansion: 2.0.1
 
-  minimatch@9.0.3:
-    dependencies:
-      brace-expansion: 2.0.1
-
   minimatch@9.0.5:
     dependencies:
       brace-expansion: 2.0.1
@@ -15703,9 +15642,9 @@ snapshots:
       inquirer: 8.2.6
       package-manager-detector: 0.2.11
 
-  nestjs-pino@4.4.0(@nestjs/common@11.0.13(reflect-metadata@0.2.2)(rxjs@7.8.2))(pino-http@10.4.0)(pino@9.6.0)(rxjs@7.8.2):
+  nestjs-pino@4.4.0(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(pino-http@10.4.0)(pino@9.6.0)(rxjs@7.8.2):
     dependencies:
-      '@nestjs/common': 11.0.13(reflect-metadata@0.2.2)(rxjs@7.8.2)
+      '@nestjs/common': 11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2)
       pino: 9.6.0
       pino-http: 10.4.0
       rxjs: 7.8.2
@@ -15802,6 +15741,18 @@ snapshots:
       format-util: 1.0.5
 
   openai@4.93.0:
+    dependencies:
+      '@types/node': 18.19.86
+      '@types/node-fetch': 2.6.12
+      abort-controller: 3.0.0
+      agentkeepalive: 4.6.0
+      form-data-encoder: 1.7.2
+      formdata-node: 4.4.1
+      node-fetch: 2.7.0
+    transitivePeerDependencies:
+      - encoding
+
+  openai@4.94.0:
     dependencies:
       '@types/node': 18.19.86
       '@types/node-fetch': 2.6.12
@@ -16067,7 +16018,7 @@ snapshots:
     dependencies:
       find-up: 2.1.0
 
-  portfinder@1.0.35:
+  portfinder@1.0.36:
     dependencies:
       async: 3.2.6
       debug: 4.4.0
@@ -16333,30 +16284,30 @@ snapshots:
       glob: 11.0.1
       package-json-from-dist: 1.0.1
 
-  rollup@4.39.0:
+  rollup@4.40.0:
     dependencies:
       '@types/estree': 1.0.7
     optionalDependencies:
-      '@rollup/rollup-android-arm-eabi': 4.39.0
-      '@rollup/rollup-android-arm64': 4.39.0
-      '@rollup/rollup-darwin-arm64': 4.39.0
-      '@rollup/rollup-darwin-x64': 4.39.0
-      '@rollup/rollup-freebsd-arm64': 4.39.0
-      '@rollup/rollup-freebsd-x64': 4.39.0
-      '@rollup/rollup-linux-arm-gnueabihf': 4.39.0
-      '@rollup/rollup-linux-arm-musleabihf': 4.39.0
-      '@rollup/rollup-linux-arm64-gnu': 4.39.0
-      '@rollup/rollup-linux-arm64-musl': 4.39.0
-      '@rollup/rollup-linux-loongarch64-gnu': 4.39.0
-      '@rollup/rollup-linux-powerpc64le-gnu': 4.39.0
-      '@rollup/rollup-linux-riscv64-gnu': 4.39.0
-      '@rollup/rollup-linux-riscv64-musl': 4.39.0
-      '@rollup/rollup-linux-s390x-gnu': 4.39.0
-      '@rollup/rollup-linux-x64-gnu': 4.39.0
-      '@rollup/rollup-linux-x64-musl': 4.39.0
-      '@rollup/rollup-win32-arm64-msvc': 4.39.0
-      '@rollup/rollup-win32-ia32-msvc': 4.39.0
-      '@rollup/rollup-win32-x64-msvc': 4.39.0
+      '@rollup/rollup-android-arm-eabi': 4.40.0
+      '@rollup/rollup-android-arm64': 4.40.0
+      '@rollup/rollup-darwin-arm64': 4.40.0
+      '@rollup/rollup-darwin-x64': 4.40.0
+      '@rollup/rollup-freebsd-arm64': 4.40.0
+      '@rollup/rollup-freebsd-x64': 4.40.0
+      '@rollup/rollup-linux-arm-gnueabihf': 4.40.0
+      '@rollup/rollup-linux-arm-musleabihf': 4.40.0
+      '@rollup/rollup-linux-arm64-gnu': 4.40.0
+      '@rollup/rollup-linux-arm64-musl': 4.40.0
+      '@rollup/rollup-linux-loongarch64-gnu': 4.40.0
+      '@rollup/rollup-linux-powerpc64le-gnu': 4.40.0
+      '@rollup/rollup-linux-riscv64-gnu': 4.40.0
+      '@rollup/rollup-linux-riscv64-musl': 4.40.0
+      '@rollup/rollup-linux-s390x-gnu': 4.40.0
+      '@rollup/rollup-linux-x64-gnu': 4.40.0
+      '@rollup/rollup-linux-x64-musl': 4.40.0
+      '@rollup/rollup-win32-arm64-msvc': 4.40.0
+      '@rollup/rollup-win32-ia32-msvc': 4.40.0
+      '@rollup/rollup-win32-x64-msvc': 4.40.0
       fsevents: 2.3.3
 
   router@2.2.0:
@@ -16763,18 +16714,14 @@ snapshots:
 
   supports-preserve-symlinks-flag@1.0.0: {}
 
-  swagger-ui-dist@5.20.5:
-    dependencies:
-      '@scarf/scarf': 1.4.0
-
-  swagger-ui-dist@5.20.7:
+  swagger-ui-dist@5.21.0:
     dependencies:
       '@scarf/scarf': 1.4.0
 
   swagger-ui-express@5.0.1(express@4.21.2):
     dependencies:
       express: 4.21.2
-      swagger-ui-dist: 5.20.7
+      swagger-ui-dist: 5.21.0
 
   tapable@2.2.1: {}
 
@@ -16885,10 +16832,6 @@ snapshots:
   traverse@0.3.9: {}
 
   trough@1.0.5: {}
-
-  ts-api-utils@1.4.3(typescript@5.7.3):
-    dependencies:
-      typescript: 5.7.3
 
   ts-api-utils@2.1.0(typescript@5.7.3):
     dependencies:
@@ -17050,9 +16993,9 @@ snapshots:
       randexp: 0.5.3
       typescript: 5.7.3
 
-  typia@9.1.0(@samchon/openapi@4.0.0)(typescript@5.7.3):
+  typia@9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3):
     dependencies:
-      '@samchon/openapi': 4.0.0
+      '@samchon/openapi': 4.1.0
       commander: 10.0.1
       comment-json: 4.2.5
       inquirer: 8.2.6
@@ -17216,7 +17159,7 @@ snapshots:
       debug: 4.4.0
       es-module-lexer: 1.6.0
       pathe: 1.1.2
-      vite: 5.4.17(@types/node@18.19.86)(terser@5.39.0)
+      vite: 5.4.18(@types/node@18.19.86)(terser@5.39.0)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -17228,21 +17171,21 @@ snapshots:
       - supports-color
       - terser
 
-  vite@5.4.17(@types/node@18.19.86)(terser@5.39.0):
+  vite@5.4.18(@types/node@18.19.86)(terser@5.39.0):
     dependencies:
       esbuild: 0.21.5
       postcss: 8.5.3
-      rollup: 4.39.0
+      rollup: 4.40.0
     optionalDependencies:
       '@types/node': 18.19.86
       fsevents: 2.3.3
       terser: 5.39.0
 
-  vite@6.2.5(@types/node@18.19.86)(jiti@2.4.2)(terser@5.39.0):
+  vite@6.2.6(@types/node@18.19.86)(jiti@2.4.2)(terser@5.39.0):
     dependencies:
       esbuild: 0.25.2
       postcss: 8.5.3
-      rollup: 4.39.0
+      rollup: 4.40.0
     optionalDependencies:
       '@types/node': 18.19.86
       fsevents: 2.3.3
@@ -17252,7 +17195,7 @@ snapshots:
   vitest@2.1.9(@types/node@18.19.86)(terser@5.39.0):
     dependencies:
       '@vitest/expect': 2.1.9
-      '@vitest/mocker': 2.1.9(vite@5.4.17(@types/node@18.19.86)(terser@5.39.0))
+      '@vitest/mocker': 2.1.9(vite@5.4.18(@types/node@18.19.86)(terser@5.39.0))
       '@vitest/pretty-format': 2.1.9
       '@vitest/runner': 2.1.9
       '@vitest/snapshot': 2.1.9
@@ -17268,7 +17211,7 @@ snapshots:
       tinyexec: 0.3.2
       tinypool: 1.0.2
       tinyrainbow: 1.2.0
-      vite: 5.4.17(@types/node@18.19.86)(terser@5.39.0)
+      vite: 5.4.18(@types/node@18.19.86)(terser@5.39.0)
       vite-node: 2.1.9(@types/node@18.19.86)(terser@5.39.0)
       why-is-node-running: 2.3.0
     optionalDependencies:
