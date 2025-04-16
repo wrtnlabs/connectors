@@ -611,3 +611,5 @@ export interface IBbsArticle {
   created_at: string & tags.Format<"date-time">;
 }
 ```
+
+test

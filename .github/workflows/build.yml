@@ -140,6 +140,13 @@ jobs:
       - name: Install All Dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Secrets to Env
+        run: |
+          rm .env
+          jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]' <<< "$SECRETS_CONTEXT" > .env
+        env:
+          SECRETS_CONTEXT: ${{ toJson(secrets) }}
+
       - name: Build Package & Dependencies
         run: |
           # pnpm filter에 패키지의 전체 이름 사용
