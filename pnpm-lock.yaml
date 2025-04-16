@@ -22,31 +22,31 @@ importers:
         version: 0.0.12
       '@nestia/core':
         specifier: ^4.6.1
-        version: 4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))
+        version: 4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.20(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.20)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))
       '@nestia/fetcher':
         specifier: ^4.5.1
         version: 4.6.2(typescript@5.7.3)
       '@nestjs/axios':
         specifier: ^4.0.0
-        version: 4.0.0(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(axios@1.8.4)(rxjs@7.8.2)
+        version: 4.0.0(@nestjs/common@11.0.20(reflect-metadata@0.2.2)(rxjs@7.8.2))(axios@1.8.4)(rxjs@7.8.2)
       '@nestjs/common':
-        specifier: ^11.0.4
-        version: 11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2)
+        specifier: ^11.0.20
+        version: 11.0.20(reflect-metadata@0.2.2)(rxjs@7.8.2)
       '@nestjs/config':
         specifier: ^4.0.0
-        version: 4.0.2(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(rxjs@7.8.2)
+        version: 4.0.2(@nestjs/common@11.0.20(reflect-metadata@0.2.2)(rxjs@7.8.2))(rxjs@7.8.2)
       '@nestjs/core':
-        specifier: ^11.0.4
-        version: 11.0.17(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)
+        specifier: ^11.0.20
+        version: 11.0.20(@nestjs/common@11.0.20(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.0.20)(reflect-metadata@0.2.2)(rxjs@7.8.2)
       '@nestjs/platform-express':
-        specifier: ^11.0.4
-        version: 11.0.17(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)
+        specifier: ^11.0.20
+        version: 11.0.20(@nestjs/common@11.0.20(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.20)
       '@nestjs/swagger':
         specifier: ^11.0.2
-        version: 11.1.3(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)
+        version: 11.1.3(@nestjs/common@11.0.20(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.20)(reflect-metadata@0.2.2)
       '@nestjs/testing':
-        specifier: ^11.0.4
-        version: 11.0.17(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(@nestjs/platform-express@11.0.17)
+        specifier: ^11.0.20
+        version: 11.0.20(@nestjs/common@11.0.20(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.20)(@nestjs/platform-express@11.0.20)
       '@notionhq/client':
         specifier: ^2.2.16
         version: 2.3.0
@@ -70,7 +70,7 @@ importers:
         version: 1.2.3
       '@wrtnio/decorators':
         specifier: ^1.6.0
-        version: 1.6.0(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)))(@nestia/sdk@4.6.2(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)))(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.86)(typescript@5.7.3))(typescript@5.7.3)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)))(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))
+        version: 1.6.0(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.20(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.20)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)))(@nestia/sdk@4.6.2(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.20(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.20)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)))(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.20(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.20)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.86)(typescript@5.7.3))(typescript@5.7.3)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)))(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))
       '@wrtnio/schema':
         specifier: ^3.2.1
         version: 3.2.1
@@ -133,7 +133,7 @@ importers:
         version: 2.1.35
       nestjs-pino:
         specifier: ^4.3.0
-        version: 4.4.0(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(pino-http@10.4.0)(pino@9.6.0)(rxjs@7.8.2)
+        version: 4.4.0(@nestjs/common@11.0.20(reflect-metadata@0.2.2)(rxjs@7.8.2))(pino-http@10.4.0)(pino@9.6.0)(rxjs@7.8.2)
       notion-to-md:
         specifier: ^3.1.1
         version: 3.1.7
@@ -185,6 +185,10 @@ importers:
       zenrows:
         specifier: ^2.0.1
         version: 2.0.1
+    optionalDependencies:
+      sharp:
+        specifier: ^0.33.5
+        version: 0.33.5
     devDependencies:
       '@commitlint/cli':
         specifier: ^19.3.0
@@ -203,7 +207,7 @@ importers:
         version: 0.7.0
       '@nestia/sdk':
         specifier: ^4.6.1
-        version: 4.6.2(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)))(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.86)(typescript@5.7.3))(typescript@5.7.3)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))
+        version: 4.6.2(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.20(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.20)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)))(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.20(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.20)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.86)(typescript@5.7.3))(typescript@5.7.3)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))
       '@ryoppippi/unplugin-typia':
         specifier: ^1.1.0
         version: 1.2.0(@samchon/openapi@2.5.3)(@types/node@18.19.86)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)
@@ -321,10 +325,6 @@ importers:
       write-file-webpack-plugin:
         specifier: ^4.5.1
         version: 4.5.1
-    optionalDependencies:
-      sharp:
-        specifier: ^0.33.5
-        version: 0.33.5
 
   packages/arxiv_search:
     dependencies:
@@ -3329,6 +3329,10 @@ importers:
       xml2js:
         specifier: ^0.6.2
         version: 0.6.2
+    optionalDependencies:
+      sharp:
+        specifier: ^0.33.5
+        version: 0.33.5
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -3387,10 +3391,6 @@ importers:
       typescript-transform-paths:
         specifier: ^3.5.1
         version: 3.5.5(typescript@5.7.3)
-    optionalDependencies:
-      sharp:
-        specifier: ^0.33.5
-        version: 0.33.5
 
   packages/short_io:
     dependencies:
@@ -5224,20 +5224,17 @@ packages:
       axios: ^1.3.1
       rxjs: ^7.0.0
 
-  '@nestjs/common@11.0.17':
-    resolution: {integrity: sha512-FwKylI/hVxaNvzBJdWMMG1LH0cLKz4Oh4jKOHet2JUVMM9j6CuodRbrSnL++KL6PJY/b2E6AY58UDPLNeCqJWw==}
+  '@nestjs/common@11.0.20':
+    resolution: {integrity: sha512-/GH8NDCczjn6+6RNEtSNAts/nq/wQE8L1qZ9TRjqjNqEsZNE1vpFuRIhmcO2isQZ0xY5rySnpaRdrOAul3gQ3A==}
     peerDependencies:
       class-transformer: '*'
       class-validator: '*'
-      file-type: ^20.4.1
       reflect-metadata: ^0.1.12 || ^0.2.0
       rxjs: ^7.1.0
     peerDependenciesMeta:
       class-transformer:
         optional: true
       class-validator:
-        optional: true
-      file-type:
         optional: true
 
   '@nestjs/config@4.0.2':
@@ -5246,8 +5243,8 @@ packages:
       '@nestjs/common': ^10.0.0 || ^11.0.0
       rxjs: ^7.1.0
 
-  '@nestjs/core@11.0.17':
-    resolution: {integrity: sha512-ImK6qNxtegKqK7EJLGTBpP5Ild/DTpcduEtAOS+WLLjZOMjK1k214G9roXvlrNQwlVt9ALAY2jcqnsasdEd7Ow==}
+  '@nestjs/core@11.0.20':
+    resolution: {integrity: sha512-yUkEzBGiRNSEThVl6vMCXgoA9sDGWoRbJsTLdYdCC7lg7PE1iXBnna1FiBfQjT995pm0fjyM1e3WsXmyWeJXbw==}
     engines: {node: '>= 20'}
     peerDependencies:
       '@nestjs/common': ^11.0.0
@@ -5277,8 +5274,8 @@ packages:
       class-validator:
         optional: true
 
-  '@nestjs/platform-express@11.0.17':
-    resolution: {integrity: sha512-et6Ydd6dR0FlcE/WR/9VRnQoTqEpDdzBgGK+aWadA0dFJ65wlN+snJRg/9JGP4ngj90S6xwe0VKD/BbfUGj9cw==}
+  '@nestjs/platform-express@11.0.20':
+    resolution: {integrity: sha512-h/Xq2x0Qi2cr9T64w9DfLejZws1M1hYu7n7XWuC4vxX00FlfOz1jSWGgaTo/Gjq6vtULfq34Gp5Fzf0w34XDyQ==}
     peerDependencies:
       '@nestjs/common': ^11.0.0
       '@nestjs/core': ^11.0.0
@@ -5300,8 +5297,8 @@ packages:
       class-validator:
         optional: true
 
-  '@nestjs/testing@11.0.17':
-    resolution: {integrity: sha512-ryEx6fCYZFCsjEBZo8jOVikQluEHMESocVqHdXWOkkG7UqMPMHimf9gT2qij0GpNnYeDAGw+i7FhSJN3Cajoug==}
+  '@nestjs/testing@11.0.20':
+    resolution: {integrity: sha512-3o+HWsVfA46tt81ctKuNj5ufL9srfmp3dQBCAIx9fzvjooEKwWl5L69AcvDh6JhdB79jhhM1lkSSU+1fBGbxgw==}
     peerDependencies:
       '@nestjs/common': ^11.0.0
       '@nestjs/core': ^11.0.0
@@ -5783,6 +5780,10 @@ packages:
   '@smithy/util-waiter@4.0.3':
     resolution: {integrity: sha512-JtaY3FxmD+te+KSI2FJuEcfNC9T/DGGVf551babM7fAaXhjJUt7oSYurH1Devxd2+BOSUACCgt3buinx4UnmEA==}
     engines: {node: '>=18.0.0'}
+
+  '@tokenizer/inflate@0.2.7':
+    resolution: {integrity: sha512-MADQgmZT1eKjp06jpI2yozxaU9uVs4GzzgSL+uEq7bVcJ9V1ZXQkeGNql1fsSI0gMy1vhvNTNbUqrx+pZfJVmg==}
+    engines: {node: '>=18'}
 
   '@tokenizer/token@0.3.0':
     resolution: {integrity: sha512-OvjF+z51L3ov0OyAU0duzsYuvO01PH7x4t6DJx+guahgTnBHkhJdG7soQeTSFLWN3efnHyibZ4Z8l2EuWwJN3A==}
@@ -7340,6 +7341,9 @@ packages:
   fetch-retry@6.0.0:
     resolution: {integrity: sha512-BUFj1aMubgib37I3v4q78fYo63Po7t4HUPTpQ6/QE6yK6cIQrP+W43FYToeTEyg5m2Y7eFUtijUuAv/PDlWuag==}
 
+  fflate@0.8.2:
+    resolution: {integrity: sha512-cPJU47OaAoCbg0pBvzsgpTPhmhqI5eJjh/JIu8tPj5q+T7iLvW/JAYUqmE7KOB4R1ZyEhzBaIQpQpardBF5z8A==}
+
   figures@3.2.0:
     resolution: {integrity: sha512-yaduQFRKLXYOGgEn6AZau90j3ggSOyiqXU0F9JZfeXYhNa+Jk4X+s45A2zg5jns87GAFa34BBm2kXw4XpNcbdg==}
     engines: {node: '>=8'}
@@ -7351,6 +7355,10 @@ packages:
   file-type@16.5.4:
     resolution: {integrity: sha512-/yFHK0aGjFEgDJjEKP0pWCplsPFPhwyfwevf/pVxiN0tmE4L9LmwWxWukdJSHdoCli4VgQLehjJtwQBnqmsKcw==}
     engines: {node: '>=10'}
+
+  file-type@20.4.1:
+    resolution: {integrity: sha512-hw9gNZXUfZ02Jo0uafWLaFVPter5/k2rfcrjFJJHX/77xtSDOfJuEFb6oKlFV86FLP1SuyHMW1PSk0U9M5tKkQ==}
+    engines: {node: '>=18'}
 
   file-uri-to-path@1.0.0:
     resolution: {integrity: sha512-0Zt+s3L7Vf1biwWZ29aARiVYLx7iMGnEUl9x33fbB/j3jR81u/O2LbqK+Bm1CDSNDKVtJ/YjwY7TUd5SkeLQLw==}
@@ -8181,6 +8189,10 @@ packages:
   listenercount@1.0.1:
     resolution: {integrity: sha512-3mk/Zag0+IJxeDrxSgaDPy4zZ3w05PRZeJNnlWhzFz5OkX49J4krc+A8X2d2M69vGMBEX0uyl8M+W+8gH+kBqQ==}
 
+  load-esm@1.0.2:
+    resolution: {integrity: sha512-nVAvWk/jeyrWyXEAs84mpQCYccxRqgKY4OznLuJhJCa0XsPSfdOIr2zvBZEj3IHEHbX97jjscKRRV539bW0Gpw==}
+    engines: {node: '>=13.2.0'}
+
   loader-runner@4.3.0:
     resolution: {integrity: sha512-3R/1M+yS3j5ou80Me59j7F9IMs4PXs3VqRrm0TU3AbKPxlmpoY1TNscJV/oGJXo8qCatFGTfDbY6W6ipGOYXfg==}
     engines: {node: '>=6.11.5'}
@@ -8992,6 +9004,10 @@ packages:
     resolution: {integrity: sha512-ZI3LnwUv5nOGbQzD9c2iDG6toheuXSZP5esSHBjopsXH4dg19soufvpUGA3uohi5anFtGb2lhAVdHzH6R/Evvg==}
     engines: {node: '>=8'}
 
+  peek-readable@7.0.0:
+    resolution: {integrity: sha512-nri2TO5JE3/mRryik9LlHFT53cgHfRK0Lt0BAZQXku/AW3E6XLt2GaY8siWi7dvW/m1z0ecn+J+bpDa9ZN3IsQ==}
+    engines: {node: '>=18'}
+
   pend@1.2.0:
     resolution: {integrity: sha512-F3asv42UuXchdzt+xXqfW1OGlVBe+mxa2mqI0pg5yAHZPvFmY3Y6drSf/GQ1A86WgWEN9Kzh/WrgKa6iGcHXLg==}
 
@@ -9619,6 +9635,10 @@ packages:
   strnum@1.1.2:
     resolution: {integrity: sha512-vrN+B7DBIoTTZjnPNewwhx6cBA/H+IS7rfW68n7XxC1y7uoiGQBxaKzqucGUgavX15dJgiGztLJ8vxuEzwqBdA==}
 
+  strtok3@10.2.2:
+    resolution: {integrity: sha512-Xt18+h4s7Z8xyZ0tmBoRmzxcop97R4BAh+dXouUDCYn+Em+1P3qpkUfI5ueWLT8ynC5hZ+q4iPEmGG1urvQGBg==}
+    engines: {node: '>=18'}
+
   strtok3@6.3.0:
     resolution: {integrity: sha512-fZtbhtvI9I48xDSywd/somNqgUHl2L2cstmXCCif0itOf96jeW18MBSyrLuNicYQVkvpOxkZtkzujiTJ9LW5Jw==}
     engines: {node: '>=10'}
@@ -9754,6 +9774,10 @@ packages:
   token-types@4.2.1:
     resolution: {integrity: sha512-6udB24Q737UD/SDsKAHI9FCRP7Bqc9D/MQUV02ORQg5iskjtLJlZJNdN4kKtcdtwCeWIwIHDGaUsTsCCAa8sFQ==}
     engines: {node: '>=10'}
+
+  token-types@6.0.0:
+    resolution: {integrity: sha512-lbDrTLVsHhOMljPscd0yitpozq7Ga2M5Cvez5AjGg8GASBjtt6iERCAJ93yommPmz62fb45oFIXHEZ3u9bfJEA==}
+    engines: {node: '>=14.16'}
 
   tr46@0.0.3:
     resolution: {integrity: sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==}
@@ -9912,6 +9936,10 @@ packages:
   uid@2.0.2:
     resolution: {integrity: sha512-u3xV3X7uzvi5b1MncmZo3i2Aw222Zk1keqLA1YkHldREkAhAqi65wuPfe7lHx8H/Wzy+8CE7S7uS3jekIM5s8g==}
     engines: {node: '>=8'}
+
+  uint8array-extras@1.4.0:
+    resolution: {integrity: sha512-ZPtzy0hu4cZjv3z5NW9gfKnNLjoz4y6uv4HlelAjDK7sY/xOkKZv9xK/WQpcsBB3jEybChz9DPC2U/+cusjJVQ==}
+    engines: {node: '>=18'}
 
   undici-types@5.26.5:
     resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
@@ -11590,11 +11618,11 @@ snapshots:
       typia: 8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)
       uuid: 11.1.0
 
-  '@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))':
+  '@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.20(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.20)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))':
     dependencies:
       '@nestia/fetcher': 4.6.2(typescript@5.7.3)
-      '@nestjs/common': 11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2)
-      '@nestjs/core': 11.0.17(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)
+      '@nestjs/common': 11.0.20(reflect-metadata@0.2.2)(rxjs@7.8.2)
+      '@nestjs/core': 11.0.20(@nestjs/common@11.0.20(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.0.20)(reflect-metadata@0.2.2)(rxjs@7.8.2)
       '@samchon/openapi': 2.5.3
       detect-ts-node: 1.0.5
       get-function-location: 2.0.0
@@ -11618,12 +11646,12 @@ snapshots:
       typescript: 5.7.3
       typia: 7.6.4(@samchon/openapi@2.5.3)(typescript@5.7.3)
 
-  '@nestia/sdk@4.6.2(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)))(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.86)(typescript@5.7.3))(typescript@5.7.3)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))':
+  '@nestia/sdk@4.6.2(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.20(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.20)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)))(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.20(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.20)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.86)(typescript@5.7.3))(typescript@5.7.3)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))':
     dependencies:
-      '@nestia/core': 4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))
+      '@nestia/core': 4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.20(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.20)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))
       '@nestia/fetcher': 4.6.2(typescript@5.7.3)
-      '@nestjs/common': 11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2)
-      '@nestjs/core': 11.0.17(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)
+      '@nestjs/common': 11.0.20(reflect-metadata@0.2.2)(rxjs@7.8.2)
+      '@nestjs/core': 11.0.20(@nestjs/common@11.0.20(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.0.20)(reflect-metadata@0.2.2)(rxjs@7.8.2)
       '@samchon/openapi': 2.5.3
       cli: 1.0.1
       get-function-location: 2.0.0
@@ -11639,33 +11667,35 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
-  '@nestjs/axios@4.0.0(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(axios@1.8.4)(rxjs@7.8.2)':
+  '@nestjs/axios@4.0.0(@nestjs/common@11.0.20(reflect-metadata@0.2.2)(rxjs@7.8.2))(axios@1.8.4)(rxjs@7.8.2)':
     dependencies:
-      '@nestjs/common': 11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2)
+      '@nestjs/common': 11.0.20(reflect-metadata@0.2.2)(rxjs@7.8.2)
       axios: 1.8.4
       rxjs: 7.8.2
 
-  '@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2)':
+  '@nestjs/common@11.0.20(reflect-metadata@0.2.2)(rxjs@7.8.2)':
     dependencies:
+      file-type: 20.4.1
       iterare: 1.2.1
+      load-esm: 1.0.2
       reflect-metadata: 0.2.2
       rxjs: 7.8.2
       tslib: 2.8.1
       uid: 2.0.2
-    optionalDependencies:
-      file-type: 16.5.4
+    transitivePeerDependencies:
+      - supports-color
 
-  '@nestjs/config@4.0.2(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(rxjs@7.8.2)':
+  '@nestjs/config@4.0.2(@nestjs/common@11.0.20(reflect-metadata@0.2.2)(rxjs@7.8.2))(rxjs@7.8.2)':
     dependencies:
-      '@nestjs/common': 11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2)
+      '@nestjs/common': 11.0.20(reflect-metadata@0.2.2)(rxjs@7.8.2)
       dotenv: 16.4.7
       dotenv-expand: 12.0.1
       lodash: 4.17.21
       rxjs: 7.8.2
 
-  '@nestjs/core@11.0.17(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)':
+  '@nestjs/core@11.0.20(@nestjs/common@11.0.20(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.0.20)(reflect-metadata@0.2.2)(rxjs@7.8.2)':
     dependencies:
-      '@nestjs/common': 11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2)
+      '@nestjs/common': 11.0.20(reflect-metadata@0.2.2)(rxjs@7.8.2)
       '@nuxt/opencollective': 0.4.1
       fast-safe-stringify: 2.1.1
       iterare: 1.2.1
@@ -11675,17 +11705,17 @@ snapshots:
       tslib: 2.8.1
       uid: 2.0.2
     optionalDependencies:
-      '@nestjs/platform-express': 11.0.17(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)
+      '@nestjs/platform-express': 11.0.20(@nestjs/common@11.0.20(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.20)
 
-  '@nestjs/mapped-types@2.1.0(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(reflect-metadata@0.2.2)':
+  '@nestjs/mapped-types@2.1.0(@nestjs/common@11.0.20(reflect-metadata@0.2.2)(rxjs@7.8.2))(reflect-metadata@0.2.2)':
     dependencies:
-      '@nestjs/common': 11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2)
+      '@nestjs/common': 11.0.20(reflect-metadata@0.2.2)(rxjs@7.8.2)
       reflect-metadata: 0.2.2
 
-  '@nestjs/platform-express@11.0.17(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)':
+  '@nestjs/platform-express@11.0.20(@nestjs/common@11.0.20(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.20)':
     dependencies:
-      '@nestjs/common': 11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2)
-      '@nestjs/core': 11.0.17(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)
+      '@nestjs/common': 11.0.20(reflect-metadata@0.2.2)(rxjs@7.8.2)
+      '@nestjs/core': 11.0.20(@nestjs/common@11.0.20(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.0.20)(reflect-metadata@0.2.2)(rxjs@7.8.2)
       cors: 2.8.5
       express: 5.1.0
       multer: 1.4.5-lts.2
@@ -11694,25 +11724,25 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@nestjs/swagger@11.1.3(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)':
+  '@nestjs/swagger@11.1.3(@nestjs/common@11.0.20(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.20)(reflect-metadata@0.2.2)':
     dependencies:
       '@microsoft/tsdoc': 0.15.1
-      '@nestjs/common': 11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2)
-      '@nestjs/core': 11.0.17(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)
-      '@nestjs/mapped-types': 2.1.0(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(reflect-metadata@0.2.2)
+      '@nestjs/common': 11.0.20(reflect-metadata@0.2.2)(rxjs@7.8.2)
+      '@nestjs/core': 11.0.20(@nestjs/common@11.0.20(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.0.20)(reflect-metadata@0.2.2)(rxjs@7.8.2)
+      '@nestjs/mapped-types': 2.1.0(@nestjs/common@11.0.20(reflect-metadata@0.2.2)(rxjs@7.8.2))(reflect-metadata@0.2.2)
       js-yaml: 4.1.0
       lodash: 4.17.21
       path-to-regexp: 8.2.0
       reflect-metadata: 0.2.2
       swagger-ui-dist: 5.21.0
 
-  '@nestjs/testing@11.0.17(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(@nestjs/platform-express@11.0.17)':
+  '@nestjs/testing@11.0.20(@nestjs/common@11.0.20(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.20)(@nestjs/platform-express@11.0.20)':
     dependencies:
-      '@nestjs/common': 11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2)
-      '@nestjs/core': 11.0.17(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)
+      '@nestjs/common': 11.0.20(reflect-metadata@0.2.2)(rxjs@7.8.2)
+      '@nestjs/core': 11.0.20(@nestjs/common@11.0.20(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.0.20)(reflect-metadata@0.2.2)(rxjs@7.8.2)
       tslib: 2.8.1
     optionalDependencies:
-      '@nestjs/platform-express': 11.0.17(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)
+      '@nestjs/platform-express': 11.0.20(@nestjs/common@11.0.20(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.20)
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
@@ -12285,6 +12315,14 @@ snapshots:
       '@smithy/types': 4.2.0
       tslib: 2.8.1
 
+  '@tokenizer/inflate@0.2.7':
+    dependencies:
+      debug: 4.4.0
+      fflate: 0.8.2
+      token-types: 6.0.0
+    transitivePeerDependencies:
+      - supports-color
+
   '@tokenizer/token@0.3.0': {}
 
   '@trivago/prettier-plugin-sort-imports@4.3.0(prettier@3.5.3)':
@@ -12789,10 +12827,10 @@ snapshots:
       webpack: 5.99.5(webpack-cli@5.1.4)
       webpack-cli: 5.1.4(webpack@5.99.5)
 
-  '@wrtnio/decorators@1.6.0(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)))(@nestia/sdk@4.6.2(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)))(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.86)(typescript@5.7.3))(typescript@5.7.3)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)))(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))':
+  '@wrtnio/decorators@1.6.0(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.20(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.20)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)))(@nestia/sdk@4.6.2(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.20(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.20)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)))(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.20(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.20)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.86)(typescript@5.7.3))(typescript@5.7.3)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)))(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))':
     dependencies:
-      '@nestia/core': 4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))
-      '@nestia/sdk': 4.6.2(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)))(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.86)(typescript@5.7.3))(typescript@5.7.3)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))
+      '@nestia/core': 4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.20(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.20)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))
+      '@nestia/sdk': 4.6.2(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.20(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.20)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)))(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.20(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.20)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.86)(typescript@5.7.3))(typescript@5.7.3)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))
       typia: 8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)
 
   '@wrtnio/schema@3.2.1':
@@ -14177,6 +14215,8 @@ snapshots:
 
   fetch-retry@6.0.0: {}
 
+  fflate@0.8.2: {}
+
   figures@3.2.0:
     dependencies:
       escape-string-regexp: 1.0.5
@@ -14190,6 +14230,15 @@ snapshots:
       readable-web-to-node-stream: 3.0.4
       strtok3: 6.3.0
       token-types: 4.2.1
+
+  file-type@20.4.1:
+    dependencies:
+      '@tokenizer/inflate': 0.2.7
+      strtok3: 10.2.2
+      token-types: 6.0.0
+      uint8array-extras: 1.4.0
+    transitivePeerDependencies:
+      - supports-color
 
   file-uri-to-path@1.0.0:
     optional: true
@@ -15063,6 +15112,8 @@ snapshots:
 
   listenercount@1.0.1: {}
 
+  load-esm@1.0.2: {}
+
   loader-runner@4.3.0: {}
 
   locate-path@2.0.0:
@@ -15642,9 +15693,9 @@ snapshots:
       inquirer: 8.2.6
       package-manager-detector: 0.2.11
 
-  nestjs-pino@4.4.0(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(pino-http@10.4.0)(pino@9.6.0)(rxjs@7.8.2):
+  nestjs-pino@4.4.0(@nestjs/common@11.0.20(reflect-metadata@0.2.2)(rxjs@7.8.2))(pino-http@10.4.0)(pino@9.6.0)(rxjs@7.8.2):
     dependencies:
-      '@nestjs/common': 11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2)
+      '@nestjs/common': 11.0.20(reflect-metadata@0.2.2)(rxjs@7.8.2)
       pino: 9.6.0
       pino-http: 10.4.0
       rxjs: 7.8.2
@@ -15960,6 +16011,8 @@ snapshots:
   pathval@2.0.0: {}
 
   peek-readable@4.1.0: {}
+
+  peek-readable@7.0.0: {}
 
   pend@1.2.0: {}
 
@@ -16695,6 +16748,11 @@ snapshots:
 
   strnum@1.1.2: {}
 
+  strtok3@10.2.2:
+    dependencies:
+      '@tokenizer/token': 0.3.0
+      peek-readable: 7.0.0
+
   strtok3@6.3.0:
     dependencies:
       '@tokenizer/token': 0.3.0
@@ -16823,6 +16881,11 @@ snapshots:
   toidentifier@1.0.1: {}
 
   token-types@4.2.1:
+    dependencies:
+      '@tokenizer/token': 0.3.0
+      ieee754: 1.2.1
+
+  token-types@6.0.0:
     dependencies:
       '@tokenizer/token': 0.3.0
       ieee754: 1.2.1
@@ -17010,6 +17073,8 @@ snapshots:
   uid@2.0.2:
     dependencies:
       '@lukeed/csprng': 1.1.0
+
+  uint8array-extras@1.4.0: {}
 
   undici-types@5.26.5: {}
 
