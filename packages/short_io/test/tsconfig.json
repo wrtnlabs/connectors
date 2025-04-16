@@ -1,0 +1,16 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "target": "ES2015",
+    "outDir": "../bin",
+    "paths": {
+      "@wrtnlabs/connector-short-io": ["../src/index.ts"],
+      "@wrtnlabs/connector-short-io/lib/*": ["../src/*"]
+    },
+    "plugins": [
+      { "transform": "typescript-transform-paths" },
+      { "transform": "typia/lib/transform" }
+    ]
+  },
+  "include": ["../src", "./"]
+}
