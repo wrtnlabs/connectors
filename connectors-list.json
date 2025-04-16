@@ -261,6 +261,12 @@
       ]
     },
     {
+      "name": "@wrtnlabs/connector-short-io",
+      "envList": [
+        "SHORT_IO_API_KEY"
+      ]
+    },
+    {
       "name": "@wrtnlabs/connector-slack",
       "envList": [
         "SLACK_TOKEN"
@@ -331,5 +337,5 @@
       ]
     }
   ],
-  "version": "0.1.489"
+  "version": "0.1.490"
 }
