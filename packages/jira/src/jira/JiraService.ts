@@ -387,24 +387,6 @@ export class JiraService {
   /**
    * Jira Service.
    *
-   * Get accessible resources
-   */
-  async getAccessibleResources(input: {
-    access_token: string;
-  }): Promise<IJiraService.IGetAccessibleResourcesOutput> {
-    const url = `https://api.atlassian.com/oauth/token/accessible-resources`;
-    const res = await axios.get(url, {
-      headers: {
-        Authorization: `Bearer ${input.access_token}`,
-      },
-    });
-
-    return res.data[0];
-  }
-
-  /**
-   * Jira Service.
-   *
    * Delete the comment
    *
    * Delete the comments on the issue.
