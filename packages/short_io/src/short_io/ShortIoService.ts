@@ -12,7 +12,7 @@ export class ShortIoService implements LinkShortener {
   async shorten(
     input: IShortIoService.IShortenInput,
   ): Promise<IShortIoService.IShortenOutput> {
-    const { url, domain } = input;
+    const { url } = input;
 
     const response = await fetch(`https://api.short.io/links`, {
       method: "POST",
@@ -20,7 +20,7 @@ export class ShortIoService implements LinkShortener {
         "Content-Type": "application/json",
         Authorization: `${this.props.shortIoApiKey}`,
       },
-      body: JSON.stringify({ originalURL: url, domain }),
+      body: JSON.stringify({ originalURL: url, domain: this.props.domain }),
     });
 
     const data = await response.json();

@@ -13,17 +13,14 @@ export namespace IShortIoService {
    */
   export type IProps = {
     [key in SnakeToCamel<(typeof ENV_LIST)[number]>]: string;
+  } & {
+    domain: string;
   };
 
   /**
    * Shorten url input
    */
-  export interface IShortenInput extends ILinkShortener.IShortenInput {
-    /**
-     * Domain that user set in Short.io
-     */
-    domain: string;
-  }
+  export interface IShortenInput extends ILinkShortener.IShortenInput {}
 
   /**
    * Shorten url output
