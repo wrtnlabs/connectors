@@ -2,7 +2,7 @@
   "name": "@wrtnlabs/connector-typeform",
   "version": "0.0.1",
   "description": "",
-  "main": "src/index.ts",
+  "main": "src/index.cjs",
   "exports": {
     "import": "./lib/index.mjs",
     "require": "./lib/index.cjs",
