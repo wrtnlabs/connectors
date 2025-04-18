@@ -16,7 +16,8 @@
     "build:test": "rimraf bin && tsc -p test/tsconfig.json",
     "dev": "pnpm build:test --watch",
     "eslint": "eslint ./**/*.ts",
-    "test": "node bin/test"
+    "test": "node bin/test",
+    "prepack": "pnpm run build"
   },
   "keywords": [
     "openai",
