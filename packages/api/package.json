@@ -11,7 +11,7 @@
     "compile": "rimraf lib && tsc",
     "deploy": "cd ../.. && npm install && npm run build:api && cd ./packages/api && npm publish --access public",
     "prepare": "ts-patch install && typia patch",
-    "prepack": "npm run build"
+    "prepack": "pnpm run build"
   },
   "repository": {
     "type": "git",

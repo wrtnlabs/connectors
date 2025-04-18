@@ -17,7 +17,7 @@
     "dev": "pnpm build:test --watch",
     "eslint": "eslint ./**/*.ts",
     "test": "node bin/test",
-    "prepack": "npm run build"
+    "prepack": "pnpm run build"
   },
   "keywords": [
     "openai",
