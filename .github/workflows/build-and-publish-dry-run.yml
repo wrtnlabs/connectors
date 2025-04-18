@@ -6,7 +6,6 @@ on:
 jobs:
   determine-changed-packages:
     runs-on: ubuntu-latest
-    needs: check-list-updated
     outputs:
       changed_packages: ${{ steps.list-packages.outputs.packages }}
     steps:
