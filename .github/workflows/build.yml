@@ -142,7 +142,7 @@ jobs:
 
       - name: Decode ENV_CONFIG to .env
         run: |
-          echo "${{ secrets.ENV_CONFIG }}" | tr '\\n' '\n' > .env
+          echo "${{ secrets.ENV_CONFIG }}" > .env
 
       - name: Build Package & Dependencies
         run: |
