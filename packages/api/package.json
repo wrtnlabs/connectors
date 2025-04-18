@@ -38,11 +38,5 @@
   "dependencies": {
     "@nestia/fetcher": "^4.0.2",
     "typia": "^9.1.0"
-  },
-  "publishConfig": {
-    "main": "lib/index.js",
-    "module": "lib/index.mjs",
-    "typings": "lib/index.d.ts",
-    "access": "public"
   }
 }

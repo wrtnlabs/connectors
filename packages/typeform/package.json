@@ -77,11 +77,5 @@
     "README.md",
     "lib",
     "package.json"
-  ],
-  "publishConfig": {
-    "main": "lib/index.js",
-    "module": "lib/index.mjs",
-    "typings": "lib/index.d.ts",
-    "access": "public"
-  }
+  ]
 }
