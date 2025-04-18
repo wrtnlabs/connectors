@@ -140,12 +140,9 @@ jobs:
       - name: Install All Dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Secrets to Env
+      - name: Decode ENV_CONFIG to .env
         run: |
-          rm .env
-          jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]' <<< "$SECRETS_CONTEXT" > .env
-        env:
-          SECRETS_CONTEXT: ${{ toJson(secrets) }}
+          echo "${{ secrets.ENV_CONFIG }}" > .env
 
       - name: Build Package & Dependencies
         run: |

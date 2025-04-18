@@ -29,6 +29,7 @@ export class TestGlobal {
 
 interface IEnvironments {
   SERP_API_KEY: string;
+  SHORT_IO_API_KEY: string;
 }
 
 const environments = new Singleton(() => {

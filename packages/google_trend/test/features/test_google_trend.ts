@@ -7,7 +7,7 @@ import { TestGlobal } from "../TestGlobal";
 
 export const test_google_trend = async () => {
   const googleTrendService = new GoogleTrendService({
-    googleTrendApiKey: TestGlobal.env.SERP_API_KEY,
+    serpApiKey: TestGlobal.env.SERP_API_KEY,
   });
   const results = await googleTrendService.dailyTrend({});
   typia.assert<IGoogleTrendService.IResponse[]>(results);

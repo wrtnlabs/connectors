@@ -7,6 +7,7 @@ import { ShortIoService } from "@wrtnlabs/connector-short-io";
 export const test_short_io = async () => {
   const shortIoService = new ShortIoService({
     shortIoApiKey: TestGlobal.env.SHORT_IO_API_KEY,
+    domain: "test-wrtnlabs.short.gy",
   });
 
   const originalUrl =
@@ -14,7 +15,6 @@ export const test_short_io = async () => {
 
   const shorten = await shortIoService.shorten({
     url: originalUrl,
-    domain: "test-wrtnlabs.short.gy",
   });
 
   const res = await fetch(shorten.url);

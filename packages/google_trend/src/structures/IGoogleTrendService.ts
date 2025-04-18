@@ -1,7 +1,7 @@
 import { tags } from "typia";
 import { SnakeToCamel } from "@wrtnlabs/connector-shared";
 
-export const ENV_LIST = ["GOOGLE_TREND_API_KEY"] as const;
+export const ENV_LIST = ["SERP_API_KEY"] as const;
 
 export namespace IGoogleTrendService {
   export type IProps = {

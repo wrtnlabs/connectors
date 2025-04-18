@@ -1,11 +1,17 @@
 import { tags } from "typia";
-import { SnakeToCamel, StrictOmit } from "@wrtnlabs/connector-shared";
+import {
+  LinkShortener,
+  SnakeToCamel,
+  StrictOmit,
+} from "@wrtnlabs/connector-shared";
 
 export const ENV_LIST = ["SERP_API_KEY"] as const;
 
 export namespace IGoogleFlightService {
   export type IProps = {
     [key in SnakeToCamel<(typeof ENV_LIST)[number]>]: string;
+  } & {
+    linkShortener?: LinkShortener;
   };
 
   /**
@@ -352,6 +358,16 @@ export namespace IGoogleFlightService {
      *
      * @title Reservation Link
      */
-    book_link: string & tags.Format<"uri">;
+    book_link: {
+      /**
+       * Departing flight link
+       */
+      depart?: string & tags.Format<"iri">;
+
+      /**
+       * Returning flight link
+       */
+      return?: string & tags.Format<"iri">;
+    };
   }
 }

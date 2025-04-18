@@ -1,7 +1,10 @@
 import { getJson } from "serpapi";
 import { IGoogleFlightService } from "../structures/IGoogleFlightService";
+import { LinkShortener } from "@wrtnlabs/connector-shared";
 
 export class GoogleFlightService {
+  private readonly linkShortener?: LinkShortener;
+
   private readonly defaultParams: {
     engine: string;
     api_key: string;
@@ -11,6 +14,8 @@ export class GoogleFlightService {
   };
 
   constructor(private readonly props: IGoogleFlightService.IProps) {
+    this.linkShortener = props.linkShortener;
+
     this.defaultParams = {
       engine: "google_flights",
       api_key: this.props.serpApiKey,
@@ -261,15 +266,32 @@ export class GoogleFlightService {
         const returningBookingRequest =
           bookingOption.returning?.booking_request;
 
-        let bookLink: string;
+        // let bookLink: string;
+        let departingLink: string | undefined;
+        let returningLink: string | undefined;
         if (togetherBookingRequest) {
-          bookLink = `${togetherBookingRequest.url}?${togetherBookingRequest.post_data}`;
+          departingLink = this.linkShortener
+            ? (
+                await this.linkShortener.shorten({
+                  url: `${togetherBookingRequest.url}?${togetherBookingRequest.post_data}`,
+                })
+              ).url
+            : `${togetherBookingRequest.url}?${togetherBookingRequest.post_data}`;
         } else if (departingBookingRequest && returningBookingRequest) {
-          const departingLink = `${departingBookingRequest.url}?${departingBookingRequest.post_data}`;
-          const returningLink = `${returningBookingRequest.url}?${returningBookingRequest.post_data}`;
-          bookLink = `출발 항공편 예약 링크: ${departingLink} / 도착 항공편 예약 링크: ${returningLink}`;
-        } else {
-          bookLink = "예약 링크가 없습니다.";
+          departingLink = this.linkShortener
+            ? (
+                await this.linkShortener.shorten({
+                  url: `${departingBookingRequest.url}?${departingBookingRequest.post_data}`,
+                })
+              ).url
+            : `${departingBookingRequest.url}?${departingBookingRequest.post_data}`;
+          returningLink = this.linkShortener
+            ? (
+                await this.linkShortener.shorten({
+                  url: `${returningBookingRequest.url}?${returningBookingRequest.post_data}`,
+                })
+              ).url
+            : `${returningBookingRequest.url}?${returningBookingRequest.post_data}`;
         }
 
         return {
@@ -278,8 +300,11 @@ export class GoogleFlightService {
             bookingOption.together?.price !== undefined
               ? `${bookingOption.together.price}원`
               : "가격 정보가 없습니다.",
-          book_link: bookLink,
-        };
+          book_link: {
+            depart: departingLink,
+            return: returningLink,
+          },
+        } satisfies IGoogleFlightService.IBookingOption;
       }),
     );
     return transformedOptions;
