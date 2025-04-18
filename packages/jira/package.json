@@ -2,7 +2,7 @@
   "name": "@wrtnlabs/connector-jira",
   "version": "0.0.1",
   "description": "",
-  "main": "src/index.cjs",
+  "main": "src/index.ts",
   "exports": {
     "import": "./lib/index.mjs",
     "require": "./lib/index.cjs",
@@ -75,5 +75,11 @@
     "README.md",
     "lib",
     "package.json"
-  ]
+  ],
+  "publishConfig": {
+    "main": "lib/index.js",
+    "module": "lib/index.mjs",
+    "typings": "lib/index.d.ts",
+    "access": "public"
+  }
 }
