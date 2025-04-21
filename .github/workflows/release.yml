@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          ref: main
       - uses: actions/setup-node@cdca7365b2dadb8aad0a33bc7601856ffabcc48e # v4.3.0
         with:
           registry-url: https://registry.npmjs.org/
@@ -18,27 +20,25 @@ jobs:
         with:
           version: 10
 
-      - name: Checkout repository for versioning
-        uses: actions/checkout@v4
-        with:
-          branch: main
-
       - name: Bump version for connector-list
         run: |
           pnpm install
           git config --local user.email "studio@wrtn.io"
           git config --local user.name "studio-pro"
-          git pull origin main
+          git pull
           pnpm prepare
-          npm pkg get version
+          VERSION=$(npm pkg get version | tr -d '"')
+          echo "Version: $VERSION"
           git add .
-          git commit --no-verify -m "Bump connector-list version to %s [skip ci]"
-          git push --set-upstream origin main
+          git commit --no-verify -m "Bump connector-list version to $VERSION [skip ci]"
+          git push origin main
 
   version_bump:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          ref: main
       - uses: actions/setup-node@cdca7365b2dadb8aad0a33bc7601856ffabcc48e # v4.3.0
         with:
           registry-url: https://registry.npmjs.org/
