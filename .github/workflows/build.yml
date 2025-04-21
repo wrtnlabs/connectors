@@ -28,6 +28,8 @@ jobs:
           version: 10
       - name: install dependencies
         run: |
+          git config --local user.email "studio@wrtn.io"
+          git config --local user.name "studio-pro"
           npm version patch
           pnpm install --frozen-lockfile
           pnpm prepare
