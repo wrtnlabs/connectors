@@ -45,7 +45,10 @@ jobs:
           git config --local user.name "studio-pro"
           git pull
           pnpm prepare
-          git push --set-upstream origin main --follow-tags
+          npm pkg get version
+          git add *
+          git commit --no-verify -m "Bump connector-list version to %s [skip ci]"
+          git push --set-upstream origin main
 
       - name: Bump version for sdk
         working-directory: packages/api
