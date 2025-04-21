@@ -22,41 +22,41 @@ jobs:
           echo "${{ secrets.ENV_CONFIG }}" > .env
 
       - name: Root Install
-         run: pnpm install && pnpm build:prisma
- 
-       - name: Build
-         working-directory: website
-         run: pnpm install && pnpm build
- 
-       - name: Deploy
-         uses: JamesIves/github-pages-deploy-action@v4
-         with:
-           branch: gh-pages
-           folder: ./website/out
- 
-       - name: Checkout repository for versioning
-         uses: actions/checkout@v4
-         with:
-           branch: main
- 
-       - name: Bump version for connector-list
-         run: |
-           git config --local user.email "studio@wrtn.io"
-           git config --local user.name "studio-pro"
-           git pull
-           pnpm prepare
-           git push --set-upstream origin main --follow-tags
- 
-       - name: Bump version for sdk
-         working-directory: packages/api
-         run: |
-           git config --local user.email "studio@wrtn.io"
-           git config --local user.name "studio-pro"
-           git pull
-           npm version patch
-           git add *
-           git commit --no-verify -m "Bump sdk version to %s [skip ci]"
-           git push --set-upstream origin main
+        run: pnpm install && pnpm build:prisma
+
+      - name: Build
+        working-directory: website
+        run: pnpm install && pnpm build
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: ./website/out
+
+      - name: Checkout repository for versioning
+        uses: actions/checkout@v4
+        with:
+          branch: main
+
+      - name: Bump version for connector-list
+        run: |
+          git config --local user.email "studio@wrtn.io"
+          git config --local user.name "studio-pro"
+          git pull
+          pnpm prepare
+          git push --set-upstream origin main --follow-tags
+
+      - name: Bump version for sdk
+        working-directory: packages/api
+        run: |
+          git config --local user.email "studio@wrtn.io"
+          git config --local user.name "studio-pro"
+          git pull
+          npm version patch
+          git add *
+          git commit --no-verify -m "Bump sdk version to %s [skip ci]"
+          git push --set-upstream origin main
 
   publish:
     runs-on: ubuntu-latest
@@ -92,7 +92,7 @@ jobs:
           fetch-depth: 0
       - uses: pnpm/action-setup@a7487c7e89a18df4991f7f222e4898a00d66ddda # v4.1.0
         with:
-            version: 10
+          version: 10
       - run: pnpm dlx changelogithub
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
