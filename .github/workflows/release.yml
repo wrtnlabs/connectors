@@ -31,7 +31,7 @@ jobs:
           git pull origin main
           pnpm prepare
           npm pkg get version
-          git add *
+          git add .
           git commit --no-verify -m "Bump connector-list version to %s [skip ci]"
           git push --set-upstream origin main
 
@@ -75,7 +75,7 @@ jobs:
           git config --local user.name "studio-pro"
           git pull origin main
           npm version patch
-          git add *
+          git add .
           git commit --no-verify -m "Bump sdk version to %s [skip ci]"
           git push --set-upstream origin main
 
