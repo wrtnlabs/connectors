@@ -18,9 +18,6 @@ jobs:
         with:
           version: 10
 
-      - name: Root Install
-        run: pnpm install
-
       - name: Checkout repository for versioning
         uses: actions/checkout@v4
         with:
@@ -28,6 +25,7 @@ jobs:
 
       - name: Bump version for connector-list
         run: |
+          pnpm install
           git config --local user.email "studio@wrtn.io"
           git config --local user.name "studio-pro"
           git pull origin main
