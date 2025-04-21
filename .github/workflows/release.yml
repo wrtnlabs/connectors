@@ -6,17 +6,73 @@ on:
       - "*"
 
 jobs:
-  publish:
+  version_bump:
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-      contents: none
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - uses: actions/setup-node@cdca7365b2dadb8aad0a33bc7601856ffabcc48e # v4.3.0
         with:
           registry-url: https://registry.npmjs.org/
+          node-version: 20.x
       - uses: pnpm/action-setup@a7487c7e89a18df4991f7f222e4898a00d66ddda # v4.1.0
+        with:
+          version: 10
+      - name: Decode ENV_CONFIG to .env
+        run: |
+          echo "${{ secrets.ENV_CONFIG }}" > .env
+
+      - name: Root Install
+         run: pnpm install && pnpm build:prisma
+ 
+       - name: Build
+         working-directory: website
+         run: pnpm install && pnpm build
+ 
+       - name: Deploy
+         uses: JamesIves/github-pages-deploy-action@v4
+         with:
+           branch: gh-pages
+           folder: ./website/out
+ 
+       - name: Checkout repository for versioning
+         uses: actions/checkout@v4
+         with:
+           branch: main
+ 
+       - name: Bump version for connector-list
+         run: |
+           git config --local user.email "studio@wrtn.io"
+           git config --local user.name "studio-pro"
+           git pull
+           pnpm prepare
+           git push --set-upstream origin main --follow-tags
+ 
+       - name: Bump version for sdk
+         working-directory: packages/api
+         run: |
+           git config --local user.email "studio@wrtn.io"
+           git config --local user.name "studio-pro"
+           git pull
+           npm version patch
+           git add *
+           git commit --no-verify -m "Bump sdk version to %s [skip ci]"
+           git push --set-upstream origin main
+
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: none
+    needs: version_bump
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/setup-node@cdca7365b2dadb8aad0a33bc7601856ffabcc48e # v4.3.0
+        with:
+          registry-url: https://registry.npmjs.org/
+          node-version: 20.x
+      - uses: pnpm/action-setup@a7487c7e89a18df4991f7f222e4898a00d66ddda # v4.1.0
+        with:
+          version: 10
       - run: pnpm install --frozen-lockfile
       - name: Publish to NPM
         # we need -no-git-checks to avoid git errors https://github.com/pnpm/pnpm/issues/5894
@@ -35,6 +91,8 @@ jobs:
         with:
           fetch-depth: 0
       - uses: pnpm/action-setup@a7487c7e89a18df4991f7f222e4898a00d66ddda # v4.1.0
+        with:
+            version: 10
       - run: pnpm dlx changelogithub
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
