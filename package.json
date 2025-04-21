@@ -29,7 +29,7 @@
     "webpack": "rimraf dist && webpack",
     "webpack:start": "cd dist && node dist/server",
     "------------------------DEPLOYS------------------------": "",
-    "release": "bumpp",
+    "release": "bumpp && npm run list-connectors",
     "package:api": "pnpm run build:api && cd packages/api && npm publish",
     "package:latest": "pnpm --filter='./packages/**' --filter='!./packages/api' --filter='!./packages/backend' -r publish --tag latest",
     "package:next": "pnpm --filter='./packages/**' --filter='!./packages/api' --filter='!./packages/backend' -r publish --tag next",
