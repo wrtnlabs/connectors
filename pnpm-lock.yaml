@@ -21,11 +21,11 @@ importers:
         specifier: 0.0.12
         version: 0.0.12
       '@nestia/core':
-        specifier: ^4.6.1
-        version: 4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))
+        specifier: ^6.0.1
+        version: 6.0.1(@nestia/fetcher@6.0.1(@samchon/openapi@4.2.0)(typia@9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typescript@5.7.3)
       '@nestia/fetcher':
-        specifier: ^4.5.1
-        version: 4.6.2(typescript@5.7.3)
+        specifier: ^6.0.1
+        version: 6.0.1(@samchon/openapi@4.2.0)(typia@9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3))
       '@nestjs/axios':
         specifier: ^4.0.0
         version: 4.0.0(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(axios@1.8.4)(rxjs@7.8.2)
@@ -54,8 +54,8 @@ importers:
         specifier: ^5.21.1
         version: 5.22.0(prisma@5.22.0)
       '@samchon/openapi':
-        specifier: ^2.3.3
-        version: 2.5.3
+        specifier: ^4.2.0
+        version: 4.2.0
       '@slack/web-api':
         specifier: ^7.6.0
         version: 7.9.1
@@ -70,7 +70,7 @@ importers:
         version: 1.2.3
       '@wrtnio/decorators':
         specifier: ^1.6.0
-        version: 1.6.0(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)))(@nestia/sdk@4.6.2(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)))(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.86)(typescript@5.7.3))(typescript@5.7.3)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)))(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))
+        version: 1.6.0(@nestia/core@6.0.1(@nestia/fetcher@6.0.1(@samchon/openapi@4.2.0)(typia@9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typescript@5.7.3))(@nestia/sdk@6.0.1(@nestia/core@6.0.1(@nestia/fetcher@6.0.1(@samchon/openapi@4.2.0)(typia@9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typescript@5.7.3))(@nestia/fetcher@6.0.1(@samchon/openapi@4.2.0)(typia@9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.86)(typescript@5.7.3))(typescript@5.7.3))(typia@9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3))
       '@wrtnio/schema':
         specifier: ^3.2.1
         version: 3.2.1
@@ -171,8 +171,8 @@ importers:
         specifier: ^1.17.2
         version: 1.22.0
       typia:
-        specifier: ^8.0.1
-        version: 8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)
+        specifier: ^9.1.1
+        version: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
       uuid:
         specifier: ^10.0.0
         version: 10.0.0
@@ -185,6 +185,10 @@ importers:
       zenrows:
         specifier: ^2.0.1
         version: 2.0.1
+    optionalDependencies:
+      sharp:
+        specifier: ^0.33.5
+        version: 0.33.5
     devDependencies:
       '@commitlint/cli':
         specifier: ^19.3.0
@@ -197,16 +201,16 @@ importers:
         version: 0.18.0
       '@nestia/agent':
         specifier: ^0.3.7
-        version: 0.3.12(@samchon/openapi@2.5.3)(openai@4.94.0)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))
+        version: 0.3.12(@samchon/openapi@4.2.0)(openai@4.94.0)(typia@9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3))
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       '@nestia/sdk':
-        specifier: ^4.6.1
-        version: 4.6.2(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)))(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.86)(typescript@5.7.3))(typescript@5.7.3)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))
+        specifier: ^6.0.1
+        version: 6.0.1(@nestia/core@6.0.1(@nestia/fetcher@6.0.1(@samchon/openapi@4.2.0)(typia@9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typescript@5.7.3))(@nestia/fetcher@6.0.1(@samchon/openapi@4.2.0)(typia@9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.86)(typescript@5.7.3))(typescript@5.7.3)
       '@ryoppippi/unplugin-typia':
         specifier: ^1.1.0
-        version: 1.2.0(@samchon/openapi@2.5.3)(@types/node@18.19.86)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(yaml@2.7.1)
+        version: 1.2.0(@samchon/openapi@4.2.0)(@types/node@18.19.86)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(yaml@2.7.1)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.5.3)
@@ -271,8 +275,8 @@ importers:
         specifier: ^11.3.0
         version: 11.3.0
       nestia:
-        specifier: ^6.3.1
-        version: 6.4.0
+        specifier: ^7.0.0
+        version: 7.0.0
       prettier:
         specifier: ^3.3.2
         version: 3.5.3
@@ -324,10 +328,6 @@ importers:
       write-file-webpack-plugin:
         specifier: ^4.5.1
         version: 4.5.1
-    optionalDependencies:
-      sharp:
-        specifier: ^0.33.5
-        version: 0.33.5
 
   packages/arxiv_search:
     dependencies:
@@ -338,8 +338,8 @@ importers:
         specifier: ^1.8.1
         version: 1.8.4
       typia:
-        specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
+        specifier: ^9.1.1
+        version: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
       xml2js:
         specifier: ^0.6.2
         version: 0.6.2
@@ -348,8 +348,8 @@ importers:
         specifier: ^9.20.0
         version: 9.24.0
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       '@rollup/plugin-terser':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.0)
@@ -423,15 +423,15 @@ importers:
         specifier: ^0.0.3
         version: 0.0.3
       typia:
-        specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
+        specifier: ^9.1.1
+        version: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
         version: 9.24.0
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       '@rollup/plugin-terser':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.0)
@@ -493,15 +493,15 @@ importers:
         specifier: ^1.7.9
         version: 1.8.4
       typia:
-        specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
+        specifier: ^9.1.1
+        version: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
         version: 9.24.0
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       '@rollup/plugin-terser':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.0)
@@ -566,15 +566,15 @@ importers:
         specifier: workspace:^
         version: link:../shared
       typia:
-        specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
+        specifier: ^9.1.1
+        version: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
         version: 9.24.0
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       '@rollup/plugin-terser':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.0)
@@ -648,15 +648,15 @@ importers:
         specifier: ^3.0.2
         version: 3.0.3
       typia:
-        specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
+        specifier: ^9.1.1
+        version: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
         version: 9.24.0
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       '@rollup/plugin-terser':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.0)
@@ -727,15 +727,15 @@ importers:
         specifier: ^4.24.1
         version: 4.93.0
       typia:
-        specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
+        specifier: ^9.1.1
+        version: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
         version: 9.24.0
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       '@rollup/plugin-terser':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.0)
@@ -800,15 +800,15 @@ importers:
         specifier: ^1.7.9
         version: 1.8.4
       typia:
-        specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
+        specifier: ^9.1.1
+        version: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
         version: 9.24.0
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       '@rollup/plugin-terser':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.0)
@@ -873,15 +873,15 @@ importers:
         specifier: ^1.7.9
         version: 1.8.4
       typia:
-        specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
+        specifier: ^9.1.1
+        version: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
         version: 9.24.0
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       '@rollup/plugin-terser':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.0)
@@ -946,15 +946,15 @@ importers:
         specifier: ^1.8.1
         version: 1.8.4
       typia:
-        specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
+        specifier: ^9.1.1
+        version: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
         version: 9.24.0
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       '@rollup/plugin-terser':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.0)
@@ -1016,15 +1016,15 @@ importers:
         specifier: workspace:^
         version: link:../shared
       typia:
-        specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
+        specifier: ^9.1.1
+        version: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
         version: 9.24.0
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       '@rollup/plugin-terser':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.0)
@@ -1095,15 +1095,15 @@ importers:
         specifier: ^1.7.9
         version: 1.8.4
       typia:
-        specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
+        specifier: ^9.1.1
+        version: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
         version: 9.24.0
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       '@rollup/plugin-terser':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.0)
@@ -1165,15 +1165,15 @@ importers:
         specifier: ^1.7.9
         version: 1.8.4
       typia:
-        specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
+        specifier: ^9.1.1
+        version: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
         version: 9.24.0
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       '@rollup/plugin-terser':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.0)
@@ -1241,15 +1241,15 @@ importers:
         specifier: ^144.0.0
         version: 144.0.0
       typia:
-        specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
+        specifier: ^9.1.1
+        version: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
         version: 9.24.0
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       '@rollup/plugin-terser':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.0)
@@ -1323,8 +1323,8 @@ importers:
         specifier: ^0.33.5
         version: 0.33.5
       typia:
-        specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
+        specifier: ^9.1.1
+        version: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
       uuid:
         specifier: ^10.0.0
         version: 10.0.0
@@ -1333,8 +1333,8 @@ importers:
         specifier: ^9.20.0
         version: 9.24.0
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       '@rollup/plugin-terser':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.0)
@@ -1399,15 +1399,15 @@ importers:
         specifier: ^144.0.0
         version: 144.0.0
       typia:
-        specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
+        specifier: ^9.1.1
+        version: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
         version: 9.24.0
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       '@rollup/plugin-terser':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.0)
@@ -1475,15 +1475,15 @@ importers:
         specifier: ^14.1.2
         version: 14.1.4
       typia:
-        specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
+        specifier: ^9.1.1
+        version: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
         version: 9.24.0
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       '@rollup/plugin-terser':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.0)
@@ -1554,15 +1554,15 @@ importers:
         specifier: ^0.0.3
         version: 0.0.3
       typia:
-        specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
+        specifier: ^9.1.1
+        version: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
         version: 9.24.0
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       '@rollup/plugin-terser':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.0)
@@ -1633,15 +1633,15 @@ importers:
         specifier: ^2.0.0
         version: 2.1.0
       typia:
-        specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
+        specifier: ^9.1.1
+        version: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
         version: 9.24.0
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       '@rollup/plugin-terser':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.0)
@@ -1703,15 +1703,15 @@ importers:
         specifier: workspace:^
         version: link:../shared
       typia:
-        specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
+        specifier: ^9.1.1
+        version: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
         version: 9.24.0
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       '@rollup/plugin-terser':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.0)
@@ -1777,8 +1777,8 @@ importers:
         specifier: ^9.20.0
         version: 9.24.0
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       '@rollup/plugin-terser':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.0)
@@ -1846,15 +1846,15 @@ importers:
         specifier: ^2.0.0
         version: 2.1.0
       typia:
-        specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
+        specifier: ^9.1.1
+        version: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
         version: 9.24.0
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       '@rollup/plugin-terser':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.0)
@@ -1916,15 +1916,15 @@ importers:
         specifier: ^2.0.0
         version: 2.1.0
       typia:
-        specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
+        specifier: ^9.1.1
+        version: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
         version: 9.24.0
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       '@rollup/plugin-terser':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.0)
@@ -1986,15 +1986,15 @@ importers:
         specifier: ^2.0.0
         version: 2.1.0
       typia:
-        specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
+        specifier: ^9.1.1
+        version: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
         version: 9.24.0
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       '@rollup/plugin-terser':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.0)
@@ -2062,15 +2062,15 @@ importers:
         specifier: ^144.0.0
         version: 144.0.0
       typia:
-        specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
+        specifier: ^9.1.1
+        version: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
         version: 9.24.0
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       '@rollup/plugin-terser':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.0)
@@ -2135,15 +2135,15 @@ importers:
         specifier: ^2.0.0
         version: 2.1.0
       typia:
-        specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
+        specifier: ^9.1.1
+        version: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
         version: 9.24.0
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       '@rollup/plugin-terser':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.0)
@@ -2217,8 +2217,8 @@ importers:
         specifier: ^0.33.5
         version: 0.33.5
       typia:
-        specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
+        specifier: ^9.1.1
+        version: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
       uuid:
         specifier: ^10.0.0
         version: 10.0.0
@@ -2227,8 +2227,8 @@ importers:
         specifier: ^9.20.0
         version: 9.24.0
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       '@rollup/plugin-terser':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.0)
@@ -2299,15 +2299,15 @@ importers:
         specifier: ^2.0.0
         version: 2.1.0
       typia:
-        specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
+        specifier: ^9.1.1
+        version: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
         version: 9.24.0
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       '@rollup/plugin-terser':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.0)
@@ -2375,8 +2375,8 @@ importers:
         specifier: ^1.7.9
         version: 1.8.4
       typia:
-        specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
+        specifier: ^9.1.1
+        version: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
       uuid:
         specifier: ^10.0.0
         version: 10.0.0
@@ -2388,8 +2388,8 @@ importers:
         specifier: ^9.20.0
         version: 9.24.0
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       '@rollup/plugin-terser':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.0)
@@ -2460,15 +2460,15 @@ importers:
         specifier: ^1.7.9
         version: 1.8.4
       typia:
-        specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
+        specifier: ^9.1.1
+        version: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
         version: 9.24.0
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       '@rollup/plugin-terser':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.0)
@@ -2533,15 +2533,15 @@ importers:
         specifier: ^14.1.2
         version: 14.1.4
       typia:
-        specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
+        specifier: ^9.1.1
+        version: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
         version: 9.24.0
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       '@rollup/plugin-terser':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.0)
@@ -2600,15 +2600,15 @@ importers:
         specifier: workspace:^
         version: link:../shared
       typia:
-        specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
+        specifier: ^9.1.1
+        version: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
         version: 9.24.0
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       '@rollup/plugin-terser':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.0)
@@ -2667,15 +2667,15 @@ importers:
         specifier: workspace:^
         version: link:../shared
       typia:
-        specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
+        specifier: ^9.1.1
+        version: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
         version: 9.24.0
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       '@rollup/plugin-terser':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.0)
@@ -2737,15 +2737,15 @@ importers:
         specifier: ^1.8.1
         version: 1.8.4
       typia:
-        specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
+        specifier: ^9.1.1
+        version: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
         version: 9.24.0
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       '@rollup/plugin-terser':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.0)
@@ -2807,15 +2807,15 @@ importers:
         specifier: workspace:^
         version: link:../shared
       typia:
-        specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
+        specifier: ^9.1.1
+        version: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
         version: 9.24.0
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       '@rollup/plugin-terser':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.0)
@@ -2889,15 +2889,15 @@ importers:
         specifier: ^0.12.7
         version: 0.12.7
       typia:
-        specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
+        specifier: ^9.1.1
+        version: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
         version: 9.24.0
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       '@rollup/plugin-terser':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.0)
@@ -2956,15 +2956,15 @@ importers:
         specifier: ^1.7.9
         version: 1.8.4
       typia:
-        specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
+        specifier: ^9.1.1
+        version: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
         version: 9.24.0
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       '@rollup/plugin-terser':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.0)
@@ -3029,15 +3029,15 @@ importers:
         specifier: ^1.7.9
         version: 1.8.4
       typia:
-        specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
+        specifier: ^9.1.1
+        version: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
         version: 9.24.0
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       '@rollup/plugin-terser':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.0)
@@ -3102,15 +3102,15 @@ importers:
         specifier: ^1.7.9
         version: 1.8.4
       typia:
-        specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
+        specifier: ^9.1.1
+        version: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
         version: 9.24.0
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       '@rollup/plugin-terser':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.0)
@@ -3181,15 +3181,15 @@ importers:
         specifier: ^3.1.1
         version: 3.1.7
       typia:
-        specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
+        specifier: ^9.1.1
+        version: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
         version: 9.24.0
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       '@rollup/plugin-terser':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.0)
@@ -3254,15 +3254,15 @@ importers:
         specifier: ^1.7.9
         version: 1.8.4
       typia:
-        specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
+        specifier: ^9.1.1
+        version: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
         version: 9.24.0
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       '@rollup/plugin-terser':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.0)
@@ -3324,17 +3324,21 @@ importers:
   packages/shared:
     dependencies:
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       marked:
         specifier: ^14.1.2
         version: 14.1.4
       typia:
-        specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
+        specifier: ^9.1.1
+        version: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
       xml2js:
         specifier: ^0.6.2
         version: 0.6.2
+    optionalDependencies:
+      sharp:
+        specifier: ^0.33.5
+        version: 0.33.5
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -3393,10 +3397,6 @@ importers:
       typescript-transform-paths:
         specifier: ^3.5.1
         version: 3.5.5(typescript@5.7.3)
-    optionalDependencies:
-      sharp:
-        specifier: ^0.33.5
-        version: 0.33.5
 
   packages/short_io:
     dependencies:
@@ -3404,15 +3404,15 @@ importers:
         specifier: workspace:^
         version: link:../shared
       typia:
-        specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
+        specifier: ^9.1.1
+        version: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
         version: 9.24.0
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       '@rollup/plugin-terser':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.0)
@@ -3480,15 +3480,15 @@ importers:
         specifier: ^4.4.0
         version: 4.4.0
       typia:
-        specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
+        specifier: ^9.1.1
+        version: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
         version: 9.24.0
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       '@rollup/plugin-terser':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.0)
@@ -3544,15 +3544,15 @@ importers:
   packages/sort:
     dependencies:
       typia:
-        specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
+        specifier: ^9.1.1
+        version: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
         version: 9.24.0
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       '@rollup/plugin-terser':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.0)
@@ -3617,15 +3617,15 @@ importers:
         specifier: ^1.7.9
         version: 1.8.4
       typia:
-        specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
+        specifier: ^9.1.1
+        version: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
         version: 9.24.0
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       '@rollup/plugin-terser':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.0)
@@ -3687,15 +3687,15 @@ importers:
         specifier: ^1.8.1
         version: 1.8.4
       typia:
-        specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
+        specifier: ^9.1.1
+        version: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
         version: 9.24.0
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       '@rollup/plugin-terser':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.0)
@@ -3763,15 +3763,15 @@ importers:
         specifier: ^6.14.0
         version: 6.14.0
       typia:
-        specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
+        specifier: ^9.1.1
+        version: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
         version: 9.24.0
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       '@rollup/plugin-terser':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.0)
@@ -3839,8 +3839,8 @@ importers:
         specifier: ^1.0.0
         version: 1.0.0
       typia:
-        specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
+        specifier: ^9.1.1
+        version: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
       zenrows:
         specifier: ^2.0.1
         version: 2.0.1
@@ -3849,8 +3849,8 @@ importers:
         specifier: ^9.20.0
         version: 9.24.0
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       '@rollup/plugin-terser':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.0)
@@ -3912,15 +3912,15 @@ importers:
         specifier: ^1.8.1
         version: 1.8.4
       typia:
-        specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
+        specifier: ^9.1.1
+        version: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
         version: 9.24.0
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       '@rollup/plugin-terser':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.0)
@@ -3988,15 +3988,15 @@ importers:
         specifier: ^2.0.0
         version: 2.1.0
       typia:
-        specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
+        specifier: ^9.1.1
+        version: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
         version: 9.24.0
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       '@rollup/plugin-terser':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.0)
@@ -4064,15 +4064,15 @@ importers:
         specifier: ^2.0.0
         version: 2.1.0
       typia:
-        specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
+        specifier: ^9.1.1
+        version: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
         version: 9.24.0
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       '@rollup/plugin-terser':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.0)
@@ -4140,15 +4140,15 @@ importers:
         specifier: ^2.0.0
         version: 2.1.0
       typia:
-        specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
+        specifier: ^9.1.1
+        version: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
         version: 9.24.0
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       '@rollup/plugin-terser':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.0)
@@ -4213,15 +4213,15 @@ importers:
         specifier: ^1.8.1
         version: 1.8.4
       typia:
-        specifier: ^9.1.0
-        version: 9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3)
+        specifier: ^9.1.1
+        version: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
         version: 9.24.0
       '@nestia/e2e':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^6.0.1
+        version: 6.0.1
       '@rollup/plugin-terser':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.0)
@@ -5193,35 +5193,34 @@ packages:
       openai: '>=4.0.0'
       typia: '>=7.6.3'
 
-  '@nestia/core@4.6.2':
-    resolution: {integrity: sha512-tpZk2L7XuN3TTy1K5VDE2k1RUfWPrhFImrVAp6kpeEXgWIPRN4I56DBxTKL05VQox0ME4tC6jsFUFOHtLAUq3g==}
+  '@nestia/core@6.0.1':
+    resolution: {integrity: sha512-CiZUtNHMH5MFC3M6vy2cz1sG7j8ZfzmPMWrAQplCJur62SUi4CXSblITby3U0MwRHyhbz0Lnzv21bWVt70jPrQ==}
     peerDependencies:
-      '@nestia/fetcher': '>=4.6.2'
+      '@nestia/fetcher': '>=6.0.1'
       '@nestjs/common': '>=7.0.1'
       '@nestjs/core': '>=7.0.1'
       reflect-metadata: '>=0.1.12'
       rxjs: '>=6.0.3'
-      typia: '>=7.6.0 <8.0.0'
 
-  '@nestia/e2e@0.7.0':
-    resolution: {integrity: sha512-h/uV6OhFlgmoLgmc82i12iGkWhaXdW9CCkWtpppmBrxOmmYo3FNI47iauy7je5/q1HKCiOlamiJGx/Q9ArVBNQ==}
+  '@nestia/e2e@6.0.1':
+    resolution: {integrity: sha512-eFvAxzgEmS3TpQhOWgfA7KWTCzPRZNLwmvFlblnRkJG3zenETYq7D/NBk3AFq0AlBVdnEQWTf0B/87hbancEsQ==}
 
-  '@nestia/fetcher@4.6.2':
-    resolution: {integrity: sha512-ofaSgZpgrBFoFGeWnJXhoQPjKZac/z2BTlXtWIwjhWpfUUhrpHdz/vSb9VQzNww+suwU40MZUc5INy1d4ENLbA==}
+  '@nestia/fetcher@6.0.1':
+    resolution: {integrity: sha512-Xver4EOwnGXnJngKFeyedmkn0vYBZQ02rIbSGeT+WIbas06G13wyH+8u6CXJmtE6aQ/0xjo/XprDv7unu4iOfg==}
     peerDependencies:
-      typescript: '>= 4.8.0'
+      '@samchon/openapi': '>=4.0.0 <5.0.0'
+      typia: '>=9.0.1 <10.0.0'
 
-  '@nestia/sdk@4.6.2':
-    resolution: {integrity: sha512-827lBPAQBfiV5j4npr3geRA/qE5mURz83RVQMSEXtCWQ1PFWoBeO0nV87pShrbk1+/orozhL73Ey14ejBT8Prg==}
+  '@nestia/sdk@6.0.1':
+    resolution: {integrity: sha512-4EoEAdk2DNJ9u0c1Vkr+/2NG9nt8twNQZ+tyGPqhuycgySY22mGz3Xa9yoJ+m5YVMBFu2pxUIsl933sgxwQRRQ==}
     hasBin: true
     peerDependencies:
-      '@nestia/core': '>=4.6.2'
-      '@nestia/fetcher': '>=4.6.2'
+      '@nestia/core': '>=6.0.1'
+      '@nestia/fetcher': '>=6.0.1'
       '@nestjs/common': '>=7.0.1'
       '@nestjs/core': '>=7.0.1'
       reflect-metadata: '>=0.1.12'
       ts-node: '>=10.6.0'
-      typia: '>=7.6.0 <8.0.0'
 
   '@nestjs/axios@4.0.0':
     resolution: {integrity: sha512-1cB+Jyltu/uUPNQrpUimRHEQHrnQrpLzVj6dU3dgn6iDDDdahr10TgHFGTmw5VuJ9GzKZsCLDL78VSwJAs/9JQ==}
@@ -5560,8 +5559,8 @@ packages:
   '@samchon/openapi@2.5.3':
     resolution: {integrity: sha512-gLcGqPGsr/V43yNrhC+5E8ZR8y1JdLZDgkC6ULg+B03uvmdS2C7qIXpIWUe19MUPvXt5SCpjhvOykomEspinaw==}
 
-  '@samchon/openapi@4.1.0':
-    resolution: {integrity: sha512-UUFBI6n8R9+V0xt4scGEaQ0rib04cOVARhu7DXBZuEG0ExiTFPoiW49+qYFwE44LjYpfxBIlNkd+rcpiRGhsNA==}
+  '@samchon/openapi@4.2.0':
+    resolution: {integrity: sha512-OIgKBbUtWf0bcv3PRGwm1CbOeZsVC8qGE0H7xXEtUwqbin9O3czhWf9jxP90GGEw55joNJyV2fXZ3eWBm45O5g==}
 
   '@scarf/scarf@1.4.0':
     resolution: {integrity: sha512-xxeapPiUXdZAE3che6f3xogoJPeZgig6omHEy1rIY5WVsB3H2BHNnZH+gHG6x91SCWyQCzWGsuL2Hh3ClO5/qQ==}
@@ -8696,8 +8695,8 @@ packages:
   neo-async@2.6.2:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
 
-  nestia@6.4.0:
-    resolution: {integrity: sha512-vjub5HDPyHRtpowfMTImh2RFVI/bMiDeu1afYHsCQiy3OpQo8I3Klj1sH3voamiwIfcF4rNmlsTPyWT8pnIQ5w==}
+  nestia@7.0.0:
+    resolution: {integrity: sha512-IFD0mwXHvRFG4JVBMDo21KstTmHJ6oxSe5KesH4b6v5WFjF8Q2naIM2qpD8JnZJ+99xhcq6U5Egtng2FfFK9ow==}
     hasBin: true
 
   nestjs-pino@4.4.0:
@@ -8718,6 +8717,7 @@ packages:
   node-domexception@1.0.0:
     resolution: {integrity: sha512-/jKZoMpw0F8GRwl4/eLROPA3cfcXtLApP0QzLmUT/HuPCZWyB7IY9ZrMeKw2O/nFIqPQB3PVM9aYm0F312AXDQ==}
     engines: {node: '>=10.5.0'}
+    deprecated: Use your platform's native DOMException instead
 
   node-fetch-native@1.6.6:
     resolution: {integrity: sha512-8Mc2HhqPdlIfedsuZoc3yioPuzp6b+L5jRCRY1QzuWZh2EGJVQrGppC6V6cF0bLdbW0+O2YpqCA25aF/1lvipQ==}
@@ -9964,13 +9964,6 @@ packages:
     peerDependencies:
       '@samchon/openapi': '>=2.4.2 <3.0.0'
       typescript: '>=4.8.0 <5.8.0'
-
-  typia@8.2.0:
-    resolution: {integrity: sha512-DAQl9CLItDwMd4k4HnaExxv6wjBFLW04WqGBQEnOpylq2YmZsM6HTj4Bfxxp3wtgAsMXZTugAdQRPsFOxMiRrQ==}
-    hasBin: true
-    peerDependencies:
-      '@samchon/openapi': '>=3.3.0 <4.0.0'
-      typescript: '>=4.8.0 <5.9.0'
 
   typia@9.1.1:
     resolution: {integrity: sha512-fMgrd2VLGZoDjZZwWlgriotUiG38UEzcMD0ToJOhQ0bPr966mit0ZEy5TnDhm2RidXfejZOqHb7iOoTG3VHd4w==}
@@ -11664,19 +11657,19 @@ snapshots:
       call-me-maybe: 1.0.2
       glob-to-regexp: 0.3.0
 
-  '@nestia/agent@0.3.12(@samchon/openapi@2.5.3)(openai@4.94.0)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))':
+  '@nestia/agent@0.3.12(@samchon/openapi@4.2.0)(openai@4.94.0)(typia@9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3))':
     dependencies:
-      '@samchon/openapi': 2.5.3
+      '@samchon/openapi': 4.2.0
       openai: 4.94.0
-      typia: 8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)
+      typia: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
       uuid: 11.1.0
 
-  '@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))':
+  '@nestia/core@6.0.1(@nestia/fetcher@6.0.1(@samchon/openapi@4.2.0)(typia@9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typescript@5.7.3)':
     dependencies:
-      '@nestia/fetcher': 4.6.2(typescript@5.7.3)
+      '@nestia/fetcher': 6.0.1(@samchon/openapi@4.2.0)(typia@9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3))
       '@nestjs/common': 11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2)
       '@nestjs/core': 11.0.17(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)
-      '@samchon/openapi': 2.5.3
+      '@samchon/openapi': 4.2.0
       detect-ts-node: 1.0.5
       get-function-location: 2.0.0
       glob: 7.2.3
@@ -11685,27 +11678,27 @@ snapshots:
       reflect-metadata: 0.2.2
       rxjs: 7.8.2
       tgrid: 1.1.0
-      typia: 8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)
+      typia: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
       ws: 7.5.10
     transitivePeerDependencies:
       - bufferutil
+      - typescript
       - utf-8-validate
 
-  '@nestia/e2e@0.7.0': {}
+  '@nestia/e2e@6.0.1': {}
 
-  '@nestia/fetcher@4.6.2(typescript@5.7.3)':
+  '@nestia/fetcher@6.0.1(@samchon/openapi@4.2.0)(typia@9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3))':
     dependencies:
-      '@samchon/openapi': 2.5.3
-      typescript: 5.7.3
-      typia: 7.6.4(@samchon/openapi@2.5.3)(typescript@5.7.3)
+      '@samchon/openapi': 4.2.0
+      typia: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
 
-  '@nestia/sdk@4.6.2(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)))(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.86)(typescript@5.7.3))(typescript@5.7.3)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))':
+  '@nestia/sdk@6.0.1(@nestia/core@6.0.1(@nestia/fetcher@6.0.1(@samchon/openapi@4.2.0)(typia@9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typescript@5.7.3))(@nestia/fetcher@6.0.1(@samchon/openapi@4.2.0)(typia@9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.86)(typescript@5.7.3))(typescript@5.7.3)':
     dependencies:
-      '@nestia/core': 4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))
-      '@nestia/fetcher': 4.6.2(typescript@5.7.3)
+      '@nestia/core': 6.0.1(@nestia/fetcher@6.0.1(@samchon/openapi@4.2.0)(typia@9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typescript@5.7.3)
+      '@nestia/fetcher': 6.0.1(@samchon/openapi@4.2.0)(typia@9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3))
       '@nestjs/common': 11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2)
       '@nestjs/core': 11.0.17(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)
-      '@samchon/openapi': 2.5.3
+      '@samchon/openapi': 4.2.0
       cli: 1.0.1
       get-function-location: 2.0.0
       glob: 7.2.3
@@ -11716,7 +11709,7 @@ snapshots:
       tsconfck: 2.1.2(typescript@5.7.3)
       tsconfig-paths: 4.2.0
       tstl: 3.0.0
-      typia: 8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)
+      typia: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
     transitivePeerDependencies:
       - typescript
 
@@ -11976,7 +11969,7 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.40.0':
     optional: true
 
-  '@ryoppippi/unplugin-typia@1.2.0(@samchon/openapi@2.5.3)(@types/node@18.19.86)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(yaml@2.7.1)':
+  '@ryoppippi/unplugin-typia@1.2.0(@samchon/openapi@4.2.0)(@types/node@18.19.86)(jiti@2.4.2)(rollup@4.40.0)(terser@5.39.0)(yaml@2.7.1)':
     dependencies:
       '@rollup/pluginutils': 5.1.4(rollup@4.40.0)
       consola: 3.4.2
@@ -11988,7 +11981,7 @@ snapshots:
       pkg-types: 1.3.1
       type-fest: 4.39.1
       typescript: 5.6.3
-      typia: 7.6.4(@samchon/openapi@2.5.3)(typescript@5.6.3)
+      typia: 7.6.4(@samchon/openapi@4.2.0)(typescript@5.6.3)
       unplugin: 1.16.1
       vite: 6.2.6(@types/node@18.19.86)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.1)
     transitivePeerDependencies:
@@ -12008,7 +12001,7 @@ snapshots:
 
   '@samchon/openapi@2.5.3': {}
 
-  '@samchon/openapi@4.1.0': {}
+  '@samchon/openapi@4.2.0': {}
 
   '@scarf/scarf@1.4.0': {}
 
@@ -12870,11 +12863,11 @@ snapshots:
       webpack: 5.99.5(webpack-cli@5.1.4)
       webpack-cli: 5.1.4(webpack@5.99.5)
 
-  '@wrtnio/decorators@1.6.0(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)))(@nestia/sdk@4.6.2(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)))(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.86)(typescript@5.7.3))(typescript@5.7.3)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)))(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))':
+  '@wrtnio/decorators@1.6.0(@nestia/core@6.0.1(@nestia/fetcher@6.0.1(@samchon/openapi@4.2.0)(typia@9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typescript@5.7.3))(@nestia/sdk@6.0.1(@nestia/core@6.0.1(@nestia/fetcher@6.0.1(@samchon/openapi@4.2.0)(typia@9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typescript@5.7.3))(@nestia/fetcher@6.0.1(@samchon/openapi@4.2.0)(typia@9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.86)(typescript@5.7.3))(typescript@5.7.3))(typia@9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3))':
     dependencies:
-      '@nestia/core': 4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))
-      '@nestia/sdk': 4.6.2(@nestia/core@4.6.2(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)))(@nestia/fetcher@4.6.2(typescript@5.7.3))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.86)(typescript@5.7.3))(typescript@5.7.3)(typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3))
-      typia: 8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3)
+      '@nestia/core': 6.0.1(@nestia/fetcher@6.0.1(@samchon/openapi@4.2.0)(typia@9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typescript@5.7.3)
+      '@nestia/sdk': 6.0.1(@nestia/core@6.0.1(@nestia/fetcher@6.0.1(@samchon/openapi@4.2.0)(typia@9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typescript@5.7.3))(@nestia/fetcher@6.0.1(@samchon/openapi@4.2.0)(typia@9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)))(@nestjs/common@11.0.17(file-type@16.5.4)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.17)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@18.19.86)(typescript@5.7.3))(typescript@5.7.3)
+      typia: 9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3)
 
   '@wrtnio/schema@3.2.1':
     dependencies:
@@ -15778,7 +15771,7 @@ snapshots:
 
   neo-async@2.6.2: {}
 
-  nestia@6.4.0:
+  nestia@7.0.0:
     dependencies:
       commander: 10.0.1
       comment-json: 4.2.5
@@ -17135,9 +17128,9 @@ snapshots:
 
   typescript@5.7.3: {}
 
-  typia@7.6.4(@samchon/openapi@2.5.3)(typescript@5.6.3):
+  typia@7.6.4(@samchon/openapi@4.2.0)(typescript@5.6.3):
     dependencies:
-      '@samchon/openapi': 2.5.3
+      '@samchon/openapi': 4.2.0
       commander: 10.0.1
       comment-json: 4.2.5
       inquirer: 8.2.6
@@ -17145,29 +17138,9 @@ snapshots:
       randexp: 0.5.3
       typescript: 5.6.3
 
-  typia@7.6.4(@samchon/openapi@2.5.3)(typescript@5.7.3):
+  typia@9.1.1(@samchon/openapi@4.2.0)(typescript@5.7.3):
     dependencies:
-      '@samchon/openapi': 2.5.3
-      commander: 10.0.1
-      comment-json: 4.2.5
-      inquirer: 8.2.6
-      package-manager-detector: 0.2.11
-      randexp: 0.5.3
-      typescript: 5.7.3
-
-  typia@8.2.0(@samchon/openapi@2.5.3)(typescript@5.7.3):
-    dependencies:
-      '@samchon/openapi': 2.5.3
-      commander: 10.0.1
-      comment-json: 4.2.5
-      inquirer: 8.2.6
-      package-manager-detector: 0.2.11
-      randexp: 0.5.3
-      typescript: 5.7.3
-
-  typia@9.1.1(@samchon/openapi@4.1.0)(typescript@5.7.3):
-    dependencies:
-      '@samchon/openapi': 4.1.0
+      '@samchon/openapi': 4.2.0
       commander: 10.0.1
       comment-json: 4.2.5
       inquirer: 8.2.6
