@@ -1,6 +1,6 @@
 {
   "name": "@wrtnlabs/connector-reddit",
-  "version": "0.1.503",
+  "version": "0.1.504",
   "description": "",
   "main": "src/index.ts",
   "exports": {
