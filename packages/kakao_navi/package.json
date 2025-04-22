@@ -1,6 +1,6 @@
 {
   "name": "@wrtnlabs/connector-kakao-navi",
-  "version": "0.1.502",
+  "version": "0.1.503",
   "description": "",
   "main": "src/index.ts",
   "exports": {
