@@ -42,7 +42,7 @@ jobs:
           pnpm install
           git config --local user.email "studio@wrtn.io"
           git config --local user.name "studio-pro"
-          git pull
+          git pull origin main
           pnpm prepare
           VERSION=$(npm pkg get version | tr -d '"')
           echo "Version: $VERSION"
