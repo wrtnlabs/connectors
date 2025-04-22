@@ -1,6 +1,6 @@
 {
   "name": "@wrtnlabs/connector-shared",
-  "version": "0.1.504",
+  "version": "0.1.505",
   "description": "",
   "main": "src/index.ts",
   "exports": {
