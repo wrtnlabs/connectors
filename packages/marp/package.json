@@ -1,6 +1,6 @@
 {
   "name": "@wrtnlabs/connector-marp",
-  "version": "0.1.505",
+  "version": "0.1.506",
   "description": "",
   "main": "src/index.ts",
   "exports": {

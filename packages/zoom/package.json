@@ -1,6 +1,6 @@
 {
   "name": "@wrtnlabs/connector-zoom",
-  "version": "0.1.505",
+  "version": "0.1.506",
   "description": "",
   "main": "src/index.ts",
   "exports": {
