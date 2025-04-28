@@ -82,5 +82,8 @@
     "README.md",
     "lib",
     "package.json"
-  ]
+  ],
+  "publishConfig": {
+    "main": "lib/index.js"
+  }
 }
