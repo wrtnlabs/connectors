@@ -16,7 +16,7 @@
   ],
   "info": {
     "title": "dall-e",
-    "version": "0.1.505",
+    "version": "0.1.506",
     "description": "wrtn-ecosystem connectors and sdk",
     "license": {
       "name": "AGPL-3.0-only"
