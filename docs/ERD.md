@@ -5,6 +5,7 @@
 - [Systematic](#systematic)
 - [AirportInformations](#airportinformations)
 - [Articles](#articles)
+- [ConnectorHub](#connectorhub)
 - [Crunchbase](#crunchbase)
 - [Spreadsheets](#spreadsheets)
 - [Similarweb](#similarweb)
@@ -356,6 +357,154 @@ M: N relationship resolution.
   - `id`: Provider's unique ID 
   - `name`: name of provider, for example, 'notion', 'google_docs', 'excel', 'google_sheets'
   - `created_at`: The date and time the record was created.
+
+
+## ConnectorHub
+```mermaid
+erDiagram
+"user_has_connectors" {
+  String id PK
+  String external_user_id FK
+  String connector_id FK
+  DateTime created_at
+  DateTime deleted_at "nullable"
+}
+"connector" {
+  String id PK
+  String method
+  String path
+  DateTime created_at
+  DateTime deleted_at "nullable"
+}
+"connector_snapshot" {
+  String id PK
+  String connector_id FK
+  String version
+  String summary "nullable"
+  String title "nullable"
+  String description "nullable"
+  Json input "nullable"
+  Json output "nullable"
+}
+"connector_benchmark" {
+  String id PK
+  String connector_snapshot_id FK
+  String connector_benchmark_keyword_id FK
+  Int ms
+  Boolean is_success
+  DateTime created_at
+}
+"connector_benchmark_keyword" {
+  String id PK
+  String keyword
+  DateTime created_at
+}
+"external_users" {
+  String id PK
+  String channel_id FK
+  String application
+  String uid
+  String password
+  DateTime created_at
+}
+"user_has_connectors" }o--|| "external_users" : external_user
+"user_has_connectors" }o--|| "connector" : connector
+"connector_snapshot" }o--|| "connector" : connector
+"connector_benchmark" }o--|| "connector_snapshot" : connector_snapshot
+"connector_benchmark" }o--|| "connector_benchmark_keyword" : connector_benchmark_keyword
+```
+
+### `user_has_connectors`
+User Has Connector
+
+If the user decides to use the connector,
+there must be a value specifying this in the
+relationship table between the user and the connector.
+For users who do not have any of these values,
+it is assumed that they do not have connectors,
+but that they are in full use. (It ensures backward compatibility.)
+
+**Properties**
+  - `id`: UID for user_has_connectors
+  - `external_user_id`: external_user_id injected by backend server
+  - `connector_id`: Connector ID
+  - `created_at`: The date and time the record was created.
+  - `deleted_at`: The date and time the record was deleted.
+
+### `connector`
+Connector
+
+**Properties**
+  - `id`: 
+  - `method`: method, for example, 'post', 'get', 'patch', 'put', 'delete'
+  - `path`: 
+  - `created_at`: The date and time the record was created.
+  - `deleted_at`: The date and time the record was deleted.
+
+### `connector_snapshot`
+connector_snapshot
+
+**Properties**
+  - `id`: 
+  - `connector_id`: 
+  - `version`: package.json과 SDK 배포 버전을 기준으로 생성한다.
+  - `summary`: Summary of Connector
+  - `title`: Title of Connector is first line of swagger and openai-function-schema's description
+  - `description`: Title of Connector is rest lines of swagger and openai-function-schema's description, excluding first line.
+  - `input`: input type, for example, query, param, body etc.
+  - `output`: output type.
+
+### `connector_benchmark`
+connector_benchmark
+
+**Properties**
+  - `id`: 
+  - `connector_snapshot_id`: 
+  - `connector_benchmark_keyword_id`: 
+  - `ms`: millsecond for execution
+  - `is_success`: result of benchmark testing
+  - `created_at`: The date and time the record was created.
+
+### `connector_benchmark_keyword`
+connector_benchmark_keyword
+
+**Properties**
+  - `id`: 
+  - `keyword`: keyword for benchmark test by using `@SelectBenchmark()` decorator in `wrtnio/decorators`
+  - `created_at`: The date and time the record was created.
+
+### `external_users`
+External user information.
+
+An entity for when this system is linked to an external service and 
+their users are accepted as customers of this service.
+
+And `password` is a password issued to the user by the external service system
+(so-called user permanent authentication token), and is never an actual user 
+password. However, it is used to determine whether a customer who entered the 
+same `application` and `uid` as the current external system user is 
+a correct external system user or a violation.
+
+In addition, additional information received from external services can be 
+recorded in the `data` field in JSON format.
+
+**Properties**
+  - `id`: 
+  - `channel_id`: [channels.id](#channels) of the affiliated channel
+  - `application`
+    > The identifier code of the external service.
+    > 
+    > It is most likely the same as [channels.code](#channels).
+  - `uid`: An identifier key for that user in an external service.
+  - `password`
+    > System password for external service users.
+    > 
+    > This is a password issued by the external service to the user, 
+    > and is never the actual user password. However, it is used to determine 
+    > whether a customer who entered the same `application` and `code` as the 
+    > current external system user is considered a valid external system user 
+    > or a violation.
+  - `created_at`: Record creation date and time (first external user authentication date and time)
 
 
 ## Crunchbase

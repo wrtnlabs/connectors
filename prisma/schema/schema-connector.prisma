@@ -1,0 +1,136 @@
+/// User Has Connector
+///
+/// If the user decides to use the connector,
+/// there must be a value specifying this in the
+/// relationship table between the user and the connector.
+/// For users who do not have any of these values,
+/// it is assumed that they do not have connectors,
+/// but that they are in full use. (It ensures backward compatibility.)
+/// @namespace ConnectorHub
+/// @author kakasoo, michael
+model user_has_connectors {
+  /// UID for user_has_connectors
+  id String @id @db.Uuid
+
+  /// external_user_id injected by backend server
+  external_user_id String @db.Uuid
+
+  /// Connector ID
+  connector_id String @db.Uuid
+
+  /// The date and time the record was created.
+  created_at DateTime @db.Timestamptz
+
+  /// The date and time the record was deleted.
+  deleted_at DateTime? @db.Timestamptz
+
+  //-----
+  // RELATIONS
+  //-----
+
+  external_user external_users @relation(fields: [external_user_id], references: [id], onDelete: Cascade)
+  connector     connector      @relation(fields: [connector_id], references: [id], onDelete: Cascade)
+}
+
+/// Connector
+/// @namespace ConnectorHub
+/// @author kakasoo, michael
+model connector {
+  //----
+  // COLUMNS
+  //----
+  /// @format uuid
+  id String @id @db.Uuid
+
+  /// method, for example, 'post', 'get', 'patch', 'put', 'delete'
+  method String @db.VarChar(10)
+
+  ///
+  path String @db.VarChar(80000)
+
+  /// The date and time the record was created.
+  created_at DateTime @db.Timestamptz
+
+  /// The date and time the record was deleted.
+  deleted_at DateTime? @db.Timestamptz
+
+  //-----
+  // RELATIONS
+  //-----
+  connector_snapshot  connector_snapshot[]
+  user_has_connectors user_has_connectors[]
+
+  @@unique([method, path])
+}
+
+/// connector_snapshot
+/// @namespace ConnectorHub
+/// @author kakasoo, michael
+model connector_snapshot {
+  ///
+  id String @id @db.Uuid
+
+  ///
+  connector_id String @db.Uuid
+
+  /// package.json과 SDK 배포 버전을 기준으로 생성한다.
+  version String
+
+  /// Summary of Connector
+  summary String?
+
+  /// Title of Connector is first line of swagger and openai-function-schema's description
+  title String?
+
+  /// Title of Connector is rest lines of swagger and openai-function-schema's description, excluding first line.
+  description String?
+
+  /// input type, for example, query, param, body etc.
+  input Json?
+
+  /// output type.
+  output Json?
+
+  connector           connector             @relation(fields: [connector_id], references: [id])
+  connector_benchmark connector_benchmark[]
+
+  @@unique([connector_id, version])
+}
+
+/// connector_benchmark
+/// @namespace ConnectorHub
+/// @author kakasoo, michael
+model connector_benchmark {
+  id                             String @id @db.Uuid
+  connector_snapshot_id          String @db.Uuid
+  connector_benchmark_keyword_id String @db.Uuid
+
+  /// millsecond for execution
+  ms Int
+
+  /// result of benchmark testing
+  is_success Boolean
+
+  /// The date and time the record was created.
+  created_at DateTime @db.Timestamptz
+
+  //-----
+  // RELATIONS
+  //-----
+  connector_snapshot          connector_snapshot          @relation(fields: [connector_snapshot_id], references: [id])
+  connector_benchmark_keyword connector_benchmark_keyword @relation(fields: [connector_benchmark_keyword_id], references: [id])
+}
+
+/// connector_benchmark_keyword
+/// @namespace ConnectorHub
+/// @author kakasoo, michael
+model connector_benchmark_keyword {
+  id String @id @db.Uuid
+
+  /// keyword for benchmark test by using `@SelectBenchmark()` decorator in `wrtnio/decorators`
+  keyword String
+
+  /// The date and time the record was created.
+  created_at          DateTime              @db.Timestamptz
+  connector_benchmark connector_benchmark[]
+}

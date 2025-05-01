@@ -13,6 +13,7 @@
 /// recorded in the `data` field in JSON format.
 ///
 /// @namespace Actors
+/// @namespace ConnectorHub
 /// @author kakasoo
 model external_users {
   //----
@@ -47,6 +48,8 @@ model external_users {
   channel channels @relation(fields: [channel_id], references: [id], onDelete: Cascade)
 
   bbs_article bbs_articles[]
+
+  user_has_connectors user_has_connectors[]
 
   @@unique([channel_id, application, uid])
   @@index([application, created_at])
